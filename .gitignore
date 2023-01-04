@@ -1,5 +1,93 @@
-vendor/*
+# Ignore Composer packages
+/vendor/
 
-# Ignore mounts
-web/uploads
-private
+# Ignore Node modules
+*node_modules*
+
+# Ignore temporary and build directories
+/wp/
+/_www
+/tmp/
+
+# Ignore standard WordPress files and folders
+/web/vendor/
+/web/composer.json
+/web/index.php
+/web/license.txt
+/web/readme.html
+/web/wp-activate.php
+/web/wp-admin/
+/web/wp-blog-header.php
+/web/wp-comments-post.php
+/web/wp-config-sample.php
+/web/wp-config-local.php
+/web/wp-content/index.php
+/web/wp-content/plugins/index.php
+/web/wp-content/themes/index.php
+/web/wp-cron.php
+/web/wp-includes/
+/web/wp-links-opml.php
+/web/wp-load.php
+/web/wp-login.php
+/web/wp-mail.php
+/web/wp-settings.php
+/web/wp-signup.php
+/web/wp-trackback.php
+/web/xmlrpc.php
+
+# Ignore WordPress themes
+/web/wp-content/themes/twenty*/
+
+### Ignore our themes - changes to default parent and child theme should go into those repos
+/web/wp-content/themes/mm-madre-theme/
+/web/wp-content/themes/mm-nino-theme/
+
+### Copy niño child theme folder to a theme name of your choice, and 
+### include changes to that in this repo (i.e. uncomment these 2 lines)
+# !/web/wp-content/themes/YOUR_CHILD_THEME/
+# /web/wp-content/themes/YOUR_CHILD_THEME/assets/build/*
+
+# Ignore WordPress plugins
+### Plugins should pull from wpackagist or other sources
+/web/wp-content/plugins/
+
+# WordPress dynamic folders
+/web/wp-content/cache/
+/web/wp-content/uploads/
+
+# Ignore local configuration files
+/.env
+/wp-config-local.php
+
+# Ignore user uploaded and system generated files
+*.log
+*.sql
+*.sql.gz
+*.sqlite
+
+# Ignore generated files
+*.bundle.css
+*.bundle.js
+
+# Ignore SASS
+.sass-cache/
+*.css.map
+*.sass.map
+*.scss.map
+
+# Ignore compressed files
+*.7z
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Ignore OS generated files
+.DS_Store
+.DS_Store?
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db

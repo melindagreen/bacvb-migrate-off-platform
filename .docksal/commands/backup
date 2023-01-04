@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+
+## Backup current local database to sql file 
+##
+## Usage: fin backup
+
+# Abort if anything fails
+set -e
+
+#-------------------------- Settings --------------------------------
+  SQL=${PROJECT_ROOT}/data/db.sql.backup
+#-------------------------- END: Settings --------------------------------
+
+#-------------------------- Helper functions --------------------------------
+  source ${PROJECT_ROOT}/.composer/bin/helpers
+#-------------------------- END: Helper functions --------------------------------
+
+#-------------------------- Functions --------------------------------
+  backup(){
+    echo-green "
+╔╗ ┌─┐┌─┐┬┌─┬ ┬┌─┐  ╔╦╗┌─┐┌┬┐┌─┐╔╗ ┌─┐┌─┐┌─┐
+╠╩╗├─┤│  ├┴┐│ │├─┘   ║║├─┤ │ ├─┤╠╩╗├─┤└─┐├┤
+╚═╝┴ ┴└─┘┴ ┴└─┘┴    ═╩╝┴ ┴ ┴ ┴ ┴╚═╝┴ ┴└─┘└─┘"
+    touch ${SQL}
+    echo-yellow "\nBackup\n"
+    echo -e "${blue}File size before:"
+    du -h ${SQL}
+    fin sqld > ${SQL}
+
+    if test -f ${SQL}; then
+      echo -e "${blue}File size after:"
+      du -h ${SQL}
+       echo-green "\n  [✓] Saved: ${light_cyan}${SQL}"
+      echo-green "  [✓] ${light_green}Local Backup Complete!"
+    fi
+  }
+#-------------------------- END: Functions --------------------------------
+
+#-------------------------- Execution --------------------------------
+  echo-yellow "\nDatabase"
+  echo-green "  [?] ${yellow}Backup Local Database\n"
+  FILE=$(echo -e "\n${light_cyan}${SQL}")
+  YN=$(echo -e "\n${blue}(y/n)${green}?")
+  Q=$(echo-green "? ${white}Would you like to backup your local database to: ${FILE} ${YN}")
+  while true; do
+    answer=$(askQ "$Q")
+    case ${answer:0:1} in
+        [Yy]*)
+          echo-green "Yes."
+          backup
+          break;;
+        [Nn]*) 
+          echo-red "No.";  break;; 
+        *) echo "Sorry, what?" >&2
+    esac
+  done;
+#-------------------------- END: Execution --------------------------------

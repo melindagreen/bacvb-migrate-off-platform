@@ -1,0 +1,63 @@
+#!/usr/bin/env bash
+
+## Quickly deploy to staging environment 
+##
+## Usage: fin stage 
+# Abort if anything fails
+set -e
+
+#-------------------------- Settings --------------------------------
+  STAGE=staging
+  CURRENT=$(git symbolic-ref --short HEAD)
+#-------------------------- END: Settings --------------------------------
+
+#-------------------------- Helper functions --------------------------------
+  source ${PROJECT_ROOT}/.composer/bin/helpers
+#-------------------------- END: Helper functions --------------------------------
+
+#-------------------------- Functions --------------------------------
+  #* fetch all branches tags and submodules
+  updateSubmodules(){
+    echo-green-bg "Preparing to stage branch: ${CURRENT}"
+    echo-green "Fetch all branches, tags, and submodules"
+    git fetch --all --tags
+    fin composer run submodules
+  }
+
+  #* pull latest main and merge into current branch 
+  mergeMain(){
+    echo-green "Pull latest main repo"
+    git pull platform main
+    echo-green "Merge main into branch"
+    git merge main
+  }
+
+  #* checkout staging and update to latest
+  updateStaging(){
+    echo-green "Checking out Staging Branch"
+    git checkout ${STAGE}
+    echo-green "Updating to latest..."
+    git pull platform ${STAGE}
+  }
+
+  #* merge current branch 
+  checkoutCurrent(){
+    echo-green "Merging branch: ${CURRENT}"
+    git merge ${CURRENT}
+    git push
+    git checkout ${CURRENT}
+  }
+
+  #* update current branch with main and push to staging 
+  stage(){
+    cd ${PROJECT_ROOT}
+    updateSubmodules
+    mergeMain
+    updateStaging
+    checkoutCurrent
+  }
+
+#-------------------------- END: Functions --------------------------------
+
+#-------------------------- Execution --------------------------------
+  stage

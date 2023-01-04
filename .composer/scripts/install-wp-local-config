@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# @since 0.0.0
+
+#-------------------------- Settings -------------------------------
+  # local config
+  CONFIG="wp-config-local.php"
+  # public/web dir
+  WEB="web"
+#-------------------------- END: Settings --------------------------
+
+#-------------------------- Functions ------------------------------
+  copyConfig(){
+    echo "Copying /$CONFIG (if present) to /$WEB/$CONFIG"
+    cp $CONFIG $WEB/$CONFIG 2>/dev/null || :
+  }
+#-------------------------- END: Functions -------------------------
+
+#-------------------------- Execute --------------------------------
+  copyConfig

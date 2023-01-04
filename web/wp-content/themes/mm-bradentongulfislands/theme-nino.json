@@ -1,0 +1,11 @@
+{
+    "version": 1,
+    "settings": {
+        "themeSetup": {
+            "postThumbnailSize": {
+                "width": 300,
+                "height": 200
+            }
+        }
+    }
+}

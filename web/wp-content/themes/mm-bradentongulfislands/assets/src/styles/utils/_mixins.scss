@@ -1,0 +1,54 @@
+@mixin standard-transition {
+    transition: all 0.2s ease-in-out;
+}
+
+@mixin eq-dimensions($size) {
+    width: $size;
+    height: $size;
+}
+
+@mixin all-headers {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        @content;
+    }
+}
+
+@mixin all-text {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    li {
+        @content;
+    }
+}
+
+@mixin clearfix {
+    &:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+@mixin sr-only {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+@mixin main-column {
+    width: $main-column-width;
+    max-width: $main-column-max-width;
+}

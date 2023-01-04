@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+# require-mm
+# handles require madden's private repos to composer 
+# @usage: composer require-mm mm-wordpress-block-example-dynamic
+# @usage: composer require-mm maddenmedia/mm-wordpress-block-example-dynamic
+# @version 1.2021.05.0
+# @since 1.2021.5
+
+#-------------------------- Settings --------------------------------
+  THEMES="web/wp-content/themes"
+  PARENT="mm-madre-theme"
+  CHILD="mm-bradentongulfislands"
+  DIR=$1
+#-------------------------- END: Settings ---------------------------
+
+#-------------------------- Functions --------------------------------
+  themeDirectory(){
+    case $DIR in
+      parent)
+        THEME=$PARENT
+        ;;
+
+      child)
+        THEME=$CHILD
+        ;;
+    esac
+    echo "$THEMES/$THEME"
+  }
+#-------------------------- END: Functions ---------------------------
+
+#-------------------------- Execute --------------------------------
+  themeDirectory

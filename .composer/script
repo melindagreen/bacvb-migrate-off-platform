@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# capture params pass onto script matching 1st param
+# @since 1.2015.05
+".composer/scripts/$@"

@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+echo "Removing Docker Containers..."
+fin docker rm $(docker ps -a -f status=exited -q)
+
+echo "Removing Docker Images..."
+fin docker rmi $(fin docker images -q) 
+
+echo "Removing All Dangling Volumnes"
+fin docker volume rm `docker volume ls -q -f dangling=true`

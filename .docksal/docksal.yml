@@ -1,0 +1,72 @@
+version: '2.1'
+
+services:
+  # CLI Container
+  cli:
+    volumes:
+      # Project root volume
+      - project_root:/app:rw,nocopy,cached
+    environment:
+      # Pass additional variables (used in custom commands, e.g. install) from host to cli
+      - DOCKSAL_STACK 
+      - DOCROOT
+      - MYSQL_DATABASE
+      - MYSQL_PREFIX
+      - MYSQL_USER
+      - MYSQL_PASSWORD
+      - MYSQL_ROOT_PASSWORD
+      - PRODUCTION 
+      - WP_ADMIN_EMAIL
+      - WP_ADMIN_USER
+      - WP_ADMIN_PASS
+      - WP_CONTENT
+      - WP_THEME
+      - VIRTUAL_HOST
+    # ports:
+      # BrowserSync
+      # - '3000:3000'
+      # BrowserSync UI
+      # - '3001:3001'
+  
+  # Database Container
+  db:
+    volumes:
+      # Auto imports *.sql found in /data dir.
+      - ${PROJECT_ROOT}/data:/docker-entrypoint-initdb.d:ro
+
+  # PHPMyAdmin Container
+  pma:
+    image: phpmyadmin/phpmyadmin
+    hostname: pma
+    environment:
+      # Use db Container as host
+      - PMA_HOST=db
+      # Pass the user credentials
+      - PMA_USER=${MYSQL_USER}
+      - PMA_PASSWORD=${MYSQL_PASSWORD}
+    labels:
+      # Virtual Host: pma.$VIRTUAL_HOST
+      - io.docksal.virtual-host=pma.${VIRTUAL_HOST}
+
+  # Web Container
+  web:
+    volumes:
+      # Map project root volume to /app (match platform's)
+      - project_root:/app:ro,nocopy,cached
+    environment:
+      # Tell NGINX where the DOCROOT is.
+      - NGINX_SERVER_ROOT=/app/${DOCROOT}
+      # NGINX preset for WordPress
+      - NGINX_VHOST_PRESET=wordpress
+      # Tell NGINX to use the cli as backend
+      - NGINX_BACKEND_HOST=cli
+      - NGINX_FCGI_HOST_PORT=cli:9000
+    depends_on:
+      - cli
+      - db
+
+  # Redis
+  redis:
+    extends:
+      file: ${HOME}/.docksal/stacks/services.yml
+      service: redis

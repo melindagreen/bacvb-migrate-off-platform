@@ -1,0 +1,31 @@
+{
+  "name": "example-static",
+  "scripts": [
+    "front.js"
+  ],
+  "settings": {
+    "title": "Static Block Example",
+    "description": "An example block",
+    "icon": "smiley",
+    "category": "layout",
+    "attributes": {
+      "exampleImageIds": {
+        "type": "array",
+        "default": []
+      },
+      "exampleText": {
+        "type": "string",
+        "default": "Hello, Madden!",
+        "selector": ".exampleText"
+      },
+      "exampleColor": {
+        "type": "string",
+        "default": "#CC0000"
+      },
+      "mode": {
+        "type": "string",
+        "default": "preview"
+      }
+    }
+  }
+}

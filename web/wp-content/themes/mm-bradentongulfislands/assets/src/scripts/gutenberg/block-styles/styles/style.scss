@@ -1,0 +1,39 @@
+/**
+ * Block-specific styles to show to front-end users
+ */
+
+@import "styles/utils/mixins";
+@import "styles/utils/typography";
+@import "styles/utils/variables";
+
+/*********************
+TEXT
+*********************/
+
+// buttons
+.wp-block-button__link {
+    display: inline-block;
+    padding: 0.5em 1.5em;
+    border-radius: 0;
+    box-shadow: none;
+    font-weight: bold;
+    font-size: 1rem;
+    text-decoration: none;
+}
+
+/*********************
+TEMPLATES
+*********************/
+// featured images
+.wp-block-post-featured-image {
+    &.aligncenter {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+// pre, for notes
+.wp-block-preformatted {
+    margin: 0;
+    padding: 4rem;
+    border: 2px solid red;
+}

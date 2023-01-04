@@ -1,0 +1,129 @@
+#!/usr/bin/env bash
+# build
+# builds theme's assets for both local and platform
+# @usage composer build 
+# add composer build to your .platform.app.yaml build hooks to hook into platform build
+# @version 1.2021.05.0
+# @since 1.2021.05
+set -e
+
+source ".composer/bin/helpers"
+
+#-------------------------- Settings ---------------------------------
+  CHILD=$(node -p "require('./package.json').name")
+  IS_PLATFORM=${PLATFORM_OUTPUT_DIR:-false}
+  IS_LANDO=${LANDO_MOUNT:-false}
+  IS_DOCKSAL=${DOCKSAL_STACK:-false}
+  LOGBREAK=$(cat .composer/bin/ascii/mm-logo)
+  PRODUCTION="${PRODUCTION:-true}"
+#-------------------------- END: Settings-----------------------------
+
+#-------------------------- Functions --------------------------------
+  #! PLATFORM.SH BUILD
+  buildPlatform(){
+    composer clear-cache
+    rm -fR ~/.cache/composer
+    rm -fR ~/.composer/cache
+    composer dump-autoload --no-cache
+    compose 
+  }
+   
+  #! LANDO BUILD
+  buildLando(){
+    buildLocal "${CHILD}"
+  }
+
+  #! DOCKSAL BUILD
+  buildDocksal(){
+    buildLocal
+  }
+
+  #! LOCAL BUILD METHODS
+  buildLocal(){
+    composer install:child $1
+    compose
+  }
+  # END LOCAL BUILD METHODS
+
+  # COMPOSE PROJECT
+  compose(){
+    if  [ "${IS_LANDO}" != false ] || [ "${IS_PLATFORM}" != false ]; then
+      source ".composer/scripts/install-node"
+    fi
+    echo-yellow "Dependencies"
+    composer install --no-interaction
+
+    echo -e "\n${white}𝄞 $(riverSong)"
+    echo-yellow "  Compose Project"
+    echo-green "    [✓] ${light_cyan}PRODUCTION$NC:${purple}${PRODUCTION}"
+
+    #? IS PRODUCTION?
+    if [ "${PRODUCTION}" != false ]; then
+      echo-green "    [✓] Build: ${white}Production"
+      echo -e "$(riverSong) \n"
+      composer production
+    else
+      # BUILD DEV ENVIORNEMNT 
+      echo-yellow"    [✓] Build: ${white}Development"
+      echo -e "$(riverSong) \n"
+      composer dev
+    fi
+
+    echo-yellow "\nStonks"
+    echo-green "$(cat .composer/bin/ascii/cat)"
+    echo-green "  [✓] $(riverSong)"
+    echo-green "  [✓] ♬·¯·♩♪·¯·♫¸¸ ${white}PROJECT COMPOSED ${green}¸¸♬·¯·♩♪·¯·♫"
+    echo-green "  [✓] $(riverSong)"
+  }
+  # END PLATFORM BUILD
+
+  build(){
+    ENV=$1
+    echo-yellow "\nMadden Media Production"
+    echo -e "$light_purple${LOGBREAK}$NC"
+    echo-yellow "Environment Build:"
+    echo-green "  [✓] ${ENV}"
+    echo ""
+    "build${ENV}"
+  }
+
+  # run build depending on platform type
+  buildEnv(){
+    #? IS THIS A PLATFORM ENVIRONMENT?
+    if [ "$IS_PLATFORM" != false ]; then
+      build Platform
+    #? IS THIS A LANDO ENVIRONMENT?
+    elif [ "$IS_LANDO" != false ]; then
+      build Lando
+    #? IS THIS A DOCKSAL ENVIRONMENT?
+    elif [ "$IS_DOCKSAL" != false ]; then
+      build Docksal
+    # LOCAL ENV
+    else
+      build Local
+    fi
+  }
+
+  riverSong(){
+    rainbow=(
+      white 
+      light_purple purple 
+      red orange yellow light_cyan cyan 
+      light_green green blue light_blue 
+      light_purple purple 
+      red orange yellow light_cyan cyan 
+      light_green green blue light_blue 
+      dark_gray  
+      # dark_gray white  
+    )
+    notes="♩♪♫♩♪♫♬♩♪♫♬♩♪♫♬♩♪♫♬♩♪♫♩♪♫♬♩♪♫♬♫♬♩♪"
+    for color in ${rainbow[@]}; do
+      song+="${!color}${notes:$(($RANDOM%${#notes}+1)):1}${NC} "
+    done
+    echo -e $song
+  }
+#-------------------------- END: Functions ---------------------------
+
+#-------------------------- Execution --------------------------------
+  buildEnv
+#-------------------------- END: Execution ---------------------------

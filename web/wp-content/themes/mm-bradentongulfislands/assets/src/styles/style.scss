@@ -1,0 +1,32 @@
+/*********************
+CHILD THEME STYLES
+*********************/
+
+/*********************
+IMPORTING UTILITY FILES
+These files are needed at the beginning so that we establish all
+our mixins, functions, and variables that we'll be using across
+the whole project.
+*********************/
+
+@import "utils/variables";
+@import "utils/typography";
+@import "utils/mixins";
+
+/*********************
+SIZES
+*********************/
+
+@import "breakpoints/base";
+
+@media only screen and (min-width: ($screen-sm + 1)) {
+	@import "breakpoints/large";
+}
+
+@media only screen and (min-width: ($screen-sm + 1)) and (max-width: $screen-lg) {
+	@import "breakpoints/medium";
+}
+
+@media only screen and (max-width: $screen-sm) {
+	@import "breakpoints/small";
+}

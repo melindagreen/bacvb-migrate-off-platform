@@ -1,0 +1,107 @@
+#!/usr/bin/env bash
+#: exec_target = cli
+
+## Setup dev environment - Watches files and auto rebuilds assets
+##
+## Usage: fin dev
+
+# Abort if anything fails
+set -e
+
+#-------------------------- Settings --------------------------------
+  # Hosts file
+  HOSTS=/etc/hosts
+
+  # Backup File
+  BAK=/tmp/hosts
+
+  # IP of web container
+  IP=$(dig web +short)
+
+  # Line to add to hosts file
+  HOST="${IP} ${VIRTUAL_HOST}"
+#-------------------------- END: Settings --------------------------------
+
+#-------------------------- Helper functions --------------------------------
+  source ${PROJECT_ROOT}/.composer/bin/helpers
+#-------------------------- END: Helper functions --------------------------------
+
+#-------------------------- Functions --------------------------------
+  copyFile(){
+    FROM=${1}
+    TO=${2}
+
+    sudo cp ${FROM} ${TO}
+  }
+
+  backupHostsFile(){
+    echo-green-bg "Making backup of hosts file..."
+    if [ -f "$BAK" ]; then
+      echo-yellow "$BAK alredy exists."
+    else
+      echo-green "Makding backup of hosts file..."
+      copyFile ${HOSTS} ${BAK}
+    fi
+
+    cleanVirtualHostsFromBackup
+  }
+
+  cleanVirtualHostsFromBackup(){
+    echo-red "Removing any other references to ${green}${VIRTUAL_HOST}${NC}"
+    sudo sed -i "/${VIRTUAL_HOST}/d" ${BAK}
+  }
+
+  addVirtualHost(){
+    echo-green-bg "Adding Virtual Host to hosts file..."
+    echo-green "Adding ${red}${VIRTUAL_HOST}"
+    sudo -- sh -c "echo ${HOST} >> ${BAK}"
+  }
+
+  replaceHostsFileWithBackup(){
+    echo-green-bg "Implementing changes to hosts file..."
+    copyFile ${BAK} ${HOSTS}
+  }
+
+  verifyAdditionToHostsFile(){
+    echo-green "Let's Verify it's there!${red}"
+    VERIFY=$(cat "${HOSTS}" | grep "${VIRTUAL_HOST}" | xargs)
+
+    if  [ "${HOST}" = "${VERIFY}" ]; then 
+      echo-green "Success! It's there!"
+      cat ${HOSTS} | grep ${VIRTUAL_HOST}
+    else 
+      echo-red "Failed :( uh oh!"
+    fi
+    echo-green "Browsersync should now be able to see the docker container!"
+  }
+
+  startWebpack(){
+    echo-green-bg "Starting WebPack..."
+    if ${PRODUCTION} = true; then
+      ENV="Production"
+    else
+      ENV="Development"
+    fi
+    echo-green "Begining to build project for ${ENV}. ${red}Please Wait..."
+    echo-yellow "Once finished, you can point your browser to ${green}http://${VIRTUAL_HOST}:3000${red} (not localhost)"
+    composer watch
+  }
+
+  addDockerWebToHostsFile(){
+    echo-green "Adding docker web container's internal IP${red}(${IP})${green} to cli container's host file${red}(${HOSTS})${green}..."
+    backupHostsFile
+    addVirtualHost
+    replaceHostsFileWithBackup
+    verifyAdditionToHostsFile
+  }
+#-------------------------- END: Functions --------------------------------
+
+#-------------------------- Execution --------------------------------
+  echo-green "
+  ╔╦╗┌─┐┬  ┬┌─┐┬  ┌─┐┌─┐┌┬┐┌─┐┌┐┌┌┬┐  ╔╦╗┌─┐┌┬┐┌─┐   
+   ║║├┤ └┐┌┘├┤ │  │ │├─┘│││├┤ │││ │   ║║║│ │ ││├┤    
+  ═╩╝└─┘ └┘ └─┘┴─┘└─┘┴  ┴ ┴└─┘┘└┘ ┴   ╩ ╩└─┘─┴┘└─┘ooo"
+
+  addDockerWebToHostsFile
+  startWebpack
+#-------------------------- END: Execution --------------------------------

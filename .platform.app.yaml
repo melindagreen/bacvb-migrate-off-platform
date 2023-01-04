@@ -4,56 +4,133 @@
 # The name of this app. Must be unique within a project.
 name: app
 
-# The type of the application to build.
-type: 'php:8.0'
+# The runtime the application uses.
+type: "php:7.4"
 
-# Indicate that we want to use composer2, (leave out if you want composer1)
-dependencies:
-    php: 
-        composer/composer: '^2'
-
-# The hooks that will be performed when the package is deployed.
-hooks:
-    build: |
-        set -e
-
-    deploy: |
-        set -e
+# Configuration of the build of the application.
+build:
+  flavor: composer
 
 # The relationships of the application with services or other applications.
 # The left-hand side is the name of the relationship as it will be exposed
 # to the application in the PLATFORM_RELATIONSHIPS variable. The right-hand
 # side is in the form `<service name>:<endpoint name>`.
-#relationships:
-#    database: "db:mysql"
-
-# The size of the persistent disk of the application (in MB).
-disk: 2048
-
-# The mounts that will be performed when the package is deployed.
-mounts:
-    # Because this directory is in the webroot, files here will be web-accessible.
-    'web/uploads':
-        source: local
-        source_path: uploads
-    # Files in this directory will not be web-accessible.
-    'private':
-        source: local
-        source_path: private
-
+relationships:
+  database: "db:mysql"
 
 # The configuration of app when it is exposed to the web.
 web:
-    locations:
-        "/":
-            # The public directory of the app, relative to its root.
-            root: "web"
-            # The front-controller script to send non-static requests to.
-            passthru: "/index.php"
+  locations:
+    "/":
+      # The public directory of the app, relative to its root.
+      root: "web"
+      # The front-controller script to send non-static requests to.
+      passthru: "/index.php"
+      # Wordpress has multiple roots (wp-admin) so the following is required
+      index:
+        - "index.php"
+      # The number of seconds whitelisted (static) content should be cached.
+      expires: 600
+      scripts: true
+      allow: true
+      rules:
+        ^/composer\.json:
+          allow: false
+        ^/license\.txt$:
+          allow: false
+        ^/readme\.html$:
+          allow: false
+        # expiry time for static content
+        '\.(mp4|jpe?g|png|gif|svgz?|map|ico|bmp|eot|woff2?|otf|ttf)$':
+          expires: 1w
+        '\.(css|js)$':
+          expires: 1w
+        '\.(html|php)$':
+            expires: 600s
+    "/wp-content/cache":
+      root: "web/wp-content/cache"
+      scripts: false
+      allow: false
+    "/wp-content/uploads":
+      root: "web/wp-content/uploads"
+      scripts: false
+      allow: false
+      rules:
+          # Allow access to common static files.
+          '(?<!\-lock)\.(?i:jpe?g|gif|png|svg|bmp|ico|css|js(?:on)?|eot|ttf|woff|woff2|pdf|docx?|xlsx?|pp[st]x?|psd|odt|key|mp[2-5g]|m4[av]|og[gv]|wav|mov|wm[av]|avi|3g[p2])$':
+              allow: true
+              expires: 1w
 
-source:
-  operations:
-    auto-update:
-      command: |
-        curl -fsS https://raw.githubusercontent.com/platformsh/source-operations/main/setup.sh | { bash /dev/fd/3 sop-autoupdate; } 3<&0
-    
+# The size of the persistent disk of the application (in MB).
+disk: 3584
+
+# Dependencies needed for build - yarn, bower, gulp, ruby etc.
+dependencies:
+  nodejs:
+    yarn: "^1.22.4"
+  php:
+    composer/composer: '2.2.12'
+
+# The mounts that will be performed when the package is deployed.
+mounts:
+  "web/wp-content/cache": "shared:files/cache"
+  "web/wp-content/uploads": "shared:files/uploads"
+  "web/sites": "shared:files/sites"
+
+hooks:
+  build: |
+    set -e
+    curl -sS https://platform.sh/cli/installer | php
+    composer build
+
+variables:
+  php:
+    short_open_tag: on
+    "opcache.max_accelerated_files": 22000
+    "opcache.memory_consumption": 96
+    "opcache.validate_timestamps": 0
+    "zlib.output_compression": "On"
+
+  # Environment variables to use on platform.sh
+  env:
+    #Arguments to connect to internal database: i.e. mysql $DATABASE
+    DATABASE: -h database.internal -P 3306 -u user main
+    # Set NodeJS version
+    NODE_VERSION: 12.22.1
+    # Set NVM version
+    NVM_VERSION: 0.35.2
+    # Flip this switch to use in your build cmds to enable development build on platform. 
+    PRODUCTION: yes 
+
+crons:
+  # Optimize the database everyday at 8am
+  analyze:
+    spec: "0 8 * * *"
+    cmd: |
+        mysqlcheck $DATABASE; 
+        mysqloptimize $DATABASE; 
+        mysqlanalyze $DATABASE;
+
+  # Force a redeploy at 10am (UTC) on the 1st and 15th of every month.
+  redeploy:
+    spec: "0 10 1,15 * *"
+    cmd: |
+      if [ "$PLATFORM_BRANCH" = main ]; then
+          platform redeploy --yes --no-wait
+      fi
+
+  # Backup the database everyday at 9am
+  snapshot:
+    spec: "0 9 * * *"
+    cmd: |
+      if [ "$PLATFORM_BRANCH" = main ]; then
+          platform snapshot:create --yes --no-wait
+      fi
+
+  # Run WordPress cron every 15 minutes
+  # NOTE: DISABLE_WP_CRON has been turned on wp-config-platform.php 
+  # uncomment lines below to enable 
+  # wordpress:
+  #   spec: "*/15 * * * *"
+  #   cmd: |
+  #     php ${PLATFORM_DOCUMENT_ROOT}/wp-cron.php

@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+# install-node
+# adapted from platform.sh offical documentation
+# @see https://docs.platform.sh/languages/nodejs/nvm.html
+# @usage composer install:node
+# @version 1.2021.05.0
+# @since 1.2021.05
+source ".composer/bin/helpers"
+
+#-------------------------- Settings --------------------------------
+  LOGBREAK=$(cat .composer/bin/ascii/nodejs)
+  IS_PLATFORM=${PLATFORM_OUTPUT_DIR:-false}
+  IS_LANDO=${LANDO_MOUNT:-false}
+#-------------------------- END: Settings-----------------------------
+
+#-------------------------- Functions --------------------------------
+  # INSTALL SPECIFIC VERSION OF NODE/NVM 
+  # @see https://docs.platform.sh/languages/nodejs/nvm.html
+  installNode(){
+    echo-green "${LOGBREAK}"
+    echo-yellow "NodeJS installer"
+    curl -o- https://raw.githubusercontent.com/creationix/nvm/v${NVM_VERSION}/install.sh | bash
+    unset NPM_CONFIG_PREFIX
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+    if [ -x "$(command -v nvm)" ] || [ "${IS_PLATFORM}" != false ]; then
+        nvm install $NODE_VERSION
+    fi
+    node -v
+    # chown -R $USER:$(id -gn $USER) /app/.config
+  }
+#-------------------------- END: Functions -------------------------
+
+#-------------------------- Execute --------------------------------
+  installNode

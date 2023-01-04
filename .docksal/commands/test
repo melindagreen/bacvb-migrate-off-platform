@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+## Test site installation
+##
+## Usage: fin test
+
+# Abort if anything fails
+set -e
+
+#-------------------------- Helper functions --------------------------------
+  source ${PROJECT_ROOT}/.composer/bin/helpers
+#-------------------------- END: Helper functions --------------------------------
+
+# Debug mode switch
+if [[ "${DEBUG}" != "" ]]; then
+    set -x
+fi
+
+test(){
+    echo "Testing home page..."
+    echo http://${VIRTUAL_HOST}
+    curl -sL -I http://${VIRTUAL_HOST} | grep "HTTP/1.1 200 OK"
+    echo "Testing login page..."
+    echo http://${VIRTUAL_HOST}/wp-admin
+    curl -sL -I http://${VIRTUAL_HOST}/wp-admin | grep "HTTP/1.1 200 OK"
+}
+
+test

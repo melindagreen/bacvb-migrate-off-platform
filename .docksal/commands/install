@@ -1,0 +1,185 @@
+#!/usr/bin/env bash
+
+#: exec_target = cli
+
+## Installs Wordpress, Plugins, and dependencies via Composer & NodeJS. 
+##
+## Usage: fin install
+
+# Abort if anything fails
+# set -e
+
+#-------------------------- Settings --------------------------------
+  # PROJECT_ROOT and DOCROOT are set as env variables in cli
+  DOCROOT_PATH="${PROJECT_ROOT}/${DOCROOT}"
+#-------------------------- END: Settings --------------------------------
+
+#-------------------------- Helper functions --------------------------------
+  source ${PROJECT_ROOT}/.composer/bin/helpers
+#-------------------------- END: Helper functions --------------------------------
+
+#-------------------------- Functions --------------------------------
+  admin_creds() {
+    echo -e "Open ${yellow}http://${VIRTUAL_HOST}${NC} in your browser to verify the setup."
+    echo -e "Admin panel: ${yellow}http://${VIRTUAL_HOST}/wp-admin${NC}."
+    echo -e "User/password: ${red}${WP_ADMIN_USER}/${WP_ADMIN_PASS}${NC}"
+    echo -e "Email questions to ${red}${WP_ADMIN_EMAIL}${NC}"
+  }
+
+  checkComposer() {
+    echo-yellow "
+  ╔═╗┌─┐┌┬┐┌─┐┌─┐┌─┐┌─┐┬─┐
+  ║  │ ││││├─┘│ │└─┐├┤ ├┬┘
+  ╚═╝└─┘┴ ┴┴  └─┘└─┘└─┘┴└─ooo"
+    cd ${PROJECT_ROOT}
+    ### CHECKS IF WORDPRESS OR VENDOR IS INSTALLED ###
+    if [ -d "${PROJECT_ROOT}/vendor" ]; then
+      Q="${white}Reinstall Composer vendor files ${blue}(y/n)${green}?"
+      Q=$(echo-green "? ${Q} ")
+      while true; do
+        answer=$(askQ "$Q")
+        echo "" 
+        case ${answer:0:1} in
+            [Yy]*)
+              rm -rf ${PROJECT_ROOT}/vendor
+              composer clear-cache
+              rm -fR ~/.cache/composer
+              rm -fR ~/.composer/cache
+              composer dump-autoload --no-cache
+              break;;
+            [Nn]*) echo "No."; break;;
+            *) echo "Sorry, what?" >&2
+        esac
+      done
+    fi
+    composer install
+  }
+
+  checkNodeJS() {
+    echo-yellow "
+  ╔╗╔┌─┐┌┬┐┌─┐ ╦╔═╗ ┬ ╦ ╦┌─┐┬─┐┌┐┌
+  ║║║│ │ ││├┤  ║╚═╗┌┼─╚╦╝├─┤├┬┘│││
+  ╝╚╝└─┘─┴┘└─┘╚╝╚═╝└┘  ╩ ┴ ┴┴└─┘└┘ooo"
+    CHILD=$(composer theme:dir child)
+
+    if [ -d "${CHILD}/node_modules" ]; then
+      Q="${white}Reinstall NodeJS modules ${blue}(y/n)${green}?"
+      Q=$(echo-green "? ${Q} ")
+      while true; do
+        answer=$(askQ "$Q")
+        echo ""
+        case ${answer:0:1} in
+            [Yy]*)
+              echo-green "Yes."
+              rm -rf "${CHILD}/node_modules"
+              cd $CHILD
+              yarn
+              break;;
+            [Nn]*) echo-red "No."; break;;
+            *) echo "Sorry, what?" >&2
+        esac
+      done
+    else 
+      cd $CHILD
+      yarn
+    fi
+  }
+
+  checkWordPress() {
+    echo-yellow "
+  ╦ ╦┌─┐┬─┐┌┬┐╔═╗┬─┐┌─┐┌─┐┌─┐
+  ║║║│ │├┬┘ ││╠═╝├┬┘├┤ └─┐└─┐
+  ╚╩╝└─┘┴└──┴┘╩  ┴└─└─┘└─┘└─┘ooo"
+
+    # Project initialization steps
+    # echo -e "${green_bg} WORDPRESS ${NC}${green} Generating wp-config.php...${NC}"
+    # generateConfig
+
+    if $(wp core is-installed); then
+      echo-green-bg "Wordpress Installed! "
+      wp cli version
+      echo-green "Wordpress cli available via: ${yellow}fin wp "
+      echo-red "Test Run$ fin wp --info"
+
+      wp --info
+      echo-yellow "Flushing Cache & Rewrite rules..."
+      wp cache flush & wp rewrite flush
+      echo-yellow "Checking Plugin List..."
+      wp plugin list 
+      echo-yellow "Checking Registered Taxonomies..."
+      wp taxonomy list
+      echo-yellow "Checking Registered Post types..."
+      wp post-type list
+
+      # ENABLED NEEDED PLUGINS
+      wp plugin activate \
+        gin \
+        enable-media-replace
+
+      wp plugin install query-monitor --activate 
+
+      # DISABLE/ENABLE CERTAIN PLUGINS FOR LOCAL
+      wp plugin deactivate \
+        wordpress-seo \
+        cache-control 
+
+      echo-yellow "Checking Plugin List..."
+      wp plugin list 
+    else
+      installWP
+    fi
+  }
+
+  # Generate wp-config.php file
+  generateConfig() {
+    cd $DOCROOT_PATH
+
+    # Lets keep our main wp-config safe.
+    cp wp-config.php wp-config-local.bak.php
+
+    wp core config \
+      --dbhost=db \
+      --dbuser=${MYSQL_USER} \
+      --dbpass=${MYSQL_PASSWORD} \
+      --dbname=${MYSQL_DATABASE} \
+      --dbprefix=${MYSQL_PREFIX}
+
+    # This is for our local setup
+    cp wp-config.php wp-config-local.php
+    sed -i 's/require_once ABSPATH/# require_once ABSPATH/g' ./wp-config-local.php
+
+    # Put our config file back in place.
+    cp wp-config.platform.php wp-config.php
+  }
+
+  # Install site
+  installWP() {
+    cd $DOCROOT_PATH
+    # Install WordPress
+    wp core install \
+      --url=${VIRTUAL_HOST} \
+      --title='WordPress' \
+      --admin_user=${WP_ADMIN_USER} \
+      --admin_password=${WP_ADMIN_PASS} \
+      --admin_email=${WP_ADMIN_EMAIL}
+  }
+
+  install() {
+    # echo -e "${green_bg} Install ${NC}${green} Running Composer, NodeJS, and Wordpress Installers...${NC}"
+    echo-green "  [ ] Run Composer install"
+    echo-green "  [ ] Run NodeJS & Yarn installs"
+    echo-green "  [ ] Run Wordpress CLI Plugin Installs/(De)Activations"
+
+    checkComposer
+    echo-green "  [✓] Run Composer install"
+    checkNodeJS
+    echo-green "  [✓] Run NodeJS & Yarn installs"
+    checkWordPress 
+    echo-green "  [✓] Run Wordpress CLI Plugin Installs/(De)Activations"
+  }
+
+#-------------------------- END: Functions --------------------------------
+
+#-------------------------- Execution --------------------------------
+  install
+#-------------------------- END: Execution --------------------------------

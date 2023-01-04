@@ -1,0 +1,109 @@
+#!/usr/bin/env bash
+# build
+# builds theme's assets for both local and platform
+# @usage composer build, composer build parent, composer build:child, composer build watch:child 
+# add composer build to your .platform.app.yaml build hooks 
+# @version 1.2021.09.0
+# @since 1.2021.05
+
+set -e
+source ".composer/bin/helpers"
+
+#-------------------------- Settings ---------------------------------
+  # command to run for production - same for both parent & child
+  PROD="yarn install; yarn --cmd __PWD__ build"
+  # command to run for development - same for both parent & child
+  DEV="yarn  install; yarn --cmd __PWD__ start "
+  # command to run for reinstall - same forboth parent & child
+  REINSTALL="yarn cache clean; rm -rf node_modules; yarn --verbose --no-lockfile"
+#-------------------------- END: Settings-----------------------------
+
+#-------------------------- Functions --------------------------------
+  # accepts params to run different parts of the build process
+  # by default builds env for local/production/devs envs
+  build(){
+    BUILD_ME="${1:-environment}"
+    BUILD_CMD="${2:-false}"
+    THEME=$(getBuildTheme $BUILD_ME)
+    CMD=$(getBuildCmd $BUILD_ME)
+    case "$BUILD_ME" in
+      # build full environment
+      env | environment)
+        composer script build-env
+        ;;
+      # catch composer build parent|child
+      parent | child)
+        composer build:"${BUILD_ME}"
+        ;;
+      # params: build*, watch*, reinstall*
+      # build production, watch files, reinstall 
+      "build"* | "watch"* | "reinstall"*)
+        composer build theme:$THEME "${CMD}"
+        ;;
+      # all theme* related params
+      "theme"*)
+        composeTheme "${BUILD_ME}" "${BUILD_CMD}" 
+        ;;
+      # everything else
+      *)
+        echo "Build ${BUILD_ME} not found - check command and try again."
+        ;;
+    esac
+  }
+
+  # cd to theme and eval prod/dev/reinstall cmd
+  composeTheme(){
+    BUILD_ME="${1:-false}"
+    CMD=${2:-false}
+    THEME=$(getBuildTheme $BUILD_ME)
+    if [ "${THEME}" != false ]; then
+      ART=$(cat .composer/bin/ascii/build-${THEME})
+      DIR=$(composer theme:dir $THEME)
+      cd $DIR/assets;
+      echo-green "${ART}"
+      echo-yellow "\nWebpack ($THEME)"
+      echo-green "  [✓] ${green}${THEME}${NC} found in ${light_cyan}${DIR}${NC}"
+      echo-green "  [✓] ${light_gray}@ ${PWD}${NC}"
+      echo-green "  [✓] Run $ ${white}$CMD\n"
+      eval "${CMD/__PWD__/$PWD}"
+    else
+      echo-red "Check for parent/child spelling errors and try again."
+    fi
+  }
+
+  # determines which build cmd to use based on beginning of param
+  getBuildCmd(){
+    BUILD_ME="${1:-false}"
+    CMD=false
+    case "$BUILD_ME" in 
+      "build"*)
+        CMD=$PROD
+        ;;
+      "watch"*)
+        CMD=$DEV
+        ;;
+      "reinstall"*)
+        CMD=$REINSTALL
+        ;;
+    esac
+    echo "${CMD}"
+  }
+
+  getBuildTheme(){
+    BUILD_ME="${1:-false}"
+    THEME=false
+    case "$BUILD_ME" in 
+      *"parent"*)
+        THEME=parent
+        ;;
+      *"child"*)
+        THEME=child
+        ;;
+    esac
+    echo $THEME
+  }
+#-------------------------- END: Functions ---------------------------
+
+#-------------------------- Execution --------------------------------
+  build "${@}"
+#-------------------------- END: Execution ---------------------------

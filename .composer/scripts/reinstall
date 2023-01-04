@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# reinstall
+# easy to remember shortcut that clears 
+# vendor and node_modules files before installing
+# @version 1.2021.05.0
+# @since 1.2021.5
+
+#-------------------------- Settings --------------------------------
+  # composer vendor directory
+  VENDOR=vendor
+#-------------------------- END: Settings --------------------------------
+
+#-------------------------- Functions --------------------------------
+  reinstall(){
+    rm -rf ./$VENDOR
+    composer install
+    yarn reinstall
+  }
+#-------------------------- END: Functions --------------------------------
+
+#-------------------------- Execute --------------------------------
+  time reinstall

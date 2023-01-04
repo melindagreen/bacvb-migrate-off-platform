@@ -1,0 +1,230 @@
+/*********************
+TEST ELEMENTS
+*********************/
+#isSmall {
+    visibility: hidden;
+    float: left;
+}
+#isMedium {
+    visibility: hidden;
+    float: none;
+}
+#isLarge {
+    visibility: hidden;
+    float: none;
+}
+
+/*********************
+HEADER
+*********************/
+// Header
+.header {
+    height: $header-height-mobile;
+}
+body.admin-bar .header {
+    top: $admin-bar-height-mobile;
+}
+
+// Logo
+.header__brand {
+    height: 2rem;
+}
+
+// Header nav
+.header-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.header-menu__contents {
+    position: fixed;
+    top: $header-height-mobile;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 0;
+    overflow: hidden;
+    background-color: color('black');
+    @include standard-transition;
+}
+.header-menu__contents--open {
+    height: 100vh;
+    overflow: auto;
+}
+.search-form {
+    padding: 1rem;
+}
+.header-menu__items {
+    flex-direction: column;
+    padding: 0 1rem;
+    & > .menu-item {
+        position: relative;
+        padding-top: 1rem;
+        & + * {
+            margin-top: 1rem;
+            border-top: 1px solid color('white');
+        }
+        &::after {
+            content: "";
+            position: absolute;
+            right: 0;
+            top: 1rem;
+            @include eq-dimensions(0.75rem);
+            border: 2px solid white;
+            border-top: none;
+            border-right: none;
+            transform: rotate(-45deg);
+            @include standard-transition;
+        }
+        &.menu-item--open {
+            &::after {
+                transform: rotate(135deg);
+            }
+        }
+    }
+}
+.sub-menu {
+    max-height: 0;
+    overflow: hidden;
+    @include standard-transition;
+    .menu-item {
+        margin-top: 0.5rem;
+        padding-top: 0.5rem;
+        font-size: 0.8rem;
+    }
+}
+.sub-menu--open {
+    max-height: 100vh;
+}
+
+// Mobile toggle button
+.mobile-toggle {
+    position: relative;
+    background: none;
+    border: none;
+    box-shadow: none;
+}
+.mobile-toggle__icon {
+    display: block;
+    width: 2rem;
+    height: 3px;
+    border-radius: 3px;
+    background-color: white;
+    transition: all 0.25s ease;
+    &::before,
+    &::after {
+        content: "";
+        position: absolute;
+        display: block;
+        width: 2rem;
+        height: 3px;
+        border-radius: 3px;
+        background-color: white;
+        transition: all 0.25s ease;
+    }
+    &::before {
+        top: -0.5rem;
+    }
+    &::after {
+        bottom: -0.5rem;
+    }
+}
+.mobile-toggle--open .mobile-toggle__icon {
+    background-color: transparent;
+    transform: rotate(45deg);
+    &::before,
+    &::after {
+        background-color: white;
+    }
+    &::before {
+        top: 0;
+    }
+    &::after {
+        bottom: 0;
+        transform: rotate(-90deg);
+    }
+}
+
+/*********************
+SEARCH FUNCTIONALITY
+*********************/
+.search-icon {
+    display: none;
+}
+
+.search-form {
+    position: relative;
+    top: auto;
+    width: 100%;
+    height: auto;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    &.search-form--open {
+        display: block ;
+        margin-top: 50px;
+    }
+    .search-form__field {
+        font-size: .85em;
+        background-color: transparent;
+        border: none;
+        border-bottom: 1px solid #c7c7c7;
+        margin: 0 15px;
+    }
+    .search-form__submit {
+        border-radius: 5px;
+        border: none;
+        font-size: .85em;
+        font-weight: normal;
+    }
+}
+
+/*********************
+MAIN PAGE CONTENT
+*********************/
+.main {
+}
+
+/*********************
+SOCIAL ICONS
+*********************/
+.social-wrapper {
+    display: flex;
+    flex-direction: row;
+    &.mobile-social {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 30px;
+        margin-top: 30px;
+    }
+    .social-icon {
+        fill: white;
+        width: 30px;
+        height: auto;
+        margin: 0 5px;
+    }
+}
+
+
+/*********************
+FOOTER
+*********************/
+.footer {
+    flex-direction: column;
+}
+
+.footer-menu__items {
+    flex-direction: column;
+    .menu-item {
+        & + * {
+            margin-top: 1rem;
+        }
+    }
+}

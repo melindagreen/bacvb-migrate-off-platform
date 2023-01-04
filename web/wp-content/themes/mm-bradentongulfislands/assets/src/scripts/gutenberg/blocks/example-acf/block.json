@@ -1,0 +1,13 @@
+{
+    "name": "example-acf",
+    "acf": true,
+    "scripts": [
+        "front.js"
+    ],
+    "settings": {
+        "title": "ACF Example Block",
+        "description": "Example block using ACF block registration",
+        "category": "formatting",
+        "icon": "smiley"
+    }
+}

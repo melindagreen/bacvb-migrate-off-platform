@@ -1,0 +1,155 @@
+#!/usr/bin/env bash
+# install-child
+# installs child theme with name of current working 
+# directory using child theme boilerplate repo from github 
+# can also be used to scaffold a child theme by using the method directly
+# @usage composer install:child my-theme-name
+# @version 1.2021.05.0
+# @since 1.2021.05
+source ".composer/bin/helpers"
+
+#-------------------------- Settings --------------------------------
+  # Boilerplate child theme
+  BOILERPLATE="mm-nino-theme"
+  # The name of the child theme follows the naming convention
+  # mm-PROJECT_DIR-child-theme
+  # MM_THEME="${1:-$(basename $PWD)}"
+  # MM_THEME="mm-nino-${MM_THEME//mm-/}"
+  # MM_THEME="${MM_THEME//-child-theme/}-theme"
+  # Uses env vars if found
+  PROJECT_ROOT="${PROJECT_ROOT:-$PWD}"
+  DOCROOT="${DOCROOT:-web}"
+  WP_CONTENT="${WP_CONTENT:-wp-content}"
+  WP_THEME="${BOILERPLATE}"
+  WP_THEME_PATH="${DOCROOT}/${WP_CONTENT}/themes/${WP_THEME}"
+  BOILERPLATE_PATH="${DOCROOT}/${WP_CONTENT}/themes/${BOILERPLATE}"
+  PACKAGES=$(node -p "require('./composer.json').require")
+#-------------------------- END: Settings-----------------------------
+
+#-------------------------- Functions --------------------------------
+  # check if project has own child theme or boilerplate installed
+  installChildTheme(){
+    echo-yellow "\nMM Nino Theme installer"
+    # echo -e "Checking if ${light_cyan}${WP_THEME} ${NC}is installed..." 
+    if [[ $PACKAGES == *"maddenmedia/${BOILERPLATE}"* ]] ||  [ "${1}" != "" ] || [ ! -f "${WP_THEME_PATH}/composer.json" ] ; then
+      askToInstallChild
+    else 
+      echo-green "  [✓] ${light_cyan}${WP_THEME} ${NC}@ ${light_gray}${WP_THEME_PATH}"
+    fi
+    # renameTheme
+    echo ""
+  }
+
+  degitBoilerplate(){
+    installDegit
+
+    # Use child theme to install project's theme  
+    echo-green "Degitting copy of ${BOILERPLATE} boilerplate @ ${WP_THEME_PATH}" 
+    degit --mode=git git@github.com:maddenmedia/${BOILERPLATE} ${WP_THEME_PATH}
+    # Deprecated 
+    # (initChildRepo 2> /dev/null)
+  }
+
+  installDegit(){
+    # check if degit is installed.
+    if [ ! -x "$(command -v degit)" ]; then
+      npm install -g degit
+    fi;
+  }
+
+  cleanInstall(){
+    (cd ${WP_THEME_PATH}; removeBoilerplate)
+    if [ -d "${WP_THEME_PATH}" ] ; then
+      Q=$(echo-red "Theme directory already exists! Are you sure you want to erase: ${WP_THEME} (y/n)? ")
+        read -n 1 -p "${Q}" answer
+        echo ""
+        case ${answer:0:1} in
+            [Yy]*)
+              echo-green "Yes"
+              #! REMOVES THEME
+              rm -rf "${WP_THEME_PATH}";
+              degitBoilerplate
+              ;;
+            [Nn]*) 
+              echo-red "No" 
+              echo "Skipping ${WP_THEME} install"; ;;
+            # *) echo "Sorry, what?" >&2
+        esac
+    else
+      echo-green "  [✓] Installing Child Theme..."
+      degitBoilerplate
+    fi
+  }
+
+  removeBoilerplate(){
+    cd ${PROJECT_ROOT}
+    if grep -q "maddenmedia/${BOILERPLATE}" "composer.json"; then
+      echo "Removing ${BOILERPLATE} boilerplate composer.json"
+      composer remove maddenmedia/${BOILERPLATE} 
+    fi
+    if [ -d "${BOILERPLATE_PATH}" ] ; then
+      echo "Removing ${BOILERPLATE} directory from project"
+      rm -rf "${BOILERPLATE_PATH}"
+    fi
+  }
+  
+  renameTheme(){
+    # Files that need updated
+    stylesheet="style.css"
+    composerJson="composer.json"
+    scssVariables="resources/assets/sass/partials/_variables.scss"
+
+    cd ${WP_THEME_PATH}
+    replaceThemeName ${stylesheet} ${composerJson} ${scssVariables} 
+
+    cd ${PROJECT_ROOT}
+    replaceThemeName package.json ${composerJson} .docksal/docksal.env; 
+
+    echo-green "  [✓] ${NC}Refrences to ${blue}${BOILERPLATE} ${NC}renamed to ${light_cyan}${WP_THEME}"
+  }
+
+  replaceThemeName(){
+    if grep -q "${BOILERPLATE}" ${@}; then
+      echo "Replacing ${BOILERPLATE} with ${WP_THEME} in:"
+      echo ${@}
+      sed -i "s/${BOILERPLATE}/${WP_THEME}/g" ${@}
+    fi
+  }
+
+  initChildRepo(){
+    cd ${WP_THEME_PATH}
+    if [[ "$PWD" == *"$WP_THEME"* ]]; then
+      echo-yellow "Initialize git repo for child theme ${WP_THEME}"
+      git init
+      git remote add origin git@github.com:maddenmedia/${WP_THEME}
+      git add .
+      (git commit -m ":tada: Init commit for ${WP_THEME}!" 2> /dev/null)
+      # (git push origin 2> /dev/null)
+      echo-green "  [✓] Files added! Push your child theme to github @ ${light_cyan}maddenmedia/${WP_THEME}"
+      sleep 3 
+    fi
+  }
+
+  askToInstallChild(){
+    ART=$(cat .composer/bin/ascii/mm-nino-theme)
+    echo-green "${ART}"
+    Q=$(echo-green "? ${white}Do you want to install the MM Nino theme: ${green}${WP_THEME} ${blue}(y/n)${white}? ")
+    while true; do
+      read -n 1 -p "${Q}" answer
+      echo ""
+      case ${answer:0:1} in
+          [Yy]*)
+            #? CHECK IF NOT ON PLATFORM 
+            cleanInstall
+            break;;
+          [Nn]*) echo "No."; break;;
+          *) echo "Sorry, what?" >&2
+      esac
+    done
+  }
+#-------------------------- END: Functions -------------------------
+
+#-------------------------- Execute --------------------------------
+  if [ ! "$PLATFORM_OUTPUT_DIR" ]; then
+    installChildTheme ${1}
+  fi

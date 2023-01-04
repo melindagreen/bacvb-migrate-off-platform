@@ -1,5 +1,12 @@
-# This file defines services you want available to your application.
+# The services of the project.
+#
+# Each service listed will be deployed
+# to power your Platform.sh project.
 
-#db:
-#    type: mariadb:10.2
-#    disk: 2048
+db:
+    type: mariadb:10.2
+    disk: 512
+
+cacheredis:
+    type: redis-persistent:6.0
+    disk: 1024

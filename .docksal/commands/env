@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+
+## prompts choice between dev & prod enviornments
+##
+## Usage: fin env
+
+# Abort if anything fails
+set -e
+
+#-------------------------- Settings --------------------------------
+#-------------------------- END: Settings --------------------------------
+
+#-------------------------- Helper functions --------------------------------
+  source ${PROJECT_ROOT}/.composer/bin/helpers
+#-------------------------- END: Helper functions --------------------------------
+
+#-------------------------- Functions --------------------------------
+  choose_env() {
+    echo-yellow "Choose which enviornment to deploy:
+    ${red}Development : Watch and automagically compile assets (with source maps) on file changes.
+    ${green}Production  : Minify assets and compress compiled files
+    ${NC}Skip        : Do nothing."
+
+    select yn in "Development" "Production" "Skip"; do
+      case $yn in
+      Production)
+        fin prod
+        break
+        ;;
+      Development)
+        fin dev
+        break
+        ;;
+      Skip) break ;;
+      esac
+    done
+  }
+#-------------------------- END: Functions --------------------------------
+
+#-------------------------- Execution --------------------------------
+  echo -e "${green_bg} Optional - Step X ${NC}${green} Watch & Compile development files...${NC}"
+  choose_env
+#-------------------------- END: Execution --------------------------------

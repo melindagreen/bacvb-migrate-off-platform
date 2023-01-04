@@ -1,0 +1,127 @@
+#!/usr/bin/env bash
+## Pull the latest code and DB from platform.sh
+##
+## Usage: fin latest
+
+# Abort if anything fails
+set -e
+
+#-------------------------- Settings --------------------------------
+  DUMP_FILE="${PROJECT_ROOT}/data/db.sql.dump.backup"
+  BACKUP_FILE="${PROJECT_ROOT}/data/db.sql.backup"
+#-------------------------- END: Settings --------------------------------
+
+#-------------------------- Helper functions --------------------------------
+  source ${PROJECT_ROOT}/.composer/bin/helpers
+#-------------------------- END: Helper functions --------------------------------
+
+#-------------------------- Functions --------------------------------
+  pull(){
+    fin backup;
+    echo-green "
+╦  ┌─┐┌┬┐┌─┐┌─┐┌┬┐  ╔╦╗┌─┐┌┬┐┌─┐╔╗ ┌─┐┌─┐┌─┐   
+║  ├─┤ │ ├┤ └─┐ │    ║║├─┤ │ ├─┤╠╩╗├─┤└─┐├┤    
+╩═╝┴ ┴ ┴ └─┘└─┘ ┴   ═╩╝┴ ┴ ┴ ┴ ┴╚═╝┴ ┴└─┘└─┘ooo"
+
+    if [ -f "${DUMP_FILE}" ]; then
+      echo-yellow "Restoring DB Dump"
+      echo-green "  [@] ${purple}Found backup dump of LIVE! ${red}Pull a fresh copy with: ${green}$ ${cyan}fin latest pull "
+      fin sqli ${DUMP_FILE}
+      echo-green "  [✓] Dump file restored!"
+    else
+      if [ "${1}" = true ] || [ "${1}" = "pull" ]; then
+        fin pull db --hosting-env=main -y --force;
+      else
+        fin pull db --hosting-env=main -y ;
+      fi
+      Q="${white} Would you like to store a local dump of this database ${blue}(y/n)${green}? "
+      Q=$(echo-green "? $Q")
+      while true; do
+        answer=$(askQ "$Q")
+        echo ""
+        case ${answer:0:1} in
+            [Yy]*)
+              echo-green "Yes"
+              backup
+              break;;
+            [Nn]*) 
+              echo-red "No" 
+              break;;
+            *) echo "Sorry, what?" >&2
+        esac
+      done
+    fi
+  }
+
+  backup(){
+    fin sqld ${DUMP_FILE}
+    test_dump
+  }
+
+  classic(){
+    cd ${PROJECT_ROOT}
+    echo-green-bg "Falling back to classic export/import process..."
+
+    platform db:dump -e main -f ${DUMP_FILE}
+    test_dump
+    fin backup
+    fin sqli ${DUMP_FILE}
+  }
+
+  update_submodules(){
+    echo-green "
+╔═╗┬┌┬┐   ┬   ╔═╗┬ ┬┌┐ ┌┬┐┌─┐┌┬┐┬ ┬┬  ┌─┐┌─┐
+║ ╦│ │   ┌┼─  ╚═╗│ │├┴┐││││ │ │││ ││  ├┤ └─┐
+╚═╝┴ ┴   └┘   ╚═╝└─┘└─┘┴ ┴└─┘─┴┘└─┘┴─┘└─┘└─┘ooo"
+    echo-yellow "\nCode"
+    echo-green " [@] ${yellow}Update code & submodules\n"
+    cd $PROJECT_ROOT
+    composer submodules
+    echo-green " [✓] Success: ${light_green}Code is Up-to-Date!"
+  }
+
+  latest(){
+    # update_submodules
+    pull ${1} || classic
+  }
+
+  test_dump(){
+    if test -f ${DUMP_FILE}; then
+      echo-yellow "Backup"
+      echo-green "  [*] BACKUP OF DB DUMP CREATED"
+      du -h ${DUMP_FILE}
+    fi
+  }
+#-------------------------- END: Functions --------------------------------
+
+#-------------------------- Execution --------------------------------
+  if [ "${1}" = "pull" ]; then
+    if [ -f "${DUMP_FILE}" ]; then
+      echo-green-bg "Cleaning Backup Dump File"
+      rm ${DUMP_FILE}
+    fi
+    latest ${1}
+  elif  [ "${1}" == true ]  ||  [ -f "${DUMP_FILE}" ]; then
+    latest ${1}
+  else
+    Q="? ${white}Do you want to pull latest code and database ${blue}(y|n|(r)estore backup)${green}?"
+    Q=$(echo-green "${Q}")
+    while true; do
+      answer=$(askQ "$Q")
+      case ${answer:0:1} in
+        [Yy]*)
+          echo-green "Yes"
+          latest
+          break;;
+        [Nn]*) 
+          echo-red "No" 
+          break;;
+        [Rr]*) 
+          echo-yellow "Restore Backup" 
+          fin sqli ${BACKUP_FILE};
+          break;;
+        *) echo "Sorry, what?" >&2
+      esac
+    done
+  fi
+#-------------------------- END: Execution --------------------------------

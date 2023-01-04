@@ -1,0 +1,17 @@
+{
+    "name": "maddenmedia/mm-nino-theme",
+    "description": "Madden Media's default starter theme.",
+    "keywords": [ "parent-theme", "wordpress", "wordpress-starter-theme", "wordpress-parent-theme"],
+    "type": "wordpress-theme",
+    "require": {
+      "php": ">=7.0",
+      "mustache/mustache": "^2.13"
+    },
+    "scripts": {
+        "install-assets": "cd assets; yarn install",
+        "upgrade-assets": "cd assets; yarn upgrade-interactive --latest",
+        "start": "cd assets; yarn start",
+        "build": "cd assets; yarn run build"
+    }
+  }
+  

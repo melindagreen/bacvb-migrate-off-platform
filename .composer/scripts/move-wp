@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+# moves wordpress to web directory - deletes wp-content before doing so
+# @version: 0.0.0
+# @since 0.0.0
+
+#-------------------------- Settings ------------------------------
+  # WordPress install directory
+  WP=wp
+  # public/web directory
+  WEB=web
+#-------------------------- END: Settings -------------------------
+
+#-------------------------- Functions -----------------------------
+  moveWP(){
+    echo "Removing default WordPress plugins & themes"
+    rm -rf $WP/wp-content
+    echo "Moving Wordpress from /$WP to /$WEB"
+    cp -rf $WP/* $WEB/
+    rm -rf $WP
+  }
+#-------------------------- END: Functions -------------------------
+
+#-------------------------- Execute --------------------------------
+  moveWP

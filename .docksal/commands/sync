@@ -1,0 +1,78 @@
+#!/usr/bin/env bash
+## Sync media files between local environment & platform.sh
+#
+## Usage: fin sync download|upload
+
+# Abort if anything fails
+set -e
+
+#-------------------------- Settings --------------------------------
+  # PATH TO UPLOADS DIRECTORY
+  UPLOADS="${DOCROOT}/${WP_CONTENT}/uploads"
+#-------------------------- END: Settings --------------------------------
+
+#-------------------------- Helper functions --------------------------------
+  source ${PROJECT_ROOT}/.composer/bin/helpers
+#-------------------------- END: functions --------------------------------
+#-------------------------- Functions --------------------------------
+  #* DOWNLOAD FROM PLATFORM.SH
+  download(){
+    platform mount:download -e main --target ${UPLOADS} -m ${UPLOADS} 
+    chmod 755 ${UPLOADS} -R
+    echo-green "  [✓] ${light_green}Downloaded!"; 
+  }
+
+  #* UPLOAD TO PLATFORM.SH
+  upload(){
+    platform mount:upload -e main --source ${UPLOADS} -m ${UPLOADS} 
+    echo-green "  [✓] ${light_green}Uploaded!"; 
+  }
+
+  ask(){
+    echo-green "
+╔═╗┬ ┬┌┐┌┌─┐┬ ┬┬─┐┌─┐┌┐┌┬┌─┐┌─┐
+╚═╗└┬┘││││  ├─┤├┬┘│ │││││┌─┘├┤ 
+╚═╝ ┴ ┘└┘└─┘┴ ┴┴└─└─┘┘└┘┴└─┘└─┘
+    "
+    #? SYNC NOT SPECIFIED ASK DIRECTLY 
+    echo-yellow "Download/Upload Media Files"
+    echo-green "  [$] Download: ${light_green}fin sync download"
+    echo-green "  [$] Upload: ${light_green}fin sync upload"
+    select yn in "Download" "Upload" "Both"; do
+      case $yn in
+        Download ) download; break;;
+        Upload ) upload; break;;
+        Both ) download; upload; break;;
+      esac
+    done
+
+  }
+
+  sync(){
+    #? IS SYNC UPLOAD OR DOWNLOAD?
+    if [[ "${SYNC}" == "upload" || "${SYNC}" == "download" ]]
+    then
+      #* RUN PLATFORM MOUNT CMD ABOVE
+      ${SYNC}
+    else
+      echo-red "ERROR: cmd not found - only accepts upload or download"
+    fi
+  }
+
+#-------------------------- END: Functions--------------------------------
+#-------------------------- Execution --------------------------------
+  # LET'S MAKE SURE WE'RE WORKING IN PROJECT_ROOT
+  cd ${PROJECT_ROOT}
+  pwd
+
+  # PARAMETERS
+  SYNC=${1}
+
+  echo-yellow "SYNC ${SYNC}"
+  #? IS SYNC EMPTY? 
+  if [ -z "${SYNC}" ]; then
+    ask
+  else
+    sync
+  fi
+#-------------------------- END: Execution --------------------------------
