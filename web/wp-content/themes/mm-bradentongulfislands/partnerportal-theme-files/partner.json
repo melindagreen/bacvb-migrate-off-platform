@@ -321,16 +321,16 @@
           "newLineAfter" : false,        
           "choices" : [
             {
-              "key":"kitchen",
-              "label":"Kitchen"
+              "key":"vacation-rentals",
+              "label":"Vacation Rentals"
             },
             {
-              "key":"refrigerators-microwaves",
-              "label":"Refrigerators/Microwaves"
+              "key":"hotel-motel",
+              "label":"Hotel/Motel"
             },
             {
-              "key":"bike",
-              "label":"Bike Storage"
+              "key":"rv-campground",
+              "label":"RV/Campground"
             }
           ]
         },
