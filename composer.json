@@ -21,6 +21,14 @@
     },
     {
       "type": "vcs",
+      "url": "git@github.com:maddenmedia/partner-portal.git"
+    },
+    {
+      "type": "vcs",
+      "url": "git@github.com:maddenmedia/wp-plugin-eventastic.git"
+    },
+    {
+      "type": "vcs",
       "url": "git@github.com:maddenmedia/mm-madre-theme.git"
     },
     {
@@ -66,6 +74,7 @@
     "platformsh/config-reader": "^2.0",
     "psy/psysh": "^0.10.8",
     "tonik/cli": "^3.0",
+    "maddenmedia/partner-portal": "*",
     "wp-cli/wp-cli-bundle": "^2.5",
     "wpackagist-plugin/akismet": "5.0.2",
     "wpackagist-plugin/broken-link-checker": "1.11.21",
@@ -96,7 +105,10 @@
       "ffraenz/private-composer-installer": true,
       "johnpbloch/wordpress-core-installer": true,
       "davidbarratt/custom-installer": true
-    }
+    },
+    "platform": {
+      "php": "7.4.0"
+  }
   },
   "extra": {
     "wordpress-install-dir": "wp",

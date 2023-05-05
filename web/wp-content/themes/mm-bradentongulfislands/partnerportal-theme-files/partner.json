@@ -1,0 +1,421 @@
+{
+  "configurations" : {
+    "import": {
+      "import_filename" : "natchez_simpleview",
+      "post_title_key" : "business_name",
+      "category_columns" : [21,32],
+      "featured_image_id_column" : 31, 
+      "author" : {
+        "assign" : false,
+        "email_key" : "simpleview_listing_EMAIL",
+        "send_email_on_creation" : false,
+        "notification_email" : "wjgrass@gmail.com",
+        "default_owner_email" : ""
+      },
+      "unique_keys" : [
+        "title",
+        "simpleview_listing_LISTINGID"
+        ],
+      "geo_keys" : {
+        "street": "simpleview_listing_ADDR1",
+        "city" : "simpleview_listing_CITY",
+        "state" : "simpleview_listing_STATE", 
+        "postal_code" : "simpleview_listing_ZIP"      
+      }
+    },
+    "disable_category_creation" : false,
+    "required_categories" : [
+      {
+        "slug" : "lodging",
+        "name" : "Lodging",
+        "description" : "",
+        "taxonomy" : "listing_categories"
+      }
+    ]
+  },
+  "metaBoxes": [
+    {
+      "id" : "partner_square_gallery_box",
+      "title" : "Listing: Square Featured Image",
+      "inputs" : [
+        {
+          "type" : "gallery",
+          "max_images": 1,
+          "instructions" : "",
+          "key" : "gallery_square_featured_image", 
+          "label" : "Square Featured Image", 
+          "cssClass" : "regular-text ",
+          "newLineAfter" : true
+        }
+      ]
+    },    
+    {
+      "id" : "partner__box",
+      "title" : "Listing: Gallery",
+      "inputs" : [
+        {
+          "type" : "gallery",
+          "key" : "gallery_images", 
+          "instructions" : "Add any optional gallery images for this listing. The featured image should be added separately in the sidebar to the right and will be used as the listing thumbnail.",
+          "label" : "Published Business Name", 
+          "cssClass" : "regular-text ",
+          "newLineAfter" : true
+        }
+      ]
+    },    
+    {
+      "id" : "partner_general_info_box",
+      "title" : "Listing: General Info",
+      "inputs" : [
+        {
+          "key" : "business_name", 
+          "label" : "Business Name", 
+          "cssClass" : "regular-text ",
+          "newLineAfter" : false,
+          "column" : 25
+        },
+        {
+          "key" : "website_link", 
+          "label" : "Website Link", 
+          "icon" : "fas fa-link",
+          "cssClass" : "regular-text eventasticFAInput",
+          "newLineAfter" : true,
+          "column" : 17
+        },
+        {
+          "key" : "phone_number", 
+          "label" : "Phone Number", 
+          "icon" : "fas fa-phone",
+          "cssClass" : "regular-text",
+          "newLineAfter" : false,
+          "column" : 14
+        },
+        {
+          "key" : "contact_email_for_visitors", 
+          "label" : "Contact Email For Visitors", 
+          "icon" : "fas fa-at",
+          "cssClass" : "regular-text",
+          "newLineAfter" : true,
+          "column" : 10
+        }   
+      ]
+    },
+    {
+      "id" : "partner_hours_box",
+      "title" : "Listing: Hours",
+      "inputs" : [
+        {
+          "key" : "hours_description",
+          "label" : "Hours Description", 
+          "icon" : "fas fa-at",
+          "cssClass" : "regular-text",
+          "newLineAfter" : false ,
+          "type" : "textarea"
+        },
+        {
+          "key" : "open_monday", 
+          "label" : "Open Monday &nbsp;&nbsp;&nbsp;&nbsp;", 
+          "icon" : "fa fa-clock",
+          "cssClass" : "eventasticFAInput",
+          "newLineAfter" : false,
+          "type": "time"
+        },
+        {
+          "key" : "closed_monday", 
+          "label" : "Closed Monday  &nbsp;&nbsp;&nbsp;&nbsp;", 
+          "icon" : "fa fa-clock",
+          "type": "time",        
+          "cssClass" : " eventasticFAInput"
+        },
+        {
+          "key" : "open_tuesday", 
+          "label" : "Open Tuesday &nbsp;&nbsp;&nbsp;&nbsp;", 
+          "icon" : "fa fa-clock",
+          "type": "time",
+          "newLineAfter" : false
+        },
+        {
+          "key" : "closed_tuesday", 
+          "label" : "Closed Tuesday  &nbsp;&nbsp;&nbsp;&nbsp;", 
+          "type": "time",
+          "icon" : "fa fa-clock"
+        },
+        {
+          "key" : "open_wednesday", 
+          "label" : "Open Wednesday", 
+          "icon" : "fa fa-clock",
+          "type": "time",        
+          "newLineAfter" : false
+        },
+        {
+          "key" : "closed_wednesday", 
+          "label" : "Closed Wednesday", 
+          "icon" : "fa fa-clock",
+          "type": "time"
+        },
+        {
+          "key" : "open_thursday", 
+          "label" : "Open Thursday &nbsp;&nbsp;&nbsp;", 
+          "icon" : "fa fa-clock",
+          "type": "time",
+          "newLineAfter" : false
+        },
+        {
+          "key" : "closed_thursday", 
+          "label" : "Closed Thursday  &nbsp;&nbsp;&nbsp;", 
+          "type": "time",
+          "icon" : "fa fa-clock"
+        },
+        {
+          "key" : "open_friday", 
+          "label" : "Open Friday &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;", 
+          "type": "time",
+          "icon" : "fa fa-clock",
+          "newLineAfter" : false
+        },
+        {
+          "key" : "closed_friday", 
+          "label" : "Closed Friday  &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;", 
+          "type": "time",
+          "icon" : "fa fa-clock"
+        },
+        {
+          "key" : "open_saturday", 
+          "label" : "Open Saturday &nbsp;&nbsp;&nbsp;", 
+          "icon" : "fa fa-clock",
+          "type": "time",
+          "newLineAfter" : false
+        },
+        {
+          "key" : "closed_saturday", 
+          "label" : "Closed Saturday  &nbsp;&nbsp;&nbsp;&nbsp;", 
+          "type": "time",        
+          "icon" : "fa fa-clock"
+        },
+        {
+          "key" : "open_sunday", 
+          "label" : "Open Sunday &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;", 
+          "icon" : "fa fa-clock",
+          "type": "time",        
+          "newLineAfter" : false
+        },
+        {
+          "key" : "closed_sunday", 
+          "label" : "Closed Sunday  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;", 
+          "type": "time",        
+          "icon" : "fa fa-clock"
+        }
+      ]
+    },
+    {
+      "id" : "partner_address_info_box",
+      "title" : "Listing: Address Information",
+      "inputs" : [
+        {
+          "key" : "address_1", 
+          "label" : "Address 1", 
+          "icon" : "far fa-address-card",
+          "cssClass" : "regular-text",
+          "column" : 13
+        },
+        {
+          "key" : "address_2", 
+          "label" : "Address 2", 
+          "cssClass" : "regular-text",
+          "column" : 15
+        },
+        {
+          "key" : "city", 
+          "label" : "City", 
+          "newLineAfter" : false,       
+          "column" : 4
+        },
+        {
+          "key" : "state", 
+          "label" : "State", 
+          "type" : "select",
+          "newLineAfter" : false,        
+          "options" : "SELECT_STATES",
+          "column" : 19
+        },
+        {
+          "key" : "zip", 
+          "label" : "Zip Code",
+          "column" : 12
+        },
+        {
+          "key" : "description",
+          "label" : "Description", 
+          "type" : "textarea",
+          "column" : 26
+        },
+        {
+          "type" : "message",
+          "content" : "<p></p>"
+        },        
+        {
+          "key" : "latitude", 
+          "label" : "Latitude",
+          "newLineAfter" : false, 
+          "cssClass" : "regular-text",
+          "column" : 16
+        },        
+        {
+          "key" : "longitude", 
+          "label" : "Longitude", 
+          "cssClass" : "regular-text",
+          "column" : 3
+        }        
+      ]    
+    },
+    {
+      "id" : "partner_social",
+      "title" : "Listing: Social",
+      "inputs" : [
+        {
+          "key" : "facebook", 
+          "label" : "Facebook", 
+          "cssClass" : "regular-text",
+          "newLineAfter" : false
+        },
+        {
+          "key" : "twitter", 
+          "label" : "Twitter", 
+          "newLineAfter" : true,       
+          "cssClass" : "regular-text"
+        },
+        {
+          "key" : "instagram", 
+          "label" : "Instagram", 
+          "newLineAfter" : false,       
+          "cssClass" : "regular-text"
+        },
+        {
+          "key" : "pinterest", 
+          "label" : "Pinterest", 
+          "newLineAfter" : true,       
+          "cssClass" : "regular-text"
+        },
+        {
+          "key" : "linkedin", 
+          "label" : "LinkedIn", 
+          "newLineAfter" : false,       
+          "cssClass" : "regular-text"
+        }
+      ]    
+    },
+    {
+      "id" : "amenities",
+      "title" : "Amenities",
+      "inputs" : [
+        {
+          "key" : "Accomodations", 
+          "label" : "<h2>Accomodations</h2>", 
+          "type": "checkbox",
+          "newLineAfter" : true
+        },
+        {
+          "key" : "accomodations-type", 
+          "label" : "<b>Type</b>", 
+          "type" : "checkbox",
+          "newLineAfter" : false,        
+          "choices" : ["Vacation Rentals", "Hotel/Motel", "RV/Campground"]
+        },
+        {
+          "key" : "accomodations-facility-amenities", 
+          "label" : "<b>Facility Amenities</b>", 
+          "type" : "checkbox",
+          "newLineAfter" : false,        
+          "choices" : ["Food/Beverage Service", "Pet-Friendly", "Pool", "Marina/Dock Access"]
+        },
+        {
+          "key" : "accomodations-location", 
+          "label" : "<b>Location</b>", 
+          "type" : "checkbox",
+          "newLineAfter" : true,        
+          "choices" : ["Airport", "Beachfront", "Waterfront", "Mainland"]
+        },
+        {
+          "key" : "attractions", 
+          "label" : "<h2>Attractions</h2>", 
+          "type": "checkbox",
+          "newLineAfter" : true
+        },
+        {
+          "key" : "accomodations-type", 
+          "label" : "<b>Type</b>", 
+          "type" : "checkbox",
+          "newLineAfter" : false,        
+          "choices" : ["Vacation Rentals", "Hotel/Motel", "RV/Campground"]
+        },
+        {
+          "key" : "accomodations-facility-amenities", 
+          "label" : "<b>Facility Amenities</b>", 
+          "type" : "checkbox",
+          "newLineAfter" : false,        
+          "choices" : ["Food/Beverage Service", "Pet-Friendly", "Pool", "Marina/Dock Access"]
+        },
+        {
+          "key" : "accomodations-location", 
+          "label" : "<b>Location</b>", 
+          "type" : "checkbox",
+          "newLineAfter" : true,        
+          "choices" : ["Airport", "Beachfront", "Waterfront", "Mainland"]
+        },
+        {
+          "key" : "Recreation", 
+          "label" : "<h2>Recreation</h2>", 
+          "type": "checkbox",
+          "newLineAfter" : true
+        },
+        {
+          "key" : "accomodations-type", 
+          "label" : "<b>Type</b>", 
+          "type" : "checkbox",
+          "newLineAfter" : false,        
+          "choices" : ["Vacation Rentals", "Hotel/Motel", "RV/Campground"]
+        },
+        {
+          "key" : "accomodations-facility-amenities", 
+          "label" : "<b>Facility Amenities</b>", 
+          "type" : "checkbox",
+          "newLineAfter" : true,        
+          "choices" : ["Food/Beverage Service", "Pet-Friendly", "Pool", "Marina/Dock Access"]
+        },
+        {
+          "key" : "shopping", 
+          "label" : "<h2>Shopping</h2>", 
+          "type": "checkbox",
+          "newLineAfter" : true
+        },
+        {
+          "key" : "shopping", 
+          "label" : "", 
+          "type" : "checkbox",
+          "newLineAfter" : true,        
+          "choices" : ["Vacation Rentals", "Hotel/Motel", "RV/Campground"]
+        },
+        {
+          "key" : "Dining", 
+          "label" : "<h2>Dining</h2>", 
+          "type": "checkbox",
+          "newLineAfter" : true
+        },
+        {
+          "key" : "accomodations-type", 
+          "label" : "<b>Type</b>", 
+          "type" : "checkbox",
+          "newLineAfter" : false,        
+          "choices" : ["Vacation Rentals", "Hotel/Motel", "RV/Campground"]
+        },
+        {
+          "key" : "accomodations-facility-amenities", 
+          "label" : "<b>Facility Amenities</b>", 
+          "type" : "checkbox",
+          "newLineAfter" : true,        
+          "choices" : ["Food/Beverage Service", "Pet-Friendly", "Pool", "Marina/Dock Access"]
+        }
+      ]    
+    }    
+  ]
+}
