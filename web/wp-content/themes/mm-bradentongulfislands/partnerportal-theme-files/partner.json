@@ -311,7 +311,7 @@
         {
           "key" : "Accomodations", 
           "label" : "<h2>Accomodations</h2>", 
-          "type": "checkbox",
+          "type": "message",
           "newLineAfter" : true
         },
         {
@@ -319,7 +319,20 @@
           "label" : "<b>Type</b>", 
           "type" : "checkbox",
           "newLineAfter" : false,        
-          "choices" : ["Vacation Rentals", "Hotel/Motel", "RV/Campground"]
+          "choices" : [
+            {
+              "key":"kitchen",
+              "label":"Kitchen"
+            },
+            {
+              "key":"refrigerators-microwaves",
+              "label":"Refrigerators/Microwaves"
+            },
+            {
+              "key":"bike",
+              "label":"Bike Storage"
+            }
+          ]
         },
         {
           "key" : "accomodations-facility-amenities", 
