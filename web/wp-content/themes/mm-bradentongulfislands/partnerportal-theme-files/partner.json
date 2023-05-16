@@ -97,7 +97,13 @@
           "cssClass" : "regular-text",
           "newLineAfter" : true,
           "column" : 10
-        }   
+        },
+        {
+          "key" : "description",
+          "label" : "Description", 
+          "cssClass" : "regular-text",
+          "type" : "textarea"
+        } 
       ]
     },
     {
@@ -244,12 +250,6 @@
           "column" : 12
         },
         {
-          "key" : "description",
-          "label" : "Description", 
-          "type" : "textarea",
-          "column" : 26
-        },
-        {
           "type" : "message",
           "content" : "<p></p>"
         },        
@@ -301,6 +301,23 @@
           "label" : "LinkedIn", 
           "newLineAfter" : false,       
           "cssClass" : "regular-text"
+        },
+        {
+          "key" : "yelp", 
+          "label" : "Yelp", 
+          "newLineAfter" : true,       
+          "cssClass" : "regular-text"
+        },
+        {
+          "key" : "youtube", 
+          "label" : "Youtube",   
+          "newLineAfter" : false, 
+          "cssClass" : "regular-text"
+        },
+        {
+          "key" : "booking", 
+          "label" : "Booking.com",      
+          "cssClass" : "regular-text"
         }
       ]    
     },
@@ -309,9 +326,9 @@
       "title" : "Amenities",
       "inputs" : [
         {
-          "key" : "Accomodations", 
-          "label" : "<h2>Accomodations</h2>", 
-          "type": "message",
+          "key" : "accommodations", 
+          "label" : "<h2>Accommodations</h2>", 
+          "type": "checkbox",
           "newLineAfter" : true
         },
         {
@@ -339,14 +356,48 @@
           "label" : "<b>Facility Amenities</b>", 
           "type" : "checkbox",
           "newLineAfter" : false,        
-          "choices" : ["Food/Beverage Service", "Pet-Friendly", "Pool", "Marina/Dock Access"]
+          "choices" : [
+            {
+            "key":"food-beverage-service",
+            "label":"Food/Beverage Service"
+            }, 
+            {
+              "key":"pet-friendly",
+              "label":"Pet-Friendly"
+            }, 
+            {
+              "key":"pool",
+              "label":"Pool"
+            },
+            {
+              "key":"marina-dock-access",
+              "label":"Marina/Dock Access"
+            }
+          ]
         },
         {
           "key" : "accomodations-location", 
           "label" : "<b>Location</b>", 
           "type" : "checkbox",
           "newLineAfter" : true,        
-          "choices" : ["Airport", "Beachfront", "Waterfront", "Mainland"]
+          "choices" : [
+            {
+              "key":"airport",
+              "label":"Airport"
+            },
+            {
+              "key":"beachfront",
+              "label":"Beachfront"
+            },
+            {
+              "key":"waterfront",
+              "label":"Waterfront"
+            },
+            {
+              "key":"mainland",
+              "label":"Mainland"
+            }
+          ]
         },
         {
           "key" : "attractions", 
@@ -355,45 +406,142 @@
           "newLineAfter" : true
         },
         {
-          "key" : "accomodations-type", 
-          "label" : "<b>Type</b>", 
+          "key" : "attractions-arts-and-culture", 
+          "label" : "<b>Arts & Culture</b>", 
           "type" : "checkbox",
           "newLineAfter" : false,        
-          "choices" : ["Vacation Rentals", "Hotel/Motel", "RV/Campground"]
+          "choices" : [
+            {
+              "key":"historical-attraction",
+              "label":"Historical Attraction"
+            },
+            {
+              "key":"museum-gallery",
+              "label":"Museum/Gallery"
+            },
+            {
+              "key":"live-entertainment",
+              "label":"Live Entertainment"
+            }
+          ]
         },
         {
-          "key" : "accomodations-facility-amenities", 
-          "label" : "<b>Facility Amenities</b>", 
+          "key" : "attractions-types", 
+          "label" : "<b>Types</b>", 
           "type" : "checkbox",
           "newLineAfter" : false,        
-          "choices" : ["Food/Beverage Service", "Pet-Friendly", "Pool", "Marina/Dock Access"]
+          "choices" : [
+            {
+              "key":"park-preserve",
+              "label":"Park/Preserve"
+            },
+            {
+              "key": "farm-tours",
+              "label": "Farm Tours"
+            },
+            {
+              "key":"boat-tours-charters",
+              "label":"Boat Tours/Charters"
+            },
+            {
+              "key":"wildlife-viewing",
+              "label":"Wildlife Viewing"
+            },
+            {
+              "key": "hiking-nature-trails",
+              "label": "Hiking/Nature Trails"
+            },
+            {
+              "key":"outdoor-recreation",
+              "label":"Outdoor Recreation"
+            }
+          ]
         },
         {
-          "key" : "accomodations-location", 
-          "label" : "<b>Location</b>", 
+          "key" : "attractions-amenities", 
+          "label" : "<b>Amenities</b>", 
           "type" : "checkbox",
           "newLineAfter" : true,        
-          "choices" : ["Airport", "Beachfront", "Waterfront", "Mainland"]
+          "choices" : [
+            {
+              "key":"pet-friendly",
+              "label":"Pet-Friendly"
+            },
+            {
+              "key":"boat-dock",
+              "label":"Boat Dock"
+            },
+            {
+              "key":"picnic-area",
+              "label":"Picnic Area"
+            }
+          ]
         },
         {
-          "key" : "Recreation", 
+          "key" : "recreation", 
           "label" : "<h2>Recreation</h2>", 
           "type": "checkbox",
           "newLineAfter" : true
         },
         {
-          "key" : "accomodations-type", 
-          "label" : "<b>Type</b>", 
+          "key" : "recreation-visitor-services", 
+          "label" : "<b>Visitor Services</b>", 
           "type" : "checkbox",
           "newLineAfter" : false,        
-          "choices" : ["Vacation Rentals", "Hotel/Motel", "RV/Campground"]
+          "choices" : [
+            {
+              "key":"rental-services",
+              "label":"Rental Services"
+            },
+            {
+              "key":"concierge-services",
+              "label":"Concierge Services"
+            }
+          ]
         },
         {
-          "key" : "accomodations-facility-amenities", 
-          "label" : "<b>Facility Amenities</b>", 
+          "key" : "recreation-recreation-type", 
+          "label" : "<b>Recreation Type</b>", 
           "type" : "checkbox",
           "newLineAfter" : true,        
-          "choices" : ["Food/Beverage Service", "Pet-Friendly", "Pool", "Marina/Dock Access"]
+          "choices" : [
+            {
+              "key":"golf-course",
+              "label":"Golf Course"
+            },
+            {
+              "key":"boating",
+              "label":"Boating"
+            },
+            {
+              "key":"water-recreation",
+              "label":"Water Recreation"
+            },
+            {
+              "key":"camping",
+              "label":"Camping"
+            },
+            {
+              "key":"equestrian-riding",
+              "label":"Equestrian Riding"
+            },
+            {
+              "key":"Sports courts and fields",
+              "label":"sports-courts-and-fields"
+            },
+            {
+              "key":"fishing",
+              "label":"Fishing"
+            },
+            {
+              "key":"indoor-activity",
+              "label":"Indoor activity"
+            },
+            {
+              "key":"day-spa",
+              "label":"Day Spa"
+            }
+          ]
         },
         {
           "key" : "shopping", 
@@ -406,27 +554,114 @@
           "label" : "", 
           "type" : "checkbox",
           "newLineAfter" : true,        
-          "choices" : ["Vacation Rentals", "Hotel/Motel", "RV/Campground"]
+          "choices" : [
+            {
+              "key":"boutique",
+              "label":"Boutique"
+            },
+            {
+              "key":"shopping-mall",
+              "label":"Shopping Mall"
+            },
+            {
+              "key":"souvenir-gift-shop",
+              "label":"Souvenir/Gift Shop"
+            },
+            {
+              "key":"antiques",
+              "label":"Antiques"
+            },
+            {
+              "key":"beach-and-swimwear",
+              "label":"Beach and Swimwear"
+            },
+            {
+              "key":"clothing",
+              "label":"Clothing"
+            },
+            {
+              "key":"health-and-beauty",
+              "label":"Health & Beauty"
+            },
+            {
+              "key":"specialty-shop",
+              "label":"Specialty Shop"
+            }
+          ]
         },
         {
-          "key" : "Dining", 
+          "key" : "dining", 
           "label" : "<h2>Dining</h2>", 
           "type": "checkbox",
           "newLineAfter" : true
         },
         {
-          "key" : "accomodations-type", 
+          "key" : "dining-type", 
           "label" : "<b>Type</b>", 
           "type" : "checkbox",
           "newLineAfter" : false,        
-          "choices" : ["Vacation Rentals", "Hotel/Motel", "RV/Campground"]
+          "choices" : [
+            {
+              "key":"cafe",
+              "label":"Cafe"
+            },
+            {
+              "key":"ice-cream-and-desserts",
+              "label":"Ice Cream & Desserts"
+            },
+            {
+              "key":"international",
+              "label":"International"
+            },
+            {
+              "key":"seafood",
+              "label":"Seafood"
+            },
+            {
+              "key":"american-cuisine",
+              "label":"American Cuisine"
+            },
+            {
+              "key":"fine-dining",
+              "label":"Fine Dining"
+            }
+          ]
         },
         {
-          "key" : "accomodations-facility-amenities", 
-          "label" : "<b>Facility Amenities</b>", 
+          "key" : "dining-amenities", 
+          "label" : "<b>Amenities</b>", 
           "type" : "checkbox",
           "newLineAfter" : true,        
-          "choices" : ["Food/Beverage Service", "Pet-Friendly", "Pool", "Marina/Dock Access"]
+          "choices" : [
+            {
+              "key":"beachfront-dining",
+              "label":"Beachfront Dining"
+            },
+            {
+              "key":"full-bar",
+              "label":"Full Bar"
+            },
+            {
+              "key":"outdoor-dining",
+              "label":"Outdoor Dining"
+            },
+            {
+              "key":"private-room-available",
+              "label":"Private Room Available"
+            },
+            {
+              "key":"waterfront-dining",
+              "label":"Waterfront Dining"
+            },
+            {
+              "key":"reservations-taken",
+              "label":"Pet-Friendly"
+            },
+            {
+              "key":"boat-accessible",
+              "label":"Boat Accessible"
+            }
+          ]
         }
       ]    
     }    
