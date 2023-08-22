@@ -24,29 +24,59 @@
       "defaultPalette": false,
       "palette": [
         {
-          "name": "Black",
-          "slug": "black",
-          "color": "#1c2226"
-        },
-        {
-          "name": "Gray",
-          "slug": "gray",
-          "color": "#a1a1a1"
-        },
-        {
-          "name": "Tan",
-          "slug": "tan",
-          "color": "#EDEAE6"
+          "name": "Bradenton Teal",
+          "slug": "bradenton-teal",
+          "color": "#2B7B7C"
         },
         {
           "name": "White",
           "slug": "white",
-          "color": "#ffffff"
+          "color": "#FFFFFF"
         },
         {
-          "name": "Red",
-          "slug": "red",
-          "color": "#BD0000"
+          "name": "Soft Black",
+          "slug": "soft-black",
+          "color": "#41414"
+        },
+        {
+          "name": "Warm Gray",
+          "slug": "warm-gray",
+          "color": "#DFDED8"
+        },
+        {
+          "name": "Sky Blue",
+          "slug": "sky-blue",
+          "color": "#B0D9E6"
+        },
+        {
+          "name": "Sea Blue",
+          "slug": "sea-blue",
+          "color": "#82CAE2"
+        },
+        {
+          "name": "Turquoise",
+          "slug": "turquoise",
+          "color": "#77C3C6"
+        },
+        {
+          "name": "Bright Blue",
+          "slug": "bright-blue",
+          "color": "#037BBF"
+        },
+        {
+          "name": "Purple",
+          "slug": "purple",
+          "color": "#4A6BAE"
+        },
+        {
+          "name": "Dark Blue",
+          "slug": "dk-blue",
+          "color": "#014067"
+        },
+        {
+          "name": "Rust",
+          "slug": "rust",
+          "color": "#C96A39"
         }
       ],
       "customGradient": false,
@@ -84,18 +114,18 @@
           "name": "X Large"
         }
       ],
-      "fontFamilies": [
-        {
-          "fontFamily": "'Open Sans', sans-serif",
-          "slug": "body",
-          "name": "Body Font"
-        },
-        {
-          "fontFamily": "'Open Sans', sans-serif",
-          "slug": "header",
-          "name": "Header Font"
-        }
-      ]
+        "fontFamilies": [
+          {
+            "fontFamily": "'Melburch', sans-serif",
+            "slug": "body",
+            "name": "Body Font"
+          },
+          {
+            "fontFamily": "'Lifehack', sans-serif",
+            "slug": "header",
+            "name": "Header Font"
+          }
+        ]
     }
   },
   "styles": {

@@ -29,3 +29,15 @@ $screen-lg: 1100px;
 @function color($name) {
     @return var(--wp--preset--color--#{$name});
 }
+
+$bradenton-teal: #2B7B7C;
+$white: #FFFFFF;
+$soft-black: #414141;
+$warm-gray: #DFDED8;
+$sky-blue: #B0D9E6;
+$sea-blue: #82CAE2;
+$turquoise: #77C3C6;
+$bright-blue: #037BBF;
+$purple: #4A6BAE;
+$dk-blue: #014067;
+$rust: #C96A39;

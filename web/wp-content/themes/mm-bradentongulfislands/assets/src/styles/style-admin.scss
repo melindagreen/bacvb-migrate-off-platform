@@ -27,6 +27,34 @@ GLOBAL STYLES
 }
 
 /*********************
+FONTS
+*********************/
+@font-face {
+    font-family: "Lifehack";
+    src: url("fonts/Lifehack-Regular.otf") format("otf");
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Lifehack";
+    src: url("fonts/Lifehack-Regular.otf") format("otf");
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Melburch";
+    src: url("fonts/Melburch-Slanted.otf") format("otf");
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Melburch";
+    src: url("fonts/MelburchRegular.otf") format("otf");
+    font-weight: normal;
+    font-style: italic;
+}
+
+/*********************
 CUSTOM STYLE OVERRIDES
 *********************/
 .custom-style-wrapper {
