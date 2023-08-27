@@ -1,6 +1,34 @@
+/*********************
+FONTS
+*********************/
+@font-face {
+    font-family: "Lifehack";
+    src: url("fonts/Lifehack-Regular.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Lifehack";
+    src: url("fonts/LifehackSans-Bold.otf") format("opentype");
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Melburch";
+    src: url("fonts/Melburch-Slanted.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Melburch";
+    src: url("fonts/MelburchRegular.otf") format("opentype");
+    font-weight: normal;
+    font-style: italic;
+}
 // fonts
-$font-body: var(--wp--preset--font-family--body);
+$font-title: var(--wp--preset--font-family--cursive);
 $font-header: var(--wp--preset--font-family--header);
+$font-body: var(--wp--preset--font-family--body);
 
 // links
 $link-color: color('red');

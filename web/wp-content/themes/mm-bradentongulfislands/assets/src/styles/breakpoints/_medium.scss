@@ -13,3 +13,53 @@ TEST ELEMENTS
     visibility: hidden;
     float: none;
 }
+
+/*********************
+HEADER
+*********************/
+.#{$theme-prefix}-header {
+    .search-form {
+        max-width: calc(100vw - 26rem);
+    }
+    .header-group {
+        &.header-group-logo {
+            width: 90px;
+        }
+        &.header-group-menu {
+            .header-menus {
+                .#{$theme-prefix}-menu {
+                    & > .menu-item {
+                        margin: 0 0.5rem;
+                    }
+                    &.secondary {
+                        & > .menu-item {
+                            font-size: 0.8rem;
+                        }
+                    }
+                    &.primary {
+                        & > .menu-item {
+                            font-size: 0.9rem;
+                            svg {
+                                width: 20px;
+                                height: 20px;
+                            }
+                        }
+                    }
+                }
+            }
+            .header-search {
+                .show-search-form {
+                    background: transparent;
+                    border: none;
+                    span {
+                       font-size: 0.9rem;
+                    }
+                    svg {
+                        width: 1.5rem;
+                        height: 1.5rem;
+                    }
+                }
+            }
+        }
+    }
+}

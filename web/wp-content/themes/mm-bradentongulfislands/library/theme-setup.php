@@ -13,6 +13,7 @@ class ThemeSetup {
 		// Register default menus
 		register_nav_menus(
 			array(
+				'shortcuts' => __( 'Shortcuts', 'mmnino' ), // top nav 
 				'main-nav' => __( 'Main Menu', 'mmnino' ),   // main nav in header
 				'secondary-nav' => __( 'Secondary Menu', 'mmnino' ),   // secondary nav in header
 				'footer-nav' => __( 'Footer Menu', 'mmnino' ), // footer nav

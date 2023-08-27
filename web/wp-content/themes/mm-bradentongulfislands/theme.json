@@ -116,14 +116,19 @@
       ],
         "fontFamilies": [
           {
-            "fontFamily": "'Melburch', sans-serif",
-            "slug": "body",
-            "name": "Body Font"
+            "fontFamily": "'Lifehack', sans-serif",
+            "slug": "title",
+            "name": "Title Font"
           },
           {
-            "fontFamily": "'Lifehack', sans-serif",
+            "fontFamily": "'Melburch', sans-serif",
             "slug": "header",
             "name": "Header Font"
+          },
+          {
+            "fontFamily": "'Open Sans', sans-serif",
+            "slug": "body",
+            "name": "Body Font"
           }
         ]
     }
