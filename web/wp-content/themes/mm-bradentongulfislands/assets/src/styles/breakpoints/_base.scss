@@ -158,7 +158,6 @@ HEADER
     }
 
     .search-form {
-        max-width: calc(100vw - 25rem);
         display: flex;
         flex-direction: row-reverse;
         align-items: center;
@@ -744,7 +743,7 @@ FOOTER
     }
 
     .search-form {
-        max-width: calc(100vw - 25rem);
+
         display: flex;
         flex-direction: row-reverse;
         align-items: center;
