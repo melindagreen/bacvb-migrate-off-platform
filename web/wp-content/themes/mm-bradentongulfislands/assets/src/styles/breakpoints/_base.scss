@@ -720,23 +720,110 @@ FOOTER
 *********************/
 // Footer
 .footer {
-    background-color: color("black");
+    background-color: $bradenton-teal;
     color: white;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     padding: 2em 3em;
     box-sizing: border-box;
+    position: relative;
+    margin-top: 7.2rem;
+
+    .footer-col {
+
+        margin-bottom: 2rem;
+    }
+
+    &__copyright {
+
+        bottom: 0;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        color: $soft-black;
+        font-size: 0.7rem;
+    }
+
+    &__brand {
+
+        left: 50%;
+        top: -6.5rem;
+        transform: translateX(-50%);
+        position: absolute;
+
+        img {
+        width: 250px;
+        height: auto;
+        }
+    }
+
+    &::before {
+
+        content: " ";
+        background: url('images/footer-top.png');
+        background-size: cover;
+        top: -4rem;
+        height: 4rem;
+        left: 0;
+        position: absolute;
+        width: 100vw;
+        z-index: -1;
+    }
+
+    .social-container {
+
+        z-index: 2;
+        margin: auto;
+        text-align: center;
+        margin-top: 2rem;
+
+        .social-icon {
+
+            margin: auto 0.35rem;
+            text-decoration: none;
+            color: $bradenton-teal;
+         
+            svg {
+
+                height: 35px;
+                width: 35px;
+            }
+        }
+    }
 }
 // Footer menu
 .footer-menu {
-    padding: 1rem 1rem 0 1rem;
-}
-.footer-menu__items {
+    padding-top: 1rem;
     display: flex;
-    align-items: center;
+    justify-content: space-between;
+    gap: 8vw;
+
+    ul {
+
+        list-style-type: none;
+        padding-left: 0;
+
+        .menu-item {
+
+            margin-left: 0;
+            margin: 0.3rem auto;
+
+            a {
+
+                text-decoration: none;
+                color: white;
+                text-transform: uppercase;
+                font-size: 1rem;
+            }
+        }
+    }
 }
+// .footer-menu__items {
+//     display: flex;
+//     align-items: center;
+// }
 .footer__copyright {
     padding: 0 1rem;
     text-align: center;

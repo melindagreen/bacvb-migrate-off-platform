@@ -16,7 +16,9 @@ class ThemeSetup {
 				'shortcuts' => __( 'Shortcuts', 'mmnino' ), // top nav 
 				'main-nav' => __( 'Main Menu', 'mmnino' ),   // main nav in header
 				'secondary-nav' => __( 'Secondary Menu', 'mmnino' ),   // secondary nav in header
-				'footer-nav' => __( 'Footer Menu', 'mmnino' ), // footer nav
+				'footer-one' => __( 'Footer One', 'mmnino' ), // footer nav
+				'footer-two' => __( 'Footer Two', 'mmnino' ), // footer nav
+				'footer-three' => __( 'Footer Three', 'mmnino' ), // footer nav
 			)
 		);
 

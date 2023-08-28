@@ -37,10 +37,6 @@ class Constants {
         'instagram' => [
             'name' => 'Instagram',
             'url' => '#',
-        ],
-        'tiktok' => [
-            'name' => 'TikTok',
-            'url' => '#',
-        ],
+        ]
     ];
 }
