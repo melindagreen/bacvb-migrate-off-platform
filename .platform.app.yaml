@@ -96,7 +96,7 @@ variables:
     #Arguments to connect to internal database: i.e. mysql $DATABASE
     DATABASE: -h database.internal -P 3306 -u user main
     # Set NodeJS version
-    NODE_VERSION: 12.22.1
+    NODE_VERSION: 14.0
     # Set NVM version
     NVM_VERSION: 0.35.2
     # Flip this switch to use in your build cmds to enable development build on platform. 
