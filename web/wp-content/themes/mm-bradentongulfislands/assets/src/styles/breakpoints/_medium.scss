@@ -18,9 +18,9 @@ TEST ELEMENTS
 HEADER
 *********************/
 .#{$theme-prefix}-header {
-    .search-form {
-        max-width: calc(100vw - 26rem);
-    }
+    // .search-form {
+    //     max-width: calc(100vw - 26rem);
+    // }
     .header-group {
         &.header-group-logo {
             width: 90px;
@@ -47,19 +47,19 @@ HEADER
                     }
                 }
             }
-            .header-search {
-                .show-search-form {
-                    background: transparent;
-                    border: none;
-                    span {
-                       font-size: 0.9rem;
-                    }
-                    svg {
-                        width: 1.5rem;
-                        height: 1.5rem;
-                    }
-                }
-            }
+            // .header-search {
+            //     .show-search-form {
+            //         background: transparent;
+            //         border: none;
+            //         span {
+            //            font-size: 0.9rem;
+            //         }
+            //         svg {
+            //             width: 1.5rem;
+            //             height: 1.5rem;
+            //         }
+            //     }
+            // }
         }
     }
 }
