@@ -87,14 +87,13 @@ function render_block( $attrs, $content ) {
             </div>	
 				<?php endif; ?>
 			<!--if no video--mobile keep showing main--->
-			<?php } else { ?>
+			<?php }  ?>
 				<?php if ($caption) { ?>
 					<span class="description"><?php echo $caption; ?></span>
 				<?php } ?>
 				<?php if (isset($attrs['title']) && $attrs['title']) { ?>
 					<h1 class="title 	<?php if(!is_front_page()) { echo "alt-title"; } ?>"><?php if ($attrs['subtitle']) echo '<span>'.$attrs['subtitle'].'</span>'; ?><?php echo $attrs['title']; ?></h1>
 				<?php } ?>
-			<?php } ?>
 
 			<div class="fade"></div>
 		</section>
