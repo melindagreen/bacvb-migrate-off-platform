@@ -9,13 +9,14 @@ import { THEME_PREFIX, BLOCK_NAME_PREFIX } from "scripts/inc/constants";
 import ExampleACF from './example-acf';
 import ExampleDynamic from './example-dynamic';
 import ExampleStatic from './example-static';
+import Hero from './hero';
 
 /*** CONSTANTS **************************************************************/
 
 // Collect blocks
 // NOTE: ACF blocks should not be registered here, only imported, or they will
 // appear twice in the editor!
-const blocks = [ ExampleDynamic, ExampleStatic ];
+const blocks = [ ExampleDynamic, ExampleStatic, Hero ];
 
 /*** EXPORTS ****************************************************************/
 export default () => {

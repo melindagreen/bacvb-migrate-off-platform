@@ -4,13 +4,13 @@
 
 namespace MaddenNino\Library;
 class Constants {
-    const THEME_PREFIX = "mmn-bradentongulfislands";
+    const THEME_PREFIX = "mm-bradentongulfislands";
 
     const BLOCK_NAME_PREFIX = "[MM] "; // include a space at the end!
 
     const TEMPLATE_PARTIALS_PATH = "template-parts/";
 
-    const BLOCK_CLASS = "wp-block-mmn-bradentongulfislands";
+    const BLOCK_CLASS = "wp-block-mm-bradentongulfislands";
 
     const TEMPLATE_STATIC_BLOCKS = array();
 

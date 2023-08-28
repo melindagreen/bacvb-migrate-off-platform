@@ -15,18 +15,19 @@ FONTS
 }
 @font-face {
     font-family: "Melburch";
-    src: url("fonts/Melburch-Slanted.otf") format("opentype");
+    src: url("fonts/MelburchRegular.otf") format("opentype");
     font-weight: normal;
     font-style: normal;
 }
 @font-face {
     font-family: "Melburch";
-    src: url("fonts/MelburchRegular.otf") format("opentype");
+    src: url("fonts/Melburch-Slanted.otf") format("opentype");
     font-weight: normal;
     font-style: italic;
 }
+
 // fonts
-$font-title: var(--wp--preset--font-family--cursive);
+$font-title: var(--wp--preset--font-family--title);
 $font-header: var(--wp--preset--font-family--header);
 $font-body: var(--wp--preset--font-family--body);
 

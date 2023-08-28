@@ -1,0 +1,125 @@
+@import "styles/utils/mixins";
+@import 'styles/utils/variables';
+
+$media-height: 355px;
+
+.#{$block-prefix}-hero {
+  background: $warm-gray;
+  color: $soft-black; 
+  margin: 0;
+  padding: 0.75rem;
+  display: flex;
+  flex-wrap: wrap;
+
+  align-items: center;
+  justify-content: center;
+
+  .components-panel__row, 
+  .block-editor-media-placeholder {
+    background: $warm-gray;
+    color: $soft-black; 
+    position: relative;
+    display: flex;
+    margin-top: 0 !important;
+    width: calc(50% - 0.5rem);
+
+    &:first-of-type { margin-right: 0.5rem; }
+    &:last-of-type { margin-left: 0.5rem; }
+  }
+
+  .block-image,
+  .block-image-mobile {
+    position: relative;
+    width: 100%;
+    min-height: $media-height;
+    max-height: $media-height;
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    background-position: left top;
+  }
+  
+  .block-video {
+    display: block;
+    width: calc(50% - 10px);
+    background-size: cover;
+    position: relative;
+    margin-right: 10px;
+    .portrait-video {
+      max-width: 300px; //need to stop vid from escaping wp-admin block width
+    }
+
+    &:after {
+      content: "";
+      display: block;
+      width: 100%;
+      padding-bottom: 56.25%;
+    }
+    &.block-video--portrait {
+      max-height: 300px !important;
+      figure, video {
+        max-height: 300px !important;
+      }
+    }
+  }
+
+  .block-image-poster {
+    position: relative;
+    width: calc(50% - 10px);
+    margin-left: 10px;
+    min-height: $media-height;
+    max-height: $media-height;
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    background-position: left top;
+  }
+
+  .components-focal-point-picker-wrapper {
+    text-align: left;
+    // min-height: $media-height;
+    // max-height: $media-height;
+  }
+
+  .components-focal-point-picker {
+    box-shadow: none;
+  }
+  .components-panel__row {
+    .components-focal-point-picker__media--image {
+      max-height: $media-height;
+    }
+  }
+  h2 {
+    width: 100%;
+    margin: 0;
+    text-align: center;
+  }
+  h3 {
+    width: 100%;
+    margin: 0.5rem 0 1.0rem 0;
+    text-align: center;
+  }
+
+  .block-video {
+    figure {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+    }
+  }
+  .remove-media {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    background: color(white);
+    margin: 5px;
+    padding: 3px;
+    z-index: 2;
+    span {
+      margin: 0 !important;
+    }
+  }
+}

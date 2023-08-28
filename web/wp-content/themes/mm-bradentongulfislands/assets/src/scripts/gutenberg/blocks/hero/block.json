@@ -1,0 +1,71 @@
+{
+	"name": "hero",
+	"dynamic": true,
+	"scripts": [
+		"front.js"
+	],
+	"render_callback": "MaddenNino\\Blocks\\Hero\\render_block",
+	"settings": {
+		"title": "Hero",
+		"description": "An hero block for the top of the page",
+		"icon": "format-image",
+		"category": "layout",
+		"attributes": {
+			"title": {
+				"type": "string"
+			},
+			"subtitle": {
+				"type": "string"
+			},
+			"image": {
+				"type": "object"
+			},
+            "focalPoint": {
+                "type": "object",
+                "default": {
+                    "x": 0.5,
+                    "y": 0.5
+                }
+            },
+			"mobileImage": {
+				"type": "object"
+			},
+            "focalPointMobile": {
+                "type": "object",
+                "default": {
+                    "x": 0.5,
+                    "y": 0.5
+                }
+            },
+			"video": {
+				"type": "object"
+			},
+			"videoForMobile": {
+				"type": "object"
+			},
+			"videoPoster": {
+				"type": "object"
+			},
+			"videoHero": {
+				"type": "boolean",
+				"default": false
+			},
+			"showBottomWave": {
+				"type": "boolean",
+				"default": true
+			},
+			"doParallax": {
+				"type": "boolean",
+				"default": false
+			},
+			"hidePalmFronds": {
+				"type": "boolean",
+				"default": false
+			},
+			"mode": {
+				"type": "string",
+				"default": "edit"
+			}
+		}
+	}
+}
