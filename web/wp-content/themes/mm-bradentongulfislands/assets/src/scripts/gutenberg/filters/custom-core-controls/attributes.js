@@ -32,6 +32,24 @@ const addCustomAttrs = (settings) => {
                                 },
                             };
 
+                        case 'overlap-top':
+                            settings.attributes = {
+                            ...settings.attributes,
+                            overlapTop: {
+                            type: 'number',
+                            default: 0,
+                            },
+                        };
+
+                        case 'overlap-bottom':
+                            settings.attributes = {
+                            ...settings.attributes,
+                            overlapBottom: {
+                            type: 'number',
+                            default: 0,
+                            },
+                        };
+
                         case 'wraparound-link':
                             settings.attributes = {
                                 ...settings.attributes,

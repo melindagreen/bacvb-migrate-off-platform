@@ -10,7 +10,10 @@
         </div>
 
         <div class="footer-col">
-            <p>Partner Login</p>
+            <p class="partner-login"><a href="">Partner Login</a></p>
+            <div class="search-wrap">
+                <?php get_search_form(); ?>
+            </div>
         </div>
 
         <div class="footer-col">
@@ -45,8 +48,31 @@
             </div>
         </div>
         
-        <div class="footer-col">
-            <p>Partner Login</p>
+        <div class="footer-col footer-col--logos">
+        
+        <a href="http://visitflorida.com" target="_blank"><img 
+            data-load-type="img"
+            data-load-offset="lg" 
+            data-load-all="<?php echo get_theme_file_uri().'/assets/images/visitflorida.png';?>" 
+            data-load-alt="visitflorida.com" 
+            src="<?php echo get_theme_file_uri() ?>/assets/images/pixel.png" 
+        /></a>
+        <span>
+        <a href="https://destinationsinternational.org/" target="_blank"><img 
+            data-load-type="img"
+            data-load-offset="lg" 
+            data-load-all="<?php echo get_theme_file_uri().'/assets/images/dm-logo.png';?>" 
+            data-load-alt="Destination International" 
+            src="<?php echo get_theme_file_uri() ?>/assets/images/pixel.png" 
+        /></a>
+        <a href="https://frla.org/" target="_blank"><img 
+            data-load-type="img"
+            data-load-offset="lg" 
+            data-load-all="<?php echo get_theme_file_uri().'/assets/images/frla-logo.png';?>" 
+            data-load-alt="Florida Restaurant & Lodging Association" 
+            src="<?php echo get_theme_file_uri() ?>/assets/images/pixel.png" 
+        /></a>
+        </span>
         </div>
         
         <p class="footer__copyright"><?php _e( '©2023 Bradenton Area Convention and Visitor’s Bureau in Bradenton, Florida | All Rights Reserved', 'mmnino' ); ?> &copy; <?php echo date( 'Y' ); ?></p>

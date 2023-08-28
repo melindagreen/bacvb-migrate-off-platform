@@ -26,7 +26,7 @@ const customizeExtraProps = (props, blockType, attributes) => {
                 switch (customization) {
                     case 'justify-content':
                         Object.assign(props, {style: { ...props.style, justifyContent: attributes.justifyContent }});
-                        break;
+                    break;
                 }
             });
     }

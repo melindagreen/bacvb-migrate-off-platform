@@ -226,19 +226,19 @@
                 <!-- SOCIAL LINKS -->
                 <div class="social-container">
                     <div class="social-links">
-                        <a aria-label='ACB Facebook' href="https://www.facebook.com/discoveratlanta">
+                        <a aria-label='Facebook' href="">
                             <?php echo file_get_contents( get_theme_file_uri() . "/assets/images/icons/social/facebook.svg" ) ?>
                         </a>
 
-                        <a aria-label='ACB Twitter' href="https://twitter.com/#!/discoveratlanta">
+                        <a aria-label='Twitter' href="">
                             <?php echo file_get_contents( get_theme_file_uri() . "/assets/images/icons/social/twitter.svg" ) ?>
                         </a>
 
-                        <a aria-label='ACB Instagram' href="https://www.instagram.com/discoveratlanta">
+                        <a aria-label='Instagram' href="">
                             <?php echo file_get_contents( get_theme_file_uri() . "/assets/images/icons/social/instagram.svg" ) ?>
                         </a>
 
-                        <a aria-label='ACB YouTube' href="https://www.youtube.com/visitatlanta">
+                        <a aria-label='YouTube' href="">
                             <?php echo file_get_contents( get_theme_file_uri() . "/assets/images/icons/social/pinterest.svg" ) ?>
                         </a>
                     </div>
