@@ -135,39 +135,39 @@ HEADER
 /*********************
 SEARCH FUNCTIONALITY
 *********************/
-.search-icon {
-    display: none;
-}
+// .search-icon {
+//     display: none;
+// }
 
-.search-form {
-    position: relative;
-    top: auto;
-    width: 100%;
-    height: auto;
-    background-color: transparent;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+// .search-form {
+//     position: relative;
+//     top: auto;
+//     width: 100%;
+//     height: auto;
+//     background-color: transparent;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     text-align: center;
 
-    &.search-form--open {
-        display: block ;
-        margin-top: 50px;
-    }
-    .search-form__field {
-        font-size: .85em;
-        background-color: transparent;
-        border: none;
-        border-bottom: 1px solid #c7c7c7;
-        margin: 0 15px;
-    }
-    .search-form__submit {
-        border-radius: 5px;
-        border: none;
-        font-size: .85em;
-        font-weight: normal;
-    }
-}
+//     &.search-form--open {
+//         display: block ;
+//         margin-top: 50px;
+//     }
+//     .search-form__field {
+//         font-size: .85em;
+//         background-color: transparent;
+//         border: none;
+//         border-bottom: 1px solid #c7c7c7;
+//         margin: 0 15px;
+//     }
+//     .search-form__submit {
+//         border-radius: 5px;
+//         border: none;
+//         font-size: .85em;
+//         font-weight: normal;
+//     }
+// }
 
 /*********************
 MAIN PAGE CONTENT
@@ -202,6 +202,11 @@ FOOTER
 *********************/
 .footer {
     flex-direction: column;
+
+    .footer-col {
+
+        margin: auto;
+    }
 }
 
 .footer-menu__items {
