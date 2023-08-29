@@ -45,6 +45,6 @@ IMAGES
 
     --webkit-mask: url("images/bubble-mask.svg") no-repeat center;
     mask: url("images/bubble-mask.svg") no-repeat center;
-    --webkit-mask-size: 66%;
-    mask-size: 66%;
+    --webkit-mask-size: contain;
+    mask-size: contain;
 }
