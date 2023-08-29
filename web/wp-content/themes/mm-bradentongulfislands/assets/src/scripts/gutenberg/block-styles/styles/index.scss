@@ -82,14 +82,15 @@ BUTTONS
 
     position: relative;
 
-    .wp-block-button__link {
+    .wp-block-button__link, .wp-element-button {
 
-        background-color: transparent;
-        border: none;
-        color: $bradenton-teal;
-        font-family: $font-header;
+        background-color: transparent !important;
+        border: none !important;
+        color: $bradenton-teal !important;
+        font-family: $font-header !important;
         text-transform: uppercase;
         font-size: 1.15rem;
+        padding: 0 !important;
     }
 
     &::after {
@@ -98,8 +99,8 @@ BUTTONS
         position: absolute;
         width: 50px;
         height: 50px;
-        right: -6%;
-        bottom: -50%;
+        right: -18%;
+        top: 2%;
         background: url("images/curve-arrow-small.png");
         background-repeat: no-repeat;
         background-size: contain;
