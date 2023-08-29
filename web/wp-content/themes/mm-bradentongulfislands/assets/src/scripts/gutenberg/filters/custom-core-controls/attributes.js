@@ -41,6 +41,15 @@ const addCustomAttrs = (settings) => {
                             },
                         };
 
+                        case 'layer':
+                            settings.attributes = {
+                            ...settings.attributes,
+                            overlap: {
+                            type: 'number',
+                            default: 0,
+                            },
+                        };
+
                         case 'wraparound-link':
                             settings.attributes = {
                                 ...settings.attributes,

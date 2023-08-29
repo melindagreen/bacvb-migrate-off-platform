@@ -60,6 +60,11 @@ const applyCustomAttrs = (el, block, attributes) => {
                         newProps.style = { ...newProps.style, marginBottom: margin };
                         }
                     }
+                case 'layer':
+                    if(attributes.layer !== 0) {
+                        
+                        newProps.style = { ...newProps.style, zIndex: attributes.layer, position: 'relative' };
+                    }
             }
         });
 

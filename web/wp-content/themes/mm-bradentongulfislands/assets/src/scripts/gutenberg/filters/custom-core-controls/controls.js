@@ -4,7 +4,7 @@
 import { __ } from '@wordpress/i18n';
 import { createHigherOrderComponent, } from '@wordpress/compose';
 import { InspectorControls, BlockControls, JustifyContentControl, __experimentalLinkControl as LinkControl } from '@wordpress/block-editor';
-import { PanelBody, PanelRow, ToolbarButton, Popover, __experimentalNumberControl as NumberControl } from '@wordpress/components';
+import { PanelBody, PanelRow, ToolbarButton, SelectControl, Popover, __experimentalNumberControl as NumberControl } from '@wordpress/components';
 import { useState } from '@wordpress/element';
 
 // Local Dependencies
@@ -93,6 +93,19 @@ const withCustomControls = createHigherOrderComponent((BlockEdit) => {
                                             step={2}
                                             value={ attributes.overlap }
                                             /></PanelBody>
+                                        case 'layer': 
+                                            return <PanelBody><SelectControl
+                                            label="Layer"
+                                            value={ attributes.layer }
+                                            options={ [
+                                                { label: 'Top', value: 1 },
+                                                { label: 'Middle', value: 0 },
+                                                { label: 'Bottom', value: -1 },
+                                            ] }
+                                            onChange={ layer => {
+                                                setAttributes({ layer })
+                                            } }
+                                        /></PanelBody>
                                     }
                                 }
                             )}
