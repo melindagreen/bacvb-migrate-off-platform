@@ -51,3 +51,11 @@ WIDGETS
     padding: 4rem;
     border: 2px solid red;
 }
+
+.is-style-bubble {
+
+    --webkit-mask: url("images/bubble-mask.svg") no-repeat center;
+    mask: url("images/bubble-mask.svg") no-repeat center;
+    --webkit-mask-size: 66%;
+    mask-size: 66%;
+}

@@ -3,8 +3,8 @@
 // WordPress Dependencies
 import { __ } from '@wordpress/i18n';
 import { createHigherOrderComponent, } from '@wordpress/compose';
-import { InspectorControls, BlockControls, JustifyContentControl, __experimentalUnitControl as UnitControl, __experimentalLinkControl as LinkControl, NumberControl } from '@wordpress/block-editor';
-import { PanelBody, PanelRow, ToolbarButton, Popover } from '@wordpress/components';
+import { InspectorControls, BlockControls, JustifyContentControl, __experimentalLinkControl as LinkControl } from '@wordpress/block-editor';
+import { PanelBody, PanelRow, ToolbarButton, Popover, __experimentalNumberControl as NumberControl } from '@wordpress/components';
 import { useState } from '@wordpress/element';
 
 // Local Dependencies
@@ -79,24 +79,20 @@ const withCustomControls = createHigherOrderComponent((BlockEdit) => {
                             CUSTOMIZE_BLOCKS[name].map(
                                 (customization) => {
                                     switch (customization) {
-                                        case 'overlap-top':
-                                            <NumberControl
-                                            onChange={ e => console.log(e) }
+                                        case 'overlap':
+                                            return <PanelBody><NumberControl
+                                            onChange={ overlap => {
+                                                setAttributes({ overlap })
+                                            } }
                                             isDragEnabled
                                             isShiftStepEnabled
-                                            shiftStep={ 10 }
-                                            step={10}
-                                            value={ 10 }
-                                            />
-                                        case 'overlap-bottom':
-                                            <NumberControl
-                                            onChange={ e => console.log(e) }
-                                            isDragEnabled
-                                            isShiftStepEnabled
-                                            shiftStep={ 10 }
-                                            step={10}
-                                            value={ 10 }
-                                            />
+                                            label={'Overlap'}
+                                            max={100}
+                                            min={-100}
+                                            shiftStep={ 2 }
+                                            step={2}
+                                            value={ attributes.overlap }
+                                            /></PanelBody>
                                     }
                                 }
                             )}

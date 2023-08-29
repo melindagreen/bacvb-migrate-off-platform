@@ -49,6 +49,17 @@ const applyCustomAttrs = (el, block, attributes) => {
                           {content}
                         </a>;
                     }
+                case 'overlap':
+                    if(attributes.overlap !== 0) {
+                        
+                        let margin = '-' + Math.abs(attributes.overlap) + 'rem';
+                        if(attributes.overlap > 0) {
+                        newProps.style = { ...newProps.style, marginTop: margin };
+                        }
+                        else {
+                        newProps.style = { ...newProps.style, marginBottom: margin };
+                        }
+                    }
             }
         });
 

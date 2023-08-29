@@ -2,6 +2,6 @@
 
 // Controls available customizations
 export const CUSTOMIZE_BLOCKS = {
-	'core/columns': [ 'justify-content', 'overlap-top', 'overlap-bottom'],
+	'core/columns': [ 'justify-content', 'overlap'],
 	'core/cover': [ 'wraparound-link', ],
 };

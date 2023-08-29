@@ -32,19 +32,10 @@ const addCustomAttrs = (settings) => {
                                 },
                             };
 
-                        case 'overlap-top':
+                        case 'overlap':
                             settings.attributes = {
                             ...settings.attributes,
-                            overlapTop: {
-                            type: 'number',
-                            default: 0,
-                            },
-                        };
-
-                        case 'overlap-bottom':
-                            settings.attributes = {
-                            ...settings.attributes,
-                            overlapBottom: {
+                            overlap: {
                             type: 'number',
                             default: 0,
                             },
