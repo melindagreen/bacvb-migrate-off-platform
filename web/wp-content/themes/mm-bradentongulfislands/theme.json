@@ -36,12 +36,12 @@
         {
           "name": "Soft Black",
           "slug": "soft-black",
-          "color": "#41414"
+          "color": "#414141"
         },
         {
           "name": "Warm Gray",
           "slug": "warm-gray",
-          "color": "#DFDED8"
+          "color": "#AFA8A0"
         },
         {
           "name": "Sky Blue",
@@ -90,27 +90,27 @@
       "fontSizes": [
         {
           "slug": "small",
-          "size": "0.8rem",
+          "size": "1rem",
           "name": "Small"
         },
         {
           "slug": "normal",
-          "size": "1rem",
+          "size": "1.5rem",
           "name": "Normal"
         },
         {
           "slug": "medium",
-          "size": "1.5rem",
+          "size": "2rem",
           "name": "Medium"
         },
         {
           "slug": "large",
-          "size": "2rem",
+          "size": "3rem",
           "name": "Large"
         },
         {
           "slug": "xlarge",
-          "size": "5rem",
+          "size": "4rem",
           "name": "X Large"
         }
       ],

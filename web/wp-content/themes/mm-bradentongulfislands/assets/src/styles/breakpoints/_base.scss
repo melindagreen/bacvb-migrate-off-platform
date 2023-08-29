@@ -10,6 +10,14 @@ body {
     justify-content: space-between;
     font-family: $font-body;
 }
+
+p {
+
+    line-height: 1.8em;
+    font-size: 0.9rem;
+    color: $soft-black;
+}
+
 .#{$theme-prefix}-menu__items {
     margin: 0;
     padding: 0;
