@@ -7,5 +7,14 @@
                 "isDefault": false
             }
         ]
+    },
+    "core/cover": {
+        "add": [
+            {
+                "name": "bubble",
+                "label": "Bubble",
+                "isDefault": false
+            }
+        ]
     }
 }
