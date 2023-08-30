@@ -1,0 +1,204 @@
+@import "styles/utils/typography";
+@import "styles/utils/variables";
+
+.#{$block-prefix}-portrait-grid {
+  .wp-block-heading {
+    margin-bottom: 0;
+  }
+  .container {
+    max-width: 1400px;
+  }
+  .grid-item {
+    overflow: hidden;
+    .grid-item__background {
+      transition: transform 0.2s;
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+  &.reverse {
+    direction: rtl;
+    .grid-item {
+      &:nth-child(2) {
+        .grid-item__body {
+          width: 80%;
+          right: 0;
+        }
+      }
+      .grid-item__body {
+        width: 100%;
+        .grid-item__excerpt {
+          max-width: initial;
+          margin-right: initial;
+        }
+      }
+    }
+  }
+  .grid-item {
+    position: relative;
+    .grid-item__background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: color("dark-cyan");
+      &::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to bottom, transparent 50%, rgba(black, 0.7));
+      }
+      .grid-item__image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    .grid-item__body {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      z-index: 1;
+      width: 80%;
+      padding: 1rem;
+      color: color("white");
+      .grid-item__title {
+        margin-bottom: 1rem;
+        font-family: $font-body;
+        font-size: 2rem;
+        text-transform: uppercase;
+        line-height: 1;
+        color: color("white");
+      }
+      .grid-item__excerpt {
+        max-width: 25rem;
+        margin-bottom: 0;
+        font-weight: normal;
+        margin-left: initial;
+      }
+    }
+  }
+}
+
+/*********************
+LARGE SCREENS
+*********************/
+@media only screen and (min-width: #{$screen-lg + 1}) {
+  .#{$block-prefix}-portrait-grid {
+    .grid-items {
+      display: grid;
+      gap: 2rem;
+      margin: 3rem auto 6rem auto;
+      width: 90%;
+    }
+
+    // if we need different length templates, add them here
+    // for now assuming only 3
+    &.is-length-3 {
+      .grid-items {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(4, 25vh);
+        grid-template-areas:
+          ".     item2 item2"
+          "item1 item2 item2"
+          "item1 item3 ."
+          "item1 item3 ."
+          ".     item3 .";
+        .grid-item {
+          &--1 {
+            grid-area: item1;
+            --webkit-mask: url("images/portraitmask1.svg") no-repeat center;
+            mask: url("images/portraitmask1.svg") no-repeat center;
+          }
+          &--2 {
+            grid-area: item2;
+            --webkit-mask: url("images/portraitmask2.svg") no-repeat center;
+            mask: url("images/portraitmask2.svg") no-repeat left;
+          }
+          &--3 {
+            grid-area: item3;
+            --webkit-mask: url("images/portraitmask3.svg") no-repeat center;
+            mask: url("images/portraitmask3.svg") no-repeat center;
+          }
+
+          &--1,&--2,&--3 {
+            --webkit-mask-size: contain;
+            mask-size: contain;
+          }
+        }
+      }
+    }
+  }
+}
+
+/*********************
+MEDIUM SCREENS
+*********************/
+@media only screen and (min-width: #{$screen-sm + 1}) and (max-width: $screen-lg) {
+  .#{$block-prefix}-portrait-grid {
+    .grid-items {
+      display: flex;
+      flex-wrap: wrap;
+      width: 90;
+      max-width: 90%;
+    }
+
+    // if we need different length templates, add them here
+    // for now assuming only 3
+    &.is-length-3 {
+      .grit-items {
+        .grid-item {
+          &--1,
+          &--2 {
+            flex: 0 0 calc(50% - 1rem);
+            height: 80vh;
+          }
+          &--1 {
+            margin-right: 2rem;
+          }
+          &--3 {
+            flex: 0 0 100%;
+            height: 40vh;
+            margin-top: 1rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+/*********************
+SMALL SCREENS
+*********************/
+@media only screen and (max-width: $screen-sm) {
+  .#{$block-prefix}-portrait-grid {
+    margin: 6rem auto;
+    width: 90%;
+    .container {
+      max-width: 100%;
+    }
+
+    .grid-item {
+      width: 100%;
+      height: 50vh;
+      & + * {
+        margin-top: 2rem;
+      }
+      &.grid-item--3 {
+        display: none;
+      }
+
+      .grid-item__body {
+        width: 100%;
+      }
+      .grid-item__background {
+        &::before {
+          background: linear-gradient(to bottom, transparent 0%, rgba(black, 0.8) 50%);
+        }
+      }
+    }
+  }
+}
