@@ -326,10 +326,8 @@
       "title" : "Amenities",
       "inputs" : [
         {
-          "key" : "accommodations", 
-          "label" : "<h2 class='partner-portal-heading'>Accommodations</h2>", 
-          "type": "checkbox",
-          "newLineAfter" : true
+          "type" : "message",
+          "content" : "<h2 class='partner-portal-heading'>Accomodations</h2>"
         },
         {
           "key" : "accomodations-type", 
@@ -400,10 +398,8 @@
           ]
         },
         {
-          "key" : "attractions", 
-          "label" : "<h2 class='partner-portal-heading'>Attractions</h2>", 
-          "type": "checkbox",
-          "newLineAfter" : true
+          "type" : "message",
+          "content" : "<h2 class='partner-portal-heading'>Attractions</h2>"
         },
         {
           "key" : "attractions-arts-and-culture", 
@@ -478,10 +474,8 @@
           ]
         },
         {
-          "key" : "recreation", 
-          "label" : "<h2 class='partner-portal-heading'>Recreation</h2>", 
-          "type": "checkbox",
-          "newLineAfter" : true
+          "type" : "message",
+          "content" : "<h2 class='partner-portal-heading'>Recreation</h2>"
         },
         {
           "key" : "recreation-visitor-services", 
@@ -544,10 +538,8 @@
           ]
         },
         {
-          "key" : "shopping", 
-          "label" : "<h2 class='partner-portal-heading'>Shopping</h2>", 
-          "type": "checkbox",
-          "newLineAfter" : true
+          "type" : "message",
+          "content" : "<h2 class='partner-portal-heading'>Shopping</h2>"
         },
         {
           "key" : "shopping", 
@@ -590,10 +582,8 @@
           ]
         },
         {
-          "key" : "dining", 
-          "label" : "<h2 class='partner-portal-heading'>Dining</h2>", 
-          "type": "checkbox",
-          "newLineAfter" : true
+          "type" : "message",
+          "content" : "<h2 class='partner-portal-heading'>Dining</h2>"
         },
         {
           "key" : "dining-type", 
