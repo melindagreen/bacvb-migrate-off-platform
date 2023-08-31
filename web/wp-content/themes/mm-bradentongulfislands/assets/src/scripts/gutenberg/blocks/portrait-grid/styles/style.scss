@@ -121,7 +121,7 @@
       background: $rust;
       width: 17rem;
       min-height: 16rem;
-      left: 20%;
+      right: calc(100vw - 35rem);
       top: -19%;
 
       &::before, &::after {
@@ -196,7 +196,7 @@
 
       background-color: $bradenton-teal;
       bottom: 9%;
-      right: 18%;
+      right: calc(100vw - 73rem);
 
       .grid-item-body__arrow {
 
