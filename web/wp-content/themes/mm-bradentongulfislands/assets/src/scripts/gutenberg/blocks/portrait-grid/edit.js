@@ -85,6 +85,12 @@ const Wizard = props => {
               onChange={updateSegment('customExcerpt', post)}
             />
 
+            <TextControl
+              label={__('Custom CTA Text')}
+              value={post.customCTAText}
+              onChange={updateSegment('customCTAText', post)}
+            />
+
             <MediaUploadCheck>
               <MediaUpload
                 title={__('Custom Thumbnail', THEME_PREFIX)}

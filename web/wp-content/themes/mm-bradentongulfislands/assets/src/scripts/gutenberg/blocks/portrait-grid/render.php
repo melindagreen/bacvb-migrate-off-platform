@@ -34,6 +34,15 @@ function render_block( $attrs, $content ) {
       else if( isset( $post['postObj']['id'] ) ) {
         $clean_post['excerpt'] = Utilities::excerpt_by_sentences( $post['postObj']['id'], 1, 50, 100 );
       }
+
+      // excerpt
+      $clean_post['ctaText'] = '';
+      if( isset( $post['customCTAText'] ) && !empty( $post['customCTAText'] ) ) {
+        $clean_post['ctaText'] = $post['customCTAText'];
+      }
+      else if( isset( $post['postObj']['id'] ) ) {
+        $clean_post['ctaText'] = 'Explore';
+      }
   
       // thumbnail
       $clean_post['thumb'] = false;
@@ -88,14 +97,13 @@ function render_block( $attrs, $content ) {
                 <img class="grid-item__image" src="<?php echo $post['thumb'] ?>" alt="">
               <?php } ?>
             </div>
-
-            <div class="grid-item__body">
-              <h3 class="grid-item__title"><?php echo $post['title']; ?></h3>
-
-              <p class="grid-item__excerpt"><?php echo $post['excerpt']; ?></p>
-            </div>
           <?php if( $post['link'] ) { ?></a><?php } ?>
         </article>
+        <div class="grid-item-body grid-item-body--<?php echo $i + 1 ?>">
+            <h3 class="grid-item-body__title"><?php echo $post['title']; ?></h3>
+            <p class="grid-item-body__excerpt"><?php echo $post['excerpt']; ?></p>
+            <?php if( $post['link'] ) { ?><a class="grid-item-body__link" href="<?php echo $post['link'] ?>"><?php echo $post['ctaText'] ?></a> <?php } ?>
+        </div>
       <?php } ?>
     </div>
   </section>
