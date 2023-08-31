@@ -103,6 +103,7 @@ function render_block( $attrs, $content ) {
             <h3 class="grid-item-body__title"><?php echo $post['title']; ?></h3>
             <p class="grid-item-body__excerpt"><?php echo $post['excerpt']; ?></p>
             <?php if( $post['link'] ) { ?><a class="grid-item-body__link" href="<?php echo $post['link'] ?>"><?php echo $post['ctaText'] ?></a> <?php } ?>
+            <div class="grid-item-body__arrow"></div>
         </div>
       <?php } ?>
     </div>
