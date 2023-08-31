@@ -122,7 +122,7 @@
       width: 17rem;
       min-height: 16rem;
       left: 20%;
-      top: -15%;
+      top: -19%;
 
       &::before, &::after {
 
@@ -153,8 +153,8 @@
     &--2 {
 
       background-color: $sky-blue;
-      bottom: -30%;
-      left: 16.5%;  
+      bottom: -32%;
+      left: 16%;
 
       .grid-item-body__arrow {
 
@@ -196,7 +196,7 @@
 
       background-color: $bradenton-teal;
       bottom: 9%;
-      right: 16%;
+      right: 18%;
 
       .grid-item-body__arrow {
 
@@ -304,7 +304,8 @@ LARGE SCREENS
   .#{$block-prefix}-portrait-grid {
     .grid-items {
       display: grid;
-      gap: 2rem;
+      row-gap: 1.5rem;
+      column-gap: 1rem;
       margin: auto 5vw;
       width: 90%;
     }
