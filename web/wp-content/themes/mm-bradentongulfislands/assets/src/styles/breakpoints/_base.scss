@@ -938,11 +938,113 @@ FOOTER
 }
 
 /*********************
+STAY CONNECTED
+*********************/
+.stay-connected {
+
+    position: fixed;
+    bottom: 0;
+    right: 3%;
+    background-color: $bradenton-teal;
+    padding: 0.7rem;
+    border: 1.5px solid $turquoise;
+    border-radius: 30px 30px 0 0;
+    border-bottom: none;;
+    margin: auto;
+    text-align: center;
+    min-height: 0;
+    transition: all 0.2s ease-in-out;
+
+    button {
+        text-transform: uppercase;
+        display: block;
+    }
+
+    &__links {
+
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%,5rem);
+        transition: all 0.2s ease-in-out;
+
+        .stay-connected-guide {
+            border: 1.5px solid $sea-blue;
+            background-color: $white;
+            color: $dk-blue;
+        }
+
+        .stay-connected-subscribe {
+            border: 1.5px solid transparent;
+            background-color: $dk-blue;
+            color: $white;
+            padding: 5px 16px;
+        }
+
+        button {
+
+            margin: 8px auto;
+            border-radius: 22px;
+            padding: 5px 12px;
+            font-size: 0.65rem;
+            min-width: 9rem;
+            transition: all 0.2s ease-in-out;
+            cursor: pointer;
+
+            &:hover {
+
+                transition: all 0.2s ease-in-out;
+                transform: scale(1.1);
+            }
+        }
+    }
+
+    &__toggle {
+
+        background-color: transparent;
+        border: none;
+        font-size: 0.9rem;
+        position: relative;
+        color: $white;
+        margin: auto 0.5rem;
+        left: -0.5rem;
+        cursor: pointer;
+
+        &::after {
+
+            content: ' ';
+            transition: all 0.3s ease-in-out;
+            position: absolute;
+            right: -1rem;
+            bottom: -6%;
+            height: 20px;
+            width: 20px;
+            background-size: contain !important;
+            background: url('images/ui-link-arrow.png');
+          }
+    }
+
+    &--open {
+
+        min-height: 9.5rem;
+        transition: all 0.2s ease-in-out;
+        .stay-connected__links {
+
+            transform: translate(-50%,-0.5rem);
+        }
+
+        .stay-connected__toggle {
+
+            bottom: -6.5rem;
+        }
+    }
+}
+
+/*********************
 WEATHER
 *********************/
 .header-weather-forecast {
 position: fixed;
-top: 82%;
+top: 80%;
 left: -3.5%;
 z-index: 3;
 background: url('images/weatherbug-background.png') no-repeat;

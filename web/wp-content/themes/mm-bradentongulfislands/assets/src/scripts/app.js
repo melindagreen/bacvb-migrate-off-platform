@@ -48,6 +48,17 @@ if ('serviceWorker' in navigator) {
 		$('body').toggleClass('menu-open');
 	};
 
+     /**
+	 * Toggle open the stay connected section
+	 */
+    function toggleStayConnected() {
+
+        // toggle stay connected
+        $('.stay-connected__toggle').click(function () {
+        $('.stay-connected').toggleClass('stay-connected--open');
+        });
+    }
+
     /**
 	 * Toggle open the mobile nav menu
 	 */
@@ -291,6 +302,9 @@ if ('serviceWorker' in navigator) {
 				return clone;
 			});
 		}
+
+        //toggle stay connected
+        toggleStayConnected();
 	}
 
     /**

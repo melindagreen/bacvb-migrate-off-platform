@@ -121,7 +121,7 @@
       background: $rust;
       width: 17rem;
       min-height: 16rem;
-      right: calc(100vw - 35rem);
+      right: calc(100vw - 37rem);
       top: -19%;
 
       &::before, &::after {
@@ -154,7 +154,7 @@
 
       background-color: $sky-blue;
       bottom: -32%;
-      left: 16%;
+      left: 18%;
 
       .grid-item-body__arrow {
 
@@ -196,7 +196,7 @@
 
       background-color: $bradenton-teal;
       bottom: 9%;
-      right: calc(100vw - 73rem);
+      right: calc(100vw - 76rem);
 
       .grid-item-body__arrow {
 
@@ -306,7 +306,7 @@ LARGE SCREENS
       display: grid;
       row-gap: 1.5rem;
       column-gap: 1rem;
-      margin: auto 5vw;
+      margin: auto 7vw;
       width: 90%;
     }
 

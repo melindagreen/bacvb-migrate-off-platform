@@ -81,6 +81,15 @@
     <?php wp_footer();
     print_late_styles(); ?>
 
+    <!-- Stay Connected  -->
+    <div class="stay-connected">
+        <div class="stay-connected__links">
+            <button class="stay-connected-guide">Get Your <br> Destination Guide</button>
+            <button class="stay-connected-subscribe">Subscribe To <br> Our Newsletter</button>
+        </div>
+        <button class="stay-connected__toggle">Stay Connected</button>
+    </div>
+
     <!-- SIZE ELEMENTS (for viewport utilities) -->
     <div id="isSmall"></div>
     <div id="isMedium"></div>
