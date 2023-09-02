@@ -1,0 +1,14 @@
+{
+  "apiVersion": 2,
+  "name": "wide-slideshow",
+  "scripts": [
+    "front.js"
+  ],
+  "settings": {
+    "title": "Wide Slideshow",
+    "description": "wide slideshow",
+    "icon": "leftright",
+    "category": "layout",
+    "attributes": {}
+  }
+}

@@ -128,6 +128,23 @@ class AssetHandler {
         $assets_file_front = include( __DIR__ . "/build/app.asset.php" );
         array_push( $assets_file_front["dependencies"], "jquery" );
 
+        //Swiper 
+        wp_enqueue_style(
+            C::THEME_PREFIX . "-swiper-styles", // handle,
+            "//unpkg.com/swiper@8.4.5/swiper-bundle.min.css", // src
+            NULL, // dependencies
+            NULL // version
+        );
+        
+        //Swiper Enqueue CDN
+        wp_enqueue_script(
+            C::THEME_PREFIX . "-swiper-js", // handle
+            "//cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js", // src
+            NULL, // dependencies
+            NULL, // version
+            true // in footer?
+        );
+
         global $template; 
         $filename = str_replace( ".php", "", basename( $template ) );
 

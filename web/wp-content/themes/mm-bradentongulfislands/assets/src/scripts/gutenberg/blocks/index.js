@@ -11,13 +11,15 @@ import ExampleDynamic from './example-dynamic';
 import ExampleStatic from './example-static';
 import Hero from './hero';
 import PortraitGrid from './portrait-grid';
+import WideSlideshow from './wide-slideshow';
+import WideImageSlide from './wide-image-slide';
 
 /*** CONSTANTS **************************************************************/
 
 // Collect blocks
 // NOTE: ACF blocks should not be registered here, only imported, or they will
 // appear twice in the editor!
-const blocks = [ Hero, PortraitGrid ];
+const blocks = [ Hero, PortraitGrid, WideSlideshow, WideImageSlide ];
 
 /*** EXPORTS ****************************************************************/
 export default () => {

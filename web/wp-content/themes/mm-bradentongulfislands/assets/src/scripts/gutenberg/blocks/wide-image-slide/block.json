@@ -1,0 +1,47 @@
+{
+  "name": "wide-image-slide",
+  "settings": {
+    "title": "Image Slide",
+    "parent": [ "mm-bradentongulfislands-wideslideshow" ],
+    "description": "Image slide for parent Wide Carousel",
+    "icon": "format-image",
+    "category": "layout",
+    "supports": {
+		"align": true
+	},
+    "attributes": {
+          "mediaId": {
+            "type": "number",
+            "default": 0
+        },
+        "mediaUrl": {
+            "type": "array",
+            "default": [],
+            "selector": "img",
+            "attribute": "src"
+        },
+        "mediaAlt": {
+          "type": "string",
+          "default": "",
+          "selector": "img",
+          "attribute": "alt"
+        },
+        "title": {
+          "type": "string",
+          "default": "",
+          "selector": ".infoblock__item"
+        },
+        "info": {
+          "type": "string",
+          "default": "",
+          "selector": ".infoblock__item"
+        },
+        "buttonUrl": {
+          "type": "string",
+          "default": "",
+          "selector": "a",
+          "attribute": "href"
+        }
+  }
+  }
+}

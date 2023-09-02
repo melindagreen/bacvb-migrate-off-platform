@@ -1,0 +1,8 @@
+{
+  "name": "maddenmedia/mm-wordpress-block-wide-slideshow",
+  "description": "Carousel block",
+  "keywords": ["example-wordpress-block", "wordpress-starter-block"],
+  "license": "MIT",
+  "type": "mm-wordpress-block",
+  "version": "v1.2021.06.04"
+}
