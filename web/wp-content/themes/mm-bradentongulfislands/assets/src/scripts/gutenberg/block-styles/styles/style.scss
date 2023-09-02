@@ -63,6 +63,22 @@ IMAGES
     mask-size: contain;
 }
 
+.is-style-cta-card {
+
+    bottom: 1rem;
+    margin-bottom: 3rem;
+    max-width: 35rem;
+
+    .wp-block-cover__inner-container {
+
+        background-color: white;
+        width: 85%;
+        position: absolute;
+        bottom: -7rem;
+        padding: 1rem 4rem;
+    }
+}
+
 /*********************
 BUTTONS
 *********************/

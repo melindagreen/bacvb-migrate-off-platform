@@ -14,6 +14,11 @@
                 "name": "bubble",
                 "label": "Bubble",
                 "isDefault": false
+            },
+            {
+                "name": "cta-card",
+                "label": "CTA Card",
+                "isDefault": false
             }
         ]
     },
