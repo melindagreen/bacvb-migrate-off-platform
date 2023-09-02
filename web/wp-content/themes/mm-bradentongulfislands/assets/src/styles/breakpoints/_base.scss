@@ -938,6 +938,38 @@ FOOTER
 }
 
 /*********************
+WEATHER
+*********************/
+.header-weather-forecast {
+position: fixed;
+top: 82%;
+left: -3.5%;
+z-index: 3;
+background: url('images/weatherbug-background.png') no-repeat;
+background-size: cover;
+background-position: right;
+width: 130px;
+height: 130px;
+padding: 2.3rem 0 0 3.7rem;
+
+    img {
+
+        width: 35px;
+        height: auto;
+    }
+
+    p {
+
+        font-family: $font-header;
+        color: $white;
+        margin-top: -3px;
+        font-size: 1.15rem;
+        padding: 0;
+        line-height: 1em;
+    }
+}
+
+/*********************
 UTILITIES
 *********************/
 .sr-only {

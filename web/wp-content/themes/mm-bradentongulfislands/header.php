@@ -249,6 +249,15 @@
                 </div>
             </div>
         </header>
+        <div class="header-weather-forecast">
+            <div id="forecast-current" class="header-weather-forecast__now">
+                <!-- TODO: Dynamically add weather icon -->
+                <p class="header-weather-forecast__temp">
+                    <!-- TODO: Dynamically add weather temp -->
+                    0º
+                </p>
+            </div>
+        </div>
 
     <!-- MAIN CONTENT -->
     <main id="main" class="main main--<?php global $template; echo basename( $template, ".php" ); ?>">

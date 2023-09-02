@@ -294,6 +294,48 @@ if ('serviceWorker' in navigator) {
 	}
 
     /**
+     * Load the current temperature and forecast
+     * @returns {null}
+     */
+    jQuery.get("https://maddencdn.com/global/code/weather/getWeatherData.php?cityName=Bradenton",
+        function () { })
+        .done(function (data) {
+            var forecastHTML = "";
+            try {
+                var weather = JSON.parse(data);
+                var mainWeather = weather['conditions'];
+                var night = (weather['icon'].indexOf("/nt_") != -1) ? true : false;
+
+                // What's the weather like?
+                // TO DO Night weather icons
+                if (mainWeather === "Clear") {
+                    forecastHTML += (night)
+                        ? '<img src="/wp-content/themes/mm-bradentongulfislands/assets/images/weather-icons/moon-cloud.png" alt="clear" />'
+                        : '<img src="/wp-content/themes/mm-bradentongulfislands/assets/images/weather-icons/sun-regular.png" alt="sunny" />';
+                } else if (mainWeather === "Rain" || mainWeather === "Drizzle") {
+                    forecastHTML += '<img src="/wp-content/themes/mm-bradentongulfislands/assets/images/weather-icons/cloud-sun-rain-solid.png" alt="rain" />';
+                } else if (mainWeather === "Clouds" || mainWeather === "Clouds") {
+                    forecastHTML += '<img src="/wp-content/themes/mm-bradentongulfislands/assets/images/weather-icons/cloud-sun.png" alt="cloudy" />';
+                } else if (mainWeather === "Thunderstorm") {
+                    forecastHTML += '<img src="/wp-content/themes/mm-bradentongulfislands/assets/images/weather-icons/hurricane-solid.png" alt="chancerain" />';
+                } else {
+                    forecastHTML += (night)
+                        ? '<img src="/wp-content/themes/mm-bradentongulfislands/assets/images/weather-icons/moon-cloud.png" alt="clear" />'
+                        : '<img src="/wp-content/themes/mm-bradentongulfislands/assets/images/weather-icons/sun-regular.png" alt="sunny" />';
+                }
+                forecastHTML += `<p class="header-weather-forecast__temp">${weather['temp']}${weather['temp']>99 ? '<br>' : ''}&deg;F</p>`;
+
+            } catch (err) { }
+
+            // add or hide if no forecast
+            if (forecastHTML != "") {
+                jQuery("#forecast-current").html(forecastHTML);
+            } else {
+                jQuery("#forecast-current").css({ "display": "none" });
+            }
+        })
+
+    /**
      * Fires on load and scroll
      */
     function themeOnScroll() {
