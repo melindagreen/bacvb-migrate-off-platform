@@ -19,10 +19,6 @@
         "type": "string",
         "default": "manual"
       },
-      "persona": {
-        "type": "string",
-        "default": "1"
-      },
       "posts": {
         "type": "array",
         "default": [

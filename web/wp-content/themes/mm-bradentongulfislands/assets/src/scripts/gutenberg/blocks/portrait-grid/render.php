@@ -59,28 +59,7 @@ function render_block( $attrs, $content ) {
   
       return $clean_post;
     }, $attrs['posts'] );
-  } else if( $attrs['queryMode'] === 'persona' ) {
-    $post_ids = Utilities::query_by_persona( $attrs['persona'] );
-    
-    $posts = array_map( function( $post_id ) {
-      $post = array();
-
-      // title
-      $post['title'] = get_the_title( $post_id );
-   
-      // excerpt
-      $post['excerpt'] = Utilities::excerpt_by_sentences( $post_id, 1, 50, 100 );
-   
-      // thumbnail
-      $post['thumb'] = get_the_post_thumbnail_url( $post_id, 'full' );
-      if( !$post['thumb'] ) $post['thumb'] = 'https://www.thepalmbeaches.com/wp-content/uploads/bg-book-your-stay-1.jpg';
-   
-      // link
-      $post['link'] = get_the_permalink( $post_id );
-
-      return $post;
-    }, $post_ids );
-  }
+  } 
 
   ob_start();
   ?>
@@ -90,6 +69,12 @@ function render_block( $attrs, $content ) {
   <?php } ?>
     <div class="grid-items">
       <?php foreach( $posts as $i => $post ) { ?>
+        <div class="grid-item-body grid-item-body--<?php echo $i + 1 ?>">
+            <h3 class="grid-item-body__title"><?php echo $post['title']; ?></h3>
+            <p class="grid-item-body__excerpt"><?php echo $post['excerpt']; ?></p>
+            <?php if( $post['link'] ) { ?><a class="grid-item-body__link" href="<?php echo $post['link'] ?>"><?php echo $post['ctaText'] ?></a> <?php } ?>
+            <div class="grid-item-body__arrow"></div>
+        </div>
         <article class="grid-item grid-item--<?php echo $i + 1 ?>">
           <?php if( $post['link'] ) { ?><a href="<?php echo $post['link'] ?>"><?php } ?>
             <div class="grid-item__background">
@@ -99,12 +84,6 @@ function render_block( $attrs, $content ) {
             </div>
           <?php if( $post['link'] ) { ?></a><?php } ?>
         </article>
-        <div class="grid-item-body grid-item-body--<?php echo $i + 1 ?>">
-            <h3 class="grid-item-body__title"><?php echo $post['title']; ?></h3>
-            <p class="grid-item-body__excerpt"><?php echo $post['excerpt']; ?></p>
-            <?php if( $post['link'] ) { ?><a class="grid-item-body__link" href="<?php echo $post['link'] ?>"><?php echo $post['ctaText'] ?></a> <?php } ?>
-            <div class="grid-item-body__arrow"></div>
-        </div>
       <?php } ?>
     </div>
   </section>

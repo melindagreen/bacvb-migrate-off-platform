@@ -19,11 +19,7 @@ const ALLOWED_MEDIA_TYPES = ['image'];
 
 
 const Inspector = props => {
-    const { attributes: { queryMode, persona, }, setAttributes } = props;
-
-    const personae = useSelect((select) => select(
-        'maddenontology/data-store'
-    ).getAllPersonae());
+    const { attributes: { queryMode }, setAttributes } = props;
 
     return (
         <InspectorControls>
@@ -36,28 +32,11 @@ const Inspector = props => {
                             {
                                 label: 'Manual',
                                 value: 'manual'
-                            },
-                            {
-                                label: 'Persona',
-                                value: 'persona'
                             }
                         ]}
                         onChange={queryMode => setAttributes({ queryMode })}
                     />
                 </PanelRow>
-                {queryMode === 'persona' && <PanelRow>
-                    <SelectControl
-                        label={__('Persona')}
-                        value={persona}
-                        options={personae.map(personaOpt => {
-                            return {
-                                label: personaOpt.name,
-                                value: personaOpt.id,
-                            }
-                        })}
-                        onChange={persona => setAttributes({ persona })}
-                    />
-                </PanelRow>}
             </PanelBody>
         </InspectorControls>
     )

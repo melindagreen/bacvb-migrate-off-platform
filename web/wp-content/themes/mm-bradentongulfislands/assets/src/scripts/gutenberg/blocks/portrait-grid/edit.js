@@ -30,29 +30,9 @@ const ALLOWED_MEDIA_TYPES = ['image'];
  * @returns {WPElement}
  */
 const Wizard = props => {
-  const { attributes: { posts, persona, queryMode, }, setAttributes } = props;
+  const { attributes: { posts, queryMode, }, setAttributes } = props;
   const updateSegment = updateObjArrAttr('posts', setAttributes, posts);
 
-  const personae = useSelect((select) => select(
-    'maddenontology/data-store'
-  ).getAllPersonae());
-
-  if (queryMode === 'persona') return (
-    <div className='grid-wizard--personae'>
-      <h3>Grid Items</h3>
-      <SelectControl
-        label={__('Persona')}
-        value={persona}
-        options={personae.map(personaOpt => {
-          return {
-            label: personaOpt.name,
-            value: personaOpt.id,
-          }
-        })}
-        onChange={persona => setAttributes({ persona })}
-      />
-    </div>
-  );
 
   if (queryMode === 'manual') return (
     <Repeater

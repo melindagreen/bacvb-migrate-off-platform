@@ -5,6 +5,54 @@
   margin: 11rem auto 20rem auto;
   position: relative;
 
+  .grid-items {
+    display: grid;
+    row-gap: 1.5rem;
+    column-gap: 1rem;
+    margin: auto 7vw;
+    width: 90%;
+  }
+
+  // if we need different length templates, add them here
+  // for now assuming only 3
+  &.is-length-3 {
+    .grid-items {
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(4,13vw);
+      grid-template-areas:
+        ".     item2 item2"
+        "item1 item2 item2"
+        "item1 item3 ."
+        "item1 item3 ."
+        ".     item3 .";
+      .grid-item {
+        &--1 {
+          grid-area: item1;
+          --webkit-mask: url("images/portraitmask1.svg") no-repeat center;
+          mask: url("images/portraitmask1.svg") no-repeat center;
+        }
+        &--2 {
+          grid-area: item2;
+          --webkit-mask: url("images/portraitmask2.svg") no-repeat center;
+          mask: url("images/portraitmask2.svg") no-repeat left;
+        }
+        &--3 {
+          grid-area: item3;
+          --webkit-mask: url("images/portraitmask3.svg") no-repeat left;
+          mask: url("images/portraitmask3.svg") no-repeat left;
+        }
+
+        &--1,&--2,&--3 {
+          --webkit-mask-size: contain;
+          mask-size: contain;
+        }
+      }
+    }
+  }
+
   .wp-block-heading {
     margin-bottom: 0;
   }
@@ -55,6 +103,7 @@
       height: 1rem;
       left: 0;
       position: absolute;
+      z-index: -1;
     }
 
     &::after {
@@ -117,12 +166,12 @@
       position: absolute;
     }
 
-    &--1 {
+    &--2 {
       background: $rust;
       width: 17rem;
       min-height: 16rem;
-      right: calc(100vw - 37rem);
-      top: -19%;
+      right: 68%;
+      top: -4rem;
 
       &::before, &::after {
 
@@ -150,11 +199,11 @@
       }
     }
 
-    &--2 {
+    &--1 {
 
       background-color: $sky-blue;
-      bottom: -32%;
-      left: 18%;
+      bottom: -11rem;
+      right: 68%;
 
       .grid-item-body__arrow {
 
@@ -195,8 +244,8 @@
     &--3 {
 
       background-color: $bradenton-teal;
-      bottom: 9%;
-      right: calc(100vw - 76rem);
+      bottom: 5rem;
+      left: 60%;
 
       .grid-item-body__arrow {
 
@@ -228,14 +277,26 @@
   .grid-item {
     position: relative;
 
-
-    &--1, &--2 {
+    &--1 {
 
       .grid-item__background {
 
         .grid-item__image {
 
-          width: 500px;
+          min-width: 500px;
+          width: 30vw;
+        }
+      }
+    }
+
+    &--2 {
+
+      .grid-item__background {
+
+        .grid-item__image {
+
+          min-width: 500px;
+          width: 37vw;
         }
       }
     }
@@ -246,7 +307,8 @@
 
         .grid-item__image {
 
-          width: 300px;
+          min-width: 400px;
+          width: 21vw;
         }
       }
     }
@@ -302,50 +364,7 @@ LARGE SCREENS
 *********************/
 @media only screen and (min-width: #{$screen-lg + 1}) {
   .#{$block-prefix}-portrait-grid {
-    .grid-items {
-      display: grid;
-      row-gap: 1.5rem;
-      column-gap: 1rem;
-      margin: auto 7vw;
-      width: 90%;
-    }
-
-    // if we need different length templates, add them here
-    // for now assuming only 3
-    &.is-length-3 {
-      .grid-items {
-        grid-template-columns: repeat(3, 500px 500px 5px);
-        grid-template-rows: repeat(4,20vh);
-        grid-template-areas:
-          ".     item2 item2"
-          "item1 item2 item2"
-          "item1 item3 ."
-          "item1 item3 ."
-          ".     item3 .";
-        .grid-item {
-          &--1 {
-            grid-area: item1;
-            --webkit-mask: url("images/portraitmask1.svg") no-repeat center;
-            mask: url("images/portraitmask1.svg") no-repeat center;
-          }
-          &--2 {
-            grid-area: item2;
-            --webkit-mask: url("images/portraitmask2.svg") no-repeat center;
-            mask: url("images/portraitmask2.svg") no-repeat left;
-          }
-          &--3 {
-            grid-area: item3;
-            --webkit-mask: url("images/portraitmask3.svg") no-repeat left;
-            mask: url("images/portraitmask3.svg") no-repeat left;
-          }
-
-          &--1,&--2,&--3 {
-            --webkit-mask-size: contain;
-            mask-size: contain;
-          }
-        }
-      }
-    }
+  
   }
 }
 
@@ -354,34 +373,87 @@ MEDIUM SCREENS
 *********************/
 @media only screen and (min-width: #{$screen-sm + 1}) and (max-width: $screen-lg) {
   .#{$block-prefix}-portrait-grid {
-    .grid-items {
-      display: flex;
-      flex-wrap: wrap;
-      width: 90;
-      max-width: 90%;
-    }
+    
+   .grid-item-body {
 
-    // if we need different length templates, add them here
-    // for now assuming only 3
-    &.is-length-3 {
-      .grit-items {
-        .grid-item {
-          &--1,
-          &--2 {
-            flex: 0 0 calc(50% - 1rem);
-            height: 80vh;
-          }
-          &--1 {
-            margin-right: 2rem;
-          }
-          &--3 {
-            flex: 0 0 100%;
-            height: 40vh;
-            margin-top: 1rem;
-          }
+    transform: scale(0.75);
+   }
+
+   .grid-item {
+    position: relative;
+
+    &--1 {
+
+      .grid-item__background {
+
+        .grid-item__image {
+
+          min-width: 235px;
+          width: 29vw;
         }
       }
     }
+
+    &--2 {
+
+      .grid-item__background {
+
+        .grid-item__image {
+      
+          min-width: 235px;
+          width: 41vw;
+        }
+      }
+    }
+
+    &--3 {
+
+      .grid-item__background {
+
+        .grid-item__image {
+
+          min-width: 245px;
+          width: 10vw;
+        }
+      }
+    }
+  }
+
+   .grid-items {
+
+    margin: auto 0;
+   }
+
+   &.is-length-3 {
+    .grid-items {
+
+      left: 8%;
+      transform: unset;
+      grid-template-rows: repeat(4,14vw);
+    }
+  }
+  .grid-item-body {
+
+    z-index: 2;
+
+    &--2 {
+
+      right: 64%;
+      top: -4rem;
+    }
+
+    &--1 {
+
+      bottom: -8rem;
+      right: 63%;
+    }
+
+    &--3 {
+
+      bottom: 2rem;
+      left: 58%;
+    }
+  }
   }
 }
 
@@ -397,21 +469,110 @@ SMALL SCREENS
     }
 
     .grid-item {
+      position: relative;
+  
+      &--2 {
+  
+        .grid-item__background {
+  
+          .grid-item__image {
+  
+            min-width: 250px;
+            width: 79vw;
+          }
+        }
+      }
+  
+      &--1 {
+  
+        .grid-item__background {
+  
+          .grid-item__image {
+        
+            min-width: 260px;
+            width: 81vw;
+          }
+        }
+      }
+  
+      &--3 {
+  
+        .grid-item__background {
+  
+          .grid-item__image {
+  
+            
+            min-width: 260px;
+            width: 57vw;
+          }
+        }
+      }
+    }
+
+    .grid-items {
+
+      display: block;
+      margin: auto 0;
+    }
+
+    .grid-item {
       width: 100%;
-      height: 50vh;
+      height: 80vw;
+      margin: 2rem auto;
       & + * {
         margin-top: 2rem;
       }
-      &.grid-item--3 {
-        display: none;
-      }
+ 
 
       .grid-item__body {
         width: 100%;
       }
-      .grid-item__background {
-        &::before {
-          background: linear-gradient(to bottom, transparent 0%, rgba(black, 0.8) 50%);
+    }
+
+    .grid-item-body {
+
+      position: relative;
+      padding: 4% 5%;
+  
+      &--2 {
+
+        right: unset;
+        top: unset;
+        margin-top: 4rem;
+        margin-bottom: -2rem;
+        margin-left: auto;
+
+        .grid-item-body__arrow {
+
+          bottom: -60%;
+          right: 115%;
+          transform: rotate(90deg);
+        }
+      }
+  
+      &--1 {
+  
+        bottom: unset;
+        right: unset;
+
+        .grid-item-body__arrow {
+
+          top: 44%;
+          left: 72%;      
+          transform: rotate(180deg);
+        }
+      }
+  
+      &--3 {
+  
+        bottom: unset;
+        left: unset;
+
+        .grid-item-body__arrow {
+
+          top: 83%;
+          left: -2%;
+          transform: rotate(270deg);
         }
       }
     }

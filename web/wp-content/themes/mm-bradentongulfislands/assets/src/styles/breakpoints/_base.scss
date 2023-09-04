@@ -9,6 +9,7 @@ body {
     flex-direction: column;
     justify-content: space-between;
     font-family: $font-body;
+    overflow-x: hidden;
 }
 
 p {
