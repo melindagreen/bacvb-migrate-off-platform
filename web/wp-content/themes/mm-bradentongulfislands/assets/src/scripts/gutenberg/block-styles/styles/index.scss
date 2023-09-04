@@ -110,7 +110,7 @@ BUTTONS
 
 .is-style-round-button {
 
-    .wp-block-button__link {
+    .wp-block-button__link, .wp-element-button {
 
         border-radius: 200px;
         text-transform: uppercase;

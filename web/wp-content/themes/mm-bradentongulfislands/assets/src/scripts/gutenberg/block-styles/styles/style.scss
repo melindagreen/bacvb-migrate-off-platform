@@ -74,8 +74,8 @@ IMAGES
     --webkit-mask-size: contain;
     mask-size: contain;
 
-    @media only screen and (max-width: $screen-sm) {
-        min-height: 100vw !important;
+    @media only screen and (max-width: 781) {
+        min-height: 70vw !important;
     }
 }
 
