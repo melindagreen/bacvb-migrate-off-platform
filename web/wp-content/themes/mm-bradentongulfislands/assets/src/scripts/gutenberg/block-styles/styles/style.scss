@@ -66,7 +66,7 @@ IMAGES
 .is-style-cta-card {
 
     bottom: 1rem;
-    margin-bottom: 3rem;
+    margin-bottom: 7rem;
     max-width: 35rem;
     overflow: unset;
 
@@ -76,7 +76,7 @@ IMAGES
         width: 85%;
         position: absolute;
         bottom: -7rem;
-        padding: 1rem 4rem;
+        padding: 2rem 4rem 1rem 4rem;
 
         &::before {
 
@@ -140,6 +140,29 @@ BUTTONS
 
             transition: all 0.3s ease-in-out;
             transform: rotate(-10deg);
+        }
+    }
+}
+
+.is-style-round-button {
+
+    .wp-block-button__link {
+
+        border-radius: 200px;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        font-weight: 600;
+        transition: all 0.3s ease-in-out;
+        color: #2B7B7C;
+        background-color: #B0D9E6;
+        padding-left: 0.7rem;
+        padding-right: 0.7rem;
+
+        &:hover {
+
+            text-decoration: none;
+            transition: all 0.2s ease-in-out;
+            transform: scale(1.05);
         }
     }
 }

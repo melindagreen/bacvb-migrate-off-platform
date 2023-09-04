@@ -28,6 +28,11 @@
                 "name": "arrow-button",
                 "label": "Arrow",
                 "isDefault": false
+            },
+            {
+                "name": "round-button",
+                "label": "Round",
+                "isDefault": false
             }
         ]
     }
