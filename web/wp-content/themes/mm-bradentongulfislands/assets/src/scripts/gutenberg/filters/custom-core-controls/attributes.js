@@ -32,16 +32,16 @@ const addCustomAttrs = (settings) => {
                                 },
                             };
 
-                        case 'overlap':
+                        case 'layer':
                             settings.attributes = {
                             ...settings.attributes,
-                            overlap: {
-                            type: 'number',
-                            default: 0,
+                            layer: {
+                            type: 'string',
+                            default: 'middle',
                             },
                         };
 
-                        case 'layer':
+                        case 'overlap':
                             settings.attributes = {
                             ...settings.attributes,
                             overlap: {

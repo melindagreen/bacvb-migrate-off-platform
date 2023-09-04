@@ -98,9 +98,9 @@ const withCustomControls = createHigherOrderComponent((BlockEdit) => {
                                             label="Layer"
                                             value={ attributes.layer }
                                             options={ [
-                                                { label: 'Middle', value: 0 },
-                                                { label: 'Top', value: 1 },
-                                                { label: 'Bottom', value: -1 }
+                                                { label: 'Middle', value: 'middle' },
+                                                { label: 'Top', value: 'top' },
+                                                { label: 'Bottom', value: 'bottom' }
                                             ] }
                                             onChange={ layer => {
                                                 setAttributes({ layer })

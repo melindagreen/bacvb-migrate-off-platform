@@ -49,6 +49,7 @@ const applyCustomAttrs = (el, block, attributes) => {
                           {content}
                         </a>;
                     }
+                break;
                 case 'overlap':
                     if(attributes.overlap !== 0) {
                         
@@ -60,11 +61,17 @@ const applyCustomAttrs = (el, block, attributes) => {
                         newProps.style = { ...newProps.style, marginBottom: margin };
                         }
                     }
+                break;
                 case 'layer':
                     if(attributes.layer !== 0) {
-                        
-                        newProps.style = { ...newProps.style, zIndex: attributes.layer, position: 'relative' };
+                        const layerIndex = {
+                            top: 1,
+                            middle: 0,
+                            bottom: -1
+                        }
+                        newProps.style = { ...newProps.style, zIndex: layerIndex[attributes.layer], position: 'relative' };
                     }
+                break;
             }
         });
 
