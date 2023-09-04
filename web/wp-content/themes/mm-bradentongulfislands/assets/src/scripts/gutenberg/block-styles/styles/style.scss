@@ -55,6 +55,11 @@ TEMPLATES
 /*********************
 IMAGES
 *********************/
+.wp-block-cover {
+
+    overflow: unset;
+}
+
 .is-style-bubble {
 
     --webkit-mask: url("images/bubble-mask.svg") no-repeat center;
@@ -66,6 +71,7 @@ IMAGES
 .is-style-cta-card {
 
     bottom: 1rem;
+    margin: auto;
     margin-bottom: 7rem;
     max-width: 35rem;
     overflow: unset;
