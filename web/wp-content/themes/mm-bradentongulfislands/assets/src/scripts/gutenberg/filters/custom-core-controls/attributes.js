@@ -32,6 +32,15 @@ const addCustomAttrs = (settings) => {
                                 },
                             };
 
+                        case 'reverse-mobile':
+                            settings.attributes = {
+                            ...settings.attributes,
+                            reverseMobile: {
+                                type: 'boolean',
+                                default: false,
+                            },
+                        };
+
                         case 'layer':
                             settings.attributes = {
                             ...settings.attributes,

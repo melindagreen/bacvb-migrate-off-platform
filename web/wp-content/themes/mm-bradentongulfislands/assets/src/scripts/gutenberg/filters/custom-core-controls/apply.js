@@ -72,6 +72,12 @@ const applyCustomAttrs = (el, block, attributes) => {
                         newProps.style = { ...newProps.style, zIndex: layerIndex[attributes.layer], position: 'relative' };
                     }
                 break;
+                case 'reverse-mobile':
+                    if(attributes.reverseMobile) {
+
+                        newProps.style = { ...newProps.style, flexDirection: 'column-reverse' };
+                    }
+                break;
             }
         });
 

@@ -4,7 +4,7 @@
 import { __ } from '@wordpress/i18n';
 import { createHigherOrderComponent, } from '@wordpress/compose';
 import { InspectorControls, BlockControls, JustifyContentControl, __experimentalLinkControl as LinkControl } from '@wordpress/block-editor';
-import { PanelBody, PanelRow, ToolbarButton, SelectControl, Popover, __experimentalNumberControl as NumberControl } from '@wordpress/components';
+import { PanelBody, PanelRow, ToolbarButton, SelectControl, Popover, __experimentalNumberControl as NumberControl, ToggleControl } from '@wordpress/components';
 import { useState } from '@wordpress/element';
 
 // Local Dependencies
@@ -79,6 +79,19 @@ const withCustomControls = createHigherOrderComponent((BlockEdit) => {
                             CUSTOMIZE_BLOCKS[name].map(
                                 (customization) => {
                                     switch (customization) {
+                                        case 'reverse-mobile':
+                                           return <PanelBody><ToggleControl
+                                                label="Reverse on Mobile"
+                                                help={
+                                                    attributes.reverseMobile
+                                                        ? 'Columns are reversed on mobile'
+                                                        : 'Columns are not reversed on mobile'
+                                                }
+                                                checked={ attributes.reverseMobile }
+                                                onChange={ reverseMobile => {
+                                                    setAttributes({ reverseMobile })
+                                                } }
+                                            /></PanelBody>
                                         case 'overlap':
                                             return <PanelBody><NumberControl
                                             onChange={ overlap => {

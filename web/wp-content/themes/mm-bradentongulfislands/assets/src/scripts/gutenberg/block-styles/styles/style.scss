@@ -35,6 +35,13 @@ COLUMNS
     margin-left: 6vw;
 }
 
+.is-layout-flex {
+
+    @media only screen and (min-width: 782px) {
+        flex-direction: inherit !important;
+    }
+}
+
 /*********************
 TEMPLATES
 *********************/
@@ -66,6 +73,10 @@ IMAGES
     mask: url("images/bubble-mask.svg") no-repeat center;
     --webkit-mask-size: contain;
     mask-size: contain;
+
+    @media only screen and (max-width: $screen-sm) {
+        min-height: 100vw !important;
+    }
 }
 
 .is-style-cta-card {
