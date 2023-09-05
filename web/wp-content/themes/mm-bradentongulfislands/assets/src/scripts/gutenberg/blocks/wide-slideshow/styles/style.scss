@@ -130,6 +130,7 @@ Wide Slideshow
       left: 7%;
       z-index: 2;
       display: flex;
+      align-items: center;
       transition: all 0.1s ease-in-out;
 
       &--purple {
@@ -262,11 +263,6 @@ Wide Slideshow
     color: $sky-blue;
     overflow-wrap: unset;
     line-height: 0.8em;
-  }
-
-  #infoblock-info {
-
-    min-height: 8rem;
   }
   }
 
