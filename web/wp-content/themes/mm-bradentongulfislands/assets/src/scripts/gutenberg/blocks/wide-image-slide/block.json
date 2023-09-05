@@ -41,6 +41,12 @@
           "default": "",
           "selector": "a",
           "attribute": "href"
+        },
+        "buttonText": {
+          "type": "string",
+          "default": "Learn More",
+          "selector": "a",
+          "attribute": "href"
         }
   }
   }

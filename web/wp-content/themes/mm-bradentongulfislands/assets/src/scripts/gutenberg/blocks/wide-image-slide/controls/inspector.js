@@ -14,7 +14,7 @@ const ALLOWED_MEDIA_TYPES = ['image'];
 const Inspector = props => {
 
         const { attributes, setAttributes } = props;
-        const { mediaId, mediaUrl, title, info, buttonUrl} = attributes;
+        const { mediaId, mediaUrl, title, info, buttonUrl, buttonText } = attributes;
      
         const removeMedia = () => {
             setAttributes({
@@ -99,6 +99,13 @@ const Inspector = props => {
                                 label="Info"
                                 onChange={ ( info ) => setAttributes( { info } ) }
                                 value={ info }
+                            />
+                        </PanelRow>
+                        <PanelRow>
+                            <TextControl
+                                label="Button Text"
+                                onChange={ ( buttonText ) => setAttributes( { buttonText } ) }
+                                value={ buttonText }
                             />
                         </PanelRow>
                         <PanelRow>

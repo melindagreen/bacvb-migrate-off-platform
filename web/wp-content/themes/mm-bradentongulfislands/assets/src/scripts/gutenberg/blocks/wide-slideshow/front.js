@@ -12,9 +12,14 @@ jQuery(document).ready(function ($) {
         navigation: {
           nextEl: ".swiper-button-next",
           prevEl: ".swiper-button-prev",
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true
         }
       }); 
       changeInfoBlock();
+      console.log(heroBannerCarousel);
       
       heroBannerCarousel.on('slideChangeTransitionEnd', ()=> {
         
@@ -26,11 +31,19 @@ jQuery(document).ready(function ($) {
 
       function changeInfoBlock() {
 
-        const infoItems = ['title', 'info'];
+        const infoItems = ['title', 'info', 'buttontext'];
     
         infoItems.map((item)=>{
-    
+          
+          let activeItem = $(".swiper-wrapper .swiper-slide-active");
           let itemText = $('.swiper-wideslideshow .swiper-wrapper').find('.swiper-slide-active').data(item);
+
+          if (activeItem.index() % 2 === 0) {
+            $('.bc-infoblock').addClass('bc-infoblock--purple');
+          }
+          else {
+            $('.bc-infoblock').removeClass('bc-infoblock--purple');
+          }
     
           if(itemText.length > 0) {
             

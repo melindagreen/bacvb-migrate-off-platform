@@ -2,7 +2,7 @@
 @import 'styles/utils/typography';
 
 $swiperNavigationSize: 30px;
-$nav-dist: 10%;
+$nav-dist: 4%;
 
 /*********************
 Wide Slideshow
@@ -65,9 +65,31 @@ Wide Slideshow
       }
     }
 
+
     .hidden {
       
       visibility: hidden;
+    }
+  }
+
+  .swiper-pagination {
+
+    position: unset;
+    text-align: left;
+
+    .swiper-pagination-bullet {
+
+      background-color: $white;
+      border: 2px solid $sky-blue;
+      width: 12px;
+      height: 12px;
+      opacity: 1;
+    }
+
+    .swiper-pagination-bullet-active {
+
+      background-color: transparent;
+      border-color: $white;
     }
   }
 
@@ -96,63 +118,85 @@ Wide Slideshow
       -webkit-align-items: center;
       align-items: center;
     }
+
     .bc-infoblock {
-      
-      background: rgba(74, 107, 174, 0.85)  0% 0% no-repeat padding-box;
+
+      background: rgba(54, 122, 123, 0.85)  0% 0% no-repeat padding-box;
       height: 300px;
       max-width: 500px;
       width: 88%;
       position: absolute;
-      bottom: -5rem;
+      bottom: 0;
       left: 7%;
-      z-index:2;
+      z-index: 2;
       display: flex;
+      transition: all 0.1s ease-in-out;
+
+      &--purple {
+
+        background: rgba(74,107,174,.85)  0% 0% no-repeat padding-box;
+        transition: all 0.1s ease-in-out;
+      }
+      
 
       &__navigation {
 
         .swiper-button-next, .swiper-button-prev {
      
-          width: calc(#{$swiperNavigationSize}/ 44 * 27);
+          width: 35px;
           font-size: $swiperNavigationSize;
           font-weight: 600;
-          height: $swiperNavigationSize;
+          height: 34px;
           margin-top: calc(0px - (#{$swiperNavigationSize}/ 2));
           top: auto;
-          bottom: 36.89px;
-          color: $soft-black;
+          bottom: 12px;
+          color: transparent;
+          transition: all 0.2s ease-in-out;
   
           &::after {
   
             font-size: $swiperNavigationSize;
+          }
+
+          &:hover {
+
+            transform: scale(1.1);
+            transition: all 0.2s ease-in-out;
           }
         }
   
         .swiper-button-next {
           
           right: $nav-dist;
+          background: url('images/ui-next-on.png');
+          background-size: contain;
+        
         }
   
         .swiper-button-prev {
           
           right: calc($nav-dist + 45px);
           left: auto;
+          background: url('images/ui-prev-off.png');
+          background-size: contain;
         }
   
       }
       &__content {
 
-        padding: 1.5rem 2.5rem;
+        padding: 1rem 1.5rem;
 
         .infoblock__link {
 
           color: $dk-blue;
-          border: 0.5px solid $rust;
+          border: 1.5px solid $rust;
           background-color: white;
           border-radius: 31px;
           padding: 0.3rem 0.85rem;
           transition: all 0.2s ease-in-out;
           text-transform: uppercase;
           font-weight: 700;
+          
 
           &:hover {
 
@@ -167,17 +211,17 @@ Wide Slideshow
         .infoblock__item {
 
           color: $white;
+          font-family: $font-body;
           margin: 12px auto;
           text-align: left;
-          font-family: $font-body;
           font-weight: 500;
-          font-size: 14px;
+          font-size: 13px;
           letter-spacing: 0.08rem;
           opacity: 1;
           transition: all 0.2s ease-out;
-          width: 300px;
+          width: 435px;
           overflow-wrap: break-word;
-          line-height: 1.5em;
+          line-height: 1.7em;
 
           &--hide {
 
@@ -214,10 +258,15 @@ Wide Slideshow
 
     font-family: $font-title;
     font-weight: 700;
-    font-size: 4rem;
+    font-size: 3rem;
     color: $sky-blue;
     overflow-wrap: unset;
     line-height: 0.8em;
+  }
+
+  #infoblock-info {
+
+    min-height: 8rem;
   }
   }
 

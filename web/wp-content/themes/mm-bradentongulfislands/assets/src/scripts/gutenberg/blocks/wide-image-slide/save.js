@@ -3,12 +3,13 @@
  const save = (props) => {
 
     const {attributes} = props;
-    const {mediaUrl, mediaAlt, title, info, buttonUrl} = attributes;
+    const {mediaUrl, mediaAlt, title, info, buttonUrl, buttonText} = attributes;
     
     return (
         <div className="swiper-slide bc-wrapper__items" 
         data-title={title}
         data-info={info}
+        data-buttontext={buttonText}
         data-buttonurl={buttonUrl}
         >
             <img data-load-type="img" 
