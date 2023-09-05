@@ -35,5 +35,14 @@
                 "isDefault": false
             }
         ]
+    },
+    "mm-bradentongulfislands/portrait-grid": {
+        "add": [
+            {
+                "name": "nautical-illustrations",
+                "label": "Nautical Illustrations",
+                "isDefault": false
+            }
+        ]
     }
 }
