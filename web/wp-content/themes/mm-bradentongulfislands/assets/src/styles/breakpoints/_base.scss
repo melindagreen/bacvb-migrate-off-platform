@@ -15,8 +15,7 @@ body {
 p {
 
     line-height: 1.8em;
-    font-size: 0.9rem;
-    font-weight: lighter;
+    font-size: 1rem;
     color: $soft-black;
 }
 
@@ -850,6 +849,7 @@ FOOTER
         font-size: 0.7rem;
         width: 100%;
         margin-top: 1rem;
+        font-weight: 500;
     }
 
     &__brand {
@@ -876,6 +876,19 @@ FOOTER
         position: absolute;
         width: 100vw;
         z-index: -1;
+    }
+
+    &::after {
+
+        content: " ";
+        background: url('images/bottom-wave.svg');
+        background-size: cover;
+        bottom: 0;
+        height: 3.5rem;
+        left: 0;
+        position: absolute;
+        width: 100vw;
+        z-index: 0;
     }
 
     .social-container {
@@ -936,6 +949,7 @@ FOOTER
 .footer__copyright {
     padding: 0 1rem;
     text-align: center;
+    z-index: 2;
 }
 
 /*********************

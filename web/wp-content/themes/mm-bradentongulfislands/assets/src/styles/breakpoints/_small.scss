@@ -202,10 +202,61 @@ FOOTER
 *********************/
 .footer {
     flex-direction: column;
+    padding: 2em 6vw 6rem 6vw;
 
     .footer-col {
 
         margin: auto;
+    }
+
+    &__copyright {
+
+       font-size: 0.6rem;
+       bottom: 0;
+    }
+
+    // Footer menu
+.footer-menu {
+    margin-top: 1rem;
+    ul {
+
+        .menu-item {
+
+    
+            a {
+
+                text-decoration: none;
+                color: white;
+                text-transform: uppercase;
+                font-size: 0.9rem;
+            }
+        }
+    }
+}
+
+    .search-form {
+
+        width: 50vw;
+        &__submit {
+    
+           left: -8.5vw;
+        }
+        &__field {
+
+            position: -7vw;
+        }
+    }
+
+    .social-container {
+
+        .social-icon {
+         
+            svg {
+
+                height: 40px;
+                width: 40px;
+            }
+        }
     }
 }
 
