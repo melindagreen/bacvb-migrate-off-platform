@@ -218,31 +218,31 @@
                             </figure>
                             <?php } ?>
                         </div>
+                        <!-- SOCIAL LINKS -->
+                        <div class="social-container">
+                            <div class="social-links">
+                                <a aria-label='Facebook' href="">
+                                    <?php echo file_get_contents( get_theme_file_uri() . "/assets/images/icons/social/facebook.svg" ) ?>
+                                </a>
+
+                                <a aria-label='Twitter' href="">
+                                    <?php echo file_get_contents( get_theme_file_uri() . "/assets/images/icons/social/twitter.svg" ) ?>
+                                </a>
+
+                                <a aria-label='Instagram' href="">
+                                    <?php echo file_get_contents( get_theme_file_uri() . "/assets/images/icons/social/instagram.svg" ) ?>
+                                </a>
+
+                                <a aria-label='YouTube' href="">
+                                    <?php echo file_get_contents( get_theme_file_uri() . "/assets/images/icons/social/pinterest.svg" ) ?>
+                                </a>
+                        </div>
+                    </div>
                     </div>
                 </div>
                 <?php }
                     wp_reset_postdata();
                 ?>
-                <!-- SOCIAL LINKS -->
-                <div class="social-container">
-                    <div class="social-links">
-                        <a aria-label='Facebook' href="">
-                            <?php echo file_get_contents( get_theme_file_uri() . "/assets/images/icons/social/facebook.svg" ) ?>
-                        </a>
-
-                        <a aria-label='Twitter' href="">
-                            <?php echo file_get_contents( get_theme_file_uri() . "/assets/images/icons/social/twitter.svg" ) ?>
-                        </a>
-
-                        <a aria-label='Instagram' href="">
-                            <?php echo file_get_contents( get_theme_file_uri() . "/assets/images/icons/social/instagram.svg" ) ?>
-                        </a>
-
-                        <a aria-label='YouTube' href="">
-                            <?php echo file_get_contents( get_theme_file_uri() . "/assets/images/icons/social/pinterest.svg" ) ?>
-                        </a>
-                    </div>
-                </div>
                     <span class='loader show'>
                         <span class='sr-only'>Loading</span>
                         </span>
