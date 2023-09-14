@@ -31,8 +31,11 @@ COLUMNS
 *********************/
 .wp-block-columns {
 
-    margin-right: 6vw;
-    margin-left: 6vw;
+    padding-right: 6vw;
+    padding-left: 6vw;
+    max-width: 90rem;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .is-layout-flex {
