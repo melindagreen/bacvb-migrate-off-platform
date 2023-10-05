@@ -222,7 +222,6 @@ IMAGES
                         grid-column: 7/10;
                         grid-row: 2 / 3;
                     }
-                   
                 }
             }
 
@@ -302,6 +301,20 @@ IMAGES
 
             figure {
 
+    
+                --webkit-mask: url("images/collage-square.svg") no-repeat center;
+                mask: url("images/collage-square.svg") no-repeat center;
+                --webkit-mask-size: cover;
+                mask-size: cover;
+
+                &:nth-child(3), &:nth-child(5) {
+                
+                    --webkit-mask: url("images/collage-square-long.svg") no-repeat center;
+                    mask: url("images/collage-square-long.svg") no-repeat center;
+                    --webkit-mask-size: contain;
+                    mask-size: contain;
+                }
+
                 &:nth-child(1) {
                     grid-area: 3 / 3 / 5 / 5;
                 }
@@ -335,12 +348,11 @@ IMAGES
 
                     &:not(.disable-animation) {
 
-                        transition:  border-radius .8s;
                         transition-timing-function: ease-out;
                         overflow: hidden;
-                        -webkit-mask-image: -webkit-radial-gradient(white, black); //Safari fix 
+                      
                         &:hover:not(.disable-animation) {
-                            border-radius: 50px;
+    
                             transition:  border-radius .8s;
                             transition-timing-function: ease-out;
                             cursor: pointer;
@@ -368,17 +380,18 @@ IMAGES
                     }
 
                     figcaption {
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        background: transparent !important;
-                        bottom: initial !important;
-                        font-family: $font-header;
-                        font-size: calc(60px - 100%);
-                        text-shadow: 0px 0px 10px #00000080;
-                        margin-top: initial !important;
-                        height: 100%;
-                        max-height: 100% !important;
+
+                            background: transparent!important;
+                            bottom: 1.5rem;
+                            font-family: var(--wp--preset--font-family--header);
+                            font-size: calc(2.5rem - 100%);
+                            height: -webkit-fit-content;
+                            height: -moz-fit-content;
+                            height: fit-content;
+                            padding-left: 5%;
+                            margin-top: 0!important;
+                            text-align: left;
+                            width: fit-content;
 
                         a {
                             height: 100%;
@@ -433,17 +446,17 @@ IMAGES
         &.has-nested-images {
             &.is-style-masonry {
 
-                &.columns-3 {
-                    grid-template-rows: repeat(4, 15vw) ;  
+                // &.columns-3 {
+                //     grid-template-rows: repeat(4, 15vw) ;  
                     
-                    figure {
-                        &:nth-child(4) {
-                            grid-column: 1/10;
-                            grid-row: 5 / 5;
-                        }
+                //     figure {
+                //         &:nth-child(4) {
+                //             grid-column: 1/10;
+                //             grid-row: 5 / 5;
+                //         }
                        
-                    }
-                }
+                //     }
+                // }
 
                 &.is-style-masonry-block-mobile {
                     display: flex;
@@ -642,7 +655,6 @@ IMAGES
                     &.wp-block-image {
                         width: auto !important;
                         border-radius: 0 1rem 1rem 1rem;
-                        -webkit-mask-image: -webkit-radial-gradient(white, black); //Safari fix 
 
                         img {
                             border-radius: 0 1rem 1rem 1rem;
