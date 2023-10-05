@@ -26,6 +26,24 @@ TEXT
     line-height: 1.2em;
 }
 
+//Separator
+.is-style-curved-line {
+
+    border-color: transparent !important;
+
+    &::after {
+
+        content: ' ';
+        background-image: url('images/curved-line.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        display: inline-block;
+        max-width: 20rem;
+        width: 80%;    
+        height: 1rem;
+    }
+}
+
 /*********************
 COLUMNS
 *********************/

@@ -22,6 +22,15 @@
             }
         ]
     },
+    "core/separator": {
+        "add": [
+            {
+                "name": "curved-line",
+                "label": "Curved Line",
+                "isDefault": false
+            }
+        ]
+    },
     "core/button": {
         "add": [
             {
