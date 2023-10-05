@@ -53,7 +53,7 @@
 
 # WordPress dynamic folders
 /web/wp-content/cache/
-# /web/wp-content/uploads/
+/web/wp-content/uploads/
 
 # Ignore local configuration files
 /.env

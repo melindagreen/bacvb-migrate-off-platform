@@ -27,6 +27,15 @@
             }
         ]
     },
+    "core/gallery": {
+        "add": [
+            {
+                "name": "masonry",
+                "label": "Masonry",
+                "isDefault": false
+            }     
+        ]
+    },
     "core/group": {
         "add": [
             {
