@@ -197,3 +197,14 @@ IMAGES
         }
     }
 }
+
+.is-style-collage-cover {
+
+    .wp-block-cover__background, .wp-block-cover__image-background {
+        
+        --webkit-mask: url("images/large-image-mask.svg") no-repeat center;
+        mask: url("images/large-image-mask.svg") no-repeat center;
+        --webkit-mask-size: cover;
+        mask-size: cover;
+    }
+}
