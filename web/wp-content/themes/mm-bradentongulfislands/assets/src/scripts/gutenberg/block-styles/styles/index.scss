@@ -54,6 +54,15 @@ COLUMNS
     margin-left: 5vw;
 }
 
+//groups
+.is-style-collage-square {
+
+    --webkit-mask: url("images/collage-square.svg") no-repeat center;
+    mask: url("images/collage-square.svg") no-repeat center;
+    --webkit-mask-size: cover;
+    mask-size: cover;
+}
+
 /*********************
 LAYOUT
 *********************/

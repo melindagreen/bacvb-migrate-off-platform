@@ -64,6 +64,16 @@ COLUMNS
     }
 }
 
+//groups
+.is-style-collage-square {
+
+    --webkit-mask: url("images/collage-square.svg") no-repeat center;
+    mask: url("images/collage-square.svg") no-repeat center;
+    --webkit-mask-size: cover;
+    mask-size: cover;
+}
+
+
 /*********************
 TEMPLATES
 *********************/
@@ -129,6 +139,17 @@ IMAGES
             top: -0.5rem;
             z-index: -1;
         }
+    }
+}
+
+.is-style-collage-cover {
+
+    .wp-block-cover__background, .wp-block-cover__image-background {
+        
+        --webkit-mask: url("images/large-image-mask.svg") no-repeat center;
+        mask: url("images/large-image-mask.svg") no-repeat center;
+        --webkit-mask-size: cover;
+        mask-size: cover;
     }
 }
 

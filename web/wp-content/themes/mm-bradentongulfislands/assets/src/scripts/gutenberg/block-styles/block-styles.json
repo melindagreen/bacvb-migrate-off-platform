@@ -19,7 +19,21 @@
                 "name": "cta-card",
                 "label": "CTA Card",
                 "isDefault": false
+            },
+            {
+                "name": "collage-cover",
+                "label": "Collage Cover",
+                "isDefault": false
             }
+        ]
+    },
+    "core/group": {
+        "add": [
+            {
+                "name": "collage-square",
+                "label": "Collage Square",
+                "isDefault": false
+            }     
         ]
     },
     "core/separator": {
