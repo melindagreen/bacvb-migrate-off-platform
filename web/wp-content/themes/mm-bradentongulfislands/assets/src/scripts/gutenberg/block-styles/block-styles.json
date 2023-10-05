@@ -44,5 +44,14 @@
                 "isDefault": false
             }
         ]
+    },
+    "mm-bradentongulfislands/hero": {
+        "add": [
+            {
+                "name": "secondary-header",
+                "label": "Secondary Header",
+                "isDefault": false
+            }
+        ]
     }
 }
