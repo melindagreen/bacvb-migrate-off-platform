@@ -1,0 +1,42 @@
+{
+  "name": "showcase-card",
+  "scripts": [
+    "front.js"
+  ],
+  "settings": {
+    "title": "Showcase Card",
+    "description": "showcase block",
+    "icon": "excerpt-view",
+    "category": "layout",
+    "attributes": {
+      "imageUrl": {
+        "type": "string",
+        "default": ""
+      },
+      "imageAlt": {
+        "type": "string",
+        "default": ""
+      },
+      "buttonUrl": {
+        "type": "string",
+        "default": ""
+      },
+      "buttonText": {
+        "type": "string",
+        "default": ""
+      },
+      "bodyText": {
+        "type": "string",
+        "default": "",
+        "source": "html",
+        "selector": "p.contents-body"
+      },
+      "title": {
+        "type": "string",
+        "default": "",
+        "source": "html",
+        "selector": "h3.contents-title"
+      }
+    }
+  }
+}
