@@ -638,7 +638,6 @@ BUTTONS
         padding: 0;
         margin-bottom: 1.5rem;
         transition: all 0.3s ease-in-out;
-        width: max-content;
     }
 
     &::after {
@@ -648,7 +647,7 @@ BUTTONS
         width: 50px;
         height: 50px;
         right: -18%;
-        top: 1rem;
+        top: 2%;
         background: url("images/curve-arrow-small.png");
         background-repeat: no-repeat;
         background-size: contain;
