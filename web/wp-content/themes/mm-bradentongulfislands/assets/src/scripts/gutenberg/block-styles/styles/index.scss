@@ -675,3 +675,109 @@ IMAGES
 	
 }
 
+/*********************
+Query Loop
+*********************/
+
+.is-style-featured-stories {
+
+    width: 100%;
+
+    // padding: 0 2rem;
+
+    padding-top: 0;
+    padding-bottom: 0;
+
+ 
+
+    .wp-block-post-template {
+
+        column-gap: 45px;
+        display: flex;
+        flex-flow: row wrap;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        row-gap: 0.5rem;
+
+.wp-block-post {
+
+    // overflow: hidden;
+    width: 350px !important;
+    min-width: 300px;
+    padding: 0;
+    position: relative;
+
+
+  &__content {
+
+    padding: 1rem 0.5rem 0.5rem 0;
+
+    .wp-block-read-more {
+
+
+        // color: transparent;
+        padding-left: 1rem;
+        position: absolute;
+        right: -2rem;
+        text-transform: uppercase;
+        top: 0;
+
+        &:hover {
+
+            .wp-block-read-more:after {
+
+    
+                transform: scale(1.05); 
+                transition: 0.2s all ease-in-out;  
+            }
+        }
+
+        &:after {
+            content: "";
+            display: block;
+            position: absolute;
+            z-index: 10;
+            background-image: url('images/ui-next-on.png');
+            background-repeat: no-repeat;
+            background-size: contain;
+            height: 30px;
+            width: 30px;
+            transition: 0.25s all ease-in-out;
+            
+        }
+    }
+
+    .wp-block-post-title {
+
+        margin-top: 0;
+        font-family: $font-title !important;
+        font-size: 2.2rem;
+        color: $dk-blue;
+        text-transform: uppercase;
+        max-width: 270px;
+    }
+  }
+ 
+  &__featured-image {
+
+
+    .wp-block-post-featured-image {
+        background: rgba(255, 0, 0, 0);
+        width: 100%;
+        height: 300px;
+        overflow: hidden;
+        margin-bottom: 1px;
+
+            .wp-post-image {
+                position: absolute;
+                top: -10%;
+                width: 100%;
+                height: 120%;
+                object-fit: cover;
+            }
+        }
+    }
+  }
+    }
+}
