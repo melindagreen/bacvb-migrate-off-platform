@@ -251,12 +251,16 @@ IMAGES
                 --webkit-mask-size: cover;
                 mask-size: cover;
 
+                 
                 &:nth-child(3), &:nth-child(5) {
-                
-                    --webkit-mask: url("images/collage-square-long.svg") no-repeat center;
-                    mask: url("images/collage-square-long.svg") no-repeat center;
-                    --webkit-mask-size: contain;
-                    mask-size: contain;
+                    
+
+                    @media only screen and (min-width: ($screen-sm + 1)) {
+                        --webkit-mask: url("images/collage-square-long.svg") no-repeat center;
+                        mask: url("images/collage-square-long.svg") no-repeat center;
+                        --webkit-mask-size: contain;
+                        mask-size: contain;
+                    }
                 }
 
                 &:nth-child(1) {
@@ -495,16 +499,16 @@ IMAGES
                             grid-row: 5/5;
                         }
                         &:nth-child(4) {
-                            grid-column: 1/5;
-                            grid-row: 3/6;
+                            grid-column: 1/10;
+                            grid-row: 5/7;
                         }
                         &:nth-child(5) {
                             grid-column: 1/10;
                             grid-row: 6/8;
                         }
                         &:nth-child(6) {
-                            grid-column: 1/7;
-                            grid-row: 8/8;
+                            grid-column: 7/10;
+                            grid-row: 7/10;
                         }
                         &:nth-child(7) {
                             grid-column: 7/10;
@@ -606,7 +610,7 @@ IMAGES
     
                         figcaption {
                         
-                            font-size: 4.5vw
+                            font-size: 3.5vw
                         }
     
                     }
@@ -783,7 +787,7 @@ CUSTOM BLOCKS
 
             span {
 
-                font-size: 3.5rem;
+                font-size: 3rem;
             }
         }
     }
