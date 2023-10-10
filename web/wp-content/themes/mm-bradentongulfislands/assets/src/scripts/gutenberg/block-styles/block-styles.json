@@ -27,6 +27,14 @@
             }
         ]
     },
+    "core/query": {
+		"add": [
+			{
+				"name": "featured-stories",
+				"label": "Featured Stories"
+			}
+		]
+	},
     "core/gallery": {
         "add": [
             {

@@ -1,0 +1,38 @@
+{
+    "core/query": {
+        "add": [
+            {
+                "name": "mm-default-post",
+                "isDefault": false,
+                "title": "[MM] Featured Stories",
+                "description": "[MM] Image, Title, Readmore",
+                 "icon": "welcome-widgets-menus",
+                "attributes": { 
+                    "className": "is-style-featured-stories",
+                    "namespace": "mm-default-post",
+                    "query": {
+                        "perPage": 3,
+                        "pages": 0,
+                        "offset": 0,
+                        "postType": "post",
+                        "order": "desc",
+                        "orderBy": "date"
+                    }
+                },
+                "innerBlocks": [
+                    [
+                        "core/post-template",
+                        {},
+                        [["core/group", {"className":"wp-block-post__featured-image"},[
+                            ["core/post-featured-image"]
+                            ]],["core/group", {"className": "wp-block-post__content"}, [
+                            [ "core/post-title" ], ["core/read-more" ]
+                        ]]]
+                    ]
+                ],
+                "isActive": [ "namespace" ]
+            }
+    
+    ]
+    }
+}

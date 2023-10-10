@@ -13,6 +13,7 @@ import Hero from './hero';
 import PortraitGrid from './portrait-grid';
 import WideSlideshow from './wide-slideshow';
 import WideImageSlide from './wide-image-slide';
+import Events from './events';
 
 /*** CONSTANTS **************************************************************/
 

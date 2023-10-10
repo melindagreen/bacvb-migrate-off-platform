@@ -1,0 +1,25 @@
+{
+    "name": "events",
+    "dynamic": true,
+    "render_callback": "MaddenNino\\Blocks\\Events\\render_block",
+    "scripts": [
+        "front.js"
+    ],
+    "settings": {
+        "title": "Upcoming Events",
+        "description": "Displaying upcoming events in the block",
+        "category": "formatting",
+        "icon": "calendar-alt",
+        "attributes": {
+
+            "exampleText": {
+              "type": "string",
+              "default": "Hello, Madden!"
+            },  
+            "mode": {
+              "type": "string",
+              "default": "preview"
+            }
+          }
+    }
+}

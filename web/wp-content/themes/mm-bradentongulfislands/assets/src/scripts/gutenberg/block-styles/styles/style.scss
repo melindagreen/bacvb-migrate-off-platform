@@ -788,3 +788,104 @@ CUSTOM BLOCKS
         }
     }
 }
+
+/*********************
+Query Loop
+*********************/
+
+.is-style-featured-stories {
+
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0 2rem;
+    column-gap: 76px;
+    row-gap: 0.5rem;
+    padding-top: 0;
+    padding-bottom: 0;
+    flex-wrap: wrap;
+ 
+
+    .wp-block-post-template {
+.wp-block-post {
+
+    // overflow: hidden;
+    width: 350px !important;
+    min-width: 250px;
+    padding: 0;
+    position: relative;
+
+
+  &__content {
+
+    padding: 1rem 0.5rem 0.5rem 1rem;
+
+    .wp-block-read-more {
+
+
+        color: transparent;
+        text-transform: uppercase;
+        padding-left: 1rem;
+        position: absolute;
+        top: -1.5rem;
+        right: -18.5%;
+
+        &:hover {
+
+            .wp-block-read-more:after {
+
+    
+                transform: scale(1.05); 
+                transition: 0.2s all ease-in-out;  
+            }
+        }
+
+        &:after {
+            content: "";
+            display: block;
+            position: absolute;
+            z-index: 10;
+            background-image: url('images/ui-next-on.png');
+            background-repeat: no-repeat;
+            background-size: contain;
+            height: 30px;
+            width: 30px;
+            transition: 0.25s all ease-in-out;
+            
+        }
+    }
+
+    .wp-block-post-title {
+
+        margin-top: 0;
+        font-family: $font-title !important;
+        font-size: 2.2rem;
+        color: $dk-blue;
+        text-transform: uppercase;
+    }
+  }
+ 
+  &__featured-image {
+
+
+    .wp-block-post-featured-image {
+        background: rgba(255, 0, 0, 0);
+        width: 100%;
+        height: 300px;
+        overflow: hidden;
+        margin-bottom: 1px;
+
+            .wp-post-image {
+                position: absolute;
+                top: -10%;
+                width: 100%;
+                height: 120%;
+                object-fit: cover;
+            }
+        }
+    }
+  }
+    }
+}
