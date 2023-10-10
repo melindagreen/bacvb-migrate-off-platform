@@ -18,8 +18,8 @@ const MediaControls = props => {
     const { attributes, setAttributes } = props;
     const { imageId } = attributes;
     const onSelect = (image) => {
-        let smallImage = image.sizes.madden_hero_sm ? image.sizes.thumbnail.url : image.url;
- 
+        let smallImage = typeof image?.sizes?.madden_hero_md !== undefined  ? image.sizes.madden_hero_md.url : image.url;
+        console.log(image?.sizes?.madden_hero_md);
         setAttributes({
             imageUrl: smallImage,
             imageAlt: image.alt

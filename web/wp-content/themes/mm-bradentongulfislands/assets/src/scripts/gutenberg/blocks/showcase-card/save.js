@@ -8,7 +8,8 @@ const Save = (props) => {
     <section className={className}>
       {imageUrl !== "" && 
       <div className={`wp-block-mm-bradentongulfislands-showcase-card__image`}>
-        <img src={imageUrl} data-load-alt={imageAlt !== "" ? imageAlt : "Showcase Card Image"} data-load-type="img" data-load-offset="lg" data-load-all={imageUrl} />
+        <a href={buttonUrl}><img src={imageUrl} data-load-alt={imageAlt !== "" ? imageAlt : "Showcase Card Image"} data-load-type="img" data-load-offset="lg" data-load-all={imageUrl} /></a>
+        <div className="showcase-card-caption">{title}</div>
       </div>
       }
     
