@@ -473,7 +473,8 @@ IMAGES
                 }
 
                 /*grid-template-columns: repeat(10, 1fr);*/
-                grid-template-rows: repeat(15, 15vw);
+                grid-template-rows: repeat(8, 20vw);
+                height: auto;
                 gap: 10px;
 
                 &.is-style-masonry-alternate-2 {
@@ -558,7 +559,7 @@ IMAGES
                         }
     
                         &:nth-child(6) {
-                            grid-column: 1/7;
+                            grid-column: 1/10;
                             grid-row: 8/9;
                         }
                         
