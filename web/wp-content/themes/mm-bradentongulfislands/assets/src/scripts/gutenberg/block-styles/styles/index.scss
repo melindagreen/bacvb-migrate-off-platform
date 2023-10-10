@@ -120,6 +120,7 @@ BUTTONS
         font-size: 1.15rem;
         margin-bottom: 1.5rem;
         padding: 0 !important;
+        width: max-content;
     }
 
     &::after {
@@ -697,17 +698,17 @@ Query Loop
         flex-flow: row wrap;
         flex-wrap: wrap;
         justify-content: center;
-        align-items: center;
+        align-items: baseline;
         row-gap: 0.5rem;
 
 .wp-block-post {
 
     // overflow: hidden;
-    width: 350px !important;
     min-width: 300px;
+    max-width: 350px;
     padding: 0;
     position: relative;
-
+    width: 22vw!important;
 
   &__content {
 
@@ -743,8 +744,7 @@ Query Loop
             background-size: contain;
             height: 30px;
             width: 30px;
-            transition: 0.25s all ease-in-out;
-            
+            transition: 0.25s all ease-in-out;       
         }
     }
 
