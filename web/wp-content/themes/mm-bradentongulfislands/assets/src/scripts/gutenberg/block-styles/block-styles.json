@@ -5,6 +5,11 @@
                 "name": "bubble",
                 "label": "Bubble",
                 "isDefault": false
+            },
+            {
+                "name": "portrait",
+                "label": "Portrait",
+                "isDefault": false
             }
         ]
     },
@@ -13,6 +18,11 @@
             {
                 "name": "bubble",
                 "label": "Bubble",
+                "isDefault": false
+            },
+            {
+                "name": "portrait",
+                "label": "Portrait",
                 "isDefault": false
             },
             {
@@ -72,6 +82,11 @@
             {
                 "name": "round-button",
                 "label": "Round",
+                "isDefault": false
+            },
+            {
+                "name": "round-arrow-button",
+                "label": "Round Arrow",
                 "isDefault": false
             }
         ]

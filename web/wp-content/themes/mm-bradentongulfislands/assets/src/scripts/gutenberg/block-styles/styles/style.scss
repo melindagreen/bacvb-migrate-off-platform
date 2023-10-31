@@ -99,6 +99,23 @@ IMAGES
     overflow: unset;
 }
 
+.is-style-rounded img {
+    border-radius: 25px !important;
+}
+
+.is-style-portrait {
+
+    --webkit-mask: url("images/portraitmask1.svg") no-repeat center;
+    mask: url("images/portraitmask1.svg") no-repeat center;
+    --webkit-mask-size: contain;
+    mask-size: contain;
+
+    .wp-block-cover__inner-container {
+
+        max-width: 30rem;
+    }
+}
+
 .is-style-bubble {
 
     --webkit-mask: url("images/bubble-mask.svg") no-repeat center;
@@ -612,11 +629,11 @@ BUTTONS
 
         background-color: transparent;
         border: none;
+        font-size: 1.15rem;
+        padding: 0;
         color: $bradenton-teal;
         font-family: $font-header;
         text-transform: uppercase;
-        font-size: 1.15rem;
-        padding: 0;
         margin-bottom: 1.5rem;
         transition: all 0.3s ease-in-out;
     }
@@ -672,6 +689,49 @@ BUTTONS
             transform: scale(1.05);
         }
     }
+}
+
+.is-style-round-arrow-button {
+
+      
+
+      .wp-block-button__link {
+
+        background-color: transparent;
+        border: none;
+        font-size: 1.15rem;
+        padding: 0;
+        text-transform: uppercase;
+        font-family: $font-header;
+        color: $bradenton-teal;
+        position: relative;
+        transition: all 0.3s ease-in-out;
+        min-width: 7rem;
+        display: inline-block;
+
+        &:hover {
+
+            text-decoration: none;
+            
+            &::after {
+
+              transition: all 0.2s ease-in-out;
+              transform: translateX(8%);
+            }
+        }
+
+        &::after {
+            content: ' ';
+            background: url('images/ui-next-on.png') no-repeat;
+            transition: all 0.3s ease-in-out;
+            position: absolute;
+            right: -2rem;
+            bottom: -35%;
+            height: 25px;
+            width: 25px;
+            background-size: contain !important;
+          }
+      }
 }
 
 /*********************
