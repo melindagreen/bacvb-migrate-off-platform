@@ -70,6 +70,11 @@
           "color": "#4A6BAE"
         },
         {
+          "name": "Dark Purple",
+          "slug": "dk-purple",
+          "color": "#5F769B"
+        },
+        {
           "name": "Dark Blue",
           "slug": "dk-blue",
           "color": "#014067"
