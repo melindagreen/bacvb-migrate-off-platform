@@ -34,7 +34,12 @@
                 "name": "collage-cover",
                 "label": "Collage Cover",
                 "isDefault": false
-            }
+            },
+            {
+                "name": "collage-square",
+                "label": "Collage Square",
+                "isDefault": false
+            } 
         ]
     },
     "core/query": {
@@ -60,7 +65,7 @@
                 "name": "collage-square",
                 "label": "Collage Square",
                 "isDefault": false
-            }     
+            }    
         ]
     },
     "core/separator": {
