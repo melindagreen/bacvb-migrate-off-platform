@@ -67,10 +67,10 @@ COLUMNS
 //groups
 .is-style-collage-square {
 
-    --webkit-mask: url("images/collage-square.svg") no-repeat center;
-    mask: url("images/collage-square.svg") no-repeat center;
-    --webkit-mask-size: cover;
-    mask-size: cover;
+    --webkit-mask: url("images/collage-square.svg") repeat center;
+    mask: url("images/collage-square.svg") repeat center;
+    --webkit-mask-size: contain;
+    mask-size: contain;
 }
 
 
@@ -105,8 +105,8 @@ IMAGES
 
 .is-style-portrait {
 
-    --webkit-mask: url("images/portrait-block-mask.svg") no-repeat center;
-    mask: url("images/portrait-block-mask.svg") no-repeat center;
+    --webkit-mask: url("images/portraitmask1.svg") no-repeat center;
+    mask: url("images/portraitmask1.svg") no-repeat center;
     --webkit-mask-size: contain;
     mask-size: contain;
 
@@ -163,10 +163,10 @@ IMAGES
 
     .wp-block-cover__background, .wp-block-cover__image-background {
 
-        --webkit-mask: url("images/large-image-mask.svg") no-repeat center;
-        mask: url("images/large-image-mask.svg") no-repeat center;
-        --webkit-mask-size: cover;
-        mask-size: cover;
+        --webkit-mask: url("images/large-image-mask.svg") repeat center;
+        mask: url("images/large-image-mask.svg") repeat center;
+        --webkit-mask-size: contain;
+        mask-size: contain;
     }
 }
 

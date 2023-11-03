@@ -83,6 +83,11 @@
           "name": "Rust",
           "slug": "rust",
           "color": "#C96A39"
+        },
+        {
+          "name": "Tan",
+          "slug": "tan",
+          "color": "#F4E6CB"
         }
       ],
       "customGradient": false,
