@@ -105,8 +105,8 @@ IMAGES
 
 .is-style-portrait {
 
-    --webkit-mask: url("images/portraitmask1.svg") no-repeat center;
-    mask: url("images/portraitmask1.svg") no-repeat center;
+    --webkit-mask: url("images/portrait-block-mask.svg") no-repeat center;
+    mask: url("images/portrait-block-mask.svg") no-repeat center;
     --webkit-mask-size: contain;
     mask-size: contain;
 
