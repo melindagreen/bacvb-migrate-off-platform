@@ -116,12 +116,12 @@
         },
         {
           "slug": "large",
-          "size": "3rem",
+          "size": "clamp(2.5rem, 3vw, 3rem)",
           "name": "Large"
         },
         {
           "slug": "xlarge",
-          "size": "5rem",
+          "size": "clamp(2.75rem, 5vw, 5rem)",
           "name": "X Large"
         }
       ],

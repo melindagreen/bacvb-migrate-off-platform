@@ -748,6 +748,15 @@ BUTTONS
             right: 45%;
             width: 35px;
         }
+
+        &:hover {
+
+            &::after {
+
+              transition: all 0.2s ease-in-out;
+              transform: scale(1.05);
+            }
+        }
     }
 }
 
