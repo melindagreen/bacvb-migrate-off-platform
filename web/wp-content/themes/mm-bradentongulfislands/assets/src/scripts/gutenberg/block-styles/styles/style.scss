@@ -741,7 +741,7 @@ BUTTONS
         max-width: 23rem;
         line-height: 1.5rem;
 
-        .wp-block-button__link::after {
+        &::after {
 
             bottom: -15%;
             height: 35px;
