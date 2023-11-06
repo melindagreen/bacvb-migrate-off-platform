@@ -67,10 +67,10 @@ COLUMNS
 //groups
 .is-style-collage-square {
 
-    --webkit-mask: url("images/collage-square.svg") repeat center;
-    mask: url("images/collage-square.svg") repeat center;
-    --webkit-mask-size: contain;
-    mask-size: contain;
+    --webkit-mask: url("images/collage-square-long.svg") no-repeat center;
+    mask: url("images/collage-square-long.svg") no-repeat center;
+    --webkit-mask-size: cover;
+    mask-size: cover;
 }
 
 
