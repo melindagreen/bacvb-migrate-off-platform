@@ -69,8 +69,8 @@ COLUMNS
 
     --webkit-mask: url("images/collage-square-long.svg") no-repeat center;
     mask: url("images/collage-square-long.svg") no-repeat center;
-    --webkit-mask-size: cover;
-    mask-size: cover;
+    --webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
 }
 
 
