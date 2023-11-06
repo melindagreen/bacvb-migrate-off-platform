@@ -10,6 +10,16 @@
 TEXT
 *********************/
 
+//headings
+.is-style-brushstroke {
+
+    background: url('images/brushstroke.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 3rem;
+}
+
 // buttons
 .wp-block-button__link {
     display: inline-block;

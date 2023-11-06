@@ -1,4 +1,12 @@
 {
+    "core/heading": {
+        "add": [
+            {
+                "name": "brushstroke",
+                "label": "Brushstroke"
+            }
+        ]
+    },
     "core/image": {
         "add": [
             {
