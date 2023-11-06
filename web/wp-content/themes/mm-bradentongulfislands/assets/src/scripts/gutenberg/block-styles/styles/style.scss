@@ -275,8 +275,8 @@ IMAGES
     
                 --webkit-mask: url("images/collage-square.svg") no-repeat center;
                 mask: url("images/collage-square.svg") no-repeat center;
-                --webkit-mask-size: cover;
-                mask-size: cover;
+                --webkit-mask-size: 100% 100%;
+                mask-size: 100% 100%;
 
                  
                 &:nth-child(3), &:nth-child(5) {
@@ -285,8 +285,8 @@ IMAGES
                     @media only screen and (min-width: ($screen-lg)) {
                         --webkit-mask: url("images/collage-square-long.svg") no-repeat center;
                         mask: url("images/collage-square-long.svg") no-repeat center;
-                        --webkit-mask-size: contain;
-                        mask-size: contain;
+                        --webkit-mask-size: 100% 100%;
+                        mask-size: 100% 100%;
                     }
                 }
 
