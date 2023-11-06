@@ -689,6 +689,23 @@ BUTTONS
             transform: scale(1.05);
         }
     }
+
+    .wp-block-button__link .has-background {
+
+        color: white;
+        padding: 2rem 3rem;
+        border-radius: 12px;
+        max-width: 23rem;
+        line-height: 1.5rem;
+
+        .wp-block-button__link::after {
+
+            bottom: -15%;
+            height: 35px;
+            right: 45%;
+            width: 35px;
+        }
+    }
 }
 
 .is-style-round-arrow-button {
