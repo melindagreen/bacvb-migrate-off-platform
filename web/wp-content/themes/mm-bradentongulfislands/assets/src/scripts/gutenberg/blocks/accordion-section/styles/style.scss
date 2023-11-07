@@ -9,6 +9,7 @@
   border-bottom: 0.5px solid #CCCCCC;
   border-left: 0.5px solid #CCCCCC;
   border-right: 0.5px solid #CCCCCC;
+  background-color: white;
   .accordion__header {
     width:100%;
     display: flex;
@@ -141,8 +142,8 @@
       padding:0 1rem;
 
       &.open{
-        margin-top:1rem;
-        margin-bottom:1rem;
+        padding-top:1rem;
+        padding-bottom:1rem;
       }
 
       figure.wp-block-image {
