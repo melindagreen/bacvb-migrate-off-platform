@@ -119,6 +119,11 @@
                 "name": "secondary-header",
                 "label": "Secondary Header",
                 "isDefault": false
+            },
+            {
+                "name": "small-font-header",
+                "label": "Small Font Header",
+                "isDefault": false
             }
         ]
     }
