@@ -1,0 +1,26 @@
+@import 'styles/utils/variables';
+
+.#{$block-prefix}-accordion {
+  margin: 0 auto;
+
+  .#{$block-prefix}-accordion-section:first-child {
+
+    border-top: 0.5px solid #CCCCCC;
+  }
+}
+
+/*********************
+MEDIUM AND LARGE SCREENS
+*********************/
+@media only screen and (min-width: 769px) {
+  .#{$block-prefix}-accordion {
+  }
+}
+
+/*********************
+  SMALL SCREENS
+  *********************/
+@media only screen and (max-width: 768px) {
+  .#{$block-prefix}-accordion {
+  }
+}

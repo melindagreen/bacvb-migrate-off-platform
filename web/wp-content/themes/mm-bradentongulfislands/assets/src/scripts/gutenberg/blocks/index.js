@@ -14,6 +14,8 @@ import PortraitGrid from './portrait-grid';
 import WideSlideshow from './wide-slideshow';
 import WideImageSlide from './wide-image-slide';
 import ShowcaseCard from './showcase-card';
+import AccordionSection from './accordion-section';
+import Accordion from './accordion';
 import Events from './events';
 
 /*** CONSTANTS **************************************************************/
@@ -21,7 +23,7 @@ import Events from './events';
 // Collect blocks
 // NOTE: ACF blocks should not be registered here, only imported, or they will
 // appear twice in the editor!
-const blocks = [ Hero, PortraitGrid, WideSlideshow, WideImageSlide, ShowcaseCard ];
+const blocks = [ Hero, PortraitGrid, WideSlideshow, WideImageSlide, ShowcaseCard, AccordionSection, Accordion ];
 
 /*** EXPORTS ****************************************************************/
 export default () => {

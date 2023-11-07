@@ -1,0 +1,24 @@
+{
+  "name": "accordion-section",
+  "scripts": [
+    "front.js"
+  ],
+  "settings": {
+    "title": "Accordion Section",
+    "description": "A section of an accordion",
+    "icon": "list-view",
+    "category": "layout",
+    "parent": [
+      "mm-bradentongulfislands/accordion"
+    ],
+    "attributes": {
+      "title": {
+        "type": "string",
+        "default": ""
+      },
+      "titleColor": {
+        "type": "string"
+      }
+    }
+  }
+}
