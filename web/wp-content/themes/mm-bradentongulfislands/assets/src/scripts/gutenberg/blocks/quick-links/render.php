@@ -1,6 +1,6 @@
 <?php
 
-namespace MaddenNino\Blocks\PortraitGrid;
+namespace MaddenNino\Blocks\QuickLinks;
 use MaddenNino\Library\Constants as Constants;
 use MaddenNino\Library\Utilities as Utilities;
   
