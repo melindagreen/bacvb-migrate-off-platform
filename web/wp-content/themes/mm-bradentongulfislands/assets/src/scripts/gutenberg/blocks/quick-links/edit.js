@@ -1,0 +1,99 @@
+/*** IMPORTS ****************************************************************/
+
+// WordPress dependencies
+import { Button, Flex, PanelBody, PanelRow, SelectControl, TextControl, TextareaControl, } from '@wordpress/components';
+import { __ } from '@wordpress/i18n';
+import { __experimentalLinkControl as LinkControl, MediaUpload, MediaUploadCheck, } from '@wordpress/block-editor';
+import ServerSideRender from '@wordpress/server-side-render';
+import { useSelect, } from '@wordpress/data';
+
+// Local Dependencies
+// Controls - add block/inspector controls here 
+import Controls from './controls';
+import { Repeater } from '../../components';
+import { updateObjArrAttr } from '../../inc/utils';
+import { THEME_PREFIX } from 'scripts/inc/constants';
+
+/*** CONSTANTS **************************************************************/
+const DEFAULT_SEGMENT = {
+  customTitle: '',
+  customExcerpt: '',
+  postObj: {}
+};
+const ALLOWED_MEDIA_TYPES = ['image'];
+
+/*** COMPONTANTS ************************************************************/
+
+/**
+ * Fields that modify the attributes of the current block
+ * @param {*} props 
+ * @returns {WPElement}
+ */
+const Wizard = props => {
+  const { attributes: { posts, queryMode, }, setAttributes } = props;
+  const updateSegment = updateObjArrAttr('posts', setAttributes, posts);
+
+
+  if (queryMode === 'manual') return (
+    <Repeater
+      label={__('Grid Items')}
+      minLength={3}
+      maxLength={3}
+      segments={posts}
+      segmentsContent={posts.map(post => <>
+        <LinkControl
+          value={post.postObj}
+          onChange={(nextValue) => {
+            updateSegment('postObj', post)(nextValue)
+          }}
+          settings={[]}
+        />
+
+        <PanelBody title={__('Customize grid item')} initialOpen={false}>
+          <p className='instructions'>{__('By default, the grid will pull in the selected post\'s title, thumbnail, and excerpt. To override these features, manually enter them here.')}</p>
+
+          <PanelRow>
+            <TextControl
+              label={__('Custom Title')}
+              value={post.customTitle}
+              onChange={updateSegment('customTitle', post)}
+            />
+          </PanelRow>
+        </PanelBody>
+      </>)}
+      newSegment={DEFAULT_SEGMENT}
+      placeholderText={__('Add a post')}
+      onChange={posts => setAttributes({ posts })}
+    />
+  )
+}
+
+/**
+ * The editor for the block
+ * @param {*} props 
+ * @returns {WPElement}
+ */
+const Editor = props => {
+  const { attributes: { mode, }, className } = props;
+
+  return (
+    <section className={className} >
+      {mode === 'edit'
+        ? <Wizard {...props} />
+        : <ServerSideRender block={props.name} {...props} />}
+    </section>
+  )
+}
+
+const edit = (props) => {
+  return (
+    <>
+      <Controls {...props} />
+      <Editor {...props} />
+    </>
+  );
+};
+
+/*** EXPORTS ****************************************************************/
+
+export default edit;
