@@ -884,7 +884,7 @@ FOOTER
         content: " ";
         background: url('images/bottom-wave.svg');
         background-size: cover;
-        bottom: 0;
+        bottom: 3%;
         height: 3.5rem;
         left: 0;
         position: absolute;
@@ -899,6 +899,8 @@ FOOTER
         text-align: center;
         margin-top: 3rem;
         margin-bottom: 2rem;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
         position: relative;
 
 

@@ -1,0 +1,14 @@
+{
+  "apiVersion": 2,
+  "name": "content-selector",
+  "scripts": [
+    "front.js"
+  ],
+  "settings": {
+    "title": "Content Selector",
+    "description": "Use an option select to choose different content",
+    "icon": "feedback",
+    "category": "layout",
+    "attributes": {}
+  }
+}

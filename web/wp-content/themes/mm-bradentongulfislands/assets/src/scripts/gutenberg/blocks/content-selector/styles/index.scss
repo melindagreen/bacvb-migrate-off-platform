@@ -1,0 +1,28 @@
+@import 'styles/utils/variables';
+
+.#{$block-prefix}-wideslideshow { 
+
+    .block-editor-block-list__layout {
+
+        display: inline-flex;
+        column-gap: 10px;
+
+        .wp-block {
+
+            margin-bottom: 10px;
+            display: inline-block;
+            width: 100vw;
+        }  
+        
+        .block-editor-button-block-appender {
+
+            position: absolute;
+            bottom: 450px;
+            left: 0;
+            width: 50px;
+            color: var(--wp--preset--color--white);
+            background-color: var(--wp--preset--color--black);
+        }
+    }
+  }
+  

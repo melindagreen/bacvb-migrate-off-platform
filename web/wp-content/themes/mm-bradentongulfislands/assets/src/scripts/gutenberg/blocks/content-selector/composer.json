@@ -1,0 +1,8 @@
+{
+  "name": "maddenmedia/mm-wordpress-block-content-selector",
+  "description": "Use an option select to choose different content",
+  "keywords": ["example-wordpress-block", "wordpress-starter-block"],
+  "license": "MIT",
+  "type": "mm-wordpress-block",
+  "version": "v1.2021.06.04"
+}

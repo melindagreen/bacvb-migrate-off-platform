@@ -1,0 +1,18 @@
+@import 'styles/utils/variables';
+@import 'styles/utils/typography';
+
+
+/*********************
+Wide Slideshow
+*********************/
+
+
+/*********************
+SMALL SCREENS
+*********************/
+@media only screen and (max-width: $screen-sm) {
+  .#{$block-prefix}-wideslideshow { 
+
+
+  }
+}

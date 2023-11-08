@@ -1,0 +1,20 @@
+{
+  "apiVersion": 2,
+  "name": "content-section",
+  "parent": [ "mm-bradentongulfislands-content-selector" ],
+  "scripts": [
+    "front.js"
+  ],
+  "settings": {
+    "title": "Content Section",
+    "description": "Use an option select to choose different content",
+    "icon": "feedback",
+    "category": "layout",
+    "attributes": {
+      "sectionTitle": {
+        "type": "string",
+        "default": ""
+      }
+    }
+  }
+}

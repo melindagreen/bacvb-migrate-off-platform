@@ -1,0 +1,114 @@
+@import 'styles/utils/variables';
+@import 'styles/utils/typography';
+
+$swiperNavigationSize: 30px;
+$nav-dist: 4%;
+
+/*********************
+Wide Slideshow
+*********************/
+
+  .#{$block-prefix}-content-selector { 
+
+    padding-left: 6vw;
+    padding-right: 6vw;
+
+    #content-dropdown {
+
+      display: flex;
+      margin-left: auto;
+      margin-right: 18vw;
+      margin-bottom: 2rem;
+      padding: 1.2rem 1.5rem;
+      background-color: #EEEEEE;
+      position: relative;
+      color: $bradenton-teal;
+      font-size: 1.1rem;
+      font-weight: bold;
+      border-radius: 8px;
+      border-color: transparent;
+      -moz-appearance:none; 
+      -webkit-appearance:none; 
+      appearance:none;
+      
+      &:after {
+        content: " ";
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: auto;
+        height: 100%;
+        aspect-ratio: 1 / 1;
+        background-color: #4B7CB6;
+        border-top-right-radius: 6px;
+        border-bottom-right-radius: 6px;
+        cursor: pointer;
+        pointer-events: none;
+      }
+      
+      &:before {
+        content: " ";
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        width: 10px;
+        height: 10px;
+        border-right: 4px solid white;
+        border-bottom: 4px solid white;
+        z-index: 1;
+        transform: translateY(-50%) rotate(45deg);
+        pointer-events: none;
+      }
+    }
+  }
+
+/*********************
+SMALL SCREENS
+*********************/
+@media only screen and (max-width: $screen-sm) {
+  .#{$block-prefix}-wideslideshow { 
+
+    .swiper-wideslideshow {
+
+    height: 550px;
+  }
+
+  .hc-wrapper {
+
+    position: relative;
+    height: 8rem;
+
+    .bc-infoblock {
+      
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      overflow: hidden;
+
+      &__navigation {
+  
+        .swiper-button-next {
+          
+          right: calc($nav-dist - 10px);
+        }
+        .swiper-button-prev {
+
+          right: calc($nav-dist + 30px);
+        }
+      }
+
+      &__content {
+
+        padding-left: 3vw;
+      }
+
+      #infoblock-title {
+
+        font-size: 22px;
+      }
+    }
+
+   
+  }
+  }
+}
