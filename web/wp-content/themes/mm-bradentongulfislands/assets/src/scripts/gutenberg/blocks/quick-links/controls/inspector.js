@@ -4,7 +4,7 @@
 import { __ } from '@wordpress/i18n';
 import { InspectorControls } from '@wordpress/block-editor'
 import { PanelBody, PanelRow, TextControl } from '@wordpress/components'
-import { } from '@wordpress/block-editor'
+import { ColorPalette } from '@wordpress/block-editor'
 import { useSelect, } from '@wordpress/data';
 
 
@@ -19,7 +19,7 @@ const ALLOWED_MEDIA_TYPES = ['image'];
 
 
 const Inspector = props => {
-    const { attributes: { blockTitle }, setAttributes } = props;
+    const { attributes: { blockTitle, color }, setAttributes } = props;
 
     return (
         <InspectorControls>
@@ -29,6 +29,13 @@ const Inspector = props => {
                         label={__('Title')}
                         value={blockTitle}
                         onChange={blockTitle => setAttributes({ blockTitle })}
+                    />
+                </PanelRow>
+                <PanelRow>
+                    <ColorPalette
+                        value={color}
+                        onChange={(newColor) => setAttributes({ color: newColor })}
+                        colors={wp.data.select('core/editor').getEditorSettings().colors}
                     />
                 </PanelRow>
             </PanelBody>

@@ -15,6 +15,10 @@
         "type": "string",
         "default": "Quick Links"
       },
+      "color": {
+        "type": "string",
+        "default": ""
+      },
       "quickLinks": {
         "type": "array",
         "default": [
