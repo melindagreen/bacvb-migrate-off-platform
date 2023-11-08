@@ -18,7 +18,7 @@ import { THEME_PREFIX } from 'scripts/inc/constants';
 const DEFAULT_SEGMENT = {
   customTitle: '',
   customExcerpt: '',
-  postObj: {}
+  linkObj: {}
 };
 const ALLOWED_MEDIA_TYPES = ['image'];
 
@@ -30,42 +30,39 @@ const ALLOWED_MEDIA_TYPES = ['image'];
  * @returns {WPElement}
  */
 const Wizard = props => {
-  const { attributes: { posts, queryMode, }, setAttributes } = props;
-  const updateSegment = updateObjArrAttr('posts', setAttributes, posts);
+  const { attributes: { quickLinks, queryMode, }, setAttributes } = props;
+  const updateSegment = updateObjArrAttr('quickLinks', setAttributes, quickLinks);
 
 
-  if (queryMode === 'manual') return (
-    <Repeater
-      label={__('Grid Items')}
-      minLength={3}
-      maxLength={3}
-      segments={posts}
-      segmentsContent={posts.map(post => <>
+   return(<> <Repeater
+      label={__('Quick Links')}
+      segments={quickLinks}
+      segmentsContent={quickLinks.map(link => <>
         <LinkControl
-          value={post.postObj}
+          value={link.linkObj}
           onChange={(nextValue) => {
-            updateSegment('postObj', post)(nextValue)
+            updateSegment('linkObj', link)(nextValue)
           }}
           settings={[]}
         />
 
-        <PanelBody title={__('Customize grid item')} initialOpen={false}>
-          <p className='instructions'>{__('By default, the grid will pull in the selected post\'s title, thumbnail, and excerpt. To override these features, manually enter them here.')}</p>
+        <PanelBody title={__('Customize link item')} initialOpen={false}>
+          <p className='instructions'>{__('By default, the link will pull in the selected link\'s title, thumbnail, and excerpt. To override these features, manually enter them here.')}</p>
 
           <PanelRow>
             <TextControl
               label={__('Custom Title')}
-              value={post.customTitle}
-              onChange={updateSegment('customTitle', post)}
+              value={link.customTitle}
+              onChange={updateSegment('customTitle', link)}
             />
           </PanelRow>
         </PanelBody>
       </>)}
       newSegment={DEFAULT_SEGMENT}
-      placeholderText={__('Add a post')}
-      onChange={posts => setAttributes({ posts })}
-    />
-  )
+      placeholderText={__('Add a link')}
+      onChange={quickLinks => setAttributes({ quickLinks })}
+    /> </>);
+  
 }
 
 /**

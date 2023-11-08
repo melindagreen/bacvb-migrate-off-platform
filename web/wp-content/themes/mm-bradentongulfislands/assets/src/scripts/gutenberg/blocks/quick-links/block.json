@@ -13,7 +13,7 @@
     "attributes": {
       "blockTitle": {
         "type": "string",
-        "default": ""
+        "default": "Quick Links"
       },
       "quickLinks": {
         "type": "array",

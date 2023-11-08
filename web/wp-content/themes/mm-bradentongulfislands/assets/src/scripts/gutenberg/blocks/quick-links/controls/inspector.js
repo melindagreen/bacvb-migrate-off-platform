@@ -3,7 +3,7 @@
 // WordPress dependencies
 import { __ } from '@wordpress/i18n';
 import { InspectorControls } from '@wordpress/block-editor'
-import { PanelBody, PanelRow, SelectControl } from '@wordpress/components'
+import { PanelBody, PanelRow, TextControl } from '@wordpress/components'
 import { } from '@wordpress/block-editor'
 import { useSelect, } from '@wordpress/data';
 
@@ -19,22 +19,16 @@ const ALLOWED_MEDIA_TYPES = ['image'];
 
 
 const Inspector = props => {
-    const { attributes: { queryMode }, setAttributes } = props;
+    const { attributes: { blockTitle }, setAttributes } = props;
 
     return (
         <InspectorControls>
-            <PanelBody title={__('Grid Settings')}>
+            <PanelBody title={__('Quick Links Settings')}>
                 <PanelRow>
-                    <SelectControl
-                        label={__('Query mode')}
-                        value={queryMode}
-                        options={[
-                            {
-                                label: 'Manual',
-                                value: 'manual'
-                            }
-                        ]}
-                        onChange={queryMode => setAttributes({ queryMode })}
+                    <TextControl
+                        label={__('Title')}
+                        value={blockTitle}
+                        onChange={blockTitle => setAttributes({ blockTitle })}
                     />
                 </PanelRow>
             </PanelBody>
