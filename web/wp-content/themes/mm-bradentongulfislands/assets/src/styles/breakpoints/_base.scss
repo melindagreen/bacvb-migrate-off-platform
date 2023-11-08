@@ -701,7 +701,8 @@ MAIN PAGE CONTENT
         font-weight: bold;
         // color: $link-color;
         &:hover {
-            text-decoration: underline;
+            text-decoration: none !important;
+            color: inherit;
         }
     }
 }
