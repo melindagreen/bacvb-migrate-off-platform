@@ -20,6 +20,13 @@
         "%"
       ]
     },
+    "blocks": {
+      "core/image": {
+        "lightbox": {
+          "allowEditing": true
+        }
+      }
+    },
     "color": {
       "custom": false,
       "defaultPalette": false,
