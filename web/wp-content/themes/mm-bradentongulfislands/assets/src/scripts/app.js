@@ -115,20 +115,18 @@ if ('serviceWorker' in navigator) {
 	 * Switch in the transparent nav class when we're over the hero or if the megamenu is open
 	 */
 	function toggleTopBarClasses() {
+
 		const scrollTop = $(window).scrollTop();
-		const fullHero = $('#bradenton-hero.full');
-		// if (
-		// 	(
-		// 		fullHero.length &&
-		// 		scrollTop < fullHero.offset().top + fullHero.outerHeight()
-		// 	) ||
-		// 	$('.bradenton-header').hasClass('open')
-		// ) {
-		// 	$('.bradenton-header .top-bar').removeClass('top-bar--solid').addClass('top-bar--transparent');
-		// } else {
-		// 	$('.bradenton-header .top-bar').removeClass('top-bar--transparent').addClass('top-bar--solid');
-		// }
+		const topBar = $('.bradenton-header .top-bar');
+	  
+		if (scrollTop > 500) {
+		  topBar.addClass('top-bar--solid');
+		} else {
+		  topBar.removeClass('top-bar--solid');
+		}
 	}
+
+
 
     /*** THEME FRAMEWORK FUNCTIONS *************************************************/
 

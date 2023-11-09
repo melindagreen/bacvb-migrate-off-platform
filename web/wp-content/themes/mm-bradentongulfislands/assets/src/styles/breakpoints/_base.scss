@@ -396,7 +396,24 @@ HEADER
         // color: $atl-red;
         /*Set fill for svgs to inherit*/
         // fill: $atl-red;
-        background: white;
+        position: relative;
+        transition: all 0.2s ease-in-out;
+
+
+        &::after {
+
+            content: " ";
+            background: url('images/top-nav-solid.svg');
+            background-size: cover;
+            bottom: 0;
+            height: 3.5rem;
+            left: 0;
+            position: absolute;
+            width: 100vw;
+            z-index: 0;
+        }
+
+        background: $bradenton-teal;
         .toggle__icon {
             .toggle__line,
             .toggle__line::before,
@@ -407,19 +424,10 @@ HEADER
         .top-bar__brand {
             svg {
                 // fill: $atl-red;
+                width: 100px;
                 opacity: 1;
             }
-        }
-        .search-form.open .search-container {
-            // border: 2px solid $atl-red;
-        }
-        .search-form {
-            svg path {
-                // fill: $atl-red;
-            }
-        }
-        .menu-item a {
-            // color: $atl-red;
+            padding-bottom: 0.5rem;
         }
     }
     .mega-menu {

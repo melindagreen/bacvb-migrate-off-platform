@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "aeb35a189b3b6cbc04f40ff8c2fb7f7f",
+    "content-hash": "5a69dc6de825751c152d438e65ca61a8",
     "packages": [
         {
             "name": "advanced-custom-fields/advanced-custom-fields-pro",
@@ -1092,20 +1092,20 @@
         },
         {
             "name": "johnpbloch/wordpress",
-            "version": "6.3.1",
+            "version": "6.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/johnpbloch/wordpress.git",
-                "reference": "45e299b8eae626d7b1db1eb53a69e63b9cc75bf6"
+                "reference": "84161516e8208d2a4a53754108f5b9f0428021e3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johnpbloch/wordpress/zipball/45e299b8eae626d7b1db1eb53a69e63b9cc75bf6",
-                "reference": "45e299b8eae626d7b1db1eb53a69e63b9cc75bf6",
+                "url": "https://api.github.com/repos/johnpbloch/wordpress/zipball/84161516e8208d2a4a53754108f5b9f0428021e3",
+                "reference": "84161516e8208d2a4a53754108f5b9f0428021e3",
                 "shasum": ""
             },
             "require": {
-                "johnpbloch/wordpress-core": "6.3.1",
+                "johnpbloch/wordpress-core": "6.4.0",
                 "johnpbloch/wordpress-core-installer": "^1.0 || ^2.0",
                 "php": ">=7.0.0"
             },
@@ -1134,20 +1134,20 @@
                 "issues": "https://core.trac.wordpress.org/",
                 "source": "https://core.trac.wordpress.org/browser"
             },
-            "time": "2023-08-29T14:28:17+00:00"
+            "time": "2023-11-07T19:31:22+00:00"
         },
         {
             "name": "johnpbloch/wordpress-core",
-            "version": "6.3.1",
+            "version": "6.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/johnpbloch/wordpress-core.git",
-                "reference": "fc432f78ae5256b7fa28e810cfdf0b968d003699"
+                "reference": "9affce6bea176c5449353603f888cc6b8b066778"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johnpbloch/wordpress-core/zipball/fc432f78ae5256b7fa28e810cfdf0b968d003699",
-                "reference": "fc432f78ae5256b7fa28e810cfdf0b968d003699",
+                "url": "https://api.github.com/repos/johnpbloch/wordpress-core/zipball/9affce6bea176c5449353603f888cc6b8b066778",
+                "reference": "9affce6bea176c5449353603f888cc6b8b066778",
                 "shasum": ""
             },
             "require": {
@@ -1155,7 +1155,7 @@
                 "php": ">=7.0.0"
             },
             "provide": {
-                "wordpress/core-implementation": "6.3.1"
+                "wordpress/core-implementation": "6.4.0"
             },
             "type": "wordpress-core",
             "notification-url": "https://packagist.org/downloads/",
@@ -1182,7 +1182,7 @@
                 "source": "https://core.trac.wordpress.org/browser",
                 "wiki": "https://codex.wordpress.org/"
             },
-            "time": "2023-08-29T14:28:14+00:00"
+            "time": "2023-11-07T19:31:18+00:00"
         },
         {
             "name": "johnpbloch/wordpress-core-installer",
@@ -4541,16 +4541,16 @@
         },
         {
             "name": "wp-cli/language-command",
-            "version": "v2.0.16",
+            "version": "v2.0.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-cli/language-command.git",
-                "reference": "829cdf985fc1fdbe0572ef9a281b8a590aa4ee29"
+                "reference": "23636769d7dd0f55adbb84929afdf833723cfe8c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-cli/language-command/zipball/829cdf985fc1fdbe0572ef9a281b8a590aa4ee29",
-                "reference": "829cdf985fc1fdbe0572ef9a281b8a590aa4ee29",
+                "url": "https://api.github.com/repos/wp-cli/language-command/zipball/23636769d7dd0f55adbb84929afdf833723cfe8c",
+                "reference": "23636769d7dd0f55adbb84929afdf833723cfe8c",
                 "shasum": ""
             },
             "require": {
@@ -4614,9 +4614,9 @@
             "homepage": "https://github.com/wp-cli/language-command",
             "support": {
                 "issues": "https://github.com/wp-cli/language-command/issues",
-                "source": "https://github.com/wp-cli/language-command/tree/v2.0.16"
+                "source": "https://github.com/wp-cli/language-command/tree/v2.0.17"
             },
-            "time": "2023-10-18T21:57:04+00:00"
+            "time": "2023-11-07T21:41:39+00:00"
         },
         {
             "name": "wp-cli/maintenance-mode-command",
