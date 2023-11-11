@@ -6,7 +6,7 @@
         "front.js"
     ],
     "settings": {
-        "title": "Upcoming Events",
+        "title": "Upcoming Events [Old]",
         "description": "Displaying upcoming events in the block",
         "category": "formatting",
         "icon": "calendar-alt",

@@ -1,0 +1,102 @@
+@import 'styles/utils/variables';
+@import 'styles/utils/typography';
+
+.#{$block-prefix}-upcomingevents {
+  margin: 2em auto;
+  position: relative;
+
+  h2 {
+    position: relative;
+    z-index: 1;
+    color: $rust;
+    font-size: 4em;
+    font-family: $font-title;
+    text-transform: uppercase;
+    width: 50%;
+    margin: 0;
+  }
+
+  .bgImg {
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    top: 0;
+    max-width: 60%;
+  }
+
+  .events_btn {
+    position: relative;
+    z-index: 5;
+    display: inline-block;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 0.8em;
+    color: $bradenton-teal;
+    padding: 10px 1em;
+    border: 2px solid $rust;
+    border-radius: 20px;
+    transition: 0.4s ease-out;
+    margin: 2em 0;
+
+    &:hover {
+      color: #fff;
+      background-color: $rust;
+      text-decoration: none;
+    }
+  }
+
+  .eventsWrapper {
+    position: relative;
+    z-index: 5;
+    width: 600px;
+    max-width: 80%;
+    margin: 1em 0;
+    padding: 0.5em 1em;
+    box-sizing: border-box;
+    background: $bradenton-teal;
+  }
+
+  .eventPost {
+    position: relative;
+    padding: 0.5em 1em;
+    margin: 0.5em 0;
+    display: flex;
+    color: #fff;
+    text-decoration: none;
+
+    .date {
+      position: relative;
+      text-align: center;
+      margin-right: 20px;
+      margin-top: 5px;
+    }
+
+    h3 {
+      margin: 0;
+      font-size: 2em;
+      font-family: $font-title;
+    }
+
+    .location {
+      margin: 0;
+      color: #fff;
+      font-weight: 400;
+    }
+
+    &:hover {
+      text-decoration: none;
+    }
+
+  } // .eventPost
+
+}
+
+
+/*********************
+SMALL SCREENS
+*********************/
+@media only screen and (max-width: 768px) {
+  .#{$block-prefix}-upcomingevents {
+    width: 100%;
+  }
+}
