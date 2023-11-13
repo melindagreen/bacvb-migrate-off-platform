@@ -29,24 +29,24 @@ function render_block( $attrs, $content ) {
       foreach($events as $index=>$upcoming):
         if($index < 3):
         $upcomingMeta = eventastic_get_event_meta($upcoming->ID);
-        $date = strtotime($upcomingMeta['start_date']);
-        if (date('Ymd', $date) < date('Ymd')) {
+        $startDate = strtotime($upcomingMeta['start_date']);
+        $endDate = strtotime($upcomingMeta['end_date']);
+
+        if (date('Ymd', $startDate) < date('Ymd')) {
             if ($upcomingMeta['occurrences']) {
                 foreach($upcomingMeta['occurrences'] as $occurence) {
                     if (date('Ymd', strtotime($occurence['start_date_time'])) >= date('Ymd')) {
-                        $date = strtotime($occurence['start_date_time']);
+                        $startDate = strtotime($occurence['start_date_time']);
                         break;
                     }
                 }
             }
         }
         $html .= '<a href="'.get_the_permalink($upcoming->ID).'" class="eventPost">';
-
         // $html .= '<pre>'.print_r( $upcomingMeta, true ).'</pre>';
 
             $html .= '<div class="date">';
-                $html .= '<span class="month">'.date('M', $date).'</span> ';
-                $html .= '<span class="day">'.date('j', $date).'</span>';
+              $html .= '<span class="">'.ltrim(date('m/d', $startDate), '0').' - '.ltrim(date('m/d', $endDate),'0').'</span>';
             $html .= '</div>';
 
             $html .= '<div class="text">';
