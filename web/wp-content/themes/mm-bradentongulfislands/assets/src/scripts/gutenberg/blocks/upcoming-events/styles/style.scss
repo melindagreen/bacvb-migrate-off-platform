@@ -1,0 +1,149 @@
+@import 'styles/utils/variables';
+@import 'styles/utils/typography';
+
+.#{$block-prefix}-upcomingevents {
+  margin: 2em auto 3em auto;
+  position: relative;
+  padding: 0 3em;
+  max-width: 80rem;
+  box-sizing: border-box;
+
+  h2 {
+    position: relative;
+    z-index: 1;
+    color: $rust;
+    font-size: 4em;
+    font-family: $font-title;
+    text-transform: uppercase;
+    width: 50%;
+    margin: 0;
+  }
+
+  .bgImg {
+    position: absolute;
+    z-index: 1;
+    right: 3em;
+    top: 0;
+    max-width: 60%;
+  }
+
+  .events_btn {
+    position: relative;
+    z-index: 5;
+    display: inline-block;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 0.8em;
+    color: $bradenton-teal;
+    padding: 10px 1em;
+    border: 2px solid $rust;
+    border-radius: 20px;
+    transition: 0.4s ease-out;
+    margin: 2em 0;
+    background-color: #fff;
+
+    &:hover {
+      color: #fff;
+      background-color: $rust;
+      text-decoration: none;
+    }
+  }
+
+  .eventsWrapper {
+    position: relative;
+    z-index: 5;
+    width: 600px;
+    max-width: 80%;
+    margin: 1em 0;
+    padding: 0.5em 1em;
+    box-sizing: border-box;
+    background: $bradenton-teal;
+    &:before {
+      content: "";
+      display: block;
+      position: absolute;
+      bottom: 100%;
+      left: 0;
+      width: 100%;
+      height: 25px;
+      background: url('~/images/section-top-turquoise.png') center top repeat-x;
+    }
+    &:after {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      height: 25px;
+      background: url('~/images/section-top-turquoise.png') center top repeat-x;
+      transform: scaleY(-1);
+    }
+  }
+
+  .eventPost {
+    position: relative;
+    padding: 0.5em 1em;
+    margin: 0.5em 0;
+    display: flex;
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.3s;
+
+    .date {
+      flex: 0 0 120px;
+      position: relative;
+      text-align: right;
+      margin-right: 20px;
+      margin-top: 5px;
+    }
+
+    .text {
+      flex-grow: 1;
+    }
+
+    h3 {
+      margin: 0;
+      font-size: 2em;
+      font-family: $font-title;
+    }
+
+    .location {
+      margin: 0;
+      color: #fff;
+      font-weight: 400;
+    }
+
+    &:hover {
+      text-decoration: none;
+      color: $turquoise;
+    }
+
+  } // .eventPost
+
+}
+
+
+/*********************
+SMALL SCREENS
+*********************/
+@media only screen and (max-width: 768px) {
+  .#{$block-prefix}-upcomingevents {
+    width: 100%;
+
+    h2 {
+      width: 100%;
+      font-size: 3em;
+    }
+
+    .bgImg {
+      top: 15%;
+    }
+
+    .eventsWrapper {
+      width: 100%;
+      max-width: inherit;
+      margin-top: 6em;
+    }
+  }
+}

@@ -20,13 +20,14 @@ import ContentSelector from './content-selector';
 import ContentSection from './content-section';
 import QuickLinks from './quick-links';
 import Events from './events';
+import UpcomingEvents from './upcoming-events';
 
 /*** CONSTANTS **************************************************************/
 
 // Collect blocks
 // NOTE: ACF blocks should not be registered here, only imported, or they will
 // appear twice in the editor!
-const blocks = [ Hero, PortraitGrid, WideSlideshow, WideImageSlide, ShowcaseCard, AccordionSection, Accordion, ContentSelector, ContentSection, QuickLinks ];
+const blocks = [ Hero, PortraitGrid, WideSlideshow, WideImageSlide, ShowcaseCard, AccordionSection, Accordion, ContentSelector, ContentSection, QuickLinks, UpcomingEvents ];
 
 /*** EXPORTS ****************************************************************/
 export default () => {
