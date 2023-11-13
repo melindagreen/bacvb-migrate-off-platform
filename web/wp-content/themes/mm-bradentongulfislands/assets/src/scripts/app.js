@@ -34,7 +34,7 @@ if ('serviceWorker' in navigator) {
 	function toggleMenu() {
 		
 		$(`.${THEME_PREFIX}-header`).toggleClass('open');
-		toggleTopBarClasses();
+		
 		//If menu is now open...
 		if ($('.bradenton-header').hasClass('open')) {
 			$('.toggle__label').text('Close');
@@ -44,7 +44,7 @@ if ('serviceWorker' in navigator) {
 			searchClose();
 		}
 
-
+		toggleTopBarClasses();
 		$('body').toggleClass('menu-open');
 	};
 
@@ -119,10 +119,12 @@ if ('serviceWorker' in navigator) {
 		const scrollTop = $(window).scrollTop();
 		const topBar = $('.bradenton-header .top-bar');
 	  
-		if (scrollTop > 500) {
-		  topBar.addClass('top-bar--solid');
-		} else {
+		if (scrollTop < 500 || $('.bradenton-header').hasClass('open')) {
+		  
 		  topBar.removeClass('top-bar--solid');
+		} else {
+		  
+			topBar.addClass('top-bar--solid');
 		}
 	}
 
@@ -352,29 +354,6 @@ if ('serviceWorker' in navigator) {
      */
     function themeOnScroll() {
         
-        // Get scroll top
-		const scrollTop = $(window).scrollTop();
-
-		// Add class to images as they scroll into view
-		$(
-			'.wp-block-image, .fade-in, .fade-in-children, raise-in, .slide-in-left, .slide-in-right'
-		).each(function (index, el) {
-			if (elIsInViewport(el)) {
-				$(el).addClass('in-view');
-			} else if ($(el).hasClass('wp-block-image')) {
-				$(el).removeClass('in-view');
-			}
-		});
-
-		// Remove top add padding on scroll
-		if (scrollTop > 20 + 90) {
-			$(`.${THEME_PREFIX}-header`).removeClass('has-header-ad');
-		} else {
-			if ($('.pre-header-ad').length)
-				$(`.${THEME_PREFIX}-header`).addClass('has-header-ad');
-		}
-
-		// Switch in the transparent nav class when we're over the hero
 		toggleTopBarClasses();
     }
 

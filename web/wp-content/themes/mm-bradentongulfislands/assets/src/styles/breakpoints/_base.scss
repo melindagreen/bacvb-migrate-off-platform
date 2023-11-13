@@ -393,9 +393,7 @@ HEADER
         }
     }
     .top-bar--solid {
-        // color: $atl-red;
-        /*Set fill for svgs to inherit*/
-        // fill: $atl-red;
+
         position: relative;
         transition: all 0.2s ease-in-out;
 
@@ -403,14 +401,16 @@ HEADER
         &::after {
 
             content: " ";
-            background: url('images/top-nav-solid.svg');
-            background-size: cover;
-            bottom: 0;
+            background: url('images/top-nav-solid.png');
+            background-size: contain;
+            background-position: center;
+            bottom: -35%;
             height: 3.5rem;
             left: 0;
             position: absolute;
             width: 100vw;
-            z-index: 0;
+            z-index: -1;
+            background-repeat: repeat no-repeat;
         }
 
         background: $bradenton-teal;
@@ -422,6 +422,7 @@ HEADER
             }
         }
         .top-bar__brand {
+            padding-top: 1rem;
             svg {
                 // fill: $atl-red;
                 width: 100px;
