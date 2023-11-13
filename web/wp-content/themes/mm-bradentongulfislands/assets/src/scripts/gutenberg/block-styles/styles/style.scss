@@ -18,6 +18,11 @@ TEXT
     background-size: cover;
     background-position: center;
     padding: 3rem;
+    word-break: break-all;
+
+    @media only screen and (max-width: $screen-sm) {
+        padding: 2rem 0;
+    }
 }
 
 // buttons
