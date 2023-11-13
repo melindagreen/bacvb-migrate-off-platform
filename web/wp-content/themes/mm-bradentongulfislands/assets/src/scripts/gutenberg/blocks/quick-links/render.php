@@ -19,7 +19,7 @@ function render_block( $attrs, $content ) {
   <?php } ?>
     <div class="quick-link-items">
       <?php foreach( $attrs['quickLinks'] as $i => $link ) { ?>
-        <?php if( $link['linkObj']['url'] ) { ?><a class="quick-link-a" href="<?php echo $link['linkObj']['url'] ?>"><?php } ?>
+        <?php if( isset($link['linkObj']['url']) ) { ?><a class="quick-link-a" href="<?php echo $link['linkObj']['url'] ?>"><?php } ?>
         <article style="background-color:<?php echo $attrs['color']; ?>" class="quick-link-item quick-link-item--<?php echo $i + 1 ?>"> <?php
                   if( isset( $link['customTitle'] ) && !empty( $link['customTitle'] ) ) {
                 echo $link['customTitle'];
@@ -28,7 +28,7 @@ function render_block( $attrs, $content ) {
                 echo get_the_title( $link['linkObj']['id'] );
               }
        ?> </article> <?php
-        if( $link['link'] ) { ?></a><?php } ?>
+        if( isset($link['linkObj']['url']) ) { ?></a><?php } ?>
       <?php } ?>
     </div>
   </section>

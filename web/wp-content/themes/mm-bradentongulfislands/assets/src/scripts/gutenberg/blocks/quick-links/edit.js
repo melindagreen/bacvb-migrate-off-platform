@@ -40,8 +40,8 @@ const Wizard = props => {
       segmentsContent={quickLinks.map(link => <>
         <LinkControl
           value={link.linkObj}
-          onChange={(nextValue) => {
-            updateSegment('linkObj', link)(nextValue)
+          onChange={(link) => {
+            updateSegment('linkObj', link)
           }}
           settings={[]}
         />
