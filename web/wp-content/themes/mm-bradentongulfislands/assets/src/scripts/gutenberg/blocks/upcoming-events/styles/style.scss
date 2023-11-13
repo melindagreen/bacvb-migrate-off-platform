@@ -2,8 +2,11 @@
 @import 'styles/utils/typography';
 
 .#{$block-prefix}-upcomingevents {
-  margin: 2em auto;
+  margin: 2em auto 3em auto;
   position: relative;
+  padding: 0 3em;
+  max-width: 80rem;
+  box-sizing: border-box;
 
   h2 {
     position: relative;
@@ -19,7 +22,7 @@
   .bgImg {
     position: absolute;
     z-index: 1;
-    right: 0;
+    right: 3em;
     top: 0;
     max-width: 60%;
   }
@@ -37,6 +40,7 @@
     border-radius: 20px;
     transition: 0.4s ease-out;
     margin: 2em 0;
+    background-color: #fff;
 
     &:hover {
       color: #fff;
@@ -139,6 +143,7 @@ SMALL SCREENS
     .eventsWrapper {
       width: 100%;
       max-width: inherit;
+      margin-top: 6em;
     }
   }
 }
