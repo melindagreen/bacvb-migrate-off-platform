@@ -208,6 +208,7 @@
                             $thumbnail_id = get_post_thumbnail_id( $post_id );
                             ?>
                             <figure class="local-stories-nav__item">
+                            <a href="<?php echo get_the_permalink(); ?>">
                                 <img 
                                 data-load-type="img"
                                 data-load-offset="lg" 
@@ -215,6 +216,7 @@
                                 data-load-alt="<?php echo wp_get_attachment_image_src( $thumbnail_id, 'madden_inline_small'); ?>" 
                                 src="<?php echo get_theme_file_uri() ?>/assets/images/pixel.png" />
                                 <figcaption><?php the_title(); ?></figcaption>
+                                </a>
                             </figure>
                             <?php } ?>
                         </div>
