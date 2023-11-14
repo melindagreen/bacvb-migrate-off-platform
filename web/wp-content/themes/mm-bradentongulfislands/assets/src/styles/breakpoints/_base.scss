@@ -3,13 +3,17 @@ GLOBAL STYLES
 *********************/
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap");
 
+html, body {
+
+    overflow-x: hidden;
+}
+
 body {
     font-size: 16px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     font-family: $font-body;
-    overflow-x: hidden;
 }
 
 p {
@@ -465,7 +469,7 @@ HEADER
 
                 position: relative;
                 transition: all 0.3s ease-in-out;
-                
+
                 img {
 
                     height: auto;
