@@ -104,6 +104,15 @@
             }
         ]
     },
+    "core/media-text": {
+        "add": [
+            {
+                "name": "icon",
+                "label": "Icon",
+                "isDefault": false
+            }
+        ]
+    },
     "mm-bradentongulfislands/portrait-grid": {
         "add": [
             {

@@ -73,6 +73,27 @@ COLUMNS
     mask-size: cover;
 }
 
+// media text block
+.wp-block-media-text {
+    &.is-style-icon {
+        .wp-block-media-text__media {
+            position: relative;
+            z-index: 1;
+            margin-right: -40px;
+        }
+        .wp-block-media-text__content {
+            background: #e8f8ff;
+            position: relative;
+            padding: 0 10%;
+            h2 {
+                font-family: $font-header;
+                color: $bradenton-teal;
+            }
+        }
+    }
+}
+
+
 /*********************
 LAYOUT
 *********************/
