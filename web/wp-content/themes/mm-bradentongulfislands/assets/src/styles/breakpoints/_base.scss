@@ -464,6 +464,8 @@ HEADER
             figure {
 
                 position: relative;
+                transition: all 0.3s ease-in-out;
+                
                 img {
 
                     height: auto;
@@ -475,6 +477,8 @@ HEADER
 
                 &:hover {
 
+                    transition: all 0.2s ease-in-out;
+
                     img {
 
                         filter: brightness(0.6);
@@ -483,6 +487,7 @@ HEADER
                     figcaption {
 
                         transform: translateY(-10%);
+                        transition: all 0.2s ease-in-out;
                     }
                 }
 
@@ -495,6 +500,7 @@ HEADER
                     padding-left: 6%;
                     max-width: 260px;
                     word-break: break-word;
+                    transition: all 0.3s ease-in-out;
                 }
             }
         }
