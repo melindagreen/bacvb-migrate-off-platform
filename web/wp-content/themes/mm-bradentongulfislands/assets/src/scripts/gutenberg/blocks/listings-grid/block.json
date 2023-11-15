@@ -1,0 +1,44 @@
+{
+    "name": "listings-grid",
+    "dynamic": true,
+    "scripts": [
+      "swiper.js",
+      "front.js"
+    ],
+    "script_extra_dependencies": [
+      "jquery-ui-datepicker"
+    ],
+    "render_callback": "MaddenNino\\Blocks\\ListingsGrid\\render_block",
+    "settings": {
+      "title": "Listings Grid",
+      "description": "A grid/map view of blog posts, events or listings",
+      "icon": "store",
+      "category": "widgets",
+      "attributes": {
+        "listingsTitle": {
+          "type": "string",
+          "default": "Listings"
+        },
+        "postType": {
+          "type": "string",
+          "default": "listing"
+        },
+        "listingsPerPage": {
+          "type": "number",
+          "default": 12
+        },
+        "defaultThumb": {
+          "type": "string",
+          "default": "/wp-content/themes/mm-bradentongulfislands/assets/images/placeholder.jpg"
+        },
+        "preFilterCat": {
+          "type": "string",
+          "default": "none"
+        },
+        "mode": {
+          "type": "string",
+          "default": "preview"
+        }
+      }
+    }
+  }
