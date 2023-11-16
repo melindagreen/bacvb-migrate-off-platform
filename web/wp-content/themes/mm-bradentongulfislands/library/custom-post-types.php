@@ -16,6 +16,15 @@ class CustomPostTypes extends MadreCPT {
 		// 		'taxonomies' => [],
 		// 	],
 		// ],
+		'listing' => [
+			'singular_label' => 'Listing',
+			'plural_label' => 'Listings',
+			'args' => [
+				'description' => '',
+				'menu_icon' => 'dashicons-store',
+			],
+			'show_in_rest' => true,
+		],
 	];
 
 	// Define all custom taxonomies here!

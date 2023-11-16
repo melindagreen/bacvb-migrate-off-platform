@@ -97,7 +97,7 @@ COLUMNS
             margin-right: -40px;
         }
         .wp-block-media-text__content {
-            background: #e8f8ff;
+            background: $light-blue;
             position: relative;
             padding: 0 10%;
             h2 {
@@ -108,7 +108,7 @@ COLUMNS
     }
     @media screen and (max-width: 600px) {
         &.is-style-icon {
-            background: #e8f8ff;
+            background: $light-blue; 
             grid-template-columns: 15% auto !important;
             .wp-block-media-text__media {
                 margin-right: 0;

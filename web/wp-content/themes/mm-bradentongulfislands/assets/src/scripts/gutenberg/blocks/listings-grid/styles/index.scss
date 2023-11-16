@@ -1,0 +1,19 @@
+@import 'styles/utils/variables';
+@import './style';
+
+.wp-block-madden-listings-grid {
+    width: 100%;
+	border: 2px solid;
+	margin: 1em auto;
+	padding: 1em;
+}
+
+.listings-grid__default-thumb {
+    margin-bottom: 1rem;
+}
+
+.wp-block-mmn-midland-listings-grid .loading {
+	.sr-only {
+		display: none;
+	}
+}
