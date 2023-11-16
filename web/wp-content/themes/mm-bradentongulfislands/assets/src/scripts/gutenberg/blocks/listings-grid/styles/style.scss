@@ -34,9 +34,26 @@ $bar-height: 70px;
 .#{$block-prefix}-listings-grid {
 	margin: 4rem 0;
 
-	.grid-body {
-		background: linear-gradient(to bottom, #f4eee1, #f5e7cc);
-		padding: 1rem;
+	// For all listings, the container will have a tan graident
+	&.listings-grid--listing {
+		.grid-body {
+			background: linear-gradient(to bottom, #f4eee1, #f5e7cc);
+			padding: 1rem;
+		}
+	}
+
+	// For events only, a white background
+	&.listings-grid--event {
+		.grid-body {
+			background: #fff;
+		}
+		.filterContainer {
+			background: $light-blue;
+		}
+		.filters {		
+			display: flex;
+			max-width: 60em;
+		}
 	}
 
 	.grid-title {
@@ -44,44 +61,50 @@ $bar-height: 70px;
 		font-size: 2.5em;
 		text-transform: uppercase;
 		text-align: center;
+		margin-bottom: 0.5em;
+	}
+
+	.filterContainer {
+		position: relative;
+		z-index: 5;
 	}
 
 	.filters {
-		position: relative;
-		z-index: 10;
+		margin: 0 auto;
 		.control--search {
 			display: flex;
 			font-family: $font-header;
 			justify-content: space-between;
 			align-items: center;
-			padding: 20px 1em;
-			max-width: 95%;
-			width: 1200px;
+			padding: 0 1em;
+			width: 400px;
 			margin: 0 auto;
 			.control__label {
-				text-transform: uppercase;
+				color: $bradenton-teal;
 			}
 			.form-icon-overlay {
 				display: flex;
 			}
 			.control__input {
-				border: 0;
 				padding: 10px;
-				border-top-left-radius: 5px;
-				border-bottom-left-radius: 5px;
+				border-top-left-radius: 20px;
+				border-bottom-left-radius: 20px;
 				height: 35px;
+				border: 1px solid $rust;
 			}
 			.submit-filter {
 				border: 0;
 				margin: 0;
-				width: 35px;
+				width: 40px;
 				height: 35px;
-				border-top-right-radius: 5px;
-				border-bottom-right-radius: 5px;
-				background-color: #000;
+				border-top-right-radius: 20px;
+				border-bottom-right-radius: 20px;
+				background-color: $rust;
 				margin-left: -10px;
+				padding: 5px;
+				box-sizing: border-box;
 				img {
-					width: 100%;
+					width: 80%;
 				}
 			}
 		}
@@ -109,6 +132,7 @@ $bar-height: 70px;
 				position: relative;
 				color: $turquoise;
 				text-align: center;
+				font-weight: 400;
 			}
 			.categoriesWrap {
 				display: flex;
@@ -116,27 +140,37 @@ $bar-height: 70px;
 				justify-content: center;
 				transition: 0.3s ease-out;
 				flex: 0 0 30%;
-				column-gap: 30px;
+				column-gap: 20px;
 				row-gap: 20px;
 			}
 			.control__label {
-				font-size: 0.85em;
-				margin: 2px 5px;
-				display: flex;
-				align-items: center;
-				gap: 10px;
+				font-size: 0.9em;
+				font-family: $font-body;
+				font-weight: 600;
+				margin: 5px 0;
+				color: $bradenton-teal;
+				border: 2px solid $bradenton-teal;
+				border-radius: 20px;
+				padding: 5px 1em;
+				cursor: pointer;
+				transition: all 0.3s;
+
+				&:hover {
+					color: #fff;
+					background: $turquoise;
+				}
 
 				&.control__label--start-date, &.control__label--end-date {
 					display: block;
 				}
+				&.all {
+					display: none;
+				}
+				.control__input {
+					display: none;
+				}
 			}
 
-			.show {
-				opacity: 1 !important;
-				max-height: 50px !important;
-				position: unset !important;
-				transition: all 0.1s ease-out;
-			}
 
 		}
 
@@ -145,10 +179,20 @@ $bar-height: 70px;
 	.date-controls {
 		padding: 1em;
 		align-self: center;
+		width: 40%;
+		.control {
+			font-size: 1em;
+			font-family: $font-header;
+			color: $bradenton-teal;
+			margin: 10px 0;
+			display: flex; 
+			justify-content: space-between;
+			align-items: center;
+		}
 		.control__input {
-			border: 0;
-			padding: 7px;
-			border-radius: 3px;
+			border: 2px solid $rust;
+			border-radius: 20px;
+			padding: 5px 1em;
 		}
 	}
 
@@ -160,6 +204,7 @@ $bar-height: 70px;
 		max-width: 95%;
 		margin: 2em auto;
 		justify-content: flex-start;
+		gap: 10px;
 
 		&--no-listings {
 			min-height: 30rem !important;
@@ -194,9 +239,9 @@ $bar-height: 70px;
 	// indv listings
 	.listing {
 		position: relative;
-		margin: 1em 0.5em;
 		min-width: 250px;
-		flex: 0 0 33%;
+		flex: 0 0 31%;
+		height: auto;
 		background-color: $light-blue;
 
 		a {
@@ -221,21 +266,39 @@ $bar-height: 70px;
 			}
 		}
 		.listing__info {
-			padding: 0 1rem 1rem;
+			padding: 0 1rem 2rem;
 		}
 		.listing__title {
-			font-family: $font-body;
-			font-size: 1.2rem;
+			font-family: $font-header;
+			font-weight: 400;
+			font-size: 1rem;
+			color: $bradenton-teal;
 		}
 		.listing__description {
 			p {
 				font-size: 0.9em;
 			}
 		}
+
+		.details_btn {
+			position: absolute;
+			bottom: 10px;
+			right: 10px;
+			display: inline-block;
+			background: #fff;
+			color: $bradenton-teal;
+			border: 1px solid $rust;
+			padding: 3px 15px;
+			font-size: 0.8em;
+			text-transform: uppercase;
+			border-radius: 20px;
+			transition: all 0.3s;
+		}
+
 		&:hover {
 
 			.date, .category-tag {
-				top: -10px;
+				top: -5px;
 			}
 			a {
 				text-decoration-color: #000;
@@ -246,12 +309,17 @@ $bar-height: 70px;
 					transform: scale(1.1);
 				}
 			}
+
+			.details_btn {
+				background: $rust;
+				color: #fff;
+			}
 		}
 
 		&--listing {
 
 			.listing__title {
-				color: $bradenton-teal;
+				color: $dk-blue;
 			}
 
 			&:hover {
@@ -287,27 +355,20 @@ $bar-height: 70px;
 	// date tag
 	.date {
 		position: absolute;
-		left: 40px;
-		top: -5px;
+		left: 5px;
+		top: 0px;
 		background: $bradenton-teal;
 		z-index: 10;
-		padding: 10px 15px;
+		padding: 10px 5px;
 		color: #fff;
 		transition: 0.3s ease;
 		text-align: center;
-		.date__month {
-			font-size: 0.8em;
-			font-weight: 300;
-			font-family: $font-header;
-			text-transform: uppercase;
-			display: block;
-			border-bottom: 1px solid #fff;
+		font-size: 1.2em;
+		font-family: $font-title;
+		width: 110px;
+		.date__start, .date__end {
+			display: inline-block;
 		}
-		.date__day {
-			display: block;
-			font-size: 2.5em;
-		}
-
 	}
 
 	//cateogry
@@ -373,9 +434,6 @@ MEDIUM AND LARGE SCREENS
 *********************/
 @media only screen and (min-width: 981px) {
 	.#{$block-prefix}-listings-grid {
-		.listings-container {
-			min-height: 40rem;
-		}
 
 		// indv listings
 		.listing {
@@ -385,8 +443,6 @@ MEDIUM AND LARGE SCREENS
 
 			}
 		}
-
-	
 	}
 
 }
@@ -429,7 +485,7 @@ SMALL SCREENS
 		margin: 2rem 0;
 		// indv listings
 		.listing {
-			flex: 0 0 48%;
+			flex: 0 0 47%;
 			min-width: 200px;
 			border-bottom: 1px solid rgba(#000, 0.15);
 
@@ -445,7 +501,6 @@ SMALL SCREENS
 		}
 
 		.grid-title {
-
 			font-size: 2em;
 			margin: 0 0 -13px 1em;
 		}

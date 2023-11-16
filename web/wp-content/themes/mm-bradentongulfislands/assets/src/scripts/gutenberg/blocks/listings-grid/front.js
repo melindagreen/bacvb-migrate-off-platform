@@ -1,9 +1,17 @@
 /** VARIABLES *****(*******************************************************************/
 var pageLength;
-var prevMonth;
 
 (function ($) {
 	/** FUNCTIONS *********************************************************************/
+
+
+    function truncateText(description, maxLength) {
+		if (description.length > maxLength) {
+			return description.substring(0, maxLength) + "...read more.";
+		} else {
+			return description;
+		}
+    }
 
 	/**
 	 * Generate an HTML string for the given listing object
@@ -18,39 +26,32 @@ var prevMonth;
 		let month = '';
 		let placeHolder = $(".wp-block-mm-bradentongulfislands-listings-grid").attr("data-default-thumb");
 
-		let thumbUrl = listing?.yoast_head_json?.og_image?.[0]?.url || placeHolder;
+		// a hacky way to get the featured image instead of the small thumb_url -- FOR EVENTS
+		let newThumb = '';
+		if(listing?.thumb_url) {
+			newThumb = listing?.thumb_url;
+			newThumb = newThumb.replace(/-\d+x\d+(\.\w+)$/, '$1');
+		}
 
-		console.log(listing);
+		let thumbUrl = newThumb || listing?.yoast_head_json?.og_image?.[0]?.url || placeHolder;
+
+		// console.log(listing);
 
 		switch (postType) {
 			case 'event':
-				if (listing?.meta_fields?.idss_event_start_date_time) {
+				description = listing?.excerpt.rendered || '';
+				description = truncateText(description, 50);
+				if (listing?.acf?.eventastic_start_date) {
 					// format date
-					const parsedDate = new Date(listing.meta_fields.idss_event_start_date_time);
-
-					const monthNames = ["January", "February", "March", "April", "May", "June",
-					"July", "August", "September", "October", "November", "December"
-					];
-					const currMonth = parsedDate.getMonth();
-					let monthName = monthNames[currMonth].toUpperCase();
-
-					if(prevMonth !== currMonth) {
-					
-						month = `<h2 class="listing listing--month">${monthName}</h2>`;
-					}
-					else {
-
-						month = '';
-					}
-
-					prevMonth = currMonth;
+					const startDate = new Date(listing.acf.eventastic_start_date);
+					const endDate = new Date(listing.acf.eventastic_end_date);
 					
 					date = `<div class='date'>
-						<span class='date__month'>
-							${parsedDate.toLocaleString("en-US", { month: "short" })}
-						</span>
-						<span class='date__day'>
-							${parsedDate.toLocaleString("en-US", { day: "numeric" })}
+						<span class='date__start'>
+							${startDate.toLocaleString("en-US", { month: "short" })} ${startDate.toLocaleString("en-US", { day: "numeric" })}
+						</span> - 
+						<span class='date__end'>
+							${endDate.toLocaleString("en-US", { month: "short" })} ${endDate.toLocaleString("en-US", { day: "numeric" })}
 						</span>
 					</div>`;
 				}
@@ -58,38 +59,9 @@ var prevMonth;
 				break;
 
 			case 'listing':
-				description += listing?.excerpt.rendered || '';
+				description = listing?.excerpt.rendered || '';
+				description = truncateText(description, 50);
 				date = '';
-	
-				let cat_names = listing?.listing_categories;
-				let primary_cat_id = listing?.listing_categories;
-				let cat_name = null;
-
-				for(let i = 0; i < cat_names.length; i++) {
-						
-					if(!(cat_names[i].name === 'undefined')) {
-
-						if(!primary_cat_id) {
-							
-							cat_name = cat_names[i].name;
-							break;
-						}
-
-						//Add Primary Category
-						else if(primary_cat_id == cat_names[i].term_id){
-							cat_name = cat_names[i].name;
-							break;
-						}
-					}
-				};
-
-				if(cat_name !== null) {
-					category = `<div class='category-tag'>
-						<span class='category-tag__name'>
-							${cat_name}
-						</span>
-					</div>`;
-				}
 
 			break;
 		}
@@ -98,7 +70,6 @@ var prevMonth;
 			<article class='listing listing--${postType}'>
 			<a aria-label='${listing.title.rendered}' href='${listing.link}'>
 				${date}
-				${category}
 				<div class='listing__thumb'>`;
 					
 					// Add an `onerror` event handler to the `img` tag
@@ -129,7 +100,6 @@ var prevMonth;
 		var prev = page > 1 ? page - 1 : 1;
 		var lastPage = parseInt($(".pagination__button--last").attr("data-page"));
 		var next = page < lastPage ? page + 1 : lastPage;
-		prevMonth = undefined;
 		$(".pagination__button--prev").attr("data-page", prev);
 		$(".pagination__button--next").attr("data-page", next);
 
@@ -226,18 +196,17 @@ var prevMonth;
 				$(".loading, .pagination__loading").removeClass("show");
 
 				listings = listings.filter(element => {
-				if (element.meta_fields?.idss_listing_account_types?.[0] === 'Restricted') {
-				    return false; // exclude this element from the filtered array
-				}
-					return true; // include this element in the filtered array
+					return true; 
 				});
 
 				if(listings.length > 0) {
 					// console.log(listings.map(listing => templateListing(listing, postType)));
+					$('.listings-container--grid').empty();
 					$('.listings-container--grid')
 						.append(listings.map(listing => templateListing(listing, postType)));
 				}
 				else {
+					$('.listings-container--grid').empty();
 					$('.listings-container--grid').addClass('listings-container--no-listings')
 					.append(`<h2>No ${postType}s available at this time</h2>`);
 				}
@@ -261,31 +230,31 @@ var prevMonth;
 		perPage = parseInt($('#listings-grid').attr('data-perpage'));
 		loadPage();
 		
-		// var dateFormat = "mm/d/yy",
-		// from = $( "#control__input--start-date" ).datepicker({
-		// 	defaultDate: "+1w",
-		// 	changeMonth: true
-	    // }).on( "change", function() {
-		// 	from.datepicker( "option", getDate( this ) );
-		// 	loadPage();
-	    // }),
-		// to = $( "#control__input--end-date" ).datepicker({
-		// 	defaultDate: "+1w",
-		// 	changeMonth: true
-		// }).on( "change", function() {
-		// 	to.datepicker( "option", getDate( this ) );
-		// 	loadPage();
-		// });
+		var dateFormat = "mm/d/yy",
+		from = $( "#control__input--start-date" ).datepicker({
+			defaultDate: "+1w",
+			changeMonth: true
+	    }).on( "change", function() {
+			from.datepicker( "option", getDate( this ) );
+			loadPage();
+	    }),
+		to = $( "#control__input--end-date" ).datepicker({
+			defaultDate: "+1w",
+			changeMonth: true
+		}).on( "change", function() {
+			to.datepicker( "option", getDate( this ) );
+			loadPage();
+		});
 
-		// function getDate( element ) {
-	    //   var date;
-	    //   try {
-	    //     date = $.datepicker.parseDate( dateFormat, element.value );
-	    //   } catch( error ) {
-	    //     date = null;
-	    //   }
-	    //   return element.value;
-	    // }
+		function getDate( element ) {
+	      var date;
+	      try {
+	        date = $.datepicker.parseDate( dateFormat, element.value );
+	      } catch( error ) {
+	        date = null;
+	      }
+	      return element.value;
+	    }
 
 
 		// Paging
@@ -301,17 +270,5 @@ var prevMonth;
 			loadPage();
 		});
 
-		//Category Dropdown
-		if($('.categoriesWrap .control__label').length > 3) {
-
-			$('#categoriesDropdownButton').on('click', ()=> {
-
-				$('#categoriesDropdownButton .arrow').toggleClass('is-active');
-				$('.control__label:not(:nth-child(-n+3))').toggleClass('show');
-				$('#categoriesDropdownButtonText').text($('#categoriesDropdownButtonText').text() === 'More' ? 'Close' : 'More');
-			});		
-
-			$('.categoriesDropdown').removeClass('categoriesDropdown--hide');	
-		}
 	});
 })(jQuery);
