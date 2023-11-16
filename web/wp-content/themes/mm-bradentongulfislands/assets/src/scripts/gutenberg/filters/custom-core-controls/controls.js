@@ -95,6 +95,7 @@ const withCustomControls = createHigherOrderComponent((BlockEdit) => {
                                         case 'overlap':
                                             return <PanelBody><NumberControl
                                             onChange={ overlap => {
+                                                overlap = parseInt(overlap);
                                                 setAttributes({ overlap })
                                             } }
                                             isDragEnabled
@@ -102,8 +103,8 @@ const withCustomControls = createHigherOrderComponent((BlockEdit) => {
                                             label={'Overlap'}
                                             max={100}
                                             min={-100}
-                                            shiftStep={ 2 }
-                                            step={2}
+                                            shiftStep={ 1 }
+                                            step={1}
                                             value={ attributes.overlap }
                                             /></PanelBody>
                                         case 'layer': 
