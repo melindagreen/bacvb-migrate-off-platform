@@ -34,6 +34,8 @@ new Assets\AssetHandler;
 // CPTs are dependant on parent, add to hook
 function init_child_theme() {
     include_once('library/custom-post-types.php');
+    include_once('library/rest-api.php');
     new Library\CustomPostTypes;
+    new Library\RestApi;
 }
 add_action( 'after_setup_theme', 'MaddenNino\init_child_theme' );
