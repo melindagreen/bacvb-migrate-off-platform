@@ -212,9 +212,19 @@ HEADER
         }
     }
 
+    .social-container {
+
+        position: absolute;
+        left: 0;
+        right: unset;
+        bottom: unset;
+    }
+
     .mega-menu__local-stories {
 
+        h3,.local-stories-nav {
         display: none;
+        }
     }
     &.open {
 
@@ -227,7 +237,7 @@ HEADER
             display: block;
         }
         .mega-menu {
-            min-height:90vh !important;
+            min-height:800px !important;
             height: 90vh !important;
             padding-top: 3rem;
             overflow: auto;

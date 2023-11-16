@@ -15,7 +15,7 @@ const save = (props) => {
     </div>
     <div className="hc-wrapper">
       <div className="bc-wrapper__items">
-            <div className="bc-infoblock">
+            <div className="bc-infoblock is-style-collage-square">
               <div className="bc-infoblock__content">
                 <h2 id="infoblock-title" className="infoblock__item infoblock__item--hide infoblock__item--green">Slide Title</h2>
                 <h3 id="infoblock-info" className="infoblock__item infoblock__item--hide">Slide Info</h3>

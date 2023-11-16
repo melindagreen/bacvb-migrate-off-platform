@@ -678,7 +678,8 @@ HEADER
             display: block;
         }
         .mega-menu {
-            min-height: 70vh;
+            min-height: 600px;
+            max-height: 800px;
             height: 70vh;
             padding-top: 7.5rem;
             overflow-x: hidden;

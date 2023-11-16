@@ -185,6 +185,8 @@ HEADER
             padding-left: 0;
             padding-right: 0;
             width: 80%;
+            display: block;
+            height: fit-content;
             &::after {
                 position: absolute;
                 top: 1rem;
@@ -196,6 +198,9 @@ HEADER
         .sub-menu {
             max-height: 0;
             overflow: hidden;
+            left: 0 !important;
+            padding: 0 !important;
+        
             .menu-item {
                 font-size: 1.25rem;
                 a {
@@ -228,7 +233,7 @@ HEADER
             display: block;
         }
         .mega-menu {
-            min-height:90vh !important;
+            min-height:800px !important;
             height: 90vh !important;
             padding-top: 3rem;
             overflow: auto;

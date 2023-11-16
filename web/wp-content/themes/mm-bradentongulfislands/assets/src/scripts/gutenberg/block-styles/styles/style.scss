@@ -219,6 +219,12 @@ IMAGES
     margin-bottom: 7rem !important;
     max-width: 40rem;
     overflow: unset;
+    .wp-block-cover__image-background,.wp-block-cover__background {
+    --webkit-mask: url("images/collage-square-long.svg") no-repeat center;
+    mask: url("images/collage-square-long.svg") no-repeat center;
+    --webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    }
 
     .wp-block-cover__inner-container {
 

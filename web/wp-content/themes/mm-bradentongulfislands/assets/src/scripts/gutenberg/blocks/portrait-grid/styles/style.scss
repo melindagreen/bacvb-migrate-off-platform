@@ -478,7 +478,7 @@ SMALL SCREENS
           .grid-item__image {
   
             min-width: 250px;
-            width: 79vw;
+            width: 100%;
           }
         }
       }
@@ -489,8 +489,7 @@ SMALL SCREENS
   
           .grid-item__image {
         
-            min-width: 260px;
-            width: 81vw;
+            width: 100%;
           }
         }
       }
@@ -503,10 +502,16 @@ SMALL SCREENS
   
             
             min-width: 260px;
-            width: 57vw;
+            width: 100%;
           }
         }
       }
+
+      --webkit-mask: url("images/portraitmask1.svg") no-repeat center !important;
+        mask: url("images/portraitmask1.svg") no-repeat center !important;
+
+        mask-size: 100% 100% !important;
+        -webkit-size: 100% 100% !important;
     }
 
     .grid-items {
@@ -533,46 +538,33 @@ SMALL SCREENS
 
       position: relative;
       padding: 4% 5%;
+      width: 99%;
+      margin-left: 0.3rem;
+      top: -4rem;
+      z-index: 2;
   
       &--2 {
 
         right: unset;
-        top: unset;
-        margin-top: 4rem;
-        margin-bottom: -2rem;
-        margin-left: auto;
-
-        .grid-item-body__arrow {
-
-          bottom: -60%;
-          right: 115%;
-          transform: rotate(90deg);
-        }
       }
   
       &--1 {
   
         bottom: unset;
         right: unset;
-
-        .grid-item-body__arrow {
-
-          top: 44%;
-          left: 72%;      
-          transform: rotate(180deg);
-        }
       }
   
       &--3 {
   
         bottom: unset;
         left: unset;
+      }
+
+      &--1,&--2,&--3 {
 
         .grid-item-body__arrow {
 
-          top: 83%;
-          left: -2%;
-          transform: rotate(270deg);
+          display: none;
         }
       }
     }
