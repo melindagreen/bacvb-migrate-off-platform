@@ -211,6 +211,9 @@ HEADER
             border: none;
             margin-bottom: 7px;
             display: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
 
             &:focus-visible {
 
@@ -222,6 +225,16 @@ HEADER
 
                 color: white;
             }
+        }
+
+        &__field:-webkit-autofill {
+            -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
+            -webkit-text-fill-color: inherit !important;
+        }
+
+        &__field:-moz-autofill {
+            -moz-box-shadow: 0 0 0 1000px transparent inset !important;
+            -moz-text-fill-color: inherit !important;
         }
 
         &__field:-webkit-autofill,
@@ -240,7 +253,10 @@ HEADER
             margin-right: 10px;
             position: relative;
             left: 14.5px;
-            top: 1.5px
+            top: 1.5px;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
         }
         
         .search-form__toggle {
