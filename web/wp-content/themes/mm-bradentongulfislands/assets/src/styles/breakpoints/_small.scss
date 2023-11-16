@@ -20,50 +20,101 @@ HEADER
 .#{$theme-prefix}-header {
 
     .top-bar {
-        height: 6rem;
-        padding: 1rem 2rem;
+        height: 5.5rem;
+        padding: 0.5rem;
+        gap: 0.8rem;
+
+        .header-weather-forecast {
+
+            position: unset;
+            background: unset;
+            width: unset;
+            height: unset;
+            padding: unset;
+            z-index: unset;
+            display: unset;
+
+            img {
+
+                width: 20px;
+            }
+            p {
+
+                font-size: 0.8rem;
+            }
+        }
     }
+
+    .top-bar--solid {
+
+        background-color: $dk-blue;
+
+        &::after {
+
+            content: unset;
+        }
+
+        .top-bar__brand {
+
+            padding-top: 0;
+        }
+    }
+
+    .toggle {
+
+        margin-top: 0;
+        transform: scale(0.9);
+    }
+
     .top-bar__brand svg {
-        width: 5rem;
+        width: 6rem;
     }
+    .top-bar__brand {
+        padding-top: 0;
+    }
+
     .nav__shortcuts {
         display: none;
     }
-    // .search-wrap {
-    //     position: absolute;
-    //     top: 4rem;
-    //     left: 0;
-    //     width: 100%;
-    //     padding: 0 1rem;
-    //     .search-form {
-    //         max-width: 100%;
-    //         height: 0;
-    //         justify-content: flex-end;
-    //         padding: 0 1rem;
-    //         .search-form__toggle {
-    //             position: absolute;
-    //             right: 8.3rem;
-    //             top: -1.75rem;
-    //         }
 
-    //         .search-container {
-    //             margin: 1.5em 0;
-    //         }
-    //         &.open {
-    //             height: auto;
-    //             .search-container {
-    //                 width: 100%;
-    //             }
-    //         }
-    //         &:not(.open) {
-    //             .search-container {
-    //                 transition: none;
-    //             }
-    //         }
-    //     }
-    // }
+    .search-form {
+
+        margin-top: -0.4rem;
+    }
+    
     .mega-menu__nav-wrap {
         width: 100%;
+        display: unset;
+    }
+
+    .mega-menu__nav {
+
+        &--secondary {
+
+            left: 0;
+            position: relative;
+            padding-left: 5%;
+            padding-right: 5%;
+            
+            ul {
+
+                border-top: $sky-blue 2px solid;
+                border-left: none;
+                padding: 0.5rem 0 0.5rem 0;
+
+                .menu-item {
+
+
+                    a {
+
+                        text-transform: uppercase;
+                        font-size: 1.1rem;
+                        color: $rust;
+                        margin-left: 0;
+                    }
+                }
+            }
+        }
     }
     .nav__secondary {
         &::before {
@@ -74,14 +125,65 @@ HEADER
         }
     }
     .mega-menu__menu {
+        padding-top: 2rem;
         .menu-item {
             position: relative;
             a {
                 display: inline-block;
-                margin: 1rem 2rem;
+                margin: 0.1rem 1rem;
+                color: $dk-blue;
+                font-size: 1.5rem;
+            }
+
+            &.menu-item-has-children::after {
+
+                position: absolute;
+                top: 16%;
+                right: 6%;            
+                width: 2rem;
+                height: 2rem;
+                transform: rotate(0);
+                transition: all 0.2s ease-in-out;
             }
         }
+
+        .menu-item.open {
+
+            background-color: unset;
+
+            a {
+
+                color: $dk-blue;
+            }
+
+            &.menu-item-has-children::after {
+
+                transform: rotate(90deg);
+                transition: all 0.2s ease-in-out;
+            }
+
+            .sub-menu {
+
+                max-height: fit-content;
+                position: relative;
+                padding-left: 18px;
+                transition: all 0.2s ease-in-out;
+
+                .menu-item {
+
+                    a {
+
+                        margin: 0;
+                        font-size: 1.2rem;
+                        color: $purple;
+                    }
+                }
+            }
+        }
+
         & > .menu-item {
+            padding-left: 0;
+            padding-right: 0;
             &::after {
                 position: absolute;
                 top: 1rem;
@@ -93,8 +195,6 @@ HEADER
         .sub-menu {
             max-height: 0;
             overflow: hidden;
-            background-color: #96111d;
-            @include standard-transition;
             .menu-item {
                 font-size: 1.25rem;
                 a {
@@ -102,7 +202,6 @@ HEADER
                 }
             }
             .sub-menu {
-                background-color: #8b0c17;
                 .menu-item {
                     font-size: 1rem;
                     a {
@@ -112,15 +211,53 @@ HEADER
             }
         }
     }
+
+    .mega-menu__local-stories {
+
+        display: none;
+    }
     &.open {
+
+        .top-bar {
+
+            background: none;
+        }
+
         .search-wrap {
             display: block;
         }
         .mega-menu {
-            max-height: 100vh;
-            height: 100vh;
+            min-height:90vh !important;
+            height: 90vh !important;
             padding-top: 3rem;
             overflow: auto;
+            background: transparent linear-gradient(180deg, #014067 17%, #014067 18%, white 21%) 0% 0% no-repeat padding-box;
+        }
+
+        .mega-menu-shortcuts--mobile {
+
+            margin-right: 0;
+
+            .menu__shortcuts {
+
+                margin-top: 0;
+                flex-wrap: wrap-reverse;
+                justify-content: center;
+                gap: 0.5rem;
+
+                .menu-item {
+
+                    width: 160px;
+                }
+            }
+        }
+
+        .top-bar__contents {
+
+            .mega-menu-shortcuts {
+    
+                display: none;
+            }
         }
     }
     &.open.searchopen {
@@ -168,6 +305,15 @@ SEARCH FUNCTIONALITY
 //         font-weight: normal;
 //     }
 // }
+
+
+/*********************
+WEATHER
+*********************/
+.header-weather-forecast {
+    
+    display: none;
+}
 
 /*********************
 MAIN PAGE CONTENT

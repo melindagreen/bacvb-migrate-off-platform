@@ -103,6 +103,11 @@ HEADER
         /*Set fill for svgs to inherit*/
         fill: white;
         transition: color 0.25s ease-in-out, background 0.25s ease-in-out, font-size 0.25s ease-in-out;
+
+        .header-weather-forecast {
+
+            display: none;
+        }
     }
     .top-bar__brand {
         margin-right: auto;
@@ -120,6 +125,11 @@ HEADER
 
             display: none;
         }
+    }
+
+    .mega-menu-shortcuts--mobile {
+
+        display: none;
     }
     // .top-bar__contents,
     // .nav__shortcuts {
@@ -181,8 +191,9 @@ HEADER
         border-radius: 29px;
         transition: all 0.3s ease-in-out;
         width: 38px;
+        height: 38px;
 
-        &:hover {
+        &:hover,&:focus {
 
             transition: all 0.3s ease-in-out;
             width: 185px;
@@ -316,6 +327,7 @@ HEADER
             color: white;
         }
         &.open {
+
             .search-container {
                 width: 20rem;
                 padding-left: 10px;
@@ -624,6 +636,10 @@ HEADER
                     }
                 }
             }
+        }
+        .mega-menu-shortcuts--mobile {
+
+            display: none;
         }
         .toggle__line {
             transition: transform 0.12s cubic-bezier(0.22, 0.61, 0.36, 1), background-color 0.25s ease-in-out;

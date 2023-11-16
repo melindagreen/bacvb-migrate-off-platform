@@ -354,9 +354,15 @@ if ('serviceWorker' in navigator) {
 
             // add or hide if no forecast
             if (forecastHTML != "") {
-                jQuery("#forecast-current").html(forecastHTML);
+                jQuery(".header-weather-forecast__now").each(function(){
+					
+					jQuery(this).html(forecastHTML);
+				});
             } else {
-                jQuery("#forecast-current").css({ "display": "none" });
+				jQuery(".header-weather-forecast__now").each(function(){
+					
+					jQuery(this).css({ "display": "none" });
+				});
             }
         })
 
