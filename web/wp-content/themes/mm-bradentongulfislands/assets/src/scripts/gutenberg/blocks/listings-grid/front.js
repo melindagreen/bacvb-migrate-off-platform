@@ -1,6 +1,3 @@
-/** VARIABLES *****(*******************************************************************/
-var pageLength;
-
 (function ($) {
 	/** FUNCTIONS *********************************************************************/
 
@@ -22,7 +19,6 @@ var pageLength;
 	function templateListing(listing, postType) {
 		let description = '';
 		let date = '';
-		let category = '';
 		let month = '';
 		let placeHolder = $(".wp-block-mm-bradentongulfislands-listings-grid").attr("data-default-thumb");
 		let accommodations = '';
@@ -37,27 +33,50 @@ var pageLength;
 
 		let thumbUrl = newThumb || listing?.yoast_head_json?.og_image?.[0]?.url || placeHolder;
 
-		console.log(listing);
+		// console.log(listing);
 
 		switch (postType) {
 			case 'event':
 				description = listing?.excerpt.rendered || '';
 				description = truncateText(description, 50);
-				if (listing?.acf?.eventastic_start_date) {
-					// format date
-					const startDate = new Date(listing.acf.eventastic_start_date);
-					const endDate = new Date(listing.acf.eventastic_end_date);
-					
+				if (listing?.meta_fields?.eventastic_start_date) {
+
+					let startDate = listing?.meta_fields?.eventastic_start_date;
+					let endDate = listing?.meta_fields?.eventastic_end_date;
+
+					// Start day Format
+					const startdateObject = new Date(startDate);
+					let startDay = startdateObject.getDate() + 1;
+					// if date is the first day of the month
+					if (startDay > new Date(startdateObject.getFullYear(), startdateObject.getMonth() + 1, 0).getDate()) {
+					    startDay = 1;
+					    startdateObject.setMonth(startdateObject.getMonth() + 1);
+					}
+					const startMonth = new Intl.DateTimeFormat('en-US', { month: 'short' }).format(startdateObject);
+
+					startDate = `${startMonth} ${startDay}`;
+
+					// End day Format
+					const enddateObject = new Date(endDate);
+					let endDay = enddateObject.getDate() + 1;
+					// if date is the first day of the month
+					if (endDay > new Date(enddateObject.getFullYear(), enddateObject.getMonth() + 1, 0).getDate()) {
+					    endDay = 1;
+					    enddateObject.setMonth(enddateObject.getMonth() + 1);
+					}
+					const endMonth = new Intl.DateTimeFormat('en-US', { month: 'short' }).format(enddateObject);
+
+					endDate = `${endMonth} ${endDay}`;
+
 					date = `<div class='date'>
-						<span class='date__start'>
-							${startDate.toLocaleString("en-US", { month: "short" })} ${startDate.toLocaleString("en-US", { day: "numeric" })}
-						</span> - 
-						<span class='date__end'>
-							${endDate.toLocaleString("en-US", { month: "short" })} ${endDate.toLocaleString("en-US", { day: "numeric" })}
-						</span>
-					</div>`;
+						<span class='date__start'>${startDate}</span>`;
+
+					if(startDate != endDate) {
+						date += ` - <span class='date__end'>${endDate}</span>`;
+					}
+					
+					date += `</div>`;
 				}
-				category = '';
 				break;
 
 			case 'listing':
@@ -65,9 +84,9 @@ var pageLength;
 				description = truncateText(description, 50);
 				date = '';
 
-				accommodations = listing?.acf?.['partnerportal_accomodations-location']?.[0];
+				accommodations = listing?.meta_fields?.['partnerportal_accomodations-location']?.[0];
 
-				let amenities = listing?.acf?.['partnerportal_accomodations-facility-amenities']?.[0];
+				let amenities = listing?.meta_fields?.['partnerportal_accomodations-facility-amenities']?.[0];
 				
 				if(amenities == 'pet-friendly') {
 					petfriendly = `<img src="/wp-content/themes/mm-bradentongulfislands/assets/images/icons/pet-friendly.png" alt="pet friendly icon" class="petfriendly">`
@@ -241,8 +260,6 @@ var pageLength;
 		    $(this).closest('.control__label').removeClass('active');
 		});
 
-
-
 		loadPage();
 	}
 
@@ -251,21 +268,15 @@ var pageLength;
 		perPage = parseInt($('#listings-grid').attr('data-perpage'));
 		loadPage();
 		
-		var dateFormat = "mm/d/yy",
+		var dateFormat = "mm/dd/yy",
+		// var dateFormat = "yy-mm-dd",
 		from = $( "#control__input--start-date" ).datepicker({
 			defaultDate: "+1w",
 			changeMonth: true
 	    }).on( "change", function() {
 			from.datepicker( "option", getDate( this ) );
 			loadPage();
-	    }),
-		to = $( "#control__input--end-date" ).datepicker({
-			defaultDate: "+1w",
-			changeMonth: true
-		}).on( "change", function() {
-			to.datepicker( "option", getDate( this ) );
-			loadPage();
-		});
+	    });
 
 		function getDate( element ) {
 	      var date;
@@ -274,6 +285,7 @@ var pageLength;
 	      } catch( error ) {
 	        date = null;
 	      }
+		  console.log(element.value);
 	      return element.value;
 	    }
 
