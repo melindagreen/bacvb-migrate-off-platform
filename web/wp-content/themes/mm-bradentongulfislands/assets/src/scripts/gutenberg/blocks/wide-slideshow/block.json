@@ -9,6 +9,23 @@
     "description": "wide slideshow",
     "icon": "leftright",
     "category": "layout",
-    "attributes": {}
+    "attributes": {
+      "mediaId": {
+        "type": "number",
+        "default": 0
+      },
+      "mediaUrl": {
+        "type": "array",
+        "default": [],
+        "selector": "img",
+        "attribute": "src"
+      },
+      "mediaAlt": {
+        "type": "string",
+        "default": "",
+        "selector": "img",
+        "attribute": "alt"
+      }
+    }
   }
 }

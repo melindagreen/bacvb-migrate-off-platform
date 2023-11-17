@@ -5,9 +5,19 @@ import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
 const save = (props) => {
 
   const blockProps = useBlockProps.save();
+  const {attributes} = props;
+  const {mediaUrl, mediaAlt} = attributes;
+
 
   return (
     <div className={`wp-block-mm-bradentongulfislands-wideslideshow` }>
+      <img className="wp-block-mm-bradentongulfislands-wideslideshow__logo" data-load-type="img" 
+                data-load-alt={mediaAlt !== '' ? mediaAlt : 'Carousel Image'}
+                data-load-offset="lg"
+                data-load-sm={mediaUrl[2]} 
+                data-load-md={mediaUrl[1]}
+                data-load-lg={mediaUrl[0]}
+        />
     <div className={`swiper-wideslideshow swiper` }>
       <div className={`swiper-wrapper bc-wrapper`}>
         <InnerBlocks.Content/> 
@@ -29,6 +39,10 @@ const save = (props) => {
                 <div className="swiper-button-prev"></div>
               </div>
             </div>
+      </div>
+    </div>
+    <div className={`swiper-thumbnail-preview-slider--thumbnails swiper` }>
+      <div className={`swiper-wrapper bc-wrapper`}>
       </div>
     </div>
     </div>);

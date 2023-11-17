@@ -10,6 +10,20 @@ Wide Slideshow
 
   .#{$block-prefix}-wideslideshow { 
 
+    overflow: hidden;
+    position: relative;
+
+    &__logo {
+
+      position: absolute;
+      top: -2rem;
+      left: -2rem;
+      z-index: 2;
+      height: 230px;
+      width: 230px;
+      object-fit: cover;  
+    }
+
     .swiper-wideslideshow {
     width: 100%;
     height: 600px;
@@ -19,11 +33,11 @@ Wide Slideshow
     &::after {
       
       content: ' ';
-      background: url('images/slideshow-bottom.png');
+      background: url('images/slideshow-bottom.png') repeat-x center;
       position: absolute;
       width: 100%;
-      height: 3rem;
-      bottom: -1rem;
+      height: 3.5rem;
+      bottom: 0;
       z-index: 1;
     }
 
@@ -69,6 +83,51 @@ Wide Slideshow
     .hidden {
       
       visibility: hidden;
+    }
+  }
+
+  .swiper-thumbnail-preview-slider--thumbnails {
+
+    top: -6rem;
+    display: none;
+    margin-left: calc(100% - 45vw);
+    padding-right: 2rem;
+
+    .swiper-wrapper {
+
+      row-gap: 1rem;
+      margin-left: auto;
+      width: fit-content;
+      margin-right: 6vw;  
+
+      .swiper-slide-thumb-active {
+
+        img{
+        border: 4px solid $rust;
+        }
+      }
+
+      .swiper-slide {
+
+        width: 140px !important;
+        height: 90px !important;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+
+          filter: brightness(0.6);
+          transition: all 0.2s ease-in-out;
+        }
+
+        img {
+          
+          height: inherit;
+          width: inherit;
+          border-radius: 22px;
+          object-fit: cover;
+        }
+      }
     }
   }
 
@@ -169,8 +228,14 @@ Wide Slideshow
         .swiper-button-next {
           
           right: $nav-dist;
-          background: url('images/ui-next-on.png');
+          background: url('images/ui-next-off.png');
           background-size: contain;
+
+          &:hover {
+
+            background: url('images/ui-next-on.png');
+            background-size: contain;
+          }
         
         }
   
@@ -180,6 +245,12 @@ Wide Slideshow
           left: auto;
           background: url('images/ui-prev-off.png');
           background-size: contain;
+
+          &:hover {
+
+            background: url('images/ui-prev-on.png');
+            background-size: contain;
+          }
         }
   
       }
@@ -267,10 +338,31 @@ Wide Slideshow
   }
 
 /*********************
+  LARGE SCREENS
+*********************/
+@media only screen and (min-width: $screen-lg) {
+  .#{$block-prefix}-wideslideshow {
+  .swiper-thumbnail-preview-slider--thumbnails {
+
+    display: block;
+    width: 45vw;
+  }
+  }
+}
+
+/*********************
 SMALL SCREENS
 *********************/
 @media only screen and (max-width: $screen-sm) {
-  .#{$block-prefix}-wideslideshow { 
+  .#{$block-prefix}-wideslideshow {
+
+    &__logo {
+
+      top: -0.9rem;
+      left: -0.9rem;
+      height: 110px;
+      width: 110px;
+    }
 
     .swiper-wideslideshow {
 
@@ -304,11 +396,15 @@ SMALL SCREENS
       &__content {
 
         padding-left: 3vw;
+
+        .infoblock__item { 
+          width: 100%;
+        }
       }
 
       #infoblock-title {
 
-        font-size: 22px;
+        font-size: 2.25rem !important;
       }
     }
 

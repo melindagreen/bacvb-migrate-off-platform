@@ -1,6 +1,30 @@
 
 jQuery(document).ready(function ($) {
 
+  let images = [];
+ 
+  $('.swiper-wideslideshow .swiper-wrapper .swiper-slide').each(function() {
+      // Find the img element within the current div
+      let imgElement = $(this).find('img');
+
+      // Get the src attribute of the img element
+      let imgSrc = imgElement.data('load-sm');
+
+      // Check if imgSrc is not undefined and not already in the images array
+      if (imgSrc && images.indexOf(imgSrc) === -1) {
+
+          images.push(imgSrc);
+      }
+  });
+
+      const thumbnailCarousel = new Swiper(".swiper-thumbnail-preview-slider--thumbnails", {
+        slidesPerView: 4,
+        spaceBetween: 10,
+        freeMode: true,
+        watchSlidesProgress: true
+      }); 
+
+
       const heroBannerCarousel = new Swiper(".swiper-wideslideshow", {
         slidesPerView: 1,
         loop: true,
@@ -16,8 +40,20 @@ jQuery(document).ready(function ($) {
         pagination: {
           el: '.swiper-pagination',
           clickable: true
+        },
+        thumbs: {
+          swiper: thumbnailCarousel,
         }
       }); 
+
+
+
+      console.log(images);
+
+      images.forEach(function(imageUrl) {
+        let slide = $('<div class="swiper-slide"><img src="' + imageUrl + '" alt=""></div>');
+        $('.swiper-thumbnail-preview-slider--thumbnails .swiper-wrapper').append(slide);
+        });
       changeInfoBlock();
       console.log(heroBannerCarousel);
       
