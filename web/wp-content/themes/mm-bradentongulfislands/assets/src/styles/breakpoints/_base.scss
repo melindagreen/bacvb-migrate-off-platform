@@ -838,6 +838,10 @@ FOOTER
             background-color: transparent;
             border: none;
             margin-bottom: 3px;
+
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
     
             &:focus-visible {
     
