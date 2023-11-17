@@ -13,6 +13,38 @@
     width: 90%;
   }
 
+  .nautical-illustration {
+
+    position: absolute;
+    display: none;
+    z-index: 3;
+
+
+    &--oyster {
+
+      right: 82%;
+      top: 28%;
+      width: 8vw;
+      height: auto;
+    }
+
+    &--crab {
+
+      right: 11%;
+      top: 27%;
+      width: 20vw;
+      height: auto;
+    }
+
+    &--starfish {
+
+      right: 29%;
+      top: 90%;  
+      width: 270px;
+      height: auto;
+    }
+  }
+
   // if we need different length templates, add them here
   // for now assuming only 3
   &.is-length-3 {

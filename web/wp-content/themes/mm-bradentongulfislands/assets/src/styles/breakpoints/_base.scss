@@ -1052,12 +1052,19 @@ STAY CONNECTED
         display: block;
     }
 
+    a {
+
+        color: unset;
+        text-decoration: none;
+    }
+
     &__links {
 
         position: absolute;
         left: 50%;
         transform: translate(-50%,5rem);
         transition: all 0.2s ease-in-out;
+
 
         .stay-connected-guide {
             border: 1.5px solid $sea-blue;

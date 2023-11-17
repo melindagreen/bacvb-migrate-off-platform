@@ -84,8 +84,8 @@
     <!-- Stay Connected  -->
     <div class="stay-connected">
         <div class="stay-connected__links">
-            <button class="stay-connected-guide">Get Your <br> Destination Guide</button>
-            <button class="stay-connected-subscribe">Subscribe To <br> Our Newsletter</button>
+            <a href="/travel-guide"><button class="stay-connected-guide">Get Your <br> Destination Guide</button></a>
+            <a href="/enews"><button class="stay-connected-subscribe">Subscribe To <br> Our Newsletter</button></a>
         </div>
         <button class="stay-connected__toggle">Stay Connected</button>
     </div>
