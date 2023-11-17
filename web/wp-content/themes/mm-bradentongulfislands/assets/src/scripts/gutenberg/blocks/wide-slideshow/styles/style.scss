@@ -37,7 +37,7 @@ Wide Slideshow
       position: absolute;
       width: 100%;
       height: 3.5rem;
-      bottom: 0;
+      bottom: -1rem;
       z-index: 1;
     }
 
@@ -88,7 +88,7 @@ Wide Slideshow
 
   .swiper-thumbnail-preview-slider--thumbnails {
 
-    top: -6rem;
+    top: -5rem;
     display: none;
     margin-left: calc(100% - 45vw);
     padding-right: 2rem;
