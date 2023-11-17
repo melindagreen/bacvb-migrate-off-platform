@@ -7,7 +7,6 @@ import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
 
 // Local Dependencies
 import { BLOCK_PREFIX } from '../../../inc/constants';
-import Controls from './controls'
 
 /*** CONSTANTS **************************************************************/
 const ALLOWED_BLOCKS = ['mm-bradentongulfislands/wide-image-slide'];
@@ -47,7 +46,6 @@ const edit = (props) => {
   return (
     <>
       <Editor {...props} />
-      <Controls {...props} />
     </>
   );
 };

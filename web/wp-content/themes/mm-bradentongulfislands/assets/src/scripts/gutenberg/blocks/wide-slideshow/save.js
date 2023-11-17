@@ -11,13 +11,6 @@ const save = (props) => {
 
   return (
     <div className={`wp-block-mm-bradentongulfislands-wideslideshow` }>
-      {mediaUrl.length !== 0 && <img className="wp-block-mm-bradentongulfislands-wideslideshow__logo" data-load-type="img" 
-                data-load-alt={mediaAlt !== '' ? mediaAlt : 'Carousel Image'}
-                data-load-offset="lg"
-                data-load-sm={mediaUrl[2]} 
-                data-load-md={mediaUrl[1]}
-                data-load-lg={mediaUrl[0]}
-        />}
     <div className={`swiper-wideslideshow swiper` }>
       <div className={`swiper-wrapper bc-wrapper`}>
         <InnerBlocks.Content/> 

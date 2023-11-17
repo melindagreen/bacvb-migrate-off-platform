@@ -5,7 +5,7 @@ jQuery(document).ready(function ($) {
  
   $('.swiper-wideslideshow .swiper-wrapper .swiper-slide').each(function() {
       // Find the img element within the current div
-      let imgElement = $(this).find('img');
+      let imgElement = $(this).find('.item-slide-img');
 
       // Get the src attribute of the img element
       let imgSrc = imgElement.data('load-sm');

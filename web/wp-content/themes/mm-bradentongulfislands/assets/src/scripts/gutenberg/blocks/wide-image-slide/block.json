@@ -26,6 +26,22 @@
           "selector": "img",
           "attribute": "alt"
         },
+        "logoId": {
+          "type": "number",
+          "default": 0
+      },
+      "logoUrl": {
+          "type": "array",
+          "default": [],
+          "selector": "img",
+          "attribute": "src"
+      },
+      "logoAlt": {
+        "type": "string",
+        "default": "",
+        "selector": "img",
+        "attribute": "alt"
+      },
         "title": {
           "type": "string",
           "default": "",

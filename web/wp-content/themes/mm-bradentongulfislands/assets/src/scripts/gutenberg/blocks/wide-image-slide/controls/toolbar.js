@@ -16,9 +16,9 @@ const ImageUpload = (props) => {
  
      const onSelectMedia = (media) => {
 
-        let mediaLG = typeof media?.sizes?.full?.url !== undefined ? media.sizes.full.url : media.url;
+        let mediaLG = typeof media?.sizes?.full?.url !== 'undefined' ? media.sizes.full.url : media.url;
         let mediaMD = mediaLG;
-        let mediaSM = typeof media?.sizes?.madden_hero_md?.url !== undefined ? media.sizes.madden_hero_md.url : mediaMD;
+        let mediaSM = typeof media?.sizes?.madden_hero_md?.url !== 'undefined' ? media.sizes.madden_hero_md.url : mediaMD;
         setAttributes({
             mediaId: media.id,
             mediaUrl: [mediaLG, mediaMD, mediaSM],
