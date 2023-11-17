@@ -366,12 +366,39 @@ if ('serviceWorker' in navigator) {
             }
         })
 
+		/**
+		 * Animation on scroll
+		 * @returns {null}
+		 */
+		function scrollAnimation(selector, scrollThreshold, animationClass) {
+			$(window).scroll(function() {
+				const scrollPosition = $(this).scrollTop();
+			
+				$(selector).each(function() {
+				  const itemOffset = $(this).offset().top;
+			
+				  if (scrollPosition > itemOffset - scrollThreshold && !$(this).hasClass(animationClass) && !$(this).hasClass('animationoff')) {
+					$(this).addClass(animationClass);
+					const that = this;
+					setTimeout(function() {
+					  $(that).removeClass(animationClass);
+					  $(that).addClass('animationoff');
+					}, 400); 
+				  }
+				});
+			  });
+		  }
+
     /**
      * Fires on load and scroll
      */
     function themeOnScroll() {
         
 		toggleTopBarClasses();
+		scrollAnimation('.is-style-arrow-button', 600, 'is-style-arrow-button--rotate');
+		scrollAnimation('.grid-item-body--2 .grid-item-body__arrow', 600, 'grid-item-body__arrow--forward');
+		scrollAnimation('.grid-item-body--3 .grid-item-body__arrow', 600, 'grid-item-body__arrow--rotate');
+		scrollAnimation('.grid-item-body--1 .grid-item-body__arrow', 600, 'grid-item-body__arrow--rotate');
     }
 
     /**

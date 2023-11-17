@@ -61,6 +61,7 @@
         "item1 item3 ."
         ".     item3 .";
       .grid-item {
+
         &--1 {
           grid-area: item1;
           --webkit-mask: url("images/portraitmask1.svg") no-repeat center;
@@ -220,6 +221,15 @@
         right: -13%;
         width: 50px;
         height: 100%;
+        transition: all 0.3s ease-in-out;
+
+        &--forward {
+
+  
+              transition: all 0.3s ease-in-out;
+              transform: translateX(0.5rem);
+
+      }
       }
 
       .grid-item-body__link {
@@ -227,6 +237,14 @@
         &::after {
 
           background: url('images/ui-link-arrow.png');
+          background-size: contain!important;
+          bottom: -35%;
+          content: " ";
+          height: 25px;
+          position: absolute;
+          right: -2rem;
+          transition: all .3s ease-in-out;
+          width: 25px;
         }
       }
     }
@@ -247,6 +265,14 @@
         left: -17%;
         width: 120px;
         height: 100%;
+        transition: all 0.3s ease-in-out;
+
+        &--rotate {
+
+
+              transition: all 0.3s ease-in-out;
+              transform: rotate(20deg);
+      }
       }
 
       .grid-item-body__title, .grid-item-body__link {
@@ -289,6 +315,15 @@
         left: -14%;
         width: 180px;
         height: 100%;
+        transition: all 0.3s ease-in-out;
+
+        &--rotate {
+
+  
+              transition: all 0.3s ease-in-out;
+              transform: rotate(-20deg);
+    
+      }
       }
 
       .grid-item-body__link {

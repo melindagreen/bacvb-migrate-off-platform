@@ -755,6 +755,15 @@ BUTTONS
         transition: all 0.3s ease-in-out;
     }
 
+    &--rotate {
+
+        &::after {
+
+            transition: all 0.3s ease-in-out;
+            transform: rotate(-20deg);
+        }
+    }
+
     &:hover {
 
         .wp-block-button__link {
@@ -869,7 +878,7 @@ CUSTOM BLOCKS
 .is-style-nautical-illustrations {
 
     .nautical-illustration {
-        
+
         display: unset;
         @media only screen and (max-width: 768px) {
             display: none;
