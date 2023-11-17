@@ -56,7 +56,7 @@ function render_grid_filter( $attrs, $filter_tax ) {
             <div class="date-controls">
                 <div class="control control--start-date">
                     <label for="control__input--start-date" class="control__label control__label--start-date">
-                        <?php _e( 'Start Date' ); ?>
+                        <?php _e( 'Filter By Date' ); ?>
                     </label>
 
                     <input
@@ -67,22 +67,6 @@ function render_grid_filter( $attrs, $filter_tax ) {
                         placeholder="Select Start Date"
                         autocomplete="off"
                         value="<?php echo isset( $_GET['listings_start'] ) ? date( 'F j, Y', strtotime( $_GET['listings_start'] ) ) : ''; ?>"
-                    />
-                </div>
-
-                <div class="control control--end-date">
-                    <label for="control__input--end-date" class="control__label control__label--end-date">
-                        <?php _e( 'End Date' ); ?>
-                    </label>
-
-                    <input
-                        type="text"
-                        name="event_last_date_time"
-                        class="control__input"
-                        id="control__input--end-date"
-                        placeholder="Select End Date"
-                        autocomplete="off"
-                        value="<?php echo isset( $_GET['listings_end'] ) ? date( 'F j, Y', strtotime( $_GET['listings_end'] ) ) : ''; ?>"
                     />
                 </div>
             </div>
@@ -150,6 +134,8 @@ function render_grid_filter( $attrs, $filter_tax ) {
                                 </label>"; 
                             }, $filter_terms ) ); ?>
                         </div>
+
+
                     </div>
                 <?php } ?>
 

@@ -25,8 +25,10 @@ var pageLength;
 		let category = '';
 		let month = '';
 		let placeHolder = $(".wp-block-mm-bradentongulfislands-listings-grid").attr("data-default-thumb");
+		let accommodations = '';
+		let petfriendly = '';
 
-		// a hacky way to get the featured image instead of the small thumb_url -- FOR EVENTS
+		// a hacky way to get the full size of the thumbnail_url instead of the small...thumbnail.
 		let newThumb = '';
 		if(listing?.thumb_url) {
 			newThumb = listing?.thumb_url;
@@ -35,7 +37,7 @@ var pageLength;
 
 		let thumbUrl = newThumb || listing?.yoast_head_json?.og_image?.[0]?.url || placeHolder;
 
-		// console.log(listing);
+		console.log(listing);
 
 		switch (postType) {
 			case 'event':
@@ -63,6 +65,14 @@ var pageLength;
 				description = truncateText(description, 50);
 				date = '';
 
+				accommodations = listing?.acf?.['partnerportal_accomodations-location']?.[0];
+
+				let amenities = listing?.acf?.['partnerportal_accomodations-facility-amenities']?.[0];
+				
+				if(amenities == 'pet-friendly') {
+					petfriendly = `<img src="/wp-content/themes/mm-bradentongulfislands/assets/images/icons/pet-friendly.png" alt="pet friendly icon" class="petfriendly">`
+				}
+
 			break;
 		}
 
@@ -77,6 +87,7 @@ var pageLength;
 
 				html += `</div>
 				<div class="listing__info">
+					${petfriendly}
 					<h3 class='listing__title'>${listing.title.rendered}</h3>`;
 				if(description.length != 0){
 					html += `<div class='listing__description'>${description}</div>`;
@@ -221,6 +232,16 @@ var pageLength;
 			'checked',
 			!$('.control__input--categories:not(#control__input--categories-all):checked').length
 		);
+
+		$('.control__input--categories:not(#control__input--categories-all):checked').each(function() {
+		    $(this).closest('.control__label').addClass('active');
+		});
+
+		$('.control__input--categories:not(#control__input--categories-all):not(:checked)').each(function() {
+		    $(this).closest('.control__label').removeClass('active');
+		});
+
+
 
 		loadPage();
 	}
