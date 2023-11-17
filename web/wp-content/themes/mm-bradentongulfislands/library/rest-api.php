@@ -17,7 +17,7 @@ class RestApi {
         // meta
         $meta_types = array( 'listing', 'event' );
         foreach( $meta_types as $type ) {
-            register_rest_field( $type, 'acf', array(
+            register_rest_field( $type, 'meta_fields', array(
                 'get_callback' => function( $object ) use( $type ) {
                     $meta = get_post_meta( $object['id'] );
 

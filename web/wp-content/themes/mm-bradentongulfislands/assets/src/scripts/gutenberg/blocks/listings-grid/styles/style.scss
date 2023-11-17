@@ -182,7 +182,7 @@ $bar-height: 70px;
 		padding: 1em;
 		align-self: center;
 		max-width: 50%;
-		width: 400px;
+		width: 410px;
 		.control {
 			font-size: 1em;
 			font-family: $font-header;
@@ -207,7 +207,7 @@ $bar-height: 70px;
 		max-width: 95%;
 		margin: 2em auto;
 		justify-content: flex-start;
-		gap: 10px;
+		gap: 7px;
 
 		&--no-listings {
 			min-height: 30rem !important;
@@ -242,9 +242,10 @@ $bar-height: 70px;
 	// indv listings
 	.listing {
 		position: relative;
-		min-width: 250px;
+		min-width: 210px;
 		flex: 0 0 31%;
 		height: auto;
+		margin: 2px 0;
 		background-color: $light-blue;
 
 		a {
@@ -324,7 +325,7 @@ $bar-height: 70px;
 
 		&:hover {
 
-			.date, .category-tag {
+			.date{
 				top: -5px;
 			}
 			a {
@@ -399,19 +400,6 @@ $bar-height: 70px;
 		}
 	}
 
-	//cateogry
-	.category-tag {
-		position: absolute;
-		left: 40px;
-		top: -5px;
-		background: #000;
-		z-index: 10;
-		padding: 15px;
-		color: #fff;
-		transition: 0.3s ease;
-		text-align: center;
-	}
-
 	// pagination
 	.pagination {
 		display: flex;
@@ -420,7 +408,6 @@ $bar-height: 70px;
 		margin-left: auto;
 
 		button:disabled {
-
 			color: rgb(51,51,51, 0.4);
 		}
 
@@ -465,7 +452,7 @@ MEDIUM AND LARGE SCREENS
 
 		// indv listings
 		.listing {
-			flex: 0 0 22%;
+			flex: 0 0 24%;
 
 			&--event {
 
@@ -513,7 +500,7 @@ SMALL SCREENS
 		margin: 2rem 0;
 		// indv listings
 		.listing {
-			flex: 0 0 47%;
+			flex: 0 0 49%;
 			min-width: 200px;
 			border-bottom: 1px solid rgba(#000, 0.15);
 
@@ -522,7 +509,6 @@ SMALL SCREENS
 				padding-left: 20%;
 
 				&::before {
-
 					width: 70%;
 				}
 			}
@@ -532,19 +518,6 @@ SMALL SCREENS
 			font-size: 2em;
 			margin: 0 0 -13px 1em;
 		}
-
-	//cateogry
-	.category-tag {
-
-		font-size: 0.65rem;
-		left: 32px;
-		padding: 10px;
-
-		&:after {
-		    
-			bottom: -6px;
-		}
-	}
 	}
 }
 
@@ -569,18 +542,6 @@ EXTRA SMALL SCREENS
 			}
 		}
 
-		//cateogry
-		.category-tag {
-
-		font-size: 1rem;
-		left:40px;
-		padding: 15px;
-
-			&:after {
-				
-				bottom: -10px;
-			}
-		}
 	}
 }
 
