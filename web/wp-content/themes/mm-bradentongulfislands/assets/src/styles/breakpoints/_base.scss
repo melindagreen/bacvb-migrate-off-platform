@@ -108,6 +108,23 @@ HEADER
 
             display: none;
         }
+
+        .menu__shortcuts {
+
+            .menu-item {
+                transition: all ease-in-out 0.3s;
+                &:hover {
+
+                    transform: translateY(-1.5px);
+                    transition: all ease-in-out 0.2s;
+
+                    a {
+
+                        text-decoration: none;
+                    }
+                }
+            }
+        }
     }
     .top-bar__brand {
         margin-right: auto;
@@ -174,9 +191,20 @@ HEADER
                 width: 25px;
                 path {
 
-                    fill: $bradenton-teal
+                    fill: $bradenton-teal;
+                    transition: all 0.2s ease-in-out;
+                }
+
+                &:hover {
+
+                     path {
+    
+                        fill: $rust;
+                        transition: all 0.2s ease-in-out;
+                    }
                 }
             }
+
         }
     }
 
@@ -556,6 +584,18 @@ HEADER
                 .menu-item {
 
                     height: 2.1rem;
+                    transition: all ease-in-out 0.3s;
+
+                        &:hover {
+        
+                            transform: translateY(-1.5px);
+                            transition: all ease-in-out 0.2s;
+        
+                            a {
+        
+                                text-decoration: none;
+                            }
+                        }
 
                     a {
 
@@ -580,16 +620,28 @@ HEADER
          
             padding-left: 40px;
             padding-right: 40px;
+            transition: all 0.2s ease-in-out;
 
             a {
 
                 padding-top: 0.7rem;
                 font-weight: 500;
+                transition: all 0.3s ease-in-out;
+
+                &:hover {
+
+                    transform: translateY(-1.5px);
+                    text-decoration: none;
+                }
             }
+
             &.open {
                 background-color: $bradenton-teal;
+                transition: all 0.2s ease-in-out;
+
                 a {
                     color: white;
+                    transition: all 0.2s ease-in-out;
                 }
                 & > .sub-menu {
                     opacity: 1;
@@ -820,6 +872,20 @@ FOOTER
         font-family: $font-header;
     }
 
+    .menu-item, .partner-login {
+        transition: all ease-in-out 0.2s;
+        &:hover {
+
+            transform: translateY(-1.5px);
+            transition: all ease-in-out 0.2s;
+
+            a {
+
+                text-decoration: none;
+            }
+        }
+    }
+
     .search-form {
 
         display: flex;
@@ -986,6 +1052,13 @@ FOOTER
 
                 height: 35px;
                 width: 35px;
+                transition: all 0.3s ease-in-out;
+
+                &:hover {
+
+                    transition: all 0.3s ease-in-out;
+                    transform: scale(1.1);
+               }
             }
         }
     }

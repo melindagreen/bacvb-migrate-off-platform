@@ -73,6 +73,17 @@ HEADER
                     margin: 10px auto;
                     padding-right: 1.75rem;
                     max-width: 230px;
+                    transition: all ease-in-out 0.3s;
+                        &:hover {
+        
+                            transform: translateY(-1.5px);
+                            transition: all ease-in-out 0.2s;
+        
+                            a {
+        
+                                text-decoration: none;
+                            }
+                        }
                     
                     a {
                     color: $bradenton-teal;
