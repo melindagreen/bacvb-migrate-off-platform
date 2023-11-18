@@ -57,8 +57,7 @@
 	.hero {
 		width: 100%;
 		height: 100vh;
-		min-height: 35rem;
-    	max-height: 630px;
+		min-height: 50rem;
 		position: relative;
 		z-index: 1;
 		background: transparent url("images/pixel.png") no-repeat bottom center;
@@ -199,6 +198,12 @@ SMALL SCREENS
 		// 		padding-bottom: 137%;
 		// 	}
 		// }
+
+		.hero {
+
+			min-height: 35rem;
+    		max-height: 630px;
+		}
 
 		.title {
 			width: 70%;
