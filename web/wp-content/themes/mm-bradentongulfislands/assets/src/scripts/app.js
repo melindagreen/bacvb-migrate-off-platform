@@ -406,8 +406,9 @@ if ('serviceWorker' in navigator) {
 		
 				if (!postImage.length) {
 					var placeholderImg = $('<img>', {
-						src: '/wp-content/themes/mm-bradentongulfislands/assets/images/placeholder.jpg', // Replace with the correct placeholder image URL
-						alt: 'Placeholder Image'
+						src: '/wp-content/themes/mm-bradentongulfislands/assets/images/placeholder.jpg', 
+						alt: 'Placeholder Image',
+						class: 'attachment-post-thumbnail size-post-thumbnail wp-post-image'
 					});
 	
 					var figureElement = $('<figure>', {
@@ -415,7 +416,7 @@ if ('serviceWorker' in navigator) {
 					}).append(placeholderImg);
 
 					// wp-block-post__content
-					const postContent = post.find('.wp-block-group').children().first();;
+					const postContent = post.children().first();;
 					if (postContent.length) {
 						figureElement.insertBefore(postContent);
 					}
