@@ -415,7 +415,7 @@ if ('serviceWorker' in navigator) {
 					}).append(placeholderImg);
 
 					// wp-block-post__content
-					const postContent = post.children().first();;
+					const postContent = post.find('.wp-block-group').children().first();;
 					if (postContent.length) {
 						figureElement.insertBefore(postContent);
 					}
