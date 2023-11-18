@@ -158,6 +158,12 @@ if ('serviceWorker' in navigator) {
 			if (!isOpen) $(this).addClass('open');
 		});
 
+		// Query Block Placeholder Image 
+		insertPlaceholderImage();
+
+		//Query Block Carousel On Mobile
+		queryCarouselOnMobile();
+
 		/*Close search on window resize*/
 		window.onresize = function () { searchClose(); }
 
@@ -389,6 +395,85 @@ if ('serviceWorker' in navigator) {
 			  });
 		  }
 
+		  /**
+		 * Query Block Placeholder Image Injection
+		 * @returns {null}
+		 */
+		  function insertPlaceholderImage() {
+			$('.wp-block-query .wp-block-post').each(function() {
+				const post = $(this);
+				const postImage = post.find('.wp-block-post-featured-image img');
+		
+				if (!postImage.length) {
+					var placeholderImg = $('<img>', {
+						src: '/wp-content/themes/mm-bradentongulfislands/assets/images/placeholder.jpg', // Replace with the correct placeholder image URL
+						alt: 'Placeholder Image'
+					});
+	
+					var figureElement = $('<figure>', {
+						class: 'wp-block-post-featured-image'
+					}).append(placeholderImg);
+
+					// wp-block-post__content
+					const postContent = post.children().first();;
+					if (postContent.length) {
+						figureElement.insertBefore(postContent);
+					}
+				}
+			});
+		}
+
+
+		 /**
+		 * Query Block Turn into carousel on mobile
+		 * @returns {null}
+		 */
+		function queryCarouselOnMobile() {
+
+			const blockQueryLoop = $('.wp-block-query');
+
+        if (getIsSmall() && blockQueryLoop.length > 0) {
+            const slides = blockQueryLoop.find('.wp-block-post');
+
+            if (slides.length > 0) {
+                const swiperWrapper = $('<div class="swiper-wrapper"></div>');
+
+                slides.addClass('swiper-slide').appendTo(swiperWrapper);
+
+                const swiperContainer = $('<div class="swiper-container"></div>').append(swiperWrapper);
+
+                blockQueryLoop.replaceWith(swiperContainer);
+
+                new Swiper(swiperContainer[0], {
+                    slidesPerView: 'auto',
+                    spaceBetween: 20,
+                    breakpoints: {
+                        768: {
+                            slidesPerView: 1,
+                            spaceBetween: 10,
+                        }
+                        // Add more breakpoints as needed
+                    },
+                    pagination: {
+                        el: '.swiper-pagination',
+                        clickable: true,
+                    },
+                });
+            }
+        }
+		else {
+			const swiperContainer = blockQueryLoop.find('.swiper-container');
+
+            if (swiperContainer.length > 0) {
+                const slides = swiperContainer.find('.swiper-slide');
+
+                slides.removeClass('swiper-slide').appendTo(blockQueryLoop.find('.wp-block-query__content'));
+
+            }
+		}
+	}
+
+
     /**
      * Fires on load and scroll
      */
@@ -440,6 +525,9 @@ if ('serviceWorker' in navigator) {
                 });
             });
         }
+
+		//Query Block Carousel On Mobile
+		queryCarouselOnMobile();
     }
 
     $(document).ready(function ($) {
