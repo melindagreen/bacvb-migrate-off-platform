@@ -9,26 +9,26 @@
     "supports": {
 		"align": true
 	},
-    "attributes": {
-          "mediaId": {
-            "type": "number",
-            "default": 0
-        },
-        "mediaUrl": {
-            "type": "array",
-            "default": [],
-            "selector": "img",
-            "attribute": "src"
-        },
-        "mediaAlt": {
-          "type": "string",
-          "default": "",
-          "selector": "img",
-          "attribute": "alt"
-        },
-        "logoId": {
+  "attributes": {
+        "mediaId": {
           "type": "number",
           "default": 0
+      },
+      "mediaUrl": {
+          "type": "array",
+          "default": [],
+          "selector": "img",
+          "attribute": "src"
+      },
+      "mediaAlt": {
+        "type": "string",
+        "default": "",
+        "selector": "img",
+        "attribute": "alt"
+      },
+      "logoId": {
+        "type": "number",
+        "default": 0
       },
       "logoUrl": {
           "type": "array",
