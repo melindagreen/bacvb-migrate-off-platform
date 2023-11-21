@@ -97,7 +97,7 @@
           "color": "#F4EEE1"
         }
       ],
-      "customGradient": false,
+      "customGradient": true,
       "defaultGradients": false,
       "gradients": []
     },
