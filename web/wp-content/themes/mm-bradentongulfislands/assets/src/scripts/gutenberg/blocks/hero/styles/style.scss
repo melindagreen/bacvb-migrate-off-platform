@@ -10,18 +10,18 @@
 	overflow-x: clip;
 
 
-	&:after {
-		content: " ";
-		background: transparent url("images/hero-bottom.png") no-repeat;
-		background-size: 100% auto;
-		height: 12em;
-		left: 0;
-		position: absolute;
-		width: 105%;
-		z-index: 1;
-		bottom: 1em;
-		background-size: cover;
-	}
+	// &:after {
+	// 	content: " ";
+	// 	background: transparent url("images/hero-bottom.png") no-repeat;
+	// 	background-size: 100% auto;
+	// 	height: 12em;
+	// 	left: 0;
+	// 	position: absolute;
+	// 	width: 105%;
+	// 	z-index: 1;
+	// 	bottom: 1em;
+	// 	background-size: cover;
+	// }
 
 	.fade:before {
 		content: " ";
@@ -63,9 +63,32 @@
 		background: transparent url("images/pixel.png") no-repeat bottom center;
 		background-size: cover;
 		&.full {
-			height: 100%;
+			height: 90vh;
 			transform: none;
+
+			&::after {
+		      background: url('images/slideshow-bottom.png') repeat-x center;
+		      position: absolute;
+		      width: 100%;
+		      height: 3.5rem;
+		      bottom: 0;
+		      z-index: 1;
+		    }
 		}
+
+		&:after {
+			content: " ";
+			background: transparent url("images/hero-bottom.png") no-repeat;
+			background-size: 100% auto;
+			height: 12em;
+			left: 0;
+			position: absolute;
+			width: 105%;
+			z-index: 1;
+			bottom: 0;
+			background-size: cover;
+		}
+
 	}
 	.hero-video-play {
 		position: absolute;
