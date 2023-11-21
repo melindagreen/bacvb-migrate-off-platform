@@ -19,7 +19,6 @@ Wide Slideshow
     position: relative;
 
     &::after {
-      
       content: ' ';
       background: url('images/slideshow-bottom.png') repeat-x center;
       position: absolute;
@@ -66,7 +65,7 @@ Wide Slideshow
           top: -2rem;
           left: -2rem;
           z-index: 2;
-          height: 230px;
+          height: auto;
           width: 230px;
           object-fit: cover;  
         }
@@ -334,6 +333,75 @@ Wide Slideshow
     overflow-wrap: unset;
     line-height: 0.8em;
   }
+  
+    &.is-style-hero-slider {
+      position: relative;
+      z-index: 0;
+      height: 100vh;
+
+      .swiper-thumbnail-preview-slider--thumbnails, .bc-infoblock__navigation, #infoblock-title {
+        display: none;
+      }
+
+      &:before {
+        content: "";
+        display: block;
+        position: absolute;
+        z-index: 1;
+        pointer-events: none;
+        bottom: 50px;
+        left: 0;
+        width: 100%;
+        height: 50%;
+        background: linear-gradient(to bottom, rgba(#000,0), $dk-blue);
+      }
+
+      &:after {
+        content: " ";
+        background: transparent url("images/hero-bottom.png") no-repeat;
+        background-size: 100% auto;
+        height: 12em;
+        left: 0;
+        position: absolute;
+        pointer-events: none;
+        width: 105%;
+        z-index: 1;
+        bottom: 1em;
+        background-size: cover;
+      }
+
+      .hc-wrapper {
+        height: auto;
+        .bc-infoblock {
+          background: none;
+          height: 50px;
+          bottom: 100px;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+        .bc-infoblock__content {
+          padding: 0;
+          text-align: center;
+          width: 100%;
+
+          .infoblock__item--hide-notransition, #infoblock-buttonurl {
+            display: none;
+          }
+        }
+      } 
+
+      .swiper-wideslideshow .bc-wrapper__items .#{$block-prefix}-wideslideshow__logo {
+        top: 25%;
+        left: 10%;
+      }
+
+      .swiper-pagination {
+        position: relative;
+        bottom: auto;
+        text-align: center;
+      }
+    }
+
   }
 
 /*********************
@@ -369,7 +437,7 @@ SMALL SCREENS
   
           top: -0.9rem;
           left: -0.9rem;
-          height: 110px;
+          // height: 110px;
           width: 110px;
         }
       }
@@ -415,5 +483,20 @@ SMALL SCREENS
       }
     }   
   }
+
+    &.is-style-hero-slider {
+      height: 60vh;
+
+      .swiper-wideslideshow {
+        height: auto;
+      }
+
+      .hc-wrapper {      
+        .bc-infoblock {
+          bottom: 70px;
+        }
+      }
+    }
+
   }
 }

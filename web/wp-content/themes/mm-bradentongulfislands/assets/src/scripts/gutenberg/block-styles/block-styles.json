@@ -135,5 +135,14 @@
                 "isDefault": false
             }
         ]
+    },
+    "mm-bradentongulfislands/wide-slideshow": {
+        "add": [
+            {
+                "name": "hero-slider",
+                "label": "Hero Slider",
+                "isDefault": false
+            }
+        ]
     }
 }

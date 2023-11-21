@@ -46,16 +46,14 @@ jQuery(document).ready(function ($) {
         }
       }); 
 
-
-
-      console.log(images);
+      // console.log(images);
 
       images.forEach(function(imageUrl) {
         let slide = $('<div class="swiper-slide"><img src="' + imageUrl + '" alt=""></div>');
         $('.swiper-thumbnail-preview-slider--thumbnails .swiper-wrapper').append(slide);
         });
       changeInfoBlock();
-      console.log(heroBannerCarousel);
+      // console.log(heroBannerCarousel);
       
       heroBannerCarousel.on('slideChangeTransitionEnd', ()=> {
         
