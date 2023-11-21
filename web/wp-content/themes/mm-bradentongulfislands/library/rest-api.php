@@ -15,7 +15,7 @@ class RestApi {
     public static function register_custom_rest_fields() {
 
         // meta
-        $meta_types = array( 'listing', 'event' );
+        $meta_types = array( 'listing', 'event', 'attachment' );
         foreach( $meta_types as $type ) {
             register_rest_field( $type, 'meta_fields', array(
                 'get_callback' => function( $object ) use( $type ) {

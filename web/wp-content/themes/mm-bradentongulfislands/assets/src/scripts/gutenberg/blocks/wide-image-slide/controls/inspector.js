@@ -14,7 +14,7 @@ const ALLOWED_MEDIA_TYPES = ['image'];
 const Inspector = props => {
 
         const { attributes, setAttributes } = props;
-        const { mediaId, mediaUrl, logoId, logoUrl, title, info, buttonUrl, buttonText } = attributes;
+        const { mediaId, mediaUrl, mediaPhotoCredit, logoId, logoUrl, title, info, buttonUrl, buttonText } = attributes;
      
         const removeMedia = () => {
             setAttributes({
@@ -23,20 +23,24 @@ const Inspector = props => {
                 mediaAlt: ''
             });
         }
-     
-         const onSelectMedia = (media) => {
+
+        const onSelectMedia = (media) => {
             let mediaLG = typeof media?.sizes?.full?.url !== 'undefined' ? media.sizes.full.url : media.url;
             let mediaMD = mediaLG;
             let mediaSM = typeof media?.sizes?.madden_hero_md?.url !== 'undefined' ? media.sizes.madden_hero_md.url : mediaMD;
-            console.log(media);
+
+            // const photoCredit = media.acf && media.acf.photo_credit ? media.acf.photo_credit : '';
+            const photoCredit = media.meta_fields.photo_credit;
+
             setAttributes({
                 mediaId: media.id,
                 mediaUrl: [mediaLG, mediaMD, mediaSM],
-                mediaAlt: media.alt
+                mediaAlt: media.alt,
+                mediaPhotoCredit: photoCredit // Add the ACF photo_credit value to your attributes
             });
-         }
+        }
 
-         const removeLogo = () => {
+        const removeLogo = () => {
             setAttributes({
                 logoId: 0,
                 logoUrl: [],
