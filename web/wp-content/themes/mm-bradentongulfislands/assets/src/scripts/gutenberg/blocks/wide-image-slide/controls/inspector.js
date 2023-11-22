@@ -5,6 +5,7 @@ import { __ } from '@wordpress/i18n';
 import { InspectorControls, MediaUpload, MediaUploadCheck, URLInput } from '@wordpress/block-editor';
 import { PanelBody, PanelRow, Button, ResponsiveWrapper, Spinner , TextControl, TextareaControl } from '@wordpress/components';
 import { Fragment } from '@wordpress/element';
+import { useSelect } from '@wordpress/data';
 
 /*** CONSTANTS **************************************************************/
 const ALLOWED_MEDIA_TYPES = ['image'];
@@ -20,7 +21,8 @@ const Inspector = props => {
             setAttributes({
                 mediaId: 0,
                 mediaUrl: [],
-                mediaAlt: ''
+                mediaAlt: '',
+                mediaPhotoCredit: ''
             });
         }
 
@@ -28,17 +30,28 @@ const Inspector = props => {
             let mediaLG = typeof media?.sizes?.full?.url !== 'undefined' ? media.sizes.full.url : media.url;
             let mediaMD = mediaLG;
             let mediaSM = typeof media?.sizes?.madden_hero_md?.url !== 'undefined' ? media.sizes.madden_hero_md.url : mediaMD;
+        
+            fetch(`/wp-json/wp/v2/media/${media.id}`)
+                .then(response => response.json())
+                .then(mediaData => {
+                    
+                    const photoCredit = mediaData.meta_fields.photo_credit;
+                    setAttributes({ mediaPhotoCredit: photoCredit });
+                    console.log(mediaData);
+                })
+                .catch(error => {
+  
+                    console.error('Error fetching media:', error);
+                });
 
-            // const photoCredit = media.acf && media.acf.photo_credit ? media.acf.photo_credit : '';
-            const photoCredit = media.meta_fields.photo_credit;
-
+            
             setAttributes({
                 mediaId: media.id,
                 mediaUrl: [mediaLG, mediaMD, mediaSM],
                 mediaAlt: media.alt,
-                mediaPhotoCredit: photoCredit // Add the ACF photo_credit value to your attributes
             });
-        }
+        };
+        
 
         const removeLogo = () => {
             setAttributes({
