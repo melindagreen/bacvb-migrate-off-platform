@@ -147,6 +147,39 @@ COLUMNS
             }
         }
     }
+    &.is-style-gray-bg {
+        @include main-column;
+        margin: auto;
+        background: #eeeeee;
+        background-size: contain;
+        box-sizing: border-box;
+        padding: 2em;
+        position: relative;
+        &:before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            width: 100%;
+            height: 20px;
+            background: url('~/images/mega-menu-bottom.png') repeat-x bottom;
+            // transform: scaleY(-1);
+        }
+        &:after {
+            content: "";
+            display: block;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            z-index: 0;
+            width: 100%;
+            height: 20px;
+            background: url('~/images/mega-menu-bottom.png') repeat-x bottom;
+            transform: scaleY(-1);
+        }
+    }
 }
 
 
