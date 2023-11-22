@@ -91,6 +91,13 @@ COLUMNS
             }
         }
     }
+    &.is-style-gray-bg {
+        margin: auto 2em;
+        background: #eeeeee;
+        box-sizing: border-box;
+        padding: 1em 2em;
+        position: relative;
+    }
 }
 
 

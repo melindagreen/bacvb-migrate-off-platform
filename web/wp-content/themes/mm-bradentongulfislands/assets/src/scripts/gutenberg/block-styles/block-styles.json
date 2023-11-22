@@ -110,6 +110,10 @@
                 "name": "icon",
                 "label": "Icon",
                 "isDefault": false
+            },
+            {
+                "name": "gray-bg",
+                "label": "Gray BG"
             }
         ]
     },
