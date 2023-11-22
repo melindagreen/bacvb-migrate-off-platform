@@ -9,20 +9,6 @@
 	position: relative;
 	overflow-x: clip;
 
-
-	// &:after {
-	// 	content: " ";
-	// 	background: transparent url("images/hero-bottom.png") no-repeat;
-	// 	background-size: 100% auto;
-	// 	height: 12em;
-	// 	left: 0;
-	// 	position: absolute;
-	// 	width: 105%;
-	// 	z-index: 1;
-	// 	bottom: 1em;
-	// 	background-size: cover;
-	// }
-
 	.fade:before {
 		content: " ";
 		background-image: linear-gradient(to top, rgba(255, 255, 255, 0), rgb(255, 255, 255) 80%);
@@ -53,6 +39,18 @@
 	&.videoHero { //hide double scroll bar. default set to overflow-x: cip but that stil shows hero video bars
 		//overflow: hidden;
 		//On 8.24.23 Noticed no double side bars with this commented out unlike before. Will push live. pnh
+		&:after {
+			content: " ";
+			background: transparent url("images/hero-bottom.png") no-repeat;
+			background-size: 100% auto;
+			height: 12em;
+			left: 0;
+			position: absolute;
+			width: 105%;
+			z-index: 1;
+			bottom: 1em;
+			background-size: cover;
+		}
 	}
 	.hero {
 		width: 100%;
