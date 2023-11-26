@@ -77,7 +77,8 @@ if( preg_match('#, The#', $published_name ) ){
 }
 $street =(isset($meta['address_1'])) ? $meta['address_1'] : "";
 $street2 = (isset($meta['address_2'])) ? $meta['address_2'] : "";
-$phone = (isset($meta['phone_number'])) ? U::clean_phone( $meta['phone_number']) : "";
+// $phone = (isset($meta['phone_number'])) ? U::clean_phone( $meta['phone_number']) : "";
+$phone = (isset($meta['phone_number'])) ? $meta['phone_number'] : "";
 $website = (isset($meta['website_link'])) ? $meta['website_link'] : "";
 $website_text = (isset($meta['website_text'])) ? $meta['website_text'] : "View Website";
 
@@ -117,123 +118,127 @@ if (!$images ) {
 <script src='https://unpkg.com/swiper@8/swiper-bundle.min.js'></script>
 
 <div class="listingMain">
-    <div class="listingWrapper">
 
-        <div class="listingInfo">
-
-
-            <div class="content-wrapper">
-                <div class="left-col <?php if (!empty($images)) {echo "multiCol";}?>">
-
-                    <div class="details">
-
-                        <h1 class="listingTitle"><?php echo $published_name; ?></h1>
-                        <?php if ( $street): //make sure we got somethin at least?>
-                        <p class="address detail">
-                            <?php
-                            if ($street) echo ($stree2) ? $street.', '.$street2 : $street;
-                            
-                            if ($city || $state || $zip) {
-                                if ($city) echo ' ' .$city;
-                                if ($state) echo ' '.$state;
-                                if ($zip) echo ', '.$zip;
-                            }
-                            ?>
-                        </p>
-                        <?php endif; ?>
-                        <?php if ($phone): ?>
-                        <p class="phone detail">
-                            <?php echo $phone; ?>
-                        </p>
-                        <?php endif; ?>
-                        <?php
-                        if (!empty($website)):
-                            if(!str_contains($website,'n/a')): ?>
-                            <p class="website detail">
-                                <a href="<?php echo $website; ?>" target="_blank"><?php echo $website_text; ?></a>
-                            </p>
-                        <?php endif;
-                        endif; ?>
-                        <?php if (1 != 1 && $terms_html): ?>
-                            <?php echo $terms_html; ?> 
-                        <?php endif; ?>
-
-                        <div class="listingDescription">
-                            <?php the_content(); ?>
-                        </div>
-                        <?php if($description): ?>
-                            <div class="description">
-                                <p><?php echo $description; ?></p>
-                            </div>
-                        <?php endif; ?>
-                        <?php if( $amenities || $beds || $guests || $baths ): ?>
-                            <div class="lodging-meta">
-                                <h3>Lodging Amenities</h3>
-                                <?php if( $amenities ): ?>
-                                    <p><?php echo $amenities; ?></p>
-                                <?php endif; ?>
-                                <?php if( $beds) : ?>
-                                    <div class="lodging-item"><b>Beds: </b><?php echo $beds; ?></div>
-                                <?php endif; ?>
-                                <?php if( $baths ) : ?>
-                                    <div class="lodging-item"><b>Baths: </b><?php echo $baths; ?></div>
-                                <?php endif; ?>                                    
-                                <?php if( $guests ) : ?>
-                                    <div class="lodging-item"><b>Guests: </b><?php echo $guests; ?></div>
-                                <?php endif; ?>                                    
-                            </div>
-                        <?php endif; ?>
-                        <?php if( $hours ): ?>
-                            <h3>Hours</h3>
-                            <div class="hours">
-                                <?php echo $hours; ?>
-                            </div> 
-                        <?php endif; ?>
-
-                    </div>
-                </div>
-
-                <div class="right-col eventsMapImg">
-                    <?php if (is_array($images) && count($images)>1): ?>
-                        <div class="images swiper listingImgSwiper">
-                            <div class="swiper-wrapper">
-                            <?php $i = 0; foreach($images as $image): $i++; ?>
-                                <div class="swiper-slide image-wrapper">
-                                    <img src="<?php echo $image; ?>" alt="<?php echo get_post_meta($image, '_wp_attachment_image_alt', TRUE); ?>" class="slideImg">
-                                </div>
-                            <?php endforeach; ?>
-                            </div>
-                            <?php if (count($images) > 1): ?>
-                                <div class="swiper-button-prev"></div>
-                                <div class="swiper-button-next"></div>
-                            <?php endif; ?>
-                        </div><!--/images-->
-                    <?php else : ?>
-                        <?php if (is_array($images) && count($images)>0): ?>
-                        <div class="images">
-                            <?php $i = 0; foreach($images as $image): $i++; ?>
-                            <img src="<?php echo $image; ?>" alt="<?php echo get_post_meta($image, '_wp_attachment_image_alt', TRUE); ?>" class="singleImg">
-                            <?php endforeach; ?>
-                        </div>
-                        <?php endif; ?>
-                    <?php endif; ?>
-                    <?php if ($lat && $lng) : ?>
-                        <?php  eventastic_render_event_map($post->ID, 'listingMap'); ?><!--/end rendermap-->
-                        <div id="listingmap"></div>
-                        <script>
-                        jQuery(document).ready(function(){
-                            var center = [<?php echo $meta['latitude'] . ", " . $meta['longitude']; ?>];
-                            var map = L.map('listingmap').setView(center, 15);
-                            L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom: 18}).addTo(map);
-                            L.marker(center).addTo(map);
-                        });
-                        </script>
-                    <?php endif; ?>
-                </div><!--/right-col-->
-
-            </div><!-- .content-wrapper -->
-        </div>
+    <div class="listingHero">
+        <div class="hero" style="background-image: url('<?php echo $images[0];?>');"></div>
+            <h1 class="title alt-title"><?php echo $published_name; ?></h1>
+        <div class="fade"></div>
     </div>
+
+    <div class="listingInfo">
+
+        <div class="content-wrapper">
+            <div class="left-col <?php if (!empty($images)) {echo "multiCol";}?>">
+
+                <div class="details">
+
+                    <h1 class="listingTitle"><?php echo $published_name; ?></h1>
+                    <?php if ( $street): //make sure we got somethin at least?>
+                    <p class="address detail">
+                        <?php
+                        if ($street) echo ($stree2) ? $street.', '.$street2 : $street;
+                        
+                        if ($city || $state || $zip) {
+                            if ($city) echo ' ' .$city;
+                            if ($state) echo ' '.$state;
+                            if ($zip) echo ', '.$zip;
+                        }
+                        ?>
+                    </p>
+                    <?php endif; ?>
+                    <?php if ($phone): ?>
+                    <p class="phone detail">
+                        <?php echo $phone; ?>
+                    </p>
+                    <?php endif; ?>
+                    <?php
+                    if (!empty($website)):
+                        if(!str_contains($website,'n/a')): ?>
+                        <p class="website detail">
+                            <a href="<?php echo $website; ?>" target="_blank"><?php echo $website_text; ?></a>
+                        </p>
+                    <?php endif;
+                    endif; ?>
+                    <?php if (1 != 1 && $terms_html): ?>
+                        <?php echo $terms_html; ?> 
+                    <?php endif; ?>
+
+                    <div class="listingDescription">
+                        <?php the_content(); ?>
+                    </div>
+                    <?php if($description): ?>
+                        <div class="description">
+                            <p><?php echo $description; ?></p>
+                        </div>
+                    <?php endif; ?>
+                    <?php if( $amenities || $beds || $guests || $baths ): ?>
+                        <div class="lodging-meta">
+                            <h3>Lodging Amenities</h3>
+                            <?php if( $amenities ): ?>
+                                <p><?php echo $amenities; ?></p>
+                            <?php endif; ?>
+                            <?php if( $beds) : ?>
+                                <div class="lodging-item"><b>Beds: </b><?php echo $beds; ?></div>
+                            <?php endif; ?>
+                            <?php if( $baths ) : ?>
+                                <div class="lodging-item"><b>Baths: </b><?php echo $baths; ?></div>
+                            <?php endif; ?>                                    
+                            <?php if( $guests ) : ?>
+                                <div class="lodging-item"><b>Guests: </b><?php echo $guests; ?></div>
+                            <?php endif; ?>                                    
+                        </div>
+                    <?php endif; ?>
+                    <?php if( $hours ): ?>
+                        <h3>Hours</h3>
+                        <div class="hours">
+                            <?php echo $hours; ?>
+                        </div> 
+                    <?php endif; ?>
+
+                </div>
+            </div>
+
+            <div class="right-col eventsMapImg">
+                <?php if (is_array($images) && count($images)>1): ?>
+                    <div class="images swiper listingImgSwiper">
+                        <div class="swiper-wrapper">
+                        <?php $i = 0; foreach($images as $image): $i++; ?>
+                            <div class="swiper-slide image-wrapper">
+                                <img src="<?php echo $image; ?>" alt="<?php echo get_post_meta($image, '_wp_attachment_image_alt', TRUE); ?>" class="slideImg">
+                            </div>
+                        <?php endforeach; ?>
+                        </div>
+                        <?php if (count($images) > 1): ?>
+                            <div class="swiper-button-prev"></div>
+                            <div class="swiper-button-next"></div>
+                        <?php endif; ?>
+                    </div><!--/images-->
+                <?php else : ?>
+                    <?php if (is_array($images) && count($images)>0): ?>
+                    <div class="images">
+                        <?php $i = 0; foreach($images as $image): $i++; ?>
+                        <img src="<?php echo $image; ?>" alt="<?php echo get_post_meta($image, '_wp_attachment_image_alt', TRUE); ?>" class="singleImg">
+                        <?php endforeach; ?>
+                    </div>
+                    <?php endif; ?>
+                <?php endif; ?>
+                <?php if ($lat && $lng) : ?>
+                    <?php  eventastic_render_event_map($post->ID, 'listingMap'); ?><!--/end rendermap-->
+                    <div id="listingmap"></div>
+                    <script>
+                    jQuery(document).ready(function(){
+                        var center = [<?php echo $meta['latitude'] . ", " . $meta['longitude']; ?>];
+                        var map = L.map('listingmap').setView(center, 15);
+                        L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom: 18}).addTo(map);
+                        L.marker(center).addTo(map);
+                    });
+                    </script>
+                <?php endif; ?>
+            </div><!--/right-col-->
+
+        </div><!-- .content-wrapper -->
+    </div>
+
 </div>
 
 <!--This block is xyz-->

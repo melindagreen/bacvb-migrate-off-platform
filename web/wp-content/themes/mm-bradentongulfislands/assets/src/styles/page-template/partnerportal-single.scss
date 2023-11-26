@@ -1,0 +1,94 @@
+.listingMain {
+	position: relative;
+
+	.listingHero {
+		width: 100%;
+		justify-content: center;
+		align-items: center;
+		z-index: -1;
+		position: relative;
+		overflow-x: clip;
+
+		.fade:before {
+			content: " ";
+			background-image: linear-gradient(to top, rgba(255, 255, 255, 0), rgb(255, 255, 255) 80%);
+			height: 1.5em;
+			display: block;
+			z-index: 1;
+			position: relative;
+			bottom: -0em;
+			left: 0;
+			right: 0;
+		}
+
+		.hero {
+			width: 100%;
+			height: 90vh;
+			min-height: 700px;
+			position: relative;
+			z-index: 1;
+			background: transparent url("images/pixel.png") no-repeat bottom center;
+			background-size: cover;
+
+			&:after {
+				content: " ";
+				background: transparent url("images/hero-bottom.png") no-repeat;
+				background-size: 100% auto;
+				height: 12em;
+				left: 0;
+				position: absolute;
+				width: 105%;
+				z-index: 1;
+				bottom: 0;
+				background-size: cover;
+			}
+		}
+
+		.title {
+			color: $white;
+			width: 92%;
+			margin: 0 auto;
+			text-align: left;
+			position: absolute;
+			left: 5%;
+			right: 0;
+			bottom: 250px;
+			text-shadow: 0 3px 5px rgba(#000,0.5);
+			z-index: 1000000;
+			font-size: 3rem;
+			font-weight: 100;
+			font-family: $font-header;
+		}
+	} // .listingHero
+
+	.listingInfo {
+		margin: -8em auto 2em auto;
+		@include main-column;
+	}
+
+
+} // .listingMain
+
+@media screen and (max-width: 768px) {
+	.listingMain {
+
+		.listingHero {
+
+			.hero {
+				min-height: 500px;
+				height: 60vh;
+
+				&:after {
+					bottom: -50px;
+				}
+			}
+
+			.title {
+				font-size: 2em;
+				bottom: 200px;
+			}
+
+		}
+	}
+}
+
