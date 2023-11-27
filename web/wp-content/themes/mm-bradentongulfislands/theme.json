@@ -52,6 +52,11 @@
           "color": "#AFA8A0"
         },
         {
+          "name": "Light Gray",
+          "slug": "light-gray",
+          "color": "#eeeeee"
+        },
+        {
           "name": "Sky Blue",
           "slug": "sky-blue",
           "color": "#B0D9E6"
