@@ -1,0 +1,58 @@
+/*********************
+FONTS
+*********************/
+@font-face {
+    font-family: "Lifehack";
+    src: url("fonts/Lifehack-Regular.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Lifehack";
+    src: url("fonts/LifehackSans-Bold.otf") format("opentype");
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Melburch";
+    src: url("fonts/Melburch-Stamp.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Melburch";
+    src: url("fonts/Melburch-Slanted.otf") format("opentype");
+    font-weight: normal;
+    font-style: italic;
+}
+
+// fonts
+$font-title: var(--wp--preset--font-family--title);
+$font-header: var(--wp--preset--font-family--header);
+$font-body: var(--wp--preset--font-family--body);
+
+// links
+$link-color: color('red');
+$headerHeight: 120px;
+
+$bradenton-teal: #2B7B7C;
+$white: #FFFFFF;
+$soft-black: #414141;
+$warm-gray: #AFA8A0;
+$sky-blue: #B0D9E6;
+$sea-blue: #82CAE2;
+$turquoise: #77C3C6;
+$bright-blue: #037BBF;
+$purple: #4A6BAE;
+$dk-blue: #014067;
+$rust: #C96A39;
+$light-blue: #e8f9ff;
+$light-gray: #eeeeee;
+
+
+$accentColor: $rust;
+$accentColorHover: $bradenton-teal;
+
+$filterBackground: #1e88a6;
+$filterTextColor: white;
+$checkboxColor: white;

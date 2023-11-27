@@ -1,0 +1,219 @@
+/*********************
+FONTS
+*********************/
+@font-face {
+  font-family: "Lifehack";
+  src: url("fonts/Lifehack-Regular.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Lifehack";
+  src: url("fonts/LifehackSans-Bold.otf") format("opentype");
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Melburch";
+  src: url("fonts/Melburch-Stamp.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Melburch";
+  src: url("fonts/Melburch-Slanted.otf") format("opentype");
+  font-weight: normal;
+  font-style: italic;
+}
+.eventasticMain {
+  margin-top: 120px;
+  min-height: calc(100vh - 120px);
+}
+
+.eventasticEventWrapper {
+  display: block;
+  position: relative;
+  width: 100%;
+  max-width: 60rem;
+  margin: 0 auto;
+  padding: 0 2em;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.eventasticEventWrapper .eventTitle {
+  color: #C96A39;
+  text-transform: uppercase;
+  font-family: var(--wp--preset--font-family--header);
+  font-weight: normal;
+}
+.eventasticEventWrapper .eventInfo .images {
+  position: relative;
+  width: 800px;
+  max-width: 100%;
+}
+.eventasticEventWrapper .eventInfo .images:before {
+  content: "";
+  display: block;
+  width: 100%;
+  padding-bottom: 56.25%;
+}
+.eventasticEventWrapper .eventInfo .images .image {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+}
+.eventasticEventWrapper .eventInfo .images .image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.eventasticEventWrapper .eventInfo .images .image.active {
+  opacity: 1;
+}
+.eventasticEventWrapper .eventInfo .images .arrowNext, .eventasticEventWrapper .eventInfo .images .arrowPrev {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  cursor: pointer;
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #C96A39;
+  width: 50px;
+  height: 50px;
+}
+.eventasticEventWrapper .eventInfo .images .arrowNext i, .eventasticEventWrapper .eventInfo .images .arrowPrev i {
+  font-size: 2em;
+  color: white;
+}
+.eventasticEventWrapper .eventInfo .images .arrowNext:hover, .eventasticEventWrapper .eventInfo .images .arrowPrev:hover {
+  background: #2B7B7C;
+}
+.eventasticEventWrapper .eventInfo .images .arrowNext {
+  right: 6px;
+}
+.eventasticEventWrapper .eventInfo .images .arrowPrev {
+  left: 6px;
+}
+.eventasticEventWrapper .eventInfo .details {
+  padding: 1em;
+}
+.eventasticEventWrapper .eventInfo .details .detail {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+}
+.eventasticEventWrapper .eventInfo .details .detail span {
+  margin-right: 12px;
+}
+.eventasticEventWrapper .eventInfo .details .detail a {
+  color: #C96A39;
+}
+.eventasticEventWrapper .eventInfo .details .ticketLink {
+  border: 2px solid #C96A39;
+  border-radius: 2px;
+  color: #C96A39;
+  text-decoration: none;
+  padding: 6px 24px;
+  margin: 0em auto;
+  display: inline-block;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+}
+.eventasticEventWrapper .eventInfo .details .ticketLink:hover {
+  background: #C96A39;
+  color: #C96A39;
+}
+.eventasticEventWrapper .eventInfo .details .social {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.eventasticEventWrapper .eventInfo .details .social a {
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-decoration: none;
+  margin-right: 12px;
+}
+.eventasticEventWrapper .eventInfo .details .social a span {
+  font-size: 22px;
+  color: #C96A39;
+}
+@media only screen and (max-width: 768px) {
+  .eventasticEventWrapper .eventInfo {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  .eventasticEventWrapper .eventInfo .images {
+    width: 100%;
+  }
+  .eventasticEventWrapper .eventInfo .details {
+    width: 100%;
+  }
+}
+.eventasticEventWrapper .eventDescription {
+  margin: 1em auto;
+}
+
+.eventDateDetails {
+  background: #eeeeee;
+  padding: 2em;
+}
+.eventDateDetails .eventDateWrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  max-width: 60rem;
+  width: 100%;
+  margin: 0 auto;
+}
+.eventDateDetails h2 {
+  color: #C96A39;
+  font-family: var(--wp--preset--font-family--title);
+  font-size: 2em;
+}
+.eventDateDetails .dateInfo {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 50%;
+          flex: 0 0 50%;
+}
+
+#eventMap {
+  height: 250px;
+  width: 100%;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 50%;
+          flex: 0 0 50%;
+  position: relative;
+  border-radius: 4px;
+  border: 1px solid #2B7B7C;
+}
