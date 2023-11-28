@@ -73,6 +73,22 @@ COLUMNS
     mask-size: cover;
 }
 
+.is-style-content-width {
+    @include main-column;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.is-style-content-width-rough-edges {
+    @include main-column;
+    margin-left: auto;
+    margin-right: auto;
+    --webkit-mask: url("images/collage-square-long.svg") no-repeat center;
+    mask: url("images/collage-square-long.svg") no-repeat center;
+    --webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+}
+
 // media text block
 .wp-block-media-text {
     &.is-style-icon {
@@ -91,12 +107,15 @@ COLUMNS
             }
         }
     }
-    &.is-style-gray-bg {
+    &.is-style-rough-edges {
         margin: auto 2em;
-        background: #eeeeee;
         box-sizing: border-box;
         padding: 1em 2em;
         position: relative;
+         --webkit-mask: url("images/collage-square-long.svg") no-repeat center;
+        mask: url("images/collage-square-long.svg") no-repeat center;
+        --webkit-mask-size: cover;
+        mask-size: cover;
     }
 }
 

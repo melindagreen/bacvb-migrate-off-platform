@@ -73,7 +73,16 @@
                 "name": "collage-square",
                 "label": "Collage Square",
                 "isDefault": false
-            }    
+            },
+            {
+                "name": "content-width",
+                "label": "Content Width",
+                "isDefault": false
+            },
+            {
+                "name": "content-width-rough-edges",
+                "label": "Content Width w/ Rough Edges"
+            }
         ]
     },
     "core/separator": {
@@ -112,8 +121,8 @@
                 "isDefault": false
             },
             {
-                "name": "gray-bg",
-                "label": "Gray BG"
+                "name": "rough-edges",
+                "label": "Rough Edges"
             }
         ]
     },

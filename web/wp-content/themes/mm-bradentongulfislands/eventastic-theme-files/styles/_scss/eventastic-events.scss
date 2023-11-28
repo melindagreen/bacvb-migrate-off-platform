@@ -1,0 +1,294 @@
+@import '_variables';
+.eventasticEventsPage {
+    .eventasticHero {
+        height: 80vh;
+        width: 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+
+        @media only screen and (max-width: 768px) {
+            background-attachment: scroll;
+        }
+    }
+
+    .eventasticHeadline {
+        display: block;
+        margin: 1em auto;
+        text-align: center;
+        font-size: 4em;
+    }
+
+    .eventasticEvents {
+        margin: 2.5em auto;
+        width: 95%;
+        max-width: 1600px;
+        display: flex;
+        align-items: flex-start;
+
+        .filters {
+            background: $filterBackground;
+            color: $filterTextColor;
+            width:350px;
+            padding: 12px;
+            margin-right: 24px;
+
+            .title {
+                font-family: $font-title;
+                font-size: 2em;
+                text-align: center;
+                text-transform: uppercase;
+                margin: 0 auto .25em;
+            }
+
+            .dateAndKeyworkFilters {
+                label {
+                    font-size: 1.1em;
+                }
+                .dateFilter {
+                    margin-bottom: 12px;
+                    .dateInput {
+                        position: relative;
+                        &:hover {
+                            &:after {
+                                content: "";
+                                display: block;
+                                position: absolute;
+                                right: 12px;
+                                top: 50%;
+                                transform: translateY(-50%);
+                                width: 0;
+                                height: 0;
+                                border-left: 7px solid transparent;
+                                border-right: 7px solid transparent;
+                                border-top: 10px solid black;
+                            }
+                        }
+                        input[type="date"] {
+                            background: white;
+                            cursor: pointer;
+                            margin: 0;
+                            width:100%;
+                            border: none;
+                        }
+                    }
+                }
+                .keywordFilter {
+                    display: block;
+                    margin-bottom: 12px;
+                    input {
+                        margin: 0;
+                        background: white;
+                        max-width: none;
+                        width:100%;
+                        border: none;
+                    }
+                }
+            }
+
+            .categoryFilters {
+                margin-bottom: 12px;
+                .filterToggle {
+                    font-size: 1.1em;
+                }
+
+                .categories {
+                    .checkbox {
+                        cursor: pointer;
+                        display: flex;
+                        justify-content: flex-start;
+                        align-items: baseline;
+                        margin: 6px 0;
+
+                        input[type="checkbox"] {
+                            background: none;
+                            -webkit-appearance: none;
+                            width: 12px !important;
+                            height: 12px;
+                            border: 1px solid $checkboxColor;
+                            cursor: pointer;
+                            margin-right: 12px;
+
+                            &:checked {
+                                background: $checkboxColor;
+                            }
+                        }
+
+                        label {
+                            cursor: pointer;
+                        }
+
+                        &:hover {
+                            input[type="checkbox"] {
+                                background: $checkboxColor;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .filterSubmit {
+                display: block;
+                width: 100%;
+                height: 40px;
+                line-height: initial;
+                font-size: 1.1em;
+                border-radius: 3p;
+                border-radius: 3px;
+                background: white;
+                color: $accentColor;
+                transition: .3s ease;
+
+                &:hover {
+                    background: none;
+                    color: white;
+                }
+            }
+        }
+
+        .events {
+            width: 100%;
+            .noResults {
+                font-size: 1.3em;
+                color: black;
+                font-weight: bold;
+                margin-top: 0;
+            }
+            .event {
+                background: white;
+                box-shadow: 0px 4px 16px rgba(47, 48, 50, 0.25);
+                margin-bottom: 24px;
+                color: black;
+                padding: 12px;
+                text-decoration: none;
+                display: flex;
+
+                &.hidden {
+                    display: none;
+                }
+                .image {
+                    width:30%;
+                    margin-right: 12px;
+                    img {
+                        width:100%;
+                        display: block;
+                    }
+                }
+                .text {
+                    flex: 1;
+                    h3 {
+                        margin: 0 auto .5em;
+                        display: inline-block;
+                    }
+
+                    button {
+                        background: $accentColor;
+                        color: white;
+                        text-transform: uppercase;
+                        transition: .3s ease;
+
+                        &:hover {
+                            background: $accentColorHover;
+                        }
+                    }
+                }
+
+                @media only screen and (max-width:768px) {
+                    flex-wrap: wrap;
+                    .image {
+                        width:100%;
+                        margin-right: 0;
+                        margin-bottom: 12px;
+                    }
+                }
+            }
+
+            .showMoreButton {
+                display: block;
+                margin: 0 auto;
+                width: 150px;
+                font-size: .9em;
+                background: $accentColor;
+                color: white;
+                text-align: center;
+                text-transform: uppercase;
+                padding: 6px 24px;
+                cursor: pointer;
+                transition: .3s ease;
+
+                &:hover {
+                    background: $accentColorHover;
+                }
+            }
+        }
+
+        @media only screen and (max-width:768px) {
+            flex-wrap: wrap;
+
+            .filters {
+                width:100%;
+                margin: 0 auto 24px;
+                display: flex;
+                flex-wrap: wrap;
+
+                .title {
+                    width:100%;
+                }
+
+                .dateAndKeyworkFilters {
+                    display: flex;
+                    justify-content: space-between;
+                    flex-wrap: wrap;
+                    width:100%;
+
+                    .dateFilter, .keywordFilter {
+                        width:calc(33% - 8px);
+                        margin: 0;
+                        position: relative;
+                        min-width: 160px;
+                    }
+
+                    @media only screen and (max-width:600px) {
+                        .dateFilter {
+                            width:calc(50% - 6px);
+                        }
+                        .keywordFilter {
+                            width:100%;
+                            margin-top: 12px;
+                        }
+                    }
+
+                    @media only screen and (max-width:420px) {
+                        .dateFilter {
+                            width:100%;
+                            margin-bottom: 12px;
+                        }
+                        .keywordFilter {
+                            margin-top: 0;
+                        }
+                    }
+                }
+
+                .categoryFilters {
+                    margin-top: 12px;
+                    .categories {
+                        width:100%;
+
+                        .checkbox {
+                            margin: 0 12px 12px 0;
+                            display: inline-flex;
+                        }
+                    }
+                }
+
+
+            }
+            .events {
+                width:100%;
+            }
+        }
+    }
+}
+
+
+

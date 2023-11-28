@@ -81,7 +81,20 @@ COLUMNS
 
 //groups
 .is-style-collage-square {
-
+    --webkit-mask: url("images/collage-square-long.svg") no-repeat center;
+    mask: url("images/collage-square-long.svg") no-repeat center;
+    --webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+}
+.is-style-content-width {
+    @include main-column;
+    margin-left: auto;
+    margin-right: auto;
+}
+.is-style-content-width-rough-edges {
+    @include main-column;
+    margin-left: auto;
+    margin-right: auto;
     --webkit-mask: url("images/collage-square-long.svg") no-repeat center;
     mask: url("images/collage-square-long.svg") no-repeat center;
     --webkit-mask-size: 100% 100%;
@@ -147,38 +160,16 @@ COLUMNS
             }
         }
     }
-    &.is-style-gray-bg {
+    &.is-style-rough-edges {
         @include main-column;
         margin: auto;
-        background: #eeeeee;
-        background-size: contain;
+         --webkit-mask: url("images/collage-square-long.svg") no-repeat center;
+        mask: url("images/collage-square-long.svg") no-repeat center;
+        --webkit-mask-size: 100% 100%;
+        mask-size: 100% 100%;
         box-sizing: border-box;
         padding: 2em;
         position: relative;
-        &:before {
-            content: "";
-            display: block;
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 0;
-            width: 100%;
-            height: 20px;
-            background: url('~/images/mega-menu-bottom.png') repeat-x bottom;
-            // transform: scaleY(-1);
-        }
-        &:after {
-            content: "";
-            display: block;
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            z-index: 0;
-            width: 100%;
-            height: 20px;
-            background: url('~/images/mega-menu-bottom.png') repeat-x bottom;
-            transform: scaleY(-1);
-        }
     }
 }
 
