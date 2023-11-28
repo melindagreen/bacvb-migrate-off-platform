@@ -22,6 +22,7 @@ class CustomPostTypes extends MadreCPT {
 			'args' => [
 				'description' => '',
 				'menu_icon' => 'dashicons-store',
+				'taxonomies' => ['team', 'listing_categories'],
 			],
 			'show_in_rest' => true,
 		],
@@ -29,14 +30,15 @@ class CustomPostTypes extends MadreCPT {
 
 	// Define all custom taxonomies here!
 	protected const TAXONOMIES = [
-		// 'example_tax' => [
-		// 	'singular_label' => 'Example taxonomy term',
-		// 	'plural_label' => 'Example taxonomy terms',
-		// 	'object_type' => [ 'example' ],
-		// 	'args' => [
-		// 		'description' => 'An example custom taxonomy',
-		// 	],
-		// ],
+		'team' => [
+			'singular_label' => 'Team',
+			'plural_label' => 'Teams',
+			'object_type' => [ 'team' ],
+			'args' => [
+				'description' => 'teams',
+			],
+			'showAdminColumn' => true
+		],
 	];
 
 	function __construct() {
