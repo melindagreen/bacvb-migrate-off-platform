@@ -193,11 +193,12 @@ if ($doRun) {
 		//Grab category ids
 		$categoryIds = [];
 		$categorySlugs = explode(',', $data['category_slugs']);
+		$categoryNames = explode(',', $data['term_names']);
 		print_r($categorySlugs);
 
 		if($data['category_slugs'] !== null){
 
-			$categoryIds = get_category_ids_by_names($categorySlugs);
+			$categoryIds = get_category_ids_by_names($categorySlugs, $categoryNames);
 			print_r($categoryIds);
 		}
 
@@ -614,33 +615,33 @@ function localImagesAreEqual ($firstPath, $secondPath, $chunkSize=500) {
  * @param array $categoryNames names of the categories
  * @return array category ids
  */
-function get_category_ids_by_names($category_names) {
+function get_category_ids_by_names($category_slugs, $category_names) {
     $category_ids = array();
 
-    foreach ($category_names as $category_name) {
+    foreach ($category_slugs as $index => $category_slug) {
         // Check if the category exists by name.
-        $category = get_term_by('slug', $category_name, 'listing_categories');
+        $category = get_term_by('slug', $category_slug, 'listing_categories');
 
         if ($category) {
             // If the category exists, add its ID to the result array.
             $category_ids[] = $category->term_id;
 		}
-        //  else {
-        //     // If the category doesn't exist, create it and then add its ID to the result array.
-        //     $category_args = array(
-        //         'slug' => sanitize_title($category_name),
-        //         'name' => $category_name,
-        //         'taxonomy' => 'category',
-        //     );
+         else {
+            // If the category doesn't exist, create it and then add its ID to the result array.
+            $category_args = array(
+                'slug' => $category_slug,
+                'name' => $category_names[$index],
+                'taxonomy' => 'listing_categories',
+            );
 
-        //     $new_category = wp_insert_term($category_name, 'category', $category_args);
+            $new_category = wp_insert_term($category_names[$index], 'listing_categories', $category_args);
 
-        //     if (!is_wp_error($new_category) && isset($new_category['term_id'])) {
-        //         $category_ids[] = $new_category['term_id'];
-        //     } else {
-        //         // If there was an error creating the category, you might handle it accordingly or simply skip it.
-        //     }
-        // }
+            if (!is_wp_error($new_category) && isset($new_category['term_id'])) {
+                $category_ids[] = $new_category['term_id'];
+            } else {
+                // If there was an error creating the category, you might handle it accordingly or simply skip it.
+            }
+        }
     }
 
     return $category_ids;
