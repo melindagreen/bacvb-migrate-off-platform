@@ -77,6 +77,10 @@ COLUMNS
     @media only screen and (min-width: 782px) {
         flex-direction: inherit !important;
     }
+
+    @media only screen and (max-width: $screen-sm) {
+        flex-wrap: wrap !important;
+    }
 }
 
 //groups
@@ -170,6 +174,28 @@ COLUMNS
         box-sizing: border-box;
         padding: 2em;
         position: relative;
+    }
+
+    &.is-style-bubble-img {
+        
+        .wp-block-text__media {
+
+            --webkit-mask: url("images/bubble-mask.svg") no-repeat center;
+            mask: url("images/bubble-mask.svg") no-repeat center;
+            --webkit-mask-size: contain;
+            mask-size: contain;
+        }
+    }
+
+    &.is-style-irregular-shape {
+
+        .wp-block-text__media {
+
+            --webkit-mask: url("images/irregular-mask.svg") no-repeat center;
+            mask: url("images/irregular-mask.svg") no-repeat center;
+            --webkit-mask-size: contain;
+            mask-size: contain;
+        }
     }
 }
 
@@ -751,6 +777,7 @@ BUTTONS
 .is-style-arrow-button {
 
     position: relative;
+    max-width: 300px;
 
     .wp-block-button__link {
 
@@ -763,6 +790,7 @@ BUTTONS
         text-transform: uppercase;
         margin-bottom: 1.5rem;
         transition: all 0.3s ease-in-out;
+        text-align: left;
     }
 
     &::after {

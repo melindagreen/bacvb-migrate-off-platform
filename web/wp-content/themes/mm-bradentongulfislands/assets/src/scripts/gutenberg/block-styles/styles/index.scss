@@ -117,6 +117,28 @@ COLUMNS
         --webkit-mask-size: cover;
         mask-size: cover;
     }
+
+    &.is-style-bubble-img {
+        
+        .wp-block-text__media {
+
+            --webkit-mask: url("images/bubble-mask.svg") no-repeat center;
+            mask: url("images/bubble-mask.svg") no-repeat center;
+            --webkit-mask-size: contain;
+            mask-size: contain;
+        }
+    }
+
+    &.is-style-irregular-shape {
+
+        .wp-block-text__media {
+
+            --webkit-mask: url("images/irregular-mask.svg") no-repeat center;
+            mask: url("images/irregular-mask.svg") no-repeat center;
+            --webkit-mask-size: contain;
+            mask-size: contain;
+        }
+    }
 }
 
 

@@ -123,6 +123,14 @@
             {
                 "name": "rough-edges",
                 "label": "Rough Edges"
+            },
+            {
+                "name": "bubble-img",
+                "label": "Bubble"
+            },
+            {
+                "name": "irregular-shape",
+                "label": "Irregular Shape"
             }
         ]
     },
