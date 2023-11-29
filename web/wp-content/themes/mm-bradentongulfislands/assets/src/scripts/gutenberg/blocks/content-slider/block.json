@@ -1,0 +1,18 @@
+{
+  "name": "content-slider",
+  "dynamic": true,
+  "scripts": [
+    "swiper.js",
+    "front.js"
+  ],
+  "render_callback": "MaddenNino\\Blocks\\ContentSlider\\render_block",
+  "settings": {
+    "title": "Content Slider",
+    "description": "A slider for custom content",
+    "icon": "slides",
+    "category": "widgets",
+    "attributes": {
+      "clientId": {"type":"string"}
+    }
+  }
+}
