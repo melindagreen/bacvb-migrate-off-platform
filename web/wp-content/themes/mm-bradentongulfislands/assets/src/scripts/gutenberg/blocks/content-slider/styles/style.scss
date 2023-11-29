@@ -1,0 +1,23 @@
+@import 'styles/utils/variables';
+@import 'styles/utils/typography';
+/*********************
+Content Slider
+*********************/
+
+  .mm-content-slider { 
+    overflow: hidden;
+
+    .swiper-button-prev {
+      left: -10px;
+    }
+    .swiper-button-next {
+      right: -10px;
+    }
+    .swiper-button-next,
+    .swiper-button-prev {
+      &:before,
+      &:after {
+        display: none;
+      }
+    }
+  }

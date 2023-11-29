@@ -1,0 +1,24 @@
+@import 'styles/utils/variables';
+.wp-block-mm-content-slider {
+    & > .wp-block {
+        & > .block-editor-inner-blocks {
+            & > .block-editor-block-list__layout {
+                & > div {
+                    position: relative;
+                    margin-top: 20px;
+                    &:before {
+                        position: absolute;
+                        top: -20px;
+                        content: 'Slide:';
+                        color: rgba(1, 226, 226, 0.816);
+                    }
+                    border: 3px dashed rgba(1, 226, 226, 0.816);
+                    margin: 2rem 0;
+                    &:not(.custom-style-wrapper) {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}
