@@ -178,7 +178,7 @@ COLUMNS
 
     &.is-style-bubble-img {
         
-        .wp-block-text__media {
+        figure {
 
             --webkit-mask: url("images/bubble-mask.svg") no-repeat center;
             mask: url("images/bubble-mask.svg") no-repeat center;
@@ -189,7 +189,7 @@ COLUMNS
 
     &.is-style-irregular-shape {
 
-        .wp-block-text__media {
+        figure {
 
             --webkit-mask: url("images/irregular-mask.svg") no-repeat center;
             mask: url("images/irregular-mask.svg") no-repeat center;
@@ -777,7 +777,7 @@ BUTTONS
 .is-style-arrow-button {
 
     position: relative;
-    max-width: 300px;
+    max-width: 300px !important;
 
     .wp-block-button__link {
 
