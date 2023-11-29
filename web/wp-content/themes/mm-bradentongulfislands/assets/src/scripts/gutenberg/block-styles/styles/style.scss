@@ -261,8 +261,8 @@ IMAGES
 
         .wp-block-cover__background {
 
-            background: linear-gradient(0deg,rgba(0,0,0,0.82) 60%,rgba(255,255,255,0) 100%);
-            transition:  all 0.2s ease-in-out;
+            background: linear-gradient(0deg,rgba(0,0,0,0.82) 60%,rgba(255,255,255,0) 100%) !important;
+            transition:  all 0.3s ease-in-out;
         }
 
         .wp-block-cover__inner-container {
