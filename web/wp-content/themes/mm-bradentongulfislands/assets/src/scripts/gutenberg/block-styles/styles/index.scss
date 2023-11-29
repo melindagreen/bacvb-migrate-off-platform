@@ -18,6 +18,10 @@ TEXT
     background-size: cover;
     background-position: center;
     padding: 3rem;
+
+    @media only screen and (max-width: $screen-sm) {
+    font-size: 1.5rem !important;
+    }
 }
 
 // buttons
@@ -116,6 +120,28 @@ COLUMNS
         mask: url("images/collage-square-long.svg") no-repeat center;
         --webkit-mask-size: cover;
         mask-size: cover;
+    }
+
+    &.is-style-bubble-media {
+        
+        figure {
+
+            --webkit-mask: url("images/bubble-mask.svg") no-repeat center;
+            mask: url("images/bubble-mask.svg") no-repeat center;
+            --webkit-mask-size: contain;
+            mask-size: contain;
+        }
+    }
+
+    &.is-style-irregular-shape-media {
+
+        figure {
+
+            --webkit-mask: url("images/irregular-mask.svg") no-repeat center;
+            mask: url("images/irregular-mask.svg") no-repeat center;
+            --webkit-mask-size: contain;
+            mask-size: contain;
+        }
     }
 }
 

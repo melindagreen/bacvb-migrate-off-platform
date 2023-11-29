@@ -22,6 +22,7 @@ TEXT
 
     @media only screen and (max-width: $screen-sm) {
         padding: 2rem 0;
+        font-size: 1.5rem !important;
     }
 }
 
@@ -76,6 +77,10 @@ COLUMNS
 
     @media only screen and (min-width: 782px) {
         flex-direction: inherit !important;
+    }
+
+    @media only screen and (max-width: $screen-sm) {
+        flex-wrap: wrap !important;
     }
 }
 
@@ -171,6 +176,28 @@ COLUMNS
         padding: 2em;
         position: relative;
     }
+
+    &.is-style-bubble-media {
+        
+        figure {
+
+            --webkit-mask: url("images/bubble-mask.svg") no-repeat center;
+            mask: url("images/bubble-mask.svg") no-repeat center;
+            --webkit-mask-size: contain;
+            mask-size: contain;
+        }
+    }
+
+    &.is-style-irregular-shape-media {
+
+        figure {
+
+            --webkit-mask: url("images/irregular-mask.svg") no-repeat center;
+            mask: url("images/irregular-mask.svg") no-repeat center;
+            --webkit-mask-size: contain;
+            mask-size: contain;
+        }
+    }
 }
 
 
@@ -210,9 +237,46 @@ IMAGES
     --webkit-mask-size: 100% 100%;
     mask-size: 100% 100%;
 
+    .wp-block-cover__background {
+
+        transition:  all 0.3s ease-in-out;
+    }
+
     .wp-block-cover__inner-container {
 
         max-width: 30rem;
+
+        .wp-block-group {
+
+            & > *:not(.wp-block-heading) {
+                
+                transition: all 0.3s ease-in-out;
+                opacity: 0;
+                transform: translateY(-6px);
+            }
+        }
+    }
+
+    &:hover {
+
+        .wp-block-cover__background {
+
+            background: linear-gradient(0deg,rgba(0,0,0,0.82) 60%,rgba(255,255,255,0) 100%) !important;
+            transition:  all 0.3s ease-in-out;
+        }
+
+        .wp-block-cover__inner-container {
+
+            .wp-block-group {
+    
+                & > *:not(.wp-block-heading) {
+    
+                    transition: all 0.2s ease-in-out;
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        }
     }
 }
 
@@ -751,6 +815,7 @@ BUTTONS
 .is-style-arrow-button {
 
     position: relative;
+    max-width: 300px !important;
 
     .wp-block-button__link {
 
@@ -763,6 +828,7 @@ BUTTONS
         text-transform: uppercase;
         margin-bottom: 1.5rem;
         transition: all 0.3s ease-in-out;
+        text-align: left;
     }
 
     &::after {
@@ -999,7 +1065,7 @@ CUSTOM BLOCKS
     @media only screen and (min-width: 769px) {
     .title {
 		
-        top: 45%;
+        top: 55%;
         margin-left: 0;
         font-size: 5vw;
 

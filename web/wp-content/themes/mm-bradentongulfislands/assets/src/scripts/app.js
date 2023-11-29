@@ -162,7 +162,7 @@ if ('serviceWorker' in navigator) {
 		insertPlaceholderImage();
 
 		//Query Block Carousel On Mobile
-		queryCarouselOnMobile();
+		// queryCarouselOnMobile();
 
 		/*Close search on window resize*/
 		window.onresize = function () { searchClose(); }
@@ -524,7 +524,7 @@ if ('serviceWorker' in navigator) {
         }
 
 		//Query Block Carousel On Mobile
-		queryCarouselOnMobile();
+		// queryCarouselOnMobile();
     }
 
     $(document).ready(function ($) {

@@ -5,6 +5,11 @@
     "description": "An accordion with multiple collapsing sections",
     "icon": "list-view",
     "category": "layout",
-    "attributes": {}
+    "attributes": {
+      "title": {
+        "type": "string",
+        "default": "Frequently Asked Questions"
+      }
+    }
   }
 }
