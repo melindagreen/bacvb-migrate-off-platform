@@ -125,11 +125,11 @@
                 "label": "Rough Edges"
             },
             {
-                "name": "bubble-img",
+                "name": "bubble-media",
                 "label": "Bubble"
             },
             {
-                "name": "irregular-shape",
+                "name": "irregular-shape-media",
                 "label": "Irregular Shape"
             }
         ]

@@ -22,6 +22,7 @@ TEXT
 
     @media only screen and (max-width: $screen-sm) {
         padding: 2rem 0;
+        font-size: 1.5rem !important;
     }
 }
 
@@ -176,7 +177,7 @@ COLUMNS
         position: relative;
     }
 
-    &.is-style-bubble-img {
+    &.is-style-bubble-media {
         
         figure {
 
@@ -187,7 +188,7 @@ COLUMNS
         }
     }
 
-    &.is-style-irregular-shape {
+    &.is-style-irregular-shape-media {
 
         figure {
 
