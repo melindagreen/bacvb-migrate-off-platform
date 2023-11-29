@@ -14,9 +14,9 @@ import Toolbar from './toolbar'
 const Controls = props => {
   return (
     <Fragment>
-      <BlockControls>
+      {/* <BlockControls>
         <Toolbar {...props} />
-      </BlockControls>
+      </BlockControls> */}
       <Inspector {...props} />
     </Fragment>
   )

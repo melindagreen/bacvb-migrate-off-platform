@@ -1,7 +1,31 @@
-@import 'styles/utils/variables';
+@import "styles/utils/mixins";
+@import "styles/utils/variables";
+@import "styles/utils/typography";
 
 .#{$block-prefix}-accordion {
   margin: 0 auto;
+
+  .section-title {
+
+    width: calc(100% - 2rem);
+    margin: 0 auto;
+    max-width: 60rem;
+    border-bottom: 0.5px solid #CCCCCC;
+    border-left: 0.5px solid #CCCCCC;
+    border-right: 0.5px solid #CCCCCC;
+    background-color: $bradenton-teal;
+
+    h2 {
+
+      color: white;
+      text-align: center;
+      text-transform: uppercase;
+      font-family: $font-header;
+      font-weight: 400;
+      padding: 1rem 0.5rem 0 0.5rem;
+      line-height: 1.15em;    
+    }
+  }
 
   .#{$block-prefix}-accordion-section:first-child {
 
@@ -22,5 +46,13 @@ MEDIUM AND LARGE SCREENS
   *********************/
 @media only screen and (max-width: 768px) {
   .#{$block-prefix}-accordion {
+
+    .section-title {
+
+      h2 {
+
+        font-size: 1.1rem;
+      }
+    }
   }
 }

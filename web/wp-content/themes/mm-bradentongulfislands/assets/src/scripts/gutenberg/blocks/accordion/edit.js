@@ -41,7 +41,7 @@ const Editor = props => {
 const edit = (props) => {
   return (
     <>
-      {/* <Controls {...props} /> */}
+      <Controls {...props} />
       <Editor {...props} />
     </>
   );
