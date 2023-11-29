@@ -29,6 +29,11 @@ FONTS
   margin-top: 120px;
   min-height: calc(100vh - 120px);
 }
+.eventasticMain .eventDescription {
+  margin: 1em auto;
+  max-width: 60rem;
+  padding: 2em;
+}
 
 .eventasticEventWrapper {
   display: block;
@@ -112,7 +117,15 @@ FONTS
   left: 6px;
 }
 .eventasticEventWrapper .eventInfo .details {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   padding: 1em;
+}
+.eventasticEventWrapper .eventInfo .details .column {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
 .eventasticEventWrapper .eventInfo .details .detail {
   display: -webkit-box;
@@ -122,26 +135,25 @@ FONTS
       -ms-flex-align: baseline;
           align-items: baseline;
 }
-.eventasticEventWrapper .eventInfo .details .detail span {
-  margin-right: 12px;
-}
 .eventasticEventWrapper .eventInfo .details .detail a {
   color: #C96A39;
 }
-.eventasticEventWrapper .eventInfo .details .ticketLink {
-  border: 2px solid #C96A39;
-  border-radius: 2px;
-  color: #C96A39;
-  text-decoration: none;
-  padding: 6px 24px;
-  margin: 0em auto;
-  display: inline-block;
-  -webkit-transition: 0.3s ease;
-  transition: 0.3s ease;
+.eventasticEventWrapper .eventInfo .details span.fas {
+  margin-right: 10px;
+  color: #2B7B7C;
 }
-.eventasticEventWrapper .eventInfo .details .ticketLink:hover {
-  background: #C96A39;
-  color: #C96A39;
+.eventasticEventWrapper .eventInfo .details .website {
+  color: #2B7B7C;
+  display: inline-block;
+  padding: 5px 10px;
+  border: 2px solid #2B7B7C;
+  text-transform: uppercase;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.eventasticEventWrapper .eventInfo .details .website:hover {
+  color: #fff;
+  background: #2B7B7C;
 }
 .eventasticEventWrapper .eventInfo .details .social {
   display: -webkit-box;
@@ -163,10 +175,18 @@ FONTS
           align-items: center;
   text-decoration: none;
   margin-right: 12px;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
 }
 .eventasticEventWrapper .eventInfo .details .social a span {
   font-size: 22px;
-  color: #C96A39;
+  color: #2B7B7C;
+}
+.eventasticEventWrapper .eventInfo .details .social:hover a {
+  opacity: 0.5;
+}
+.eventasticEventWrapper .eventInfo .details .social:hover a:hover {
+  opacity: 1;
 }
 @media only screen and (max-width: 768px) {
   .eventasticEventWrapper .eventInfo {
@@ -179,9 +199,6 @@ FONTS
   .eventasticEventWrapper .eventInfo .details {
     width: 100%;
   }
-}
-.eventasticEventWrapper .eventDescription {
-  margin: 1em auto;
 }
 
 .eventDateDetails {
@@ -205,6 +222,19 @@ FONTS
   -webkit-box-flex: 0;
       -ms-flex: 0 0 50%;
           flex: 0 0 50%;
+}
+.eventDateDetails .ticketLink {
+  color: #2B7B7C;
+  display: inline-block;
+  padding: 5px 10px;
+  border: 2px solid #2B7B7C;
+  text-transform: uppercase;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.eventDateDetails .ticketLink:hover {
+  background: #2B7B7C;
+  color: #fff;
 }
 
 #eventMap {
