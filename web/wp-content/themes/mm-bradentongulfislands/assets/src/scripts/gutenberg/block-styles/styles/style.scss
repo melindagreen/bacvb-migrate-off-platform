@@ -895,7 +895,7 @@ BUTTONS
     }
 }
 
-.is-style-round-arrow-button {
+.is-style-round-arrow-button, .is-style-round-arrow-button-blue {
 
       
 
@@ -962,6 +962,21 @@ BUTTONS
             }
         }
     }
+}
+
+.is-style-round-arrow-button-blue {
+
+    .wp-block-button__link {
+
+
+        &::after {
+            content: ' ';
+            background: url('images/blue-arrow.png') no-repeat !important;
+            transition: all 0.3s ease-in-out;
+            background-size: contain !important;
+          }
+      }
+
 }
 
 /*********************

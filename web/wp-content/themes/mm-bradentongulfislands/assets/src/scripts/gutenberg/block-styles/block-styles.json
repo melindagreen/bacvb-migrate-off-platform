@@ -108,7 +108,12 @@
             },
             {
                 "name": "round-arrow-button",
-                "label": "Round Arrow",
+                "label": "Round Arrow Orange",
+                "isDefault": false
+            },
+            {
+                "name": "round-arrow-button-blue",
+                "label": "Round Arrow Blue",
                 "isDefault": false
             }
         ]
