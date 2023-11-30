@@ -364,6 +364,10 @@
               "label":"Pet-Friendly"
             }, 
             {
+              "key":"eco-friendly",
+              "label":"Eco-Friendly"
+            },
+            {
               "key":"pool",
               "label":"Pool"
             },
@@ -394,6 +398,30 @@
             {
               "key":"mainland",
               "label":"Mainland"
+            }
+          ]
+        },
+        {
+          "key" : "accomodations-rooms", 
+          "label" : "<b>Rooms</b>", 
+          "type" : "checkbox",
+          "newLineAfter" : true,        
+          "choices" : [
+            {
+              "key":"rooms-small",
+              "label":"0-49 Rooms"
+            },
+            {
+              "key":"rooms-medium",
+              "label":"50-99 Rooms"
+            },
+            {
+              "key":"rooms-large",
+              "label":"100-200 Rooms"
+            },
+            {
+              "key":"rooms-xlarge",
+              "label":"Over 200 Rooms"
             }
           ]
         },
@@ -459,10 +487,6 @@
           "type" : "checkbox",
           "newLineAfter" : true,        
           "choices" : [
-            {
-              "key":"pet-friendly",
-              "label":"Pet-Friendly"
-            },
             {
               "key":"boat-dock",
               "label":"Boat Dock"

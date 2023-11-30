@@ -152,8 +152,14 @@ if ($doRun) {
 		//	means that the tag includes the attachment id in it, which we don't yet 
 		//	know. first we will insert the images, get back the ids, and then swap 
 		//	them into the tags. 
-		if ($data['attachment_name'] != null) {
-			$new_src = 'https://cdn.bradentongulfislands.com/'.$data['path'].'/'.$data['attachment_name'];
+		
+		$attachmentIds = [];
+		$attachments = explode(',', $data['attachments']);
+		$alts = explode(',', $data['alts']);
+
+		foreach ($attachments as $index => $attachment) {
+		if ($attachment != null) {
+			$new_src = 'https://cdn.bradentongulfislands.com/'.$attachment;
 			$attachmentId = localUploadOrUpdateImage($new_src);
 
 			print_r($new_src);
@@ -162,12 +168,11 @@ if ($doRun) {
 
 				// Extract new_src and alt values
 				$new_src = parse_url($new_src, PHP_URL_PATH);
-				$alt = $data['alt'];
 				$match_src = $new_src;
 
 				// insert the alt text
 				if (! empty($new_src)) {
-					update_post_meta($attachmentId, "_wp_attachment_image_alt", $alt);
+					update_post_meta($attachmentId, "_wp_attachment_image_alt", $alts[$index]);
 				}
 				// update the original content gutenberg block with the attachment id
 				// $data["content"] = str_replace(
@@ -181,6 +186,7 @@ if ($doRun) {
 				
 		
 				$featuredImage = $new_url;
+				$attachmentIds[] = $attachmentId;
 
 				$imgLog[] = "[OK] Entry image processed: [{$attachmentId}] {$url}";
 			} else {
@@ -188,6 +194,7 @@ if ($doRun) {
 				$imgLog[] = " - Errors:";
 				$imgLog[] = print_r($attachmentId->errors, true);	
 			}
+		}
 		}
 
 		//Grab category ids
@@ -284,9 +291,17 @@ if ($doRun) {
 			// Categories
 			wp_set_post_terms($pId, $categoryIds, 'listing_categories');
 
+			print_r($attachmentIds);
 			//Gallery
-			if(!is_wp_error($attachmentId)) {
-			add_post_meta($pId, 'partnerportal_gallery_square_featured_image', '['.$attachmentId.']');
+			if(count($attachmentIds) > 0) {
+				set_post_thumbnail($pId, $attachmentIds[0]);
+			add_post_meta($pId, 'partnerportal_gallery_square_featured_image', '['.$attachmentIds[0].']');
+			}
+
+			if(count($attachmentIds) > 1 ) {
+
+				$gallery = implode(', ', $attachmentIds);
+				add_post_meta($pId, 'partnerportal_gallery_images', '['.$gallery.']');
 			}
 
 			// General Info
@@ -424,16 +439,16 @@ if ($doRun) {
 
 			// Adding to Post Meta
 			add_post_meta($pId, 'partnerportal_accomodations-type', $accomodationsType);
-			add_post_meta($pId, 'partnerportal_accomodations-facility-amenities', $attractionsAmenities);
-			add_post_meta($pId, 'partnerportal_accomodations-location', $attractionsAmenities);
-			add_post_meta($pId, 'partnerportal_attractions-arts-and-culture', $attractionsAmenities);
-			add_post_meta($pId, 'partnerportal_attractions-types', $attractionsAmenities);
+			add_post_meta($pId, 'partnerportal_accomodations-facility-amenities', $accomodationsFacilityAmenities);
+			add_post_meta($pId, 'partnerportal_accomodations-location', $accomodationsLocation);
+			add_post_meta($pId, 'partnerportal_attractions-arts-and-culture', $attractionsArtsCulture);
+			add_post_meta($pId, 'partnerportal_attractions-types', $attractionsType);
 			add_post_meta($pId, 'partnerportal_attractions-amenities', $attractionsAmenities);
-			add_post_meta($pId, 'partnerportal_recreation-visitor-services', $attractionsAmenities);
-			add_post_meta($pId, 'partnerportal_recreation-recreation-type', $attractionsAmenities);
-			add_post_meta($pId, 'partnerportal_shopping', $attractionsAmenities);
-			add_post_meta($pId, 'partnerportal_dining-type', $attractionsAmenities);
-			add_post_meta($pId, 'partnerportal_dining-amenities', $attractionsAmenities);
+			add_post_meta($pId, 'partnerportal_recreation-visitor-services', $recreationVisitorServices);
+			add_post_meta($pId, 'partnerportal_recreation-recreation-type', $recreationType);
+			add_post_meta($pId, 'partnerportal_shopping', $shopping);
+			add_post_meta($pId, 'partnerportal_dining-type', $diningType);
+			add_post_meta($pId, 'partnerportal_dining-amenities', $diningAmenities);
 	
 			$log[] = "[OK] Entry {$postStatus}: {$data["slug"]}";
 			$counter++;
