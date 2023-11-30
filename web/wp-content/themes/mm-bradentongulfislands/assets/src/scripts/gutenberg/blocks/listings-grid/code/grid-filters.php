@@ -47,8 +47,11 @@ function render_grid_filter( $attrs, $filter_tax ) {
 
     ?> 
     
-    <div class="filterContainer">
+    <div class="filterContainer <?php echo isset( $attrs['postType'] ) && $attrs['postType'] === 'event' ? 'is-style-collage-square' : ''; ?>">
         <!-- filters -->
+        <?php if( isset( $attrs['postType'] ) && $attrs['postType'] === 'event' ):?>
+        <h2 class="grid-title"><?php echo $attrs['listingsTitle']; ?></h2>
+        <?php endif; ?>
         <form id="filter-form" class="filters">
 
             <?php if( isset( $attrs['postType'] ) && $attrs['postType'] === 'event' ):?>

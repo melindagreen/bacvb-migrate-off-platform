@@ -46,15 +46,38 @@ $bar-height: 70px;
 
 	// For events only, a white background
 	&.listings-grid--event {
+
+		.grid-title {
+
+			font-family: $font-header;
+		}
+
 		.grid-body {
 			background: #fff;
 		}
 		.filterContainer {
-			background: $light-blue;
+			background: $bradenton-teal;
+			padding: 1rem 1%;
 		}
+		.date-controls {
+
+			.control {
+
+				color: white;
+			}
+		}
+
 		.filters {		
 			display: flex;
 			max-width: 60em;
+
+			.control--search {
+
+				.control__label {
+
+					color: white;
+				}
+			} 
 		}
 	}
 
