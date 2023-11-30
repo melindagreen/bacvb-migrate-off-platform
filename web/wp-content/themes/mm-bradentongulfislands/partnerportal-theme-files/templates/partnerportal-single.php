@@ -119,12 +119,6 @@ if (!$images ) {
 
 <div class="listingMain">
 
-    <div class="listingHero">
-        <div class="hero" style="background-image: url('<?php echo $images[0];?>');"></div>
-            <h1 class="title alt-title"><?php echo $published_name; ?></h1>
-        <div class="fade"></div>
-    </div>
-
     <div class="listingInfo">
 
         <div class="content-wrapper">

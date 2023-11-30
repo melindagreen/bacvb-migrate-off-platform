@@ -42,6 +42,7 @@ $email = (isset($meta['email'])) ? $meta['email'] : "";
 $phone = (isset($meta['phone'])) ? $meta['phone'] : "";
 $facebook = (isset($meta['facebook'])) ? $meta['facebook'] : "";
 $twitter = (isset($meta['twitter'])) ? $meta['twitter'] : "";
+$instagram = (isset($meta['instagram'])) ? $meta['instagram'] : "";
 
 //images
 $images = (isset($meta['gallery_images'])) ? $meta['gallery_images'] : "";
@@ -75,74 +76,78 @@ if (!$images && get_post_thumbnail_id()) {
             <?php endif; ?>
             <div class="details">
 
-                <?php if ($location || $street): //make sure we got somethin at least?>
-                <p class="address detail">
-                    <span class="fas fa-map-marked-alt"></span>
-                    <?php
-                    if ($location) echo $location.'<br>';
-                    if ($street) echo ($street2) ? $street.', '.$street2 : $street;
-                    if ($city || $state || $zip) {
-                        echo '<br>';
-                        if ($city) echo $city;
-                        if ($state) echo ' '.$state;
-                        if ($zip) echo ', '.$zip;
-                    }
-                    ?>
-                </p>
-                <?php endif; ?>
+                <div class="column">
 
-                <?php if ($price || $priceVarries || $ticketUrl): ?>
-                <div class="prices">
-                    <?php if ($price || $priceVarries): //these will look the same so check either?>
-                    <p class="price detail">
-                        <span class="fas fa-dollar-sign"></span>
-                        <?php echo ($price) ?: $priceVarries; ?>
+                    <?php if ($location || $street): //make sure we got somethin at least?>
+                    <p class="address detail">
+                        <!-- <span class="fas fa-map-marked-alt"></span> -->
+                        <?php
+                        if ($location) echo $location.'<br>';
+                        if ($street) echo ($street2) ? $street.', '.$street2 : $street;
+                        if ($city || $state || $zip) {
+                            echo '<br>';
+                            if ($city) echo $city;
+                            if ($state) echo ' '.$state;
+                            if ($zip) echo ', '.$zip;
+                        }
+                        ?>
                     </p>
                     <?php endif; ?>
 
-                    <?php if ($ticketUrl): ?>
-                    <a href="<?php echo $ticketUrl; ?>" class="ticketLink">Register Here</a>
+                    <?php if ($phone): ?>
+                    <p class="phone detail">
+                        <span class="fas fa-phone-alt"></span>
+                        <?php 
+                        // Remove leading +1 or 1
+                        $phone = preg_replace('/^\+?1/', '', $phone);
+
+                        // Format the phone number
+                        if (strlen($phone) == 10) {
+                            $formattedPhone = '('.substr($phone, 0, 3).') '.substr($phone, 3, 3).'-'.substr($phone, 6);
+                            echo $formattedPhone;
+                        } else {
+                            echo $phone;
+                        }
+                        ?>
+                    </p>
                     <?php endif; ?>
+
+                    <?php if ($email): ?>
+                    <p class="email detail">
+                        <span class="fas fa-envelope"></span>
+                        <a href="mailto:<?php echo $email; ?>"><?php echo $email; ?></a>
+                    </p>
+                    <?php endif; ?>
+                    
                 </div>
-                <?php endif; ?>
 
-                <?php if ($website): ?>
-                <p class="website detail">
-                    <span class="fas fa-globe"></span>
-                    <a href="<?php echo $website; ?>">Event Website</a>
-                </p>
-                <?php endif; ?>
+                <div class="column">
 
-                <?php if ($phone): ?>
-                <p class="phone detail">
-                    <span class="fas fa-phone-alt"></span>
-                    <?php echo $phone; ?>
-                </p>
-                <?php endif; ?>
-
-                <?php if ($email): ?>
-                <p class="email detail">
-                    <span class="fas fa-envelope"></span>
-                    <a href="mailto:<?php echo $email; ?>"><?php echo $email; ?></a>
-                </p>
-                <?php endif; ?>
-
-                <?php if ($facebook || $twitter): ?>
-                <p class="social">
-                    <?php if ($facebook): ?>
-                    <a href="<?php echo $facebook; ?>"><span class="fab fa-facebook-f"></span></a>
+                    <?php if ($website): ?>
+                    <p>
+                        <a class="website detail" href="<?php echo $website; ?>">Visit Website</a>
+                    </p>
                     <?php endif; ?>
 
-                    <?php if ($twitter): ?>
-                    <a href="<?php echo $twitter; ?>"><span class="fab fa-twitter"></span></a>
+                    <?php if ($facebook || $twitter || $instagram): ?>
+                    <p class="social">
+                        <?php if ($facebook): ?>
+                        <a href="<?php echo $facebook; ?>"><span class="fab fa-facebook-f"></span></a>
+                        <?php endif; ?>
+
+                        <?php if ($instagram): ?>
+                        <a href="<?php echo $instagram; ?>"><span class="fab fa-instagram"></span></a>
+                        <?php endif; ?>
+
+                        <?php if ($twitter): ?>
+                        <a href="<?php echo $twitter; ?>"><span class="fab fa-twitter"></span></a>
+                        <?php endif; ?>
+                    </p>
                     <?php endif; ?>
-                </p>
-                <?php endif; ?>
+                    
+                </div>
+
             </div>
-        </div>
-
-        <div class="eventDescription">
-            <?php the_content(); ?>
         </div>
 
     </div><!-- .eventasticEventWrapper -->
@@ -153,17 +158,17 @@ if (!$images && get_post_thumbnail_id()) {
             
             <div class="dateInfo">
                 <h2>Event Date</h2>
-                
+
                 <?php if ($startDate): //just checking for safety ?>
                 <p class="dates detail">
-                    <span class="fas fa-calendar-alt"></span>
+                    <!-- <span class="fas fa-calendar-alt"></span> -->
                     <?php
 
                     if ($recurring) {
                         if ($endDate && $startDate != $endDate) {
                             echo date('M j, Y', $startDate).' to '.date('M j, Y', $endDate).'<br>';
                         }
-                        echo 'every ';
+                        echo 'Every ';
                         switch ($recurringRepeat) {
                             case '1':
                                 echo '1st ';
@@ -194,7 +199,7 @@ if (!$images && get_post_thumbnail_id()) {
 
                 <?php if (!$allDay && ($startTime || $endTime)):  ?>
                 <p class="times detail">
-                    <span class="fas fa-clock"></span>
+                    <!-- <span class="fas fa-clock"></span> -->
                     <?php
                     if ($startTime) { //this logic is accounting for if there is only an end time
                         echo (!$endTime) ? $startTime : $startTime.' - '.$endTime;
@@ -202,6 +207,22 @@ if (!$images && get_post_thumbnail_id()) {
                     ?>
                 </p>
                 <?php endif; ?>
+
+                <?php if ($price || $priceVarries || $ticketUrl): ?>
+                <div class="prices">
+                    <?php if ($price || $priceVarries): //these will look the same so check either?>
+                    <p class="price detail">
+                        <!-- <span class="fas fa-dollar-sign"></span> -->
+                        <?php echo ($price) ?: $priceVarries; ?>
+                    </p>
+                    <?php endif; ?>
+
+                    <?php if ($ticketUrl): ?>
+                    <a href="<?php echo $ticketUrl; ?>" class="ticketLink">Purchase Tickets</a>
+                    <?php endif; ?>
+                </div>
+                <?php endif; ?>
+
             </div>
 
             <?php if ($lat && $lng) eventastic_render_event_map($post->ID, 'eventMap'); ?>
@@ -209,6 +230,10 @@ if (!$images && get_post_thumbnail_id()) {
         </div>
 
     </div><!-- .eventDateDetails -->
+
+    <div class="eventDescription">
+        <?php the_content(); ?>
+    </div>
 
 </div>
 
