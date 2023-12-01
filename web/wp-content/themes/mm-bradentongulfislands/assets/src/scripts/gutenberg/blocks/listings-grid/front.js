@@ -89,7 +89,7 @@
 				let amenities = listing?.meta_fields?.['partnerportal_accomodations-facility-amenities']?.[0];
 				
 				if(amenities == 'pet-friendly') {
-					petfriendly = `<img src="/wp-content/themes/mm-bradentongulfislands/assets/images/icons/pet-friendly.png" alt="pet friendly icon" class="petfriendly">`
+					petfriendly = `<img src="/wp-content/themes/mm-bradentongulfislands/assets/images/icons/pet-friendly.png" alt="pet friendly icon" title="Pet Friendly" class="petfriendly">`
 				}
 
 			break;
