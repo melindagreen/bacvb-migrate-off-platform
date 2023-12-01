@@ -27,6 +27,16 @@ const customizeExtraProps = (props, blockType, attributes) => {
                     case 'justify-content':
                         Object.assign(props, {style: { ...props.style, justifyContent: attributes.justifyContent }});
                     break;
+                    case 'hide-on-breakpoints':
+                        if (attributes.hideOnMobile) {
+                            Object.assign(props, { className: `${props.className} hide-on-mobile` });
+                        }
+
+                        if (attributes.hideOnDesktop) {
+                            Object.assign(props, { className: `${props.className} hide-on-desktop` });
+                        }
+
+                    break;
                 }
             });
     }

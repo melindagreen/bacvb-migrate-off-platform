@@ -79,6 +79,27 @@ const withCustomControls = createHigherOrderComponent((BlockEdit) => {
                             CUSTOMIZE_BLOCKS[name].map(
                                 (customization) => {
                                     switch (customization) {
+                                        case 'hide-on-breakpoints':
+                                            return <PanelBody title='Hide on breakpoints' initialOpen={false}>
+                                                <PanelRow>
+                                                    <ToggleControl
+                                                        label={__('Hide on mobile?')}
+                                                        checked={attributes.hideOnMobile}
+                                                        onChange={hideOnMobile => setAttributes({ hideOnMobile })}
+                                                    />
+                                                </PanelRow>
+
+                                                <PanelRow>
+                                                    <ToggleControl
+                                                        label={__('Hide on desktop?')}
+                                                        checked={attributes.hideOnDesktop}
+                                                        onChange={hideOnDesktop => setAttributes({ hideOnDesktop })}
+                                                    />
+                                                </PanelRow>
+                                            </PanelBody>
+
+                                            break;
+
                                         case 'reverse-mobile':
                                            return <PanelBody><ToggleControl
                                                 label="Reverse on Mobile"
