@@ -79,9 +79,9 @@ COLUMNS
         flex-direction: inherit !important;
     }
 
-    @media only screen and (max-width: $screen-md) {
-        flex-wrap: wrap !important;
-    }
+    // @media only screen and (max-width: $screen-md) {
+    //     flex-wrap: wrap !important;
+    // }
 }
 
 //groups
@@ -226,17 +226,9 @@ IMAGES
     overflow: unset;
 }
 
-.is-style-rounded {
-    background: #fff;
-    border-radius: 9999px;
-    padding: 0.5rem 2rem;
-    overflow: hidden;
-
-    img {
-        border-radius: 0px !important;
-    }
+.is-style-rounded img {
+    border-radius: 25px !important;
 }
-
 
 .is-style-portrait {
 
@@ -996,7 +988,7 @@ CUSTOM BLOCKS
     .nautical-illustration {
 
         display: unset;
-        @media only screen and (max-width: 768px) {
+        @media only screen and (max-width: ($screen-md + 1)) {
             display: none;
         }
     }
