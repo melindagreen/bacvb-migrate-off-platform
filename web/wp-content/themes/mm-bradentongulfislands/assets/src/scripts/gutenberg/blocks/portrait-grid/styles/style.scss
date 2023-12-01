@@ -443,36 +443,120 @@ LARGE SCREENS
 MEDIUM SCREENS
 *********************/
 @media only screen and (min-width: #{$screen-sm + 1}) and (max-width: $screen-lg) {
-  .#{$block-prefix}-portrait-grid {
+//   .#{$block-prefix}-portrait-grid {
     
-   .grid-item-body {
+//    .grid-item-body {
 
-    transform: scale(0.75);
-   }
+//     transform: scale(0.75);
+//    }
 
-   .grid-item {
+//    .grid-item {
+//     position: relative;
+
+//     &--1 {
+
+//       .grid-item__background {
+
+//         .grid-item__image {
+
+//           min-width: 235px;
+//           width: 29vw;
+//         }
+//       }
+//     }
+
+//     &--2 {
+
+//       .grid-item__background {
+
+//         .grid-item__image {
+      
+//           min-width: 235px;
+//           width: 41vw;
+//         }
+//       }
+//     }
+
+//     &--3 {
+
+//       .grid-item__background {
+
+//         .grid-item__image {
+
+//           min-width: 245px;
+//           width: 10vw;
+//         }
+//       }
+//     }
+//   }
+
+//    .grid-items {
+
+//     margin: auto 0;
+//    }
+
+//    &.is-length-3 {
+//     .grid-items {
+
+//       left: 8%;
+//       transform: unset;
+//       grid-template-rows: repeat(4,14vw);
+//     }
+//   }
+//   .grid-item-body {
+
+//     z-index: 2;
+
+//     &--2 {
+
+//       right: 64%;
+//       top: -4rem;
+//     }
+
+//     &--1 {
+
+//       bottom: -8rem;
+//       right: 63%;
+//     }
+
+//     &--3 {
+
+//       bottom: 2rem;
+//       left: 58%;
+//     }
+//   }
+//   }
+// }
+
+.#{$block-prefix}-portrait-grid {
+  margin: 6rem auto;
+  width: 90%;
+  .container {
+    max-width: 100%;
+  }
+
+  .grid-item {
     position: relative;
 
-    &--1 {
+    &--2 {
 
       .grid-item__background {
 
         .grid-item__image {
 
-          min-width: 235px;
-          width: 29vw;
+          min-width: 250px;
+          width: 100%;
         }
       }
     }
 
-    &--2 {
+    &--1 {
 
       .grid-item__background {
 
         .grid-item__image {
       
-          min-width: 235px;
-          width: 41vw;
+          width: 100%;
         }
       }
     }
@@ -483,49 +567,75 @@ MEDIUM SCREENS
 
         .grid-item__image {
 
-          min-width: 245px;
-          width: 10vw;
+          
+          min-width: 260px;
+          width: 100%;
         }
       }
     }
+
+    --webkit-mask: url("images/portraitmask1.svg") no-repeat center !important;
+      mask: url("images/portraitmask1.svg") no-repeat center !important;
+
+      mask-size: 100% 100% !important;
+      -webkit-size: 100% 100% !important;
   }
 
-   .grid-items {
+  .grid-items {
 
+    display: block;
     margin: auto 0;
-   }
+  }
 
-   &.is-length-3 {
-    .grid-items {
+  .grid-item {
+    width: 100%;
+    height: 80vw;
+    margin: 2rem auto;
+    & + * {
+      margin-top: 2rem;
+    }
 
-      left: 8%;
-      transform: unset;
-      grid-template-rows: repeat(4,14vw);
+
+    .grid-item__body {
+      width: 100%;
     }
   }
+
   .grid-item-body {
 
+    position: relative;
+    padding: 4% 5%;
+    width: 99%;
+    margin-left: 0.3rem;
+    top: -4rem;
     z-index: 2;
 
     &--2 {
 
-      right: 64%;
-      top: -4rem;
+      right: unset;
     }
 
     &--1 {
 
-      bottom: -8rem;
-      right: 63%;
+      bottom: unset;
+      right: unset;
     }
 
     &--3 {
 
-      bottom: 2rem;
-      left: 58%;
+      bottom: unset;
+      left: unset;
+    }
+
+    &--1,&--2,&--3 {
+
+      .grid-item-body__arrow {
+
+        display: none;
+      }
     }
   }
-  }
+}
 }
 
 /*********************
