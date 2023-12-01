@@ -212,7 +212,7 @@ if (!$images && get_post_thumbnail_id()) {
                 <div class="prices">
                     <?php if ($price || $priceVarries): //these will look the same so check either?>
                     <p class="price detail">
-                        <!-- <span class="fas fa-dollar-sign"></span> -->
+                        <span class="fas fa-dollar-sign"></span>
                         <?php echo ($price) ?: $priceVarries; ?>
                     </p>
                     <?php endif; ?>

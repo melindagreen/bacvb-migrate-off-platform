@@ -197,7 +197,7 @@ FONTS
     width: 100%;
   }
   .eventasticEventWrapper .eventInfo .details {
-    width: 100%;
+    display: block;
   }
 }
 
@@ -223,6 +223,9 @@ FONTS
       -ms-flex: 0 0 50%;
           flex: 0 0 50%;
 }
+.eventDateDetails span.fas {
+  color: #2B7B7C;
+}
 .eventDateDetails .ticketLink {
   color: #2B7B7C;
   display: inline-block;
@@ -235,6 +238,11 @@ FONTS
 .eventDateDetails .ticketLink:hover {
   background: #2B7B7C;
   color: #fff;
+}
+@media only screen and (max-width: 768px) {
+  .eventDateDetails .eventDateWrapper {
+    display: block;
+  }
 }
 
 #eventMap {

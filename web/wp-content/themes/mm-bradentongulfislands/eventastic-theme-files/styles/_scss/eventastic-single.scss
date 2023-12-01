@@ -159,7 +159,7 @@
                 width:100%;
             }
             .details {
-                width:100%;
+                display: block;
             }
         }
     }
@@ -187,6 +187,9 @@
         flex: 0 0 50%;
     }
 
+    span.fas {
+        color: $bradenton-teal;
+    }
     
     .ticketLink {
         color: $bradenton-teal;
@@ -202,6 +205,12 @@
         }
     }
 
+    @media only screen and (max-width:768px) {
+        .eventDateWrapper {
+            display: block;
+        }
+    }
+
 }
 
 #eventMap {
@@ -212,3 +221,4 @@
     border-radius: 4px;
     border: 1px solid $bradenton-teal;
 }
+

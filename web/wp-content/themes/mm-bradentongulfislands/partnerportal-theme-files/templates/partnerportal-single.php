@@ -80,7 +80,7 @@ $street2 = (isset($meta['address_2'])) ? $meta['address_2'] : "";
 // $phone = (isset($meta['phone_number'])) ? U::clean_phone( $meta['phone_number']) : "";
 $phone = (isset($meta['phone_number'])) ? $meta['phone_number'] : "";
 $website = (isset($meta['website_link'])) ? $meta['website_link'] : "";
-$website_text = (isset($meta['website_text'])) ? $meta['website_text'] : "View Website";
+$website_text = (isset($meta['website_text'])) ? $meta['website_text'] : "Visit Website";
 
 $city = (isset($meta['city'])) ? $meta['city'] : "";
 $state = (isset($meta['state'])) ? $meta['state'] : "";
@@ -88,11 +88,6 @@ $zip = (isset($meta['zip'])) ? $meta['zip'] : "";
 $lat = (isset($meta['latitude'])) ? $meta['latitude'] : "";
 $lng = (isset($meta['longitude'])) ? $meta['longitude'] : "";
 $description = (isset($meta['description'])) ? $meta['description'] : "";
-
-$amenities = (isset($meta['lodging_amenities'])) ? $meta['lodging_amenities'] : "";
-$beds = (isset($meta['lodging_beds'])) ? $meta['lodging_beds'] : "";
-$baths = (isset($meta['lodging_baths'])) ? $meta['lodging_baths'] : "";
-$guests = (isset($meta['lodging_guests'])) ? $meta['lodging_guests'] : "";
 
 //images
 $images = [];
@@ -111,88 +106,65 @@ if (!$images ) {
     $fallback_image = get_the_post_thumbnail_url() ?  get_the_post_thumbnail_url($post->ID,'full') : '/wp-content/uploads/coming-soon.jpg';
     $images = array($fallback_image);
 }
+
+// accommodations
+$amenities = (isset($meta['accomodations-facility-amenities'])) ? $meta['accomodations-facility-amenities'] : "";
+$location = (isset($meta['accomodations-location'])) ? $meta['accomodations-location'] : "";
+$artAttractions = (isset($meta['attractions-arts-and-culture'])) ? $meta['attractions-arts-and-culture'] : "";
+$attractionsType = (isset($meta['attractions-types'])) ? $meta['attractions-types'] : "";
+$attractionAmenities = (isset($meta['attractions-amenities'])) ? $meta['attractions-amenities'] : "";
+$recreationServices = (isset($meta['recreation-visitor-services'])) ? $meta['recreation-visitor-services'] : "";
+$recreationType = (isset($meta['recreation-recreation-type'])) ? $meta['recreation-recreation-type'] : "";
+$shopping = (isset($meta['shopping'])) ? $meta['shopping'] : "";
+$diningType = (isset($meta['dining-type'])) ? $meta['dining-type'] : "";
+$diningAmenities = (isset($meta['dining-amenities'])) ? $meta['dining-amenities'] : "";
+
+
 // print_r($images);
 ?>
 
-<link rel='stylesheet' href='https://unpkg.com/swiper@8/swiper-bundle.min.css' />
-<script src='https://unpkg.com/swiper@8/swiper-bundle.min.js'></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="/wp-content/themes/mm-bradentongulfislands/partnerportal-theme-files/scripts/eventastic-single.js"></script>
 
 <div class="listingMain">
 
-    <div class="listingInfo">
+    <div class="listingHeader">
+        
+        <h1 class="listingTitle"><?php echo $published_name; ?></h1>
 
-        <div class="content-wrapper">
-            <div class="left-col <?php if (!empty($images)) {echo "multiCol";}?>">
-
-                <div class="details">
-
-                    <h1 class="listingTitle"><?php echo $published_name; ?></h1>
-                    <?php if ( $street): //make sure we got somethin at least?>
-                    <p class="address detail">
-                        <?php
-                        if ($street) echo ($stree2) ? $street.', '.$street2 : $street;
-                        
-                        if ($city || $state || $zip) {
-                            if ($city) echo ' ' .$city;
-                            if ($state) echo ' '.$state;
-                            if ($zip) echo ', '.$zip;
-                        }
-                        ?>
-                    </p>
-                    <?php endif; ?>
-                    <?php if ($phone): ?>
-                    <p class="phone detail">
-                        <?php echo $phone; ?>
-                    </p>
-                    <?php endif; ?>
-                    <?php
-                    if (!empty($website)):
-                        if(!str_contains($website,'n/a')): ?>
-                        <p class="website detail">
-                            <a href="<?php echo $website; ?>" target="_blank"><?php echo $website_text; ?></a>
-                        </p>
-                    <?php endif;
-                    endif; ?>
-                    <?php if (1 != 1 && $terms_html): ?>
-                        <?php echo $terms_html; ?> 
-                    <?php endif; ?>
-
-                    <div class="listingDescription">
-                        <?php the_content(); ?>
-                    </div>
-                    <?php if($description): ?>
-                        <div class="description">
-                            <p><?php echo $description; ?></p>
-                        </div>
-                    <?php endif; ?>
-                    <?php if( $amenities || $beds || $guests || $baths ): ?>
-                        <div class="lodging-meta">
-                            <h3>Lodging Amenities</h3>
-                            <?php if( $amenities ): ?>
-                                <p><?php echo $amenities; ?></p>
-                            <?php endif; ?>
-                            <?php if( $beds) : ?>
-                                <div class="lodging-item"><b>Beds: </b><?php echo $beds; ?></div>
-                            <?php endif; ?>
-                            <?php if( $baths ) : ?>
-                                <div class="lodging-item"><b>Baths: </b><?php echo $baths; ?></div>
-                            <?php endif; ?>                                    
-                            <?php if( $guests ) : ?>
-                                <div class="lodging-item"><b>Guests: </b><?php echo $guests; ?></div>
-                            <?php endif; ?>                                    
-                        </div>
-                    <?php endif; ?>
-                    <?php if( $hours ): ?>
-                        <h3>Hours</h3>
-                        <div class="hours">
-                            <?php echo $hours; ?>
-                        </div> 
-                    <?php endif; ?>
-
-                </div>
+        <!-- Accommodation Section -->
+        <?php
+        $accommodations = array();
+        foreach($amenities as $i) {
+            if ($i == 'pet-friendly' || $i == 'eco-friendly') {
+                $accommodations[] = $i;
+            }
+        }
+        foreach($location as $l) {
+            if ($l == 'beachfront' || $l == 'waterfront') {
+                $accommodations[] = $l;
+            }
+        }
+        ?>
+        <div class="accommodations">
+            <?php
+            foreach($accommodations as $acc) { ?>
+            <div class="accommodation <?php echo $acc;?>">
+                <img src="<?php echo get_theme_file_uri() ?>/assets/images/icons/<?php echo $acc;?>.png" alt="<?php echo $acc;?>" class="icon">
+                <span><?php echo ucwords(str_replace('-', ' ', $acc));?></span>
             </div>
+            <?php }
+            ?>
+        </div><!-- .accommodations -->
 
-            <div class="right-col eventsMapImg">
+    </div><!-- .listingHeader -->
+
+    <div class="listingInfo">
+        
+        <div class="listingWrapper">
+            
+            <div class="listingImg">        
                 <?php if (is_array($images) && count($images)>1): ?>
                     <div class="images swiper listingImgSwiper">
                         <div class="swiper-wrapper">
@@ -216,24 +188,219 @@ if (!$images ) {
                     </div>
                     <?php endif; ?>
                 <?php endif; ?>
-                <?php if ($lat && $lng) : ?>
-                    <?php  eventastic_render_event_map($post->ID, 'listingMap'); ?><!--/end rendermap-->
-                    <div id="listingmap"></div>
-                    <script>
-                    jQuery(document).ready(function(){
-                        var center = [<?php echo $meta['latitude'] . ", " . $meta['longitude']; ?>];
-                        var map = L.map('listingmap').setView(center, 15);
-                        L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom: 18}).addTo(map);
-                        L.marker(center).addTo(map);
-                    });
-                    </script>
-                <?php endif; ?>
-            </div><!--/right-col-->
 
-        </div><!-- .content-wrapper -->
-    </div>
+                <div class="contactInfoWrap">
+                    <div class="info">
+                        <?php if ($phone): ?>
+                        <p class="phone">
+                            Phone: <a href="tel:<?php echo $phone;?>"><?php echo $phone; ?></a>
+                        </p>
+                        <?php endif; ?>
+
+                        <?php if ( $street): //make sure we got somethin at least?>
+                        <p class="address">
+                            <?php
+                            if ($street) echo ($stree2) ? $street.', '.$street2 : $street;
+
+                            echo "<br>";
+                            
+                            if ($city || $state || $zip) {
+                                if ($city) echo ' ' .$city;
+                                if ($state) echo ' '.$state;
+                                if ($zip) echo ', '.$zip;
+                            }
+                            ?>
+                        </p>
+                        <?php endif; ?>
+                    </div>
+                    <?php
+                    if (!empty($website)):
+                        if(!str_contains($website,'n/a')): ?>
+                        <a class="website" href="<?php echo $website; ?>" target="_blank"><?php echo $website_text; ?></a>
+                    <?php endif;
+                    endif; ?>
+                </div>
+
+            </div>
+
+            <div class="listingDetails">
+
+                <?php if(!empty($description)) { ?>
+                    <div class="listingDescription">
+                        <p><?php echo $description; ?></p>
+                    </div>
+                <?php } else { ?>
+                    <div class="listingDescription">
+                        <?php the_content(); ?>
+                    </div>
+                <?php } ?>
+
+                <h2>Facility Amenities:</h2>
+
+                <?php if(!empty($amenities)): ?>
+                <div class="amenities">
+                    <h3>Accomodations</h3>
+                    <?php 
+                    foreach ($amenities as $key => $amenity) {
+                        $formattedAmenity = ucwords(str_replace('-', ' ', $amenity));
+                        echo $formattedAmenity;
+
+                        if ($key < count($amenities) - 1) {
+                            echo ', ';
+                        }
+                    } ?>
+                    </div>
+                <?php endif; ?>
+
+                <?php if(!empty($location)): ?>
+                <div class="amenities">
+                    <h3>Location</h3>
+                    <?php 
+                    foreach ($location as $key => $loc) {
+                        $formattedLoc = ucwords(str_replace('-', ' ', $loc));
+                        echo $formattedLoc;
+
+                        if ($key < count($location) - 1) {
+                            echo ', ';
+                        }
+                    } ?>
+                    </div>
+                <?php endif; ?>
+
+                <?php if(!empty($artAttractions) || !empty($attractionsType) || !empty($attractionAmenities)): ?>
+                <div class="amenities">
+                    <h3>Attractions</h3>
+                    <?php 
+                    if(!empty($artAttractions)) {
+                        foreach ($artAttractions as $key => $art) {
+                            $formattedart = ucwords(str_replace('-', ' ', $art));
+                            echo $formattedart;
+
+                            if ($key < count($artAttractions) - 1) {
+                                echo ', ';
+                            }
+                        }
+                    }
+                    if(!empty($attractionsType)) {
+                        if(!empty($artAttractions)) {
+                            echo ", ";
+                        }
+                        foreach ($attractionsType as $key => $type) {
+                            $formattedtype = ucwords(str_replace('-', ' ', $type));
+                            echo $formattedtype;
+
+                            if ($key < count($attractionsType) - 1) {
+                                echo ', ';
+                            }
+                        }
+                    }
+                    if(!empty($attractionAmenities)) {
+                        if(!empty($attractionsType)) {
+                            echo ", ";
+                        }
+                        foreach ($attractionAmenities as $key => $amen) {
+                            $formattedamen = ucwords(str_replace('-', ' ', $amen));
+                            echo $formattedamen;
+
+                            if ($key < count($attractionAmenities) - 1) {
+                                echo ', ';
+                            }
+                        }
+                    } ?>
+                    </div>
+                <?php endif; ?>
+
+
+                <?php if(!empty($recreationServices) || !empty($recreationType)): ?>
+                <div class="amenities">
+                    <h3>General Amenities</h3>
+                    <?php 
+                    if(!empty($recreationServices)) {
+                        foreach ($recreationServices as $key => $art) {
+                            $formattedart = ucwords(str_replace('-', ' ', $art));
+                            echo $formattedart;
+
+                            if ($key < count($recreationServices) - 1) {
+                                echo ', ';
+                            }
+                        }
+                    }
+                    if(!empty($recreationType)) {
+                        if(!empty($recreationServices)) {
+                            echo ", ";
+                        }
+                        foreach ($recreationType as $key => $type) {
+                            $formattedtype = ucwords(str_replace('-', ' ', $type));
+                            echo $formattedtype;
+
+                            if ($key < count($recreationType) - 1) {
+                                echo ', ';
+                            }
+                        }
+                    }
+                    ?>
+                    </div>
+                <?php endif; ?>
+
+                <?php if(!empty($shopping)): ?>
+                <div class="amenities">
+                    <h3>Shopping</h3>
+                    <?php 
+                    foreach ($shopping as $key => $shop) {
+                        $formattedshop = ucwords(str_replace('-', ' ', $shop));
+                        echo $formattedshop;
+
+                        if ($key < count($shopping) - 1) {
+                            echo ', ';
+                        }
+                    } ?>
+                    </div>
+                <?php endif; ?>
+
+                <?php if(!empty($diningType) || !empty($diningAmenities)): ?>
+                <div class="amenities">
+                    <h3>Dining Amenities</h3>
+                    <?php 
+                    if(!empty($diningType)) {
+                        foreach ($diningType as $key => $dine) {
+                            $formatteddine = ucwords(str_replace('-', ' ', $dine));
+                            echo $formatteddine;
+
+                            if ($key < count($diningType) - 1) {
+                                echo ', ';
+                            }
+                        }
+                    }
+                    if(!empty($diningAmenities)) {
+                        if(!empty($diningType)) {
+                            echo ", ";
+                        }
+                        foreach ($diningAmenities as $key => $amen) {
+                            $formattedamen = ucwords(str_replace('-', ' ', $amen));
+                            echo $formattedamen;
+
+                            if ($key < count($diningAmenities) - 1) {
+                                echo ', ';
+                            }
+                        }
+                    }
+                    ?>
+                    </div>
+                <?php endif; ?>
+
+            </div>
+
+        </div>
+
+    </div><!-- .listingInfo -->
 
 </div>
+
+
+<?php 
+// var_dump($meta); 
+?>
+
 
 <!--This block is xyz-->
 <?php
