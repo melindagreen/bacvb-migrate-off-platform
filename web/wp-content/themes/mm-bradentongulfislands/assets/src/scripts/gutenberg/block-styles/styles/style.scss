@@ -226,9 +226,17 @@ IMAGES
     overflow: unset;
 }
 
-.is-style-rounded img {
-    border-radius: 25px !important;
+.is-style-rounded {
+    background: #fff;
+    border-radius: 9999px;
+    padding: 0.5rem 2rem;
+    overflow: hidden;
+
+    img {
+        border-radius: 0px !important;
+    }
 }
+
 
 .is-style-portrait {
 
