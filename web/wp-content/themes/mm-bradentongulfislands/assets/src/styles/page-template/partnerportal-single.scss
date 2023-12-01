@@ -43,6 +43,10 @@
 		background: color('light-gray');
 		margin-bottom: 2rem;
 		padding: 2rem 0;
+		--webkit-mask: url("images/collage-square-long.svg") no-repeat center;
+	    mask: url("images/collage-square-long.svg") no-repeat center;
+	    --webkit-mask-size: 100% 100%;
+	    mask-size: 100% 100%;
 	}
 
 	.listingWrapper {

@@ -136,14 +136,18 @@ $diningAmenities = (isset($meta['dining-amenities'])) ? $meta['dining-amenities'
         <!-- Accommodation Section -->
         <?php
         $accommodations = array();
-        foreach($amenities as $i) {
-            if ($i == 'pet-friendly' || $i == 'eco-friendly') {
-                $accommodations[] = $i;
+        if(!empty($amenities)) {
+            foreach($amenities as $i) {
+                if ($i == 'pet-friendly' || $i == 'eco-friendly') {
+                    $accommodations[] = $i;
+                }
             }
         }
-        foreach($location as $l) {
-            if ($l == 'beachfront' || $l == 'waterfront') {
-                $accommodations[] = $l;
+        if(!empty($location)) {
+            foreach($location as $l) {
+                if ($l == 'beachfront' || $l == 'waterfront') {
+                    $accommodations[] = $l;
+                }
             }
         }
         ?>
@@ -235,7 +239,10 @@ $diningAmenities = (isset($meta['dining-amenities'])) ? $meta['dining-amenities'
                     </div>
                 <?php } ?>
 
+
+                <?php if(!empty($amenities) || !empty($location) || !empty($attractionsType) || !empty($recreationType) || !empty($shopping) || !empty($diningAmenities)) { ?>
                 <h2>Facility Amenities:</h2>
+                <?php } ?>
 
                 <?php if(!empty($amenities)): ?>
                 <div class="amenities">
