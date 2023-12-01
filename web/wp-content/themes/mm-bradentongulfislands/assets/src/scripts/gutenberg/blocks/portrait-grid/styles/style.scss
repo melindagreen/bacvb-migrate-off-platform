@@ -170,6 +170,8 @@
       position: relative;
       transition: all 0.3s ease-in-out;
       min-width: 7rem;
+      max-width: 15rem;
+      font-size: 0.95rem;
       display: inline-block;
 
       &::after {
@@ -202,8 +204,8 @@
 
     &--2 {
       background: $rust;
-      width: 17rem;
-      min-height: 16rem;
+      width: 19rem;
+      min-height: 19rem;
       right: 68%;
       top: -4rem;
 
@@ -255,6 +257,7 @@
       background-color: $sky-blue;
       bottom: -11rem;
       right: 68%;
+      width: 25rem;
 
       .grid-item-body__arrow {
 
