@@ -46,15 +46,38 @@ $bar-height: 70px;
 
 	// For events only, a white background
 	&.listings-grid--event {
+
+		.grid-title {
+
+			font-family: $font-header;
+		}
+
 		.grid-body {
 			background: #fff;
 		}
 		.filterContainer {
-			background: $light-blue;
+			background: $bradenton-teal;
+			padding: 1rem 1%;
 		}
+		.date-controls {
+
+			.control {
+
+				color: white;
+			}
+		}
+
 		.filters {		
 			display: flex;
 			max-width: 60em;
+
+			.control--search {
+
+				.control__label {
+
+					color: white;
+				}
+			} 
 		}
 	}
 
@@ -68,7 +91,7 @@ $bar-height: 70px;
 
 	.filterContainer {
 		position: relative;
-		z-index: 100;
+		z-index: 99;
 	}
 
 	.filters {
@@ -294,6 +317,7 @@ $bar-height: 70px;
 			position: relative;
 			z-index: 10;
 			padding: 0 1rem 2rem;
+			min-height: 9.5rem;
 		}
 		.listing__title {
 			font-family: $font-header;

@@ -136,8 +136,8 @@ Wide Slideshow
 
     .swiper-pagination-bullet {
 
-      background-color: $white;
-      border: 2px solid $sky-blue;
+      background-color: transparent;
+      border: 2px solid $white;
       width: 12px;
       height: 12px;
       opacity: 1;
@@ -145,8 +145,8 @@ Wide Slideshow
 
     .swiper-pagination-bullet-active {
 
-      background-color: transparent;
-      border-color: $white;
+      background-color: $white;
+      border-color: $sky-blue;
     }
   }
 

@@ -79,7 +79,7 @@ COLUMNS
         flex-direction: inherit !important;
     }
 
-    @media only screen and (max-width: $screen-sm) {
+    @media only screen and (max-width: $screen-md) {
         flex-wrap: wrap !important;
     }
 }
@@ -117,7 +117,7 @@ COLUMNS
         .wp-block-media-text__content {
             background: $light-blue;
             position: relative;
-            padding: 0 10%;
+            padding: 3% 10%;
             h2 {
                 font-family: $font-header;
                 color: $bradenton-teal;
@@ -251,8 +251,10 @@ IMAGES
             & > *:not(.wp-block-heading) {
                 
                 transition: all 0.3s ease-in-out;
-                opacity: 0;
-                transform: translateY(-6px);
+                @media only screen and (min-width: ($screen-lg + 1)) {
+                    opacity: 0;
+                    transform: translateY(-6px);
+                }
             }
         }
     }
@@ -893,7 +895,7 @@ BUTTONS
     }
 }
 
-.is-style-round-arrow-button {
+.is-style-round-arrow-button, .is-style-round-arrow-button-blue {
 
       
 
@@ -960,6 +962,21 @@ BUTTONS
             }
         }
     }
+}
+
+.is-style-round-arrow-button-blue {
+
+    .wp-block-button__link {
+
+
+        &::after {
+            content: ' ';
+            background: url('images/blue-arrow.png') no-repeat !important;
+            transition: all 0.3s ease-in-out;
+            background-size: contain !important;
+          }
+      }
+
 }
 
 /*********************

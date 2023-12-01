@@ -2,6 +2,12 @@
 .eventasticMain {
     margin-top: $headerHeight;
     min-height: calc(100vh - #{$headerHeight});
+
+    .eventDescription {
+        margin: 1em auto;
+        max-width: 60rem;
+        padding: 2em;
+    }
 }
 .eventasticEventWrapper {
     display: block;
@@ -83,34 +89,37 @@
             }
         }
         .details {
+            display: flex;
             padding: 1em;
+
+            .column {
+                flex: 1;
+            }
 
             .detail {
                 display: flex;
                 align-items: baseline;
-
-                span {
-                    margin-right: 12px;
-                }
 
                 a {
                     color: $rust;
                 }
             }
 
-            .ticketLink {
-                border: 2px solid $rust;
-                border-radius: 2px;
-                color: $rust;
-                text-decoration: none;
-                padding: 6px 24px;
-                margin: 0em auto;
-                display: inline-block;
-                transition: .3s ease;
+            span.fas {
+                margin-right: 10px;
+                color: $bradenton-teal;
+            }
 
+            .website {
+                color: $bradenton-teal;
+                display: inline-block;
+                padding: 5px 10px;
+                border: 2px solid $bradenton-teal;
+                text-transform: uppercase;
+                transition: all 0.3s;
                 &:hover {
-                    background: $rust;
-                    color: $rust;
+                    color: #fff;
+                    background: $bradenton-teal;
                 }
             }
 
@@ -126,10 +135,19 @@
                     align-items: center;
                     text-decoration: none;
                     margin-right: 12px;
+                    transition: all 0.3s;
 
                     span {
                         font-size: 22px;
-                        color: $rust;
+                        color: $bradenton-teal;
+                    }
+                }
+                &:hover {
+                    a {
+                        opacity: 0.5;
+                        &:hover {
+                            opacity: 1;
+                        }
                     }
                 }
             }
@@ -146,9 +164,6 @@
         }
     }
 
-    .eventDescription {
-        margin: 1em auto;
-    }
 }
 
 .eventDateDetails {
@@ -171,6 +186,22 @@
     .dateInfo {
         flex: 0 0 50%;
     }
+
+    
+    .ticketLink {
+        color: $bradenton-teal;
+        display: inline-block;
+        padding: 5px 10px;
+        border: 2px solid $bradenton-teal;
+        text-transform: uppercase;
+        transition: all 0.3s;
+
+        &:hover {
+            background: $bradenton-teal;
+            color: #fff;
+        }
+    }
+
 }
 
 #eventMap {

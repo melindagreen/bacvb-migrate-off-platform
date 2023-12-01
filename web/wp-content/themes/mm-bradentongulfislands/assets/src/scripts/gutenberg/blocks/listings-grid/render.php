@@ -65,7 +65,9 @@ function render_block( $attrs, $content ) {
 	<!-- grid body -->
 	<div class="grid-body">
 
+		<?php if( isset( $attrs['postType'] ) && $attrs['postType'] !== 'event' ):?>
 		<h2 class="grid-title"><?php echo $attrs['listingsTitle']; ?></h2>
+		<?php endif; ?>
 
 		<?php
 			include_once( 'code/grid-filters.php' );

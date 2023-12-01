@@ -10,10 +10,9 @@
  * Copyright (c) 2022 Madden Media
  */
 
-ini_set('max_execution_time', 360000);
-ini_set('max_input_time', 360000);
-ini_set('memory_limit', '1024M');
-set_time_limit(360000);
+ini_set('max_execution_time', 3600);
+ini_set('max_input_time', 3600);
+set_time_limit(3600);
 
 if (php_sapi_name() === "cli") {
 	die("Please run this via a web browser URL.");
@@ -109,20 +108,19 @@ if ($doRun) {
 	echo "<br/>"."Start: ".date("r", $startTime->getTimestamp())."<br/>";
 
 	// walk through the data and do the inserting stuff
-	foreach ($jsonDataFile as $data) {
+	foreach ($jsonDataFile as $url => $data) {
 
 		$log = [];
 		$imgLog = [];
 		$wpPostInsertData = [];
-		$postType = "listing";
+		$postType = "page";
 		$postAuthor = 1;
-		$postDate = date($SQL_DATETIME_FORMAT, strtotime($data["created_at"]));
+		$postDate = date($SQL_DATETIME_FORMAT, strtotime($data["last_updated"]));
 		$postName = sanitize_title(basename($data["slug"]));
 		$postStatus = "ADDED";
 		$featuredImage;
 		$tags = $data['tags'];
 		array_push($tags, "imported");
-		$url = "https://www.bradentongulfislands.com/places/".$data["id"]."/".$data["slug"];
 
 		// we can update any existing post with the post id - to get that, we can
 		//    query the post meta table to find that id by our id
@@ -152,27 +150,26 @@ if ($doRun) {
 		//	means that the tag includes the attachment id in it, which we don't yet 
 		//	know. first we will insert the images, get back the ids, and then swap 
 		//	them into the tags. 
-		
-		$attachmentIds = [];
-		$attachments = explode(',', $data['attachments']);
-		$alts = explode(',', $data['alts']);
+		foreach ($data["img"] as $url => $imgData) {
+			$attachmentId = localUploadOrUpdateImage($url);
+			$imgData = maybe_unserialize($imgData);
 
-		foreach ($attachments as $index => $attachment) {
-		if ($attachment != null) {
-			$new_src = 'https://cdn.bradentongulfislands.com/'.$attachment;
-			$attachmentId = localUploadOrUpdateImage($new_src);
-
-			print_r($new_src);
-	
 			if (! is_wp_error($attachmentId)) {
 
+				$newData = substr($data['img'][$url], 2, -1);
+
+				// Split string into key-value pairs
+				$pairs = explode('";', $newData);
+
 				// Extract new_src and alt values
+				$new_src = substr($pairs[1], strpos($pairs[1], ':"')+3);
 				$new_src = parse_url($new_src, PHP_URL_PATH);
+				$alt = isset($pairs[3]) ? substr($pairs[3], strpos($pairs[3], ':"') + 3) : '';
 				$match_src = $new_src;
 
 				// insert the alt text
 				if (! empty($new_src)) {
-					update_post_meta($attachmentId, "_wp_attachment_image_alt", $alts[$index]);
+					update_post_meta($attachmentId, "_wp_attachment_image_alt", $alt);
 				}
 				// update the original content gutenberg block with the attachment id
 				// $data["content"] = str_replace(
@@ -181,12 +178,15 @@ if ($doRun) {
 				// 	$data["content"]);
 				// update src url 
 
-				// $old_url = wp_get_attachment_url($attachmentId);
+				$old_url = wp_get_attachment_url($attachmentId);
 				$new_url = $new_src;
 				
-		
-				$featuredImage = $new_url;
-				$attachmentIds[] = $attachmentId;
+				if($data['featuredImage'] === $match_src) {
+
+					$featuredImage = $new_url;
+				}
+
+				$data["content"] = str_replace($new_url, $old_url, $data["content"]);
 
 				$imgLog[] = "[OK] Entry image processed: [{$attachmentId}] {$url}";
 			} else {
@@ -195,18 +195,12 @@ if ($doRun) {
 				$imgLog[] = print_r($attachmentId->errors, true);	
 			}
 		}
-		}
 
 		//Grab category ids
 		$categoryIds = [];
-		$categorySlugs = explode(',', $data['category_slugs']);
-		$categoryNames = explode(',', $data['term_names']);
-		print_r($categorySlugs);
+		if(!empty($data['categories'])){
 
-		if($data['category_slugs'] !== null){
-
-			$categoryIds = get_category_ids_by_names($categorySlugs, $categoryNames);
-			print_r($categoryIds);
+			$categoryIds = get_category_ids_by_names($data['categories']);
 		}
 
 		// Get author id
@@ -218,12 +212,13 @@ if ($doRun) {
 		// continue;
 
 		// now build up the rest of the post data to insert
-		$wpPostInsertData["post_title"] = $data["name"];
-		$wpPostInsertData["post_content"] = '<!-- wp:paragraph --><p>'.$data["intro"].'</p><!-- /wp:paragraph -->';
+		$wpPostInsertData["post_title"] = $data["title"];
+		$wpPostInsertData["post_content"] = $data["content"];
+		$wpPostInsertData["post_author"] = $postAuthor;
 		$wpPostInsertData["post_date"] = $postDate;
 		$wpPostInsertData["post_date_gmt"] = $postDate;
 		$wpPostInsertData["post_status"] = "publish";
-        // $wpPostInsertData["post_category"] = $categoryIds;
+        $wpPostInsertData["post_category"] = $categoryIds;
 		$wpPostInsertData["comment_status"] = "closed";
 		$wpPostInsertData["ping_status"] = "closed";
 		$wpPostInsertData["post_name"] = $postName;
@@ -232,14 +227,14 @@ if ($doRun) {
 		$wpPostInsertData["post_parent"] = "0";
 		$wpPostInsertData["menu_order"] = "0";
 		$wpPostInsertData["post_type"] = $postType;
-		// $wpPostInsertData["tags_input"] = $tags;
+		$wpPostInsertData["tags_input"] = $tags;
 		$wpPostInsertData["comment_count"] = "0";
-		// $wpPostInsertData["post_excerpt"] = $data["excerpt"];
-		$wpPostInsertData["post_author"] = $authorId ? $authorId : 1;
+		$wpPostInsertData["post_excerpt"] = $data["excerpt"];
+		$wpPostInsertData["post_author"] = $authorId;
 
 		// now do the post meta
 		$postMeta = [
-			$WP_POSTMETA_SEO_TITLE_KEY => str_replace($paramTitleStrip, "", $data["name"])
+			$WP_POSTMETA_SEO_TITLE_KEY => str_replace($paramTitleStrip, "", $data["title"])
 		];
 		$wpPostInsertData["meta_input"] = $postMeta;
 
@@ -276,180 +271,17 @@ if ($doRun) {
 			print_r('Updated Post: '. $pF);
 		}
 
-		// $imageId = get_image_id_by_url(site_url() . $featuredImage);
-		// if ($imageId !== 0) {
+		$imageId = get_image_id_by_url(site_url() . $featuredImage);
+		if ($imageId !== 0) {
 	
-        //     set_post_thumbnail($pId, $imageId);
-        //     echo "Featured thumbnail set successfully.";
-        // } else {
+            set_post_thumbnail($pId, $imageId);
+            echo "Featured thumbnail set successfully.";
+        } else {
 
-        //     echo "Error setting featured thumbnail" . $imageId;
-        // }
+            echo "Error setting featured thumbnail" . $imageId;
+        }
 
 		if (! is_wp_error($pId)) {
-
-			// Categories
-			wp_set_post_terms($pId, $categoryIds, 'listing_categories');
-
-			print_r($attachmentIds);
-			//Gallery
-			if(count($attachmentIds) > 0) {
-				set_post_thumbnail($pId, $attachmentIds[0]);
-			add_post_meta($pId, 'partnerportal_gallery_square_featured_image', '['.$attachmentIds[0].']');
-			}
-
-			if(count($attachmentIds) > 1 ) {
-
-				$gallery = implode(', ', $attachmentIds);
-				add_post_meta($pId, 'partnerportal_gallery_images', '['.$gallery.']');
-			}
-
-			// General Info
-			add_post_meta($pId, 'partnerportal_description', $data['meta_description']);
-			add_post_meta($pId, 'partnerportal_business_name', $data['name']);
-			add_post_meta($pId, 'partnerportal_website_link', $data['url']);
-			add_post_meta($pId, 'partnerportal_phone_number', $data['phone']);
-			add_post_meta($pId, 'partnerportal_contact_email_for_visitors', $data['email']);
-
-			// Hours
-			add_post_meta($pId, 'partnerportal_hours_description', $data['hours']);
-
-			//Address Information
-			add_post_meta($pId, 'partnerportal_address_1', $data['line1']);
-			add_post_meta($pId, 'partnerportal_address_2', $data['line2']);
-			add_post_meta($pId, 'partnerportal_city', $data['locality']);
-			add_post_meta($pId, 'partnerportal_zip', $data['postcode']);
-			add_post_meta($pId, 'partnerportal_state', $data['region']);
-			add_post_meta($pId, 'partnerportal_latitude', $data['lat']);
-			add_post_meta($pId, 'partnerportal_longitude', $data['lng']);
-
-			// Social
-			add_post_meta($pId, 'partnerportal_facebook', $data['url_facebook']);
-			add_post_meta($pId, 'partnerportal_twitter', $data['url_twitter']);
-			add_post_meta($pId, 'partnerportal_yelp', $data['url_yelp']);
-			add_post_meta($pId, 'partnerportal_youtube', $data['url_youtube']);
-			add_post_meta($pId, 'partnerportal_booking', $data['url_booking']);
-
-			//Amenities
-			$amenitySlugs = explode(',', $data['amenity_slugs']);
-
-			$accomodationsTypeIndex = [
-				'rentals' => 'vacation-rentals',
-				'rv-sites' => 'rv-campground' 
-			];
-			$accomodationsType = mapAmenities($amenitySlugs, $accomodationsTypeIndex);
-
-			$accomodationsFacilityAmenitiesIndex = [
-				'foodbeverage-service' => 'food-beverage-service',
-				'pet-friendly' => 'pet-friendly',
-				'pool-outdoor' => 'pool',
-				'marina' => 'marina-dock-access'
-			];
-			$accomodationsFacilityAmenities = mapAmenities($amenitySlugs, $accomodationsFacilityAmenitiesIndex);
-
-			$accomodationsLocationIndex = [
-				'airport' => 'airport',
-				'beachfront' => 'beachfront',
-				'waterfront' => 'waterfront',
-				'mainland' => 'mainland'
-			];
-			$accomodationsLocation = mapAmenities($amenitySlugs, $accomodationsLocationIndex);
-
-			$attractionsArtsCultureIndex = [
-				'historic-attractions' => 'historical-attraction',
-				'galleries' => 'museum-gallery',
-				'live-entertainment' => 'live-entertainment'
-			];
-			$attractionsArtsCulture = mapAmenities($amenitySlugs, $attractionsArtsCultureIndex);
-
-			$attractionsTypeIndex = [
-				'nature-preserve' => 'park-preserve',
-				'boat-tours' => 'boat-tours-charters',
-				'natural-wildlife-viewing' => 'wildlife-viewing',
-				'hikingnature-trails' => 'hiking-nature-trails',
-				'recreation-type' => 'outdoor-recreation'
-			];
-			$attractionsType = mapAmenities($amenitySlugs, $attractionsTypeIndex);
-
-			$attractionsAmenitiesIndex = [
-				'boat-dock' => 'boat-dock',
-				'picnic-area' => 'picnic-area'
-			];
-			$attractionsAmenities = mapAmenities($amenitySlugs, $attractionsAmenitiesIndex);
-
-			$recreationVisitorServicesIndex = [
-				'bicycle-rental' => 'rental-services',
-				'boat-rental' => 'rental-services',
-				'canoe-rental' => 'rental-services',
-				'fishing-rental' => 'rental-services',
-				'golf-cart-rental' => 'rental-services',
-				'golf-club-rental' => 'rental-services',
-				'jet-ski-rental' => 'rental-services',
-				'kayak-rental' => 'rental-services',
-				'motorcycle-rental' => 'rental-services',
-				'paddleboat-rental' => 'rental-services',
-				'pontoon-rental' => 'rental-services',
-				'waterski-boat-rental' => 'rental-services',
-				'watersportbeach-gear-rental' => 'rental-services'
-			];
-			$recreationVisitorServices = mapAmenities($amenitySlugs, $recreationVisitorServicesIndex);
-
-			$recreationTypeIndex = [
-				'golf-course-type' => 'golf-course',
-				'boating' => 'boating',
-				'water-recreation' => 'water-recreation',
-				'camping' => 'camping',
-				'equestrian-riding' => 'equestrian-riding',
-				'sports-field' => 'sports-courts-and-fields',
-				'fishiing' => 'fishing',
-				'indoor-activity' => 'indoor-activity',
-				'day-spa' => 'day-spa'
-			];
-			$recreationType = mapAmenities($amenitySlugs, $recreationTypeIndex);
-
-			$shoppingIndex = [
-				'shopping-mall' => 'shopping-mall',
-				'souvenir' => 'souvenir-gift-shop',
-				'antiques' => 'antiques',
-				'swimwear' => 'beach-and-swimwear',
-				'clothing' => 'clothing',
-				'health-beauty' => 'health-and-beauty',
-				'specialty-shop' => 'specialty-shop',
-			];
-			$shopping = mapAmenities($amenitySlugs, $shoppingIndex);
-
-			$diningTypeIndex = [
-				'cafe' => 'cafe',
-				'ice-cream-treats' => 'ice-cream-and-desserts',
-				'international' => 'international',
-				'seafood' => 'seafood',
-				'american' => 'american-cuisine'
-			];
-			$diningType = mapAmenities($amenitySlugs, $diningTypeIndex);
-
-			$diningAmenitiesIndex = [
-				'beachfront-dining' => 'beachfront-dining',
-				'full-bar' => 'full-bar',
-				'outdoor-dining' => 'outdoor-dining',
-				'private-room-capacity' => 'private-room-available',
-				'waterfront-dining' => 'waterfront-dining',
-				'boat-dock' => 'boat-accessible'
-			];
-			$diningAmenities = mapAmenities($amenitySlugs, $diningAmenitiesIndex);
-
-			// Adding to Post Meta
-			add_post_meta($pId, 'partnerportal_accomodations-type', $accomodationsType);
-			add_post_meta($pId, 'partnerportal_accomodations-facility-amenities', $accomodationsFacilityAmenities);
-			add_post_meta($pId, 'partnerportal_accomodations-location', $accomodationsLocation);
-			add_post_meta($pId, 'partnerportal_attractions-arts-and-culture', $attractionsArtsCulture);
-			add_post_meta($pId, 'partnerportal_attractions-types', $attractionsType);
-			add_post_meta($pId, 'partnerportal_attractions-amenities', $attractionsAmenities);
-			add_post_meta($pId, 'partnerportal_recreation-visitor-services', $recreationVisitorServices);
-			add_post_meta($pId, 'partnerportal_recreation-recreation-type', $recreationType);
-			add_post_meta($pId, 'partnerportal_shopping', $shopping);
-			add_post_meta($pId, 'partnerportal_dining-type', $diningType);
-			add_post_meta($pId, 'partnerportal_dining-amenities', $diningAmenities);
-	
 			$log[] = "[OK] Entry {$postStatus}: {$data["slug"]}";
 			$counter++;
 		} else {
@@ -483,23 +315,6 @@ exit;
 //
 // local functions
 //
-
-/**
- * 
- * 
- * @return array
- */
-function mapAmenities($categorySlugs, $arr) {
-
-	$mappedCategories = [];
-	foreach ($categorySlugs as $slug) {
-		if (array_key_exists($slug, $arr)) {
-			$mappedCategories[] = $arr[$slug];
-		}
-	}
-
-	return $mappedCategories;
-}
 
 /**
  * Returns the discovered WordPress root relative to where this script is
@@ -630,26 +445,25 @@ function localImagesAreEqual ($firstPath, $secondPath, $chunkSize=500) {
  * @param array $categoryNames names of the categories
  * @return array category ids
  */
-function get_category_ids_by_names($category_slugs, $category_names) {
+function get_category_ids_by_names($category_names) {
     $category_ids = array();
 
-    foreach ($category_slugs as $index => $category_slug) {
+    foreach ($category_names as $category_name) {
         // Check if the category exists by name.
-        $category = get_term_by('slug', $category_slug, 'listing_categories');
+        $category = get_term_by('name', $category_name, 'category');
 
         if ($category) {
             // If the category exists, add its ID to the result array.
             $category_ids[] = $category->term_id;
-		}
-         else {
+        } else {
             // If the category doesn't exist, create it and then add its ID to the result array.
             $category_args = array(
-                'slug' => $category_slug,
-                'name' => $category_names[$index],
-                'taxonomy' => 'listing_categories',
+                'slug' => sanitize_title($category_name),
+                'name' => $category_name,
+                'taxonomy' => 'category',
             );
 
-            $new_category = wp_insert_term($category_names[$index], 'listing_categories', $category_args);
+            $new_category = wp_insert_term($category_name, 'category', $category_args);
 
             if (!is_wp_error($new_category) && isset($new_category['term_id'])) {
                 $category_ids[] = $new_category['term_id'];
