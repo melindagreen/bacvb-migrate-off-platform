@@ -35,6 +35,10 @@
           "type": "string",
           "default": "none"
         },
+        "filterType": {
+          "type": "string",
+          "default": "none"
+        },
         "mode": {
           "type": "string",
           "default": "preview"
