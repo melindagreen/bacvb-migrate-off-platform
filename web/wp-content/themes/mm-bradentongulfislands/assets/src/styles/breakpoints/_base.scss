@@ -938,8 +938,20 @@ FOOTER
             position: relative;
             left: 14.5px;
             top: 1.5px
+
         }
     }
+
+    @media screen and (-webkit-min-device-pixel-ratio: 2) {
+    
+        .search-form {
+          
+            &__submit {
+                
+                left: 16.5px
+            }
+        }
+      }
 
     .footer-col {
 
