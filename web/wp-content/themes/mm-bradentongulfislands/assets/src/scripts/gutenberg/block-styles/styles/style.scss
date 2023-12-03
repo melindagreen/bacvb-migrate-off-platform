@@ -251,10 +251,10 @@ IMAGES
             & > *:not(.wp-block-heading) {
                 
                 transition: all 0.3s ease-in-out;
-                @media only screen and (min-width: ($screen-lg + 1)) {
-                    opacity: 0;
-                    transform: translateY(-6px);
-                }
+                opacity: 0;
+                transform: translateY(-6px);
+                margin: 0;
+                height: 0;
             }
         }
     }
