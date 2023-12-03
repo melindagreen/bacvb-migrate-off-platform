@@ -47,7 +47,11 @@ const MediaControls = props => {
 }
 
 const Inspector = props => {
-    const { attributes: { listingsTitle, postType, listingsPerPage, preFilterCat }, setAttributes } = props;
+    const { attributes: { listingsTitle, postType, listingsPerPage, preFilterCat, filterType }, setAttributes } = props;
+
+    const onFilterTypeChange = newFilterType => {
+        setAttributes({ filterType: newFilterType });
+    };
 
     return (
         <InspectorControls>
@@ -99,6 +103,19 @@ const Inspector = props => {
                     onChange={categories => setAttributes({ preFilterCat: categories[0] })}
                 />}
 
+            </PanelBody>
+
+            <PanelBody title={__('Filter Settings')}>
+                <SelectControl
+                    label={__('Filter Type')}
+                    value={filterType}
+                    options={[
+                        { label: __('None'), value: 'none' },
+                        { label: __('Accommodations'), value: 'accommodations' },
+                        { label: __('Meeting Rooms'), value: 'meeting-rooms' },
+                    ]}
+                    onChange={onFilterTypeChange}
+                />
             </PanelBody>
         </InspectorControls>
     )

@@ -74,7 +74,6 @@ $bar-height: 70px;
 			.control--search {
 
 				.control__label {
-
 					color: white;
 				}
 			} 
@@ -177,9 +176,10 @@ $bar-height: 70px;
 				color: $bradenton-teal;
 				border: 2px solid $bradenton-teal;
 				border-radius: 20px;
-				padding: 5px 1em;
+				padding: 5px 1em 5px 2.5em;
 				cursor: pointer;
 				transition: all 0.3s;
+				position: relative;
 
 				&:hover, &.active {
 					color: #fff;
@@ -194,6 +194,14 @@ $bar-height: 70px;
 				}
 				.control__input {
 					display: none;
+				}
+
+				.icon {
+					position: absolute;
+					width: 35px;
+					height: 35px;
+					top: -2px;
+					left: -5px;
 				}
 			}
 
