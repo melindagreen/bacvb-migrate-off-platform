@@ -253,6 +253,8 @@ IMAGES
                 transition: all 0.3s ease-in-out;
                 opacity: 0;
                 transform: translateY(6px);
+                margin: 0;
+                height: 0;
             }
         }
     }
@@ -274,8 +276,8 @@ IMAGES
                     transition: all 0.2s ease-in-out;
                     opacity: 1;
                     transform: translateY(0);
-                    margin: 0;
-                    height: 0;
+                    height: initial;
+                    margin: revert;
                 }
             }
         }
