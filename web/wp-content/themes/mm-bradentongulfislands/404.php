@@ -4,21 +4,13 @@
  */
 
 get_header(); ?>
+<div id="content-404" class="page-content">
+	<div class="content-inner">
+		<h1>Oops! <span>Looks like this page<br>went to the beach.</span></h1>
+		<a class="button" href="<?php echo home_url(); ?>">Bring me back home</a>
+		
+	</div>
 
-<h1><?php _e( 'Page not found', 'mmmadre' ); ?></h1>
-
-<p><?php _e( 'We couldn\'t find the page you were looking for.', 'mmmadre' ); ?></p>
-
-<p><?php _e( 'It looks like you were looking for: ', 'mmmadre' ); echo home_url( $_SERVER['REQUEST_URI'] ); ?></p>
-
-<p>
-	<?php printf(
-		__( 'You can use the navigation above, %ssearch our site%s, or return to %sour homepage%s.', 'mmmadre' ),
-		'<a href="' . home_url() . '?s=">',
-		'</a>',
-		'<a href="' . home_url() . '">',
-		'</a>'
-	); ?>
-</p>
+</div>
 
 <?php get_footer(); ?>

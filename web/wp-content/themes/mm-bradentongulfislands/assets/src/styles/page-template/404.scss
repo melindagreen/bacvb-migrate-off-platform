@@ -1,0 +1,39 @@
+#content-404 {
+	position: relative;
+	width: 100%;
+	background-image: url(~/images/404.jpg);
+	background-size: cover;
+	background-position: left center;
+	height: auto;
+	min-height: 50rem;
+	max-height: 110vh;
+	display: flex;
+	.content-inner {
+		color: white;
+		width:90%;
+		margin: auto;
+		h1 {
+			font-size: 7rem;
+			span {
+				display: inline-block;
+				font-size: 2rem;
+			}
+		}
+	}
+	&:after {
+        content: " ";
+        background: transparent url(~/images/hero-bottom.png) no-repeat;
+        background-size: 100% auto;
+        height: 12em;
+        left: 0;
+        position: absolute;
+        pointer-events: none;
+        width: 105%;
+        z-index: 1;
+        bottom: -20px;
+        background-size: cover;
+      }
+
+	 
+}
+
