@@ -31,16 +31,22 @@ class RestApi {
         }
 
         // filter
-        $filter_types = array( 'listing' );
-        foreach( $filter_types as $type ) {
-            register_rest_field( $type, 'meta', array(
+        $location_types = array( 'listing' );
+        foreach( $location_types as $type ) {
+            register_rest_field( $type, 'accommodations', array(
                 'get_callback' => function( $object ) use( $type ) {
                     $meta_value = get_post_meta( $object['id'], 'partnerportal_accomodations-location', true );
-
-                    $accomodations_location = get_post_meta( $object['id'], 'partnerportal_accomodations-location', true );
-                    $facility_amenities = get_post_meta( $object['id'], 'partnerportal_accomodations-facility-amenities', true );
-
                     return $meta_value;
+                }
+            ) );
+        }
+
+        $amenities_types = array( 'listing' );
+        foreach( $amenities_types as $type ) {
+            register_rest_field( $type, 'amenities', array(
+                'get_callback' => function( $object ) use( $type ) {
+                    $facility_amenities = get_post_meta( $object['id'], 'partnerportal_accomodations-facility-amenities', true );
+                    return $facility_amenities;
                 }
             ) );
         }

@@ -92,9 +92,6 @@
 				if(amenities == 'pet-friendly') {
 					petfriendly = `<img src="/wp-content/themes/mm-bradentongulfislands/assets/images/icons/pet-friendly.png" alt="pet friendly icon" title="Pet Friendly" class="petfriendly">`
 				}
-				if(accommodations == 'beachfront') {
-					testing += `<span>beachfront</span>`;
-				}
 
 			break;
 		}
@@ -115,7 +112,6 @@
 				if(description.length != 0){
 					html += `<div class='listing__description'>${description}</div>`;
 				}
-				html += `${testing}`;
 				html += `<div class="details_btn">Details</div>
 				</div>`
 		
@@ -208,6 +204,7 @@
 			.join('&');
 
 		console.log(url);
+		console.log(filters);
 
 		// get the page back up where it needs to be for viewing (it's slightly less jarring to do this pre-ajax call)
 		if (adjustScroll) {
@@ -254,10 +251,10 @@
 	 * Check 'all' checkbox if none are selected, otherwise uncheck it
 	 */
 	function updateCatChecks() {
-		$('#control__input--categories-all').prop(
-			'checked',
-			!$('.control__input--categories:not(#control__input--categories-all):checked').length
-		);
+		// $('#control__input--categories-all').prop(
+		// 	'checked',
+		// 	!$('.control__input--categories:not(#control__input--categories-all):checked').length
+		// );
 
 		$('.control__input--categories:not(#control__input--categories-all):checked').each(function() {
 		    $(this).closest('.control__label').addClass('active');
