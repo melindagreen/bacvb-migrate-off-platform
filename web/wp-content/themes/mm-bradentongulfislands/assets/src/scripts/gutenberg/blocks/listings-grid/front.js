@@ -24,11 +24,12 @@
 		let accommodations = '';
 		let petfriendly = '';
 
-		// a hacky way to get the full size of the thumbnail_url instead of the small...thumbnail.
+		let testing = '';
+
 		let newThumb = '';
 		if(listing?.thumb_url) {
 			newThumb = listing?.thumb_url;
-			newThumb = newThumb.replace(/-\d+x\d+(\.\w+)$/, '$1');
+			// newThumb = newThumb.replace(/-\d+x\d+(\.\w+)$/, '$1');
 		}
 
 		let thumbUrl = newThumb || listing?.yoast_head_json?.og_image?.[0]?.url || placeHolder;
@@ -203,6 +204,7 @@
 			.join('&');
 
 		console.log(url);
+		console.log(filters);
 
 		// get the page back up where it needs to be for viewing (it's slightly less jarring to do this pre-ajax call)
 		if (adjustScroll) {
@@ -249,10 +251,10 @@
 	 * Check 'all' checkbox if none are selected, otherwise uncheck it
 	 */
 	function updateCatChecks() {
-		$('#control__input--categories-all').prop(
-			'checked',
-			!$('.control__input--categories:not(#control__input--categories-all):checked').length
-		);
+		// $('#control__input--categories-all').prop(
+		// 	'checked',
+		// 	!$('.control__input--categories:not(#control__input--categories-all):checked').length
+		// );
 
 		$('.control__input--categories:not(#control__input--categories-all):checked').each(function() {
 		    $(this).closest('.control__label').addClass('active');
