@@ -30,13 +30,27 @@ class RestApi {
             ) );
         }
 
+        // filter
+        $filter_types = array( 'listing' );
+        foreach( $filter_types as $type ) {
+            register_rest_field( $type, 'meta', array(
+                'get_callback' => function( $object ) use( $type ) {
+                    $meta_value = get_post_meta( $object['id'], 'partnerportal_accomodations-location', true );
+
+                    $accomodations_location = get_post_meta( $object['id'], 'partnerportal_accomodations-location', true );
+                    $facility_amenities = get_post_meta( $object['id'], 'partnerportal_accomodations-facility-amenities', true );
+
+                    return $meta_value;
+                }
+            ) );
+        }
+
         // category name 
-        // meta
         $cat_types = array( 'listing', 'event' );
         foreach( $cat_types as $type ) {
             register_rest_field( $type, 'cat_name', array(
                 'get_callback' => function( $object ) use( $type ) {
-                    $cat = get_the_terms($object['id'], 'industry');;
+                    $cat = get_the_terms($object['id'], 'category');;
                     return $cat;
                 }
             ) );
@@ -47,7 +61,7 @@ class RestApi {
         foreach( $thumb_types as $type ) {
             register_rest_field( $type, 'thumb_url', array(
                 'get_callback' => function( $object ) {
-                    return get_the_post_thumbnail_url( $object['id'] );   
+                    return get_the_post_thumbnail_url( $object['id'], 'large' );   
                 }
             ) );
         }

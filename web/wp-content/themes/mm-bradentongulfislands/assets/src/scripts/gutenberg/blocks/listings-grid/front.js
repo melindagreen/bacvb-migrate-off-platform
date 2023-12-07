@@ -24,11 +24,12 @@
 		let accommodations = '';
 		let petfriendly = '';
 
-		// a hacky way to get the full size of the thumbnail_url instead of the small...thumbnail.
+		let testing = '';
+
 		let newThumb = '';
 		if(listing?.thumb_url) {
 			newThumb = listing?.thumb_url;
-			newThumb = newThumb.replace(/-\d+x\d+(\.\w+)$/, '$1');
+			// newThumb = newThumb.replace(/-\d+x\d+(\.\w+)$/, '$1');
 		}
 
 		let thumbUrl = newThumb || listing?.yoast_head_json?.og_image?.[0]?.url || placeHolder;
@@ -91,6 +92,9 @@
 				if(amenities == 'pet-friendly') {
 					petfriendly = `<img src="/wp-content/themes/mm-bradentongulfislands/assets/images/icons/pet-friendly.png" alt="pet friendly icon" title="Pet Friendly" class="petfriendly">`
 				}
+				if(accommodations == 'beachfront') {
+					testing += `<span>beachfront</span>`;
+				}
 
 			break;
 		}
@@ -111,6 +115,7 @@
 				if(description.length != 0){
 					html += `<div class='listing__description'>${description}</div>`;
 				}
+				html += `${testing}`;
 				html += `<div class="details_btn">Details</div>
 				</div>`
 		

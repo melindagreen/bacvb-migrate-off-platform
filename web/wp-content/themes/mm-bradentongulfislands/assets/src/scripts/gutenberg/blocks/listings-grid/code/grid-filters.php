@@ -120,7 +120,7 @@ function render_grid_filter( $attrs, $filter_tax ) {
                                     class='control__input control__input--categories control__input--checkbox'
                                     type='checkbox'
                                     value="beachfront"
-                                    name="<?php echo $filter_tax.'='.$pre_filter_cat->term_id;?>&meta_fields[partnerportal_accomodations-location]"
+                                    name="<?php echo $filter_tax.'='.$pre_filter_cat->term_id;?>&meta"
                                 />
                                 <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/beachfront.png" class="icon" alt="Beachfront icon">
                                 <span class='control__text'>Beachfront</span>
