@@ -368,6 +368,10 @@
               "label":"Eco-Friendly"
             },
             {
+              "key":"on-site-dining",
+              "label":"On-site Dining"
+            },
+            {
               "key":"pool",
               "label":"Pool"
             },
