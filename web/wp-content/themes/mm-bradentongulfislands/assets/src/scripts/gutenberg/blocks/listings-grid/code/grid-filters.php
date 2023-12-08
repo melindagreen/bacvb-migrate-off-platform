@@ -97,7 +97,7 @@ function render_grid_filter( $attrs, $filter_tax ) {
             <?php if( isset( $attrs['postType'] ) && $attrs['postType'] === 'listing' ):?>
             <div class="check-controls">
                 <div class="filterWrap">
-                    <?php if( $filter_tax && ($attrs['filterType'] != 'categories') ) { ?>
+                    <?php if( $filter_tax ) { ?>
                     <div class="control control--categories">
                         <h4 class="control__title"><?php _e( 'Filters', 'mmnino' ); ?></h4>
 

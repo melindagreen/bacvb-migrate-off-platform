@@ -209,7 +209,7 @@
 		// get the page back up where it needs to be for viewing (it's slightly less jarring to do this pre-ajax call)
 		if (adjustScroll) {
 			$("html, body").animate({
-				scrollTop: ($('.grid-body').offset().top - $(".header").height() - $(".listings-grid__header").height())
+				scrollTop: ($('.grid-body').offset().top - $(".header").height() - $(".grid-body").height())
 			}, "100");
 		}
 

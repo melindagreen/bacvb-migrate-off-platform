@@ -146,7 +146,7 @@ class RestApi {
             if (isset($request['rooms']) && !empty($request['rooms'])) {
                 $roomRange = explode('-', $request['rooms']);
             
-                if (count($roomFilter) == 2) {
+                if (count($roomRange) == 2) {
                     $meta_queries = [];
                     
                         $meta_queries[] = array(
