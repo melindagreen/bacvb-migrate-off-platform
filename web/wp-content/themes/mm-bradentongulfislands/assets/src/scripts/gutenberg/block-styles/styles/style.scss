@@ -230,6 +230,18 @@ IMAGES
     border-radius: 25px !important;
 }
 
+.wp-block-image {
+    &.is-style-rounded {
+        border-radius: 999px;
+        padding: 0.5rem 1.5rem;
+        background: #fff;
+        overflow: hidden;
+        img {
+            border-radius: 0;
+        }
+    }
+}
+
 .is-style-portrait {
 
     --webkit-mask: url("images/portraitmask1.svg") no-repeat center;
