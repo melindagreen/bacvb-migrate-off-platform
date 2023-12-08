@@ -120,7 +120,7 @@ function render_grid_filter( $attrs, $filter_tax ) {
                                     class='control__input control__input--categories control__input--checkbox'
                                     type='checkbox'
                                     value="beachfront"
-                                    name="accommodations"
+                                    name="accomodations-location"
                                 />
                                 <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/beachfront.png" class="icon" alt="Beachfront icon">
                                 <span class='control__text'>Beachfront</span>
@@ -130,7 +130,7 @@ function render_grid_filter( $attrs, $filter_tax ) {
                                     class='control__input control__input--categories control__input--checkbox'
                                     type='checkbox'
                                     value="waterfront"
-                                    name="accommodations"
+                                    name="accomodations-location"
                                 />
                                 <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/waterfront.png" class="icon" alt="Waterfront icon">
                                 <span class='controsl__text'>Waterfront</span>
@@ -140,7 +140,7 @@ function render_grid_filter( $attrs, $filter_tax ) {
                                     class='control__input control__input--categories control__input--checkbox'
                                     type='checkbox'
                                     value='pet-friendly'
-                                    name="amenities"
+                                    name="accomodations-facility-amenities"
                                 />
                                 <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/pet-friendly.png" class="icon" alt="Pet friendly icon">
                                 <span class='control__text'>Pet Friendly</span>
@@ -150,7 +150,7 @@ function render_grid_filter( $attrs, $filter_tax ) {
                                     class='control__input control__input--categories control__input--checkbox'
                                     type='checkbox'
                                     value='outdoor-dining'
-                                    name="meta_fields[partnerportal_dining-amenities]"
+                                    name="accomodations-facility-amenities"
                                 />
                                 <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/dining.png" class="icon" alt="Dining icon">
                                 <span class='control__text'>On-site Dining</span>
@@ -160,7 +160,7 @@ function render_grid_filter( $attrs, $filter_tax ) {
                                     class='control__input control__input--categories control__input--checkbox'
                                     type='checkbox'
                                     value='eco-friendly'
-                                    name="meta_fields[partnerportal_accomodations-facility-amenities]"
+                                    name="accomodations-facility-amenities"
                                 />
                                 <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/eco-friendly.png" class="icon" alt="Eco friendly icon">
                                 <span class='control__text'>Eco Friendly</span>

@@ -6,6 +6,7 @@ use function cli\err;
 class RestApi {
     function __construct() {
         add_action( 'rest_api_init', array( get_called_class(), 'register_custom_rest_fields' ) );
+        add_action( 'rest_listing_query', array( get_called_class(), 'filter_by_amenities' ), 10, 2 );
         // add_action( 'rest_listing_query', array( get_called_class(), 'filter_by_parent_category' ), 10, 3 );
     }
 
@@ -88,6 +89,50 @@ class RestApi {
             error_log(print_r($args['tax_query'], true));
         }
         return $args;
+    }
+
+    /**
+     * Filters by lstings accomodations
+     * @param array $args                   The existing query args
+     * @param array $request                The incomming REST request
+     * @return array                        The modified query args
+     */
+    function filter_by_amenities($args, $request) {
+
+        $meta_queries = ['accomodations-location','accomodations-facility-amenities'];
+
+        foreach($meta_queries as $key) {
+            if (isset($request[$key]) && !empty($request[$key])) {
+                $amenities_array = explode(',', $request[$key]);
+            
+                if (count($amenities_array) > 1) {
+                    $meta_queries = [];
+                    
+                    foreach ($amenities_array as $amenity) {
+                        $meta_queries[] = array(
+                            'key'     => 'partnerportal_'.$key,
+                            'value'   => $amenity,
+                            'compare' => 'LIKE', // Use 'LIKE' to check if value exists in the array (serialized)
+                        );
+                    }
+                    
+                    $args['meta_query'][] = array(
+                        'relation' => 'AND',
+                        $meta_queries // Place all individual meta queries within the relation array
+                    );
+                } else {
+                    $args['meta_query'][] = array(
+                        'key'     => 'partnerportal_'.$key,
+                        'value'   => $request[$key],
+                        'compare' => 'LIKE', // Use 'LIKE' for a single value within the serialized array
+                    );
+                }
+
+            }
+        }
+
+        return $args;
+    
     }
 
 }
