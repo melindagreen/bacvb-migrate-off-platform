@@ -317,12 +317,17 @@ $bar-height: 70px;
 			}
 		}
 
-		.petfriendly {
+		.accomodations-icons {
 			position: absolute;
 			left: 10px;
-			top: -35px;
-			width: 30px;
-			height: 30px;
+			top: -38px;
+
+			img {
+
+				width: 30px;
+				height: 30px;
+				margin-right: 0.2rem;
+			}
 		}
 
 		.listing__info {

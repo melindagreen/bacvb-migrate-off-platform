@@ -4,7 +4,7 @@
 
     function truncateText(description, maxLength) {
 		if (description.length > maxLength) {
-			return description.substring(0, maxLength) + "...read more.";
+			return description.substring(0, maxLength) + "...";
 		} else {
 			return description;
 		}
@@ -22,7 +22,7 @@
 		let month = '';
 		let placeHolder = $(".wp-block-mm-bradentongulfislands-listings-grid").attr("data-default-thumb");
 		let accommodations = '';
-		let petfriendly = '';
+		let accommodationIcons = '';
 
 		let testing = '';
 
@@ -85,13 +85,19 @@
 				description = truncateText(description, 50);
 				date = '';
 
-				accommodations = listing?.meta_fields?.['partnerportal_accomodations-location']?.[0];
+				let amenities = listing?.meta_fields?.['partnerportal_accomodations-facility-amenities'];
+				amenities.forEach(amenity => {
+					if(amenity == 'pet-friendly' || amenity =='eco-friendly' || amenity == 'on-site-dining') {
+						accommodationIcons += `<img src="/wp-content/themes/mm-bradentongulfislands/assets/images/icons/${amenity}.png" alt="${amenity} icon" title="${amenity}">`
+					}
+				});
 
-				let amenities = listing?.meta_fields?.['partnerportal_accomodations-facility-amenities']?.[0];
-				
-				if(amenities == 'pet-friendly') {
-					petfriendly = `<img src="/wp-content/themes/mm-bradentongulfislands/assets/images/icons/pet-friendly.png" alt="pet friendly icon" title="Pet Friendly" class="petfriendly">`
-				}
+				accommodations = listing?.meta_fields?.['partnerportal_accomodations-location'];
+				accommodations.forEach(accommodation => {
+					if(accommodation == 'beachfront' || accommodation =='waterfront') {
+						accommodationIcons += `<img src="/wp-content/themes/mm-bradentongulfislands/assets/images/icons/${accommodation}.png" alt="${accommodation} icon" title="${accommodation}">`
+					}
+				});
 
 			break;
 		}
@@ -107,7 +113,9 @@
 
 				html += `</div>
 				<div class="listing__info">
-					${petfriendly}
+					<div class="accomodations-icons">
+					${accommodationIcons}
+					</div>
 					<h3 class='listing__title'>${listing.title.rendered}</h3>`;
 				if(description.length != 0){
 					html += `<div class='listing__description'>${description}</div>`;
