@@ -263,10 +263,10 @@
 	 * Check 'all' checkbox if none are selected, otherwise uncheck it
 	 */
 	function updateCatChecks() {
-		// $('#control__input--categories-all').prop(
-		// 	'checked',
-		// 	!$('.control__input--categories:not(#control__input--categories-all):checked').length
-		// );
+		$('#control__input--categories-all').prop(
+			'checked',
+			!$('.control__input--categories:not(#control__input--categories-all):checked').length
+		);
 
 		$('.control__input--categories:not(#control__input--categories-all):checked').each(function() {
 		    $(this).closest('.control__label').addClass('active');

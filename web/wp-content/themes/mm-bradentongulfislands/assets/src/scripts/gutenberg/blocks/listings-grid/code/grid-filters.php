@@ -214,7 +214,6 @@ function render_grid_filter( $attrs, $filter_tax ) {
                                         class="control__input control__input--categories control__input--checkbox" 
                                         name="<?php echo $filter_tax === 'category' ? 'categories' : $filter_tax; ?>"
                                         value="<?php echo $term->term_id  ?>"
-                                        <?php  // checked( !isset( $_GET['listings_term'] ) ); ?>
                                     />
                                     <span class="control__text"><?php echo $term->name  ?></span>
                             </label>
