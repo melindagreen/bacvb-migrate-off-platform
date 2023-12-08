@@ -86,18 +86,22 @@
 				date = '';
 
 				let amenities = listing?.meta_fields?.['partnerportal_accomodations-facility-amenities'];
+				if(typeof amenities !== 'undefined') {
 				amenities.forEach(amenity => {
 					if(amenity == 'pet-friendly' || amenity =='eco-friendly' || amenity == 'on-site-dining') {
 						accommodationIcons += `<img src="/wp-content/themes/mm-bradentongulfislands/assets/images/icons/${amenity}.png" alt="${amenity} icon" title="${amenity}">`
 					}
 				});
+				}
 
 				accommodations = listing?.meta_fields?.['partnerportal_accomodations-location'];
+				if(typeof accommodations !== 'undefined') {
 				accommodations.forEach(accommodation => {
-					if(accommodation == 'beachfront' || accommodation =='waterfront') {
+					if(accommodation === 'beachfront' || accommodation === 'waterfront') {
 						accommodationIcons += `<img src="/wp-content/themes/mm-bradentongulfislands/assets/images/icons/${accommodation}.png" alt="${accommodation} icon" title="${accommodation}">`
 					}
 				});
+				}
 
 			break;
 		}
