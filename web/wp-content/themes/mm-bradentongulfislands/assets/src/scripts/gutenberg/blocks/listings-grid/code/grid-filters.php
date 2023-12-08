@@ -205,26 +205,8 @@ function render_grid_filter( $attrs, $filter_tax ) {
                                     <span class='control__text'>151+ rooms</span>
                                 </label>
                             <?php } ?>
-                        </div>
-                    </div>
-                <?php } else { ?>
-                    <div class="control control--categories">
-                        <?php if(!empty($filter_terms)) { ?>
-                        <h4 class="control__title"><?php _e( 'Filters', 'mmnino' ); ?></h4>
-                        <?php } ?>
-
-                        <div class="categoriesWrap">
-                            <label for="control__input--categories" class="control__label control__label--categories all">
-                                <input
-                                    type="checkbox"
-                                    id="control__input--categories-all" 
-                                    class="control__input control__input--categories control-input--checkbox" 
-                                    name="<?php echo $filter_tax === 'category' ? 'categories' : $filter_tax; ?>"
-                                    value="<?php echo $pre_filter_cat ? $pre_filter_cat->term_id : ''; ?>"
-                                    <?php checked( !isset( $_GET['listings_term'] ) ); ?>
-                                />
-                                <span class="control__text"><?php _e( 'All', 'mmnino' ); ?></span>
-                            </label>
+                            
+                            <?php if ($attrs['filterType'] == 'categories') { ?>
                             <?php foreach($filter_terms as $term) {  ?>
                             <label for="control__input--categories" class="control__label control__label--categories">
                                     <input
@@ -236,11 +218,10 @@ function render_grid_filter( $attrs, $filter_tax ) {
                                     />
                                     <span class="control__text"><?php echo $term->name  ?></span>
                             </label>
-                            <?php } ?>
+                            <?php } }?>
                         </div>
                     </div>
                 <?php } ?>
-
                 </div>
             </div>
             <!--/ end filter controls -->
