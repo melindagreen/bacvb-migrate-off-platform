@@ -208,13 +208,13 @@ function render_grid_filter( $attrs, $filter_tax ) {
                             
                             <?php if ($attrs['filterType'] == 'categories') { ?>
                             <?php foreach($filter_terms as $term) {  ?>
-                            <label for="control__input--categories" class="control__label control__label--categories">
+                            <label class="control__label control__label--categories">
                                     <input
                                         type="checkbox"
                                         class="control__input control__input--categories control__input--checkbox" 
                                         name="<?php echo $filter_tax === 'category' ? 'categories' : $filter_tax; ?>"
                                         value="<?php echo $term->term_id  ?>"
-                                        <?php checked( !isset( $_GET['listings_term'] ) ); ?>
+                                        <?php  // checked( !isset( $_GET['listings_term'] ) ); ?>
                                     />
                                     <span class="control__text"><?php echo $term->name  ?></span>
                             </label>
