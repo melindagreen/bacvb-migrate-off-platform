@@ -406,28 +406,10 @@
           ]
         },
         {
-          "key" : "accomodations-rooms", 
-          "label" : "<b>Rooms</b>", 
-          "type" : "checkbox",
-          "newLineAfter" : true,        
-          "choices" : [
-            {
-              "key":"rooms-small",
-              "label":"0-49 Rooms"
-            },
-            {
-              "key":"rooms-medium",
-              "label":"50-99 Rooms"
-            },
-            {
-              "key":"rooms-large",
-              "label":"100-200 Rooms"
-            },
-            {
-              "key":"rooms-xlarge",
-              "label":"Over 200 Rooms"
-            }
-          ]
+          "key" : "room-count",
+          "label" : "<b>Number of Rooms</b>", 
+          "cssClass" : "regular-text",
+          "newLineAfter" : true 
         },
         {
           "type" : "message",

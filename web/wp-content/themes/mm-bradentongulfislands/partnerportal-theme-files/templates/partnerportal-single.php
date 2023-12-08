@@ -138,7 +138,7 @@ $diningAmenities = (isset($meta['dining-amenities'])) ? $meta['dining-amenities'
         $accommodations = array();
         if(!empty($amenities)) {
             foreach($amenities as $i) {
-                if ($i == 'pet-friendly' || $i == 'eco-friendly') {
+                if ($i == 'pet-friendly' || $i == 'eco-friendly' || $i = 'on-site-dining') {
                     $accommodations[] = $i;
                 }
             }

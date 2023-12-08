@@ -7,6 +7,7 @@ class RestApi {
     function __construct() {
         add_action( 'rest_api_init', array( get_called_class(), 'register_custom_rest_fields' ) );
         add_action( 'rest_listing_query', array( get_called_class(), 'filter_by_amenities' ), 10, 2 );
+        add_action( 'rest_listing_query', array( get_called_class(), 'filter_by_rooms' ), 10, 2 );
         // add_action( 'rest_listing_query', array( get_called_class(), 'filter_by_parent_category' ), 10, 3 );
     }
 
@@ -92,7 +93,7 @@ class RestApi {
     }
 
     /**
-     * Filters by lstings accomodations
+     * Filters by listings accomodations
      * @param array $args                   The existing query args
      * @param array $request                The incomming REST request
      * @return array                        The modified query args
@@ -112,25 +113,73 @@ class RestApi {
                         $meta_queries[] = array(
                             'key'     => 'partnerportal_'.$key,
                             'value'   => $amenity,
-                            'compare' => 'LIKE', // Use 'LIKE' to check if value exists in the array (serialized)
+                            'compare' => 'LIKE',
                         );
                     }
                     
                     $args['meta_query'][] = array(
                         'relation' => 'AND',
-                        $meta_queries // Place all individual meta queries within the relation array
+                        $meta_queries 
                     );
                 } else {
                     $args['meta_query'][] = array(
                         'key'     => 'partnerportal_'.$key,
                         'value'   => $request[$key],
-                        'compare' => 'LIKE', // Use 'LIKE' for a single value within the serialized array
+                        'compare' => 'LIKE', 
                     );
                 }
 
             }
         }
 
+        return $args;
+    }
+
+        /**
+     * Filters by listings room count
+     * @param array $args                   The existing query args
+     * @param string $request                The incomming REST request
+     * @return array                        The modified query args
+     */
+    function filter_by_rooms($args, $request) {
+
+            if (isset($request['rooms']) && !empty($request['rooms'])) {
+                $roomRange = explode('-', $request['rooms']);
+            
+                if (count($roomFilter) == 2) {
+                    $meta_queries = [];
+                    
+                        $meta_queries[] = array(
+                            'key'     => 'partnerportal_room-count',
+                            'value'   => (int)$roomRange[0],
+                            'compare' => '>=',
+                            'type'    => 'NUMERIC'
+                        );
+
+                        $meta_queries[] = array(
+                            'key'     => 'partnerportal_room-count',
+                            'value'   => (int)$roomRange[1],
+                            'compare' => '<=',
+                            'type'    => 'NUMERIC'
+                        );
+                    
+                    $args['meta_query'][] = array(
+                        'relation' => 'AND',
+                        $meta_queries 
+                    );
+                } 
+
+                else {
+                    $args['meta_query'][] = array(
+                        'key'     => 'partnerportal_room-count',
+                        'value'   => (int)$request['rooms'],
+                        'compare' => '>=', 
+                        'type'    => 'NUMERIC'
+                    );
+                }
+
+            }
+        
         return $args;
     
     }

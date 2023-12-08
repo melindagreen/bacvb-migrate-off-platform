@@ -97,7 +97,7 @@ function render_grid_filter( $attrs, $filter_tax ) {
             <?php if( isset( $attrs['postType'] ) && $attrs['postType'] === 'listing' ):?>
             <div class="check-controls">
                 <div class="filterWrap">
-                    <?php if( $filter_tax && ($attrs['filterType'] != 'none') ) { ?>
+                    <?php if( $filter_tax && ($attrs['filterType'] != 'categories') ) { ?>
                     <div class="control control--categories">
                         <h4 class="control__title"><?php _e( 'Filters', 'mmnino' ); ?></h4>
 
@@ -115,7 +115,7 @@ function render_grid_filter( $attrs, $filter_tax ) {
                             </label>
 
                             <?php if($attrs['filterType'] == 'accommodations') { ?>
-                            <label class='control__label control__label--categories'>
+                            <label class='control__label control__label--categories control__label--accomodations'>
                                 <input
                                     class='control__input control__input--categories control__input--checkbox'
                                     type='checkbox'
@@ -125,7 +125,7 @@ function render_grid_filter( $attrs, $filter_tax ) {
                                 <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/beachfront.png" class="icon" alt="Beachfront icon">
                                 <span class='control__text'>Beachfront</span>
                             </label>
-                            <label class='control__label control__label--categories'>
+                            <label class='control__label control__label--categories control__label--accomodations'>
                                 <input
                                     class='control__input control__input--categories control__input--checkbox'
                                     type='checkbox'
@@ -135,7 +135,7 @@ function render_grid_filter( $attrs, $filter_tax ) {
                                 <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/waterfront.png" class="icon" alt="Waterfront icon">
                                 <span class='controsl__text'>Waterfront</span>
                             </label>
-                            <label class='control__label control__label--categories'>
+                            <label class='control__label control__label--categories control__label--accomodations'>
                                 <input
                                     class='control__input control__input--categories control__input--checkbox'
                                     type='checkbox'
@@ -145,17 +145,17 @@ function render_grid_filter( $attrs, $filter_tax ) {
                                 <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/pet-friendly.png" class="icon" alt="Pet friendly icon">
                                 <span class='control__text'>Pet Friendly</span>
                             </label>
-                            <label class='control__label control__label--categories'>
+                            <label class='control__label control__label--categories control__label--accomodations'>
                                 <input
                                     class='control__input control__input--categories control__input--checkbox'
                                     type='checkbox'
-                                    value='outdoor-dining'
+                                    value='on-site-dining'
                                     name="accomodations-facility-amenities"
                                 />
-                                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/dining.png" class="icon" alt="Dining icon">
+                                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/on-site-dining.png" class="icon" alt="Dining icon">
                                 <span class='control__text'>On-site Dining</span>
                             </label>
-                            <label class='control__label control__label--categories'>
+                            <label class='control__label control__label--categories control__label--accomodations'>
                                 <input
                                     class='control__input control__input--categories control__input--checkbox'
                                     type='checkbox'
@@ -166,20 +166,69 @@ function render_grid_filter( $attrs, $filter_tax ) {
                                 <span class='control__text'>Eco Friendly</span>
                             </label>
                             <?php } ?>
+                            
+                            <?php if ($attrs['filterType'] == 'room-count') { ?>
+                                <label class='control__label control__label--categories'>
+                                    <input
+                                        class='control__input control__input--categories control__input--checkbox'
+                                        type='checkbox'
+                                        value="25-100"
+                                        name="rooms"
+                                    />
+                                    <span class='control__text'>25-100 rooms</span>
+                                </label>
+                                <label class='control__label control__label--categories'>
+                                    <input
+                                        class='control__input control__input--categories control__input--checkbox'
+                                        type='checkbox'
+                                        value="101-125"
+                                        name="rooms"
+                                    />
+                                    <span class='control__text'>101-125 rooms</span>
+                                </label>
+                                <label class='control__label control__label--categories'>
+                                    <input
+                                        class='control__input control__input--categories control__input--checkbox'
+                                        type='checkbox'
+                                        value="126-150"
+                                        name="rooms"
+                                    />
+                                    <span class='control__text'>126-150 rooms</span>
+                                </label>
+                                <label class='control__label control__label--categories'>
+                                    <input
+                                        class='control__input control__input--categories control__input--checkbox'
+                                        type='checkbox'
+                                        value="151"
+                                        name="rooms"
+                                    />
+                                    <span class='control__text'>151+ rooms</span>
+                                </label>
+                            <?php } ?>
                         </div>
                     </div>
                 <?php } else { ?>
-                    <label for="control__input--categories" class="control__label control__label--categories all">
-                        <input
-                            type="checkbox"
-                            id="control__input--categories-all" 
-                            class="control__input control__input--categories control-input--checkbox" 
-                            name="<?php echo $filter_tax === 'category' ? 'categories' : $filter_tax; ?>"
-                            value="<?php echo $pre_filter_cat ? $pre_filter_cat->term_id : ''; ?>"
-                            <?php checked( !isset( $_GET['listings_term'] ) ); ?>
-                        />
-                        <span class="control__text"><?php _e( 'All', 'mmnino' ); ?></span>
-                    </label>
+                    <div class="control control--categories">
+                        <?php if(!empty($filter_terms)) { ?>
+                        <h4 class="control__title"><?php _e( 'Filters', 'mmnino' ); ?></h4>
+                        <?php } ?>
+
+                        <div class="categoriesWrap">
+                            <?php foreach($filter_terms as $term) {  ?>
+                            <label for="control__input--categories" class="control__label control__label--categories">
+                                    <input
+                                        type="checkbox"
+                                        id="control__input--categories-all" 
+                                        class="control__input control__input--categories control-input--checkbox" 
+                                        name="<?php echo $filter_tax === 'category' ? 'categories' : $filter_tax; ?>"
+                                        value="<?php echo $term->term_id  ?>"
+                                        <?php checked( !isset( $_GET['listings_term'] ) ); ?>
+                                    />
+                                    <span class="control__text"><?php echo $term->name  ?></span>
+                            </label>
+                            <?php } ?>
+                        </div>
+                    </div>
                 <?php } ?>
 
                 </div>

@@ -110,9 +110,9 @@ const Inspector = props => {
                     label={__('Filter Type')}
                     value={filterType}
                     options={[
-                        { label: __('None'), value: 'none' },
+                        { label: __('Categories'), value: 'categories' },
                         { label: __('Accommodations'), value: 'accommodations' },
-                        { label: __('Meeting Rooms'), value: 'meeting-rooms' },
+                        { label: __('Rooms'), value: 'room-count' },
                     ]}
                     onChange={onFilterTypeChange}
                 />

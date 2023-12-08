@@ -177,7 +177,7 @@ $bar-height: 70px;
 				color: $bradenton-teal;
 				border: 2px solid $bradenton-teal;
 				border-radius: 20px;
-				padding: 5px 1em 5px 2.5em;
+				padding: 5px 1em 5px 1em;
 				cursor: pointer;
 				transition: all 0.3s;
 				position: relative;
@@ -205,7 +205,10 @@ $bar-height: 70px;
 					left: -5px;
 				}
 			}
+			.control__label--accomodations {
 
+				padding: 5px 1em 5px 2.5em;
+			}
 		}
 
 	}
