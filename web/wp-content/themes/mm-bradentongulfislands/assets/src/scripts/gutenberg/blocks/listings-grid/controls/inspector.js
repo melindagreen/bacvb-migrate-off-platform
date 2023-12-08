@@ -95,9 +95,9 @@ const Inspector = props => {
                     onChange={listingsPerPage => setAttributes({ listingsPerPage })}
                 />
 
-                {(postType === 'listing' || postType === 'page') && <TaxonomyControl
+                {(postType === 'listing' || postType === 'page' || postType === 'event') && <TaxonomyControl
                     controlType='select'
-                    taxonomySlug={postType === 'listing' ? 'listing_categories' : 'category'}
+                    taxonomySlug={postType === 'listing' ? 'listing_categories' : 'eventastic_categories'}
                     label={__('Pre-filter category')}
                     value={[preFilterCat]}
                     onChange={categories => setAttributes({ preFilterCat: categories[0] })}
