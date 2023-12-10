@@ -811,7 +811,10 @@ SEARCH FUNCTIONALITY
         display: flex;
 
         .search-form__field {
-            padding: 5px 10px;
+            padding: 5px 15px;
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 20px;
+            border: 1px solid $bradenton-teal;
         }
 
         .search-form__submit {
