@@ -15,31 +15,40 @@ use MaddenNino\Library\Utilities as U;
 
 get_header(); ?>
 
-<h1><?php _e( 'MMNino Search', 'mmnino' ); ?></h1>
+<section class="wp-block-mm-bradentongulfislands-hero is-style-secondary-header">
+	<div class="hero" data-load-type="bg" data-load-onload="true" data-load-lg="/wp-content/uploads/2023/11/694-3304.jpg" data-load-md="/wp-content/uploads/2023/11/694-3304.jpg" data-load-sm="http://madden.localhost:8090/wp-content/uploads/2023/11/Riverwalk_-_Madden_Media_Sojau995RR32S61SiHLd-or18q0ABlZBh_rgb_l-1024x540.jpg" data-load-lg-bg-position="39% 28%" data-load-md-bg-position="39% 28%" style="background-image: url(&quot;/wp-content/uploads/2023/11/694-3304.jpg&quot;); background-position: 39% 28%;"></div>
+	<h1 class="title alt-title">Search</h1>
+	<div class="fade"></div>
+</section>
 
-<div class="results-form-wrap">
-	<p class="showing-text"><?php printf( __( 'Showing results for "%s"', 'mmnino' ), $search_str ) ?></p>
-	<?php get_search_form( true ); ?>
-	<p class="count-text"><?php printf( __( 'Found %d results', 'mmnino' ), $search->found_posts ); ?></p>
+<div id="searchContainer">
+
+	<div class="results-form-wrap">
+		<p class="showing-text"><?php printf( __( 'Showing results for "%s"', 'mmnino' ), $search_str ) ?></p>
+		<?php get_search_form( true ); ?>
+		<p class="count-text"><?php printf( __( 'Found %d results', 'mmnino' ), $search->found_posts ); ?></p>
+	</div>
+
+	<?php
+	if( have_posts() ) {
+		while( have_posts() ) {
+			the_post(); ?>
+
+			<article class="search-result">
+				<h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+
+				<p><?php echo U::excerpt_by_sentences( get_the_ID(), 1, 20 ); ?></p>
+			</article>
+		<?php }
+	} else { ?>
+		<p><?php _e( 'No results found. Try another search?', 'mmnino' ); ?></p>
+	<?php }
+
+	the_posts_pagination( array(
+		'mid_size'  => 2,
+	) ); ?>
+	
 </div>
 
-<?php
-if( have_posts() ) {
-	while( have_posts() ) {
-		the_post(); ?>
-
-		<article class="search-result">
-			<h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
-
-			<p><?php echo U::excerpt_by_sentences( get_the_ID(), 1, 20 ); ?></p>
-		</article>
-	<?php }
-} else { ?>
-	<p><?php _e( 'No results found. Try another search?', 'mmnino' ); ?></p>
-<?php }
-
-the_posts_pagination( array(
-	'mid_size'  => 2,
-) ); ?>
 
 <?php get_footer();
