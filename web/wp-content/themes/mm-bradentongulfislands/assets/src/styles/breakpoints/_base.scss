@@ -797,6 +797,54 @@ SEARCH FUNCTIONALITY
 //     }
 // }
 
+#searchContainer {
+    @include main-column;
+    margin: -7rem auto 2rem auto;
+
+    .showing-text {
+        font-weight: 700;
+    }
+
+    .search-form {
+        width: 360px;
+        max-width: 100%;
+        display: flex;
+
+        .search-form__field {
+            padding: 5px 15px;
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 20px;
+            border: 1px solid $bradenton-teal;
+        }
+
+        .search-form__submit {
+            border: 0;
+            background: color('bradenton-teal');
+            box-shadow: none;
+            padding: 3px 10px;
+        }
+    }
+
+    .search-result {
+        margin: 2rem auto;
+        a {
+            color: color('rust');
+            transition: color 0.3s;
+            &:hover {
+                color: color('bradenton-teal');
+            }
+        }
+        h3 {
+            font-family: $font-title;
+            font-size: 2.0rem;
+            margin: 0;
+        }
+        p {
+            margin: 0;
+        }
+    }
+}
+
 /*********************
 MAIN PAGE CONTENT
 *********************/
