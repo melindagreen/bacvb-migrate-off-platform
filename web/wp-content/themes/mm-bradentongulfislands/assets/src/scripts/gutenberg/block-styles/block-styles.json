@@ -18,6 +18,11 @@
                 "name": "portrait",
                 "label": "Portrait",
                 "isDefault": false
+            },
+            {
+                "name": "pill-shape",
+                "label": "Pill Shape",
+                "isDefault": false
             }
         ]
     },
