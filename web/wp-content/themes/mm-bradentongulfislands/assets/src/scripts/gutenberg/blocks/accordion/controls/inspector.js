@@ -17,7 +17,7 @@ const ALLOWED_MEDIA_TYPES = ['image'];
 
 const Inspector = props => {
 
-    const { attributes: { title }, className } = props;
+    const { attributes: { title }, setAttributes, className } = props;
 
     return (
         <InspectorControls>
