@@ -68,9 +68,15 @@ $bar-height: 70px;
 			}
 		}
 
+
 		.filters {		
 			display: flex;
 			max-width: 60em;
+
+			.control__label--categories.all {
+
+				display: none;
+			}
 
 			.control--search {
 
