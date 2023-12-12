@@ -246,7 +246,7 @@ $diningAmenities = (isset($meta['dining-amenities'])) ? $meta['dining-amenities'
 
                 <?php if(!empty($amenities)): ?>
                 <div class="amenities">
-                    <h3>Accomodations</h3>
+                    <h3>Accommodations</h3>
                     <?php 
                     foreach ($amenities as $key => $amenity) {
                         $formattedAmenity = ucwords(str_replace('-', ' ', $amenity));
