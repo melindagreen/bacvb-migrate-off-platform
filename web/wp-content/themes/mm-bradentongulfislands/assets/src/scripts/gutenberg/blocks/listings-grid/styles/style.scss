@@ -71,7 +71,7 @@ $bar-height: 70px;
 
 		.filters {		
 			display: flex;
-			max-width: 60em;
+			max-width: 70em;
 
 			.control__label--categories.all {
 
@@ -222,8 +222,8 @@ $bar-height: 70px;
 	.date-controls {
 		padding: 1em;
 		align-self: center;
-		max-width: 50%;
-		width: 410px;
+		// max-width: 50%;
+		// width: 410px;
 		.control {
 			font-size: 1em;
 			font-family: $font-header;
@@ -232,6 +232,8 @@ $bar-height: 70px;
 			display: flex; 
 			justify-content: space-between;
 			align-items: center;
+			gap: 1rem;
+			flex-wrap: wrap;
 		}
 		.control__input {
 			border: 2px solid $rust;

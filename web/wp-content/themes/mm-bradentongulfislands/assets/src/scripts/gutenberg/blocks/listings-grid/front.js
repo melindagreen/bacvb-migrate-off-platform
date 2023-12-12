@@ -294,6 +294,14 @@
 			loadPage();
 	    });
 
+		to = $( "#control__input--end-date" ).datepicker({
+			defaultDate: "+1w",
+			changeMonth: true
+	    }).on( "change", function() {
+			to.datepicker( "option", getDate( this ) );
+			loadPage();
+	    });
+
 		function getDate( element ) {
 	      var date;
 	      try {

@@ -7,6 +7,7 @@ class RestApi {
     function __construct() {
         add_action( 'rest_api_init', array( get_called_class(), 'register_custom_rest_fields' ) );
         add_action( 'rest_listing_query', array( get_called_class(), 'filter_by_amenities' ), 10, 2 );
+        add_filter( 'rest_event_query', array( get_called_class(), 'custom_date_filters' ), 10, 2 );
         add_action( 'rest_listing_query', array( get_called_class(), 'filter_by_rooms' ), 10, 2 );
         // add_action( 'rest_listing_query', array( get_called_class(), 'filter_by_parent_category' ), 10, 3 );
     }
@@ -182,6 +183,152 @@ class RestApi {
         
         return $args;
     
+    }
+
+
+    /**
+     * Add custom start and end date paramters to event query
+     */
+    public static function custom_date_filters( $args, $request ) {
+
+        global $wpdb;
+
+        // set our time zone to get the right time
+        date_default_timezone_set(Constants::TIME_ZONE);
+
+        $results = $wpdb->get_results(
+            $wpdb->prepare(
+                "SELECT ID, post_name
+                FROM $wpdb->posts
+                WHERE post_type IN ('event')
+                AND post_status = 'publish'"
+            )
+        );
+
+        // start our meta query
+        $args['meta_query'] = isset( $args['meta_query'] ) ? $args['meta_query'] : array();
+    
+        // order by start date (newest first)
+        $args['meta_key'] = 'eventastic_start_date';
+        $args['orderby'] = array(
+            'eventastic_start_date' => 'ASC', // Orders by startdate in ascending order
+            'eventastic_end_date'   => 'ASC', // If startdate is the same, order by enddate in ascending order
+        );
+
+        // add start and end date filters
+        $start_date_parsed = ( isset( $request['eventastic_start_date'] ) )
+            ? new \DateTime($request['eventastic_start_date'])
+            : null;
+        $end_date_parsed = ( isset( $request['eventastic_end_date'] ) )
+            ? new \DateTime($request['eventastic_end_date'])
+            : null;
+
+        // update dates to reflect today
+        $today = new \DateTime();
+        if ($start_date_parsed != null) {
+            $start_date_parsed = ($start_date_parsed <= $today)
+                ? $today->format('Y-m-d')
+                : $start_date_parsed->format('Y-m-d');
+        }
+        if ($end_date_parsed != null) {
+            $end_date_parsed = ($end_date_parsed <= $today)
+                ? $today->format('Y-m-d')
+                : $end_date_parsed->format('Y-m-d');
+        }
+
+        // now build meta query based on date values
+        if( ($start_date_parsed != null) && ($end_date_parsed != null) ) {
+            // find any event that is encompassed by or overlaps the range
+            array_push( $args['meta_query'], array(
+                'relation' => 'AND',
+                array(
+                    'key' => 'eventastic_start_date',
+                    'value' => $end_date_parsed,
+                    'compare' => '<=',
+                    'type' => 'DATE',
+                ),
+                array(
+                    'key' => 'eventastic_end_date',
+                    'value' => $start_date_parsed,
+                    'compare' => '>=',
+                    'type' => 'DATE',
+                )
+            ) );
+
+        } else if( ($start_date_parsed != null) && ($end_date_parsed == null) ) {
+            // only start date was set - find all items starting after that, or that start before and end after
+            array_push( $args['meta_query'], array(
+                'relation' => 'OR',
+                array(
+                    'key' => 'eventastic_start_date',
+                    'value' => $start_date_parsed,
+                    'compare' => '>=',
+                    'type' => 'DATE',
+                ),
+                array(
+                    'relation' => 'AND',
+                    array(
+                        'key' => 'eventastic_start_date',
+                        'value' => $start_date_parsed,
+                        'compare' => '<=',
+                        'type' => 'DATE'
+                    ),
+                    array(
+                        'key' => 'eventastic_end_date',
+                        'value' => $start_date_parsed,
+                        'compare' => '>=',
+                        'type' => 'DATE'
+                    )
+                )
+            ) );
+
+        } else if( ($start_date_parsed == null) && ($end_date_parsed != null) ) {
+            // only end date was set - find all ending before that, or that start before and end after
+            array_push( $args['meta_query'], array(
+                'relation' => 'OR',
+                array(
+                    'relation' => 'AND',
+                    array(
+                        'key' => 'eventastic_end_date',
+                        'value' => $end_date_parsed,
+                        'compare' => '<=',
+                        'type' => 'DATE',
+                    ),
+                    array(
+                        'key' => 'eventastic_start_date',
+                        'value' => date( 'Y-m-d' ),
+                        'compare' => '>=',
+                        'type' => 'DATE',
+                    )
+                ),
+                array(
+                    'relation' => 'AND',
+                    array(
+                        'key' => 'eventastic_start_date',
+                        'value' => $end_date_parsed,
+                        'compare' => '<=',
+                        'type' => 'DATE'
+                    ),
+                    array(
+                        'key' => 'eventastic_end_date',
+                        'value' => $end_date_parsed,
+                        'compare' => '>=',
+                        'type' => 'DATE'
+                    )
+                )
+            ) );
+
+        } else {
+            // Default to hiding past events
+            array_push( $args['meta_query'], array(
+                'key' => 'eventastic_end_date', 
+                'value' => date( 'Y-m-d' ),
+                'compare' => '>=',
+                'type' => 'DATE',
+            ) );
+        }
+                
+        return $args;
     }
 
 }

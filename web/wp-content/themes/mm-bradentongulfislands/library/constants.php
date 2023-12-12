@@ -6,6 +6,8 @@ namespace MaddenNino\Library;
 class Constants {
     const THEME_PREFIX = "mm-bradentongulfislands";
 
+    const TIME_ZONE = "America/New_York";
+
     const BLOCK_NAME_PREFIX = "[MM] "; // include a space at the end!
 
     const TEMPLATE_PARTIALS_PATH = "template-parts/";

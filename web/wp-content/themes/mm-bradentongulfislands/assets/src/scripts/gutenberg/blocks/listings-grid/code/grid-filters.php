@@ -73,17 +73,28 @@ function render_grid_filter( $attrs, $filter_tax ) {
                     <label for="control__input--start-date" class="control__label control__label--start-date">
                         <?php _e( 'Filter By Date' ); ?>
                     </label>
-
+                    <div>
                     <input
                         type="text"
-                        name="event_first_date_time"
+                        name="eventastic_start_date"
                         class="control__input"
                         id="control__input--start-date"
                         placeholder="Select Start Date"
                         autocomplete="off"
-                        value="<?php echo isset( $_GET['listings_start'] ) ? date( 'F j, Y', strtotime( $_GET['listings_start'] ) ) : ''; ?>"
+                        value="<?php echo isset( $_GET['eventastic_start_date'] ) ? date( 'F j, Y', strtotime( $_GET['eventastic_start_date'] ) ) : ''; ?>"
                     />
+                    <input
+                        type="text"
+                        name="eventastic_end_date"
+                        class="control__input"
+                        id="control__input--end-date"
+                        placeholder="Select End Date"
+                        autocomplete="off"
+                        value="<?php echo isset( $_GET['eventastic_end_date'] ) ? date( 'F j, Y', strtotime( $_GET['eventastic_end_date'] ) ) : ''; ?>"
+                    />
+                    </div>
                 </div>
+
             </div>
 
             <div class="control control--search">
