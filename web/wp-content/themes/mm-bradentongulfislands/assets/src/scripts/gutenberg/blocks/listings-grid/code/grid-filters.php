@@ -117,7 +117,7 @@ function render_grid_filter( $attrs, $filter_tax ) {
                                 <input
                                     type="checkbox"
                                     id="control__input--categories-all" 
-                                    class="control__input control__input--categories control-input--checkbox <?php echo $attrs['preFilterCat'] === 'categories' ? 'control__label--catscheck' : ''; ?>" 
+                                    class="control__input control__input--categories control-input--checkbox <?php echo $attrs['filterType'] === 'categories' ? 'control__label--catscheck' : ''; ?>" 
                                     name="<?php echo $filter_tax === 'category' ? 'categories' : $filter_tax; ?>"
                                     value="<?php echo $pre_filter_cat ? $pre_filter_cat->term_id : ''; ?>"
                                     <?php checked( !isset( $_GET['listings_term'] ) ); ?>
