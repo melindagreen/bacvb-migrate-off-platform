@@ -3,7 +3,7 @@
 // WordPress dependencies
 import { __ } from '@wordpress/i18n';
 import { InspectorControls, MediaUpload, MediaUploadCheck, URLInput } from '@wordpress/block-editor';
-import { PanelBody, PanelRow, Button, ResponsiveWrapper, Spinner , TextControl, TextareaControl } from '@wordpress/components';
+import { PanelBody, PanelRow, Button, ResponsiveWrapper, Spinner , TextControl, TextareaControl, SelectControl } from '@wordpress/components';
 import { Fragment } from '@wordpress/element';
 import { useSelect } from '@wordpress/data';
 
@@ -15,7 +15,7 @@ const ALLOWED_MEDIA_TYPES = ['image'];
 const Inspector = props => {
 
         const { attributes, setAttributes } = props;
-        const { mediaId, mediaUrl, mediaPhotoCredit, logoId, logoUrl, title, info, buttonUrl, buttonText } = attributes;
+        const { mediaId, mediaUrl, mediaPhotoCredit, logoId, logoUrl, title, info, buttonUrl, buttonText, imagePosition } = attributes;
      
         const removeMedia = () => {
             setAttributes({
@@ -152,6 +152,22 @@ const Inspector = props => {
                             value={buttonUrl}
                             onChange={ ( buttonUrl ) => setAttributes({ buttonUrl })}
                             />
+                        </PanelRow>
+                </PanelBody>
+                <PanelBody title="Image Settings">
+                        <PanelRow>
+                        <SelectControl
+                            label={ __( 'Image Position' ) }
+                            value={ imagePosition }
+                            onChange={ ( imagePosition ) => {
+                                setAttributes({imagePosition});
+                            } }
+                            options={ [
+                                { value: 'center', label: 'Center'},
+                                { value: 'top', label: 'Top' },
+                                { value: 'bottom', label: 'Bottom' },
+                            ] }
+                        />
                         </PanelRow>
                 </PanelBody>
                 <PanelBody title="Badge Settings" initialOpen={ false }>
