@@ -101,7 +101,7 @@ class RestApi {
      */
     function filter_by_amenities($args, $request) {
 
-        $meta_queries = ['accomodations-location','accomodations-facility-amenities'];
+        $meta_queries = ['accomodations-location','accomodations-facility-amenities', 'recreation-recreation-type'];
 
         foreach($meta_queries as $key) {
             if (isset($request[$key]) && !empty($request[$key])) {

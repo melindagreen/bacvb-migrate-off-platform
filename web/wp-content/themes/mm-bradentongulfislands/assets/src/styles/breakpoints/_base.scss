@@ -1319,3 +1319,51 @@ UTILITIES
 .sr-only {
     @include sr-only;
 }
+
+/*********************
+GRAVITY FORMS
+*********************/
+.gform_wrapper {
+
+    max-width: 50rem;
+    margin: auto;
+    padding: 6vw;
+
+    .gform_title {
+
+        font-family: $font-title;
+        font-size: 2.75rem;
+        color: $dk-blue;
+        margin-bottom: 0 !important;
+    }
+
+    .gform_description {
+
+        color: $soft-black;
+        margin-top: 0.15rem;
+        margin-bottom: 1.5rem;
+    }
+
+    input, select, textarea {
+
+        border-color: $sky-blue !important;
+    }
+
+    .gform_button {
+
+        position: relative;
+        max-width: 300px !important;
+        background-color: $bradenton-teal !important;
+        font-family: $font-header !important;
+        text-transform: uppercase !important;
+        border-color: $bradenton-teal !important;
+        border-radius: 22px;
+
+        &:hover {
+
+            transform: scale(1.03);
+            background-color: $rust !important;
+            border-color: $rust !important;
+        }
+    }
+}
