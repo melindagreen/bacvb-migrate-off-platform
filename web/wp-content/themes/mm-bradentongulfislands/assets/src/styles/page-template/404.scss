@@ -53,7 +53,7 @@
 		align-self: center;
 		font-family: type.$font-header;
 		background: vars.$bradenton-teal;
-		color: white;
+		color: white !important;
 		position: relative;
 		font-size: 14px;
 		line-height: 14px;
@@ -82,5 +82,7 @@
 			}
 		}
 	}
+& + div > .wp-block-cover {
+	margin-top: 0 !important;
 }
-
+}
