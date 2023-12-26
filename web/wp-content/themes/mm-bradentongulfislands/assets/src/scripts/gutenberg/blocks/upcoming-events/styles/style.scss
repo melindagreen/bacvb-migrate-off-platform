@@ -2,56 +2,41 @@
 @import 'styles/utils/typography';
 
 .#{$block-prefix}-upcomingevents {
-  margin: 2em auto 3em auto;
   position: relative;
-  padding: 0 3em;
-  max-width: 80rem;
   box-sizing: border-box;
+  padding-bottom: 100px;
 
-  h2 {
-    position: relative;
-    z-index: 1;
-    color: $rust;
-    font-size: 4em;
-    font-family: $font-title;
-    text-transform: uppercase;
-    width: 50%;
-    margin: 0;
-  }
-
-  .bgImg {
-    position: absolute;
-    z-index: 1;
-    right: 3em;
-    top: 0;
-    max-width: 60%;
-  }
-
-  .events_btn {
+  .title {
     position: relative;
     z-index: 5;
-    display: inline-block;
+    background: $bradenton-teal;
+    width: 100%;
     text-align: center;
-    text-transform: uppercase;
-    font-size: 0.8em;
-    color: $bradenton-teal;
-    padding: 10px 1em;
-    border: 2px solid $rust;
-    border-radius: 20px;
-    transition: 0.4s ease-out;
-    margin: 2em 0;
-    background-color: #fff;
+    padding: 1em 10px;
+    box-sizing: border-box;
+    --webkit-mask: url("images/large-image-mask.svg") no-repeat center;
+    mask: url("images/large-image-mask.svg") no-repeat center;
+    --webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    margin-bottom: -10px;
 
-    &:hover {
+    h2 {
+      position: relative;
+      z-index: 1;
       color: #fff;
-      background-color: $rust;
-      text-decoration: none;
+      font-size: 4em;
+      font-family: $font-header;
+      font-weight: 400;
+      text-transform: uppercase;
+      margin: 0;
     }
   }
 
   .eventsWrapper {
-    position: relative;
+    position: absolute;
     z-index: 5;
+    right: 20px;
+    top: 600px;
     width: 600px;
     max-width: 80%;
     margin: 1em 0;
@@ -125,25 +110,45 @@
 
 
 /*********************
+MEDIUM SCREENS
+*********************/
+@media only screen and (max-width: 1200px) {
+  .#{$block-prefix}-upcomingevents {
+    padding-bottom: 150px;
+
+    .title {
+      h2 {
+        font-size: 3em;
+      }
+    }
+
+    .eventsWrapper {
+      padding: 0;
+      top: 740px;
+      width: 500px;
+    }
+  }
+}
+
+/*********************
 SMALL SCREENS
 *********************/
 @media only screen and (max-width: 768px) {
   .#{$block-prefix}-upcomingevents {
-    width: 100%;
+    padding-bottom: 0;
 
-    h2 {
-      width: 100%;
-      font-size: 3em;
-    }
-
-    .bgImg {
-      top: 15%;
+    .title {
+      h2 {
+        font-size: 2em;
+      }
     }
 
     .eventsWrapper {
+      position: relative;
+      top: auto;
+      right: auto;
       width: 100%;
       max-width: inherit;
-      margin-top: 6em;
     }
   }
 }

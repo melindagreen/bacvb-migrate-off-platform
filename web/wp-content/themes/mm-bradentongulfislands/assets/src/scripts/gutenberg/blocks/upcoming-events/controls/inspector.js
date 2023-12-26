@@ -52,7 +52,7 @@ const MediaControls = props => {
 }
 
 const Inspector = props => {
-    const { attributes: { title, ctaText, ctaURL }, setAttributes } = props;
+    const { attributes: { title }, setAttributes } = props;
 
     return (
         <InspectorControls>
@@ -61,19 +61,6 @@ const Inspector = props => {
                     label="Title"
                     onChange={ ( title ) => setAttributes( { title } ) }
                     value={ title }
-                />
-                <MediaControls {...props} />
-            </PanelBody>
-            <PanelBody title='CTA'>
-                <TextControl
-                    label="CTA Text"
-                    onChange={ ( ctaText ) => setAttributes( { ctaText } ) }
-                    value={ ctaText }
-                />
-                <URLInput
-                    label="URL"
-                    value={ ctaURL }
-                    onChange={ ( ctaURL ) => setAttributes({ ctaURL })}
                 />
             </PanelBody>
         </InspectorControls>

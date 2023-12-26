@@ -11,25 +11,13 @@
     "icon": "calendar-alt",
     "category": "layout",
     "attributes": {
-      "defaultThumb": {
-        "type": "string",
-        "default": "/wp-content/uploads/2023/02/20171009184455-thmb-5-art-places-8.jpeg"
-      },
       "title": {
-        "type": "string",
-        "default": ""
-      },
-      "ctaText": {
-        "type": "string",
-        "default": ""
-      },
-      "ctaURL": {
         "type": "string",
         "default": ""
       },
       "mode": {
         "type": "string",
-        "default": "preview"
+        "default": "edit"
       }
     }
   }

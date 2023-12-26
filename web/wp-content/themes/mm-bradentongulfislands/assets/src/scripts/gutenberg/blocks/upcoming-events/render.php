@@ -18,12 +18,10 @@ function render_block( $attrs, $content ) {
 
   $html = "<div class='" . Constants::BLOCK_CLASS . "-upcomingevents'>";
 
-    $html .= '<img src="'.$attrs['defaultThumb'].'" alt="Events thumbnail" class="bgImg">';
+    $html .= '<div class="title"><h2>'. $attrs['title'] .'</h2></div>';
+
+    $html .= $content;
   
-    $html .= '<h2>'. $attrs['title'] .'</h2>';
-
-    $html .= '<a href="'.$attrs['ctaURL'].'" class="events_btn">'.$attrs['ctaText'].'</a>';
-
     $html .= '<div class="eventsWrapper">';
 
       foreach($events as $index=>$upcoming):
@@ -61,7 +59,7 @@ function render_block( $attrs, $content ) {
 
   $html .= "</div>";
 
-  // $html .= "<pre>" . print_r( $attrs, true ) . "</pre>";
+  // $html .= "<pre>" . print_r( $content, true ) . "</pre>";
 
   return $html;
 }
