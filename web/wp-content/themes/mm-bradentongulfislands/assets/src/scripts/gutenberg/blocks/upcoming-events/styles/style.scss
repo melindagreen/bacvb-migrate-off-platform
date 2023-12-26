@@ -1,6 +1,9 @@
 @import 'styles/utils/variables';
 @import 'styles/utils/typography';
 
+$swiperNavigationSize: 30px;
+$nav-dist: 4%;
+
 .#{$block-prefix}-upcomingevents {
   position: relative;
   box-sizing: border-box;
@@ -29,6 +32,206 @@
       font-weight: 400;
       text-transform: uppercase;
       margin: 0;
+    }
+  }
+
+  .swiper-upcomingevents {    
+    width: 100%;
+    height: 600px;
+    z-index: 0;
+    position: relative;
+  }
+
+  .ue-swiper-button-next, .ue-swiper-button-prev {
+    position: absolute;
+    z-index: 10;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    font-size: 30px;
+    font-weight: 600;
+    height: 34px;
+    margin-top: calc(0px - (30px/ 2));
+    top: auto;
+    bottom: 12px;
+    color: transparent;
+    transition: all 0.2s ease-in-out;
+  }
+  .ue-swiper-button-prev {
+    right: calc(4% + 45px);
+    left: auto;
+    background: url('~/images/ui-prev-off.png');
+    background-size: contain;
+  }
+  .ue-swiper-button-next {
+    right: 4%;
+    background: url('~/images/ui-next-off.png');
+    background-size: contain;
+  }
+
+  .swiper-pagination {
+
+    position: unset;
+    text-align: left;
+
+    .swiper-pagination-bullet {
+
+      background-color: transparent;
+      border: 2px solid $white;
+      width: 12px;
+      height: 12px;
+      opacity: 1;
+    }
+
+    .swiper-pagination-bullet-active {
+
+      background-color: $white;
+      border-color: $sky-blue;
+    }
+  }
+
+  .ue-wrapper {
+    position: relative;
+    height: 0;
+
+    &__items {
+
+      text-align: center;
+      font-size: 18px;
+      background: $turquoise;
+
+      /* Center slide text vertically */
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+    }
+
+    .bc-infoblock {
+
+      background: rgba(24,93,100, 0.85)  0% 0% no-repeat padding-box;
+      height: 300px;
+      max-width: 500px;
+      width: 88%;
+      position: absolute;
+      bottom: -2rem;
+      left: 7%;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      transition: all 0.1s ease-in-out;
+
+      &--purple {
+        background: rgba(74,107,174,.85)  0% 0% no-repeat padding-box;
+        transition: all 0.1s ease-in-out;
+      }
+      
+
+      &__navigation {
+
+        .swiper-button-next, .swiper-button-prev {
+     
+          width: 35px;
+          font-size: $swiperNavigationSize;
+          font-weight: 600;
+          height: 34px;
+          margin-top: calc(0px - (#{$swiperNavigationSize}/ 2));
+          top: auto;
+          bottom: 12px;
+          color: transparent;
+          transition: all 0.2s ease-in-out;
+  
+          &::after {
+  
+            font-size: $swiperNavigationSize;
+          }
+
+          &:hover {
+
+            transform: scale(1.1);
+            transition: all 0.2s ease-in-out;
+          }
+        }
+  
+        .swiper-button-next {
+          
+          right: $nav-dist;
+          background: url('images/ui-next-off.png');
+          background-size: contain;
+
+          &:hover {
+
+            background: url('images/ui-next-on.png');
+            background-size: contain;
+          }
+        
+        }
+  
+        .swiper-button-prev {
+          
+          right: calc($nav-dist + 45px);
+          left: auto;
+          background: url('images/ui-prev-off.png');
+          background-size: contain;
+
+          &:hover {
+
+            background: url('images/ui-prev-on.png');
+            background-size: contain;
+          }
+        }
+  
+      }
+      &__content {
+
+        padding: 1rem 1.5rem;
+
+        .infoblock__link {
+
+          color: $dk-blue;
+          border: 1.5px solid $rust;
+          background-color: white;
+          border-radius: 31px;
+          padding: 0.3rem 0.85rem;
+          transition: all 0.2s ease-in-out;
+          text-transform: uppercase;
+          font-weight: 700;
+          
+          &:hover {
+
+            background-color: $rust;
+            color: $white;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+          }
+        }
+
+        .infoblock__item {
+          color: $white;
+          font-family: $font-body;
+          margin: 12px auto;
+          text-align: left;
+          font-weight: 500;
+          font-size: 13px;
+          letter-spacing: 0.08rem;
+          opacity: 1;
+          transition: all 0.2s ease-out;
+          max-width: 435px;
+          overflow-wrap: break-word;
+          line-height: 1.7em;
+        }
+      }
     }
   }
 
@@ -135,12 +338,51 @@ SMALL SCREENS
 *********************/
 @media only screen and (max-width: 768px) {
   .#{$block-prefix}-upcomingevents {
-    padding-bottom: 0;
+    padding-bottom: 50px;
 
     .title {
       h2 {
         font-size: 2em;
       }
+    }
+
+    .hc-wrapper {
+
+      position: relative;
+      height: 8rem;
+
+      .bc-infoblock {
+        
+        bottom: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        overflow: hidden;
+
+        &__navigation {
+    
+          .swiper-button-next {
+            
+            right: calc($nav-dist - 10px);
+          }
+          .swiper-button-prev {
+
+            right: calc($nav-dist + 30px);
+          }
+        }
+
+        &__content {
+
+          padding-left: 3vw;
+
+          .infoblock__item { 
+            width: 100%;
+          }
+        }
+
+        #infoblock-title {
+          font-size: 2.25rem !important;
+        }
+      }   
     }
 
     .eventsWrapper {

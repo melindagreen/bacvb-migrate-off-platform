@@ -10,13 +10,13 @@ const save = (props) => {
 
 
   return (
-    <div className={`wp-block-mm-bradentongulfislands-wideslideshow` }>
-    <div className={`swiper-wideslideshow swiper-upcomingevents swiper` }>
+    <div className={`wp-block-mm-bradentongulfislands-ueSlideshow` }>
+    <div className={`swiper-upcomingevents swiper` }>
       <div className={`swiper-wrapper bc-wrapper`}>
         <InnerBlocks.Content/> 
       </div>
     </div>
-    <div className="hc-wrapper">
+    <div className="ue-wrapper">
       <div className="bc-wrapper__items">
             <div className="bc-infoblock is-style-collage-square">
               <div className="bc-infoblock__content">
@@ -28,8 +28,8 @@ const save = (props) => {
                 <div className="swiper-pagination"></div>
               </div>
               <div className="bc-infoblock__navigation">
-                <div className="swiper-button-next"></div>
-                <div className="swiper-button-prev"></div>
+                <div className="ue-swiper-button-next"></div>
+                <div className="ue-swiper-button-prev"></div>
               </div>
             </div>
       </div>

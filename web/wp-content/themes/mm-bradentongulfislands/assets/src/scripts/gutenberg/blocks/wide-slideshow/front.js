@@ -69,7 +69,7 @@ jQuery(document).ready(function ($) {
     
         infoItems.map((item)=>{
           
-          let activeItem = $(".swiper-wrapper .swiper-slide-active");
+          let activeItem = $(".swiper-wideslideshow .swiper-slide-active");
           let itemText = $('.swiper-wideslideshow .swiper-wrapper').find('.swiper-slide-active').data(item);
 
           if (activeItem.index() % 2 === 0) {
