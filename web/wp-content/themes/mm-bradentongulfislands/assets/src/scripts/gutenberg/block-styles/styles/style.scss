@@ -106,8 +106,8 @@ COLUMNS
     mask-size: 100% 100%;
 }
 .is-style-rough-edges {
-     --webkit-mask: url("images/collage-square-long.svg") no-repeat center;
-    mask: url("images/collage-square-long.svg") no-repeat center;
+     --webkit-mask: url("images/large-image-mask.svg") no-repeat center;
+    mask: url("images/large-image-mask.svg") no-repeat center;
     --webkit-mask-size: 100% 100%;
     mask-size: 100% 100%;
 }
