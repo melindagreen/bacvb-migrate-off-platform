@@ -85,6 +85,10 @@
                 "isDefault": false
             },
             {
+                "name": "rough-edges",
+                "label": "Rough Edges"
+            },
+            {
                 "name": "content-width-rough-edges",
                 "label": "Content Width w/ Rough Edges"
             }
