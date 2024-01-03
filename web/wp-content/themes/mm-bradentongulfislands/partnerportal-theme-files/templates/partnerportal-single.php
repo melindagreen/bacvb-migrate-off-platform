@@ -194,6 +194,13 @@ $diningAmenities = (isset($meta['dining-amenities'])) ? $meta['dining-amenities'
                 <?php endif; ?>
 
                 <div class="contactInfoWrap">
+                    <?php
+                    if (!empty($website)):
+                        if(!str_contains($website,'n/a')): ?>
+                        <a class="website" href="<?php echo $website; ?>" target="_blank"><?php echo $website_text; ?></a>
+                    <?php endif;
+                    endif; ?>
+
                     <div class="info">
                         <?php if ($phone): ?>
                         <p class="phone">
@@ -217,12 +224,6 @@ $diningAmenities = (isset($meta['dining-amenities'])) ? $meta['dining-amenities'
                         </p>
                         <?php endif; ?>
                     </div>
-                    <?php
-                    if (!empty($website)):
-                        if(!str_contains($website,'n/a')): ?>
-                        <a class="website" href="<?php echo $website; ?>" target="_blank"><?php echo $website_text; ?></a>
-                    <?php endif;
-                    endif; ?>
                 </div>
 
             </div>

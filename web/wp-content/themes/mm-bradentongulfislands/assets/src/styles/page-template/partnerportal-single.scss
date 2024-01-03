@@ -99,9 +99,9 @@
 		}
 
 		.contactInfoWrap {
-			display: flex;
-			align-items: center;
-			justify-content: space-between;
+			// display: flex;
+			// align-items: center;
+			// justify-content: space-between;
 			
 			.info {
 				p, a {
@@ -111,12 +111,14 @@
 
 			.website {
 				display: inline-block;
-				padding: 5px 10px;
+				padding: 7px 15px;
 				border-radius: 4px;
 				color: #fff;
+				font-size: 1.2em;
 				background: $bradenton-teal;
 				text-transform: uppercase;
 				transition: all 0.3s;
+				margin: 15px 0 10px 0;
 
 				&:hover {
 					background: $rust;
