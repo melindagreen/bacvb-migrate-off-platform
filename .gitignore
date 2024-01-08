@@ -61,7 +61,7 @@
 
 # Ignore user uploaded and system generated files
 *.log
-# *.sql
+*.sql
 *.sql.gz
 *.sqlite
 

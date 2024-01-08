@@ -26,19 +26,19 @@ class Constants {
     const SOCIAL_LINKS = [
         'facebook' => [
             'name' => 'Facebook',
-            'url' => '#',
+            'url' => 'https://www.facebook.com/VisitBradentonGulfIslands',
         ],
         'pinterest' => [
             'name' => 'Pinterest',
-            'url' => '#',
+            'url' => 'https://www.pinterest.com/visitbradenton/',
         ],
         'twitter' => [
             'name' => 'Twitter',
-            'url' => '#',
+            'url' => 'https://twitter.com/VisitBradenton',
         ],
         'instagram' => [
             'name' => 'Instagram',
-            'url' => '#',
+            'url' => 'https://www.instagram.com/visit_bradenton',
         ]
     ];
 }
