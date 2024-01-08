@@ -140,7 +140,8 @@ HEADER
         .menu-item {
             position: relative;
             a {
-                display: inline-block;
+                // curtis (8.jan) seemed to make some not show correctly
+                // display: inline-block;
                 margin: 0.1rem 1rem;
                 color: $dk-blue;
                 font-size: 1.5rem;
@@ -181,11 +182,11 @@ HEADER
                 transition: all 0.2s ease-in-out;
 
                 .menu-item {
+                    margin: 0.15rem 0;
 
                     a {
-
                         margin: 0;
-                        font-size: 1.2rem;
+                        font-size: 1.0rem;
                         color: $purple;
                     }
                 }
@@ -262,14 +263,17 @@ HEADER
 
             .menu__shortcuts {
 
-                margin-top: 0;
-                flex-wrap: wrap-reverse;
+                margin: 0;
                 justify-content: center;
-                gap: 0.5rem;
+                gap: 0;
 
                 .menu-item {
-
-                    width: 160px;
+                    min-width: auto;
+                    width: auto;
+                    font-size: 3.0vw;
+                    flex-basis: auto;
+                    flex-grow: 1;
+                    white-space: nowrap;          
                 }
             }
         }
@@ -373,8 +377,13 @@ FOOTER
     padding: 2em 6vw 6rem 6vw;
 
     .footer-col {
-
         margin: auto;
+
+        &--logos {
+            span {
+                justify-content: center;
+            }
+        }        
     }
 
     &__copyright {
@@ -407,7 +416,7 @@ FOOTER
         width: 50vw;
         &__submit {
     
-           left: -8.5vw;
+           left: 0;
         }
         &__field {
 

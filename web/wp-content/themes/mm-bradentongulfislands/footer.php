@@ -50,7 +50,7 @@
         
         <div class="footer-col footer-col--logos">
         
-        <a href="http://visitflorida.com" target="_blank"><img 
+        <a href="https://visitflorida.com" target="_blank"><img 
             data-load-type="img"
             data-load-offset="lg" 
             data-load-all="<?php echo get_theme_file_uri().'/assets/images/logo-VisitFlorida.svg';?>" 

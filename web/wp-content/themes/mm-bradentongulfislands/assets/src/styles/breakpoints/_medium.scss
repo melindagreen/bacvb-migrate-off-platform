@@ -250,11 +250,11 @@ HEADER
                 margin-top: 0;
                 flex-wrap: wrap-reverse;
                 justify-content: center;
+                flex-direction: column;
                 gap: 0.5rem;
 
                 .menu-item {
-
-                    width: 160px;
+                    width: auto;
                 }
             }
         }

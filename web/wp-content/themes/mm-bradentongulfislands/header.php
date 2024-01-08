@@ -166,9 +166,9 @@
             </div>
             <div class="mm-bradentongulfislands-nav nav__shortcuts mega-menu-shortcuts mega-menu-shortcuts--mobile">
                     <ul class="mm-bradentongulfislands-menu menu__shortcuts">
-                        <li class="menu-item"><a href="http://" target="_blank"><img src="<?php echo get_theme_file_uri() ?>/assets/images/icons/envelope.png" alt="<?php _e( 'Envelope Icon', 'mmnino' ); ?>" width="24px" height="24px"> E-Newsletter</a></li>
-                        <li class="menu-item"><a href="http://" target="_blank"><img src="<?php echo get_theme_file_uri() ?>/assets/images/icons/literature.png" alt="<?php _e( 'Literature Icon', 'mmnino' ); ?>" width="24px" height="24px"> Travel Guide</a></li>
-                        <li class="menu-item"><a href="http://" target="_blank"><img src="<?php echo get_theme_file_uri() ?>/assets/images/icons/accessibility.png" alt="<?php _e( 'Accessibility Icon', 'mmnino' ); ?>" width="24px" height="24px"> ACCESSIBILITY</a></li>
+                        <li class="menu-item"><a href="/enews/"><img src="<?php echo get_theme_file_uri() ?>/assets/images/icons/envelope.png" alt="<?php _e( 'Envelope Icon', 'mmnino' ); ?>" width="24px" height="24px"> E-Newsletter</a></li>
+                        <li class="menu-item"><a href="/travel-guide/"><img src="<?php echo get_theme_file_uri() ?>/assets/images/icons/literature.png" alt="<?php _e( 'Literature Icon', 'mmnino' ); ?>" width="24px" height="24px"> Travel Guide</a></li>
+                        <li class="menu-item"><a href="/accessibility/"><img src="<?php echo get_theme_file_uri() ?>/assets/images/icons/accessibility.png" alt="<?php _e( 'Accessibility Icon', 'mmnino' ); ?>" width="24px" height="24px"> ACCESSIBILITY</a></li>
                     </ul>
             </div>
             <div class="mega-menu">

@@ -26,5 +26,9 @@ module.exports = {
     output: {
         ...defaultConfig.output,
         publicPath: '../build/'
-    }
+    },
+    watchOptions: {
+        poll: true,
+        ignored: /node_modules/
+     }     
 }
