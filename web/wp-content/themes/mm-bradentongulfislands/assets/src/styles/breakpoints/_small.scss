@@ -1,3 +1,5 @@
+$formWidthSm: 125px;
+
 /*********************
 TEST ELEMENTS
 *********************/
@@ -43,10 +45,18 @@ HEADER
                 width: 20px;
             }
             p {
-
                 font-size: 0.8rem;
             }
         }
+        .search-form {
+            &:hover,&:focus {
+                width: $formWidthSm;
+            }
+    
+            &__field {
+                width: ($formWidthSm - 40px);
+            }
+        }    
     }
 
     .top-bar--solid {
@@ -54,12 +64,10 @@ HEADER
         background-color: $dk-blue;
 
         &::after {
-
             content: unset;
         }
 
         .top-bar__brand {
-
             padding-top: 0;
         }
     }
@@ -82,7 +90,6 @@ HEADER
     }
 
     .search-form {
-
         margin-top: -0.4rem;
     }
     

@@ -3,6 +3,8 @@ GLOBAL STYLES
 *********************/
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap");
 
+$formWidth: 185px;
+
 html, body {
 
     overflow-x: hidden;
@@ -214,7 +216,7 @@ HEADER
         align-items: center;
         border: 2px solid $sea-blue;
         outline: none;
-        padding: 5px 7px;
+        padding: 5px 7px 5px 32px;
         color: white;
         border-radius: 29px;
         transition: all 0.3s ease-in-out;
@@ -224,8 +226,8 @@ HEADER
         &:hover,&:focus {
 
             transition: all 0.3s ease-in-out;
-            width: 185px;
-            padding: 4px;
+            width: $formWidth;
+            padding: 4px 4px 4px 32px;
 
             .search-form__field {
                 
@@ -239,6 +241,8 @@ HEADER
             border: none;
             margin-bottom: 7px;
             display: none;
+            width: ($formWidth - 40px);
+            color: $white;
             -webkit-appearance: none;
             -moz-appearance: none;
             appearance: none;
@@ -280,7 +284,7 @@ HEADER
             border: none;
             margin-right: 10px;
             position: relative;
-            left: 14.5px;
+            left: 12.5px;
             top: 1.5px;
             -webkit-appearance: none;
             -moz-appearance: none;
@@ -351,9 +355,9 @@ HEADER
             }
         }
 
-        input.gsc-input::placeholder {
-            // color: $atl-gray-dark;
-        }
+        // input.gsc-input::placeholder {
+        //     color: $atl-gray-dark;
+        // }
         .gsc-search-button {
             margin: 0 0 0 -25px;
             padding: 0;
@@ -362,9 +366,9 @@ HEADER
             svg {
                 width: 1.5rem;
                 height: 1.5rem;
-                path {
-                    // fill: $atl-gray-dark;
-                }
+                // path {
+                //     fill: $atl-gray-dark;
+                // }
             }
         }
         .gsst_a .gscb_a {
@@ -475,13 +479,13 @@ HEADER
         }
 
         background: $bradenton-teal;
-        .toggle__icon {
-            .toggle__line,
-            .toggle__line::before,
-            .toggle__line::after {
-                // background-color: $atl-red;
-            }
-        }
+        // .toggle__icon {
+        //     .toggle__line,
+        //     .toggle__line::before,
+        //     .toggle__line::after {
+        //         // background-color: $atl-red;
+        //     }
+        // }
         .top-bar__brand {
             padding-top: 1rem;
             svg {
@@ -951,7 +955,7 @@ FOOTER
         align-items: center;
         border: 2px solid $white;
         outline: none;
-        width: 185px;
+        width: $formWidth;
         padding: 7px;
         color: white;
         border-radius: 29px;
@@ -962,7 +966,8 @@ FOOTER
             background-color: transparent;
             border: none;
             margin-bottom: 3px;
-
+            width: ($formWidth - 40px);
+            color: $white;
             -webkit-appearance: none;
             -moz-appearance: none;
             appearance: none;
@@ -992,9 +997,9 @@ FOOTER
     
             background-color: transparent;
             border: none;
-            margin-right: 10px;
+            margin-right: auto;
             position: relative;
-            left: 14.5px;
+            left: 2.5px;
             top: 1.5px
 
         }
@@ -1005,8 +1010,7 @@ FOOTER
         .search-form {
           
             &__submit {
-                
-                left: 16.5px
+                left: 16.5px;
             }
         }
       }
