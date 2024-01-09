@@ -92,6 +92,8 @@ HEADER
         align-items: center;
         font-size: 1.15rem;
         font-weight: 500;
+        position: relative;
+        z-index: 5;
     }
     .top-bar,
     .menu__shortcuts {
@@ -99,6 +101,7 @@ HEADER
         padding-left: 0;
     }
     .top-bar {
+        position: relative;
         background: transparent linear-gradient(180deg, #014067 0%, #013F65F6 3%, #01203400 100%) 0% 0% no-repeat padding-box;
         width: 100vw;
         color: white;
@@ -129,6 +132,8 @@ HEADER
         }
     }
     .top-bar__brand {
+        position: relative;
+        z-index: 5;
         margin-right: auto;
         padding-top: 2.5rem;
         svg {
@@ -676,6 +681,22 @@ HEADER
         }
     }
     &.open {
+
+        .top-bar {
+            background: $bradenton-teal;
+            z-index: 0;
+            &:after {
+                content: "";
+                display: block;
+                position: absolute;
+                left: 0;
+                bottom: -10px;
+                width: 100%;
+                height: 45px;
+                background: #fff url('~/images/top-nav-solid.png') top repeat-x;
+                background-size: 100% auto;
+            }
+        }
      
         .search-form.open .search-form__toggle {
             width: 0;
@@ -732,6 +753,8 @@ HEADER
             &.open {
         .search-wrap {
             display: block;
+            position: relative;
+            z-index: 5;
         }
         .mega-menu {
             min-height: 600px;

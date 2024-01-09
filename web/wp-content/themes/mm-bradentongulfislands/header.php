@@ -149,9 +149,9 @@
 
                     <div class="mm-bradentongulfislands-nav nav__shortcuts mega-menu-shortcuts">
                         <ul class="mm-bradentongulfislands-menu menu__shortcuts">
-                            <li class="menu-item"><a href="/enews" target="_blank"><img src="<?php echo get_theme_file_uri() ?>/assets/images/icons/envelope.png" alt="<?php _e( 'Envelope Icon', 'mmnino' ); ?>" width="24px" height="24px"> Newsletter</a></li>
+                            <li class="menu-item"><a href="/enews" target="_blank"><img src="<?php echo get_theme_file_uri() ?>/assets/images/icons/envelope.png" alt="<?php _e( 'Envelope Icon', 'mmnino' ); ?>" width="24px" height="24px"> E-Newsletter</a></li>
                             <li class="menu-item"><a href="/travel-guide" target="_blank"><img src="<?php echo get_theme_file_uri() ?>/assets/images/icons/literature.png" alt="<?php _e( 'Literature Icon', 'mmnino' ); ?>" width="24px" height="24px"> Travel Guide</a></li>
-                            <li class="menu-item"><a href="/accessibility" target="_blank"><img src="<?php echo get_theme_file_uri() ?>/assets/images/icons/accessibility.png" alt="<?php _e( 'Accessibility Icon', 'mmnino' ); ?>" width="24px" height="24px"> ACCESSIBILITY</a></li>
+                            <li class="menu-item"><a href="/love-it-like-a-local/" target="_blank"><img src="<?php echo get_theme_file_uri() ?>/assets/images/icons/starfish-icon.png" alt="<?php _e( 'Accessibility Icon', 'mmnino' ); ?>" width="24px" height="24px"> Sustainability</a></li>
                         </ul>
                     </div>
 
@@ -168,7 +168,7 @@
                     <ul class="mm-bradentongulfislands-menu menu__shortcuts">
                         <li class="menu-item"><a href="/enews/"><img src="<?php echo get_theme_file_uri() ?>/assets/images/icons/envelope.png" alt="<?php _e( 'Envelope Icon', 'mmnino' ); ?>" width="24px" height="24px"> E-Newsletter</a></li>
                         <li class="menu-item"><a href="/travel-guide/"><img src="<?php echo get_theme_file_uri() ?>/assets/images/icons/literature.png" alt="<?php _e( 'Literature Icon', 'mmnino' ); ?>" width="24px" height="24px"> Travel Guide</a></li>
-                        <li class="menu-item"><a href="/accessibility/"><img src="<?php echo get_theme_file_uri() ?>/assets/images/icons/accessibility.png" alt="<?php _e( 'Accessibility Icon', 'mmnino' ); ?>" width="24px" height="24px"> ACCESSIBILITY</a></li>
+                        <li class="menu-item"><a href="/love-it-like-a-local/"><img src="<?php echo get_theme_file_uri() ?>/assets/images/icons/starfish-icon.png" alt="<?php _e( 'Accessibility Icon', 'mmnino' ); ?>" width="24px" height="24px"> Sustainability</a></li>
                     </ul>
             </div>
             <div class="mega-menu">
@@ -250,8 +250,8 @@
                                 <a aria-label='Instagram' href="<?php echo C::SOCIAL_LINKS['instagram']['url'] ?>">
                                     <?php echo file_get_contents( get_theme_file_uri() . "/assets/images/icons/social/instagram.svg" ) ?>
                                 </a>
+                            </div>
                         </div>
-                    </div>
                     </div>
                 </div>
                 <?php }
