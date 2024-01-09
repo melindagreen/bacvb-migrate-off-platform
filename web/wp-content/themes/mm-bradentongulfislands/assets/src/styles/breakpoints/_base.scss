@@ -248,6 +248,7 @@ HEADER
             display: none;
             width: ($formWidth - 40px);
             color: $white;
+            font-family: var(--wp--preset--font-family--body);
             -webkit-appearance: none;
             -moz-appearance: none;
             appearance: none;
@@ -842,6 +843,7 @@ SEARCH FUNCTIONALITY
             border-top-left-radius: 20px;
             border-bottom-left-radius: 20px;
             border: 1px solid $bradenton-teal;
+            font-family: var(--wp--preset--font-family--body);
         }
 
         .search-form__submit {
@@ -993,12 +995,12 @@ FOOTER
         transition: all 0.3s ease-in-out;
 
         &__field {
-
             background-color: transparent;
             border: none;
             margin-bottom: 3px;
             width: ($formWidth - 40px);
             color: $white;
+            font-family: var(--wp--preset--font-family--body);
             -webkit-appearance: none;
             -moz-appearance: none;
             appearance: none;

@@ -58,7 +58,9 @@ function render_block( $attrs, $content ) {
 					}
 				}
 				?>
-			></div>
+			>
+				<div class="fade"></div>
+			</div>
 		<?php } ?>
 
 
@@ -70,6 +72,7 @@ function render_block( $attrs, $content ) {
                 <video poster="<?php if ($attrs['videoPoster']) echo wp_get_attachment_image_src($attrs['videoPoster']['id'], 'full')[0]; ?>" playsinline autoplay muted loop>
                     <source src="<?php echo wp_get_attachment_url($attrs['video']['id']); ?>" type="video/mp4">
                 </video>
+				<div class="fade"></div>
             </div>
         <?php endif; ?>
         <?php if (isset($attrs['videoForMobile']) && $attrs['videoHero']) : ?>
@@ -78,12 +81,14 @@ function render_block( $attrs, $content ) {
                 <video poster="<?php if ($attrs['videoPoster']) echo wp_get_attachment_image_src($attrs['videoPoster']['id'], 'full')[0]; ?>" playsinline autoplay muted loop>
                     <source src="<?php echo wp_get_attachment_url($attrs['video']['id']); ?>" type="video/mp4">
                 </video>
+				<div class="fade"></div>
             </div>
 
             <div class="video video--mobile">
                 <video poster="<?php if ($attrs['videoPoster']) echo wp_get_attachment_image_src($attrs['videoPoster']['id'], 'full')[0]; ?>" playsinline autoplay muted loop>
                     <source src="<?php echo wp_get_attachment_url($attrs['videoForMobile']['id']); ?>" type="video/mp4">
                 </video>
+				<div class="fade"></div>
             </div>	
 				<?php endif; ?>
 			<!--if no video--mobile keep showing main--->
@@ -95,7 +100,6 @@ function render_block( $attrs, $content ) {
 					<h1 class="title 	<?php if(!is_front_page()) { echo "alt-title"; } ?>"><?php if ($attrs['subtitle']) echo '<span>'.$attrs['subtitle'].'</span>'; ?><?php echo $attrs['title']; ?></h1>
 				<?php } ?>
 
-			<div class="fade"></div>
 		</section>
 
 		<?php } ?>
