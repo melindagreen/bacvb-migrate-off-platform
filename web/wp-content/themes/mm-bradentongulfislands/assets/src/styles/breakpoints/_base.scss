@@ -523,6 +523,7 @@ HEADER
         top: 2%;
         flex-grow: 1;
         flex: 0 0 600px;
+        width: 600px;
         max-width: 50%;
         @media screen and (max-width: 1260px) {
             flex: 0 0 430px;
