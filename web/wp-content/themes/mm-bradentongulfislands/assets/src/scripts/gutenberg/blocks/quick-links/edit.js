@@ -38,18 +38,16 @@ const Wizard = props => {
       label={__('Quick Links')}
       segments={quickLinks}
       segmentsContent={quickLinks.map(link => <>
-        {/* <LinkControl
+        <LinkControl
           value={link.linkObj}
-          onChange={(link) => {
-            updateSegment('linkObj', link)
-          }}
+          onChange={updateSegment('linkObj', link)}
           settings={[]}
-        /> */}
-        <URLInput
+        />
+        {/* <URLInput
         className='quickLinksURLInput'
         value={link.linkObj}
         onChange={updateSegment('linkObj', link)}
-      />
+      /> */}
 
         <PanelBody title={__('Customize link item')} initialOpen={false}>
           <p className='instructions'>{__('By default, the link will pull in the selected link\'s title, thumbnail, and excerpt. To override these features, manually enter them here.')}</p>
