@@ -50,7 +50,7 @@
 			position: absolute;
 			width: 105%;
 			z-index: 1;
-			bottom: 1em;
+			bottom: 0;
 			background-size: cover;
 		}
 	}
@@ -253,7 +253,7 @@ SMALL SCREENS
 			line-height: 12vw;
 			text-align: center;
 			left: 50%;
-			top:50%;
+			top: 55%;
 			transform: translateX(-50%);
 
 			span {
