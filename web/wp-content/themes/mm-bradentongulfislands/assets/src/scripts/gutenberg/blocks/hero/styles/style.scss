@@ -5,7 +5,9 @@
 	width: 100%;
 	justify-content: center;
 	align-items: center;
-	z-index: -1;
+	// curtis (9.jan) this was messing with the video play/pause button working and seems not needed
+	// z-index: -1;
+	z-index: 0;
 	position: relative;
 	overflow-x: clip;
 
@@ -102,7 +104,6 @@
 		width: 2.5rem;
 		height: 2.5rem;
 		border: none;
-		border-radius: 2.5rem;
 		background-color: color("dark-blue");
 		cursor: pointer;
 		&.pause {
@@ -265,7 +266,7 @@ SMALL SCREENS
 			}
 		}
 		.hero-video-play {
-			top: 8rem;
+			top: 5rem;
 		}
 		&::after {
 			height: 12vh;

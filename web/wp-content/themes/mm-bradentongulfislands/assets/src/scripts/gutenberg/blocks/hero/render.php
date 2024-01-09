@@ -65,7 +65,7 @@ function render_block( $attrs, $content ) {
 
 
 		<?php if ($attrs['videoHero']) { ?>
-			<button type='none' class='hero-video-play pause'><span class='sr-only'>Pause Video</span></button>
+			<button type='button' class='hero-video-play pause'><span class='sr-only'>Pause Video</span></button>
 			<?php if ($attrs['videoHero'] && !$attrs['videoForMobile']) : ?>
             <!-- Display video for desktop only when there's no mobile video -->
             <div class="video no--mobile">
