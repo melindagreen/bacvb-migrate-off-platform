@@ -1,117 +1,12 @@
 @import "styles/utils/typography";
 @import "styles/utils/variables";
 
-.#{$block-prefix}-portrait-grid {
-  display: grid;
-  gap: 2rem;
-  margin: $block-margin auto;
-  width: 90%;
-  max-width: 100rem;
-  &.is-length-3 {
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(5, 15vw);
-    grid-template-areas:
-      ".     item2 item2"
-      "item1 item2 item2"
-      "item1 item3 ."
-      "item1 item3 ."
-      ".     item3 .";
-    .grid-item {
-      &--1 {
-        grid-area: item1;
-      }
-      &--2 {
-        grid-area: item2;
-      }
-      &--3 {
-        grid-area: item3;
-      }
-    }
-  }
-  .grid-item {
-    position: relative;
-    a {
-      pointer-events: none;
-    }
-    .grid-item__background {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: color("dark-blue");
-      &::before {
-        content: "";
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(transparent, rgba(black, 0.7));
-      }
-      .grid-item__image {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-    }
-    .grid-item__body {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      z-index: 1;
-      width: 80%;
-      padding: 1rem;
-      color: color("white");
-      .grid-item__title {
-        margin-bottom: 1rem;
-        font-family: $font-body;
-        font-size: 2em;
-        text-transform: uppercase;
-        line-height: 1;
-      }
-      .grid-item__excerpt {
-        max-width: 25rem;
-        margin-bottom: 0;
-        font-weight: normal;
-      }
-    }
-  }
+.#{$block-prefix}-quick-links {
+  
+  .quickLinksURLInput {
 
-  .grid-wizard--personae {
-    padding: 1rem;
-    border: 1px solid #e0e0e0;
-    h3 {
-      margin-top: 0;
-      font-family: $font-body;
-      font-size: 1.5rem;
-      text-align: center;
-      text-transform: uppercase;
-    }
-  }
-
-  .repeater {
-    h3 {
-      font-family: $font-body;
-      font-size: 1.5rem;
-      text-align: center;
-      text-transform: uppercase;
-    }
-    .instructions {
-      font-size: 0.8rem;
-    }
-    .components-panel__row {
-      align-items: flex-start;
-    }
-    .custom-thumb {
-      align-items: center !important;
-      p {
-        text-align: center;
-        text-transform: uppercase;
-        font-size: 11px;
-      }
-      .preview-thumb {
-        width: 150px;
-        height: 150px;
-      }
+    input {
+    width: 100% !important;
     }
   }
 }

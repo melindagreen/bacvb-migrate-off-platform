@@ -152,7 +152,7 @@
 
                     <div class="mm-bradentongulfislands-nav nav__shortcuts mega-menu-shortcuts">
                         <ul class="mm-bradentongulfislands-menu menu__shortcuts">
-                            <li class="menu-item"><a href="/enews" target="_blank"><img src="<?php echo get_theme_file_uri() ?>/assets/images/icons/envelope.png" alt="<?php _e( 'Envelope Icon', 'mmnino' ); ?>" width="24px" height="24px"> E-Newsletter</a></li>
+                            <li class="menu-item"><a href="/enews" target="_blank"><img src="<?php echo get_theme_file_uri() ?>/assets/images/icons/envelope.png" alt="<?php _e( 'Envelope Icon', 'mmnino' ); ?>" width="24px" height="24px"> Newsletter</a></li>
                             <li class="menu-item"><a href="/travel-guide" target="_blank"><img src="<?php echo get_theme_file_uri() ?>/assets/images/icons/literature.png" alt="<?php _e( 'Literature Icon', 'mmnino' ); ?>" width="24px" height="24px"> Travel Guide</a></li>
                             <li class="menu-item"><a href="/love-it-like-a-local/" target="_blank"><img src="<?php echo get_theme_file_uri() ?>/assets/images/icons/starfish-icon.png" alt="<?php _e( 'Accessibility Icon', 'mmnino' ); ?>" width="24px" height="24px"> Sustainability</a></li>
                         </ul>
@@ -169,7 +169,7 @@
             </div>
             <div class="mm-bradentongulfislands-nav nav__shortcuts mega-menu-shortcuts mega-menu-shortcuts--mobile">
                     <ul class="mm-bradentongulfislands-menu menu__shortcuts">
-                        <li class="menu-item"><a href="/enews/"><img src="<?php echo get_theme_file_uri() ?>/assets/images/icons/envelope.png" alt="<?php _e( 'Envelope Icon', 'mmnino' ); ?>" width="24px" height="24px"> E-Newsletter</a></li>
+                        <li class="menu-item"><a href="/enews/"><img src="<?php echo get_theme_file_uri() ?>/assets/images/icons/envelope.png" alt="<?php _e( 'Envelope Icon', 'mmnino' ); ?>" width="24px" height="24px"> Newsletter</a></li>
                         <li class="menu-item"><a href="/travel-guide/"><img src="<?php echo get_theme_file_uri() ?>/assets/images/icons/literature.png" alt="<?php _e( 'Literature Icon', 'mmnino' ); ?>" width="24px" height="24px"> Travel Guide</a></li>
                         <li class="menu-item"><a href="/love-it-like-a-local/"><img src="<?php echo get_theme_file_uri() ?>/assets/images/icons/starfish-icon.png" alt="<?php _e( 'Accessibility Icon', 'mmnino' ); ?>" width="24px" height="24px"> Sustainability</a></li>
                     </ul>
@@ -219,7 +219,38 @@
                     <?php if ( $localStories->have_posts() ) {
                     ?>
                     <div class="mega-menu__local-stories">
-                        <h3>Check Out These Local Stories</h3>
+                        <h3><a href="/venues">Signature Venues</a></h3>
+                        <div class="local-stories-nav">
+                            <a href="/venues/powel-crosley/" class="venue">
+                                <img src="/wp-content/uploads/2023/11/nav-logo-crosleyestate.png" alt="Powel Crosley Estate logo" class="logo">
+                                <div class="hover_state">
+                                    <div class="featImg">
+                                        <img src="/wp-content/uploads/2023/11/Powel-Crosley_Venues-234x300.jpg" alt="Powel Crosley Estate image">
+                                    </div>
+                                    <div class="page">Powel Crosley Estate</div>
+                                </div>
+                            </a>
+                            <a href="/venues/convention-center/" class="venue">
+                                <img src="/wp-content/uploads/2023/11/Bradenton-Area-Convention-Center-Logo_rgb_72-1.jpg" alt="Bradenton Area Convention Center logo" class="logo">
+                                <div class="hover_state">
+                                    <div class="featImg">
+                                        <img src="/wp-content/uploads/2023/11/Bradenton_Area_Convention_Center_SfnOoYA6fwp2lbHiQUepT_t18q0ABlZBh_rgb_l-300x200.jpg" alt="Bradenton Area Convention Center image">
+                                    </div>
+                                    <div class="page">Bradenton Area Convention Center</div>
+                                </div>
+                            </a>
+                            <a href="/venues/premier-sports-campus/" class="venue">
+                                <img src="/wp-content/uploads/2023/11/nav-logo-premier-1.png" alt="Premier Sports Campus logo" class="logo">
+                                <div class="hover_state">
+                                    <div class="featImg">
+                                        <img src="/wp-content/uploads/2023/11/Premie_Venues-400x512.jpg" alt="Premier Sports Campus image">
+                                    </div>
+                                    <div class="page">Premier Sports Campus</div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <!-- <h3>Check Out These Local Stories</h3>
                         <div class="local-stories-nav">
                             <?php while ( $localStories->have_posts() ) {
                             $localStories->the_post();
@@ -237,7 +268,7 @@
                                 </a>
                             </figure>
                             <?php } ?>
-                        </div>
+                        </div> -->
                         <!-- SOCIAL LINKS -->
                         <div class="social-container">
                             <div class="social-links">
