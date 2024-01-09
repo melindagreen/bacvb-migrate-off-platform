@@ -519,17 +519,82 @@ HEADER
     .mega-menu__local-stories {
 
         position: relative;
-        left: 26%;
+        // left: 26%;
         top: 2%;
+        flex-grow: 1;
+        flex: 0 0 600px;
+        max-width: 50%;
+        @media screen and (max-width: 1260px) {
+            flex: 0 0 430px;
+        }
         h3 {
-
-            font-family: $font-header;
+            font-weight: 400;
+            font-family: $font-body;
+            text-align: center;
+            a {
+                color: $rust;
+                text-decoration: none;
+                &:hover {
+                    color: $bradenton-teal;
+                }
+            }
         }
 
         .local-stories-nav {
 
             display: flex;
-            gap: 1rem;
+            gap: 0.5rem;
+            justify-content: center;
+
+            .venue {
+                width: 30%;
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+                text-decoration: none;
+
+                .logo {
+                    max-width: 100%;
+                    max-height: 130px;
+                    transition: all 0.35s;
+                }
+                .hover_state {
+                    overflow: hidden;
+                    height: 0;
+                    opacity: 0;
+                    transition: all 0.6s;
+
+                    .featImg {
+                        width: 100px;
+                        height: 100px;
+                        border-radius: 50%;
+                        overflow: hidden;
+                        margin: 0 auto;
+                        img {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                        }
+                    }
+                    .page {
+                        text-align: center;
+                        color: $bradenton-teal;
+                        text-transform: capitalize;
+                        text-align: center;
+                        font-size: 0.9em;
+                    }
+                }
+                &:hover {
+                    .logo {
+                        max-height: 0;
+                        opacity: 0;
+                    }
+                    .hover_state {
+                        opacity: 1;
+                        height: 300px;
+                    }
+                }
+            }
 
             figure {
 
@@ -577,14 +642,21 @@ HEADER
     }
 
     .mega-menu__nav {
+        flex: 0 0 500px;
+
         font-size: 1.2rem;
+
+        @media screen and (max-width: 1200px) {
+            flex: 0 0 430px;
+        }
         a {
         color: $bradenton-teal;
         }
 
         &--secondary {
 
-            left: 22%;
+            // left: 22%;
+            flex: 0 0 250px;
             position: relative;
             
             ul {
@@ -687,15 +759,17 @@ HEADER
             background: $bradenton-teal;
             z-index: 0;
             &:after {
-                content: "";
-                display: block;
-                position: absolute;
+                content: " ";
+                background: url('images/top-nav-solid.png');
+                background-size: contain;
+                background-position: center;
+                bottom: -18%;
+                height: 2.5rem;
                 left: 0;
-                bottom: -10px;
-                width: 100%;
-                height: 45px;
-                background: #fff url('~/images/top-nav-solid.png') top repeat-x;
-                background-size: 100% auto;
+                position: absolute;
+                width: 100vw;
+                z-index: -1;
+                background-repeat: repeat no-repeat;
             }
         }
      
