@@ -61,7 +61,7 @@ HEADER
 
     .top-bar--solid {
 
-        background-color: $dk-blue;
+        background-color: $bradenton-teal;
 
         &::after {
             content: unset;
@@ -96,6 +96,9 @@ HEADER
     .mega-menu__nav-wrap {
         width: 100%;
         display: unset;
+        overflow: auto;
+        padding-bottom: 5em;
+        background: #fff;
     }
 
     .mega-menu__nav {
@@ -104,8 +107,8 @@ HEADER
 
             left: 0;
             position: relative;
-            padding-left: 5%;
-            padding-right: 5%;
+            padding-left: 2%;
+            padding-right: 2%;
             
             ul {
 
@@ -114,7 +117,6 @@ HEADER
                 padding: 0.5rem 0 0.5rem 0;
 
                 .menu-item {
-
 
                     a {
 
@@ -143,7 +145,7 @@ HEADER
                 // curtis (8.jan) seemed to make some not show correctly
                 // display: inline-block;
                 margin: 0.1rem 1rem;
-                color: $dk-blue;
+                color: $bradenton-teal;
                 font-size: 1.5rem;
             }
 
@@ -170,7 +172,7 @@ HEADER
 
             &.menu-item-has-children::after {
 
-                transform: rotate(90deg);
+                transform: rotate(180deg);
                 transition: all 0.2s ease-in-out;
             }
 
@@ -187,7 +189,7 @@ HEADER
                     a {
                         margin: 0;
                         font-size: 1.0rem;
-                        color: $purple;
+                        color: $bradenton-teal;
                     }
                 }
             }
@@ -233,19 +235,18 @@ HEADER
     }
 
     .mega-menu__local-stories {
-
-        h3,.local-stories-nav {
-        display: none;
+        width: 100%;
+        max-width: inherit;
+        .local-stories-nav {
+            .venue {
+                max-width: 200px;
+            }
         }
     }
     &.open {
 
         .top-bar {
-
-            background: none;
-            &:after {
-                display: none;
-            }
+            background: $bradenton-teal;
         }
 
         .search-wrap {
@@ -256,7 +257,14 @@ HEADER
             height: 90vh !important;
             padding-top: 3rem;
             overflow: auto;
-            background: transparent linear-gradient(180deg, #014067 17%, #014067 18%, white 21%) 0% 0% no-repeat padding-box;
+            // background: transparent linear-gradient(180deg, #014067 17%, #014067 18%, white 21%) 0% 0% no-repeat padding-box;
+
+        }
+
+        &.open {
+            .mega-menu::after {
+                display: none;
+            }
         }
 
         .mega-menu-shortcuts--mobile {
@@ -265,18 +273,33 @@ HEADER
             display: unset;
 
             .menu__shortcuts {
-
+                position: relative;
+                background: $bradenton-teal;
                 margin: 0;
                 justify-content: center;
                 gap: 0;
+                padding-bottom: 1em;
 
                 .menu-item {
                     min-width: auto;
                     width: auto;
-                    font-size: 3.0vw;
+                    font-size: 2.0vw;
                     flex-basis: auto;
                     flex-grow: 1;
-                    white-space: nowrap;          
+                    white-space: nowrap;         
+                }
+                &:after {
+                    content: " ";
+                    background: #fff url('images/top-nav-solid.png');
+                    background-size: contain;
+                    background-position: top center;
+                    bottom: -18%;
+                    height: 2.5rem;
+                    left: 0;
+                    position: absolute;
+                    width: 100vw;
+                    z-index: -1;
+                    background-repeat: repeat no-repeat;
                 }
             }
         }
@@ -295,6 +318,12 @@ HEADER
         }
     }
 
+    .social-container {
+        position: relative;
+        width: 100%;
+        text-align: center;
+        margin-top: 2em;
+    }
    
 }
 

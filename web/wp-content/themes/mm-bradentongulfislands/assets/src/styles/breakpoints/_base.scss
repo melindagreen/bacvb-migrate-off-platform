@@ -606,48 +606,48 @@ HEADER
                 }
             }
 
-            figure {
+            // figure {
 
-                position: relative;
-                transition: all 0.3s ease-in-out;
+            //     position: relative;
+            //     transition: all 0.3s ease-in-out;
 
-                img {
+            //     img {
 
-                    height: auto;
-                    width: 280px;
-                    height: 250px;
-                    object-fit: cover;
-                    transition: all 0.3s ease-in-out;
-                }
+            //         height: auto;
+            //         width: 280px;
+            //         height: 250px;
+            //         object-fit: cover;
+            //         transition: all 0.3s ease-in-out;
+            //     }
 
-                &:hover {
+            //     &:hover {
 
-                    transition: all 0.2s ease-in-out;
+            //         transition: all 0.2s ease-in-out;
 
-                    img {
+            //         img {
 
-                        filter: brightness(0.6);
-                        transition: all 0.2s ease-in-out;
-                    }
-                    figcaption {
+            //             filter: brightness(0.6);
+            //             transition: all 0.2s ease-in-out;
+            //         }
+            //         figcaption {
 
-                        transform: translateY(-10%);
-                        transition: all 0.2s ease-in-out;
-                    }
-                }
+            //             transform: translateY(-10%);
+            //             transition: all 0.2s ease-in-out;
+            //         }
+            //     }
 
-                figcaption {
+            //     figcaption {
 
-                    color: white;
-                    font-weight: 500;
-                    position: absolute;
-                    bottom: 7%;
-                    padding-left: 6%;
-                    max-width: 260px;
-                    word-break: break-word;
-                    transition: all 0.3s ease-in-out;
-                }
-            }
+            //         color: white;
+            //         font-weight: 500;
+            //         position: absolute;
+            //         bottom: 7%;
+            //         padding-left: 6%;
+            //         max-width: 260px;
+            //         word-break: break-word;
+            //         transition: all 0.3s ease-in-out;
+            //     }
+            // }
         }
     }
 
@@ -693,6 +693,7 @@ HEADER
 
                         text-transform: uppercase;
                         font-size: 1.1rem;
+                        font-weight: 400;
                         color: $rust;
                     }
                 }
@@ -717,7 +718,7 @@ HEADER
             a {
 
                 padding-top: 0.7rem;
-                font-weight: 500;
+                font-weight: 700;
                 transition: all 0.3s ease-in-out;
 
                 &:hover {
@@ -741,23 +742,29 @@ HEADER
                     list-style-type: none;
                     position: absolute;
                     top: 0;
+
+                    a {
+                        font-weight: 400;
+                    }
                 }
             }
         }
         .menu-item {
+            position: relative;
             cursor: pointer;
             &.menu-item-has-children::after {
                 content: "";
                 width: 1.5rem;
                 height: 1.5rem;
                 background: {
-                    image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+Cgo8IS0tIExpY2Vuc2U6IENDIEF0dHJpYnV0aW9uLiBNYWRlIGJ5IFBldHJhcyBOYXJnZWxhOiBodHRwczovL2RyaWJiYmxlLmNvbS9uYXJnZWxhIC0tPgo8c3ZnIGhlaWdodD0iODAwcHgiIHdpZHRoPSI4MDBweCIgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgCgkgdmlld0JveD0iMCAwIDUwIDUwIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA1MCA1MCIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxwYXRoIGZpbGw9IiNCMEQ5RTYiIGQ9Ik0xNS41NjMsNDAuODM2YzAuMTk1LDAuMTk1LDAuNDUxLDAuMjkzLDAuNzA3LDAuMjkzczAuNTEyLTAuMDk4LDAuNzA3LTAuMjkzbDE1LTE1CgljMC4zOTEtMC4zOTEsMC4zOTEtMS4wMjMsMC0xLjQxNGwtMTUtMTVjLTAuMzkxLTAuMzkxLTEuMDIzLTAuMzkxLTEuNDE0LDBzLTAuMzkxLDEuMDIzLDAsMS40MTRsMTQuMjkzLDE0LjI5M0wxNS41NjMsMzkuNDIyCglDMTUuMTcyLDM5LjgxMywxNS4xNzIsNDAuNDQ2LDE1LjU2Myw0MC44MzZ6Ii8+Cjwvc3ZnPg==");
-                    size: cover;                
+                    // image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+Cgo8IS0tIExpY2Vuc2U6IENDIEF0dHJpYnV0aW9uLiBNYWRlIGJ5IFBldHJhcyBOYXJnZWxhOiBodHRwczovL2RyaWJiYmxlLmNvbS9uYXJnZWxhIC0tPgo8c3ZnIGhlaWdodD0iODAwcHgiIHdpZHRoPSI4MDBweCIgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgCgkgdmlld0JveD0iMCAwIDUwIDUwIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA1MCA1MCIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxwYXRoIGZpbGw9IiNCMEQ5RTYiIGQ9Ik0xNS41NjMsNDAuODM2YzAuMTk1LDAuMTk1LDAuNDUxLDAuMjkzLDAuNzA3LDAuMjkzczAuNTEyLTAuMDk4LDAuNzA3LTAuMjkzbDE1LTE1CgljMC4zOTEtMC4zOTEsMC4zOTEtMS4wMjMsMC0xLjQxNGwtMTUtMTVjLTAuMzkxLTAuMzkxLTEuMDIzLTAuMzkxLTEuNDE0LDBzLTAuMzkxLDEuMDIzLDAsMS40MTRsMTQuMjkzLDE0LjI5M0wxNS41NjMsMzkuNDIyCglDMTUuMTcyLDM5LjgxMywxNS4xNzIsNDAuNDQ2LDE1LjU2Myw0MC44MzZ6Ii8+Cjwvc3ZnPg==");
+                    image: url('~/images/arrow-teal.png');
+                    size: 80% auto;                
                     repeat: no-repeat;
                 }
-                right: -17%;
-                top: 26%;
-                position: relative;
+                position: absolute;
+                top: 18px;
+                right: 0;
                 transition: all 0.25s ease-in-out;
                 opacity: 1;
             }

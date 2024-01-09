@@ -47,11 +47,23 @@ HEADER
 
     .top-bar--solid {
 
-        background-color: $dk-blue;
+        background-color: $bradenton-teal;
 
         &::after {
 
-            content: unset;
+            &:after {
+                content: " ";
+                background: url('images/top-nav-solid.png');
+                background-size: contain;
+                background-position: center;
+                bottom: -18%;
+                height: 2.5rem;
+                left: 0;
+                position: absolute;
+                width: 100vw;
+                z-index: -1;
+                background-repeat: repeat no-repeat;
+            }
         }
 
         .top-bar__brand {
@@ -85,6 +97,8 @@ HEADER
     .mega-menu__nav-wrap {
         width: 100%;
         display: unset;
+        overflow: auto;
+        padding-bottom: 5em;
     }
 
     .mega-menu__nav {
@@ -93,8 +107,8 @@ HEADER
 
             left: 0;
             position: relative;
-            padding-left: 5%;
-            padding-right: 5%;
+            padding-left: 2%;
+            padding-right: 2%;
             
             ul {
 
@@ -125,20 +139,19 @@ HEADER
         }
     }
     .mega-menu__menu {
-        padding-top: 2rem;
+        padding-top: 1rem;
         .menu-item {
             position: relative;
             a {
                 display: inline-block;
                 margin: 0.1rem 1rem;
-                color: $dk-blue;
+                color: $bradenton-teal;
                 font-size: 1.5rem;
             }
 
             &.menu-item-has-children::after {
 
                 position: absolute;
-                top: 16%;
                 right: 6%;            
                 width: 2rem;
                 height: 2rem;
@@ -152,22 +165,22 @@ HEADER
             background-color: unset;
 
             a {
-
-                color: $dk-blue;
+                color: $bradenton-teal;
             }
 
             &.menu-item-has-children::after {
-
-                transform: rotate(90deg);
+                background-image: url('~/images/arrow-teal.png');
+                transform: rotate(180deg);
                 transition: all 0.2s ease-in-out;
             }
 
             .sub-menu {
-
+                width: 100%;
                 max-height: fit-content;
                 position: relative;
-                padding-left: 18px;
+                padding-left: 18px !important;
                 transition: all 0.2s ease-in-out;
+                box-sizing: border-box;
 
                 .menu-item {
 
@@ -175,7 +188,7 @@ HEADER
 
                         margin: 0;
                         font-size: 1.2rem;
-                        color: $purple;
+                        color: $bradenton-teal;
                     }
                 }
             }
@@ -219,17 +232,18 @@ HEADER
     }
 
     .mega-menu__local-stories {
-
-        display: none;
+        width: 100%;
+        max-width: inherit;
+        .local-stories-nav {
+            .venue {
+                max-width: 200px;
+            }
+        }
     }
     &.open {
 
         .top-bar {
-
-            background: none;
-            &:after {
-                display: none;
-            }
+            background: $bradenton-teal;
         }
 
         .search-wrap {
@@ -240,24 +254,39 @@ HEADER
             height: 90vh !important;
             padding-top: 3rem;
             overflow: auto;
-            background: transparent linear-gradient(180deg, #014067 17%, #014067 18%, white 21%) 0% 0% no-repeat padding-box;
+            // background: transparent linear-gradient(180deg, #014067 17%, #014067 18%, white 21%) 0% 0% no-repeat padding-box;
         }
 
         .mega-menu-shortcuts--mobile {
-
             margin-right: 0;
-            display: unset;
+            display: block;
+            max-width: inherit;
 
             .menu__shortcuts {
-
+                position: relative;
+                background: $bradenton-teal;
                 margin-top: 0;
                 flex-wrap: wrap-reverse;
                 justify-content: center;
                 // flex-direction: column;
                 gap: 0.5rem;
+                padding-bottom: 1em;
 
                 .menu-item {
                     width: auto;
+                }
+                &:after {
+                    content: " ";
+                    background: #fff url('images/top-nav-solid.png');
+                    background-size: contain;
+                    background-position: top center;
+                    bottom: -18%;
+                    height: 2.5rem;
+                    left: 0;
+                    position: absolute;
+                    width: 100vw;
+                    z-index: -1;
+                    background-repeat: repeat no-repeat;
                 }
             }
         }
@@ -276,6 +305,12 @@ HEADER
         }
     }
 
+    .social-container {
+        position: relative;
+        width: 100%;
+        text-align: center;
+        margin-top: 2em;
+    }
    
 }
 
