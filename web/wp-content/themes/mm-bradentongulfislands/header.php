@@ -238,20 +238,17 @@
                         <!-- SOCIAL LINKS -->
                         <div class="social-container">
                             <div class="social-links">
-                                <a aria-label='Facebook' href="">
+                                <a aria-label='Facebook' href="<?php echo C::SOCIAL_LINKS['facebook']['url'] ?>">
                                     <?php echo file_get_contents( get_theme_file_uri() . "/assets/images/icons/social/facebook.svg" ) ?>
                                 </a>
-
-                                <a aria-label='Twitter' href="">
+                                <a aria-label='Pinterest' href="<?php echo C::SOCIAL_LINKS['pinterest']['url'] ?>">
+                                    <?php echo file_get_contents( get_theme_file_uri() . "/assets/images/icons/social/pinterest.svg" ) ?>
+                                </a>
+                                <a aria-label='Twitter' href="<?php echo C::SOCIAL_LINKS['twitter']['url'] ?>">
                                     <?php echo file_get_contents( get_theme_file_uri() . "/assets/images/icons/social/twitter.svg" ) ?>
                                 </a>
-
-                                <a aria-label='Instagram' href="">
+                                <a aria-label='Instagram' href="<?php echo C::SOCIAL_LINKS['instagram']['url'] ?>">
                                     <?php echo file_get_contents( get_theme_file_uri() . "/assets/images/icons/social/instagram.svg" ) ?>
-                                </a>
-
-                                <a aria-label='YouTube' href="">
-                                    <?php echo file_get_contents( get_theme_file_uri() . "/assets/images/icons/social/pinterest.svg" ) ?>
                                 </a>
                         </div>
                     </div>
