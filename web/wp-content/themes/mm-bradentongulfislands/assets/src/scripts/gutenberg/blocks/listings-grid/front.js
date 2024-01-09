@@ -39,7 +39,7 @@
 		switch (postType) {
 			case 'event':
 				description = listing?.excerpt.rendered || '';
-				description = truncateText(description, 50);
+				description = truncateText(description, 60);
 				if (listing?.meta_fields?.eventastic_start_date) {
 
 					let startDate = listing?.meta_fields?.eventastic_start_date;
@@ -82,7 +82,7 @@
 
 			case 'listing':
 				description = listing?.excerpt.rendered || '';
-				description = truncateText(description, 50);
+				description = truncateText(description, 60);
 				date = '';
 
 				let amenities = listing?.meta_fields?.['partnerportal_accomodations-facility-amenities'];

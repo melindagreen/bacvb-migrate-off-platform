@@ -548,22 +548,30 @@ HEADER
             justify-content: center;
 
             .venue {
+                position: relative;
                 width: 30%;
                 display: flex;
                 justify-content: center;
                 flex-direction: column;
                 text-decoration: none;
+                height: 120px;
+                overflow: hidden;
 
                 .logo {
                     max-width: 100%;
                     max-height: 130px;
-                    transition: all 0.35s;
+                    transition: all 0.4s;
+                    transition-delay: 0.4s;
                 }
                 .hover_state {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
                     overflow: hidden;
-                    height: 0;
                     opacity: 0;
-                    transition: all 0.6s;
+                    transform: translateY(100%);
+                    transform-origin: bottom;
+                    transition: opacity 0.4s ease-out, transform 0.3s ease-out 0.2s;
 
                     .featImg {
                         width: 100px;
@@ -587,12 +595,13 @@ HEADER
                 }
                 &:hover {
                     .logo {
-                        max-height: 0;
                         opacity: 0;
+                        transition-delay: 0s;
                     }
                     .hover_state {
                         opacity: 1;
-                        height: 300px;
+                        transform: translateY(0);
+                        transition: opacity 0.5s ease-out 0.15s, transform 0.3s ease-out;
                     }
                 }
             }
