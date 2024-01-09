@@ -3,7 +3,7 @@
 // WordPress dependencies
 import { Button, Flex, PanelBody, PanelRow, SelectControl, TextControl, TextareaControl, } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
-import { __experimentalLinkControl as LinkControl, MediaUpload, MediaUploadCheck, } from '@wordpress/block-editor';
+import { __experimentalLinkControl as LinkControl, MediaUpload, MediaUploadCheck, URLInput } from '@wordpress/block-editor';
 import ServerSideRender from '@wordpress/server-side-render';
 import { useSelect, } from '@wordpress/data';
 
@@ -38,13 +38,18 @@ const Wizard = props => {
       label={__('Quick Links')}
       segments={quickLinks}
       segmentsContent={quickLinks.map(link => <>
-        <LinkControl
+        {/* <LinkControl
           value={link.linkObj}
           onChange={(link) => {
             updateSegment('linkObj', link)
           }}
           settings={[]}
-        />
+        /> */}
+        <URLInput
+        className='quickLinksURLInput'
+        value={link.linkObj}
+        onChange={updateSegment('linkObj', link)}
+      />
 
         <PanelBody title={__('Customize link item')} initialOpen={false}>
           <p className='instructions'>{__('By default, the link will pull in the selected link\'s title, thumbnail, and excerpt. To override these features, manually enter them here.')}</p>
