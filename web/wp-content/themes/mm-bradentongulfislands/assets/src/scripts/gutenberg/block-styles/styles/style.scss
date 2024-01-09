@@ -248,6 +248,22 @@ IMAGES
     }
 }
 
+.is-style-torn-bottom {
+
+    position: relative;
+
+    &::after {
+        content: " ";
+        background: url('images/slideshow-bottom.png') repeat-x center;
+        position: absolute;
+        width: 100%;
+        height: 3.5rem;
+        bottom: -50%;
+        left: 0;
+        z-index: 1;
+      }
+}
+
 .is-style-portrait {
 
     --webkit-mask: url("images/portraitmask1.svg") no-repeat center;

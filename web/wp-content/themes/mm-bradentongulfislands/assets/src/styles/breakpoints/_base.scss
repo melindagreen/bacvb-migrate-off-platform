@@ -870,11 +870,19 @@ MAIN PAGE CONTENT
     a {
         text-decoration: none;
         font-weight: bold;
-        // color: $link-color;
+        color: $rust;
         &:hover {
             text-decoration: none !important;
             color: inherit;
         }
+    }
+}
+
+.has-rust-background-color {
+
+    a {
+
+        color: white;
     }
 }
 

@@ -52,7 +52,12 @@
                 "name": "collage-square",
                 "label": "Collage Square",
                 "isDefault": false
-            } 
+            },
+            {
+                "name": "torn-bottom",
+                "label": "Torn Bottom",
+                "isDefault": false
+            }
         ]
     },
     "core/query": {
