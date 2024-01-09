@@ -243,6 +243,9 @@ HEADER
         .top-bar {
 
             background: none;
+            &:after {
+                display: none;
+            }
         }
 
         .search-wrap {

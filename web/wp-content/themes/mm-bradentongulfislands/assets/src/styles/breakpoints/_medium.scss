@@ -227,6 +227,9 @@ HEADER
         .top-bar {
 
             background: none;
+            &:after {
+                display: none;
+            }
         }
 
         .search-wrap {
@@ -250,7 +253,7 @@ HEADER
                 margin-top: 0;
                 flex-wrap: wrap-reverse;
                 justify-content: center;
-                flex-direction: column;
+                // flex-direction: column;
                 gap: 0.5rem;
 
                 .menu-item {
