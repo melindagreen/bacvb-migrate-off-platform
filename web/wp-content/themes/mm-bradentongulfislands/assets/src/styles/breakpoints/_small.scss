@@ -49,7 +49,7 @@ HEADER
             }
         }
         .search-form {
-            &:hover,&:focus {
+            &.open {
                 width: $formWidthSm;
             }
     

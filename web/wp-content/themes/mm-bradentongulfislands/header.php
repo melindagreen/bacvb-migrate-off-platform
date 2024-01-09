@@ -135,7 +135,10 @@
                     </div>
                 </div>
                 <div class="search-wrap">
-                        <?php get_search_form(); ?>
+                    <?php get_search_form(array(
+                        'echo' => true,
+                        'aria_label' => 'header_search'
+                    )); ?>
                 </div>
                 <div class="top-bar__contents">
                     <?php wp_nav_menu( array(

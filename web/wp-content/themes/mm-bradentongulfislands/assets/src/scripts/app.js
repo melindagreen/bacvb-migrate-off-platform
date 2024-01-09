@@ -69,8 +69,22 @@ if ('serviceWorker' in navigator) {
 	}
 
     // toggle search
-    $('.search-icon').click(function () {
-        $('.search-form').toggleClass('search-form--open');
+    $('.search-form__submit').on("click", function (e) {
+		const rootAria = $(this).attr("id").replace("_submit", "");
+		const parentForm = $(this).parent(`#${rootAria}`);
+		const siblingSearchField = parentForm.find($(`#${rootAria}_input`));
+		console.log(siblingSearchField);
+		console.log(siblingSearchField.val());
+		
+		if ( (siblingSearchField.length) && (siblingSearchField.val() == '') ) {
+			e.preventDefault();
+		}
+		if (parentForm.length) {
+			parentForm.toggleClass('open');
+			if (parentForm.hasClass('open')) {
+				siblingSearchField.focus();
+			}
+		}
     });
 
     /**Toggle Search Functions ***/

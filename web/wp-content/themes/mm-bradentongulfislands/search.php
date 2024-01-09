@@ -18,14 +18,26 @@ get_header(); ?>
 <section class="wp-block-mm-bradentongulfislands-hero is-style-secondary-header">
 	<div class="hero" data-load-type="bg" data-load-onload="true" data-load-lg="/wp-content/uploads/2023/11/694-3304.jpg" data-load-md="/wp-content/uploads/2023/11/694-3304.jpg" data-load-sm="/wp-content/uploads/2023/11/694-3304.jpg" data-load-lg-bg-position="39% 28%" data-load-md-bg-position="39% 28%" style="background-image: url(&quot;/wp-content/uploads/2023/11/694-3304.jpg&quot;); background-position: 39% 28%;"></div>
 	<h1 class="title alt-title">Search</h1>
-	<div class="fade"></div>
 </section>
 
 <div id="searchContainer">
 
 	<div class="results-form-wrap">
 		<p class="showing-text"><?php printf( __( 'Showing results for "%s"', 'mmnino' ), $search_str ) ?></p>
-		<?php get_search_form( true ); ?>
+		<?php get_search_form(array(
+			'echo' => true,
+			'aria_label' => 'page_search'
+		)); ?>
+		<script>
+		// clear any other search forms on the page
+		jQuery(document).ready(function($) {
+			$('.search-form__field').each(function() {
+				if ($(this).attr("id") != "page_search_input") {{
+					$(this).val("");
+				}}
+			});
+		});
+		</script>
 		<p class="count-text"><?php printf( __( 'Found %d results', 'mmnino' ), $search->found_posts ); ?></p>
 	</div>
 
