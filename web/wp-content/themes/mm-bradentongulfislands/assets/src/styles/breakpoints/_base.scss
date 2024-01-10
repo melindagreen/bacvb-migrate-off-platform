@@ -989,7 +989,7 @@ MAIN PAGE CONTENT
         margin-right: auto;
     }
     a {
-        text-decoration: none;
+        text-decoration: underline;
         font-weight: bold;
         color: $rust;
         &:hover {
