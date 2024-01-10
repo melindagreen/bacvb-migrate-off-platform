@@ -7,6 +7,8 @@ namespace MaddenNino\Library;
 class ThemeSetup {
 	function __construct () {
 		add_action( 'after_setup_theme', array( get_called_class(), 'madden_theme_support' ) );
+		add_action( 'init', array( get_called_class(), 'add_custom_rewrites' ) );
+		add_filter( 'pre_post_link', array(get_called_class(), 'modify_post_permalinks'), 10, 2);
 		// add_action('gform_after_submission', array( get_called_class(), 'add_to_newsletter' ), 10, 2);
 	}
 
@@ -31,6 +33,31 @@ class ThemeSetup {
 			'flex-height' => true,
 		) );
 	}
+
+	/**
+	 * Custom rewrite rules for the site
+	 */
+	public static function add_custom_rewrites() {
+
+		global $wp_rewrite;
+		
+        add_rewrite_rule('blog/([^/]+)/?$', 'index.php?post_type=post&name=$matches[1]', 'top');
+
+		// kick it in
+		flush_rewrite_rules();	
+	}
+
+    /**
+     * Prepend /blog/ to post URLs
+     */
+    public static function modify_post_permalinks($permalink, $post) {
+        if ($post->post_type === 'post') {
+			$permalink = 'blog'.$permalink;
+        }
+
+        return $permalink;
+    }
+
 
 	public static function add_to_newsletter() {
 
