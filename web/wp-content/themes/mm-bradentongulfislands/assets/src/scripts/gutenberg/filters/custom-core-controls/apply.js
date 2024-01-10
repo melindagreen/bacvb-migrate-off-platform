@@ -50,6 +50,19 @@ const applyCustomAttrs = (el, block, attributes) => {
                         </a>;
                     }
                 break;
+                case 'lightbox-data':
+                    if (
+                        typeof attributes.lbTitle !== 'undefined'
+                    ) {
+                        ElWrap = ({ content }) => <>
+                            {content}
+                            <div className='lightbox-data lb-content'>
+                                <h1>{attributes.lbTitle}</h1>
+                                <p>{attributes.lbDescription}</p>
+                            </div>
+                        </>;
+                    }
+                break;
                 case 'overlap':
                     if(attributes.overlap !== 0) {
                         

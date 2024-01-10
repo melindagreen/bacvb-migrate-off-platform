@@ -50,6 +50,19 @@ const addCustomAttrs = (settings) => {
                             },
                         };
 
+                        case 'lightbox-data':
+                            settings.attributes = {
+                            ...settings.attributes,
+                            lbTitle: {
+                            type: 'string',
+                            default: '',
+                            },
+                            lbDescription: {
+                            type: 'string',
+                            default: '',
+                            }
+                        };
+
                         case 'overlap':
                             settings.attributes = {
                             ...settings.attributes,

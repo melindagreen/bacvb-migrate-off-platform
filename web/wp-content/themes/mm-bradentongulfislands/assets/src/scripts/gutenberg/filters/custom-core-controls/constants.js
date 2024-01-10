@@ -6,4 +6,5 @@ export const CUSTOMIZE_BLOCKS = {
 	'core/column': [ 'hide-on-breakpoints' ],
 	'core/group': [ 'overlap', 'layer' ],
 	'core/cover': [ 'wraparound-link', ],
+	'core/image': [ 'lightbox-data' ]
 };

@@ -4,7 +4,7 @@
 import { __ } from '@wordpress/i18n';
 import { createHigherOrderComponent, } from '@wordpress/compose';
 import { InspectorControls, BlockControls, JustifyContentControl, __experimentalLinkControl as LinkControl } from '@wordpress/block-editor';
-import { PanelBody, PanelRow, ToolbarButton, SelectControl, Popover, __experimentalNumberControl as NumberControl, ToggleControl } from '@wordpress/components';
+import { PanelBody, PanelRow, ToolbarButton, SelectControl, Popover, __experimentalNumberControl as NumberControl, ToggleControl, TextControl } from '@wordpress/components';
 import { useState } from '@wordpress/element';
 
 // Local Dependencies
@@ -79,6 +79,19 @@ const withCustomControls = createHigherOrderComponent((BlockEdit) => {
                             CUSTOMIZE_BLOCKS[name].map(
                                 (customization) => {
                                     switch (customization) {
+                                        case 'lightbox-data':
+                                            return <PanelBody>
+                                                <TextControl
+                                            label="Lightbox Title"
+                                            onChange={ lbTitle  => setAttributes( { lbTitle } ) }
+                                            value={ attributes.lbTitle }
+                                            />
+                                            <TextControl
+                                                label="Lightbox Description"
+                                                onChange={  lbDescription  => setAttributes( { lbDescription } ) }
+                                                value={ attributes.lbDescription }
+                                            />
+                                        </PanelBody>
                                         case 'hide-on-breakpoints':
                                             return <PanelBody title='Hide on breakpoints' initialOpen={false}>
                                                 <PanelRow>

@@ -87,6 +87,18 @@ if ('serviceWorker' in navigator) {
 		}
     });
 
+
+	/** Lightbox **/
+	function lightBox() {
+
+		// Select elements with class .lightbox-data that are not descendants of elements with classes .wp-lightbox-overlay and .lightbox-image-container
+		$('.lb-content:not(.wp-lightbox-overlay .lightbox-image-container .lb-content)').each(function() {
+			console.log('Tes'); // Log 'Tes' to the console
+			$(this).remove();   // Remove the selected elements
+		});
+
+	}
+
     /**Toggle Search Functions ***/
 	function searchOpen(element) {
 		//Add searchopen class to header
@@ -171,6 +183,9 @@ if ('serviceWorker' in navigator) {
 			$('.sub-menu > .menu-item-has-children').removeClass('open');
 			if (!isOpen) $(this).addClass('open');
 		});
+
+		//LightBox
+		lightBox();
 
 		// Query Block Placeholder Image 
 		insertPlaceholderImage();

@@ -1290,13 +1290,20 @@ Query Loop
 
     .lightbox-image-container {
 
-        top: 30%;
+        overflow: unset;
+        width: 60%;
+        min-width: 300px;
+        height: auto;
+    
 
         .wp-block-image {
 
             img {
     
-                width: 90%;
+                width: inherit;
+                min-width: inherit;
+                height: inherit;
+            
             }
         }
     }
@@ -1307,6 +1314,22 @@ Query Loop
             height: 35px;
             width: 35px;
             fill: $bradenton-teal;
+        }
+    }
+
+    .lightbox-data {
+
+        h1 {
+
+            font-family: $font-title;
+            color: $rust;
+            font-size: 3.25rem;
+            margin-bottom: 0.25rem;
+        }
+        p {
+
+            margin-top: 0;
+            font-size: 1rem;
         }
     }
 }
