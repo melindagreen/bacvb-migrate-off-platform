@@ -8,7 +8,8 @@ class ThemeSetup {
 	function __construct () {
 		add_action( 'after_setup_theme', array( get_called_class(), 'madden_theme_support' ) );
 		add_action( 'init', array( get_called_class(), 'add_custom_rewrites' ) );
-		add_filter( 'pre_post_link', array(get_called_class(), 'modify_post_permalinks'), 10, 2);
+		add_filter( 'pre_post_link', array(get_called_class(), 'prepend_post_permalinks'), 10, 2);
+		add_action( 'template_redirect', array(get_called_class(), 'redirect_single_posts'));
 		// add_action('gform_after_submission', array( get_called_class(), 'add_to_newsletter' ), 10, 2);
 	}
 
@@ -41,22 +42,34 @@ class ThemeSetup {
 
 		global $wp_rewrite;
 		
-        add_rewrite_rule('blog/([^/]+)/?$', 'index.php?post_type=post&name=$matches[1]', 'top');
+        add_rewrite_rule('blogs/([^/]+)/?$', 'index.php?post_type=post&name=$matches[1]', 'top');
 
 		// kick it in
 		flush_rewrite_rules();	
 	}
 
-    /**
+	/**
      * Prepend /blog/ to post URLs
      */
-    public static function modify_post_permalinks($permalink, $post) {
+    public static function prepend_post_permalinks($permalink, $post) {
         if ($post->post_type === 'post') {
-			$permalink = 'blog'.$permalink;
+			// $permalink = str_replace( $post->post_name, 'blogs/' . $post->post_name, $permalink );
+			$permalink = 'blogs'.$permalink;
         }
 
         return $permalink;
     }
+
+	public static function redirect_single_posts() {
+		if ( is_main_query() && is_single() && ( empty( get_post_type() ) || (get_post_type() === 'post') ) ) {
+		  if ( strpos( trim( add_query_arg( array() ), '/' ), 'blogs' ) !== 0 ) {
+			global $post;
+			$url = get_permalink( $post );
+			wp_safe_redirect( $url, 301 );
+			exit(); 
+		  }
+		}
+	  }
 
 
 	public static function add_to_newsletter() {
