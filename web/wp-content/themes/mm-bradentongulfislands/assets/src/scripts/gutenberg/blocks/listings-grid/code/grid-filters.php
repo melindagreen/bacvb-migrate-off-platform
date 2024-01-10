@@ -121,7 +121,10 @@ function render_grid_filter( $attrs, $filter_tax ) {
                 <div class="filterWrap">
                     <?php if( $filter_tax ) { ?>
                     <div class="control control--categories">
+
+                        <?php if(count($filter_terms) > 0 || $attrs['filterType'] != 'categories') { ?>
                         <h4 class="control__title"><?php _e( 'Filters', 'mmnino' ); ?></h4>
+                        <?php } ?>
 
                         <div class="categoriesWrap">
                             <label for="control__input--categories" class="control__label control__label--categories all">
