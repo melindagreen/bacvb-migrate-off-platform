@@ -13,52 +13,43 @@ Wide Slideshow
     padding-left: 6vw;
     padding-right: 6vw;
 
-    #content-dropdown {
-
-      display: flex;
+    #content-dropdown-wrapper{
+      display: table;
       margin-left: auto;
       margin-right: 18vw;
       margin-bottom: 0.5rem;
-      padding: 1.2rem 1.5rem;
-      background-color: #EEEEEE;
       position: relative;
-      color: $bradenton-teal;
-      font-size: 1.1rem;
-      font-weight: bold;
-      border-radius: 8px;
-      border-color: transparent;
-      // curtis (8.jan) hiding these so that the dropdown arrow appears
-      // -moz-appearance:none; 
-      // -webkit-appearance:none; 
-      // appearance:none;
-      
-      &:after {
-        content: " ";
+
+      &:after{
+        background-image: url('~/images/arrow-teal.png');
+        background-repeat: no-repeat;
+        background-size: 80% auto;
+        content: "";
+        height: 1.5rem;
+        margin-top: 18px;
+        opacity: 1;
+        transition: all 0.25s ease-in-out;
+        width: 1.5rem;
+        display: flex;
         position: absolute;
-        right: 0;
-        top: 0;
-        width: auto;
-        height: 100%;
-        aspect-ratio: 1 / 1;
-        background-color: #4B7CB6;
-        border-top-right-radius: 6px;
-        border-bottom-right-radius: 6px;
-        cursor: pointer;
-        pointer-events: none;
+        right: 5px;
+        top: calc(50% - 24px);
       }
-      
-      &:before {
-        content: " ";
-        position: absolute;
-        right: 20px;
-        top: 50%;
-        width: 10px;
-        height: 10px;
-        border-right: 4px solid white;
-        border-bottom: 4px solid white;
-        z-index: 1;
-        transform: translateY(-50%) rotate(45deg);
-        pointer-events: none;
+
+      #content-dropdown {
+        display: flex;
+        padding: 1.2rem 1.5rem;
+        padding-right: 40px;
+        background-color: #EEEEEE;
+        position: relative;
+        color: $bradenton-teal;
+        font-size: 1.1rem;
+        font-weight: bold;
+        border-radius: 8px;
+        border-color: transparent;
+        -moz-appearance:none; 
+        -webkit-appearance:none; 
+        appearance:none;
       }
     }
   }
@@ -67,6 +58,10 @@ Wide Slideshow
 SMALL SCREENS
 *********************/
 @media only screen and (max-width: $screen-sm) {
+  .#{$block-prefix}-content-selector #content-dropdown-wrapper{
+    margin-right: auto;
+  }
+
   .#{$block-prefix}-wideslideshow { 
 
     .swiper-wideslideshow {

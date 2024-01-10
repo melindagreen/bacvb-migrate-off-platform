@@ -8,9 +8,12 @@ const save = (props) => {
 
   return (
     <div className={`wp-block-mm-bradentongulfislands-content-selector` }>
+      <div id="content-dropdown-wrapper">
         <select id="content-dropdown">
         </select>
-        <InnerBlocks.Content/> 
+      </div>
+
+      <InnerBlocks.Content/> 
     </div>);
 }
 
