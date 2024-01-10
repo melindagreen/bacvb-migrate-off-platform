@@ -1251,3 +1251,26 @@ Query Loop
   }
     }
 }
+
+//Sitemap 
+
+.madden-block-sitemap {
+
+    display: flex;
+    padding: 6vw;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 3rem;
+
+    .sitemap-wrapper {
+
+        max-width: 30rem;
+
+        .post-type-title {
+
+            color: $bradenton-teal;
+            font-family: $font-header;
+            font-size: 2rem;
+        }
+    }
+}
