@@ -267,7 +267,7 @@ Wide Slideshow
         padding: 1rem 1.5rem;
 
         .infoblock__link {
-
+          text-decoration: none;
           color: $dk-blue;
           border: 1.5px solid $rust;
           background-color: white;
@@ -496,11 +496,14 @@ SMALL SCREENS
 
         .infoblock__item { 
           width: 100%;
+          margin-top: 5px;
         }
       }
 
       #infoblock-title {
-        font-size: 2.25rem !important;
+        font-size: 2.0rem !important;
+        line-height: 1;
+        margin-bottom: 0;
       }
     }   
   }
