@@ -712,7 +712,7 @@ HEADER
         & > .menu-item {
          
             padding-left: 40px;
-            padding-right: 40px;
+            padding-right: 10px;
             transition: all 0.2s ease-in-out;
 
             a {
@@ -750,7 +750,6 @@ HEADER
             }
         }
         .menu-item {
-            position: relative;
             cursor: pointer;
             &.menu-item-has-children::after {
                 content: "";
@@ -762,11 +761,9 @@ HEADER
                     size: 80% auto;                
                     repeat: no-repeat;
                 }
-                position: absolute;
-                top: 18px;
-                right: 0;
                 transition: all 0.25s ease-in-out;
                 opacity: 1;
+                margin-top: 18px;
             }
         }
     }

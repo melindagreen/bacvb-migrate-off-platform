@@ -47,7 +47,8 @@ HEADER
         & > .menu-item {
             display: flex;
             justify-content: space-between;
-            width: fit-content;
+            width: 100%;
+            max-width: 220px;
             height: 3rem;
             & > a {
                 margin-right: 1rem;
@@ -60,11 +61,12 @@ HEADER
                 &.menu-item-has-children::after {
                     transform: rotate(-90deg);
                     background-image: url('~/images/arrow-white.png');
-                    top: 11px;
+                    background-position: center;
+                    margin-top: 11px;
                 }
             }
             & > .sub-menu {
-                left: 100%;
+                right: 0;
                 width: 20vw;
                 max-width: 270px;
                 // margin-left: 3vw;
@@ -93,8 +95,8 @@ HEADER
                         }
                     
                     a {
-                    color: $bradenton-teal;
-                    text-transform: capitalize;
+                        color: $bradenton-teal;
+                        text-transform: capitalize;
                     }
                     &.menu-item-has-children {
                         &::after {
