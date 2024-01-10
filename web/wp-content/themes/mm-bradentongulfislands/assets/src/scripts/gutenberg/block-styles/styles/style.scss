@@ -1296,6 +1296,7 @@ Query Loop
 .wp-lightbox-overlay {
 
     background-color: $yellow-tan;
+    overflow-y: scroll;
 
     .lightbox-image-container {
 
