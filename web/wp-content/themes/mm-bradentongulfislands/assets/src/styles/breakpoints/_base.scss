@@ -937,10 +937,16 @@ SEARCH FUNCTIONALITY
         }
 
         .search-form__submit {
-            border: 0;
-            background: color('bradenton-teal');
+            border: 1px solid $bradenton-teal;
+            background: $bradenton-teal;
             box-shadow: none;
-            padding: 3px 10px;
+            padding: 5px 15px 2px 10px;
+            border-top-right-radius: 20px;
+            border-bottom-right-radius: 20px;
+            transition: all 0.3s;
+            &:hover {
+                background: $rust;
+            }
         }
     }
 

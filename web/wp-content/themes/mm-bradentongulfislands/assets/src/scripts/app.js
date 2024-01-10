@@ -220,6 +220,7 @@ if ('serviceWorker' in navigator) {
 				});
 		});
 
+
 		// Add new tab target to external links
 		// openLinksNewTab();
 
@@ -524,6 +525,16 @@ if ('serviceWorker' in navigator) {
 					$('body').removeClass('menu-open');
 			}
 		}
+
+		// show hover state on load on mobile view for portrait/cover blocks
+		if(getIsSmall() || $(window).width() < 768) {
+			if ($('.is-style-portrait').length > 0) {
+				$('.is-style-portrait').each(function(){
+					$(this).addClass('mobile');
+				});
+			}
+		}
+
 
         // parallax
         const parallaxEls = $('.has-parallax');
