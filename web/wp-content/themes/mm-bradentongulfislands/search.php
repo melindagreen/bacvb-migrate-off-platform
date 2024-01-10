@@ -42,7 +42,7 @@ get_header(); ?>
 	</div>
 
 	<?php
-	if( have_posts() ) {
+	if( have_posts() && !empty($search_str) ) {
 		while( have_posts() ) {
 			the_post(); ?>
 
