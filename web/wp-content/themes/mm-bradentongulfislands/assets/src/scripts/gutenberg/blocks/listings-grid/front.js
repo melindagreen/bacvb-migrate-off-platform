@@ -1,14 +1,20 @@
 (function ($) {
 	/** FUNCTIONS *********************************************************************/
 
+    function truncateText(description, maxWords) {
+	    // Split the description into an array of words
+	    let words = description.split(' ');
 
-    function truncateText(description, maxLength) {
-		if (description.length > maxLength) {
-			return description.substring(0, maxLength) + "...";
-		} else {
-			return description;
-		}
-    }
+	    // Check if the number of words is greater than the specified maximum
+	    if (words.length > maxWords) {
+	        // Join only the first 'maxWords' words and append ellipses
+	        return words.slice(0, maxWords).join(' ') + "...";
+	    } else {
+	        // If the number of words is within the limit, return the original description
+	        return description;
+	    }
+	}
+
 
 	/**
 	 * Generate an HTML string for the given listing object
@@ -39,7 +45,7 @@
 		switch (postType) {
 			case 'event':
 				description = listing?.excerpt.rendered || '';
-				description = truncateText(description, 60);
+				description = truncateText(description, 15);
 				if (listing?.meta_fields?.eventastic_start_date) {
 
 					let startDate = listing?.meta_fields?.eventastic_start_date;
@@ -82,7 +88,7 @@
 
 			case 'listing':
 				description = listing?.excerpt.rendered || '';
-				description = truncateText(description, 60);
+				description = truncateText(description, 15);
 				date = '';
 
 				let amenities = listing?.meta_fields?.['partnerportal_accomodations-facility-amenities'];
