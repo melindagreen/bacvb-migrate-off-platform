@@ -11,6 +11,11 @@ TEXT
 *********************/
 
 //headings
+.wp-block-heading {
+
+    color: $bradenton-teal;
+}
+
 .is-style-brushstroke {
 
     background: url('images/brushstroke.png');
@@ -1271,6 +1276,37 @@ Query Loop
             color: $bradenton-teal;
             font-family: $font-header;
             font-size: 2rem;
+        }
+    }
+}
+
+
+
+// Lightbox 
+
+.wp-lightbox-overlay {
+
+    background-color: $yellow-tan;
+
+    .lightbox-image-container {
+
+        top: 30%;
+
+        .wp-block-image {
+
+            img {
+    
+                width: 90%;
+            }
+        }
+    }
+
+    .close-button {
+        svg {
+
+            height: 35px;
+            width: 35px;
+            fill: $bradenton-teal;
         }
     }
 }

@@ -36,10 +36,10 @@ p {
     li {
         list-style: none;
         a {
-            text-decoration: none;
+            text-decoration: underline;
             color: inherit;
             &:hover {
-                text-decoration: underline;
+                text-decoration: none;
             }
         }
     }
