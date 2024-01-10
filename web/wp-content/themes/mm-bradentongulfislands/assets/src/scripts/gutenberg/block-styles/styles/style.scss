@@ -1110,9 +1110,10 @@ CUSTOM BLOCKS
 
     @media only screen and (max-width: 768px) {
     .title {
-
-        font-size: 6.5vw;
+        width: 90%;
+        font-size: 6vw;
         line-height: 9.0vw;
+        max-width: inherit;
 
         span {
 

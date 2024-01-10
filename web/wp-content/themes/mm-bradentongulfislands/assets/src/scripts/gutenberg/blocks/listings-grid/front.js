@@ -225,10 +225,15 @@
 		console.log(filters);
 
 		// get the page back up where it needs to be for viewing (it's slightly less jarring to do this pre-ajax call)
+		// if (adjustScroll) {
+		// 	$("html, body").animate({
+		// 		scrollTop: ($('.grid-body').offset().top - $(".header").height() - $(".grid-body").height())
+		// 	}, "100");
+		// }
 		if (adjustScroll) {
 			$("html, body").animate({
-				scrollTop: ($('.grid-body').offset().top - $(".header").height() - $(".grid-body").height())
-			}, "100");
+				scrollTop: $('.grid-body').offset().top
+			}, "10");
 		}
 
 		$.get(url)
