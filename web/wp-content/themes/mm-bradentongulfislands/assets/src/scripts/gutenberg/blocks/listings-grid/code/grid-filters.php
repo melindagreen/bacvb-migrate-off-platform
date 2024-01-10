@@ -108,7 +108,7 @@ function render_grid_filter( $attrs, $filter_tax ) {
                         id="control__input--search"
                         class="control__input"
                         placeholder="Search By Name"
-                        value="<?php echo $_GET['listings_search'] ?: ''; ?>"
+                        value="<?php echo isset($_GET['listings_search']) ? $_GET['listings_search'] : ''; ?>"
                     />
                     <!-- <i class="fas fa-search submit-filter"></i> -->
                     <button class="submit-filter"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/search.png" alt="Search icon"></button>

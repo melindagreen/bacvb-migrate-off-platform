@@ -554,7 +554,7 @@ HEADER
                 justify-content: center;
                 flex-direction: column;
                 text-decoration: none;
-                height: 120px;
+                height: 150px;
                 overflow: hidden;
 
                 .logo {
@@ -989,7 +989,7 @@ MAIN PAGE CONTENT
         margin-right: auto;
     }
     a {
-        text-decoration: none;
+        text-decoration: underline;
         font-weight: bold;
         color: $rust;
         &:hover {

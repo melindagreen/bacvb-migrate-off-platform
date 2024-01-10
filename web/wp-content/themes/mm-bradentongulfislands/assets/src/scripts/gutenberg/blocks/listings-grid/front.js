@@ -14,6 +14,7 @@
 	        return description;
 	    }
 	}
+	const PAGE_LENGTH = 12;
 
 
 	/**
@@ -40,37 +41,39 @@
 
 		let thumbUrl = newThumb || listing?.yoast_head_json?.og_image?.[0]?.url || placeHolder;
 
-		// console.log(listing);
-
 		switch (postType) {
 			case 'event':
 				description = listing?.excerpt.rendered || '';
 				description = truncateText(description, 15);
 				if (listing?.meta_fields?.eventastic_start_date) {
 
-					let startDate = listing?.meta_fields?.eventastic_start_date;
-					let endDate = listing?.meta_fields?.eventastic_end_date;
+					let startDate = listing?.startDate;
+					let endDate = listing?.endDate;
 
 					// Start day Format
-					const startdateObject = new Date(startDate);
-					let startDay = startdateObject.getDate() + 1;
+					let startdateObject = new Date(startDate);
+					startdateObject = new Date( startdateObject.getTime() - startdateObject.getTimezoneOffset() * -60000 );
+					// let startDay = startdateObject.getDate() + 1;
+					let startDay = startdateObject.getDate();
 					// if date is the first day of the month
-					if (startDay > new Date(startdateObject.getFullYear(), startdateObject.getMonth() + 1, 0).getDate()) {
-					    startDay = 1;
-					    startdateObject.setMonth(startdateObject.getMonth() + 1);
-					}
+					// if (startDay > new Date(startdateObject.getFullYear(), startdateObject.getMonth() + 1, 0).getDate()) {
+					//     startDay = 1;
+					//     startdateObject.setMonth(startdateObject.getMonth() + 1);
+					// }
 					const startMonth = new Intl.DateTimeFormat('en-US', { month: 'short' }).format(startdateObject);
 
 					startDate = `${startMonth} ${startDay}`;
 
 					// End day Format
-					const enddateObject = new Date(endDate);
-					let endDay = enddateObject.getDate() + 1;
+					let enddateObject = new Date(endDate);
+					enddateObject = new Date( enddateObject.getTime() - enddateObject.getTimezoneOffset() * -60000 );
+					// let endDay = enddateObject.getDate() + 1;
+					let endDay = enddateObject.getDate();
 					// if date is the first day of the month
-					if (endDay > new Date(enddateObject.getFullYear(), enddateObject.getMonth() + 1, 0).getDate()) {
-					    endDay = 1;
-					    enddateObject.setMonth(enddateObject.getMonth() + 1);
-					}
+					// if (endDay > new Date(enddateObject.getFullYear(), enddateObject.getMonth() + 1, 0).getDate()) {
+					//     endDay = 1;
+					//     enddateObject.setMonth(enddateObject.getMonth() + 1);
+					// }
 					const endMonth = new Intl.DateTimeFormat('en-US', { month: 'short' }).format(enddateObject);
 
 					endDate = `${endMonth} ${endDay}`;
@@ -185,13 +188,147 @@
 			);
 		}
 	}
+	/*
+	 * Event functions
+	 *
+	 */
+	async function loadAllInstances() {
+		var start = jQuery('input[name="eventastic_start_date"]').val();
+		var end = jQuery('input[name="eventastic_end_date"]').val();
+		var eventInstanceQuery = {
+			action: 'get_events_date_ordered'
+		}
+		if(start) eventInstanceQuery.start_date = start;
+		if(end) eventInstanceQuery.end_date = end;
+		let instances;
+		await $.post('/wp-admin/admin-ajax.php', eventInstanceQuery, async function(response) {
+			var instanceData = JSON.parse( response );
+			instances = await processInstances(instanceData);
+		});
+		return instances;
+	}
+	function isRecurring(event) {
+		const re1 = event?.meta_fields?.eventastic_recurring_repeat;
+		const re2 = event?.meta_fields?.eventastic_recurring_days;
+		if(
+			(re1 && re1.length > 0 && re1[0] !== '') ||
+			(re2 && re2.length > 0 && re2[0] !== '')
+		) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	async function processInstances(instanceData) {
+		await instanceData;
+		var instances = {};
+		var count = 0;
+		var end = jQuery('input[name="eventastic_end_date"]').val();
+		for (const [_, value] of Object.entries(instanceData.days)) {
+			const date = value.meta.date;
+			if(end && date > end) break; //if end date is set, skip any dates after it
+			value.events.forEach(event => {
+				instances[count] = {
+					id: event,
+					date: date
+				}
+				count++;
+			});
+			if(count > 692) break; //Gotta stop somewhere... This allows roughly 500+ events to be displayed/searched
+
+		}
+		return instances;
+	}
+	async function loadAllEvents() {
+		// Update the URL to use the new custom endpoint
+		var endpoint = "wp/v2/event";
+		var order = "asc";
+		var orderBy = "date";
+
+		var url = `/wp-json/${endpoint}?order=${order}&orderby=${orderBy}`;
+		var filters = $(".filters").serializeArray();
+		if (filters) {
+			filters.forEach(function (filter) {
+				if (!!filter.value) {
+					url += "&" + filter.name + "=" + filter.value;
+				}
+			});
+		}
+
+		return $.get(url)
+			.done(function (events, status, xhr) {
+				return events.slice(0, 100); // slice the events array to only include the first 100 events
+			})
+			.fail(function (err) {
+				console.error(err);
+			});
+	}
+	async function reconcileEvents(events, instances) {
+		await Promise.all([events, instances]);
+		events = Object.values(events);
+		instances = Object.values(instances);
+		//filter instance object as array to check if events contains an event with the same id as the instance
+		let filtered = instances.filter(i => {
+			return events.some(e => e.id === i.id);
+		});
+
+		//map over filtered instances and add the event data to each instance
+		let singleEvents = [];
+		let reconciled = filtered.map(i => {
+			let event = {...events.find(e => e.id === i.id)};
+			const recurs = isRecurring(event);
+			event.endDate = recurs ? i.date : event?.meta_fields?.eventastic_end_date;
+			event.startDate = recurs ? i.date : event?.meta_fields?.eventastic_start_date;
+			event.recurring = recurs;
+			return event;
+		});
+
+		//filter so that single events only have one instance!
+		let pruned = reconciled.filter(i => {
+			if(i.recurring) {
+				return true;
+			} else {
+				if(singleEvents.includes(i.id)) {
+					return false; //single event has already appeared
+				} else {
+					singleEvents.push(i.id); //first appearance of single event
+					return true;
+				}
+			}
+		});
+
+		
+		return pruned;
+	}
+	async function getEvents(page) {
+		//Run both queries simultaneously
+		const events = await loadAllEvents(); //Return all events that match all filters
+		const instances = await loadAllInstances(); //Returns all instances that match dates
+		const result = await reconcileEvents(events, instances);
+		//use page and PAGE_LENGTH to slice result
+		const start = (page - 1) * PAGE_LENGTH;
+		const end = start + PAGE_LENGTH;
+		const slicedResult = result.slice(start, end);
+
+		return {
+			total: result.length,
+			events: slicedResult,
+			first: start + 1,
+			last: end
+		}
+
+	}
+
+	/*
+	 * End event functions
+	 */
 
 	/**
 	 * Jump to the requested page when pagination buttons are clicked
 	 * @param {Number} page              The page to load
 	 * @param {Boolean} adjustScroll     Scroll the page to the top of the grid?
 	 */
-	function loadPage(page = 1, adjustScroll = false) {
+	async function loadPage(page = 1, adjustScroll = false) {
 		// clear existing listings and show loader
 		$('.listing').remove();
 		$(".loading, .pagination__loading").addClass("show");
@@ -200,69 +337,103 @@
 		var postType = $(".wp-block-mm-bradentongulfislands-listings-grid").attr("data-postType");
 		var order = ['posts'].includes(postType) ? 'desc' : 'asc';
 		var orderBy = ['listing',].includes(postType) ? 'title' : 'date';
-		var url = `/wp-json/wp/v2/${postType}?order=${order}&orderby=${orderBy}&page=${page}&per_page=${perPage}&include_child_terms=true&`;
 
-		// add filters
-		var filters = $(".filters")
-			.serializeArray()
-			.reduce(function (prev, current) {
-				if (!!current.value) {
-					if (prev[current.name]) {
-						prev[current.name].push(encodeURIComponent(current.value));
-					} else prev[current.name] = [current.value];
-				}
-				return prev;
-			}, {});
+		if(postType == 'event'){
+			// get the page back up where it needs to be for viewing (it's slightly less jarring to do this pre-ajax call)
+			if (adjustScroll) {
+				$("html, body").animate({
+					scrollTop: $('.grid-body').offset().top
+				}, "10");
+			}
+
+			const {total, events} = await getEvents(page);
+			var totalPages = parseInt(total / PAGE_LENGTH + 1);
+			$(".count__page-total").text(total);
+			$(".pagination__button--last").attr("data-page", totalPages);
+
+			// update pagination
+			updatePagination(page);
+			$(".counts").addClass("show");
+
+			// load listings
+			$(".loading, .pagination__loading").removeClass("show");
+
+			if(events.length > 0) {
+				$('.listings-container--grid').empty();
+				$('.listings-container--grid')
+					.append(events.map(listing => templateListing(listing, postType)));
+			}
+			else {
+				$('.listings-container--grid').empty();
+				$('.listings-container--grid').addClass('listings-container--no-listings')
+				.append(`<h2>No ${postType}s available at this time</h2>`);
+			}
+
+		} else {
+			var url = `/wp-json/wp/v2/${postType}?order=${order}&orderby=${orderBy}&page=${page}&per_page=${perPage}&include_child_terms=true&`;
+
+			// add filters
+			var filters = $(".filters")
+				.serializeArray()
+				.reduce(function (prev, current) {
+					if (!!current.value) {
+						if (prev[current.name]) {
+							prev[current.name].push(encodeURIComponent(current.value));
+						} else prev[current.name] = [current.value];
+					}
+					return prev;
+				}, {});
 
 
-		url += Object.keys(filters)
-			.map(function (key) {
-				return `${key}=${filters[key].join(',')}`
-			})
-			.join('&');
+			url += Object.keys(filters)
+				.map(function (key) {
+					return `${key}=${filters[key].join(',')}`
+				})
+				.join('&');
 
-		console.log(url);
-		console.log(filters);
+			// get the page back up where it needs to be for viewing (it's slightly less jarring to do this pre-ajax call)
+			// if (adjustScroll) {
+			// 	$("html, body").animate({
+			// 		scrollTop: ($('.grid-body').offset().top - $(".header").height() - $(".grid-body").height())
+			// 	}, "100");
+			// }
+			if (adjustScroll) {
+				$("html, body").animate({
+					scrollTop: $('.grid-body').offset().top
+				}, "10");
+			}
+			$.get(url)
+				.done(function (listings, status, xhr) {
 
-		// get the page back up where it needs to be for viewing (it's slightly less jarring to do this pre-ajax call)
-		if (adjustScroll) {
-			$("html, body").animate({
-				scrollTop: ($('.grid-body').offset().top - $(".header").height() - $(".grid-body").height())
-			}, "100");
-		}
+					// update totals
+					var total = parseInt(xhr.getResponseHeader("X-WP-Total"));
+					var totalPages = parseInt(xhr.getResponseHeader("X-WP-TotalPages"));
+					$(".count__page-total").text(total);
+					$(".pagination__button--last").attr("data-page", totalPages);
 
-		$.get(url)
-			.done(function (listings, status, xhr) {
+					// update pagination
+					updatePagination(page);
+					$(".counts").addClass("show");
 
-				// update totals
-				var total = parseInt(xhr.getResponseHeader("X-WP-Total"));
-				var totalPages = parseInt(xhr.getResponseHeader("X-WP-TotalPages"));
-				$(".count__page-total").text(total);
-				$(".pagination__button--last").attr("data-page", totalPages);
+					// load listings
+					$(".loading, .pagination__loading").removeClass("show");
 
-				// update pagination
-				updatePagination(page);
-				$(".counts").addClass("show");
+					listings = listings.filter(element => {
+						return true; 
+					});
 
-				// load listings
-				$(".loading, .pagination__loading").removeClass("show");
-
-				listings = listings.filter(element => {
-					return true; 
+					if(listings.length > 0) {
+						$('.listings-container--grid').empty();
+						$('.listings-container--grid')
+							.append(listings.map(listing => templateListing(listing, postType)));
+					}
+					else {
+						$('.listings-container--grid').empty();
+						$('.listings-container--grid').addClass('listings-container--no-listings')
+						.append(`<h2>No ${postType}s available at this time</h2>`);
+					}
 				});
-
-				if(listings.length > 0) {
-					// console.log(listings.map(listing => templateListing(listing, postType)));
-					$('.listings-container--grid').empty();
-					$('.listings-container--grid')
-						.append(listings.map(listing => templateListing(listing, postType)));
-				}
-				else {
-					$('.listings-container--grid').empty();
-					$('.listings-container--grid').addClass('listings-container--no-listings')
-					.append(`<h2>No ${postType}s available at this time</h2>`);
-				}
-			});
+		}
 	}
 
 	/**
@@ -286,23 +457,25 @@
 	}
 
 	/** LISTENERS *********************************************************************/
-	$(document).ready(function () {
+	$(document).ready(async function () {
 		perPage = parseInt($('#listings-grid').attr('data-perpage'));
-		loadPage();
+		await loadPage();
 		
-		var dateFormat = "mm/dd/yy",
-		// var dateFormat = "yy-mm-dd",
-		from = $( "#control__input--start-date" ).datepicker({
+		// var dateFormat = "mm/dd/yy";
+		var dateFormat = "yy-mm-dd";
+		let from = $( "#control__input--start-date" ).datepicker({
 			defaultDate: "+1w",
-			changeMonth: true
+			changeMonth: true,
+			dateFormat
 	    }).on( "change", function() {
 			from.datepicker( "option", getDate( this ) );
 			loadPage();
 	    });
 
-		to = $( "#control__input--end-date" ).datepicker({
+		let to = $( "#control__input--end-date" ).datepicker({
 			defaultDate: "+1w",
-			changeMonth: true
+			changeMonth: true,
+			dateFormat
 	    }).on( "change", function() {
 			to.datepicker( "option", getDate( this ) );
 			loadPage();
@@ -315,7 +488,6 @@
 	      } catch( error ) {
 	        date = null;
 	      }
-		  console.log(element.value);
 	      return element.value;
 	    }
 

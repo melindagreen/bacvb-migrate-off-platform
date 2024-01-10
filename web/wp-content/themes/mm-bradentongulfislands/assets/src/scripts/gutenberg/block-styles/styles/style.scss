@@ -1110,9 +1110,10 @@ CUSTOM BLOCKS
 
     @media only screen and (max-width: 768px) {
     .title {
-
-        font-size: 6.5vw;
+        width: 90%;
+        font-size: 6vw;
         line-height: 9.0vw;
+        max-width: inherit;
 
         span {
 
@@ -1183,6 +1184,8 @@ Query Loop
     padding: 0;
     position: relative;
     width: 22vw!important;
+    display: flex;
+    flex-direction: column;
 
   &__content {
 
@@ -1219,6 +1222,7 @@ Query Loop
             height: 30px;
             width: 30px;
             transition: 0.25s all ease-in-out;
+            right: 35px;
             
         }
     }
@@ -1231,6 +1235,11 @@ Query Loop
         color: $dk-blue;
         text-transform: uppercase;
         max-width: 270px;
+
+        a{
+            color: $dk-blue;
+            text-decoration: none;
+        }
     }
   }
  

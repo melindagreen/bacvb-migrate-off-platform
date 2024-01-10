@@ -154,7 +154,20 @@ if ('serviceWorker' in navigator) {
 		}
 	}
 
+	// truncate long body of text
+	function truncateText(description, maxWords) {
+	    // Split the description into an array of words
+	    let words = description.split(' ');
 
+	    // Check if the number of words is greater than the specified maximum
+	    if (words.length > maxWords) {
+	        // Join only the first 'maxWords' words and append ellipses
+	        return words.slice(0, maxWords).join(' ') + "...";
+	    } else {
+	        // If the number of words is within the limit, return the original description
+	        return description;
+	    }
+	}
 
     /*** THEME FRAMEWORK FUNCTIONS *************************************************/
 
@@ -550,6 +563,21 @@ if ('serviceWorker' in navigator) {
 			}
 		}
 
+
+		// truncate text on mobile for the portrait block in blog/trip inspiration page 
+		if(getIsSmall() || $(window).width() < 768) {
+		    if ($('.wp-block-image figcaption').length > 0) {
+		        $('.wp-block-image figcaption').each(function () {
+		            // Get the text content of figcaption
+		            let originalText = $(this).text();
+
+		            // Truncate the text using truncateText function
+		            let truncatedText = truncateText(originalText, 6);
+
+		            $(this).text(truncatedText);
+		        });
+		    }
+		}
 
         // parallax
         const parallaxEls = $('.has-parallax');
