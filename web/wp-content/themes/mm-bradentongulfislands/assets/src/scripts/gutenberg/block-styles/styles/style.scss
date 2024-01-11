@@ -1297,6 +1297,7 @@ Query Loop
 
     background-color: $yellow-tan;
     overflow-y: scroll;
+    pointer-events: none;
 
     .lightbox-image-container {
 
@@ -1304,9 +1305,14 @@ Query Loop
         width: 60%;
         min-width: 300px;
         height: auto;
-    
+        
+        .wp-block-image:first-child {
+
+            display: none;
+        }
 
         .wp-block-image {
+            // display: none;
 
             img {
     
@@ -1318,7 +1324,16 @@ Query Loop
         }
     }
 
+    .scrim {
+
+        z-index: 0;
+        pointer-events: auto;
+    }
+
     .close-button {
+
+        pointer-events: auto;
+
         svg {
 
             height: 35px;
@@ -1333,13 +1348,64 @@ Query Loop
 
             font-family: $font-title;
             color: $rust;
-            font-size: 3.25rem;
+            font-size: clamp(3.5rem, 4.5vw, 6rem);
             margin-bottom: 0.25rem;
         }
         p {
 
             margin-top: 0;
-            font-size: 1rem;
+            font-size: clamp(1rem, 1.25vw, 3rem);
+        }
+    }
+
+    .lightbox-imagecarousel {
+
+        max-width: 100%;
+        min-width: auto;
+        min-height: 400px;
+        height: 65vh;
+        overflow: hidden;
+        border-radius: 5px;
+        pointer-events: auto;
+        cursor: pointer;
+        z-index: 2;
+
+        .swiper-slide {
+            text-align: center;
+
+            img {
+
+                object-fit: cover;
+            }
+        }
+
+        .swiper-wrapper {
+
+            position: relative;
+        }
+
+        .swiper-button-next-imagecarousel, .swiper-button-prev-imagecarousel {
+            background: $rust;
+            width:50px;
+            height: 50px;
+            opacity: 0.75;
+            transition: all 0.3s;
+            position: absolute;
+
+            &:after {
+                color: #fff;
+                font-size: 1.5rem;
+            }
+
+            &:hover {
+                opacity: 1;
+            }
+        }
+        .swiper-button-next-imagecarousel {
+            right: 0;
+        }
+        .swiper-button-prev-imagecarousel {
+            left: 0;
         }
     }
 }

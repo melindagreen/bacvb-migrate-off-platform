@@ -56,10 +56,23 @@ const applyCustomAttrs = (el, block, attributes) => {
                     ) {
                         ElWrap = ({ content }) => <>
                             {content}
+                            
+                            { attributes.lbImageIds.length > 0 ? <div className={`lightbox-imagecarousel swiper-slide-imagecarousel swiper` }>
+                            <div className={`swiper-wrapper`}>
+                            {attributes.lbImageIds !== undefined ? attributes.lbImageIds.map((id, index)=>{
+                                    return(<div className="wp-block-image swiper-slide"><img src="/wp-content/themes/mm-midland/assets/images/pixel.png" alt={attributes.lbImageAlts[index] !== '' ? attributes.lbImageAlts[index] : 'Carousel Image'} data-load-type="img" data-load-all={attributes.lbImageUrls[index]} /></div>);
+                                }) : null}
+                            </div>
+                            <div className='swiper-pagination-imagecarousel'></div>
+                            <div className='swiper-button-prev-imagecarousel'></div>
+                            <div className='swiper-button-next-imagecarousel'></div>
+                            </div>
+                            : ''}
+
                             <div className='lightbox-data lb-content'>
                                 <h1>{attributes.lbTitle}</h1>
                                 <p>{attributes.lbDescription}</p>
-                            </div>
+                            </div> 
                         </>;
                     }
                 break;

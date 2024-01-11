@@ -2,9 +2,9 @@
 
 // WordPress Dependencies
 import { __ } from '@wordpress/i18n';
-import { createHigherOrderComponent, } from '@wordpress/compose';
-import { InspectorControls, BlockControls, JustifyContentControl, __experimentalLinkControl as LinkControl } from '@wordpress/block-editor';
-import { PanelBody, PanelRow, ToolbarButton, SelectControl, Popover, __experimentalNumberControl as NumberControl, ToggleControl, TextControl } from '@wordpress/components';
+import { createHigherOrderComponent } from '@wordpress/compose';
+import { InspectorControls, BlockControls, JustifyContentControl, __experimentalLinkControl as LinkControl, MediaUpload, MediaUploadCheck } from '@wordpress/block-editor';
+import { PanelBody, PanelRow, ToolbarButton, SelectControl, Popover, __experimentalNumberControl as NumberControl, ToggleControl, TextControl, Button } from '@wordpress/components';
 import { useState } from '@wordpress/element';
 
 // Local Dependencies
@@ -91,6 +91,29 @@ const withCustomControls = createHigherOrderComponent((BlockEdit) => {
                                                 onChange={  lbDescription  => setAttributes( { lbDescription } ) }
                                                 value={ attributes.lbDescription }
                                             />
+                                            <MediaUploadCheck>
+                                            <MediaUpload
+                                                title={'Choose Images'}
+                                                allowedTypes={'image'}
+                                                gallery
+                                                multiple="add"
+                                                onSelect={
+                                                    (images) => 
+                                                        setAttributes({
+                                                            lbImageIds: images.map(image => image.id),
+                                                            lbImageUrls: images.map(image => image.url),
+                                                            lbImageAlts: images.map(image => image.alt),
+                                                        })
+                                                    
+                                                }
+                                                value={attributes.lbImageIds}
+                                                render={({ open }) => (
+                                                    <Button onClick={open} icon="format-gallery">
+                                                        {'Choose Images'}
+                                                    </Button>
+                                                )}
+                                            />
+                                        </MediaUploadCheck>
                                         </PanelBody>
                                         case 'hide-on-breakpoints':
                                             return <PanelBody title='Hide on breakpoints' initialOpen={false}>

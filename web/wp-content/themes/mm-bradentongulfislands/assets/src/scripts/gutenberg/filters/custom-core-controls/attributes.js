@@ -60,7 +60,20 @@ const addCustomAttrs = (settings) => {
                             lbDescription: {
                             type: 'string',
                             default: '',
+                            },
+                            lbImageIds: {
+                                type: 'array',
+                                default: []
+                              },
+                            lbImageUrls: {
+                                type: 'array',
+                                default: []
+                              },
+                            lbImageAlts: {
+                                type: 'array',
+                                default: []
                             }
+
                         };
 
                         case 'overlap':

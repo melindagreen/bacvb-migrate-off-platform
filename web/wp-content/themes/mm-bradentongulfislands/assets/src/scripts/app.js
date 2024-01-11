@@ -91,10 +91,9 @@ if ('serviceWorker' in navigator) {
 	/** Lightbox **/
 	function lightBox() {
 
-		// Select elements with class .lightbox-data that are not descendants of elements with classes .wp-lightbox-overlay and .lightbox-image-container
-		$('.lb-content:not(.wp-lightbox-overlay .lightbox-image-container .lb-content)').each(function() {
-			console.log('Tes'); // Log 'Tes' to the console
-			$(this).remove();   // Remove the selected elements
+		$('.lb-content:not(.wp-lightbox-overlay .lightbox-image-container .lb-content), .lightbox-imagecarousel:not(.wp-lightbox-overlay .lightbox-image-container .lightbox-imagecarousel').each(function() {
+
+			$(this).remove();  
 		});
 
 	}
@@ -198,6 +197,19 @@ if ('serviceWorker' in navigator) {
 		});
 
 		//LightBox
+
+		const swiper = new Swiper('.lightbox-imagecarousel', {
+			loop: true,
+			autoplay: {
+			delay: 5500,
+			disableOnInteraction: true,
+			},
+			navigation: {
+			nextEl: ".swiper-button-next-imagecarousel",
+			prevEl: ".swiper-button-prev-imagecarousel"
+			}
+		  });
+
 		lightBox();
 
 		// Query Block Placeholder Image 
@@ -604,5 +616,7 @@ if ('serviceWorker' in navigator) {
 
         themeOnResize();
         $(window).resize(themeOnResize);
+
+
     });
 })(jQuery);
