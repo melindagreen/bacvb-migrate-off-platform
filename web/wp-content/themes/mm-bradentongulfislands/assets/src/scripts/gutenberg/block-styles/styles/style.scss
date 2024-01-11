@@ -1298,16 +1298,19 @@ Query Loop
 
 // Lightbox 
 
-.wp-lightbox-overlay {
-
-    background-color: $yellow-tan;
-    overflow-y: scroll;
-    pointer-events: none;
+.wp-lightbox-container {
 
     .lightbox-trigger {
 
         top: 11px !important;
     }
+}
+
+.wp-lightbox-overlay {
+
+    background-color: $yellow-tan;
+    overflow-y: scroll;
+    pointer-events: none;
 
     .lightbox-image-container {
 
