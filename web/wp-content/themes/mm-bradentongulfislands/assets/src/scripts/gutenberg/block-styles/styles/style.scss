@@ -252,7 +252,9 @@ IMAGES
         }
     }
 }
-
+.wp-block-cover.is-style-torn-bottom{
+    z-index: 0;
+}
 .is-style-torn-bottom {
 
     position: relative;
@@ -295,6 +297,10 @@ IMAGES
                 margin: 0;
                 height: 0;
             }
+        }
+
+        .wp-block-button__link {
+            text-decoration: none;
         }
     }
 
@@ -926,6 +932,7 @@ BUTTONS
         background-color: #B0D9E6;
         padding-left: 0.7rem;
         padding-right: 0.7rem;
+        text-decoration: none;
 
         &:hover {
 
@@ -938,10 +945,8 @@ BUTTONS
 
 .is-style-round-arrow-button, .is-style-round-arrow-button-blue {
 
-      
-
       .wp-block-button__link {
-
+        text-decoration: none;
         background-color: transparent;
         border: none;
         font-size: 1.15rem;

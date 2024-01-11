@@ -1089,12 +1089,19 @@ FOOTER
         color: white;
         border-radius: 29px;
         transition: all 0.3s ease-in-out;
+        position: relative;
+
+        > label{
+            flex-grow: 1;
+        }
 
         &__field {
             background-color: transparent;
             border: none;
             margin-bottom: 3px;
-            width: ($formWidth - 40px);
+            // width: ($formWidth - 40px);
+            padding-left: 30px;
+            width: 100%;
             color: $white;
             font-family: var(--wp--preset--font-family--body);
             -webkit-appearance: none;
@@ -1127,22 +1134,24 @@ FOOTER
             background-color: transparent;
             border: none;
             margin-right: auto;
-            position: relative;
-            left: 2.5px;
-            top: 1.5px
-
+            // position: relative;
+            // left: 2.5px;
+            // top: 1.5px
+            position: absolute;
+            margin-bottom: -2px;
+            left: 5px;
         }
     }
 
-    @media screen and (-webkit-min-device-pixel-ratio: 2) {
+    // @media screen and (-webkit-min-device-pixel-ratio: 2) {
     
-        .search-form {
+    //     .search-form {
           
-            &__submit {
-                left: 16.5px;
-            }
-        }
-      }
+    //         &__submit {
+    //             left: 16.5px;
+    //         }
+    //     }
+    //   }
 
     .footer-col {
 

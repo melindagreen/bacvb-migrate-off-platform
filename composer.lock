@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e4ae953fa134d3277485e301140aba01",
+    "content-hash": "540114d4e07745319c02d289dc6d80ca",
     "packages": [
         {
             "name": "advanced-custom-fields/advanced-custom-fields-pro",
@@ -1092,20 +1092,20 @@
         },
         {
             "name": "johnpbloch/wordpress",
-            "version": "6.4.1",
+            "version": "6.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/johnpbloch/wordpress.git",
-                "reference": "e87c9c3db68acf73e918e974e53f63c20291b1f1"
+                "reference": "cea8e15d973a3dc55ea336cb0ceb7aeee4ebd286"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johnpbloch/wordpress/zipball/e87c9c3db68acf73e918e974e53f63c20291b1f1",
-                "reference": "e87c9c3db68acf73e918e974e53f63c20291b1f1",
+                "url": "https://api.github.com/repos/johnpbloch/wordpress/zipball/cea8e15d973a3dc55ea336cb0ceb7aeee4ebd286",
+                "reference": "cea8e15d973a3dc55ea336cb0ceb7aeee4ebd286",
                 "shasum": ""
             },
             "require": {
-                "johnpbloch/wordpress-core": "6.4.1",
+                "johnpbloch/wordpress-core": "6.4.2",
                 "johnpbloch/wordpress-core-installer": "^1.0 || ^2.0",
                 "php": ">=7.0.0"
             },
@@ -1134,20 +1134,20 @@
                 "issues": "https://core.trac.wordpress.org/",
                 "source": "https://core.trac.wordpress.org/browser"
             },
-            "time": "2023-11-09T01:33:31+00:00"
+            "time": "2023-12-06T16:30:48+00:00"
         },
         {
             "name": "johnpbloch/wordpress-core",
-            "version": "6.4.1",
+            "version": "6.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/johnpbloch/wordpress-core.git",
-                "reference": "bc7bf692e02d9d18c81ab167ef6e9036d0becde0"
+                "reference": "00ea636cf89fd17daacbc3862f368a2782267825"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johnpbloch/wordpress-core/zipball/bc7bf692e02d9d18c81ab167ef6e9036d0becde0",
-                "reference": "bc7bf692e02d9d18c81ab167ef6e9036d0becde0",
+                "url": "https://api.github.com/repos/johnpbloch/wordpress-core/zipball/00ea636cf89fd17daacbc3862f368a2782267825",
+                "reference": "00ea636cf89fd17daacbc3862f368a2782267825",
                 "shasum": ""
             },
             "require": {
@@ -1155,7 +1155,7 @@
                 "php": ">=7.0.0"
             },
             "provide": {
-                "wordpress/core-implementation": "6.4.1"
+                "wordpress/core-implementation": "6.4.2"
             },
             "type": "wordpress-core",
             "notification-url": "https://packagist.org/downloads/",
@@ -1182,7 +1182,7 @@
                 "source": "https://core.trac.wordpress.org/browser",
                 "wiki": "https://codex.wordpress.org/"
             },
-            "time": "2023-11-09T01:33:28+00:00"
+            "time": "2023-12-06T16:30:44+00:00"
         },
         {
             "name": "johnpbloch/wordpress-core-installer",
@@ -1470,16 +1470,16 @@
         },
         {
             "name": "maddenmedia/partner-portal",
-            "version": "v1.1.1",
+            "version": "v1.2.0",
             "source": {
                 "type": "git",
                 "url": "git@github.com:maddenmedia/partner-portal.git",
-                "reference": "4b87d55d28471487e2fd9bc6d463fe49fadee7b8"
+                "reference": "9cc148e14c35e6d83e98d2aede24b9ea6e99a134"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/maddenmedia/partner-portal/zipball/4b87d55d28471487e2fd9bc6d463fe49fadee7b8",
-                "reference": "4b87d55d28471487e2fd9bc6d463fe49fadee7b8",
+                "url": "https://api.github.com/repos/maddenmedia/partner-portal/zipball/9cc148e14c35e6d83e98d2aede24b9ea6e99a134",
+                "reference": "9cc148e14c35e6d83e98d2aede24b9ea6e99a134",
                 "shasum": ""
             },
             "type": "wordpress-plugin",
@@ -1488,10 +1488,10 @@
             ],
             "description": "Wordpress Listings Plugin for Madden Media",
             "support": {
-                "source": "https://github.com/maddenmedia/partner-portal/tree/v1.1.1",
+                "source": "https://github.com/maddenmedia/partner-portal/tree/v1.2.0",
                 "issues": "https://github.com/maddenmedia/partner-portal/issues"
             },
-            "time": "2023-04-12T00:56:22+00:00"
+            "time": "2024-01-10T20:32:30+00:00"
         },
         {
             "name": "maddenmedia/wp-plugin-eventastic",
@@ -5790,15 +5790,15 @@
         },
         {
             "name": "wpackagist-plugin/redirection",
-            "version": "5.3.5",
+            "version": "5.4.1",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/redirection/",
-                "reference": "tags/5.3.5"
+                "reference": "tags/5.4.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/redirection.5.3.5.zip"
+                "url": "https://downloads.wordpress.org/plugin/redirection.5.4.1.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -5844,15 +5844,15 @@
         },
         {
             "name": "wpackagist-plugin/tiny-compress-images",
-            "version": "3.4.1",
+            "version": "3.4.3",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/tiny-compress-images/",
-                "reference": "tags/3.4.1"
+                "reference": "trunk"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/tiny-compress-images.3.4.1.zip"
+                "url": "https://downloads.wordpress.org/plugin/tiny-compress-images.zip?timestamp=1699450259"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -5898,15 +5898,15 @@
         },
         {
             "name": "wpackagist-plugin/wordpress-seo",
-            "version": "19.11",
+            "version": "21.8",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wordpress-seo/",
-                "reference": "tags/19.11"
+                "reference": "tags/21.8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.19.11.zip"
+                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.21.8.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -5944,5 +5944,5 @@
     "platform-overrides": {
         "php": "7.4.0"
     },
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.3.0"
 }
