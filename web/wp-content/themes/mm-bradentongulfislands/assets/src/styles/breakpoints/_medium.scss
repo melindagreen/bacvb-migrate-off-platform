@@ -142,6 +142,8 @@ HEADER
         padding-top: 1rem;
         .menu-item {
             position: relative;
+            max-width: 350px;
+            transition: none;
             a {
                 display: inline-block;
                 margin: 0.1rem 1rem;
@@ -157,6 +159,22 @@ HEADER
                 height: 2rem;
                 transform: rotate(0);
                 transition: all 0.2s ease-in-out;
+                margin-top: 5px;
+            }
+
+            .sub-menu {
+                width: 100%;
+                max-width: inherit;
+
+                .menu-item {
+                    margin: 10px 0;
+                    max-width: inherit;
+
+                    a {
+                        font-size: 1em;
+                        margin: 0;
+                    }
+                }
             }
         }
 
@@ -172,6 +190,7 @@ HEADER
                 background-image: url('~/images/arrow-teal.png');
                 transform: rotate(180deg);
                 transition: all 0.2s ease-in-out;
+                margin-top: 0;
             }
 
             .sub-menu {
@@ -179,7 +198,8 @@ HEADER
                 max-height: fit-content;
                 position: relative;
                 padding-left: 18px !important;
-                transition: all 0.2s ease-in-out;
+                // transition: all 0.2s ease-in-out;
+                transition: none;
                 box-sizing: border-box;
 
                 .menu-item {

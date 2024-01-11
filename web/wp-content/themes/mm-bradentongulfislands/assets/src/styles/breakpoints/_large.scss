@@ -66,6 +66,7 @@ HEADER
                 }
             }
             & > .sub-menu {
+                top: 0;
                 right: 0;
                 width: 20vw;
                 max-width: 270px;
@@ -79,6 +80,7 @@ HEADER
                     list-style-type: none;
                     position: relative;
                     font-size: 1.1rem;
+                    font-weight: 400;
                     margin: 10px auto;
                     padding-right: 1.75rem;
                     max-width: 230px;
@@ -89,12 +91,13 @@ HEADER
                             transition: all ease-in-out 0.2s;
         
                             a {
-        
+                                font-weight: 400;
                                 text-decoration: none;
                             }
                         }
                     
                     a {
+                        font-weight: 400;
                         color: $bradenton-teal;
                         text-transform: capitalize;
                     }
