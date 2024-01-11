@@ -1304,6 +1304,11 @@ Query Loop
     overflow-y: scroll;
     pointer-events: none;
 
+    .lightbox-trigger {
+
+        top: 11px !important;
+    }
+
     .lightbox-image-container {
 
         overflow: unset;
