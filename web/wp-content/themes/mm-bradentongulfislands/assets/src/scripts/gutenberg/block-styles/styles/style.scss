@@ -1295,6 +1295,24 @@ Query Loop
 }
 
 
+// Embed 
+
+.wp-block-embed {
+
+    &.aligncenter {
+
+        text-align: center;
+    }
+
+    &__wrapper {
+
+        iframe {
+
+            border-radius: 25px;
+        }
+    }
+}
+
 
 // Lightbox 
 
