@@ -99,6 +99,55 @@ SMALL SCREENS
 @media only screen and (max-width: $screen-sm) {
   .#{$block-prefix}-quick-links {
 
-    display: none;
+    // display: none;
+
+    position: relative;
+    top: auto;
+    width: 100%;
+    border-radius: 0;
+    border: 0;
+    padding-right: 0.5rem;
+    box-sizing: border-box;
+
+    &.tuck {
+      transform: none
+    }
+
+    &:hover {
+      transform: none;
+    }
+
+    &.fixed-scroll {
+      position: fixed;
+      z-index: 1000;
+      top: 88px;
+    }
+
+    .quick-links-heading {
+      max-width: inherit;
+      text-align: center;
+      padding: 0;
+      font-size: 0.9em;
+      cursor: pointer;
+      margin: 5px 0;
+      &:after {
+        content: "\203A";
+        display: inline-block;
+        margin-left: 20px;
+        transform: rotate(90deg);
+        font-size: 1.3em;
+        font-weight: 400;
+        line-height: 0.8;
+      }
+    }
+
+    .quick-link-items {
+      display: none;
+
+      .quick-link-item {
+        border: 1px solid #fff;
+      }
+    }
+
   }
 }
