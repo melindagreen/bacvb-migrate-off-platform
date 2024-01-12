@@ -662,6 +662,66 @@
               "label":"Boat Accessible"
             }
           ]
+        },
+        {
+          "type" : "message",
+          "content" : "<h2 class='partner-portal-heading'>Beach Amenities</h2>"
+        },
+        {
+          "key" : "beach-amenities", 
+          "label" : "", 
+          "type" : "checkbox",
+          "newLineAfter" : true,        
+          "choices" : [
+            {
+              "key":"fishing",
+              "label":"Fishing"
+            },
+            {
+              "key":"sightseeing",
+              "label":"Sightseeing"
+            },
+            {
+              "key":"sunbathing",
+              "label":"Sunbathing"
+            },
+            {
+              "key":"shelling",
+              "label":"Shelling"
+            },
+            {
+              "key":"swimming",
+              "label":"Swimming"
+            },
+            {
+              "key":"playground",
+              "label":"Playground"
+            },
+            {
+              "key":"bathrooms",
+              "label":"Bathrooms"
+            },
+            {
+              "key":"changing-station",
+              "label":"Changing Station"
+            },
+            {
+              "key":"lifeguard",
+              "label":"Lifeguard"
+            },
+            {
+              "key":"wheelchair-accessible",
+              "label":"Wheelchair Accessible"
+            },
+            {
+              "key":"cafe-food",
+              "label":"Cafe/Food"
+            },
+            {
+              "key":"parking",
+              "label":"Parking"
+            }
+          ]
         }
       ]    
     }    
