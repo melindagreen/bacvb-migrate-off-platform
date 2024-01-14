@@ -141,6 +141,28 @@
         display: flex;
       }
 
+      .beachLogo {
+        position: absolute;
+        z-index: 10;
+        bottom: -20px;
+        left: -20px;
+        width: 100px;
+        height: 100px;
+        background-color: $rust;
+        border-radius: 50%;
+        box-sizing: border-box;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+          width: auto;
+          max-width: 100%;
+          height: 100%;
+        }
+      }
+
       .beachImg {
         flex: 0 0 40%;
         min-width: 40%;

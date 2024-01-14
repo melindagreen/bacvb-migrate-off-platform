@@ -46,23 +46,11 @@ const MediaControls = props => {
 }
 
 const Inspector = props => {
-    const { attributes: { exampleCatFilter }, setAttributes } = props;
+    const { attributes: {  }, setAttributes } = props;
 
     return (
         <InspectorControls>
-            <PanelBody title='Gallery'>
-                <MediaControls {...props} />
-            </PanelBody>
-            <PanelBody title='Category'>
-                <TaxonomyControl
-                    label={__('Filter by category:')}
-                    controlType='token'
-                    taxonomySlug='category'
-                    label={__('Filter by categories:')}
-                    value={exampleCatFilter}
-                    onChange={exampleCatFilter => setAttributes({ exampleCatFilter })}
-                />
-            </PanelBody>
+
         </InspectorControls>
     )
 }

@@ -33,7 +33,7 @@ function render_block( $attrs, $content ) {
     if (!empty($posts)) {
       foreach ($posts as $post) {
         // Remove content inside parentheses from the post title
-        $shortenedTitle = preg_replace('/\([^)]+\)/', '', $post->post_title);
+        $shortenedTitle = preg_replace('/\s?\([^)]+\)/', '', $post->post_title);
 
         $html .= '<div class="location_pin" id="'.$post->post_name.'" data-id="'.$post->ID.'">';
         $html .= '<div class="beachName">'.$shortenedTitle.'</div>';
@@ -66,6 +66,16 @@ function render_block( $attrs, $content ) {
 
             $html .= '<div class="beachImg">';
               $html .= '<img alt="beach image" class="img" src="'.$featImg.'">';
+
+              // formatting beach name to pull in logo file name
+              $shortenedTitle = preg_replace('/\s?\([^)]+\)/', '', $post->post_title);
+              $postSlug = str_replace(' ', '-', $shortenedTitle);
+
+              // Bean point beach uses Bradenton-Beach logo
+              $postSlug = str_replace('Bean-Point', 'Bradenton-Beach', $postSlug);
+
+              $html .= '<div class="beachLogo"><img src="/wp-content/uploads/'.$postSlug.'_logo.png" alt="beach logo"></div>';
+
             $html .= '</div>'; // .beachImg
 
             $html .= '<div class="content">';

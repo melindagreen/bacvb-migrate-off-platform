@@ -11,25 +11,6 @@
     "icon": "location-alt",
     "category": "layout",
     "attributes": {
-      "exampleImageIds": {
-        "type": "array",
-        "default": [],
-        "items": {
-          "type": "number"
-        }
-      },
-      "exampleText": {
-        "type": "string",
-        "default": "Hello, Madden!",
-        "selector": ".exampleText"
-      },
-      "exampleCatFilter": {
-        "type": "array",
-        "default": [],
-        "items": {
-          "type": "string"
-        }
-      },
       "mode": {
         "type": "string",
         "default": "preview"
