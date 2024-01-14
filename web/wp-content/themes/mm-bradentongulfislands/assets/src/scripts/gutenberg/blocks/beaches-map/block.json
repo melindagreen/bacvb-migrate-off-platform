@@ -1,0 +1,39 @@
+{
+  "name": "beaches-map",
+  "dynamic": true,
+  "scripts": [
+    "front.js"
+  ],
+  "render_callback": "MaddenNino\\Blocks\\BeachesMap\\render_block",
+  "settings": {
+    "title": "Interactive Beaches Map",
+    "description": "Displays the beach map with overlay interactivity",
+    "icon": "location-alt",
+    "category": "layout",
+    "attributes": {
+      "exampleImageIds": {
+        "type": "array",
+        "default": [],
+        "items": {
+          "type": "number"
+        }
+      },
+      "exampleText": {
+        "type": "string",
+        "default": "Hello, Madden!",
+        "selector": ".exampleText"
+      },
+      "exampleCatFilter": {
+        "type": "array",
+        "default": [],
+        "items": {
+          "type": "string"
+        }
+      },
+      "mode": {
+        "type": "string",
+        "default": "preview"
+      }
+    }
+  }
+}
