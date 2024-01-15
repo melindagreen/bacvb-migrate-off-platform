@@ -65,6 +65,21 @@ function render_block( $attrs, $content ) {
             }
 
             $html .= '<div class="beachImg">';
+
+            if($postMeta['partnerportal_beach-amenities']) {              
+              $html .= '<div class="features">';
+                $html .= '<div class="featuresTItle">Features</div>';
+
+                foreach($postMeta['partnerportal_beach-amenities'] as $amenitySerialized) {
+                    $amenityArray = unserialize($amenitySerialized);
+                    foreach ($amenityArray as $singleAmenity) {
+                      $html .= '<div class="tooltip"><img class="icon" src="/wp-content/themes/mm-bradentongulfislands/assets/images/icons/amenities/'.$singleAmenity.'.png" alt="'.$singleAmenity.' icon" /><span class="tooltiptext">'.ucwords(str_replace('-', ' ', $singleAmenity)).'</span></div>';
+                    }
+                }
+
+              $html .= '</div>'; // .features
+            }
+
               $html .= '<img alt="beach image" class="img" src="'.$featImg.'">';
 
               // formatting beach name to pull in logo file name
@@ -94,7 +109,6 @@ function render_block( $attrs, $content ) {
 
           $html .= '</div>'; // .selectBeach
 
-            // $html .= "<pre>" . print_r( $post, true ) . "</pre>";
           }
 
           // Restore original post data
