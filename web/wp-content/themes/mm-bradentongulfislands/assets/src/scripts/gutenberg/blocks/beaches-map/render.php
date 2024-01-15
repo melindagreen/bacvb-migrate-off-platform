@@ -73,7 +73,9 @@ function render_block( $attrs, $content ) {
                 foreach($postMeta['partnerportal_beach-amenities'] as $amenitySerialized) {
                     $amenityArray = unserialize($amenitySerialized);
                     foreach ($amenityArray as $singleAmenity) {
-                      $html .= '<div class="tooltip"><img class="icon" src="/wp-content/themes/mm-bradentongulfislands/assets/images/icons/amenities/'.$singleAmenity.'.png" alt="'.$singleAmenity.' icon" /><span class="tooltiptext">'.ucwords(str_replace('-', ' ', $singleAmenity)).'</span></div>';
+                      // $html .= '<div class="tooltip"><img class="icon" src="/wp-content/themes/mm-bradentongulfislands/assets/images/icons/amenities/'.$singleAmenity.'.png" alt="'.$singleAmenity.' icon" /><span class="tooltiptext">'.ucwords(str_replace('-', ' ', $singleAmenity)).'</span></div>';
+
+                      $html .= '<div class="tooltip" data-tooltip="'.ucwords(str_replace('-', ' ', $singleAmenity)).'"><img class="icon" src="/wp-content/themes/mm-bradentongulfislands/assets/images/icons/amenities/'.$singleAmenity.'.png" alt="'.$singleAmenity.' icon" /></div>';
                     }
                 }
 
