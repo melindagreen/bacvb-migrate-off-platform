@@ -76,6 +76,11 @@ COLUMNS
     max-width: 90rem;
     margin-left: auto;
     margin-right: auto;
+
+    // overlapping style for header on Beaches page
+    &.beachesHeader {
+        margin-bottom: -12%;
+    }
 }
 
 .is-layout-flex {
