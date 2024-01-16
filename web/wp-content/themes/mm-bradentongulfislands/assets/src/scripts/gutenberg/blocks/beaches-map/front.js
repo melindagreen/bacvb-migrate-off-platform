@@ -21,8 +21,6 @@
         //     });
         // });
         $('.location_pin').click(function(){
-            // Record the current scroll position
-            var scrollPosition = window.scrollY;
 
             $('.beach_content_overlay').fadeIn('fast');
 
@@ -41,9 +39,15 @@
                     $(this).addClass('show');
                 }
             });
+        });
 
-            // Set the scroll position back after hiding the overlay
-            $('.beach_content_overlay').on('click', function(){
+
+        // Record the current scroll position
+        var scrollPosition = window.scrollY;
+
+        // Set the scroll position back after hiding the overlay
+        $('.beach_content_overlay').on('click', function(){
+            if ($(event.target).hasClass('beach_content_overlay')) {
                 $(this).fadeOut();
                 $('body').css({
                     'overflow': 'auto',
@@ -51,19 +55,16 @@
                 });
                 
                 window.scrollTo(0, scrollPosition);
-            });
+            }
         });
 
-
-        $('.beach_content_overlay').click(function(event){
-            if ($(event.target).hasClass('beach_content_overlay')) {
-                $('.beach_content_overlay').fadeOut('fast');
-                $('body').css({
-                    'overflow': 'hidden',
-                    'height': 'auto'
-                });
-                $('.selectBeach').removeClass('show');
-            }
+        $('.close').on('click', function(){
+            $('.beach_content_overlay').fadeOut();
+            $('body').css({
+                'overflow': 'auto',
+                'height': 'auto'
+            });
+            window.scrollTo(0, scrollPosition);
         });
 
     });
