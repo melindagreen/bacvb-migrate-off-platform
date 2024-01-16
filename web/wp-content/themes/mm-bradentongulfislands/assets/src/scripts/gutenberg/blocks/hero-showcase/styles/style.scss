@@ -22,6 +22,25 @@ $amenitiesBorderRadius: 20px;
         top: 6%;
         right: 0;
       }
+
+
+      .hero-showcase-amenities.hero-showcase--topright {
+
+          border-top-right-radius: unset !important;
+          border-bottom-right-radius: unset !important;
+          border-top-left-radius: $amenitiesBorderRadius;
+          border-bottom-left-radius: $amenitiesBorderRadius;
+          padding: 0.5rem 0rem 0.45em 0.45rem;
+
+          .amenitiesTitle {
+
+            border-top-right-radius: unset !important;
+            border-bottom-right-radius: unset !important;
+            border-top-left-radius: $amenitiesBorderRadius;
+            border-bottom-left-radius: $amenitiesBorderRadius;
+            padding: 0.3rem 0.9rem 0.3rem 0.9rem;
+          }
+      }
     
       &--bottomleft {
     
@@ -36,6 +55,7 @@ $amenitiesBorderRadius: 20px;
 
           width: $hero-width;
           height: $hero-height;
+          object-fit: cover;
         }
       }
     }
@@ -279,6 +299,33 @@ SMALL SCREENS
 *********************/
 @media only screen and (max-width: $screen-sm) {
   .#{$block-prefix}-hero-showcase {
+    
+    .hero-showcases {
+
+      .hero-showcase-amenities {
+
+        position: absolute;
+        bottom: 4%;
+        left: 0;
+      }
+
+      .hero-showcase {
   
+        height: unset;
+        position: relative;
+  
+        &--topright {
+  
+          position: unset;
+        }
+      
+        &--bottomleft {
+      
+          position: unset;
+        }
+  
+      }
+
+    }
   }
 }

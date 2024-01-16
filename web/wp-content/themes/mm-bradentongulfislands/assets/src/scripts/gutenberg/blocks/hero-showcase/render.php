@@ -192,12 +192,7 @@ function render_block( $attrs, $content ) {
                 <img class="hero-showcase__image" src="<?php echo $post['thumb'] ?>" alt="">
               <?php } ?>
             </div>
-            <div class="hero-showcase-body hero-showcase-body--<?php echo $i + 1 ?> <?php echo $i % 2 === 0 ? 'hero-showcase--bottomleft' : 'hero-showcase--topright'; ?> is-style-collage-square">
-            <h3 class="hero-showcase-body__title"><?php echo $post['title']; ?></h3>
-            <p class="hero-showcase-body__excerpt"><?php echo $post['excerpt']; ?></p>
-            <?php if( $post['link'] ) { ?><a class="hero-showcase-body__link" href="<?php echo $post['link'] ?>"><?php echo $post['ctaText'] ?></a> <?php } ?>
-          </div>
-          <?php if($postMeta['partnerportal_beach-amenities']) {  ?>         
+            <?php if($postMeta['partnerportal_beach-amenities']) {  ?>         
               <div class="hero-showcase-amenities <?php echo $i % 2 === 0 ?  'hero-showcase--topright' : 'hero-showcase--bottomleft'; ?>">
                 <div class="amenitiesTitle">Amenities</div>
 
@@ -210,6 +205,11 @@ function render_block( $attrs, $content ) {
 
               </div>
           <?php  } ?>
+            <div class="hero-showcase-body hero-showcase-body--<?php echo $i + 1 ?> <?php echo $i % 2 === 0 ? 'hero-showcase--bottomleft' : 'hero-showcase--topright'; ?> is-style-collage-square">
+            <h3 class="hero-showcase-body__title"><?php echo $post['title']; ?></h3>
+            <p class="hero-showcase-body__excerpt"><?php echo $post['excerpt']; ?></p>
+            <?php if( $post['link'] ) { ?><a class="hero-showcase-body__link" href="<?php echo $post['link'] ?>"><?php echo $post['ctaText'] ?></a> <?php } ?>
+          </div>
         </article>
       <?php } ?>
     </div>
