@@ -215,6 +215,7 @@ function render_block( $attrs, $content ) {
             <p class="hero-showcase-body__excerpt"><?php echo $post['excerpt']; ?></p>
             <?php if( $post['link'] ) { ?><a class="hero-showcase-body__link" href="<?php echo $post['link']; ?>"><?php echo $post['ctaText']; ?></a> <?php } ?>
           </div>
+          <?php if($post['factThumb']) { ?>
           <div class="hero-showcase-factoid">
             <div class="factoid-img"><img src="<?php echo $post['factThumb']; ?>" alt=""></div>
             <div class="factoid-content is-style-irregular-shape">
@@ -222,6 +223,7 @@ function render_block( $attrs, $content ) {
               <p><?php echo $post['factDescription']; ?></p>
             </div>
           </div>
+          <?php } ?>
         </article>
       <?php } ?>
     </div>
