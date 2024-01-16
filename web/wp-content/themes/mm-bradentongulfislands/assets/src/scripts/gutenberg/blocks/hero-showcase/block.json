@@ -1,0 +1,45 @@
+{
+  "name": "hero-showcase",
+  "dynamic": true,
+  "scripts": [
+    "front.js"
+  ],
+  "render_callback": "MaddenNino\\Blocks\\HeroShowcase\\render_block",
+  "settings": {
+    "title": "Hero Showcase",
+    "description": "Showcase a page",
+    "icon": "schedule",
+    "category": "layout",
+    "attributes": {
+      "blockTitle": {
+        "type": "string",
+        "default": ""
+      },
+      "queryMode": {
+        "type": "string",
+        "default": "manual"
+      },
+      "posts": {
+        "type": "array",
+        "default": [
+          {
+            "id": 0
+          },
+          {
+            "id": 1
+          },
+          {
+            "id": 2
+          }
+        ],
+        "items": {
+          "type": "object"
+        }
+      },
+      "mode": {
+        "type": "string",
+        "default": "preview"
+      }
+    }
+  }
+}

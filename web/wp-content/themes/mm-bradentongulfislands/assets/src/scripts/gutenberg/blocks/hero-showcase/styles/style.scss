@@ -1,0 +1,284 @@
+@import "styles/utils/typography";
+@import "styles/utils/variables";
+
+$hero-height: 90vh;
+$hero-width: 100%;
+$amenitiesBorderRadius: 20px;
+
+.#{$block-prefix}-hero-showcase {
+
+
+  .hero-showcases {
+
+    .hero-showcase {
+
+      width: $hero-width;
+      height: $hero-height;
+      position: relative;
+
+      &--topright {
+
+        position: absolute;
+        top: 6%;
+        right: 0;
+      }
+    
+      &--bottomleft {
+    
+        position: absolute;
+        left: 0;
+        bottom: 6%;
+      }
+
+      &__background {
+
+        img {
+
+          width: $hero-width;
+          height: $hero-height;
+        }
+      }
+    }
+    .hero-showcase-body {
+      background-color: #2b7b7cf0;
+      width: 400px;
+      min-height: 300px;
+      padding: 1.75rem 2rem;
+      color: white;
+
+      &__title {
+
+        color: white;
+        font-size: 1.2rem;
+        font-family: $font-header;
+      }
+
+      &__excerpt {
+
+        font-size: 1rem;
+        color: white;
+        line-height: 1.2em;
+      }
+
+      &__link {
+
+        text-transform: uppercase;
+        font-family: $font-header;
+        color: $white;
+        position: relative;
+        transition: all 0.3s ease-in-out;
+        min-width: 7rem;
+        max-width: 15rem;
+        font-size: 0.95rem;
+        display: inline-block;
+        &::after {
+          background: url('images/ui-link-arrow.png');
+          background-size: contain!important;
+          bottom: -35%;
+          content: " ";
+          height: 25px;
+          position: absolute;
+          right: -2rem;
+          transition: all .3s ease-in-out;
+          width: 25px;
+        }
+            &:hover {
+  
+              text-decoration: none;
+              color: $dk-blue !important;
+              
+              &::after {
+  
+                transition: all 0.2s ease-in-out;
+                transform: translateX(8%);
+              }
+            }
+      }
+    }
+  }
+
+  .hero-showcase-legend {
+
+    background-color: $bradenton-teal;
+    padding-top: 0.8rem;
+
+    .legendTitle {
+
+      text-align: center;
+      font-family: $font-header;
+      color: white;
+    }
+  }
+
+  .check-controls {
+    font-family: $font-header;
+    text-transform: uppercase;
+    padding-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    max-width: 55rem;
+    margin: auto;
+
+    .control--categories {
+      padding: 1em;
+      padding-bottom: 0;
+      flex-grow: 1;
+      display: flex;
+      justify-content: center;
+      gap: 0.2rem;
+    flex-wrap: wrap;
+      &.hide {
+        display: none;
+      }
+    }
+    .control__title {
+      width: 100%;
+      margin: 0 0 1em 0;
+      position: relative;
+      color: $white;
+      text-align: center;
+      font-weight: 400;
+    }
+    .categoriesWrap {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      transition: 0.3s ease-out;
+      flex: 0 0 30%;
+      column-gap: 20px;
+      row-gap: 20px;
+    }
+    .control__label {
+      font-size: 0.9em;
+      font-family: $font-body;
+      font-weight: 600;
+      margin: 5px 0;
+      color: white;
+      border: 2px solid white;
+      border-radius: 20px;
+      padding: 5px 1em 5px 1em;
+      cursor: pointer;
+      transition: all 0.3s;
+      position: relative;
+
+      &:hover, &.active {
+        color: #fff;
+        background: $turquoise;
+      }
+
+      &.control__label--start-date, &.control__label--end-date {
+        display: block;
+      }
+      &.all {
+        display: none;
+      }
+      .control__input {
+        display: none;
+      }
+
+      .icon {
+        position: absolute;
+        width: 22px;
+        height: 22px;
+        top: 3px;
+        left: 7px;    
+      }
+    }
+    .control__label--accomodations {
+
+      padding: 5px 1em 5px 2.5em;
+    }
+  }
+
+  .beachLogo {
+
+    position: absolute;
+    top: 3%;
+    left: 2%;
+    img {
+    width: 125px;
+    height: auto;
+    }
+  }
+
+  .hero-showcase-amenities {
+
+    background-color: $bradenton-teal;
+    opacity: 0.9;
+    width: 400px;
+    padding: 0.5rem 0.45rem 0.45em 0;
+    border-top-right-radius: $amenitiesBorderRadius;
+    border-bottom-right-radius: $amenitiesBorderRadius;
+
+    .amenitiesTitle {
+
+      background-color: white;
+      border-top-right-radius: $amenitiesBorderRadius;
+      border-bottom-right-radius: $amenitiesBorderRadius;
+      margin-bottom: 0.5rem;
+      padding: 0.3rem 0 0.3rem 0.9rem;
+      font-size: 1.2rem;
+      font-family: $font-header;
+      color: $bradenton-teal;
+    }
+
+    .icon {
+
+      width: 25px;
+      height: auto;
+      margin-left: 0.9rem;
+    }
+
+  }
+
+  .tooltip {
+    position: relative;
+    display: inline-block;
+    &::before {
+      content: attr(data-tooltip);
+      position: absolute;
+      background-color: rgba($rust,0.8);
+      width: 90px;
+      text-align: center;
+      color: #fff;
+      padding: 5px;
+      font-size: 0.8em;
+      border-radius: 3px;
+      opacity: 0;
+      transition: opacity 0.3s;
+      bottom: 110%; 
+      left: 50%;
+      transform: translateX(-25%);
+    }
+    &:hover::before {
+      opacity: 1;
+    }
+  }
+}
+
+/*********************
+LARGE SCREENS
+*********************/
+@media only screen and (min-width: #{$screen-lg + 1}) {
+  .#{$block-prefix}-hero-showcase {
+  
+  }
+}
+
+/*********************
+MEDIUM SCREENS
+*********************/
+@media only screen and (min-width: #{$screen-sm + 1}) and (max-width: $screen-lg) {
+  .#{$block-prefix}-hero-showcase {
+  
+  }
+}
+
+/*********************
+SMALL SCREENS
+*********************/
+@media only screen and (max-width: $screen-sm) {
+  .#{$block-prefix}-hero-showcase {
+  
+  }
+}

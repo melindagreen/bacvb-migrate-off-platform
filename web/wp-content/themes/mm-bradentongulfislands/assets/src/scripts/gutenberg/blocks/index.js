@@ -23,13 +23,14 @@ import UpcomingEvents from './upcoming-events';
 import ListingsGrid from './listings-grid';
 import ContentSlider from './content-slider';
 import BeachesMap from './beaches-map';
+import HeroShowcase from './hero-showcase';
 
 /*** CONSTANTS **************************************************************/
 
 // Collect blocks
 // NOTE: ACF blocks should not be registered here, only imported, or they will
 // appear twice in the editor!
-const blocks = [ ContentSlider, Hero, PortraitGrid, WideSlideshow, WideImageSlide, ShowcaseCard, AccordionSection, Accordion, ContentSelector, ContentSection, QuickLinks, UpcomingEvents, ListingsGrid, BeachesMap ];
+const blocks = [ ContentSlider, Hero, PortraitGrid, WideSlideshow, WideImageSlide, ShowcaseCard, AccordionSection, Accordion, ContentSelector, ContentSection, QuickLinks, UpcomingEvents, ListingsGrid, BeachesMap, HeroShowcase ];
 
 /*** EXPORTS ****************************************************************/
 export default () => {

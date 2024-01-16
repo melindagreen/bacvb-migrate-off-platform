@@ -1,0 +1,34 @@
+@import "styles/utils/typography";
+@import "styles/utils/variables";
+
+.#{$block-prefix}-portrait-grid {
+
+
+}
+
+/*********************
+LARGE SCREENS
+*********************/
+@media only screen and (min-width: #{$screen-lg + 1}) {
+  .#{$block-prefix}-portrait-grid {
+  
+  }
+}
+
+/*********************
+MEDIUM SCREENS
+*********************/
+@media only screen and (min-width: #{$screen-sm + 1}) and (max-width: $screen-lg) {
+  .#{$block-prefix}-portrait-grid {
+  
+  }
+}
+
+/*********************
+SMALL SCREENS
+*********************/
+@media only screen and (max-width: $screen-sm) {
+  .#{$block-prefix}-portrait-grid {
+  
+  }
+}

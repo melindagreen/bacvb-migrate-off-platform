@@ -98,6 +98,49 @@ const Wizard = props => {
               />
             </MediaUploadCheck>
           </PanelRow>
+
+        {/* <PanelBody title={__('Factoid')} initialOpen={false}>
+          <PanelRow>
+            <TextControl
+              label={__('Fact Title')}
+              value={post.customTitle}
+              onChange={updateSegment('customTitle', post)}
+            />
+
+            <TextareaControl
+              label={__('Custom Excerpt')}
+              value={post.customExcerpt}
+              onChange={updateSegment('customExcerpt', post)}
+            />
+
+            <MediaUploadCheck>
+              <MediaUpload
+                title={__('Custom Thumbnail', THEME_PREFIX)}
+                allowedTypes={ALLOWED_MEDIA_TYPES}
+                onSelect={updateSegment('customThumb', post)}
+                value={post.customThumb}
+                render={({ open }) => (<Flex
+                  className='custom-thumb'
+                  align='center'
+                  justify='center'
+                  direction='column'
+                >
+                  <p>{__('Custom Thumbnail')}</p>
+                  {post?.customThumb?.sizes?.thumbnail?.url &&
+                    <img className='preview-thumb' src={post.customThumb.sizes.thumbnail.url} />
+                  }
+                  <Button onClick={open} isLarge icon="format-image" isSecondary>
+                    {post?.customThumb?.sizes?.thumbnail?.url
+                      ? __('Replace Custom Thumbnail', THEME_PREFIX)
+                      : __('Chose Custom Thumbnail', THEME_PREFIX)}
+                  </Button>
+                </Flex>
+                )}
+              />
+            </MediaUploadCheck>
+          </PanelRow>
+
+        </PanelBody> */}
         </PanelBody>
       </>)}
       newSegment={DEFAULT_SEGMENT}
