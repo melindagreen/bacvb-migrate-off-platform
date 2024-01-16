@@ -11,6 +11,38 @@
     "icon": "location-alt",
     "category": "layout",
     "attributes": {
+      "annamariabeach": {
+        "type": "string",
+        "default": ""
+      },
+      "beanpoint": {
+        "type": "string",
+        "default": ""
+      },
+      "manateebeach": {
+        "type": "string",
+        "default": ""
+      },
+      "holmesbeach": {
+        "type": "string",
+        "default": ""
+      },
+      "cortezbeach": {
+        "type": "string",
+        "default": ""
+      },
+      "coquinabeach": {
+        "type": "string",
+        "default": ""
+      },
+      "beercanisland": {
+        "type": "string",
+        "default": ""
+      },
+      "whitneybeach": {
+        "type": "string",
+        "default": ""
+      },
       "mode": {
         "type": "string",
         "default": "preview"

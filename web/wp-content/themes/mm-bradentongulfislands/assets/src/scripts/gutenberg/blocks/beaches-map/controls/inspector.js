@@ -3,7 +3,7 @@
 // WordPress dependencies
 import { __ } from '@wordpress/i18n';
 import { InspectorControls } from '@wordpress/block-editor'
-import { Button, PanelBody } from '@wordpress/components'
+import { Button, PanelBody, TextControl, TextareaControl  } from '@wordpress/components'
 import { MediaUpload, MediaUploadCheck } from '@wordpress/block-editor'
 
 // Local dependencies
@@ -46,11 +46,52 @@ const MediaControls = props => {
 }
 
 const Inspector = props => {
-    const { attributes: {  }, setAttributes } = props;
+    const { attributes: { annamariabeach, beanpoint, manateebeach, holmesbeach, cortezbeach, coquinabeach, beercanisland, whitneybeach }, setAttributes } = props;
 
     return (
         <InspectorControls>
-
+            <PanelBody title='Beach Content'>
+                <TextareaControl
+                    label="Anna Maria Beach Content"
+                    onChange={ ( annamariabeach ) => setAttributes( { annamariabeach } ) }
+                    value={ annamariabeach }
+                />
+                <TextareaControl
+                    label="Bean Point Content"
+                    onChange={ ( beanpoint ) => setAttributes( { beanpoint } ) }
+                    value={ beanpoint }
+                />
+                <TextareaControl
+                    label="Manatee Beach Content"
+                    onChange={ ( manateebeach ) => setAttributes( { manateebeach } ) }
+                    value={ manateebeach }
+                />
+                <TextareaControl
+                    label="Holmes Beach Content"
+                    onChange={ ( holmesbeach ) => setAttributes( { holmesbeach } ) }
+                    value={ holmesbeach }
+                />
+                <TextareaControl
+                    label="Cortez Beach Content"
+                    onChange={ ( cortezbeach ) => setAttributes( { cortezbeach } ) }
+                    value={ cortezbeach }
+                />
+                <TextareaControl
+                    label="Coquina Beach Content"
+                    onChange={ ( coquinabeach ) => setAttributes( { coquinabeach } ) }
+                    value={ coquinabeach }
+                />
+                <TextareaControl
+                    label="Beer Can Island Content"
+                    onChange={ ( beercanisland ) => setAttributes( { beercanisland } ) }
+                    value={ beercanisland }
+                />
+                <TextareaControl
+                    label="Whitney Beach Content"
+                    onChange={ ( whitneybeach ) => setAttributes( { whitneybeach } ) }
+                    value={ whitneybeach }
+                />
+            </PanelBody>
         </InspectorControls>
     )
 }
