@@ -73,8 +73,6 @@ function render_block( $attrs, $content ) {
                 foreach($postMeta['partnerportal_beach-amenities'] as $amenitySerialized) {
                     $amenityArray = unserialize($amenitySerialized);
                     foreach ($amenityArray as $singleAmenity) {
-                      // $html .= '<div class="tooltip"><img class="icon" src="/wp-content/themes/mm-bradentongulfislands/assets/images/icons/amenities/'.$singleAmenity.'.png" alt="'.$singleAmenity.' icon" /><span class="tooltiptext">'.ucwords(str_replace('-', ' ', $singleAmenity)).'</span></div>';
-
                       $html .= '<div class="tooltip" data-tooltip="'.ucwords(str_replace('-', ' ', $singleAmenity)).'"><img class="icon" src="/wp-content/themes/mm-bradentongulfislands/assets/images/icons/amenities/'.$singleAmenity.'.png" alt="'.$singleAmenity.' icon" /></div>';
                     }
                 }
@@ -99,10 +97,12 @@ function render_block( $attrs, $content ) {
 
               $html .= '<h3>' . $post->post_title . '</h3>';
 
-              if(!empty($postMeta['partnerportal_description'])) {
-                $html .= '<p>'.$postMeta['partnerportal_description'][0].'</p>';
+              // modifying slug to match the variable in inspector.js to pull beach content
+              $beachContent = strtolower(str_replace(' ', '', $shortenedTitle));
+              if(!empty($attrs[$beachContent])) {
+                $html .= '<p>'.$attrs[$beachContent].'</p>';
               } else {
-                $html .= $post->post_content;
+                $html .= '<p>'.$postMeta['partnerportal_description'][0].'</p>';
               }
 
               $html .= '<a href="'.get_permalink($post->ID).'" class="postLink">Dive In</a>';
