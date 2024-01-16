@@ -1,3 +1,5 @@
+
+
 @import "styles/utils/typography";
 @import "styles/utils/variables";
 
@@ -58,6 +60,9 @@ $amenitiesBorderRadius: 20px;
           object-fit: cover;
         }
       }
+
+      transition: 0.8s ease-in-out;
+      opacity: 0;
     }
 
     .hero-showcase-factoid {
@@ -151,6 +156,16 @@ $amenitiesBorderRadius: 20px;
             }
       }
     }
+  }
+
+  .hero-showcase:nth-child(even){
+
+    transform: translateX(-60%);
+  }
+
+  .hero-showcase:nth-child(odd){
+
+    transform: translateX(60%);
   }
 
   .hero-showcase-legend {
@@ -370,3 +385,4 @@ SMALL SCREENS
     }
   }
 }
+
