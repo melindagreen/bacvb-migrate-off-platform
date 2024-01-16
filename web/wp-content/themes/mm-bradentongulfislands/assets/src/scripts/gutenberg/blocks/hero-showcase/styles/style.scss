@@ -59,6 +59,42 @@ $amenitiesBorderRadius: 20px;
         }
       }
     }
+
+    .hero-showcase-factoid {
+
+      position: absolute;
+      bottom: 3%;
+      right: 2%;
+      display: flex;
+      align-items: center;
+
+      .factoid-img {
+
+        margin-right: -1rem;
+        z-index: 2;
+
+        img {
+
+          height: 120px !important;
+          height: auto;
+        }
+      }
+
+      .factoid-content {
+
+        background-color: $rust;
+        background-color: #b45727de;
+        height: 300px;
+        width: 300px;
+        padding: 3rem;
+        
+        h2, p {
+
+          color: white;
+        }
+      }
+      
+    }
     .hero-showcase-body {
       background-color: #2b7b7cf0;
       width: 400px;
@@ -324,6 +360,11 @@ SMALL SCREENS
           position: unset;
         }
   
+      }
+
+      .hero-showcase-factoid {
+
+        position: unset;       
       }
 
     }

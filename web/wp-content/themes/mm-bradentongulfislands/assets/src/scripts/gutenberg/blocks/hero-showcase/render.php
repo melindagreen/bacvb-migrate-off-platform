@@ -60,6 +60,11 @@ function render_block( $attrs, $content ) {
       // link
       $post['link'] = false;
       if( isset( $post['postObj']['url'] ) ) $clean_post['link'] = $post['postObj']['url'];
+
+      // Factoid
+      $clean_post['factThumb'] = $post['factThumb']['url'];
+      $clean_post['factTitle'] = $post['factTitle'];
+      $clean_post['factDescription'] = $post['factDescription'];
   
       return $clean_post;
     }, $attrs['posts'] );
@@ -208,7 +213,14 @@ function render_block( $attrs, $content ) {
             <div class="hero-showcase-body hero-showcase-body--<?php echo $i + 1 ?> <?php echo $i % 2 === 0 ? 'hero-showcase--bottomleft' : 'hero-showcase--topright'; ?> is-style-collage-square">
             <h3 class="hero-showcase-body__title"><?php echo $post['title']; ?></h3>
             <p class="hero-showcase-body__excerpt"><?php echo $post['excerpt']; ?></p>
-            <?php if( $post['link'] ) { ?><a class="hero-showcase-body__link" href="<?php echo $post['link'] ?>"><?php echo $post['ctaText'] ?></a> <?php } ?>
+            <?php if( $post['link'] ) { ?><a class="hero-showcase-body__link" href="<?php echo $post['link']; ?>"><?php echo $post['ctaText']; ?></a> <?php } ?>
+          </div>
+          <div class="hero-showcase-factoid">
+            <div class="factoid-img"><img src="<?php echo $post['factThumb']; ?>" alt=""></div>
+            <div class="factoid-content is-style-irregular-shape">
+              <h2><?php echo $post['factTitle']; ?></h2>
+              <p><?php echo $post['factDescription']; ?></p>
+            </div>
           </div>
         </article>
       <?php } ?>

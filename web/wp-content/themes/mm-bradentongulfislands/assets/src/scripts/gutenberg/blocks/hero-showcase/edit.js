@@ -98,41 +98,41 @@ const Wizard = props => {
               />
             </MediaUploadCheck>
           </PanelRow>
-
-        {/* <PanelBody title={__('Factoid')} initialOpen={false}>
+        </PanelBody>
+        <PanelBody title={__('Factoid')} initialOpen={false}>
           <PanelRow>
             <TextControl
               label={__('Fact Title')}
-              value={post.customTitle}
-              onChange={updateSegment('customTitle', post)}
+              value={post.factTitle}
+              onChange={updateSegment('factTitle', post)}
             />
 
             <TextareaControl
-              label={__('Custom Excerpt')}
-              value={post.customExcerpt}
-              onChange={updateSegment('customExcerpt', post)}
+              label={__('Fact Description')}
+              value={post.factDescription}
+              onChange={updateSegment('factDescription', post)}
             />
 
             <MediaUploadCheck>
               <MediaUpload
-                title={__('Custom Thumbnail', THEME_PREFIX)}
+                title={__('Fact Thumbnail', THEME_PREFIX)}
                 allowedTypes={ALLOWED_MEDIA_TYPES}
-                onSelect={updateSegment('customThumb', post)}
-                value={post.customThumb}
+                onSelect={updateSegment('factThumb', post)}
+                value={post.factThumbnail}
                 render={({ open }) => (<Flex
-                  className='custom-thumb'
+                  className='fact-thumb'
                   align='center'
                   justify='center'
                   direction='column'
                 >
-                  <p>{__('Custom Thumbnail')}</p>
-                  {post?.customThumb?.sizes?.thumbnail?.url &&
-                    <img className='preview-thumb' src={post.customThumb.sizes.thumbnail.url} />
+                  <p>{__('Fact Thumbnail')}</p>
+                  {post?.factThumb?.sizes?.thumbnail?.url &&
+                    <img className='preview-thumb' src={post.factThumb.sizes.thumbnail.url} />
                   }
                   <Button onClick={open} isLarge icon="format-image" isSecondary>
-                    {post?.customThumb?.sizes?.thumbnail?.url
-                      ? __('Replace Custom Thumbnail', THEME_PREFIX)
-                      : __('Chose Custom Thumbnail', THEME_PREFIX)}
+                    {post?.factThumb?.sizes?.thumbnail?.url
+                      ? __('Replace Fact Thumbnail', THEME_PREFIX)
+                      : __('Chose Fact Thumbnail', THEME_PREFIX)}
                   </Button>
                 </Flex>
                 )}
@@ -140,7 +140,6 @@ const Wizard = props => {
             </MediaUploadCheck>
           </PanelRow>
 
-        </PanelBody> */}
         </PanelBody>
       </>)}
       newSegment={DEFAULT_SEGMENT}
