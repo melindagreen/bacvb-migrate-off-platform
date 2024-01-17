@@ -56,6 +56,7 @@
 !/web/wp-content/plugins/memberpress
 !/web/wp-content/plugins/memberpress-account-nav-tabs
 !/web/wp-content/plugins/memberpress-courses
+!/web/wp-content/plugins/wpcode-premium
 
 # WordPress dynamic folders
 /web/wp-content/cache/
