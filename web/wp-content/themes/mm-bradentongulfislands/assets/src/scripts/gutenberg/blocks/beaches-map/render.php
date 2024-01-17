@@ -105,7 +105,7 @@ function render_block( $attrs, $content ) {
                 $html .= '<p>'.$postMeta['partnerportal_description'][0].'</p>';
               }
 
-              $html .= '<a href="'.get_permalink($post->ID).'" class="postLink">Dive In</a>';
+              // $html .= '<a href="'.get_permalink($post->ID).'" class="postLink">Dive In</a>';
 
             $html .= '</div>'; // .content
 
