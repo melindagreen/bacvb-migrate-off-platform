@@ -41,10 +41,6 @@
             });
         });
 
-
-        // Record the current scroll position
-        var scrollPosition = window.scrollY;
-
         // Set the scroll position back after hiding the overlay
         $('.beach_content_overlay').on('click', function(){
             if ($(event.target).hasClass('beach_content_overlay')) {
@@ -53,8 +49,11 @@
                     'overflow': 'auto',
                     'height': 'auto'
                 });
-                
-                window.scrollTo(0, scrollPosition);
+
+                // Scroll down to #beachMap
+                $('html, body').animate({
+                    scrollTop: $('#beachMap').offset().top
+                }, 0);
             }
         });
 
@@ -64,7 +63,10 @@
                 'overflow': 'auto',
                 'height': 'auto'
             });
-            window.scrollTo(0, scrollPosition);
+            // Scroll down to #beachMap
+            $('html, body').animate({
+                scrollTop: $('#beachMap').offset().top
+            }, 0);
         });
 
     });
