@@ -11,6 +11,9 @@ class ThemeSetup {
 		add_filter( 'pre_post_link', array(get_called_class(), 'prepend_post_permalinks'), 10, 2);
 		add_action( 'template_redirect', array(get_called_class(), 'redirect_single_posts'));
 		// add_action('gform_after_submission', array( get_called_class(), 'add_to_newsletter' ), 10, 2);
+
+		// tell yoast to not show some sitemaps
+		add_filter( 'wpseo_sitemap_exclude_taxonomy', array( get_called_class(), 'sitemap_exclude_taxonomy' ), 10, 2 );
 	}
 
 	public static function madden_theme_support() {
@@ -102,4 +105,22 @@ class ThemeSetup {
 			}
 		}
 	}
+
+	/**
+	 * Remove unwanted category taxonomies from the Yoast sitemap 
+	 * @param array $value				A value? I'm honestly not sure - but we don't need it here
+	 * @param string $taxonomy			The taxonomy to evaluate
+	 * @return boolean					Exclude the sitemap?
+	 */
+	public static function sitemap_exclude_taxonomy( $value, $taxonomy ) {
+
+		$skipTaxonomies = array(
+			'category',
+			'post_tag',
+			'listing_categories',
+			'eventastic_categories'
+		);
+
+		if ( in_array( $taxonomy, $skipTaxonomies ) ) return true;
+	}		
 }
