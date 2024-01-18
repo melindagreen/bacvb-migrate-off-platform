@@ -283,17 +283,9 @@ $amenitiesBorderRadius: 20px;
     }
   }
 
-  .hero-showcase-amenities, .hero-showcase-body {
-
-    opacity: 0;
-    transition: all 0.65s ease-out;
-    transition-delay: 0.8s;
-  }
-
   .hero-showcase-amenities {
 
-    background-color: $bradenton-teal;
-    opacity: 0.9;
+    background-color: #2b7b7cf0;
     width: 400px;
     padding: 0.5rem 0.45rem 0.45em 0;
     border-top-right-radius: 12px;
@@ -342,6 +334,13 @@ $amenitiesBorderRadius: 20px;
     &:hover::before {
       opacity: 1;
     }
+  }
+
+  .hero-showcase-amenities, .hero-showcase-body, .hero-showcase-factoid {
+
+    opacity: 0;
+    transition: all 0.65s ease-out;
+    transition-delay: 0.8s;
   }
 }
 
