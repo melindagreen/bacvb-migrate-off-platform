@@ -58,6 +58,7 @@
 !/web/wp-content/plugins/memberpress-courses
 !/web/wp-content/plugins/wpcode-premium
 !/web/wp-content/plugins/memberpress-importer
+!/web/wp-content/plugins/memberpress-developer-tools
 
 # WordPress dynamic folders
 /web/wp-content/cache/
