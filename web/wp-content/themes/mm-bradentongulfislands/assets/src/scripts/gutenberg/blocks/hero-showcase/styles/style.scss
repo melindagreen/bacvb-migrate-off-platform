@@ -30,16 +30,16 @@ $amenitiesBorderRadius: 20px;
 
           border-top-right-radius: unset !important;
           border-bottom-right-radius: unset !important;
-          border-top-left-radius: $amenitiesBorderRadius;
-          border-bottom-left-radius: $amenitiesBorderRadius;
+          border-top-left-radius: 12px;
+          border-bottom-left-radius: 12px;
           padding: 0.5rem 0rem 0.45em 0.45rem;
 
           .amenitiesTitle {
 
             border-top-right-radius: unset !important;
             border-bottom-right-radius: unset !important;
-            border-top-left-radius: $amenitiesBorderRadius;
-            border-bottom-left-radius: $amenitiesBorderRadius;
+            border-top-left-radius: 8px;
+            border-bottom-left-radius: 8px;
             padding: 0.3rem 0.9rem 0.3rem 0.9rem;
           }
       }
@@ -68,7 +68,7 @@ $amenitiesBorderRadius: 20px;
     .hero-showcase-factoid {
 
       position: absolute;
-      bottom: 3%;
+      bottom: 4%;
       right: 2%;
       display: flex;
       align-items: center;
@@ -96,6 +96,17 @@ $amenitiesBorderRadius: 20px;
         h2, p {
 
           color: white;
+        }
+
+        h2{
+          font-family: var(--wp--preset--font-family--title);
+          font-size: 46px;
+          margin-top: 10px;
+          margin-bottom: 0;
+        }
+        p{
+          font-size: 14px;
+          margin-top: 0;
         }
       }
       
@@ -285,14 +296,14 @@ $amenitiesBorderRadius: 20px;
     opacity: 0.9;
     width: 400px;
     padding: 0.5rem 0.45rem 0.45em 0;
-    border-top-right-radius: $amenitiesBorderRadius;
-    border-bottom-right-radius: $amenitiesBorderRadius;
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
     
     .amenitiesTitle {
 
       background-color: white;
-      border-top-right-radius: $amenitiesBorderRadius;
-      border-bottom-right-radius: $amenitiesBorderRadius;
+      border-top-right-radius: 8px;
+      border-bottom-right-radius: 8px;
       margin-bottom: 0.5rem;
       padding: 0.3rem 0 0.3rem 0.9rem;
       font-size: 1.2rem;
