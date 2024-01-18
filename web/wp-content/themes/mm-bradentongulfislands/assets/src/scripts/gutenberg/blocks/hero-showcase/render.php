@@ -192,7 +192,7 @@ function render_block( $attrs, $content ) {
         
         <article class="hero-showcase hero-showcase--<?php echo $i + 1 ?>">
             <div class="beachLogo"><img src="/wp-content/uploads/<?php echo $postSlug; ?>_logo.png" alt="beach logo"></div>
-            <div class="hero-showcase__background">
+            <div class="hero-showcase__background is-style-collage-square">
               <?php if( $post['thumb'] ) { ?>
                 <img class="hero-showcase__image" src="<?php echo $post['thumb'] ?>" alt="">
               <?php } ?>
