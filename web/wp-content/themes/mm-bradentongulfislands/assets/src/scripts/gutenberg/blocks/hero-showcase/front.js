@@ -5,11 +5,10 @@
 (function($) {
   $(document).ready(function() {
       
-    const heroShowcaseElements = $(".hero-showcase");
+    const heroShowcaseElements = $(".hero-showcase__background, .hero-showcase-amenities, .hero-showcase-body");
 
       $(heroShowcaseElements).each(function (index, element) {
-        console.log('Test');
- 
+
           const observer = new IntersectionObserver(entries => {
               entries.forEach(entry => {
                   if (entry.isIntersecting) {
