@@ -133,6 +133,7 @@
 
     .selectBeach {
       display: none;
+      min-height: 380px;
 
       &.show {
         display: flex;
@@ -264,7 +265,6 @@
       }
     }
   }
-
 }
 
 /*********************

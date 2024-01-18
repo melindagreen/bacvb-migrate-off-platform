@@ -92,7 +92,7 @@ function render_block( $attrs, $content ) {
            type='checkbox'
              name="accomodations-facility-amenities"
            />
-          <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/amenities/sightseeing.png" class="icon" alt="Fishing icon">
+          <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/amenities/sightseeing.png" class="icon" alt="Sightseeing icon">
           <span class='control__text'>Sightseeing</span>
         </label>
         <label class='control__label control__label--categories control__label--accomodations'>
@@ -101,7 +101,7 @@ function render_block( $attrs, $content ) {
            type='checkbox'
              name="accomodations-facility-amenities"
            />
-          <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/amenities/sunbathing.png" class="icon" alt="Fishing icon">
+          <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/amenities/sunbathing.png" class="icon" alt="Sunbathing icon">
           <span class='control__text'>Sunbathing</span>
         </label>
         <label class='control__label control__label--categories control__label--accomodations'>
@@ -110,7 +110,7 @@ function render_block( $attrs, $content ) {
            type='checkbox'
              name="accomodations-facility-amenities"
            />
-          <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/amenities/shelling.png" class="icon" alt="Fishing icon">
+          <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/amenities/shelling.png" class="icon" alt="Shelling icon">
           <span class='control__text'>Shelling</span>
         </label>
         <label class='control__label control__label--categories control__label--accomodations'>
@@ -119,7 +119,7 @@ function render_block( $attrs, $content ) {
            type='checkbox'
              name="accomodations-facility-amenities"
            />
-          <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/amenities/swimming.png" class="icon" alt="Fishing icon">
+          <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/amenities/swimming.png" class="icon" alt="Swimming icon">
           <span class='control__text'>Swimming</span>
         </label>
         <label class='control__label control__label--categories control__label--accomodations'>
@@ -128,7 +128,7 @@ function render_block( $attrs, $content ) {
            type='checkbox'
              name="accomodations-facility-amenities"
            />
-          <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/amenities/playground.png" class="icon" alt="Fishing icon">
+          <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/amenities/playground.png" class="icon" alt="Playground icon">
           <span class='control__text'>Playground</span>
         </label>
         <label class='control__label control__label--categories control__label--accomodations'>
@@ -137,7 +137,7 @@ function render_block( $attrs, $content ) {
            type='checkbox'
              name="accomodations-facility-amenities"
            />
-          <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/amenities/bathrooms.png" class="icon" alt="Fishing icon">
+          <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/amenities/bathrooms.png" class="icon" alt="Bathroom icon">
           <span class='control__text'>Bathrooms</span>
         </label>
         <label class='control__label control__label--categories control__label--accomodations'>
@@ -146,7 +146,7 @@ function render_block( $attrs, $content ) {
            type='checkbox'
              name="accomodations-facility-amenities"
            />
-          <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/amenities/changing-station.png" class="icon" alt="Fishing icon">
+          <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/amenities/changing-station.png" class="icon" alt="Changing station icon">
           <span class='control__text'>Changing Station</span>
         </label>
         <label class='control__label control__label--categories control__label--accomodations'>
@@ -155,7 +155,7 @@ function render_block( $attrs, $content ) {
            type='checkbox'
              name="accomodations-facility-amenities"
            />
-          <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/amenities/lifeguard.png" class="icon" alt="Fishing icon">
+          <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/amenities/lifeguard.png" class="icon" alt="Lifeguard icon">
           <span class='control__text'>Lifeguard</span>
         </label>
         <label class='control__label control__label--categories control__label--accomodations'>
@@ -164,7 +164,7 @@ function render_block( $attrs, $content ) {
            type='checkbox'
              name="accomodations-facility-amenities"
            />
-          <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/amenities/wheelchair-accessible.png" class="icon" alt="Fishing icon">
+          <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/amenities/wheelchair-accessible.png" class="icon" alt="Wheelchair icon">
           <span class='control__text'>Wheelchair Accessible</span>
         </label>
         <label class='control__label control__label--categories control__label--accomodations'>
@@ -173,7 +173,7 @@ function render_block( $attrs, $content ) {
            type='checkbox'
              name="accomodations-facility-amenities"
            />
-          <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/amenities/cafe-food.png" class="icon" alt="Fishing icon">
+          <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/amenities/cafe-food.png" class="icon" alt="Cafe icon">
           <span class='control__text'>Cafe/Food</span>
         </label>
     </div>
@@ -191,7 +191,7 @@ function render_block( $attrs, $content ) {
         ?>
         
         <article class="hero-showcase hero-showcase--<?php echo $i + 1 ?>">
-            <div class="beachLogo"><img src="/wp-content/uploads/<?php echo $postSlug; ?>_logo.png" alt="beach logo"></div>
+            <!-- <div class="beachLogo"><img src="/wp-content/uploads/<?php // echo $postSlug; ?>_logo.png" alt="beach logo"></div> -->
             <div class="hero-showcase__background is-style-collage-square">
               <?php if( $post['thumb'] ) { ?>
                 <img class="hero-showcase__image" src="<?php echo $post['thumb'] ?>" alt="">
