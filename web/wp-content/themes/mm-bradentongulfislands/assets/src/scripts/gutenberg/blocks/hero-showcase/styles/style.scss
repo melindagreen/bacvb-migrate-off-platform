@@ -72,6 +72,7 @@ $amenitiesBorderRadius: 20px;
       right: 2%;
       display: flex;
       align-items: center;
+      pointer-events: none;
 
       .factoid-img {
 
@@ -123,13 +124,14 @@ $amenitiesBorderRadius: 20px;
         color: white;
         font-size: 1.2rem;
         font-family: $font-header;
+        margin: 0 0 10px 0;
       }
 
       &__excerpt {
 
         font-size: 1rem;
         color: white;
-        line-height: 1.2em;
+        line-height: 1.35em;
       }
 
       &__link {
@@ -318,7 +320,7 @@ $amenitiesBorderRadius: 20px;
     &::before {
       content: attr(data-tooltip);
       position: absolute;
-      background-color: rgba($rust,0.8);
+      background-color: $rust;
       width: 90px;
       text-align: center;
       color: #fff;
@@ -327,7 +329,7 @@ $amenitiesBorderRadius: 20px;
       border-radius: 3px;
       opacity: 0;
       transition: opacity 0.3s;
-      bottom: 110%; 
+      top: 110%; 
       left: 50%;
       transform: translateX(-25%);
     }
