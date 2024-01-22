@@ -61,6 +61,21 @@
           "ffraenz/private-composer-installer": "^5.0"
         }
       }
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "rankmath/seo-by-rank-math-pro",
+        "type": "wordpress-plugin",
+        "version": "3.0.54",
+        "dist": {
+          "type": "zip",
+          "url": "https://rankmath.com/download/510590/?username=madden%20media&api_key=8330bc817f11ccc9d602921e293ecd5b"
+        },
+        "require": {
+          "composer/installers": "*"
+        }
+      }
     }
   ],
   "require": {
@@ -93,7 +108,9 @@
     "wpackagist-plugin/translatepress-multilingual": "2.4.2",
     "wpackagist-plugin/wordpress-importer": "0.8",
     "wpackagist-plugin/wordpress-seo": "21.8",
-    "wpackagist-plugin/wp-media-library-categories": "*"
+    "wpackagist-plugin/wp-media-library-categories": "*",
+    "wpackagist-plugin/seo-by-rank-math":"*",
+    "rankmath/seo-by-rank-math-pro": "^3.0.54"
   },
   "minimum-stability": "dev",
   "prefer-stable": true,
