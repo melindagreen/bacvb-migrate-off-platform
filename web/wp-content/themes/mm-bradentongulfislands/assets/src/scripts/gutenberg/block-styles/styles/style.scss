@@ -150,7 +150,7 @@ COLUMNS
                 padding: 10px;
             }
             .wp-block-media-text__content {
-                padding: 0 2%;
+                padding: 0 5% 0 2%;
                 h2 {
                     position: relative;
                     font-family: $font-title;
@@ -160,7 +160,7 @@ COLUMNS
                         content: "";
                         display: block;
                         position: absolute;
-                        right: 0;
+                        right: -9px;
                         top: 50%;
                         transform: translateY(-50%) rotate(0deg);
                         width: 25px;
