@@ -273,8 +273,12 @@ HEADER
         }
 
         &.open {
-            .mega-menu::after {
-                display: none;
+
+            .mega-menu {
+                padding-top: 10rem;                
+                &::after {
+                    display: none;
+                }
             }
         }
 
@@ -290,14 +294,18 @@ HEADER
                 justify-content: center;
                 gap: 0;
                 padding-bottom: 1em;
+                flex-wrap: wrap;
 
                 .menu-item {
                     min-width: auto;
                     width: auto;
-                    font-size: 3.0vw;
+                    font-size: 3.5vw;
                     flex-basis: auto;
-                    flex-grow: 1;
-                    white-space: nowrap;         
+                    // flex-grow: 1;
+                    white-space: nowrap;
+                    a {
+                        padding: 5px;
+                    }         
                 }
                 &:after {
                     content: " ";
