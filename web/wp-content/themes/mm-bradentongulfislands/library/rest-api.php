@@ -66,7 +66,7 @@ class RestApi {
         }
 
         // thumb
-        $thumb_types = array( 'listing', 'event' );
+        $thumb_types = array( 'listing', 'event', 'post' );
         foreach( $thumb_types as $type ) {
             register_rest_field( $type, 'thumb_url', array(
                 'get_callback' => function( $object ) {

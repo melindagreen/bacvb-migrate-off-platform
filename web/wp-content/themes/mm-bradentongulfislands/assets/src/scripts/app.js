@@ -92,7 +92,6 @@ if ('serviceWorker' in navigator) {
 	function lightBox() {
 
 		$('.lb-content:not(.wp-lightbox-overlay .lightbox-image-container .lb-content), .lightbox-imagecarousel:not(.wp-lightbox-overlay .lightbox-image-container .lightbox-imagecarousel').each(function() {
-
 			$(this).remove();  
 		});
 

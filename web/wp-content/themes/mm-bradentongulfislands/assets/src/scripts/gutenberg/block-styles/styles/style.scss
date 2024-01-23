@@ -1422,15 +1422,21 @@ Query Loop
 
         .swiper-button-next-imagecarousel, .swiper-button-prev-imagecarousel {
             background: $rust;
-            width:50px;
+            width: 35px;
             height: 50px;
             opacity: 0.75;
             transition: all 0.3s;
             position: absolute;
+            top: 50%;
+            z-index: 5;
+            text-align: center;
 
             &:after {
+                content: "\203A";
+                display: block;
                 color: #fff;
-                font-size: 1.5rem;
+                font-size: 3rem;
+                line-height: 0.8;
             }
 
             &:hover {
@@ -1442,6 +1448,9 @@ Query Loop
         }
         .swiper-button-prev-imagecarousel {
             left: 0;
+            &:after {
+                transform: scaleX(-1);
+            }
         }
     }
 }
