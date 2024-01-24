@@ -173,17 +173,29 @@ const ALLOWED_MEDIA_TYPES = ["image", "video"];
             value={videoForMobile}
           />
         )
-      ) : image ? (
-        <MediaPlaceholder
-          icon="images-alt2"
-          onSelect={mobileImage => setAttributes({ mobileImage })}  
-          allowedTypes={ALLOWED_MEDIA_TYPES}
-          multiple={false}
-          labels={{
-            title: "Mobile Hero Image",
-            instructions: "Upload an image for mobile, or pick one from your media library",
-          }}
-        />
+      ) : mobileImage ? (
+				<PanelRow>
+					<IconButton
+						className="remove-media"
+						label={__("Remove Image")}
+						onClick={(mobileImage) => setAttributes({ mobileImage: "" })}
+						icon="no-alt"
+					/>
+					<div
+						className="block-image"
+						style={{
+							backgroundImage: `url(${mobileImage.url})`,
+						}}
+					>
+						<IconButton
+							className="remove-media"
+							label={__("Remove Image")}
+							onClick={(mobileImage) => setAttributes({ mobileImage: "" })}
+							icon="no-alt"
+						/>
+					</div>
+					<div style={ heroStyle } />
+				</PanelRow>
       ) : (
         <MediaPlaceholder
           icon="images-alt2"
