@@ -1530,6 +1530,8 @@ Cover Block
     border: 4px solid white;
     border-radius: 100%;
     padding: 0.2rem;
+    z-index: 2;
+
     &::before {
       content: attr(data-photocredit);
       position: absolute;
@@ -1550,9 +1552,11 @@ Cover Block
       opacity: 1;
     }
 
-    img {
+    svg {
 
-        width: 18px;
-        height: 18px;
+        width: 18px !important;
+        height: 18px !important;
+        object-fit: unset !important;
+        flex: unset !important;
     }
   }
