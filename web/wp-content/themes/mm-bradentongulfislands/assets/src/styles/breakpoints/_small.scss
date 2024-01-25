@@ -496,3 +496,32 @@ FOOTER
         }
     }
 }
+
+/*********************
+Photo Credit
+*********************/
+
+.wp-block-gallery {
+
+    .wp-block-image {
+
+        .photocredit {
+            left: 0.45rem;
+            top: 0.45rem;
+
+            &::before {
+            left: 0;
+            max-width: 120px;
+            top: 1.5rem;
+            width: max-content;
+        }
+
+        svg {
+
+            width: 12px !important;
+            height: 12px !important;
+        }
+        }   
+        
+    }
+}

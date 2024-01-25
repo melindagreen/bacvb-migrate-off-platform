@@ -355,3 +355,23 @@ FOOTER
         margin: auto;
     }
 }
+
+/*********************
+Photo Credit
+*********************/
+
+.wp-block-gallery {
+
+    .wp-block-image {
+
+        .photocredit {
+
+            &::before {
+            left: 0;
+            max-width: 200px;
+            top: 1.75rem;
+            width: max-content;
+            }
+        }
+    }
+}
