@@ -94,9 +94,6 @@ function render_block( $attrs, $content ) {
 
               $html .= '<img alt="beach image" class="img" src="'.$featImg.'">';
 
-              // Bean point beach uses Bradenton-Beach logo
-              $postSlug = str_replace('Bean-Point', 'Bradenton-Beach', $postSlug);
-
               $html .= '<div class="beachLogo"><img src="/wp-content/uploads/'.$postSlug.'_logo.png" alt="beach logo"></div>';
 
             $html .= '</div>'; // .beachImg

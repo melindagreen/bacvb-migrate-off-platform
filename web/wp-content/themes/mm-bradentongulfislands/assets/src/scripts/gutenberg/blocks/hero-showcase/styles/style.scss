@@ -91,8 +91,7 @@ $amenitiesBorderRadius: 20px;
 
         img {
 
-          height: 120px !important;
-          height: auto;
+          height: 120px;
         }
       }
 
@@ -314,17 +313,17 @@ $amenitiesBorderRadius: 20px;
       border-top-right-radius: 8px;
       border-bottom-right-radius: 8px;
       margin-bottom: 0.5rem;
-      padding: 0.3rem 0 0.3rem 0.9rem;
+      padding: 0.3rem 0.9rem;
       font-size: 1.2rem;
       font-family: $font-header;
       color: $bradenton-teal;
     }
 
     .icon {
-
-      width: 25px;
-      height: auto;
-      margin-left: 0.9rem;
+      width: 20px;
+      height: 22px;
+      display: block;
+      margin: 0 5px;
     }
 
   }
@@ -346,7 +345,7 @@ $amenitiesBorderRadius: 20px;
       transition: opacity 0.3s;
       top: 110%; 
       left: 50%;
-      transform: translateX(-25%);
+      transform: translateX(-50%);
     }
     &:hover::before {
       opacity: 1;
@@ -387,33 +386,60 @@ SMALL SCREENS
     
     .hero-showcases {
 
-      .hero-showcase-amenities {
+      .hero-showcase-body {
+        padding: 1.7rem 1.5rem;
+      } 
 
-        position: absolute;
-        bottom: 4%;
-        left: 0;
-      }
+      // .hero-showcase-amenities {
 
-      .hero-showcase {
+      //   position: absolute;
+      //   bottom: 4%;
+      //   left: 0;
+      // }
+
+      // .hero-showcase {
   
-        height: unset;
-        position: relative;
+      //   height: unset;
+      //   position: relative;
   
-        &--topright {
+      //   &--topright {
   
-          position: unset;
-        }
+      //     position: unset;
+      //   }
       
-        &--bottomleft {
+      //   &--bottomleft {
       
-          position: unset;
-        }
+      //     position: unset;
+      //   }
   
-      }
+      // }
 
       .hero-showcase-factoid {
+        flex-direction: column;
+        justify-content: center;
+        display: none;
 
-        position: unset;       
+        .factoid-img {
+          margin-right: 0;
+          margin-bottom: -2.5rem;
+          img {
+            height: 100px;
+          }
+        }
+
+        .factoid-content {
+          width: 200px;
+          height: 200px;
+          padding: 2.5rem 2rem;
+          h2 {
+            font-size: 24px;
+          }
+          p {
+            font-size: 13px;
+            line-height: 1.1;
+          }
+        }
+
       }
 
     }
