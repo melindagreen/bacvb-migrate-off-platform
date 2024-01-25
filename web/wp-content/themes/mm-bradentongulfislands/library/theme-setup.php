@@ -46,7 +46,7 @@ class ThemeSetup {
 	 */
 	public static function add_photo_credit($block_content, $block) {
 
-		if (($block['blockName'] === 'core/image' || $block['blockName'] === 'core/cover') && $block['attrs']['photoCredit']) {
+		if (($block['blockName'] === 'core/image' || $block['blockName'] === 'core/cover') && ($block['attrs']['photoCredit'] || strpos($block_content, 'swiper-slide'))) {
 			$imageId = $block['attrs']['id'];
 			$photoCredit = get_field('photo_credit', $imageId);
 			$position = strpos($block_content, '<img ');
