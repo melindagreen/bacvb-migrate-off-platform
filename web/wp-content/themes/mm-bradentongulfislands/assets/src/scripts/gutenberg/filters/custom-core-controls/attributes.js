@@ -41,6 +41,15 @@ const addCustomAttrs = (settings) => {
                             },
                         };
 
+                        case 'photo-credit':
+                            settings.attributes = {
+                            ...settings.attributes,
+                            photoCredit: {
+                                type: 'boolean',
+                                default: false,
+                            },
+                        };
+
                         case 'layer':
                             settings.attributes = {
                             ...settings.attributes,

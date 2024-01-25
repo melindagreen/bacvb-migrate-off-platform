@@ -1516,3 +1516,43 @@ Cover Block
 a.wp-block-cover-link{
     text-decoration: none;
 }
+
+/*********************
+Cover Block
+*********************/
+
+.photocredit {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    display: inline-block;
+    background-color: $bradenton-teal;
+    border: 4px solid white;
+    border-radius: 100%;
+    padding: 0.2rem;
+    &::before {
+      content: attr(data-photocredit);
+      position: absolute;
+      background-color: white;
+      width: max-content;
+      max-width: 200px;  
+      text-align: center;
+      color: $soft-black;
+      padding: 5px;
+      font-size: 0.8em;
+      border-radius: 3px;
+      opacity: 0;
+      transition: opacity 0.3s;
+      top: 0;
+      left: 2.5rem;
+    }
+    &:hover::before {
+      opacity: 1;
+    }
+
+    img {
+
+        width: 18px;
+        height: 18px;
+    }
+  }

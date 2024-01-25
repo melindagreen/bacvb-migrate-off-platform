@@ -14,7 +14,10 @@ class ThemeSetup {
 
 		// tell yoast to not show some sitemaps
 		add_filter( 'wpseo_sitemap_exclude_taxonomy', array( get_called_class(), 'sitemap_exclude_taxonomy' ), 10, 2 );
+
+		add_filter('render_block', array( get_called_class(), 'add_photo_credit' ), 10, 2);
 	}
+
 
 	public static function madden_theme_support() {
 		// Register default menus
@@ -37,6 +40,24 @@ class ThemeSetup {
 			'flex-height' => true,
 		) );
 	}
+
+	/**
+	 * Photo Credit for Core Block
+	 */
+	public static function add_photo_credit($block_content, $block) {
+
+		if (($block['blockName'] === 'core/image' || $block['blockName'] === 'core/cover') && $block['attrs']['photoCredit']) {
+			$imageId = $block['attrs']['id'];
+			$photoCredit = get_field('photo_credit', $imageId);
+			$photoCreditContent = '<div class="photocredit" data-photocredit="'. $photoCredit .'"><img class="photo-credit" src="/wp-content/themes/mm-bradentongulfislands/assets/images/icons/camera-icon.svg" alt="camera icon" /></div>';
+
+			$position = strpos($block_content, '</figure>');
+			$block_content = $position !== false ? substr_replace($block_content, $photoCreditContent . '</figure>', $position, 0) : $block_content;
+		}
+	
+		return $block_content;
+	}
+	
 
 	/**
 	 * Custom rewrite rules for the site
