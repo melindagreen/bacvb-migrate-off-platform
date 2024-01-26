@@ -16,6 +16,7 @@ class ThemeSetup {
 		add_filter( 'wpseo_sitemap_exclude_taxonomy', array( get_called_class(), 'sitemap_exclude_taxonomy' ), 10, 2 );
 
 		add_filter('render_block', array( get_called_class(), 'add_photo_credit' ), 10, 2);
+		add_filter('wp_get_attachment_url', array( get_called_class(), 'photo_credit_url_param' ), 10, 2);
 	}
 
 
@@ -46,7 +47,7 @@ class ThemeSetup {
 	 */
 	public static function add_photo_credit($block_content, $block) {
 
-		if (($block['blockName'] === 'core/image' || $block['blockName'] === 'core/cover') && ($block['attrs']['photoCredit'] || strpos($block_content, 'swiper-slide'))) {
+		if (($block['blockName'] === 'core/image' || $block['blockName'] === 'core/cover') && $block['attrs']['photoCredit'] ) {
 			$imageId = $block['attrs']['id'];
 			$photoCredit = get_field('photo_credit', $imageId);
 			$position = strpos($block_content, '<img ');
@@ -57,6 +58,18 @@ class ThemeSetup {
 		}
 	
 		return $block_content;
+	}
+
+	public static function photo_credit_url_param($url, $attachment_id) {
+
+		$photoCredit = get_field('photo_credit', $attachment_id);
+
+		if(isset($photoCredit) && $photoCredit !== '') {
+
+			$url = $url .'?photocredit='.urlencode($photoCredit);
+		}
+
+		return $url;
 	}
 	
 
