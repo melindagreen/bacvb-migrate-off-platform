@@ -200,14 +200,20 @@ if ('serviceWorker' in navigator) {
 		const swiper = new Swiper('.lightbox-imagecarousel', {
 			loop: true,
 			autoplay: {
-			delay: 5500,
-			disableOnInteraction: true,
+			  delay: 5500,
+			  disableOnInteraction: false,
 			},
+			clickable: true,
 			navigation: {
-			nextEl: ".swiper-button-next-imagecarousel",
-			prevEl: ".swiper-button-prev-imagecarousel"
+			  nextEl: '.swiper-button-next-imagecarousel',
+			  prevEl: '.swiper-button-prev-imagecarousel'
 			}
-		  });
+		  })
+
+		  $('.swiper-button-next-imagecarousel, .swiper-button-prev-imagecarousel, .swiper-slide, .scrim').on('click', function(event) {
+			// Prevent the event from reaching parent elements
+			event.stopPropagation();
+		});
 
 		lightBox();
 
