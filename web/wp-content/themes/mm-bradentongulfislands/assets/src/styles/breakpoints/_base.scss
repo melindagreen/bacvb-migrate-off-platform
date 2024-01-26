@@ -570,9 +570,8 @@ HEADER
                     position: relative;
                     z-index: 7;
                     max-width: 80%;
-                    max-height: 130px;
+                    max-height: 110px;
                     transition: all 0.4s;
-                    transition-delay: 0.4s;
                 }
                 .featImg {
                     position: absolute;
@@ -594,9 +593,12 @@ HEADER
                     }
                 }
                 &:hover {
+                    .logo {
+                        opacity: 0.4;
+                    }
                     .featImg {
                         img {
-                            opacity: 0.75;
+                            opacity: 1;
                         }
                     }
                 }
@@ -700,6 +702,7 @@ HEADER
     .mega-menu__nav-wrap {
 
         display: flex;
+        width: 100%;
     }
     .mega-menu__menu {
 
@@ -752,7 +755,6 @@ HEADER
                 width: 1.5rem;
                 height: 1.5rem;
                 background: {
-                    // image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+Cgo8IS0tIExpY2Vuc2U6IENDIEF0dHJpYnV0aW9uLiBNYWRlIGJ5IFBldHJhcyBOYXJnZWxhOiBodHRwczovL2RyaWJiYmxlLmNvbS9uYXJnZWxhIC0tPgo8c3ZnIGhlaWdodD0iODAwcHgiIHdpZHRoPSI4MDBweCIgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgCgkgdmlld0JveD0iMCAwIDUwIDUwIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA1MCA1MCIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxwYXRoIGZpbGw9IiNCMEQ5RTYiIGQ9Ik0xNS41NjMsNDAuODM2YzAuMTk1LDAuMTk1LDAuNDUxLDAuMjkzLDAuNzA3LDAuMjkzczAuNTEyLTAuMDk4LDAuNzA3LTAuMjkzbDE1LTE1CgljMC4zOTEtMC4zOTEsMC4zOTEtMS4wMjMsMC0xLjQxNGwtMTUtMTVjLTAuMzkxLTAuMzkxLTEuMDIzLTAuMzkxLTEuNDE0LDBzLTAuMzkxLDEuMDIzLDAsMS40MTRsMTQuMjkzLDE0LjI5M0wxNS41NjMsMzkuNDIyCglDMTUuMTcyLDM5LjgxMywxNS4xNzIsNDAuNDQ2LDE1LjU2Myw0MC44MzZ6Ii8+Cjwvc3ZnPg==");
                     image: url('~/images/arrow-teal.png');
                     size: 80% auto;                
                     repeat: no-repeat;
@@ -849,7 +851,6 @@ HEADER
             overflow-x: hidden;
 
             &::after {
-
                 content: ' ';
                 background: url('images/mega-menu-bottom.png');
                 background-size: cover;

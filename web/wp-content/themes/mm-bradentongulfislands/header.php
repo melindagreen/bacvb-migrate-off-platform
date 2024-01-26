@@ -234,7 +234,7 @@
                                 </div>
                             </a>
                             <a href="/venues/premier-sports-campus/" class="venue premier-sports-campus">
-                                <img src="/wp-content/uploads/PSC-logo.png" alt="Premier Sports Campus logo" class="logo">
+                                <img src="/wp-content/uploads/Premier-Sports-Campus-Logo_rgb_l.png" alt="Premier Sports Campus logo" class="logo">
                                 <div class="featImg">
                                     <img src="/wp-content/uploads/2023/11/Premie_Venues-400x512.jpg" alt="Premier Sports Campus image">
                                 </div>
