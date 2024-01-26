@@ -23,6 +23,14 @@ HEADER
 *********************/
 
 .#{$theme-prefix}-header {
+
+    &.open {
+        &.open {
+            .mega-menu {
+                padding-right: 5%;
+            }
+        }
+    }
    
     .top-bar {
         height: 6rem;
