@@ -1566,3 +1566,17 @@ Photo Credit
         min-height: unset !important;
     }
   }
+
+.is-style-torn-bottom {
+
+    .photocredit {
+        right: 0.6rem;
+        bottom: 2.6rem;
+
+    
+        &::before {
+          right: 2.5rem;
+          bottom: 0;
+        }
+      }
+}
