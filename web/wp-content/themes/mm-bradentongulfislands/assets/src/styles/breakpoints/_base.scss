@@ -1572,11 +1572,14 @@ Photo Credit
     .photocredit {
         right: 0.6rem;
         bottom: 2.6rem;
-
+        top: unset;
+        left: unset;
     
         &::before {
           right: 2.5rem;
           bottom: 0;
+          left: unset;
+          top: unset;
         }
       }
 }
