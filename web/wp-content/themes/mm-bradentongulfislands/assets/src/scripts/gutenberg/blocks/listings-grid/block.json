@@ -19,6 +19,10 @@
           "type": "string",
           "default": "Listings"
         },
+        "catFilterSelections": {
+          "type": "string",
+          "default": ""
+        },
         "postType": {
           "type": "string",
           "default": "listing"

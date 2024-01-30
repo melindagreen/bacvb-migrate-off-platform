@@ -1,8 +1,9 @@
 /*** IMPORTS ****************************************************************/
 
 // WordPress dependencies
-import { SelectControl, TextControl, } from '@wordpress/components';
+import { SelectControl, TextControl, QueryControls } from '@wordpress/components';
 import ServerSideRender from '@wordpress/server-side-render';
+import { withSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
 // Local Dependencies
@@ -20,7 +21,7 @@ import { TaxonomyControl } from '../../components';
  * @returns {WPElement}
  */
 const Wizard = props => {
-  const { attributes: { listingsTitle, postType, listingsPerPage, preFilterCat }, setAttributes } = props;
+  const { attributes: { listingsTitle, postType, listingsPerPage, preFilterCat, catFilterSelections }, setAttributes } = props;
 
   return <>
     <TextControl
@@ -64,6 +65,14 @@ const Wizard = props => {
       value={[preFilterCat]}
       onChange={categories => setAttributes({ preFilterCat: categories[0] })}
     />}
+
+{(postType === 'listing' || postType === 'page') && 
+<TextControl
+      label={__('Category Filter Selections')}
+      value={catFilterSelections}
+      onChange={catFilterSelections => setAttributes({ catFilterSelections })}
+    />
+}
   </>
 }
 

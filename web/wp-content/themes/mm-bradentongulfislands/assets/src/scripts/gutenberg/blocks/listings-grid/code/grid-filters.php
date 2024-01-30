@@ -232,7 +232,19 @@ function render_grid_filter( $attrs, $filter_tax ) {
                             <?php } ?>
                             
                             <?php if ($attrs['filterType'] == 'categories') { ?>
-                            <?php foreach($filter_terms as $term) {  ?>
+                            <?php foreach($filter_terms as $term) {  
+
+                                if(!empty($attrs['catFilterSelections'])){
+                                    
+                                    // Split the string into an array using commas as the delimiter
+                                    $catFiltersSelections = explode(",", $attrs['catFilterSelections']);
+                                    
+                                    // Check if the search term is in the array
+                                    if (!in_array($term->slug, $catFiltersSelections)) {
+                                        continue;
+                                    }
+                                }
+                                ?>
                             <label class="control__label control__label--categories">
                                     <input
                                         type="checkbox"
