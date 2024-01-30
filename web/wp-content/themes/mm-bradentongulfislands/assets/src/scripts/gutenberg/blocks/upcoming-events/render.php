@@ -55,7 +55,9 @@ function render_block( $attrs, $content ) {
         endif;
         endforeach;
 
-    $html .= "</div>";
+        $html .= '<a href="/events" class="viewBtn">View All Events</a>';
+
+    $html .= "</div>"; // .eventsWrapper
 
   $html .= "</div>";
 
