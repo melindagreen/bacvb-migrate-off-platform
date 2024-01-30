@@ -104,6 +104,7 @@
     "wpackagist-plugin/redirection": "5.4.1",
     "wpackagist-plugin/redis-cache": "2.2.2",
     "wpackagist-plugin/sa11y": "1.1.0",
+    "wpackagist-plugin/safe-svg": "^2.1",
     "wpackagist-plugin/tiny-compress-images": "3.4.3",
     "wpackagist-plugin/translatepress-multilingual": "2.4.2",
     "wpackagist-plugin/wordpress-importer": "0.8",
