@@ -181,9 +181,18 @@ HEADER
     .social-container {
 
         position: absolute;
-        right: 0;
+        right: 20px;
         bottom: 11%;
         z-index: 2;
+
+        h4 {
+            text-align: right;
+            color: $rust;
+            font-size: 1.5em;
+            font-weight: 400;
+            margin-bottom: 15px;
+            padding: 0 10px;
+        }
 
         .social-links {
             a {
@@ -194,8 +203,8 @@ HEADER
             }
             svg {
 
-                height: 25px;
-                width: 25px;
+                height: 35px;
+                width: 35px;
                 path {
 
                     fill: $bradenton-teal;
@@ -519,12 +528,12 @@ HEADER
     .mega-menu__local-stories {
 
         position: relative;
-        // left: 26%;
-        top: 2%;
         flex-grow: 1;
         flex: 0 0 600px;
         width: 600px;
         max-width: 50%;
+        padding: 0 10px;
+        box-sizing: border-box;
         @media screen and (max-width: 1260px) {
             flex: 0 0 430px;
         }
@@ -552,102 +561,48 @@ HEADER
                 width: 30%;
                 display: flex;
                 justify-content: center;
-                flex-direction: column;
+                align-items: center;
                 text-decoration: none;
                 height: 150px;
                 overflow: hidden;
 
                 .logo {
-                    max-width: 100%;
-                    max-height: 130px;
+                    position: relative;
+                    z-index: 7;
+                    max-width: 80%;
+                    max-height: 60%;
                     transition: all 0.4s;
-                    transition-delay: 0.4s;
                 }
-                .hover_state {
+                .featImg {
                     position: absolute;
-                    top: 0;
-                    left: 0;
-                    overflow: hidden;
-                    opacity: 0;
-                    transform: translateY(100%);
-                    transform-origin: bottom;
-                    transition: opacity 0.4s ease-out, transform 0.3s ease-out 0.2s;
+                    width: 100%;
+                    height: 100%;
+                    z-index: 4;
+                    mask: url("images/Navigation-mask.svg") no-repeat center;
+                    mask-size: contain;
+                    background-color: #dedede;
 
-                    .featImg {
-                        width: 100px;
-                        height: 100px;
-                        border-radius: 50%;
-                        overflow: hidden;
-                        margin: 0 auto;
-                        img {
-                            width: 100%;
-                            height: 100%;
-                            object-fit: cover;
-                        }
-                    }
-                    .page {
-                        text-align: center;
-                        color: $bradenton-teal;
-                        text-transform: capitalize;
-                        text-align: center;
-                        font-size: 0.9em;
+                    img {
+                        opacity: 0;
+                        object-fit: cover;
+                        max-width: 100%;
+                        max-height: 100%;
+                        width: 100%;
+                        height: 100%;
+                        transition: opacity 0.4s;
                     }
                 }
                 &:hover {
                     .logo {
-                        opacity: 0;
-                        transition-delay: 0s;
+                        opacity: 0.4;
                     }
-                    .hover_state {
-                        opacity: 1;
-                        transform: translateY(0);
-                        transition: opacity 0.5s ease-out 0.15s, transform 0.3s ease-out;
+                    .featImg {
+                        img {
+                            opacity: 1;
+                        }
                     }
                 }
             }
-
-            // figure {
-
-            //     position: relative;
-            //     transition: all 0.3s ease-in-out;
-
-            //     img {
-
-            //         height: auto;
-            //         width: 280px;
-            //         height: 250px;
-            //         object-fit: cover;
-            //         transition: all 0.3s ease-in-out;
-            //     }
-
-            //     &:hover {
-
-            //         transition: all 0.2s ease-in-out;
-
-            //         img {
-
-            //             filter: brightness(0.6);
-            //             transition: all 0.2s ease-in-out;
-            //         }
-            //         figcaption {
-
-            //             transform: translateY(-10%);
-            //             transition: all 0.2s ease-in-out;
-            //         }
-            //     }
-
-            //     figcaption {
-
-            //         color: white;
-            //         font-weight: 500;
-            //         position: absolute;
-            //         bottom: 7%;
-            //         padding-left: 6%;
-            //         max-width: 260px;
-            //         word-break: break-word;
-            //         transition: all 0.3s ease-in-out;
-            //     }
-            // }
         }
     }
 
@@ -704,6 +659,8 @@ HEADER
     .mega-menu__nav-wrap {
 
         display: flex;
+        width: 100%;
+        justify-content: space-between;
     }
     .mega-menu__menu {
 
@@ -756,7 +713,6 @@ HEADER
                 width: 1.5rem;
                 height: 1.5rem;
                 background: {
-                    // image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+Cgo8IS0tIExpY2Vuc2U6IENDIEF0dHJpYnV0aW9uLiBNYWRlIGJ5IFBldHJhcyBOYXJnZWxhOiBodHRwczovL2RyaWJiYmxlLmNvbS9uYXJnZWxhIC0tPgo8c3ZnIGhlaWdodD0iODAwcHgiIHdpZHRoPSI4MDBweCIgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgCgkgdmlld0JveD0iMCAwIDUwIDUwIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA1MCA1MCIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxwYXRoIGZpbGw9IiNCMEQ5RTYiIGQ9Ik0xNS41NjMsNDAuODM2YzAuMTk1LDAuMTk1LDAuNDUxLDAuMjkzLDAuNzA3LDAuMjkzczAuNTEyLTAuMDk4LDAuNzA3LTAuMjkzbDE1LTE1CgljMC4zOTEtMC4zOTEsMC4zOTEtMS4wMjMsMC0xLjQxNGwtMTUtMTVjLTAuMzkxLTAuMzkxLTEuMDIzLTAuMzkxLTEuNDE0LDBzLTAuMzkxLDEuMDIzLDAsMS40MTRsMTQuMjkzLDE0LjI5M0wxNS41NjMsMzkuNDIyCglDMTUuMTcyLDM5LjgxMywxNS4xNzIsNDAuNDQ2LDE1LjU2Myw0MC44MzZ6Ii8+Cjwvc3ZnPg==");
                     image: url('~/images/arrow-teal.png');
                     size: 80% auto;                
                     repeat: no-repeat;
@@ -846,14 +802,13 @@ HEADER
             z-index: 5;
         }
         .mega-menu {
-            min-height: 600px;
+            min-height: 500px;
             max-height: 800px;
-            height: 70vh;
+            height: 55vh;
             padding-top: 7.5rem;
             overflow-x: hidden;
 
             &::after {
-
                 content: ' ';
                 background: url('images/mega-menu-bottom.png');
                 background-size: cover;
@@ -863,6 +818,7 @@ HEADER
                 position: absolute;
                 width: 100vw;
                 z-index: 1;
+                filter: drop-shadow(0px 7px 2px rgba(0, 0, 0, 0.1));
             }
         }
     }

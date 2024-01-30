@@ -138,7 +138,7 @@ HEADER
         }
     }
     .mega-menu__menu {
-        padding-top: 2rem;
+        padding-top: 1rem;
         .menu-item {
             position: relative;
             a {
@@ -146,7 +146,7 @@ HEADER
                 // display: inline-block;
                 margin: 0.1rem 1rem;
                 color: $bradenton-teal;
-                font-size: 1.5rem;
+                font-size: 1.2rem;
             }
 
             &.menu-item-has-children::after {
@@ -248,9 +248,15 @@ HEADER
     .mega-menu__local-stories {
         width: 100%;
         max-width: inherit;
+        h3 {
+            margin: 0;
+        }
         .local-stories-nav {
             .venue {
                 max-width: 200px;
+                .logo {
+                    max-height: 50%;
+                }
             }
         }
     }
@@ -265,9 +271,11 @@ HEADER
         }
         .mega-menu {
             min-height:800px !important;
-            height: 90vh !important;
+            max-height: inherit;
+            height: 80vh !important;
             padding-top: 3rem;
             overflow: auto;
+            padding-right: 0 !important;
             // background: transparent linear-gradient(180deg, #014067 17%, #014067 18%, white 21%) 0% 0% no-repeat padding-box;
 
         }
@@ -342,6 +350,10 @@ HEADER
         width: 100%;
         text-align: center;
         margin-top: 2em;
+        h4 {
+            font-size: 1.4em;
+            text-align: center;
+        }
     }
    
 }
