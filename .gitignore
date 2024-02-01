@@ -49,7 +49,10 @@
 
 # Ignore WordPress plugins
 ### Plugins should pull from wpackagist or other sources
-/web/wp-content/plugins/
+/web/wp-content/plugins/*
+
+# Allow some plugins that we can't get from github or wpackagist
+!/web/wp-content/plugins/gravityformsauthorizenet/
 
 # WordPress dynamic folders
 /web/wp-content/cache/
