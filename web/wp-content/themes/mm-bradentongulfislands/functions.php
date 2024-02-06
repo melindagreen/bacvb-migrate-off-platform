@@ -25,11 +25,13 @@ include_once('library/admin/admin-menus.php');
 include_once('assets/assets.php');
 include_once('library/constants.php');
 include_once('library/utilities.php');
+include_once('library/memberpress/nav-tabs.php');
 
 // Initialize classes with contructors
 new Library\ThemeSetup;
 new \MaddenNino\Library\Admin\AdminMenus;
 new Assets\AssetHandler;
+new \MaddenNino\Library\Memberpress\NavTabs;
 
 // CPTs are dependant on parent, add to hook
 function init_child_theme() {
