@@ -199,6 +199,9 @@ if ('serviceWorker' in navigator) {
 
 		const swiper = new Swiper('.lightbox-imagecarousel', {
 			loop: true,
+			observer: true,
+			observeParents: true,
+			parallax:true,
 			autoplay: {
 			  delay: 5500,
 			  disableOnInteraction: false,
