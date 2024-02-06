@@ -80,7 +80,7 @@ function render_block( $attrs, $content ) {
 
             if($postMeta['partnerportal_beach-amenities']) {              
               $html .= '<div class="features">';
-                $html .= '<div class="featuresTItle">Features</div>';
+                $html .= '<div class="featuresTItle">Amenities</div>';
 
                 foreach($postMeta['partnerportal_beach-amenities'] as $amenitySerialized) {
                     $amenityArray = unserialize($amenitySerialized);
