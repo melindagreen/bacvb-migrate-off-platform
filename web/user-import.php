@@ -8,7 +8,7 @@ function update_user_acf_field($user_id, $field_key, $field_value) {
 }
 
 // Read CSV file
-$csv_file = '/Users/aaronefields/work/git/mm-bradentongulfislands/web/bacvb-partners.csv';
+$csv_file = '/bacvb-partners.csv';
 $csv_data = array_map('str_getcsv', file($csv_file));
 
 // Iterate through each row in the CSV
