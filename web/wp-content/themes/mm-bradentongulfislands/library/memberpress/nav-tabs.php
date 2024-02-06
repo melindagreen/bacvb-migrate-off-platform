@@ -79,17 +79,17 @@ class NavTabs {
 
                 <!-- Website Link -->
                 <label for="partnerportal_website_link">Website Link:</label><br>
-                <input type="text" name="partnerportal_website_link" id="partnerportal_website_link" style="width: 100%;margin-bottom:1rem" value="<?php echo esc_attr($meta_data['partnerportal_website_link'][0] ?? ''); ?>"><br>
+                <input type="url" name="partnerportal_website_link" id="partnerportal_website_link" style="width: 100%;margin-bottom:1rem" value="<?php echo esc_attr($meta_data['partnerportal_website_link'][0] ?? ''); ?>"><br>
             </div>
 
             <div style="display: inline-block; width: 45%; vertical-align: top;">
                 <!-- Phone Number -->
                 <label for="partnerportal_phone_number">Phone Number:</label><br>
-                <input type="text" name="partnerportal_phone_number" id="partnerportal_phone_number" style="width: 100%;margin-bottom:1rem" value="<?php echo esc_attr($meta_data['partnerportal_phone_number'][0] ?? ''); ?>"><br>
+                <input type="tel" name="partnerportal_phone_number" id="partnerportal_phone_number" style="width: 100%;margin-bottom:1rem" value="<?php echo esc_attr($meta_data['partnerportal_phone_number'][0] ?? ''); ?>"><br>
 
                 <!-- Contact Email for Visitors -->
                 <label for="partnerportal_contact_email_for_visitors">Contact Email for Visitors:</label><br>
-                <input type="text" name="partnerportal_contact_email_for_visitors" id="partnerportal_contact_email_for_visitors" style="width: 100%;margin-bottom:1rem" value="<?php echo esc_attr($meta_data['partnerportal_contact_email_for_visitors'][0] ?? ''); ?>"><br>
+                <input type="email" name="partnerportal_contact_email_for_visitors" id="partnerportal_contact_email_for_visitors" style="width: 100%;margin-bottom:1rem" value="<?php echo esc_attr($meta_data['partnerportal_contact_email_for_visitors'][0] ?? ''); ?>"><br>
             </div>
             
             <br style="clear:both;">
