@@ -1455,3 +1455,22 @@ Query Loop
         }
     }
 }
+
+
+// TABLES
+.wp-block-table {
+    table{
+        border-collapse: collapse;
+        font-family: $font-body;
+        color: #414141;
+    }
+    td, th{
+      border: 1px solid #2B7B7C;
+      margin: 0;
+      padding: 1em;
+    }
+    th{
+        border-width: 0 0 5px 0;
+        color: #2B7B7C;
+    }
+}
