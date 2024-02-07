@@ -54,17 +54,47 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_post_nonce']) 
     wp_update_post(array('ID' => $post_id, 'post_title' => $post_title)); // Update post title
     
     // Update post meta fields
-    update_post_meta($post_id, 'partnerportal_description', sanitize_text_field($_POST['partnerportal_description'] ?? ''));
-    update_post_meta($post_id, 'partnerportal_business_name', sanitize_text_field($_POST['partnerportal_business_name'] ?? ''));
-    update_post_meta($post_id, 'partnerportal_website_link', sanitize_text_field($_POST['partnerportal_website_link'] ?? ''));
-    update_post_meta($post_id, 'partnerportal_phone_number', sanitize_text_field($_POST['partnerportal_phone_number'] ?? ''));
-    update_post_meta($post_id, 'partnerportal_contact_email_for_visitors', sanitize_text_field($_POST['partnerportal_contact_email_for_visitors'] ?? ''));
+    $fields = array(
+        'partnerportal_description',
+        'partnerportal_business_name',
+        'partnerportal_website_link',
+        'partnerportal_phone_number',
+        'partnerportal_contact_email_for_visitors',
+        'partnerportal_hours_description',
+        'partnerportal_address_1',
+        'partnerportal_address_2',
+        'partnerportal_city',
+        'partnerportal_zip',
+        'partnerportal_state',
+        'partnerportal_facebook',
+        'partnerportal_instagram',
+        'partnerportal_twitter'
+    );
 
+    // Loop through each field and update post meta
+    foreach ($fields as $field) {
+        if (isset($_POST[$field])) {
+            update_post_meta($post_id, $field, sanitize_text_field($_POST[$field]));
+        }
+    }
     // Handle image upload and update partnerportal_gallery_square_featured_image
     if (!empty($_FILES['partnerportal_gallery_square_featured_image']['name'])) {
         $upload = wp_upload_bits($_FILES['partnerportal_gallery_square_featured_image']['name'], null, file_get_contents($_FILES['partnerportal_gallery_square_featured_image']['tmp_name']));
         if (!$upload['error']) {
             update_post_meta($post_id, 'partnerportal_gallery_square_featured_image', $upload['url']);
+            // Set the uploaded image as the post thumbnail
+            $attachment_id = wp_insert_attachment(array(
+                'post_mime_type' => $_FILES['partnerportal_gallery_square_featured_image']['type'],
+                'post_title' => $_FILES['partnerportal_gallery_square_featured_image']['name'],
+                'post_content' => '',
+                'post_status' => 'inherit'
+            ), $upload['file'], $post_id);
+            if (!is_wp_error($attachment_id)) {
+                require_once(ABSPATH . 'wp-admin/includes/image.php');
+                $attachment_data = wp_generate_attachment_metadata($attachment_id, $upload['file']);
+                wp_update_attachment_metadata($attachment_id, $attachment_data);
+                set_post_thumbnail($post_id, $attachment_id);
+            }
         }
     }
 
@@ -83,11 +113,18 @@ if (isset($_GET['update']) && $_GET['update'] === 'true') {
     <?php wp_nonce_field('update_post_meta', 'update_post_nonce'); ?>
     
     <!-- Upload Image -->
-    <label for="partnerportal_gallery_square_featured_image">Featured Image:</label><br>
-    <input type="file" name="partnerportal_gallery_square_featured_image" id="partnerportal_gallery_square_featured_image"><br>
-    <?php if ($meta_data['partnerportal_gallery_square_featured_image'][0] ?? '') : ?>
-        <img src="<?php echo esc_url(wp_get_attachment_image($meta_data['partnerportal_gallery_square_featured_image'][0])); ?>" alt="Featured Image" style="max-width: 100px;">
-    <?php endif; ?>
+    <div class="mepr-account-form__featured-image">
+        <label for="partnerportal_gallery_square_featured_image">Featured Image:</label>
+        <?php
+        $post_thumbnail_url = get_the_post_thumbnail_url($post_id, 'thumbnail');
+        if ($post_thumbnail_url) : ?>
+            <img src="<?php echo esc_url($post_thumbnail_url); ?>" alt="Featured Image" style="max-width: 100px;">
+        <?php endif; ?>
+        <input type="file" name="partnerportal_gallery_square_featured_image" id="partnerportal_gallery_square_featured_image">       
+        <hr class="mepr-account-form__separator">
+    </div>
+    <!-- ==== GENERAL INFO ==== --> 
+    <h2 class="mepr-account-form__section-title">General Info</h2>
 
     <!-- Post Title -->
     <label for="post_title">Title:</label>
@@ -116,7 +153,64 @@ if (isset($_GET['update']) && $_GET['update'] === 'true') {
         <label for="partnerportal_contact_email_for_visitors">Contact Email for Visitors:</label><br>
         <input type="email" name="partnerportal_contact_email_for_visitors" id="partnerportal_contact_email_for_visitors" value="<?php echo esc_attr($meta_data['partnerportal_contact_email_for_visitors'][0] ?? ''); ?>"><br>
     </div>
+
+    <!-- ==== HOURS ==== -->
+    <h2 class="mepr-account-form__section-title">Hours</h2>
     
+    <!-- Hours Description -->
+    <label for="partnerportal_hours_description">Hours Description:</label>
+    <textarea name="partnerportal_hours_description" id="partnerportal_hours_description"><?php echo esc_html($meta_data['partnerportal_hours_description'][0] ?? ''); ?></textarea>
+    
+    <!-- ==== ADDRESS INFORMATION ==== -->
+    <h2 class="mepr-account-form__section-title">Address Information</h2>
+    
+    <div class="mepr-account-form__col-2">
+        <!-- Address Line 1 -->
+        <label for="partnerportal_address_1">Address Line 1:</label><br>
+        <input type="text" name="partnerportal_address_1" id="partnerportal_address_1" value="<?php echo esc_attr($meta_data['partnerportal_address_1'][0] ?? ''); ?>">
+    </div>
+    <div class="mepr-account-form__col-2">
+         <!-- Address Line 2 -->
+         <label for="partnerportal_address_2">Address Line 2:</label><br>
+        <input type="text" name="partnerportal_address_2" id="partnerportal_address_2" value="<?php echo esc_attr($meta_data['partnerportal_address_2'][0] ?? ''); ?>">
+    </div>
+
+    <div class="mepr-account-form__col-3">
+        <!-- City -->
+        <label for="partnerportal_city">City:</label><br>
+        <input type="text" name="partnerportal_city" id="partnerportal_city" value="<?php echo esc_attr($meta_data['partnerportal_city'][0] ?? ''); ?>">
+    </div>
+    <div class="mepr-account-form__col-3">
+        <!-- Zip Code -->
+        <label for="partnerportal_zip">Zip Code:</label><br>
+        <input type="text" name="partnerportal_zip" id="partnerportal_zip" value="<?php echo esc_attr($meta_data['partnerportal_zip'][0] ?? ''); ?>">
+    </div>
+    <div class="mepr-account-form__col-3">
+        <!-- State -->
+        <label for="partnerportal_state">State:</label><br>
+        <input type="text" name="partnerportal_state" id="partnerportal_state" value="<?php echo esc_attr($meta_data['partnerportal_state'][0] ?? ''); ?>">
+    </div> 
+
+    <!-- ==== SOCIAL ==== -->
+    <h2 class="mepr-account-form__section-title">SOCIAL</h2>
+    
+    <div class="mepr-account-form__col-2">
+        <!-- Facebook -->
+        <label for="partnerportal_facebook">Facebook</label><br>
+        <input type="url" name="partnerportal_facebook" id="partnerportal_facebook" value="<?php echo esc_attr($meta_data['partnerportal_facebook'][0] ?? ''); ?>">
+
+        <!-- Instagram -->
+        <label for="partnerportal_instagram">Instagram</label><br>
+        <input type="url" name="partnerportal_instagram" id="partnerportal_instagram" value="<?php echo esc_attr($meta_data['partnerportal_instagram'][0] ?? ''); ?>">
+    </div>
+
+    <div class="mepr-account-form__col-2">
+        <!-- Twitter -->
+        <label for="partnerportal_twitter">Twitter</label><br>
+        <input type="url" name="partnerportal_twitter" id="partnerportal_twitter" value="<?php echo esc_attr($meta_data['partnerportal_twitter'][0] ?? ''); ?>">
+    </div>
+
+    <!-- ==== SUBMIT FORM ==== -->
     <br style="clear:both;">
     <input class="mepr-button btn-outline btn btn-outline" type="submit" value="Update">
 </form>
