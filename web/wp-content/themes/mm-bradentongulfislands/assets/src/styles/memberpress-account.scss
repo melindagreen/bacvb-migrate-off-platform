@@ -60,6 +60,43 @@ GLOBAL STYLES
         width: 10rem;
     }
 }
+
+/* CSS for event cards */
+.mepr-event-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.event-card-status--red {
+
+    color: $rust;
+}
+
+.event-card-status--green {
+
+    color: limegreen;
+}
+
+.mepr-event-cards__card {
+    background-color: #e4e2e27e;
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 10px;
+    flex: 1 0 300px; /* Adjust the width as needed */
+    max-width: 20rem;
+    border-radius: 20px;
+    border-top-left-radius: 0;
+}
+
+.mepr-event-cards__card h3 {
+    margin-top: 0;
+}
+
+.mepr-event-cards__card .event-content {
+    margin-bottom: 10px;
+}
+
 /*********************
 CUSTOM STYLE OVERRIDES
 *********************/
