@@ -244,7 +244,7 @@ if (isset($_GET['update']) && $_GET['update'] === 'true') {
             ));
         
             // Display frontend form for editing events
-            if ($events->have_posts()) : ?>
+            if ($events->have_posts() && !empty($group_events)) : ?>
                 <div class="mepr-event-cards">
             <?php
                 while ($events->have_posts()) : $events->the_post();
