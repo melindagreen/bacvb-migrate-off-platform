@@ -87,7 +87,9 @@ if ($group_query->have_posts()) {
 
     // Update ACF fields
     update_field('partner_group', $group_post_id, 'user_' . $user_id); 
-    update_field('group_listing', $listing_id, $group_post_id);
+    if (isset($places_slug)) {
+        update_field('group_listing', $listing_id, $group_post_id);
+    }
 
 }
 ?>
