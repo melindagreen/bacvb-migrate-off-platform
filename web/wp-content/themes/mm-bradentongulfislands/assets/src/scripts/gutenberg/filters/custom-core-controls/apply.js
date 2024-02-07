@@ -79,7 +79,7 @@ const applyCustomAttrs = (el, block, attributes) => {
                             { attributes.lbImageIds.length > 0 ? <div className={`lightbox-imagecarousel swiper-slide-imagecarousel swiper` }>
                             <div className={`swiper-wrapper`}>
                             {attributes.lbImageIds !== undefined ? attributes.lbImageIds.map((id, index)=>{
-                                    return(<div className="wp-block-image swiper-slide">{getPhotoCredit(attributes.lbImageUrls[index])}<img src="/wp-content/themes/mm-midland/assets/images/pixel.png" alt={attributes.lbImageAlts[index] !== '' ? attributes.lbImageAlts[index] : 'Carousel Image'} data-load-type="img" data-load-all={attributes.lbImageUrls[index]} /></div>);
+                                    return(<div className="wp-block-image swiper-slide">{getPhotoCredit(attributes.lbImageUrls[index])}<img src="/wp-content/themes/mm-bradentongulfislands/assets/images/pixel.png" alt={attributes.lbImageAlts[index] !== '' ? attributes.lbImageAlts[index] : 'Carousel Image'} data-load-type="img" data-load-all={attributes.lbImageUrls[index]} /></div>);
                                 }) : null}
                             </div>
                             <div className='swiper-pagination-imagecarousel'></div>
