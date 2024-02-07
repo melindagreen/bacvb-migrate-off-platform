@@ -197,23 +197,38 @@ if ('serviceWorker' in navigator) {
 
 		//LightBox
 
-		const swiper = new Swiper('.lightbox-imagecarousel', {
-			loop: true,
-			observer: true,
-			observeParents: true,
-			parallax:true,
-			autoplay: {
-			  delay: 5500,
-			  disableOnInteraction: false,
-			},
-			clickable: true,
-			navigation: {
-			  nextEl: '.swiper-button-next-imagecarousel',
-			  prevEl: '.swiper-button-prev-imagecarousel'
-			}
-		  })
+		var lightboxCarousels = $('.lightbox-imagecarousel');
 
-		  $('.swiper-button-next-imagecarousel, .swiper-button-prev-imagecarousel, .swiper-slide, .scrim').on('click', function(event) {
+		// Loop through each element
+		lightboxCarousels.each(function(index, element) {
+			// Unique class based on index
+			var uniqueClass = 'swiper-buttons-' + index;
+
+			// Add unique classes to next and prev buttons
+			$(element).find('.swiper-button-next-imagecarousel').addClass(uniqueClass + '-next');
+			$(element).find('.swiper-button-prev-imagecarousel').addClass(uniqueClass + '-prev');
+
+			var uniqueContainer = 'swiper-container-' + index;
+
+			// Add unique class to the Swiper container element
+			$(element).addClass(uniqueContainer);
+	
+			// Initialize Swiper for each element with different options
+			var swiper = new Swiper('.' + uniqueContainer, {
+				loop: true,
+				autoplay: {
+					delay: 5500,
+					disableOnInteraction: false,
+				},
+				clickable: true,
+				navigation: {
+					nextEl: '.' + uniqueClass + '-next', // Use unique class for next button
+					prevEl: '.' + uniqueClass + '-prev'  // Use unique class for prev button
+				}
+			});
+		});
+
+		  $('.swiper-button-next-imagecarousel, .swiper-button-prev-imagecarousel, .swiper-slide, .scrim, .swiper-slide-next, .swiper-slide-duplicate').on('click', function(event) {
 			// Prevent the event from reaching parent elements
 			event.stopPropagation();
 		});
