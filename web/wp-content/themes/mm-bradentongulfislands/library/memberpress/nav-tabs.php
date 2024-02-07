@@ -86,7 +86,7 @@ if (isset($_GET['update']) && $_GET['update'] === 'true') {
     <label for="partnerportal_gallery_square_featured_image">Featured Image:</label><br>
     <input type="file" name="partnerportal_gallery_square_featured_image" id="partnerportal_gallery_square_featured_image"><br>
     <?php if ($meta_data['partnerportal_gallery_square_featured_image'][0] ?? '') : ?>
-        <img src="<?php echo esc_url($meta_data['partnerportal_gallery_square_featured_image'][0]); ?>" alt="Featured Image" style="max-width: 100px;">
+        <img src="<?php echo esc_url(wp_get_attachment_image($meta_data['partnerportal_gallery_square_featured_image'][0])); ?>" alt="Featured Image" style="max-width: 100px;">
     <?php endif; ?>
 
     <!-- Post Title -->
