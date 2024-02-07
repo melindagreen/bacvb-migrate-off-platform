@@ -243,6 +243,7 @@ if (isset($_GET['update']) && $_GET['update'] === 'true') {
                 'post_status'    => array('publish', 'pending'), // Include both published and pending review posts
             ));
         
+            
             // Display frontend form for editing events
             if ($events->have_posts() && !empty($group_events)) : ?>
                 <div class="mepr-event-cards">
