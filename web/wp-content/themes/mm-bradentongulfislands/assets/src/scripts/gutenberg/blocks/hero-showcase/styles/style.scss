@@ -17,6 +17,7 @@ $amenitiesBorderRadius: 20px;
       width: $hero-width;
       height: $hero-height;
       position: relative;
+      margin: -10px 0;
 
       &--topright {
 
@@ -194,6 +195,7 @@ $amenitiesBorderRadius: 20px;
 
     background-color: $bradenton-teal;
     padding-top: 0.8rem;
+
 
     .legendTitle {
 
