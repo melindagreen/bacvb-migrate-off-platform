@@ -150,7 +150,7 @@ class ThemeSetup {
      */
     public static function custom_wp_mail_from ($original_email_address) {
         $urlparts = wp_parse_url(home_url());
-		$host = preg_replace('/^www\./', '', $urlparts['host']);
+		$host = str_replace("www.", "", $urlparts['host']);
         return "nobody@{$host}";
     }
 
