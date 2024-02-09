@@ -17,6 +17,10 @@ class ThemeSetup {
 
 		add_filter('render_block', array( get_called_class(), 'add_photo_credit' ), 10, 2);
 		add_filter('wp_get_attachment_url', array( get_called_class(), 'photo_credit_url_param' ), 10, 2);
+
+		// global override for from emails
+        add_filter( 'wp_mail_from', array( get_called_class(), 'custom_wp_mail_from' ) );
+        add_filter( 'wp_mail_from_name', array( get_called_class(), 'custom_wp_mail_from_name' ) );
 	}
 
 
@@ -140,6 +144,22 @@ class ThemeSetup {
 			}
 		}
 	}
+
+	/**
+     * Change default email for all sends to the domain
+     */
+    public static function custom_wp_mail_from ($original_email_address) {
+        $urlparts = wp_parse_url(home_url());
+        return "nobody@{$urlparts['host']}";
+    }
+
+	/**
+     * Change default email from name for all sends to the domain
+     */
+    public static function custom_wp_mail_from_name ($original_email_from) {
+        return "Do Not Reply";
+    }
+
 
 	/**
 	 * Remove unwanted category taxonomies from the Yoast sitemap 
