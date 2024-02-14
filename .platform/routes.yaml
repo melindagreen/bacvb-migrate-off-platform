@@ -22,6 +22,6 @@
     cache:
         enabled: false
 
-"https://360.{default}/":
-    type: redirect
-    to: "https://www.{default}/360/"
+https://{default}/360:
+    type: proxy
+    to: https://360.{default}/
