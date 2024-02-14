@@ -263,7 +263,7 @@ if (isset($_GET['update']) && $_GET['update'] === 'true') {
                             }
                             ?>
                         </div>
-                        <a href="<?php echo esc_url(get_edit_post_link()); ?>" class="mepr-button btn-outline btn btn-outline">Edit Event</a>
+                        <a href="<?php echo esc_url(add_query_arg(array('action' => 'edit_event', 'event_id' => get_the_ID()), $_SERVER['REQUEST_URI'])); ?>" class="mepr-button btn-outline btn btn-outline">Edit Event</a>
                     </div>
                     <?php
                 endwhile; ?>
@@ -275,8 +275,241 @@ if (isset($_GET['update']) && $_GET['update'] === 'true') {
             wp_reset_postdata();  
             ?>  
             <br>        
-            <a href="<?php echo esc_url(get_edit_post_link()); ?>" class="mepr-button btn">Create New Event</a>
+            <a href="<?php echo esc_url(add_query_arg('action', 'add_event', $_SERVER['REQUEST_URI'])); ?>" class="mepr-button btn">Create New Event</a>
             <?php
+        }
+        else if ($_GET['action'] === 'add_event') { ?>
+
+<form class="mepr-account-form" method="post" enctype="multipart/form-data" action="">
+    <?php wp_nonce_field('update_post_meta', 'update_post_nonce'); ?>
+
+    <!-- Upload Image -->
+    <div class="mepr-account-form__featured-image">
+        <label for="eventastic_gallery_square_featured_image">Featured Image:</label>
+        <?php
+        $post_thumbnail_url = get_the_post_thumbnail_url($post_id, 'thumbnail');
+        if ($post_thumbnail_url) : ?>
+            <img src="<?php echo esc_url($post_thumbnail_url); ?>" alt="Featured Image" style="max-width: 100px;">
+        <?php endif; ?>
+        <input type="file" name="eventastic_gallery_square_featured_image" id="eventastic_gallery_square_featured_image">
+        <hr class="mepr-account-form__separator">
+    </div>
+    <!-- ==== GENERAL INFO ==== -->
+    <h2 class="mepr-account-form__section-title">General Info</h2>
+
+    <!-- Post Title -->
+    <label for="post_title">Title:</label>
+    <input type="text" name="post_title" id="post_title" value="<?php echo esc_attr(get_the_title($post_id)); ?>">
+
+    <!-- Description -->
+    <label for="eventastic_description">Description:</label>
+    <textarea name="eventastic_description" id="eventastic_description"><?php echo esc_html($meta_data['eventastic_description'][0] ?? ''); ?></textarea>
+
+    <div class="mepr-account-form__col-2">
+        <!-- Business Name -->
+        <label for="eventastic_business_name">Business Name:</label>
+        <input type="text" name="eventastic_business_name" id="eventastic_business_name" value="<?php echo esc_attr($meta_data['eventastic_business_name'][0] ?? ''); ?>">
+
+        <!-- Website Link -->
+        <label for="eventastic_website_link">Website Link:</label>
+        <input type="url" name="eventastic_website_link" id="eventastic_website_link" value="<?php echo esc_attr($meta_data['eventastic_website_link'][0] ?? ''); ?>">
+    </div>
+
+    <div class="mepr-account-form__col-2">
+        <!-- Phone Number -->
+        <label for="eventastic_phone_number">Phone Number:</label><br>
+        <input type="tel" name="eventastic_phone_number" id="eventastic_phone_number" value="<?php echo esc_attr($meta_data['eventastic_phone_number'][0] ?? ''); ?>"><br>
+
+        <!-- Contact Email for Visitors -->
+        <label for="eventastic_contact_email_for_visitors">Contact Email for Visitors:</label><br>
+        <input type="email" name="eventastic_contact_email_for_visitors" id="eventastic_contact_email_for_visitors" value="<?php echo esc_attr($meta_data['eventastic_contact_email_for_visitors'][0] ?? ''); ?>"><br>
+    </div>
+
+    <!-- ==== HOURS ==== -->
+    <h2 class="mepr-account-form__section-title">Hours</h2>
+
+    <!-- Hours Description -->
+    <label for="eventastic_hours_description">Hours Description:</label>
+    <textarea name="eventastic_hours_description" id="eventastic_hours_description"><?php echo esc_html($meta_data['eventastic_hours_description'][0] ?? ''); ?></textarea>
+
+    <!-- ==== ADDRESS INFORMATION ==== -->
+    <h2 class="mepr-account-form__section-title">Address Information</h2>
+
+    <div class="mepr-account-form__col-2">
+        <!-- Address Line 1 -->
+        <label for="eventastic_address_1">Address Line 1:</label><br>
+        <input type="text" name="eventastic_address_1" id="eventastic_address_1" value="<?php echo esc_attr($meta_data['eventastic_address_1'][0] ?? ''); ?>">
+    </div>
+    <div class="mepr-account-form__col-2">
+        <!-- Address Line 2 -->
+        <label for="eventastic_address_2">Address Line 2:</label><br>
+        <input type="text" name="eventastic_address_2" id="eventastic_address_2" value="<?php echo esc_attr($meta_data['eventastic_address_2'][0] ?? ''); ?>">
+    </div>
+
+    <div class="mepr-account-form__col-3">
+        <!-- City -->
+        <label for="eventastic_city">City:</label><br>
+        <input type="text" name="eventastic_city" id="eventastic_city" value="<?php echo esc_attr($meta_data['eventastic_city'][0] ?? ''); ?>">
+    </div>
+    <div class="mepr-account-form__col-3">
+        <!-- Zip Code -->
+        <label for="eventastic_zip">Zip Code:</label><br>
+        <input type="text" name="eventastic_zip" id="eventastic_zip" value="<?php echo esc_attr($meta_data['eventastic_zip'][0] ?? ''); ?>">
+    </div>
+    <div class="mepr-account-form__col-3">
+        <!-- State -->
+        <label for="eventastic_state">State:</label><br>
+        <input type="text" name="eventastic_state" id="eventastic_state" value="<?php echo esc_attr($meta_data['eventastic_state'][0] ?? ''); ?>">
+    </div>
+
+    <!-- ==== SOCIAL ==== -->
+    <h2 class="mepr-account-form__section-title">SOCIAL</h2>
+
+    <div class="mepr-account-form__col-2">
+        <!-- Facebook -->
+        <label for="eventastic_facebook">Facebook</label><br>
+        <input type="url" name="eventastic_facebook" id="eventastic_facebook" value="<?php echo esc_attr($meta_data['eventastic_facebook'][0] ?? ''); ?>">
+
+        <!-- Instagram -->
+        <label for="eventastic_instagram">Instagram</label><br>
+        <input type="url" name="eventastic_instagram" id="eventastic_instagram" value="<?php echo esc_attr($meta_data['eventastic_instagram'][0] ?? ''); ?>">
+    </div>
+
+    <div class="mepr-account-form__col-2">
+        <!-- Twitter -->
+        <label for="eventastic_twitter">Twitter</label><br>
+        <input type="url" name="eventastic_twitter" id="eventastic_twitter" value="<?php echo esc_attr($meta_data['eventastic_twitter'][0] ?? ''); ?>">
+    </div>
+
+    <!-- ==== SUBMIT FORM ==== -->
+    <br style="clear:both;">
+    <input class="mepr-button btn-outline btn btn-outline" type="submit" value="Add Event">
+</form>
+<?php 
+        }
+
+        else if ($_GET['action'] === 'edit_event' && isset($_GET['event_id'])) {
+            // Get the event ID from the URL parameter
+            $event_id = intval($_GET['event_id']);
+        
+            // Retrieve the event post using the event ID
+            $event_post = get_post($event_id);
+        
+            // Check if the event post exists and is of type 'event'
+            if ($event_post && $event_post->post_type === 'event') {
+                // Display the edit event form
+                ?>
+                <form class="mepr-account-form" method="post" enctype="multipart/form-data" action="">
+    <?php wp_nonce_field('update_post_meta', 'update_post_nonce'); ?>
+
+    <!-- Upload Image -->
+    <div class="mepr-account-form__featured-image">
+        <label for="eventastic_gallery_square_featured_image">Featured Image:</label>
+        <?php
+        $post_thumbnail_url = get_the_post_thumbnail_url($post_id, 'thumbnail');
+        if ($post_thumbnail_url) : ?>
+            <img src="<?php echo esc_url($post_thumbnail_url); ?>" alt="Featured Image" style="max-width: 100px;">
+        <?php endif; ?>
+        <input type="file" name="eventastic_gallery_square_featured_image" id="eventastic_gallery_square_featured_image">
+        <hr class="mepr-account-form__separator">
+    </div>
+    <!-- ==== GENERAL INFO ==== -->
+    <h2 class="mepr-account-form__section-title">General Info</h2>
+
+    <!-- Post Title -->
+    <label for="post_title">Title:</label>
+    <input type="text" name="post_title" id="post_title" value="<?php echo esc_attr(get_the_title($post_id)); ?>">
+
+    <!-- Description -->
+    <label for="eventastic_description">Description:</label>
+    <textarea name="eventastic_description" id="eventastic_description"><?php echo esc_html($meta_data['eventastic_description'][0] ?? ''); ?></textarea>
+
+    <div class="mepr-account-form__col-2">
+        <!-- Business Name -->
+        <label for="eventastic_business_name">Business Name:</label>
+        <input type="text" name="eventastic_business_name" id="eventastic_business_name" value="<?php echo esc_attr($meta_data['eventastic_business_name'][0] ?? ''); ?>">
+
+        <!-- Website Link -->
+        <label for="eventastic_website_link">Website Link:</label>
+        <input type="url" name="eventastic_website_link" id="eventastic_website_link" value="<?php echo esc_attr($meta_data['eventastic_website_link'][0] ?? ''); ?>">
+    </div>
+
+    <div class="mepr-account-form__col-2">
+        <!-- Phone Number -->
+        <label for="eventastic_phone_number">Phone Number:</label><br>
+        <input type="tel" name="eventastic_phone_number" id="eventastic_phone_number" value="<?php echo esc_attr($meta_data['eventastic_phone_number'][0] ?? ''); ?>"><br>
+
+        <!-- Contact Email for Visitors -->
+        <label for="eventastic_contact_email_for_visitors">Contact Email for Visitors:</label><br>
+        <input type="email" name="eventastic_contact_email_for_visitors" id="eventastic_contact_email_for_visitors" value="<?php echo esc_attr($meta_data['eventastic_contact_email_for_visitors'][0] ?? ''); ?>"><br>
+    </div>
+
+    <!-- ==== HOURS ==== -->
+    <h2 class="mepr-account-form__section-title">Hours</h2>
+
+    <!-- Hours Description -->
+    <label for="eventastic_hours_description">Hours Description:</label>
+    <textarea name="eventastic_hours_description" id="eventastic_hours_description"><?php echo esc_html($meta_data['eventastic_hours_description'][0] ?? ''); ?></textarea>
+
+    <!-- ==== ADDRESS INFORMATION ==== -->
+    <h2 class="mepr-account-form__section-title">Address Information</h2>
+
+    <div class="mepr-account-form__col-2">
+        <!-- Address Line 1 -->
+        <label for="eventastic_address_1">Address Line 1:</label><br>
+        <input type="text" name="eventastic_address_1" id="eventastic_address_1" value="<?php echo esc_attr($meta_data['eventastic_address_1'][0] ?? ''); ?>">
+    </div>
+    <div class="mepr-account-form__col-2">
+        <!-- Address Line 2 -->
+        <label for="eventastic_address_2">Address Line 2:</label><br>
+        <input type="text" name="eventastic_address_2" id="eventastic_address_2" value="<?php echo esc_attr($meta_data['eventastic_address_2'][0] ?? ''); ?>">
+    </div>
+
+    <div class="mepr-account-form__col-3">
+        <!-- City -->
+        <label for="eventastic_city">City:</label><br>
+        <input type="text" name="eventastic_city" id="eventastic_city" value="<?php echo esc_attr($meta_data['eventastic_city'][0] ?? ''); ?>">
+    </div>
+    <div class="mepr-account-form__col-3">
+        <!-- Zip Code -->
+        <label for="eventastic_zip">Zip Code:</label><br>
+        <input type="text" name="eventastic_zip" id="eventastic_zip" value="<?php echo esc_attr($meta_data['eventastic_zip'][0] ?? ''); ?>">
+    </div>
+    <div class="mepr-account-form__col-3">
+        <!-- State -->
+        <label for="eventastic_state">State:</label><br>
+        <input type="text" name="eventastic_state" id="eventastic_state" value="<?php echo esc_attr($meta_data['eventastic_state'][0] ?? ''); ?>">
+    </div>
+
+    <!-- ==== SOCIAL ==== -->
+    <h2 class="mepr-account-form__section-title">SOCIAL</h2>
+
+    <div class="mepr-account-form__col-2">
+        <!-- Facebook -->
+        <label for="eventastic_facebook">Facebook</label><br>
+        <input type="url" name="eventastic_facebook" id="eventastic_facebook" value="<?php echo esc_attr($meta_data['eventastic_facebook'][0] ?? ''); ?>">
+
+        <!-- Instagram -->
+        <label for="eventastic_instagram">Instagram</label><br>
+        <input type="url" name="eventastic_instagram" id="eventastic_instagram" value="<?php echo esc_attr($meta_data['eventastic_instagram'][0] ?? ''); ?>">
+    </div>
+
+    <div class="mepr-account-form__col-2">
+        <!-- Twitter -->
+        <label for="eventastic_twitter">Twitter</label><br>
+        <input type="url" name="eventastic_twitter" id="eventastic_twitter" value="<?php echo esc_attr($meta_data['eventastic_twitter'][0] ?? ''); ?>">
+    </div>
+
+    <!-- ==== SUBMIT FORM ==== -->
+    <br style="clear:both;">
+    <input class="mepr-button btn-outline btn btn-outline" type="submit" value="Add Event">
+</form>
+                <?php
+                
+            } else {
+                // Handle case where the event post does not exist or is not of type 'event'
+                echo '<p>Error: Event not found.</p>';
+            }
         }
     }
 
