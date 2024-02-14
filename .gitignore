@@ -58,6 +58,9 @@
 /web/wp-content/cache/
 /web/wp-content/uploads/
 
+# Custom 360 tour directory
+/web/360/vtourdata/
+
 # Ignore local configuration files
 /.env
 /wp-config-local.php

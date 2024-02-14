@@ -65,6 +65,10 @@ web:
       root: "web"
       allow: false
       scripts: false
+    "/360/vtourdata":
+      root: "web/360/vtourdata"
+      scripts: false
+      allow: false
 
 # The size of the persistent disk of the application (in MB).
 disk: 8092
@@ -80,6 +84,7 @@ dependencies:
 mounts:
   "web/wp-content/cache": "shared:files/cache"
   "web/wp-content/uploads": "shared:files/uploads"
+  "web/360/vtourdata": "shared:files/vtourdata"
   "web/sites": "shared:files/sites"
 
 hooks:
