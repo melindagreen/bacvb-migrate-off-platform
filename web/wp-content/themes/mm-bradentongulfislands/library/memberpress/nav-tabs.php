@@ -278,7 +278,96 @@ if (isset($_GET['update']) && $_GET['update'] === 'true') {
             <a href="<?php echo esc_url(add_query_arg('action', 'add_event', $_SERVER['REQUEST_URI'])); ?>" class="mepr-button btn">Create New Event</a>
             <?php
         }
-        else if ($_GET['action'] === 'add_event') { ?>
+        else if ($_GET['action'] === 'add_event') { 
+             
+            if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_post_nonce']) && wp_verify_nonce($_POST['update_post_nonce'], 'update_post_meta')) {
+                // Sanitize post title
+                $post_title = sanitize_text_field($_POST['post_title'] ?? '');
+                $post_content = sanitize_text_field($_POST['eventastic_description'] ?? '');
+            
+                // Prepare post data
+                $post_data = array(
+                    'post_title'    => $post_title,
+                    'post_content'  => $post_content,
+                    'post_status'   => 'pending', // Set status to pending
+                    'post_type'     => 'event' // Adjust post type as needed
+  
+                );
+            
+                // Insert the post
+                $post_id = wp_insert_post($post_data);
+            
+                if (!is_wp_error($post_id)) {
+                    // Update post meta fields
+                    $fields = array(
+                        'eventastic_description',
+                        'eventastic_business_name',
+                        'eventastic_website_link',
+                        'eventastic_phone_number',
+                        'eventastic_contact_email_for_visitors',
+                        'eventastic_hours_description',
+                        'eventastic_address_1',
+                        'eventastic_address_2',
+                        'eventastic_city',
+                        'eventastic_zip',
+                        'eventastic_state',
+                        'eventastic_facebook',
+                        'eventastic_instagram',
+                        'eventastic_twitter'
+                    );
+            
+                    // Loop through each field and update post meta
+                    foreach ($fields as $field) {
+                        if (isset($_POST[$field])) {
+                            update_post_meta($post_id, $field, sanitize_text_field($_POST[$field]));
+                        }
+                    }
+            
+                    // Handle image upload and update eventastic_gallery_square_featured_image
+                    if (!empty($_FILES['eventastic_gallery_square_featured_image']['name'])) {
+                        $upload = wp_upload_bits($_FILES['eventastic_gallery_square_featured_image']['name'], null, file_get_contents($_FILES['eventastic_gallery_square_featured_image']['tmp_name']));
+                        if (!$upload['error']) {
+                            update_post_meta($post_id, 'eventastic_gallery_square_featured_image', $upload['url']);
+                            // Set the uploaded image as the post thumbnail
+                            $attachment_id = wp_insert_attachment(array(
+                                'post_mime_type' => $_FILES['eventastic_gallery_square_featured_image']['type'],
+                                'post_title'     => $_FILES['eventastic_gallery_square_featured_image']['name'],
+                                'post_content'   => '',
+                                'post_status'    => 'inherit'
+                            ), $upload['file'], $post_id);
+                            if (!is_wp_error($attachment_id)) {
+                                require_once(ABSPATH . 'wp-admin/includes/image.php');
+                                $attachment_data = wp_generate_attachment_metadata($attachment_id, $upload['file']);
+                                wp_update_attachment_metadata($attachment_id, $attachment_data);
+                                set_post_thumbnail($post_id, $attachment_id);
+                            }
+                        }
+                    }
+
+                    // Retrieve the current user's group
+                    $current_user_group = get_field('partner_group', 'user_' . get_current_user_id());
+
+                   // Update the group_events ACF field
+                   // Retrieve Group Event
+            $group_events = get_field('group_events', $current_user_group[0]->ID);
+            $group_events_ID = array();
+            if (!empty($group_events)) {
+                foreach ($group_events as $event) {
+                    $group_events_ID[] = $event->ID;
+                }
+            }
+            $updated_group_events = array_merge($group_events_ID, array($post_id)); // Merge the arrays
+            update_field('group_events', $updated_group_events, $current_user_group[0]->ID);
+
+
+            
+                    // Redirect to the same page with action=tab0
+                    wp_redirect(add_query_arg('action', 'tab0', $_SERVER['REQUEST_URI']));
+                    exit;
+                }
+            }
+                ?>
+        
 
 <form class="mepr-account-form" method="post" enctype="multipart/form-data" action="">
     <?php wp_nonce_field('update_post_meta', 'update_post_nonce'); ?>
