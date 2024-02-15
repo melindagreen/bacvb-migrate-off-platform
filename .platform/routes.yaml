@@ -21,3 +21,15 @@
     upstream: app:http
     cache:
         enabled: false
+
+#
+# vanity domains
+#
+"http://bacvb.com":
+    type: upstream
+    upstream: "app:http"
+    redirects:
+        paths:
+            '^/(.*)':
+                to: 'https://www.{default}/$1$is_args$args'
+                regexp: true
