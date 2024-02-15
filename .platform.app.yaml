@@ -65,9 +65,15 @@ web:
       root: "web"
       allow: false
       scripts: false
+    "/360/vtourdata":
+      root: "web/360/vtourdata"
+      scripts: true
+      allow: true
+      index:
+        - "index.html"
 
 # The size of the persistent disk of the application (in MB).
-disk: 8092
+disk: 7580
 
 # Dependencies needed for build - yarn, bower, gulp, ruby etc.
 dependencies:
@@ -80,6 +86,7 @@ dependencies:
 mounts:
   "web/wp-content/cache": "shared:files/cache"
   "web/wp-content/uploads": "shared:files/uploads"
+  "web/360/vtourdata": "shared:files/vtourdata"
   "web/sites": "shared:files/sites"
 
 hooks:

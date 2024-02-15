@@ -22,6 +22,10 @@
     cache:
         enabled: false
 
+"https://360.{default}/":
+    type: redirect
+    to: "https://www.{default}/360/"
+
 #
 # vanity domains
 #
@@ -33,3 +37,4 @@
             '^/(.*)':
                 to: 'https://www.{default}/$1$is_args$args'
                 regexp: true
+
