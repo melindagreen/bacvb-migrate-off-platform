@@ -74,8 +74,6 @@
                 to: 'https://www.{default}/venues/powel-crosley/$1$is_args$args'
                 regexp: true
 
-#DELETE
-
 "http://bacvbsales.com":
     type: upstream
     upstream: "app:http"
@@ -120,3 +118,75 @@
             '^/(.*)':
                 to: 'https://www.{default}/$1$is_args$args'
                 regexp: true                                 
+
+"http://beachvacaygetaway.com":
+    type: upstream
+    upstream: "app:http"
+    redirects:
+        paths:
+            '^/(.*)':
+                to: 'https://www.{default}/$1$is_args$args'
+                regexp: true
+
+"http://filmbradenton.com":
+    type: upstream
+    upstream: "app:http"
+    redirects:
+        paths:
+            '^/(.*)':
+                to: 'https://www.{default}/film/$1$is_args$args'
+                regexp: true
+
+"http://floridasgulfislands.com":
+    type: upstream
+    upstream: "app:http"
+    redirects:
+        paths:
+            '^/(.*)':
+                to: 'https://www.{default}/$1$is_args$args'
+                regexp: true  
+
+"http://mybradentonarea.com":
+    type: upstream
+    upstream: "app:http"
+    redirects:
+        paths:
+            '^/(.*)':
+                to: 'https://www.{default}/$1$is_args$args'
+                regexp: true   
+
+"http://realauthenticflorida.com":
+    type: upstream
+    upstream: "app:http"
+    redirects:
+        paths:
+            '^/(.*)':
+                to: 'https://www.{default}/$1$is_args$args'
+                regexp: true
+
+"http://ultimatebeachvacationgiveaway.com":
+    type: upstream
+    upstream: "app:http"
+    redirects:
+        paths:
+            '^/(.*)':
+                to: 'https://www.{default}/discover/beaches/$1$is_args$args'
+                regexp: true
+
+"http://ultimatebeachvacaygiveaway.com":
+    type: upstream
+    upstream: "app:http"
+    redirects:
+        paths:
+            '^/(.*)':
+                to: 'https://www.{default}/discover/beaches/$1$is_args$args'
+                regexp: true  
+
+"http://weddingsatthecrosley.com":
+    type: upstream
+    upstream: "app:http"
+    redirects:
+        paths:
+            '^/(.*)':
+                to: 'https://www.{default}/venues/powel-crosley/$1$is_args$args'
+                regexp: true              
