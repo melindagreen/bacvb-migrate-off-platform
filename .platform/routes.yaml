@@ -254,12 +254,3 @@
             '^/(.*)':
                 to: 'https://www.{default}/gulf-islands-ferry/$1$is_args$args'
                 regexp: true   
-
-"http://gulfislandsferry.net":
-    type: upstream
-    upstream: "app:http"
-    redirects:
-        paths:
-            '^/(.*)':
-                to: 'https://www.{default}/gulf-islands-ferry/$1$is_args$args'
-                regexp: true   
