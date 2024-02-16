@@ -190,3 +190,86 @@
             '^/(.*)':
                 to: 'https://www.{default}/venues/powel-crosley/$1$is_args$args'
                 regexp: true              
+
+"http://golfsuncoast.com":
+    type: upstream
+    upstream: "app:http"
+    redirects:
+        paths:
+            '^/(.*)':
+                to: 'https://www.{default}/$1$is_args$args'
+                regexp: true                 
+
+#DELETE COMMENT
+
+"http://gulfislandferry.biz":
+    type: upstream
+    upstream: "app:http"
+    redirects:
+        paths:
+            '^/(.*)':
+                to: 'https://www.{default}/gulf-islands-ferry/$1$is_args$args'
+                regexp: true   
+
+"http://gulfislandferry.co":
+    type: upstream
+    upstream: "app:http"
+    redirects:
+        paths:
+            '^/(.*)':
+                to: 'https://www.{default}/gulf-islands-ferry/$1$is_args$args'
+                regexp: true   
+
+"http://golfsuncoast.com":
+    type: upstream
+    upstream: "app:http"
+    redirects:
+        paths:
+            '^/(.*)':
+                to: 'https://www.{default}/gulf-islands-ferry/$1$is_args$args'
+                regexp: true  
+
+"http://gulfislandferry.info":
+    type: upstream
+    upstream: "app:http"
+    redirects:
+        paths:
+            '^/(.*)':
+                to: 'https://www.{default}/gulf-islands-ferry/$1$is_args$args'
+                regexp: true   
+
+"http://gulfislandferry.net":
+    type: upstream
+    upstream: "app:http"
+    redirects:
+        paths:
+            '^/(.*)':
+                to: 'https://www.{default}/gulf-islands-ferry/$1$is_args$args'
+                regexp: true   
+
+"http://gulfislandferry.org":
+    type: upstream
+    upstream: "app:http"
+    redirects:
+        paths:
+            '^/(.*)':
+                to: 'https://www.{default}/gulf-islands-ferry/$1$is_args$args'
+                regexp: true 
+
+"http://gulfislandsferry.net":
+    type: upstream
+    upstream: "app:http"
+    redirects:
+        paths:
+            '^/(.*)':
+                to: 'https://www.{default}/gulf-islands-ferry/$1$is_args$args'
+                regexp: true   
+
+"http://gulfislandsferry.net":
+    type: upstream
+    upstream: "app:http"
+    redirects:
+        paths:
+            '^/(.*)':
+                to: 'https://www.{default}/gulf-islands-ferry/$1$is_args$args'
+                regexp: true   
