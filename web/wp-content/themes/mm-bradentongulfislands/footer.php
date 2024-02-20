@@ -78,7 +78,7 @@
         </span>
         </div>
         
-        <p class="footer__copyright">&copy;<?php echo date( 'Y' ); ?><?php _e( ' Bradenton Area Convention and Visitor’s Bureau in Bradenton, Florida | All Rights Reserved', 'mmnino' ); ?> </p>
+        <p class="footer__copyright">&copy;<?php echo date( 'Y' ); ?><?php _e( ' Bradenton Area Convention and Visitors Bureau in Bradenton, Florida | All Rights Reserved', 'mmnino' ); ?> </p>
     </footer>
 
     <?php wp_footer();
