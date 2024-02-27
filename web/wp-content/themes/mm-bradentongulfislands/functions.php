@@ -37,6 +37,5 @@ function init_child_theme() {
     include_once('library/rest-api.php');
     new Library\CustomPostTypes;
     new Library\RestApi;
-    new Library\Redirects;
 }
 add_action( 'after_setup_theme', 'MaddenNino\init_child_theme' );
