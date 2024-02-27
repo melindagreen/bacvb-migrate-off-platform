@@ -81,19 +81,15 @@ class ThemeSetup {
 	/**
 	 * Custom rewrite rules for the site
 	 */
-	// public static function add_custom_rewrites() {
+	public static function add_custom_rewrites() {
 
-	// 	global $wp_rewrite;
-		
-	// 	// Do not rewrite if previewing page
-	// 	if(!is_preview()){
+		global $wp_rewrite;
 
-    //     add_rewrite_rule('blogs/([^/]+)/?$', 'index.php?post_type=post&name=$matches[1]', 'top');
+        add_rewrite_rule('blogs/([^/]+)/?$', 'index.php?post_type=post&name=$matches[1]', 'top');
 
-	// 	// kick it in
-	// 	flush_rewrite_rules();	
-	// 	}
-	// }
+		// kick it in
+		flush_rewrite_rules();	
+	}
 
 	/**
      * Prepend /blog/ to post URLs
