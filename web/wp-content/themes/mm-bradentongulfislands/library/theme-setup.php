@@ -104,7 +104,7 @@ class ThemeSetup {
     }
 
 	public static function redirect_single_posts() {
-		if ( is_main_query() && is_single() && ( empty( get_post_type() ) || (get_post_type() === 'post') ) ) {
+		if ( ! is_user_logged_in() && is_main_query() && is_single() && ( empty( get_post_type() ) || (get_post_type() === 'post') ) ) {
 		  if ( strpos( trim( add_query_arg( array() ), '/' ), 'blogs' ) !== 0 ) {
 			global $post;
 			$url = get_permalink( $post );
