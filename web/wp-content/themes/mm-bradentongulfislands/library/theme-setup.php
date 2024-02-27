@@ -6,6 +6,7 @@ namespace MaddenNino\Library;
 
 class ThemeSetup {
 	function __construct () {
+		 flush_rewrite_rules(false);
 		add_action( 'after_setup_theme', array( get_called_class(), 'madden_theme_support' ) );
 		add_action( 'init', array( get_called_class(), 'add_custom_rewrites' ) );
 		add_filter( 'pre_post_link', array(get_called_class(), 'prepend_post_permalinks'), 10, 2);
@@ -80,15 +81,19 @@ class ThemeSetup {
 	/**
 	 * Custom rewrite rules for the site
 	 */
-	public static function add_custom_rewrites() {
+	// public static function add_custom_rewrites() {
 
-		global $wp_rewrite;
+	// 	global $wp_rewrite;
 		
-        add_rewrite_rule('blogs/([^/]+)/?$', 'index.php?post_type=post&name=$matches[1]', 'top');
+	// 	// Do not rewrite if previewing page
+	// 	if(!is_preview()){
 
-		// kick it in
-		flush_rewrite_rules();	
-	}
+    //     add_rewrite_rule('blogs/([^/]+)/?$', 'index.php?post_type=post&name=$matches[1]', 'top');
+
+	// 	// kick it in
+	// 	flush_rewrite_rules();	
+	// 	}
+	// }
 
 	/**
      * Prepend /blog/ to post URLs

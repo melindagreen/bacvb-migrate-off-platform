@@ -1421,7 +1421,7 @@ UTILITIES
 /*********************
 GRAVITY FORMS
 *********************/
-.gform_wrapper {
+.gform_wrapper,.hbspt-form {
 
     max-width: 50rem;
     margin: auto;
@@ -1447,7 +1447,7 @@ GRAVITY FORMS
         border-color: $sky-blue !important;
     }
 
-    .gform_button {
+    .gform_button, .hs-button {
 
         position: relative;
         max-width: 300px !important;
