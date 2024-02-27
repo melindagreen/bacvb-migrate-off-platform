@@ -35,7 +35,6 @@ new Assets\AssetHandler;
 function init_child_theme() {
     include_once('library/custom-post-types.php');
     include_once('library/rest-api.php');
-    include_once('library/redirects.php');
     new Library\CustomPostTypes;
     new Library\RestApi;
     new Library\Redirects;
