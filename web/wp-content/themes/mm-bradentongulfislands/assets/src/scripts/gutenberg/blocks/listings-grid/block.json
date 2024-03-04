@@ -39,6 +39,10 @@
           "type": "string",
           "default": "none"
         },
+        "excludeCat": {
+          "type": "string",
+          "default": "none"
+        },
         "filterType": {
           "type": "string",
           "default": "categories"

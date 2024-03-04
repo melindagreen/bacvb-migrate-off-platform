@@ -20,6 +20,7 @@ function render_grid_filter( $attrs, $filter_tax ) {
     // prep labels and pre-filters
     $pre_filter_cat = false;
     $filter_tax_label = false;
+    $exclude_cat = false;
     switch( $attrs['postType'] ) {
         case 'posts':
         case 'listing':
@@ -28,6 +29,7 @@ function render_grid_filter( $attrs, $filter_tax ) {
             break;
     }
 
+    // prefiltered cat
     if( 
         isset( $attrs['preFilterCat'] ) 
         && $attrs['preFilterCat'] !== 'none'
@@ -46,6 +48,43 @@ function render_grid_filter( $attrs, $filter_tax ) {
         'child_of' => $pre_filter_cat ? $pre_filter_cat->term_id : '',
     ) );
 
+    $allCats = '';
+    foreach ($filter_terms as $cat_slug) {
+        $allCats .= $cat_slug->term_id.',';
+    }
+
+    // categories to exclude
+    if( 
+        isset( $attrs['excludeCat'] ) 
+        && $attrs['excludeCat'] !== 'none'
+        && isset( $attrs['postType'] ) 
+        && (
+            $attrs['postType'] === 'listing' ||
+            $attrs['postType'] === 'event'
+        )
+    ) {
+        $exclude_cat = get_term_by( 'slug', $attrs['excludeCat'], $filter_tax );
+    }
+    $removeCat = '';
+    if ($exclude_cat && !is_wp_error($exclude_cat)) {
+        $removeCat = $exclude_cat->term_id;
+    }
+
+    // Remove the exclude category id from $allCats
+    $categoriesArray = explode(',', $allCats);
+    
+    // Find the index of the category to remove
+    $index = array_search($removeCat, $categoriesArray);
+    
+    // If the category is found, remove it from the array
+    if ($index !== false) {
+        unset($categoriesArray[$index]);
+    }
+    
+    // Convert the array back to a comma-separated string
+    $updatedCats = implode(',', $categoriesArray);
+    $updatedCats = rtrim($updatedCats, ',');
+
     ?> 
     
     <div class="filterContainer <?php echo isset( $attrs['postType'] ) && $attrs['postType'] === 'event' ? 'is-style-collage-square' : ''; ?>">
@@ -58,12 +97,17 @@ function render_grid_filter( $attrs, $filter_tax ) {
             <?php if( isset( $attrs['postType'] ) && $attrs['postType'] === 'event' ):?>
             <!-- filter controls -->
             <label for="control__input--categories" class="control__label control__label--categories all">
+                <?php 
+                ?>
                 <input
                 type="checkbox"
                 id="control__input--categories-all" 
                 class="control__input control__input--categories control-input--checkbox" 
                 name="<?php echo $filter_tax === 'category' ? 'categories' : $filter_tax; ?>"
-                value="<?php echo $pre_filter_cat ? $pre_filter_cat->term_id : ''; ?>"
+                value="<?php 
+                echo $updatedCats;
+                // echo $pre_filter_cat ? $pre_filter_cat->term_id : '';
+                ?>"
                 <?php checked( !isset( $_GET['listings_term'] ) ); ?>
                 />
                 <span class="control__text"><?php _e( 'All', 'mmnino' ); ?></span>
