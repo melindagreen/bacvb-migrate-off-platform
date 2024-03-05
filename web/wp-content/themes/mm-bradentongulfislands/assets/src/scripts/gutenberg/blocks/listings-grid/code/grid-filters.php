@@ -105,8 +105,7 @@ function render_grid_filter( $attrs, $filter_tax ) {
                 class="control__input control__input--categories control-input--checkbox" 
                 name="<?php echo $filter_tax === 'category' ? 'categories' : $filter_tax; ?>"
                 value="<?php 
-                echo $updatedCats;
-                // echo $pre_filter_cat ? $pre_filter_cat->term_id : '';
+                echo $pre_filter_cat ? $pre_filter_cat->term_id : $updatedCats;
                 ?>"
                 <?php checked( !isset( $_GET['listings_term'] ) ); ?>
                 />
