@@ -103,13 +103,14 @@ const Inspector = props => {
                     onChange={categories => setAttributes({ preFilterCat: categories[0] })}
                 />}
 
-                {(postType === 'listing' || postType === 'event') && <TaxonomyControl
+                {(!preFilterCat) && <TaxonomyControl
                     controlType='select'
                     taxonomySlug={postType === 'listing' ? 'listing_categories' : 'eventastic_categories'}
                     label={__('Exclude category')}
                     value={[excludeCat]}
                     onChange={categories => setAttributes({ excludeCat: categories[0] })}
                 />}
+
 
             </PanelBody>
 
