@@ -566,14 +566,14 @@ if ('serviceWorker' in navigator) {
 		var bounceBall = $('#bounceBall'); // Get the bounceBall element
 		var img = bounceBall.find('img'); 
 		var src = img.attr('src'); 
-		$(window).scroll(function() {
+		// $(window).scroll(function() {
 			if (isElementInViewport(bounceBall)) { // Check if bounceBall is in viewport
-			  img.attr('src', ''); // Clear the src attribute
-			  setTimeout(function() { // Delay the resetting of the src to ensure it clears properly
-			    img.attr('src', src); // Reload the image by setting the src attribute again
-			  }, 0);
-			}
-		});
+		      img.attr('src', ''); // Clear the src attribute
+		      setTimeout(function() { // Delay the resetting of the src to ensure it clears properly
+		        img.attr('src', src); // Reload the image by setting the src attribute again
+		      }, 0);
+		    }
+		// });
 
 		// Function to check if an element is in the viewport
 		function isElementInViewport(el) {
