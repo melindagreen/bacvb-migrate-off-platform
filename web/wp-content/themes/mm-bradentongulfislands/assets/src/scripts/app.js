@@ -400,6 +400,7 @@ if ('serviceWorker' in navigator) {
 
         //toggle stay connected
         toggleStayConnected();
+
 	}
 
     /**
@@ -559,6 +560,31 @@ if ('serviceWorker' in navigator) {
 		scrollAnimation('.grid-item-body--2 .grid-item-body__arrow', 600, 'grid-item-body__arrow--forward');
 		scrollAnimation('.grid-item-body--3 .grid-item-body__arrow', 600, 'grid-item-body__arrow--rotate');
 		scrollAnimation('.grid-item-body--1 .grid-item-body__arrow', 600, 'grid-item-body__arrow--rotate');
+
+
+		// load bouncing ball on homepage when user scrolls in view
+		var bounceBall = $('#bounceBall'); // Get the bounceBall element
+		var img = bounceBall.find('img'); 
+		var src = img.attr('src'); 
+		$(window).scroll(function() {
+			if (isElementInViewport(bounceBall)) { // Check if bounceBall is in viewport
+			  img.attr('src', ''); // Clear the src attribute
+			  setTimeout(function() { // Delay the resetting of the src to ensure it clears properly
+			    img.attr('src', src); // Reload the image by setting the src attribute again
+			  }, 0);
+			}
+		});
+
+		// Function to check if an element is in the viewport
+		function isElementInViewport(el) {
+			var windowHeight = $(window).height();
+			var scrollTop = $(window).scrollTop();
+			var top = el.offset().top;
+			var bottom = top + el.outerHeight();
+
+			return (top >= scrollTop && bottom <= (scrollTop + windowHeight));
+		}
+
     }
 
     /**
