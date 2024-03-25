@@ -564,26 +564,25 @@ if ('serviceWorker' in navigator) {
 
 		// load bouncing ball on homepage when user scrolls in view
 		var bounceBall = $('#bounceBall'); // Get the bounceBall element
-		var img = bounceBall.find('img'); 
-		var src = img.attr('src'); 
-		// $(window).scroll(function() {
-			if (isElementInViewport(bounceBall)) { // Check if bounceBall is in viewport
-		      img.attr('src', ''); // Clear the src attribute
-		      setTimeout(function() { // Delay the resetting of the src to ensure it clears properly
-		        img.attr('src', src); // Reload the image by setting the src attribute again
-		      }, 0);
+  
+		  $(window).scroll(function() {
+		    if (isElementInViewport(bounceBall[0])) { // Check if bounceBall is in viewport
+		      var img = bounceBall.find('img'); // Find the img inside bounceBall
+		      var src = img.attr('src'); // Get the src attribute of the img
+		      img.attr('src', src); // Reload the image by setting the src attribute again
 		    }
-		// });
+		  });
 
-		// Function to check if an element is in the viewport
-		function isElementInViewport(el) {
-			var windowHeight = $(window).height();
-			var scrollTop = $(window).scrollTop();
-			var top = el.offset().top;
-			var bottom = top + el.outerHeight();
-
-			return (top >= scrollTop && bottom <= (scrollTop + windowHeight));
-		}
+		  // Function to check if an element is in the viewport
+		  function isElementInViewport(el) {
+		    var rect = el.getBoundingClientRect();
+		    return (
+		      rect.top >= 0 &&
+		      rect.left >= 0 &&
+		      rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+		      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+		    );
+		  }
 
     }
 
