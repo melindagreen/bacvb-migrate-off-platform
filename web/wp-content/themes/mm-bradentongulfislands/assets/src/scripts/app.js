@@ -403,26 +403,28 @@ if ('serviceWorker' in navigator) {
 
 
         // load bouncing ball on homepage when user scrolls in view
-		var bounceBall = $('#bounceBall'); // Get the bounceBall element
-  
-		$(window).scroll(function() {
-		    if (isElementInViewport(bounceBall[0])) { // Check if bounceBall is in viewport
-		      var img = bounceBall.find('img'); // Find the img inside bounceBall
-		      var src = img.attr('src'); // Get the src attribute of the img
-		      img.attr('src', src); // Reload the image by setting the src attribute again
-		    }
-		});
+var bounceBall = $('#bounceBall'); // Get the bounceBall element
+var isImageLoaded = false; // Flag to track if image is already loaded
 
-		  // Function to check if an element is in the viewport
-		function isElementInViewport(el) {
-		    var rect = el.getBoundingClientRect();
-		    return (
-		      rect.top >= 0 &&
-		      rect.left >= 0 &&
-		      rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-		      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-		    );
-		}
+$(window).scroll(function() {
+    if (!isImageLoaded && isElementInViewport(bounceBall[0])) { // Check if bounceBall is in viewport and image is not already loaded
+        var img = bounceBall.find('img'); // Find the img inside bounceBall
+        var src = img.attr('src'); // Get the src attribute of the img
+        img.attr('src', src); // Reload the image by setting the src attribute again
+        isImageLoaded = true; // Set the flag to true to indicate image is now loaded
+    }
+});
+
+// Function to check if an element is in the viewport
+function isElementInViewport(el) {
+    var rect = el.getBoundingClientRect();
+    return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+}
 
 
 	}
