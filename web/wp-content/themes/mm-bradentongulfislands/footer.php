@@ -10,7 +10,7 @@
         </div>
 
         <div class="footer-col">
-            <p class="partner-login"><a href="">Partner Login</a></p>
+            <p class="partner-login"><a href="/account">Partner Login</a></p>
             <div class="search-wrap">
             <?php get_search_form(array(
                 'echo' => true,
