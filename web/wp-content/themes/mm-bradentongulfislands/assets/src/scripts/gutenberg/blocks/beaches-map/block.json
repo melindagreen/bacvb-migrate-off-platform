@@ -15,33 +15,57 @@
         "type": "string",
         "default": ""
       },
+      "annamariabeachImage": {
+        "type": "string"
+      },
       "beanpoint": {
         "type": "string",
         "default": ""
+      },
+      "beanpointImage": {
+        "type": "string"
       },
       "manateebeach": {
         "type": "string",
         "default": ""
       },
+      "manateebeachImage": {
+        "type": "string"
+      },
       "holmesbeach": {
         "type": "string",
         "default": ""
+      },
+      "holmesbeachImage": {
+        "type": "string"
       },
       "cortezbeach": {
         "type": "string",
         "default": ""
       },
+      "cortezbeachImage": {
+        "type": "string"
+      },
       "coquinabeach": {
         "type": "string",
         "default": ""
+      },
+      "coquinabeachImage": {
+        "type": "string"
       },
       "beercanisland": {
         "type": "string",
         "default": ""
       },
+      "beercanislandImage": {
+        "type": "string"
+      },
       "whitneybeach": {
         "type": "string",
         "default": ""
+      },
+      "whitneybeachImage": {
+        "type": "string"
       },
       "mode": {
         "type": "string",

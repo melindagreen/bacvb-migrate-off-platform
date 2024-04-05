@@ -51,6 +51,7 @@
 ### Plugins should pull from wpackagist or other sources
 /web/wp-content/plugins/*
 
+<<<<<<< HEAD
 # Exclude specific directories
 !/web/wp-content/plugins/insert-headers-and-footers
 !/web/wp-content/plugins/memberpress
@@ -59,10 +60,19 @@
 !/web/wp-content/plugins/wpcode-premium
 !/web/wp-content/plugins/memberpress-importer
 !/web/wp-content/plugins/memberpress-developer-tools
+=======
+# Allow some plugins that we can't get from github or wpackagist
+!/web/wp-content/plugins/gravityformsauthorizenet/
+!/web/wp-content/plugins/gravityformshubspot/
+!/web/wp-content/plugins/leadin/
+>>>>>>> main
 
 # WordPress dynamic folders
 /web/wp-content/cache/
 /web/wp-content/uploads/
+
+# Custom 360 tour directory
+/web/360/vtourdata/
 
 # Ignore local configuration files
 /.env

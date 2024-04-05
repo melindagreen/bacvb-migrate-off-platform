@@ -24,7 +24,7 @@
                         "core/post-template",
                         {},
                         [["core/group", {"className":"wp-block-post__featured-image"},[
-                            ["core/post-featured-image"]
+                            ["core/post-featured-image", {"sizeSlug": "large"}]
                             ]],["core/group", {"className": "wp-block-post__content"}, [
                             [ "core/post-title" ], ["core/read-more" ]
                         ]]]

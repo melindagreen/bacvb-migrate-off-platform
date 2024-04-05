@@ -47,7 +47,7 @@ const MediaControls = props => {
 }
 
 const Inspector = props => {
-    const { attributes: { listingsTitle, postType, listingsPerPage, preFilterCat, filterType }, setAttributes } = props;
+    const { attributes: { listingsTitle, postType, listingsPerPage, preFilterCat, excludeCat, filterType, catFilterSelections }, setAttributes } = props;
 
     const onFilterTypeChange = newFilterType => {
         setAttributes({ filterType: newFilterType });
@@ -95,13 +95,22 @@ const Inspector = props => {
                     onChange={listingsPerPage => setAttributes({ listingsPerPage })}
                 />
 
-                {(postType === 'listing' || postType === 'page' || postType === 'event') && <TaxonomyControl
+                {(postType === 'listing' || postType === 'event') && <TaxonomyControl
                     controlType='select'
                     taxonomySlug={postType === 'listing' ? 'listing_categories' : 'eventastic_categories'}
                     label={__('Pre-filter category')}
                     value={[preFilterCat]}
                     onChange={categories => setAttributes({ preFilterCat: categories[0] })}
                 />}
+
+                {(!preFilterCat) && <TaxonomyControl
+                    controlType='select'
+                    taxonomySlug={postType === 'listing' ? 'listing_categories' : 'eventastic_categories'}
+                    label={__('Exclude category')}
+                    value={[excludeCat]}
+                    onChange={categories => setAttributes({ excludeCat: categories[0] })}
+                />}
+
 
             </PanelBody>
 
@@ -116,6 +125,14 @@ const Inspector = props => {
                     ]}
                     onChange={onFilterTypeChange}
                 />
+
+                {(postType === 'listing' || postType === 'page') && 
+                <TextControl
+                    label={__('Category Filter Selections')}
+                    value={catFilterSelections}
+                    onChange={catFilterSelections => setAttributes({ catFilterSelections })}
+                    />
+                }
             </PanelBody>
         </InspectorControls>
     )

@@ -26,13 +26,13 @@
     <link rel="apple-touch-icon" href="<?php echo get_stylesheet_directory_uri(); ?>/favicon.ico"/>     
 
     <!-- Google Tag Manager - COMMENT OUT UNTIL LAUNCH -->
-	<!-- <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-	})(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
-	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
-	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> -->
+	})(window,document,'script','dataLayer','GTM-MZ8H2VT');</script>
+	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MZ8H2VT"
+	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager -->    
 
     <?php wp_head() // WORDPRESS HEADERS; ?>
@@ -41,10 +41,10 @@
 <body <?php echo body_class(); ?>>
     <?php wp_body_open() ?>
 
-    <!-- Google Tag Manager (noscript) 
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PGXRLFD"
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MZ8H2VT"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    End Google Tag Manager (noscript) -->    
+    <!-- End Google Tag Manager (noscript) -->    
 
     <!-- HEADER -->
     <header class="mm-bradentongulfislands-header bradenton-header">
@@ -152,9 +152,9 @@
 
                     <div class="mm-bradentongulfislands-nav nav__shortcuts mega-menu-shortcuts">
                         <ul class="mm-bradentongulfislands-menu menu__shortcuts">
-                            <li class="menu-item"><a href="/enews" target="_blank"><img src="<?php echo get_theme_file_uri() ?>/assets/images/icons/envelope.png" alt="<?php _e( 'Envelope Icon', 'mmnino' ); ?>" width="24px" height="24px"> Newsletter</a></li>
-                            <li class="menu-item"><a href="/travel-guide" target="_blank"><img src="<?php echo get_theme_file_uri() ?>/assets/images/icons/literature.png" alt="<?php _e( 'Literature Icon', 'mmnino' ); ?>" width="24px" height="24px"> Travel Guide</a></li>
-                            <li class="menu-item"><a href="/love-it-like-a-local/" target="_blank"><img src="<?php echo get_theme_file_uri() ?>/assets/images/icons/starfish-icon.png" alt="<?php _e( 'Accessibility Icon', 'mmnino' ); ?>" width="24px" height="24px"> Sustainability</a></li>
+                            <li class="menu-item"><a href="/enews"><img src="<?php echo get_theme_file_uri() ?>/assets/images/icons/envelope.png" alt="<?php _e( 'Envelope Icon', 'mmnino' ); ?>" width="24px" height="24px"> Newsletter</a></li>
+                            <li class="menu-item"><a href="/travel-guide"><img src="<?php echo get_theme_file_uri() ?>/assets/images/icons/literature.png" alt="<?php _e( 'Literature Icon', 'mmnino' ); ?>" width="24px" height="24px"> Travel Guide</a></li>
+                            <li class="menu-item"><a href="/love-it-like-a-local/"><img src="<?php echo get_theme_file_uri() ?>/assets/images/icons/starfish-icon.png" alt="<?php _e( 'Accessibility Icon', 'mmnino' ); ?>" width="24px" height="24px"> Sustainability</a></li>
                         </ul>
                     </div>
 
@@ -221,56 +221,29 @@
                     <div class="mega-menu__local-stories">
                         <h3><a href="/venues">Signature Venues</a></h3>
                         <div class="local-stories-nav">
-                            <a href="/venues/powel-crosley/" class="venue">
+                            <a href="/venues/powel-crosley/" class="venue powel-crosley">
                                 <img src="/wp-content/uploads/2023/11/nav-logo-crosleyestate.png" alt="Powel Crosley Estate logo" class="logo">
-                                <div class="hover_state">
-                                    <div class="featImg">
-                                        <img src="/wp-content/uploads/2023/11/Powel-Crosley_Venues-234x300.jpg" alt="Powel Crosley Estate image">
-                                    </div>
-                                    <div class="page">Powel Crosley Estate</div>
+                                <div class="featImg">
+                                    <img src="/wp-content/uploads/2023/11/Powel-Crosley_Venues-234x300.jpg" alt="Powel Crosley Estate image">
                                 </div>
                             </a>
-                            <a href="/venues/convention-center/" class="venue">
-                                <img src="/wp-content/uploads/2023/11/Bradenton-Area-Convention-Center-Logo_rgb_72-1.jpg" alt="Bradenton Area Convention Center logo" class="logo">
-                                <div class="hover_state">
-                                    <div class="featImg">
-                                        <img src="/wp-content/uploads/2023/11/Bradenton_Area_Convention_Center_SfnOoYA6fwp2lbHiQUepT_t18q0ABlZBh_rgb_l-300x200.jpg" alt="Bradenton Area Convention Center image">
-                                    </div>
-                                    <div class="page">Bradenton Area Convention Center</div>
+                            <a href="/venues/convention-center/" class="venue bacc">
+                                <img src="/wp-content/uploads/BACC-logo.png" alt="Bradenton Area Convention Center logo" class="logo">
+                                <div class="featImg">
+                                    <img src="/wp-content/uploads/2023/11/Bradenton_Area_Convention_Center_SfnOoYA6fwp2lbHiQUepT_t18q0ABlZBh_rgb_l-300x200.jpg" alt="Bradenton Area Convention Center image">
                                 </div>
                             </a>
-                            <a href="/venues/premier-sports-campus/" class="venue">
-                                <img src="/wp-content/uploads/2023/11/nav-logo-premier-1.png" alt="Premier Sports Campus logo" class="logo">
-                                <div class="hover_state">
-                                    <div class="featImg">
-                                        <img src="/wp-content/uploads/2023/11/Premie_Venues-400x512.jpg" alt="Premier Sports Campus image">
-                                    </div>
-                                    <div class="page">Premier Sports Campus</div>
+                            <a href="/venues/premier-sports-campus/" class="venue premier-sports-campus">
+                                <img src="/wp-content/uploads/Premier-Sports-Campus-Logo_rgb_l.png" alt="Premier Sports Campus logo" class="logo">
+                                <div class="featImg">
+                                    <img src="/wp-content/uploads/2023/11/Premie_Venues-400x512.jpg" alt="Premier Sports Campus image">
                                 </div>
                             </a>
                         </div>
 
-                        <!-- <h3>Check Out These Local Stories</h3>
-                        <div class="local-stories-nav">
-                            <?php while ( $localStories->have_posts() ) {
-                            $localStories->the_post();
-                            $thumbnail_id = get_post_thumbnail_id( $post_id );
-                            ?>
-                            <figure class="local-stories-nav__item">
-                            <a href="<?php echo get_the_permalink(); ?>">
-                                <img 
-                                data-load-type="img"
-                                data-load-offset="lg" 
-                                data-load-all="<?php echo has_post_thumbnail() ? get_the_post_thumbnail_url() : get_theme_file_uri().'/assets/images/placeholder.jpg';?>" 
-                                data-load-alt="<?php echo wp_get_attachment_image_src( $thumbnail_id, 'madden_inline_small'); ?>" 
-                                src="<?php echo get_theme_file_uri() ?>/assets/images/pixel.png" />
-                                <figcaption><?php the_title(); ?></figcaption>
-                                </a>
-                            </figure>
-                            <?php } ?>
-                        </div> -->
                         <!-- SOCIAL LINKS -->
                         <div class="social-container">
+                            <h4>Follow Us</h4>
                             <div class="social-links">
                                 <a aria-label='Facebook' href="<?php echo C::SOCIAL_LINKS['facebook']['url'] ?>">
                                     <?php echo file_get_contents( get_theme_file_uri() . "/assets/images/icons/social/facebook.svg" ) ?>
@@ -279,7 +252,7 @@
                                     <?php echo file_get_contents( get_theme_file_uri() . "/assets/images/icons/social/pinterest.svg" ) ?>
                                 </a>
                                 <a aria-label='Twitter' href="<?php echo C::SOCIAL_LINKS['twitter']['url'] ?>">
-                                    <?php echo file_get_contents( get_theme_file_uri() . "/assets/images/icons/social/twitter.svg" ) ?>
+                                    <?php echo file_get_contents( get_theme_file_uri() . "/assets/images/icons/social/x-icon.svg" ) ?>
                                 </a>
                                 <a aria-label='Instagram' href="<?php echo C::SOCIAL_LINKS['instagram']['url'] ?>">
                                     <?php echo file_get_contents( get_theme_file_uri() . "/assets/images/icons/social/instagram.svg" ) ?>

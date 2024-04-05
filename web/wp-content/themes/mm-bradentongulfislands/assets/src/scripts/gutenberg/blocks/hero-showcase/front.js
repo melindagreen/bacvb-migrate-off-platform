@@ -5,21 +5,20 @@
 (function($) {
   $(document).ready(function() {
       
-    const heroShowcaseElements = $(".hero-showcase");
+    const heroShowcaseElements = $(".hero-showcase__background, .hero-showcase-amenities, .hero-showcase-body, .hero-showcase-factoid");
 
       $(heroShowcaseElements).each(function (index, element) {
-        console.log('Test');
- 
+
           const observer = new IntersectionObserver(entries => {
               entries.forEach(entry => {
                   if (entry.isIntersecting) {
                       $(entry.target).css({
-                          opacity: 1,
+                          opacity: "inherit",
                           transform: "translateX(0px)"
                       });
                   }
               });
-          }, { threshold: 0.1 });
+          }, { threshold: 0.3 });
 
           observer.observe(element);
       });

@@ -17,6 +17,7 @@ $amenitiesBorderRadius: 20px;
       width: $hero-width;
       height: $hero-height;
       position: relative;
+      margin: -10px 0;
 
       &--topright {
 
@@ -30,16 +31,26 @@ $amenitiesBorderRadius: 20px;
 
           border-top-right-radius: unset !important;
           border-bottom-right-radius: unset !important;
-          border-top-left-radius: $amenitiesBorderRadius;
-          border-bottom-left-radius: $amenitiesBorderRadius;
+          border-top-left-radius: 12px;
+          border-bottom-left-radius: 12px;
           padding: 0.5rem 0rem 0.45em 0.45rem;
+
+          .tooltip:last-child {
+
+            margin-right: 2rem;
+          }
+
+          .tooltip:first-child {
+
+            margin-left: unset !important;
+          }
 
           .amenitiesTitle {
 
             border-top-right-radius: unset !important;
             border-bottom-right-radius: unset !important;
-            border-top-left-radius: $amenitiesBorderRadius;
-            border-bottom-left-radius: $amenitiesBorderRadius;
+            border-top-left-radius: 8px;
+            border-bottom-left-radius: 8px;
             padding: 0.3rem 0.9rem 0.3rem 0.9rem;
           }
       }
@@ -53,6 +64,9 @@ $amenitiesBorderRadius: 20px;
 
       &__background {
 
+        transition: 0.7s ease-out;
+        opacity: 0;
+
         img {
 
           width: $hero-width;
@@ -60,18 +74,16 @@ $amenitiesBorderRadius: 20px;
           object-fit: cover;
         }
       }
-
-      transition: 0.8s ease-in-out;
-      opacity: 0;
     }
 
     .hero-showcase-factoid {
 
       position: absolute;
-      bottom: 3%;
+      bottom: 4%;
       right: 2%;
       display: flex;
       align-items: center;
+      pointer-events: none;
 
       .factoid-img {
 
@@ -80,8 +92,7 @@ $amenitiesBorderRadius: 20px;
 
         img {
 
-          height: 120px !important;
-          height: auto;
+          height: 120px;
         }
       }
 
@@ -96,6 +107,17 @@ $amenitiesBorderRadius: 20px;
         h2, p {
 
           color: white;
+        }
+
+        h2{
+          font-family: var(--wp--preset--font-family--title);
+          font-size: 46px;
+          margin-top: 10px;
+          margin-bottom: 0;
+        }
+        p{
+          font-size: 14px;
+          margin-top: 0;
         }
       }
       
@@ -112,13 +134,14 @@ $amenitiesBorderRadius: 20px;
         color: white;
         font-size: 1.2rem;
         font-family: $font-header;
+        margin: 0 0 10px 0;
       }
 
       &__excerpt {
 
         font-size: 1rem;
         color: white;
-        line-height: 1.2em;
+        line-height: 1.35em;
       }
 
       &__link {
@@ -158,20 +181,21 @@ $amenitiesBorderRadius: 20px;
     }
   }
 
-  .hero-showcase:nth-child(even){
+  .hero-showcase__background:nth-child(even){
 
-    transform: translateX(-60%);
+    transform: translateX(-20%);
   }
 
-  .hero-showcase:nth-child(odd){
+  .hero-showcase__background:nth-child(odd){
 
-    transform: translateX(60%);
+    transform: translateX(20%);
   }
 
   .hero-showcase-legend {
 
     background-color: $bradenton-teal;
     padding-top: 0.8rem;
+
 
     .legendTitle {
 
@@ -274,30 +298,34 @@ $amenitiesBorderRadius: 20px;
 
   .hero-showcase-amenities {
 
-    background-color: $bradenton-teal;
-    opacity: 0.9;
-    width: 400px;
+    background-color: #2b7b7cf0;
+    // width: 400px;
     padding: 0.5rem 0.45rem 0.45em 0;
-    border-top-right-radius: $amenitiesBorderRadius;
-    border-bottom-right-radius: $amenitiesBorderRadius;
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
 
+    .tooltip:first-child {
+
+      margin-left: 2rem;
+    }
+    
     .amenitiesTitle {
 
       background-color: white;
-      border-top-right-radius: $amenitiesBorderRadius;
-      border-bottom-right-radius: $amenitiesBorderRadius;
+      border-top-right-radius: 8px;
+      border-bottom-right-radius: 8px;
       margin-bottom: 0.5rem;
-      padding: 0.3rem 0 0.3rem 0.9rem;
+      padding: 0.3rem 0.9rem;
       font-size: 1.2rem;
       font-family: $font-header;
       color: $bradenton-teal;
     }
 
     .icon {
-
-      width: 25px;
-      height: auto;
-      margin-left: 0.9rem;
+      width: 20px;
+      height: 22px;
+      display: block;
+      margin: 0 5px;
     }
 
   }
@@ -308,7 +336,7 @@ $amenitiesBorderRadius: 20px;
     &::before {
       content: attr(data-tooltip);
       position: absolute;
-      background-color: rgba($rust,0.8);
+      background-color: $rust;
       width: 90px;
       text-align: center;
       color: #fff;
@@ -317,13 +345,20 @@ $amenitiesBorderRadius: 20px;
       border-radius: 3px;
       opacity: 0;
       transition: opacity 0.3s;
-      bottom: 110%; 
+      top: 110%; 
       left: 50%;
-      transform: translateX(-25%);
+      transform: translateX(-50%);
     }
     &:hover::before {
       opacity: 1;
     }
+  }
+
+  .hero-showcase-amenities, .hero-showcase-body, .hero-showcase-factoid {
+
+    opacity: 0;
+    transition: all 0.65s ease-out;
+    transition-delay: 0.8s;
   }
 }
 
@@ -353,33 +388,60 @@ SMALL SCREENS
     
     .hero-showcases {
 
-      .hero-showcase-amenities {
+      .hero-showcase-body {
+        padding: 1.7rem 1.5rem;
+      } 
 
-        position: absolute;
-        bottom: 4%;
-        left: 0;
-      }
+      // .hero-showcase-amenities {
 
-      .hero-showcase {
+      //   position: absolute;
+      //   bottom: 4%;
+      //   left: 0;
+      // }
+
+      // .hero-showcase {
   
-        height: unset;
-        position: relative;
+      //   height: unset;
+      //   position: relative;
   
-        &--topright {
+      //   &--topright {
   
-          position: unset;
-        }
+      //     position: unset;
+      //   }
       
-        &--bottomleft {
+      //   &--bottomleft {
       
-          position: unset;
-        }
+      //     position: unset;
+      //   }
   
-      }
+      // }
 
       .hero-showcase-factoid {
+        flex-direction: column;
+        justify-content: center;
+        display: none;
 
-        position: unset;       
+        .factoid-img {
+          margin-right: 0;
+          margin-bottom: -2.5rem;
+          img {
+            height: 100px;
+          }
+        }
+
+        .factoid-content {
+          width: 200px;
+          height: 200px;
+          padding: 2.5rem 2rem;
+          h2 {
+            font-size: 24px;
+          }
+          p {
+            font-size: 13px;
+            line-height: 1.1;
+          }
+        }
+
       }
 
     }

@@ -23,6 +23,14 @@ HEADER
 *********************/
 
 .#{$theme-prefix}-header {
+
+    &.open {
+        &.open {
+            .mega-menu {
+                padding-right: 5%;
+            }
+        }
+    }
    
     .top-bar {
         height: 6rem;
@@ -41,7 +49,7 @@ HEADER
         position: relative;
         .menu-item {
             &.menu-item-has-children::after {
-                transform: rotate(0deg);
+                transform: rotate(-90deg);
             }
         }
         & > .menu-item {
@@ -59,10 +67,11 @@ HEADER
                     pointer-events: all;
                 }
                 &.menu-item-has-children::after {
-                    transform: rotate(-90deg);
                     background-image: url('~/images/arrow-white.png');
                     background-position: center;
-                    margin-top: 11px;
+                    margin-top: 13px;
+                    margin-right: 6px;
+                    transform: rotate(90deg);
                 }
             }
             & > .sub-menu {

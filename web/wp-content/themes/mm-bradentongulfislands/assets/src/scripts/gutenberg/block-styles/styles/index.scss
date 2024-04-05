@@ -384,7 +384,7 @@ IMAGES
         &.is-style-masonry {
 
             &.columns-3 {
-                grid-template-rows: repeat(2, 15vw) ;  
+                grid-template-rows: repeat(2, 15vw);  
                 
                 figure {
                     &:nth-child(4) {
@@ -456,11 +456,11 @@ IMAGES
             }
 
             display: grid;
-            grid-template-columns: repeat(6, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             grid-template-rows: repeat(6, 1fr);
-            gap: 10px;
+            gap: 5px;
             padding: 15px;
-            height: 1000px;
+            height: 800px;
 
 
             img {

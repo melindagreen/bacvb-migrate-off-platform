@@ -19,6 +19,10 @@
           "type": "string",
           "default": "Listings"
         },
+        "catFilterSelections": {
+          "type": "string",
+          "default": ""
+        },
         "postType": {
           "type": "string",
           "default": "listing"
@@ -32,6 +36,10 @@
           "default": "/wp-content/uploads/pexels-miriam-fischer-2645245-scaled.jpg"
         },
         "preFilterCat": {
+          "type": "string",
+          "default": "none"
+        },
+        "excludeCat": {
           "type": "string",
           "default": "none"
         },

@@ -3,18 +3,18 @@
 # Each route describes how an incoming URL is going
 # to be processed by Platform.sh.
 
-"https://{default}/":
+"https://www.{default}/":
     type: upstream
     upstream: "app:http"
     cache:
-        enabled: true
+        enabled: false
         # Base the cache on the session cookies. Ignore all other cookies.
         cookies: [ '/^wordpress_logged_in_/', '/^wordpress_sec_/', 'wordpress_test_cookie' ]
         default_ttl: 600
 
-"https://www.{default}/":
+"https://{default}/":
     type: redirect
-    to: "https://{default}/"
+    to: "https://www.{default}/"
 
 "https://{default}/wp-login.php":
     type: upstream
@@ -22,9 +22,14 @@
     cache:
         enabled: false
 
+"https://360.{default}/":
+    type: redirect
+    to: "https://www.{default}/360/"
+
 #
 # vanity domains
 #
+
 "http://bacvb.com":
     type: upstream
     upstream: "app:http"
@@ -33,3 +38,228 @@
             '^/(.*)':
                 to: 'https://www.{default}/$1$is_args$args'
                 regexp: true
+
+"http://premiersportscampus.com":
+    type: upstream
+    upstream: "app:http"
+    redirects:
+        paths:
+            '^/(.*)':
+                to: 'https://www.{default}/venues/premier-sports-campus/$1$is_args$args'
+                regexp: true
+
+"http://premiersportscampus.net":
+    type: upstream
+    upstream: "app:http"
+    redirects:
+        paths:
+            '^/(.*)':
+                to: 'https://www.{default}/venues/premier-sports-campus/$1$is_args$args'
+                regexp: true
+            
+"http://premiersportscampus.org":
+    type: upstream
+    upstream: "app:http"
+    redirects:
+        paths:
+            '^/(.*)':
+                to: 'https://www.{default}/venues/premier-sports-campus/$1$is_args$args'
+                regexp: true
+
+"http://thepowelcrosleyestate.com":
+    type: upstream
+    upstream: "app:http"
+    redirects:
+        paths:
+            '^/(.*)':
+                to: 'https://www.{default}/venues/powel-crosley/$1$is_args$args'
+                regexp: true
+
+"http://bacvbsales.com":
+    type: upstream
+    upstream: "app:http"
+    redirects:
+        paths:
+            '^/(.*)':
+                to: 'https://www.{default}/contact/$1$is_args$args'
+                regexp: true
+
+"http://bradentonareaconventioncenter.com":
+    type: upstream
+    upstream: "app:http"
+    redirects:
+        paths:
+            '^/(.*)':
+                to: 'https://www.{default}/venues/convention-center/$1$is_args$args'
+                regexp: true
+
+"http://bradentonareacvb.com":
+    type: upstream
+    upstream: "app:http"
+    redirects:
+        paths:
+            '^/(.*)':
+                to: 'https://www.{default}/$1$is_args$args'
+                regexp: true           
+
+"http://bradentonareagulfislands.com":
+    type: upstream
+    upstream: "app:http"
+    redirects:
+        paths:
+            '^/(.*)':
+                to: 'https://www.{default}/film/$1$is_args$args'
+                regexp: true
+
+"http://bradentongulfisland.com":
+    type: upstream
+    upstream: "app:http"
+    redirects:
+        paths:
+            '^/(.*)':
+                to: 'https://www.{default}/$1$is_args$args'
+                regexp: true                                 
+
+"http://beachvacaygetaway.com":
+    type: upstream
+    upstream: "app:http"
+    redirects:
+        paths:
+            '^/(.*)':
+                to: 'https://www.{default}/$1$is_args$args'
+                regexp: true
+
+"http://filmbradenton.com":
+    type: upstream
+    upstream: "app:http"
+    redirects:
+        paths:
+            '^/(.*)':
+                to: 'https://www.{default}/film/$1$is_args$args'
+                regexp: true
+
+"http://floridasgulfislands.com":
+    type: upstream
+    upstream: "app:http"
+    redirects:
+        paths:
+            '^/(.*)':
+                to: 'https://www.{default}/$1$is_args$args'
+                regexp: true  
+
+"http://mybradentonarea.com":
+    type: upstream
+    upstream: "app:http"
+    redirects:
+        paths:
+            '^/(.*)':
+                to: 'https://www.{default}/$1$is_args$args'
+                regexp: true   
+
+# "http://realauthenticflorida.com":
+#     type: upstream
+#     upstream: "app:http"
+#     redirects:
+#         paths:
+#             '^/(.*)':
+#                 to: 'https://www.{default}/$1$is_args$args'
+#                 regexp: true
+
+"http://ultimatebeachvacationgiveaway.com":
+    type: upstream
+    upstream: "app:http"
+    redirects:
+        paths:
+            '^/(.*)':
+                to: 'https://www.{default}/discover/beaches/$1$is_args$args'
+                regexp: true
+
+"http://ultimatebeachvacaygiveaway.com":
+    type: upstream
+    upstream: "app:http"
+    redirects:
+        paths:
+            '^/(.*)':
+                to: 'https://www.{default}/discover/beaches/$1$is_args$args'
+                regexp: true  
+
+"http://weddingsatthecrosley.com":
+    type: upstream
+    upstream: "app:http"
+    redirects:
+        paths:
+            '^/(.*)':
+                to: 'https://www.{default}/venues/powel-crosley/$1$is_args$args'
+                regexp: true              
+
+"http://golfsuncoast.com":
+    type: upstream
+    upstream: "app:http"
+    redirects:
+        paths:
+            '^/(.*)':
+                to: 'https://www.{default}/$1$is_args$args'
+                regexp: true                 
+
+"http://gulfislandferry.biz":
+    type: upstream
+    upstream: "app:http"
+    redirects:
+        paths:
+            '^/(.*)':
+                to: 'https://www.{default}/gulf-islands-ferry/$1$is_args$args'
+                regexp: true   
+
+"http://gulfislandferry.co":
+    type: upstream
+    upstream: "app:http"
+    redirects:
+        paths:
+            '^/(.*)':
+                to: 'https://www.{default}/gulf-islands-ferry/$1$is_args$args'
+                regexp: true   
+
+"http://gulfislandferry.info":
+    type: upstream
+    upstream: "app:http"
+    redirects:
+        paths:
+            '^/(.*)':
+                to: 'https://www.{default}/gulf-islands-ferry/$1$is_args$args'
+                regexp: true   
+
+"http://gulfislandferry.net":
+    type: upstream
+    upstream: "app:http"
+    redirects:
+        paths:
+            '^/(.*)':
+                to: 'https://www.{default}/gulf-islands-ferry/$1$is_args$args'
+                regexp: true   
+
+"http://gulfislandferry.org":
+    type: upstream
+    upstream: "app:http"
+    redirects:
+        paths:
+            '^/(.*)':
+                to: 'https://www.{default}/gulf-islands-ferry/$1$is_args$args'
+                regexp: true 
+
+"http://gulfislandsferry.net":
+    type: upstream
+    upstream: "app:http"
+    redirects:
+        paths:
+            '^/(.*)':
+                to: 'https://www.{default}/gulf-islands-ferry/$1$is_args$args'
+                regexp: true  
+
+"http://gulfislandsferry.org":
+    type: upstream
+    upstream: "app:http"
+    redirects:
+        paths:
+            '^/(.*)':
+                to: 'https://www.{default}/gulf-islands-ferry/$1$is_args$args'
+                regexp: true                  

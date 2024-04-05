@@ -17,6 +17,7 @@ build:
 # side is in the form `<service name>:<endpoint name>`.
 relationships:
   database: "db:mysql"
+  rediscache: "cacheredis:redis"
 
 # The configuration of app when it is exposed to the web.
 web:
@@ -60,9 +61,19 @@ web:
           '(?<!\-lock)\.(?i:jpe?g|gif|png|svg|bmp|ico|css|js(?:on)?|eot|ttf|woff|woff2|pdf|docx?|xlsx?|pp[st]x?|psd|odt|key|mp[2-5g]|m4[av]|og[gv]|wav|mov|wm[av]|avi|3g[p2])$':
               allow: true
               expires: 1w
+    "/xmlrpc.php":
+      root: "web"
+      allow: false
+      scripts: false
+    "/360/vtourdata":
+      root: "web/360/vtourdata"
+      scripts: true
+      allow: true
+      index:
+        - "index.html"
 
 # The size of the persistent disk of the application (in MB).
-disk: 8092
+disk: 7580
 
 # Dependencies needed for build - yarn, bower, gulp, ruby etc.
 dependencies:
@@ -75,6 +86,7 @@ dependencies:
 mounts:
   "web/wp-content/cache": "shared:files/cache"
   "web/wp-content/uploads": "shared:files/uploads"
+  "web/360/vtourdata": "shared:files/vtourdata"
   "web/sites": "shared:files/sites"
 
 hooks:

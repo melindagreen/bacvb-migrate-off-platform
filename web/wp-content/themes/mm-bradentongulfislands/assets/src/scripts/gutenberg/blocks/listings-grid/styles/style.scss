@@ -537,6 +537,7 @@ SMALL SCREENS
 	.#{$block-prefix}-listings-grid {
 
 		.filters {
+			flex-direction: column;
 
 			.check-controls {
 				flex-wrap: wrap;
@@ -545,6 +546,10 @@ SMALL SCREENS
 					margin: 0;
 					font-size: 0.75em;
 				}
+			}
+
+			.control--search {
+				margin: 0;
 			}
 		}
 		margin: 2rem 0;

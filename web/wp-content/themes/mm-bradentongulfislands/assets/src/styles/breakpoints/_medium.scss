@@ -271,9 +271,11 @@ HEADER
         }
         .mega-menu {
             min-height:800px !important;
-            height: 90vh !important;
+            max-height: inherit !important;
+            height: 95vh !important;
             padding-top: 3rem;
             overflow: auto;
+            padding-right: 0 !important;
             // background: transparent linear-gradient(180deg, #014067 17%, #014067 18%, white 21%) 0% 0% no-repeat padding-box;
         }
 
@@ -353,5 +355,25 @@ FOOTER
     .footer-col {
 
         margin: auto;
+    }
+}
+
+/*********************
+Photo Credit
+*********************/
+
+.wp-block-gallery {
+
+    .wp-block-image {
+
+        .photocredit {
+
+            &::before {
+            left: 0;
+            max-width: 200px;
+            top: 1.75rem;
+            width: max-content;
+            }
+        }
     }
 }

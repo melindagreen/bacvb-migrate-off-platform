@@ -33,13 +33,7 @@
 
 		let testing = '';
 
-		let newThumb = '';
-		if(listing?.thumb_url) {
-			newThumb = listing?.thumb_url;
-			// newThumb = newThumb.replace(/-\d+x\d+(\.\w+)$/, '$1');
-		}
-
-		let thumbUrl = newThumb || listing?.yoast_head_json?.og_image?.[0]?.url || placeHolder;
+		let thumbUrl = listing?.thumb_url || listing?.yoast_head_json?.og_image?.[0]?.url || placeHolder;
 
 		switch (postType) {
 			case 'event':

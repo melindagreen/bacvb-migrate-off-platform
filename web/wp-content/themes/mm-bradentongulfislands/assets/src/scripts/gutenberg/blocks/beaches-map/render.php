@@ -56,11 +56,23 @@ function render_block( $attrs, $content ) {
 
           $postMeta = get_post_meta($post->ID);
 
+          // formatting beach name to pull in logo file name
+          $shortenedTitle = preg_replace('/\s?\([^)]+\)/', '', $post->post_title);
+          
+          // to pull beach logo from assets folder
+          $postSlug = str_replace(' ', '-', $shortenedTitle);
+          
+          // modifying slug to match the variable in inspector.js to pull beach content
+          $beachContent = strtolower(str_replace(' ', '', $shortenedTitle));
+
           $html .= '<div class="selectBeach '.$post->post_name.'">';
 
             // featured image
             $featImg = '/wp-content/uploads/20210520102150-anna-maria-island-beach-access.jpeg';
-            if (has_post_thumbnail($post->ID)) {
+            if (!empty($attrs[$beachContent.'Image'])) {
+              $featImg = $attrs[$beachContent.'Image'];
+            }
+            else if (has_post_thumbnail($post->ID)) {
               $featImg = get_the_post_thumbnail_url($post->ID, 'large');
             }
 
@@ -68,7 +80,7 @@ function render_block( $attrs, $content ) {
 
             if($postMeta['partnerportal_beach-amenities']) {              
               $html .= '<div class="features">';
-                $html .= '<div class="featuresTItle">Features</div>';
+                $html .= '<div class="featuresTItle">Amenities</div>';
 
                 foreach($postMeta['partnerportal_beach-amenities'] as $amenitySerialized) {
                     $amenityArray = unserialize($amenitySerialized);
@@ -82,13 +94,6 @@ function render_block( $attrs, $content ) {
 
               $html .= '<img alt="beach image" class="img" src="'.$featImg.'">';
 
-              // formatting beach name to pull in logo file name
-              $shortenedTitle = preg_replace('/\s?\([^)]+\)/', '', $post->post_title);
-              $postSlug = str_replace(' ', '-', $shortenedTitle);
-
-              // Bean point beach uses Bradenton-Beach logo
-              $postSlug = str_replace('Bean-Point', 'Bradenton-Beach', $postSlug);
-
               $html .= '<div class="beachLogo"><img src="/wp-content/uploads/'.$postSlug.'_logo.png" alt="beach logo"></div>';
 
             $html .= '</div>'; // .beachImg
@@ -97,15 +102,13 @@ function render_block( $attrs, $content ) {
 
               $html .= '<h3>' . $post->post_title . '</h3>';
 
-              // modifying slug to match the variable in inspector.js to pull beach content
-              $beachContent = strtolower(str_replace(' ', '', $shortenedTitle));
               if(!empty($attrs[$beachContent])) {
                 $html .= '<p>'.$attrs[$beachContent].'</p>';
               } else {
                 $html .= '<p>'.$postMeta['partnerportal_description'][0].'</p>';
               }
 
-              $html .= '<a href="'.get_permalink($post->ID).'" class="postLink">Dive In</a>';
+              // $html .= '<a href="'.get_permalink($post->ID).'" class="postLink">Dive In</a>';
 
             $html .= '</div>'; // .content
 

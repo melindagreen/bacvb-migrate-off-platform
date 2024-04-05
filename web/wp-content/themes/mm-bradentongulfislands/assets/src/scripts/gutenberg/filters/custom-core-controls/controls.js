@@ -177,6 +177,19 @@ const withCustomControls = createHigherOrderComponent((BlockEdit) => {
                                                 setAttributes({ layer })
                                             } }
                                         /></PanelBody>
+                                        case 'photo-credit':
+                                           return <PanelBody><ToggleControl
+                                                label="Photo Credit"
+                                                help={
+                                                    attributes.photoCredit
+                                                        ? 'Photo Credit is enabled'
+                                                        : 'Photo Credit is disabled'
+                                                }
+                                                checked={ attributes.photoCredit }
+                                                onChange={ photoCredit => {
+                                                    setAttributes({ photoCredit })
+                                                } }
+                                        /></PanelBody>
                                     }
                                 }
                             )}

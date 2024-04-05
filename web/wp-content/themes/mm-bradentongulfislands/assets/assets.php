@@ -131,7 +131,7 @@ class AssetHandler {
         //Swiper 
         wp_enqueue_style(
             C::THEME_PREFIX . "-swiper-styles", // handle,
-            "//unpkg.com/swiper@8.4.5/swiper-bundle.min.css", // src
+            "https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css", // src
             NULL, // dependencies
             NULL // version
         );
@@ -139,7 +139,7 @@ class AssetHandler {
         //Swiper Enqueue CDN
         wp_enqueue_script(
             C::THEME_PREFIX . "-swiper-js", // handle
-            "//cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js", // src
+            "https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js", // src
             NULL, // dependencies
             NULL, // version
             true // in footer?

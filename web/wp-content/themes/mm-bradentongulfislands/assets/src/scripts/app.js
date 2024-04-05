@@ -92,7 +92,6 @@ if ('serviceWorker' in navigator) {
 	function lightBox() {
 
 		$('.lb-content:not(.wp-lightbox-overlay .lightbox-image-container .lb-content), .lightbox-imagecarousel:not(.wp-lightbox-overlay .lightbox-image-container .lightbox-imagecarousel').each(function() {
-
 			$(this).remove();  
 		});
 
@@ -198,17 +197,41 @@ if ('serviceWorker' in navigator) {
 
 		//LightBox
 
-		const swiper = new Swiper('.lightbox-imagecarousel', {
-			loop: true,
-			autoplay: {
-			delay: 5500,
-			disableOnInteraction: true,
-			},
-			navigation: {
-			nextEl: ".swiper-button-next-imagecarousel",
-			prevEl: ".swiper-button-prev-imagecarousel"
-			}
-		  });
+		var lightboxCarousels = $('.lightbox-imagecarousel');
+
+		// Loop through each element
+		lightboxCarousels.each(function(index, element) {
+			// Unique class based on index
+			var uniqueClass = 'swiper-buttons-' + index;
+
+			// Add unique classes to next and prev buttons
+			$(element).find('.swiper-button-next-imagecarousel').addClass(uniqueClass + '-next');
+			$(element).find('.swiper-button-prev-imagecarousel').addClass(uniqueClass + '-prev');
+
+			var uniqueContainer = 'swiper-container-' + index;
+
+			// Add unique class to the Swiper container element
+			$(element).addClass(uniqueContainer);
+	
+			// Initialize Swiper for each element with different options
+			var swiper = new Swiper('.' + uniqueContainer, {
+				loop: true,
+				autoplay: {
+					delay: 5500,
+					disableOnInteraction: false,
+				},
+				clickable: true,
+				navigation: {
+					nextEl: '.' + uniqueClass + '-next', // Use unique class for next button
+					prevEl: '.' + uniqueClass + '-prev'  // Use unique class for prev button
+				}
+			});
+		});
+
+		  $('.swiper-button-next-imagecarousel, .swiper-button-prev-imagecarousel, .swiper-slide, .scrim, .swiper-slide-next, .swiper-slide-duplicate').on('click', function(event) {
+			// Prevent the event from reaching parent elements
+			event.stopPropagation();
+		});
 
 		lightBox();
 
@@ -377,6 +400,33 @@ if ('serviceWorker' in navigator) {
 
         //toggle stay connected
         toggleStayConnected();
+
+
+        // load bouncing ball on homepage when user scrolls in view
+var bounceBall = $('#bounceBall'); // Get the bounceBall element
+var isImageLoaded = false; // Flag to track if image is already loaded
+
+$(window).scroll(function() {
+    if (!isImageLoaded && isElementInViewport(bounceBall[0])) { // Check if bounceBall is in viewport and image is not already loaded
+        var img = bounceBall.find('img'); // Find the img inside bounceBall
+        var src = img.attr('src'); // Get the src attribute of the img
+        img.attr('src', src); // Reload the image by setting the src attribute again
+        isImageLoaded = true; // Set the flag to true to indicate image is now loaded
+    }
+});
+
+// Function to check if an element is in the viewport
+function isElementInViewport(el) {
+    var rect = el.getBoundingClientRect();
+    return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+}
+
+
 	}
 
     /**
@@ -536,6 +586,7 @@ if ('serviceWorker' in navigator) {
 		scrollAnimation('.grid-item-body--2 .grid-item-body__arrow', 600, 'grid-item-body__arrow--forward');
 		scrollAnimation('.grid-item-body--3 .grid-item-body__arrow', 600, 'grid-item-body__arrow--rotate');
 		scrollAnimation('.grid-item-body--1 .grid-item-body__arrow', 600, 'grid-item-body__arrow--rotate');
+
     }
 
     /**
