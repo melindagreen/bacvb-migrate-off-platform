@@ -805,15 +805,15 @@ if (isset($_GET['update']) && $_GET['update'] === 'true') {
 
     public static function mepr_enqueue_scripts($is_product_page, $is_group_page, $is_account_page) {
 
-    
-            // Memberpress Account script
-            wp_enqueue_script(
-                C::THEME_PREFIX . "-memberpress-account-js", // handle
-                get_stylesheet_directory_uri()."/assets/build/memberpress-account.js", // src
-                $assets_file["dependencies"], // dependencies
-                $assets_file["version"], // version
-                true // in footer?
-            );
+        $assets_file = include(get_template_directory()."/assets/build/admin.asset.php" );
+        // Memberpress Account script
+        wp_enqueue_script(
+            C::THEME_PREFIX . "-memberpress-account-js", // handle
+            get_stylesheet_directory_uri()."/assets/build/memberpress-account.js", // src
+            $assets_file["dependencies"], // dependencies
+            $assets_file["version"], // version
+            true // in footer?
+        );
     }
 
 }
