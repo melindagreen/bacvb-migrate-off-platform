@@ -33,7 +33,7 @@ if ($events->have_posts() && !empty($group_events)) : ?>
     while ($events->have_posts()) : $events->the_post(); ?>
         <div class="mepr-event-cards__card">
             <h3><?php the_title(); ?></h3>
-            <h4 class="event-card-status<?php echo get_post_status() === 'publish' ? '--green' : '--red' ?>">Status: <span><?php echo get_post_status(); ?></span></h4>
+            <h4 class="event-card-status<?php echo get_post_status() === 'publish' ? '--green' : '--red' ?>">Status: <span><?php echo get_post_status() === 'publish' ? 'published' : get_post_status(); ?></span></h4>
             <div class="event-content">
                 <?php
                 // Display trimmed content or excerpt

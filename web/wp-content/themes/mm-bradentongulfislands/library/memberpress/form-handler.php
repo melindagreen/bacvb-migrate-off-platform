@@ -74,7 +74,7 @@ class MemberPressFormHandler {
             $post_id = wp_insert_post($post_data);
             $_SESSION['post_creation_attempted'] = $post_id;
         }
-        
+        error_log('Test:'. $_SESSION['post_creation_attempted']);
         $post_id = $_SESSION['post_creation_attempted'];
         
             if (!is_wp_error($post_id)) {

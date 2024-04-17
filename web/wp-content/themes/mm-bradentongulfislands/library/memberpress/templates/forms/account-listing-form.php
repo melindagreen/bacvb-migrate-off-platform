@@ -101,7 +101,5 @@
 
     <!-- ==== SUBMIT FORM ==== -->
     <br style="clear:both;">
-    <input class="mepr-button btn-outline btn btn-outline" type="submit" value="Update">
-    <br>
-    <a style="margin-top:2rem;" href="<?php echo esc_url(add_query_arg(array('action' => 'add_listing'))); ?>" class="mepr-button btn-outline btn btn-outline">Add New Listing</a>
+    <input class="mepr-button btn-outline btn btn-outline" type="submit" value="Submit Listing">
 </form>

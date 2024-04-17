@@ -56,8 +56,7 @@ else if ($listings->have_posts() && $listings->found_posts > 1) {
     ?>
     <div class="mepr-listing-cards__card">
             <h3><?php the_title(); ?></h3>
-            <p>Test: <?php print_r($meta_data) ?></p>
-            <h4 class="listing-card-status<?php echo get_post_status() === 'publish' ? '--green' : '--red' ?>">Status: <span><?php echo get_post_status(); ?></span></h4>
+            <h4 class="listing-card-status<?php echo get_post_status() === 'publish' ? '--green' : '--red' ?>">Status: <span><?php echo get_post_status() === 'publish' ? 'published' : get_post_status(); ?></span></h4>
             <div class="listing-content">
                 <?php
                 // Display trimmed content or excerpt
@@ -74,4 +73,6 @@ else if ($listings->have_posts() && $listings->found_posts > 1) {
             endwhile; ?>
     </div>
 <?php }
-wp_reset_postdata();
+wp_reset_postdata(); ?>
+<br>
+    <a style="margin-top:2rem;" href="<?php echo esc_url(add_query_arg(array('action' => 'add_listing'))); ?>" class="mepr-button btn-outline btn btn-outline">Add New Listing</a>

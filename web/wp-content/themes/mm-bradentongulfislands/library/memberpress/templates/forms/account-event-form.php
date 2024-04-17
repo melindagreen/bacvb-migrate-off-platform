@@ -115,7 +115,7 @@
             
     <div class="mepr-account-form__col-2">
         <!-- Start Date -->
-        <label for="eventastic_start_date">Price:</label><br>
+        <label for="eventastic_start_date">Start Date:</label><br>
         <input type="date" name="eventastic_start_date" id="eventastic_start_date" value="<?php echo esc_attr($meta_data['eventastic_start_date'][0] ?? ''); ?>">
     </div>
     <div class="mepr-account-form__col-2">
