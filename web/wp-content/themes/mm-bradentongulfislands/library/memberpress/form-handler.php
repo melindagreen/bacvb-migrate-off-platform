@@ -55,7 +55,7 @@ class MemberPressFormHandler {
 
     public function addEvent() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_post_nonce']) && wp_verify_nonce($_POST['update_post_nonce'], 'update_post_meta')) {
-
+            session_start();
             if(!$_SESSION['post_creation_attempted'] || empty($_SESSION['post_creation_attempted'])) {
                 $_SESSION['post_creation_attempted'] = true;
             // Sanitize post title
@@ -134,7 +134,7 @@ class MemberPressFormHandler {
 
     public function updateEvent($post_id) {
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_post_nonce']) && wp_verify_nonce($_POST['update_post_nonce'], 'update_post_meta')) {
-            
+            session_start();
             if(!$_SESSION['post_creation_attempted'] || empty($_SESSION['post_creation_attempted'])) {
 
                 $_SESSION['post_creation_attempted'] = true;
@@ -220,7 +220,7 @@ class MemberPressFormHandler {
     public function addListing() {
         
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_post_nonce']) && wp_verify_nonce($_POST['update_post_nonce'], 'update_post_meta')) {
-
+            session_start();
             if(!$_SESSION['post_creation_attempted'] || empty($_SESSION['post_creation_attempted'])) {
                 $_SESSION['post_creation_attempted'] = true;
             // Sanitize post title
@@ -299,7 +299,7 @@ class MemberPressFormHandler {
     }
 
     public function updateListing($post_id) {
-
+        session_start();
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_post_nonce']) && wp_verify_nonce($_POST['update_post_nonce'], 'update_post_meta')) {
             
             if(!$_SESSION['post_creation_attempted'] || empty($_SESSION['post_creation_attempted'])) {
@@ -386,7 +386,7 @@ class MemberPressFormHandler {
         
 
     public function oldUpdateListing() {
-
+        session_start();
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_post_nonce']) && wp_verify_nonce($_POST['update_post_nonce'], 'update_post_meta')) {
 
             // Update post title
