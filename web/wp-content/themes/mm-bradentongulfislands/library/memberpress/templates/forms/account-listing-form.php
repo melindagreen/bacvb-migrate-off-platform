@@ -1,0 +1,107 @@
+<form class="mepr-account-form" method="post" enctype="multipart/form-data" action="">
+    <?php wp_nonce_field('update_post_meta', 'update_post_nonce'); ?>
+    
+    <!-- Upload Image -->
+    <div class="mepr-account-form__featured-image">
+        <label for="partnerportal_gallery_square_featured_image">Featured Image:</label>
+        <?php
+        $post_thumbnail_url = get_the_post_thumbnail_url($post_id, 'thumbnail');
+        if ($post_thumbnail_url) : ?>
+            <img src="<?php echo esc_url($post_thumbnail_url); ?>" alt="Featured Image" style="max-width: 100px;">
+        <?php endif; ?>
+        <input type="file" name="partnerportal_gallery_square_featured_image" id="partnerportal_gallery_square_featured_image">       
+        <hr class="mepr-account-form__separator">
+    </div>
+    <!-- ==== GENERAL INFO ==== --> 
+    <h2 class="mepr-account-form__section-title">General Info</h2>
+
+    <!-- Post Title -->
+    <label for="post_title">Title:</label>
+    <input type="text" name="post_title" id="post_title" value="<?php echo esc_attr(get_the_title($post_id)); ?>">
+
+    <!-- Description -->
+    <label for="partnerportal_description">Description:</label>
+    <textarea name="partnerportal_description" id="partnerportal_description"><?php echo esc_html($meta_data['partnerportal_description'][0] ?? ''); ?></textarea>
+
+    <div class="mepr-account-form__col-2">
+        <!-- Business Name -->
+        <label for="partnerportal_business_name">Business Name:</label>
+        <input type="text" name="partnerportal_business_name" id="partnerportal_business_name" value="<?php echo esc_attr($meta_data['partnerportal_business_name'][0] ?? ''); ?>">
+
+        <!-- Website Link -->
+        <label for="partnerportal_website_link">Website Link:</label>
+        <input type="url" name="partnerportal_website_link" id="partnerportal_website_link" value="<?php echo esc_attr($meta_data['partnerportal_website_link'][0] ?? ''); ?>">
+    </div>
+
+    <div class="mepr-account-form__col-2">
+        <!-- Phone Number -->
+        <label for="partnerportal_phone_number">Phone Number:</label><br>
+        <input type="tel" name="partnerportal_phone_number" id="partnerportal_phone_number" value="<?php echo esc_attr($meta_data['partnerportal_phone_number'][0] ?? ''); ?>"><br>
+
+        <!-- Contact Email for Visitors -->
+        <label for="partnerportal_contact_email_for_visitors">Contact Email for Visitors:</label><br>
+        <input type="email" name="partnerportal_contact_email_for_visitors" id="partnerportal_contact_email_for_visitors" value="<?php echo esc_attr($meta_data['partnerportal_contact_email_for_visitors'][0] ?? ''); ?>"><br>
+    </div>
+
+    <!-- ==== HOURS ==== -->
+    <h2 class="mepr-account-form__section-title">Hours</h2>
+    
+    <!-- Hours Description -->
+    <label for="partnerportal_hours_description">Hours Description:</label>
+    <textarea name="partnerportal_hours_description" id="partnerportal_hours_description"><?php echo esc_html($meta_data['partnerportal_hours_description'][0] ?? ''); ?></textarea>
+    
+    <!-- ==== ADDRESS INFORMATION ==== -->
+    <h2 class="mepr-account-form__section-title">Address Information</h2>
+    
+    <div class="mepr-account-form__col-2">
+        <!-- Address Line 1 -->
+        <label for="partnerportal_address_1">Address Line 1:</label><br>
+        <input type="text" name="partnerportal_address_1" id="partnerportal_address_1" value="<?php echo esc_attr($meta_data['partnerportal_address_1'][0] ?? ''); ?>">
+    </div>
+    <div class="mepr-account-form__col-2">
+         <!-- Address Line 2 -->
+         <label for="partnerportal_address_2">Address Line 2:</label><br>
+        <input type="text" name="partnerportal_address_2" id="partnerportal_address_2" value="<?php echo esc_attr($meta_data['partnerportal_address_2'][0] ?? ''); ?>">
+    </div>
+
+    <div class="mepr-account-form__col-3">
+        <!-- City -->
+        <label for="partnerportal_city">City:</label><br>
+        <input type="text" name="partnerportal_city" id="partnerportal_city" value="<?php echo esc_attr($meta_data['partnerportal_city'][0] ?? ''); ?>">
+    </div>
+    <div class="mepr-account-form__col-3">
+        <!-- Zip Code -->
+        <label for="partnerportal_zip">Zip Code:</label><br>
+        <input type="text" name="partnerportal_zip" id="partnerportal_zip" value="<?php echo esc_attr($meta_data['partnerportal_zip'][0] ?? ''); ?>">
+    </div>
+    <div class="mepr-account-form__col-3">
+        <!-- State -->
+        <label for="partnerportal_state">State:</label><br>
+        <input type="text" name="partnerportal_state" id="partnerportal_state" value="<?php echo esc_attr($meta_data['partnerportal_state'][0] ?? ''); ?>">
+    </div> 
+
+    <!-- ==== SOCIAL ==== -->
+    <h2 class="mepr-account-form__section-title">SOCIAL</h2>
+    
+    <div class="mepr-account-form__col-2">
+        <!-- Facebook -->
+        <label for="partnerportal_facebook">Facebook</label><br>
+        <input type="url" name="partnerportal_facebook" id="partnerportal_facebook" value="<?php echo esc_attr($meta_data['partnerportal_facebook'][0] ?? ''); ?>">
+
+        <!-- Instagram -->
+        <label for="partnerportal_instagram">Instagram</label><br>
+        <input type="url" name="partnerportal_instagram" id="partnerportal_instagram" value="<?php echo esc_attr($meta_data['partnerportal_instagram'][0] ?? ''); ?>">
+    </div>
+
+    <div class="mepr-account-form__col-2">
+        <!-- Twitter -->
+        <label for="partnerportal_twitter">Twitter</label><br>
+        <input type="url" name="partnerportal_twitter" id="partnerportal_twitter" value="<?php echo esc_attr($meta_data['partnerportal_twitter'][0] ?? ''); ?>">
+    </div>
+
+    <!-- ==== SUBMIT FORM ==== -->
+    <br style="clear:both;">
+    <input class="mepr-button btn-outline btn btn-outline" type="submit" value="Update">
+    <br>
+    <a style="margin-top:2rem;" href="<?php echo esc_url(add_query_arg(array('action' => 'add_listing'))); ?>" class="mepr-button btn-outline btn btn-outline">Add New Listing</a>
+</form>

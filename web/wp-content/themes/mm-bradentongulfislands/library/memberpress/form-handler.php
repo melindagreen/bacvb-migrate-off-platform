@@ -1,0 +1,432 @@
+<?php
+
+namespace MaddenNino\Library\Memberpress;
+use WP_Query;
+
+class MemberPressFormHandler {
+
+    private $listing_fields;
+    private $event_fields;
+
+    function __construct () {
+
+		$this->listing_fields = [
+            'partnerportal_description',
+            'partnerportal_business_name',
+            'partnerportal_website_link',
+            'partnerportal_phone_number',
+            'partnerportal_contact_email_for_visitors',
+            'partnerportal_hours_description',
+            'partnerportal_address_1',
+            'partnerportal_address_2',
+            'partnerportal_city',
+            'partnerportal_zip',
+            'partnerportal_state',
+            'partnerportal_facebook',
+            'partnerportal_instagram',
+            'partnerportal_twitter'
+        ];
+        $this->event_fields = [
+            'eventastic_description',
+            'eventastic_business_name',
+            'eventastic_website_link',
+            'eventastic_phone_number',
+            'eventastic_contact_email_for_visitors',
+            'eventastic_hours_description',
+            'eventastic_address_1',
+            'eventastic_address_2',
+            'eventastic_city',
+            'eventastic_zip',
+            'eventastic_state',
+            'eventastic_facebook',
+            'eventastic_instagram',
+            'eventastic_twitter',
+            'eventastic_price',
+            'eventastic_price_varies',
+            'eventastic_ticket_link',
+            'eventastic_start_date',
+            'eventastic_end_date',
+            'eventastic_event_end',
+            'eventastic_event_all_day',
+            'eventastic_start_time',
+            'eventastic_end_time'
+        ];
+	}
+
+    public function addEvent() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_post_nonce']) && wp_verify_nonce($_POST['update_post_nonce'], 'update_post_meta')) {
+
+            if(!$_SESSION['post_creation_attempted'] || empty($_SESSION['post_creation_attempted'])) {
+                $_SESSION['post_creation_attempted'] = true;
+            // Sanitize post title
+            $post_title = sanitize_text_field($_POST['post_title'] ?? '');
+            $post_content = sanitize_text_field($_POST['eventastic_description'] ?? '');
+        
+            // Prepare post data
+            $post_data = array(
+                'post_title'    => $post_title,
+                'post_content'  => $post_content,
+                'post_status'   => 'pending', // Set status to pending
+                'post_type'     => 'event' // Adjust post type as needed
+            );
+        
+            // Insert the post
+            $post_id = wp_insert_post($post_data);
+            $_SESSION['post_creation_attempted'] = $post_id;
+        }
+        
+        $post_id = $_SESSION['post_creation_attempted'];
+        
+            if (!is_wp_error($post_id)) {
+                // Update post meta fields
+                $fields = $this->event_fields;
+        
+                // Loop through each field and update post meta
+                foreach ($fields as $field) {
+                    if (isset($_POST[$field])) {
+                        update_post_meta($post_id, $field, sanitize_text_field($_POST[$field]));
+                    }
+                }
+        
+                // Handle image upload and update eventastic_gallery_square_featured_image
+                if (!empty($_FILES['eventastic_gallery_square_featured_image']['name'])) {
+                    $upload = wp_upload_bits($_FILES['eventastic_gallery_square_featured_image']['name'], null, file_get_contents($_FILES['eventastic_gallery_square_featured_image']['tmp_name']));
+                    if (!$upload['error']) {
+                        update_post_meta($post_id, 'eventastic_gallery_square_featured_image', $upload['url']);
+                        // Set the uploaded image as the post thumbnail
+                        $attachment_id = wp_insert_attachment(array(
+                            'post_mime_type' => $_FILES['eventastic_gallery_square_featured_image']['type'],
+                            'post_title'     => $_FILES['eventastic_gallery_square_featured_image']['name'],
+                            'post_content'   => '',
+                            'post_status'    => 'inherit'
+                        ), $upload['file'], $post_id);
+                        if (!is_wp_error($attachment_id)) {
+                            require_once(ABSPATH . 'wp-admin/includes/image.php');
+                            $attachment_data = wp_generate_attachment_metadata($attachment_id, $upload['file']);
+                            wp_update_attachment_metadata($attachment_id, $attachment_data);
+                            set_post_thumbnail($post_id, $attachment_id);
+                        }
+                    }
+                }
+
+                // Retrieve the current user's group
+                $current_user_group = get_field('partner_group', 'user_' . get_current_user_id());
+
+                // Update the group_events ACF field
+                // Retrieve Group Event
+                $group_events = get_field('group_events', $current_user_group[0]->ID);
+                $group_events_ID = array();
+                if (!empty($group_events)) {
+                    foreach ($group_events as $event) {
+                        $group_events_ID[] = $event->ID;
+                    }
+                }
+
+                $updated_group_events = array_merge($group_events_ID, array($post_id)); // Merge the arrays
+                update_field('group_events', $updated_group_events, $current_user_group[0]->ID);            
+            }
+            $_SESSION['post_creation_attempted'] = false;
+             // Redirect to the same page with action=events
+             wp_redirect(add_query_arg('action', 'events', $_SERVER['REQUEST_URI']));
+             exit;
+        }
+    }
+
+    public function updateEvent($post_id) {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_post_nonce']) && wp_verify_nonce($_POST['update_post_nonce'], 'update_post_meta')) {
+            
+            if(!$_SESSION['post_creation_attempted'] || empty($_SESSION['post_creation_attempted'])) {
+
+                $_SESSION['post_creation_attempted'] = true;
+                // Sanitize post title
+                $post_title = sanitize_text_field($_POST['post_title'] ?? '');
+                $post_content = sanitize_text_field($_POST['partnerportal_description'] ?? '');
+        
+                // Clone the post
+                $cloned_post_id = wp_insert_post(array(
+                    'post_title'   => $post_title,
+                    'post_content' => $post_content,
+                    'post_status'  => 'pending', // Set status to pending
+                    'post_type'    => 'event' // Adjust post type as needed
+                ));
+                $_SESSION['post_creation_attempted'] = $cloned_post_id;
+            }
+        
+            $cloned_post_id = $_SESSION['post_creation_attempted'];
+
+
+            // Original post ID
+            $original_post_id = $post_id;
+
+            // Check if post was cloned successfully
+            if (!is_wp_error($cloned_post_id)) {
+                // Update post meta fields
+                $fields = $this->event_fields;
+                // Loop through each field and update post meta
+                foreach ($fields as $field) {
+                    if (isset($_POST[$field])) {
+                        update_post_meta($cloned_post_id, $field, sanitize_text_field($_POST[$field]));
+                    }
+                }
+            }
+        
+                // Store the original post ID as meta data in the cloned post
+                add_post_meta($cloned_post_id, 'original_post_id', $original_post_id);
+                add_post_meta($original_post_id, 'cloned_post_id', $cloned_post_id);
+        
+                // Handle image upload and set as post thumbnail for cloned post
+                if (!empty($_FILES['partnerportal_gallery_square_featured_image']['name'])) {
+                    $upload = wp_upload_bits($_FILES['partnerportal_gallery_square_featured_image']['name'], null, file_get_contents($_FILES['partnerportal_gallery_square_featured_image']['tmp_name']));
+                    if (!$upload['error']) {
+                        update_post_meta($cloned_postt_id, 'partnerportal_gallery_square_featured_image', $upload['url']);
+                        // Set the uploaded image as the post thumbnail
+                        $attachment_id = wp_insert_attachment(array(
+                            'post_mime_type' => $_FILES['partnerportal_gallery_square_featured_image']['type'],
+                            'post_title' => $_FILES['partnerportal_gallery_square_featured_image']['name'],
+                            'post_content' => '',
+                            'post_status' => 'inherit'
+                        ), $upload['file'], $cloned_post_id);
+                        if (!is_wp_error($attachment_id)) {
+                            require_once(ABSPATH . 'wp-admin/includes/image.php');
+                            $attachment_data = wp_generate_attachment_metadata($attachment_id, $upload['file']);
+                            wp_update_attachment_metadata($attachment_id, $attachment_data);
+                            set_post_thumbnail($cloned_post_id, $attachment_id);
+                        }
+                    }
+                }
+
+                // Retrieve the current user's group
+                $current_user_group = get_field('partner_group', 'user_' . get_current_user_id());
+
+               // Update the group_event ACF field
+               // Retrieve Group Events
+                $group_events = get_field('group_events', $current_user_group[0]->ID);
+                $group_events_ID = array();
+                if (!empty($group_events)) {
+                    foreach ($group_events as $listing) {
+                        $group_events_ID[] = $listing->ID;
+                    }
+                }
+                $updated_group_events = array_merge($group_events_ID, array($cloned_post_id)); // Merge the arrays
+                update_field('group_event', $updated_group_events, $current_user_group[0]->ID); 
+
+                $_SESSION['post_creation_attempted'] = false;
+                // Redirect to the same page with update=true
+                wp_redirect(add_query_arg('update', 'true'));
+                exit;
+            }
+    }
+
+    public function addListing() {
+        
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_post_nonce']) && wp_verify_nonce($_POST['update_post_nonce'], 'update_post_meta')) {
+
+            if(!$_SESSION['post_creation_attempted'] || empty($_SESSION['post_creation_attempted'])) {
+                $_SESSION['post_creation_attempted'] = true;
+            // Sanitize post title
+            $post_title = sanitize_text_field($_POST['post_title'] ?? '');
+            $post_content = sanitize_text_field($_POST['partnerportal_description'] ?? '');
+        
+            // Prepare post data
+            $post_data = array(
+                'post_title'    => $post_title,
+                'post_content'  => $post_content,
+                'post_status'   => 'pending', // Set status to pending
+                'post_type'     => 'listing' // Adjust post type as needed
+
+            );
+        
+            // Insert the post
+            $post_id = wp_insert_post($post_data);
+            $_SESSION['post_creation_attempted'] = $post_id;
+        }
+        
+        $post_id = $_SESSION['post_creation_attempted'];
+
+            if (!is_wp_error($post_id)) {
+                // Update post meta fields
+                $fields = $this->listing_fields;
+        
+                // Loop through each field and update post meta
+                foreach ($fields as $field) {
+                    if (isset($_POST[$field])) {
+                        update_post_meta($post_id, $field, sanitize_text_field($_POST[$field]));
+                    }
+                }
+        
+                // Handle image upload and update partnerportal_gallery_square_featured_image
+                if (!empty($_FILES['partnerportal_gallery_square_featured_image']['name'])) {
+                    $upload = wp_upload_bits($_FILES['partnerportal_gallery_square_featured_image']['name'], null, file_get_contents($_FILES['eventastic_gallery_square_featured_image']['tmp_name']));
+                    if (!$upload['error']) {
+                        update_post_meta($post_id, 'partnerportal_gallery_square_featured_image', $upload['url']);
+                        // Set the uploaded image as the post thumbnail
+                        $attachment_id = wp_insert_attachment(array(
+                            'post_mime_type' => $_FILES['partnerportal_gallery_square_featured_image']['type'],
+                            'post_title'     => $_FILES['partnerportal_gallery_square_featured_image']['name'],
+                            'post_content'   => '',
+                            'post_status'    => 'inherit'
+                        ), $upload['file'], $post_id);
+                        if (!is_wp_error($attachment_id)) {
+                            require_once(ABSPATH . 'wp-admin/includes/image.php');
+                            $attachment_data = wp_generate_attachment_metadata($attachment_id, $upload['file']);
+                            wp_update_attachment_metadata($attachment_id, $attachment_data);
+                            set_post_thumbnail($post_id, $attachment_id);
+                        }
+                    }
+                }
+
+                // Retrieve the current user's group
+                $current_user_group = get_field('partner_group', 'user_' . get_current_user_id());
+
+               // Update the group_listing ACF field
+               // Retrieve Group Listing
+                $group_listing = get_field('group_listing', $current_user_group[0]->ID);
+                $group_listing_ID = array();
+                if (!empty($group_listing)) {
+                    foreach ($group_listing as $listing) {
+                        $group_listing_ID[] = $listing->ID;
+                    }
+                }
+                $updated_group_listing = array_merge($group_listing_ID, array($post_id)); // Merge the arrays
+                update_field('group_listing', $updated_group_listing, $current_user_group[0]->ID); 
+            }
+
+            $_SESSION['post_creation_attempted'] = false;
+            // Redirect to the same page with action=events
+            wp_redirect(add_query_arg('action', 'listings', $_SERVER['REQUEST_URI']));
+            exit;
+        }
+    }
+
+    public function updateListing($post_id) {
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_post_nonce']) && wp_verify_nonce($_POST['update_post_nonce'], 'update_post_meta')) {
+            
+            if(!$_SESSION['post_creation_attempted'] || empty($_SESSION['post_creation_attempted'])) {
+
+                $_SESSION['post_creation_attempted'] = true;
+                // Sanitize post title
+                $post_title = sanitize_text_field($_POST['post_title'] ?? '');
+                $post_content = sanitize_text_field($_POST['partnerportal_description'] ?? '');
+        
+                // Clone the post
+                $cloned_post_id = wp_insert_post(array(
+                    'post_title'   => $post_title,
+                    'post_content' => $post_content,
+                    'post_status'  => 'pending', // Set status to pending
+                    'post_type'    => 'listing' // Adjust post type as needed
+                ));
+                $_SESSION['post_creation_attempted'] = $cloned_post_id;
+            }
+        
+            $cloned_post_id = $_SESSION['post_creation_attempted'];
+
+
+            // Original post ID
+            $original_post_id = $post_id;
+
+            // Check if post was cloned successfully
+            if (!is_wp_error($cloned_post_id)) {
+                // Update post meta fields
+                $fields = $this->listing_fields;
+                // Loop through each field and update post meta
+                foreach ($fields as $field) {
+                    if (isset($_POST[$field])) {
+                        update_post_meta($cloned_post_id, $field, sanitize_text_field($_POST[$field]));
+                    }
+                }
+            }
+        
+                // Store the original post ID as meta data in the cloned post
+                add_post_meta($cloned_post_id, 'original_post_id', $original_post_id);
+                add_post_meta($original_post_id, 'cloned_post_id', $cloned_post_id);
+        
+                // Handle image upload and set as post thumbnail for cloned post
+                if (!empty($_FILES['partnerportal_gallery_square_featured_image']['name'])) {
+                    $upload = wp_upload_bits($_FILES['partnerportal_gallery_square_featured_image']['name'], null, file_get_contents($_FILES['partnerportal_gallery_square_featured_image']['tmp_name']));
+                    if (!$upload['error']) {
+                        update_post_meta($cloned_postt_id, 'partnerportal_gallery_square_featured_image', $upload['url']);
+                        // Set the uploaded image as the post thumbnail
+                        $attachment_id = wp_insert_attachment(array(
+                            'post_mime_type' => $_FILES['partnerportal_gallery_square_featured_image']['type'],
+                            'post_title' => $_FILES['partnerportal_gallery_square_featured_image']['name'],
+                            'post_content' => '',
+                            'post_status' => 'inherit'
+                        ), $upload['file'], $cloned_post_id);
+                        if (!is_wp_error($attachment_id)) {
+                            require_once(ABSPATH . 'wp-admin/includes/image.php');
+                            $attachment_data = wp_generate_attachment_metadata($attachment_id, $upload['file']);
+                            wp_update_attachment_metadata($attachment_id, $attachment_data);
+                            set_post_thumbnail($cloned_post_id, $attachment_id);
+                        }
+                    }
+                }
+
+                // Retrieve the current user's group
+                $current_user_group = get_field('partner_group', 'user_' . get_current_user_id());
+
+               // Update the group_listing ACF field
+               // Retrieve Group Listing
+                $group_listing = get_field('group_listing', $current_user_group[0]->ID);
+                $group_listing_ID = array();
+                if (!empty($group_listing)) {
+                    foreach ($group_listing as $listing) {
+                        $group_listing_ID[] = $listing->ID;
+                    }
+                }
+                $updated_group_listing = array_merge($group_listing_ID, array($cloned_post_id)); // Merge the arrays
+                update_field('group_listing', $updated_group_listing, $current_user_group[0]->ID); 
+
+                $_SESSION['post_creation_attempted'] = false;
+                // Redirect to the same page with update=true
+                wp_redirect(add_query_arg('update', 'true'));
+                exit;
+            }
+        }
+        
+
+    public function oldUpdateListing() {
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_post_nonce']) && wp_verify_nonce($_POST['update_post_nonce'], 'update_post_meta')) {
+
+            // Update post title
+            $post_title = sanitize_text_field($_POST['post_title'] ?? ''); // Sanitize post title
+            wp_update_post(array('ID' => $post_id, 'post_title' => $post_title)); // Update post title
+            
+            // Update post meta fields
+            $fields = $this->listing_fields;
+
+            // Loop through each field and update post meta
+            foreach ($fields as $field) {
+                if (isset($_POST[$field])) {
+                    update_post_meta($post_id, $field, sanitize_text_field($_POST[$field]));
+                }
+            }
+            // Handle image upload and update partnerportal_gallery_square_featured_image
+            if (!empty($_FILES['partnerportal_gallery_square_featured_image']['name'])) {
+                $upload = wp_upload_bits($_FILES['partnerportal_gallery_square_featured_image']['name'], null, file_get_contents($_FILES['partnerportal_gallery_square_featured_image']['tmp_name']));
+                if (!$upload['error']) {
+                    update_post_meta($post_id, 'partnerportal_gallery_square_featured_image', $upload['url']);
+                    // Set the uploaded image as the post thumbnail
+                    $attachment_id = wp_insert_attachment(array(
+                        'post_mime_type' => $_FILES['partnerportal_gallery_square_featured_image']['type'],
+                        'post_title' => $_FILES['partnerportal_gallery_square_featured_image']['name'],
+                        'post_content' => '',
+                        'post_status' => 'inherit'
+                    ), $upload['file'], $post_id);
+                    if (!is_wp_error($attachment_id)) {
+                        require_once(ABSPATH . 'wp-admin/includes/image.php');
+                        $attachment_data = wp_generate_attachment_metadata($attachment_id, $upload['file']);
+                        wp_update_attachment_metadata($attachment_id, $attachment_data);
+                        set_post_thumbnail($post_id, $attachment_id);
+                    }
+                }
+            }
+
+            // Redirect to the same page with update=true
+            wp_redirect(add_query_arg('update', 'true'));
+            exit;
+        }
+    }
+
+}

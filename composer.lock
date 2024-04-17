@@ -5855,15 +5855,15 @@
         },
         {
             "name": "wpackagist-plugin/seo-by-rank-math",
-            "version": "1.0.216",
+            "version": "1.0.217",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/seo-by-rank-math/",
-                "reference": "tags/1.0.216"
+                "reference": "tags/1.0.217"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/seo-by-rank-math.1.0.216.zip"
+                "url": "https://downloads.wordpress.org/plugin/seo-by-rank-math.1.0.217.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"

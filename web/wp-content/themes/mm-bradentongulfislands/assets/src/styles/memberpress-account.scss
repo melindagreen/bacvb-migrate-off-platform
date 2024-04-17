@@ -62,23 +62,23 @@ GLOBAL STYLES
 }
 
 /* CSS for event cards */
-.mepr-event-cards {
+.mepr-event-cards, .mepr-listing-cards {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
 
-.event-card-status--red {
+.event-card-status--red, .listing-card-status--red {
 
     color: $rust;
 }
 
-.event-card-status--green {
+.event-card-status--green, .listing-card-status--green {
 
     color: limegreen;
 }
 
-.mepr-event-cards__card {
+.mepr-event-cards__card, .mepr-listing-cards__card {
     background-color: #e4e2e27e;
     border: 1px solid #ccc;
     padding: 20px;
@@ -89,11 +89,11 @@ GLOBAL STYLES
     border-top-left-radius: 0;
 }
 
-.mepr-event-cards__card h3 {
+.mepr-event-cards__card h3, .mepr-listing-cards__card h3 {
     margin-top: 0;
 }
 
-.mepr-event-cards__card .event-content {
+.mepr-event-cards__card .event-content, .mepr-listing-cards__card .listing-content {
     margin-bottom: 10px;
 }
 
