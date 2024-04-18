@@ -61,22 +61,19 @@ class MemberPressFormHandler {
         
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_post_nonce']) && wp_verify_nonce($_POST['update_post_nonce'], 'update_post_meta')) {
 
-            if(!get_transient($this->transient_key) || get_transient($this->transient_key) === null) {
+            if(!get_transient($this->transient_key) || get_transient($this->transient_key) !== null) {
             set_transient( $this->transient_key, true, 300 );
             // Sanitize post title
             $post_title = sanitize_text_field($_POST['post_title'] ?? '');
             $post_content = sanitize_text_field($_POST['eventastic_description'] ?? '');
         
-            // Prepare post data
-            $post_data = array(
+            // Insert the post
+            $post_id = wp_insert_post(array(
                 'post_title'    => $post_title,
                 'post_content'  => $post_content,
                 'post_status'   => 'pending', // Set status to pending
                 'post_type'     => 'event' // Adjust post type as needed
-            );
-        
-            // Insert the post
-            $post_id = wp_insert_post($post_data);
+            ));
             set_transient( $this->transient_key, $post_id, 300 );
         }
         
