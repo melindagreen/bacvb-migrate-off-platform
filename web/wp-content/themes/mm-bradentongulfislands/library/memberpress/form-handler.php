@@ -10,6 +10,7 @@ class MemberPressFormHandler {
 
     function __construct () {
 
+        session_start();
 		$this->listing_fields = [
             'partnerportal_description',
             'partnerportal_business_name',
@@ -77,7 +78,7 @@ class MemberPressFormHandler {
         }
         
         $post_id = $_SESSION['post_creation_attempted'];
-        error_log('Test:'. $post_id);
+        var_dump('Test:'. $post_id);
         
             if (!is_wp_error($post_id)) {
                 // Update post meta fields
