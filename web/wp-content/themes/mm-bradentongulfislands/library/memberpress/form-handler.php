@@ -10,7 +10,8 @@ class MemberPressFormHandler {
 
     function __construct () {
 
-        session_start();
+        set_transient( 'post_creation_attempted', false, 300 );
+
 		$this->listing_fields = [
             'partnerportal_description',
             'partnerportal_business_name',
@@ -58,8 +59,8 @@ class MemberPressFormHandler {
         
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_post_nonce']) && wp_verify_nonce($_POST['update_post_nonce'], 'update_post_meta')) {
 
-            if(!$_SESSION['post_creation_attempted'] || !isset($_SESSION['post_creation_attempted'])) {
-                $_SESSION['post_creation_attempted'] = true;
+            if(!get_transient('post_creation_attempted') || !empty(get_transient('post_creation_attempted'))) {
+            set_transient( 'post_creation_attempted', true, 300 );
             // Sanitize post title
             $post_title = sanitize_text_field($_POST['post_title'] ?? '');
             $post_content = sanitize_text_field($_POST['eventastic_description'] ?? '');
@@ -74,10 +75,10 @@ class MemberPressFormHandler {
         
             // Insert the post
             $post_id = wp_insert_post($post_data);
-            $_SESSION['post_creation_attempted'] = $post_id;
+            set_transient( 'post_creation_attempted', $post_id, 300 );
         }
         
-        $post_id = $_SESSION['post_creation_attempted'];
+        $post_id = get_transient('post_creation_attempted');
         var_dump('Test:'. $post_id);
         
             if (!is_wp_error($post_id)) {
@@ -128,7 +129,7 @@ class MemberPressFormHandler {
                 $updated_group_events = array_merge($group_events_ID, array($post_id)); // Merge the arrays
                 update_field('group_events', $updated_group_events, $current_user_group[0]->ID);            
             }
-            $_SESSION['post_creation_attempted'] = false;
+            delete_transient( 'post_creation_attempted' );
              // Redirect to the same page with action=events
              wp_redirect(add_query_arg('action', 'events&?test='.$post_id, $_SERVER['REQUEST_URI']));
              exit;
