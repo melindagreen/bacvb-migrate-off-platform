@@ -130,7 +130,7 @@ class MemberPressFormHandler {
             }
             $_SESSION['post_creation_attempted'] = false;
              // Redirect to the same page with action=events
-             wp_redirect(add_query_arg('action', 'events', $_SERVER['REQUEST_URI']));
+             wp_redirect(add_query_arg('action', 'events&?test='.$post_id, $_SERVER['REQUEST_URI']));
              exit;
         }
     }
