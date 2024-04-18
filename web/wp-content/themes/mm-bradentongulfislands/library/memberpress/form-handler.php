@@ -7,10 +7,12 @@ class MemberPressFormHandler {
 
     private $listing_fields;
     private $event_fields;
+    private $transient_key;
 
     function __construct () {
 
-        set_transient( 'post_creation_attempted', false, 300 );
+        $this->transient_key = 'post_creation_attempted_'.get_current_user_ID();
+        set_transient( $this->transient_key, false, 300 );
 
 		$this->listing_fields = [
             'partnerportal_description',
@@ -59,8 +61,8 @@ class MemberPressFormHandler {
         
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_post_nonce']) && wp_verify_nonce($_POST['update_post_nonce'], 'update_post_meta')) {
 
-            if(!get_transient('post_creation_attempted') || !empty(get_transient('post_creation_attempted'))) {
-            set_transient( 'post_creation_attempted', true, 300 );
+            if(!get_transient($this->transient_key) || get_transient($this->transient_key) === null) {
+            set_transient( $this->transient_key, true, 300 );
             // Sanitize post title
             $post_title = sanitize_text_field($_POST['post_title'] ?? '');
             $post_content = sanitize_text_field($_POST['eventastic_description'] ?? '');
@@ -75,12 +77,11 @@ class MemberPressFormHandler {
         
             // Insert the post
             $post_id = wp_insert_post($post_data);
-            set_transient( 'post_creation_attempted', $post_id, 300 );
+            set_transient( $this->transient_key, $post_id, 300 );
         }
         
-        $post_id = get_transient('post_creation_attempted');
-        var_dump('Test:'. $post_id);
-        
+        $post_id = get_transient($this->transient_key);
+
             if (!is_wp_error($post_id)) {
                 // Update post meta fields
                 $fields = $this->event_fields;
@@ -129,7 +130,7 @@ class MemberPressFormHandler {
                 $updated_group_events = array_merge($group_events_ID, array($post_id)); // Merge the arrays
                 update_field('group_events', $updated_group_events, $current_user_group[0]->ID);            
             }
-            delete_transient( 'post_creation_attempted' );
+            delete_transient( $this->transient_key );
              // Redirect to the same page with action=events
              wp_redirect(add_query_arg('action', 'events&?test='.$post_id, $_SERVER['REQUEST_URI']));
              exit;
