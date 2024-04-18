@@ -58,7 +58,7 @@ class MemberPressFormHandler {
         
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_post_nonce']) && wp_verify_nonce($_POST['update_post_nonce'], 'update_post_meta')) {
 
-            if(!$_SESSION['post_creation_attempted'] || isset($_SESSION['post_creation_attempted'])) {
+            if(!$_SESSION['post_creation_attempted'] || !isset($_SESSION['post_creation_attempted'])) {
                 $_SESSION['post_creation_attempted'] = true;
             // Sanitize post title
             $post_title = sanitize_text_field($_POST['post_title'] ?? '');
