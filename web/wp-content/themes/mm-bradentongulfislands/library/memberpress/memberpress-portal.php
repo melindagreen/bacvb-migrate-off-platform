@@ -348,7 +348,7 @@ class MemberPressPortal {
             $results = "Hello {{fname}}, thanks for your submission! After review from our team, your {{post_type}} has been approved! Here’s a link to your {{post_type}} on our {{post_type}} page. <br> We're excited to feature your {{post_type}} on our platform and look forward to its success! If you have any further questions or need assistance in making any changes or updates, feel free to reach out to emily.knight@bacvb.com.";
             $message = str_replace("{{message}}", $results, $message);
             $message = str_replace("{{fname}}", $author_first_name, $message);
-            $message = str_replace("{{post_type}", $post->post_type, $message);
+            $message = str_replace("{{post_type}}", $post->post_type, $message);
             $message = str_replace("{{listing_url}}", get_permalink($post), $message);
 
             $headers = array('Content-Type: text/html; charset=UTF-8');
@@ -643,7 +643,7 @@ class MemberPressPortal {
                 ";
             $message = str_replace("{{message}}", $results, $message);
             $message = str_replace("{{fname}}", $author_first_name, $message);
-            $message = str_replace("{{post_type}", $post->post_type, $message);
+            $message = str_replace("{{post_type}}", $post->post_type, $message);
             $message = str_replace("{{listing_url}}", get_permalink($post), $message);
 
             $headers = array('Content-Type: text/html; charset=UTF-8');
