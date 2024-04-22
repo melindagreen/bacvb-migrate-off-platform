@@ -7,13 +7,10 @@ class MemberPressFormHandler {
 
     private $listing_fields;
     private $event_fields;
-    private $transient_key;
 
     function __construct () {
 
-        $this->transient_key = 'post_creation_attempted_'.get_current_user_ID();
-        set_transient( $this->transient_key, false, 300 );
-
+        session_start();
 		$this->listing_fields = [
             'partnerportal_description',
             'partnerportal_business_name',
@@ -61,24 +58,28 @@ class MemberPressFormHandler {
         
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_post_nonce']) && wp_verify_nonce($_POST['update_post_nonce'], 'update_post_meta')) {
 
-            if(!get_transient($this->transient_key) || get_transient($this->transient_key) !== null) {
-            set_transient( $this->transient_key, true, 300 );
-            // Sanitize post title
-            $post_title = sanitize_text_field($_POST['post_title'] ?? '');
-            $post_content = sanitize_text_field($_POST['eventastic_description'] ?? '');
-        
-            // Insert the post
-            $post_id = wp_insert_post(array(
-                'post_title'    => $post_title,
-                'post_content'  => $post_content,
-                'post_status'   => 'pending', // Set status to pending
-                'post_type'     => 'event' // Adjust post type as needed
-            ));
-            set_transient( $this->transient_key, $post_id, 300 );
+            if(!$_SESSION['post_creation_attempted'] || !isset($_SESSION['post_creation_attempted'])) {
+
+                $_SESSION['post_creation_attempted'] = true;
+                // Sanitize post title
+                $post_title = sanitize_text_field($_POST['post_title'] ?? '');
+                $post_content = sanitize_text_field($_POST['eventastic_description'] ?? '');
+              
+                // Insert the post
+                error_log($_POST['eventastic_website_link']);
+                $post_id = wp_insert_post(array(
+                    'post_title'    => $post_title,
+                    'post_content'  => $post_content,
+                    'post_status'   => 'pending', // Set status to pending
+                    'post_type'     => 'event' // Adjust post type as needed
+                ));
+                $_SESSION['post_creation_attempted'] = $post_id;
+                error_log('Post Insert');
         }
         
-        $post_id = get_transient($this->transient_key);
-
+        $post_id = $_SESSION['post_creation_attempted'];
+        var_dump('Test:'. $post_id);
+        
             if (!is_wp_error($post_id)) {
                 // Update post meta fields
                 $fields = $this->event_fields;
@@ -127,15 +128,15 @@ class MemberPressFormHandler {
                 $updated_group_events = array_merge($group_events_ID, array($post_id)); // Merge the arrays
                 update_field('group_events', $updated_group_events, $current_user_group[0]->ID);            
             }
-            delete_transient( $this->transient_key );
+            $_SESSION['post_creation_attempted'] = false;
              // Redirect to the same page with action=events
-             wp_redirect(add_query_arg('action', 'events&?test='.$post_id, $_SERVER['REQUEST_URI']));
+             wp_redirect(add_query_arg('update', 'true'));
              exit;
         }
     }
 
     public function updateEvent($post_id) {
-        session_start();
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_post_nonce']) && wp_verify_nonce($_POST['update_post_nonce'], 'update_post_meta')) {
 
             if(!$_SESSION['post_creation_attempted'] || empty($_SESSION['post_creation_attempted'])) {
@@ -221,7 +222,7 @@ class MemberPressFormHandler {
     }
 
     public function addListing() {
-        session_start();
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_post_nonce']) && wp_verify_nonce($_POST['update_post_nonce'], 'update_post_meta')) {
 
             if(!$_SESSION['post_creation_attempted'] || empty($_SESSION['post_creation_attempted'])) {
@@ -302,7 +303,7 @@ class MemberPressFormHandler {
     }
 
     public function updateListing($post_id) {
-        session_start();
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_post_nonce']) && wp_verify_nonce($_POST['update_post_nonce'], 'update_post_meta')) {
             
             if(!$_SESSION['post_creation_attempted'] || empty($_SESSION['post_creation_attempted'])) {
