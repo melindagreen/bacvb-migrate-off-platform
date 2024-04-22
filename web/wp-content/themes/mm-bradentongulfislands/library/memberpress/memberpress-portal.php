@@ -72,7 +72,7 @@ class MemberPressPortal {
             $author_first_name = get_the_author_meta( 'first_name', $author_id );
     
             // Set up email parameters
-            $to = 'aaronfields03@gmail.com';
+            $to = $author_email;
             $subject = ucwords($post->post_type) .'Submission Review';
             $message = '<!doctype html>
             <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
@@ -364,7 +364,7 @@ class MemberPressPortal {
             $author_first_name = get_the_author_meta( 'first_name', $author_id );
 
             // Set up email parameters
-            $to = 'aaronfields03@gmail.com';
+            $to = $author_email;
             $subject = ucwords($post->post_type) .'Submission Review';
             $message = '<!doctype html>
             <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
