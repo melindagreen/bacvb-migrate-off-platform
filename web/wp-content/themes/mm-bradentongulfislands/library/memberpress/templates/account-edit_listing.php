@@ -1,21 +1,27 @@
 <?php
 
-include_once get_stylesheet_directory() .'/library/memberpress/form-handler.php';
+include_once get_stylesheet_directory() . '/library/memberpress/form-handler.php';
 
 use MaddenNino\Library\Memberpress\MemberPressFormHandler as FormHandler;
 
 if (isset($_GET['listing_id'])) {
-
-    // Get the listing ID from the URL parameter
     $post_id = intval($_GET['listing_id']);
-    $meta_data = get_post_meta($post_id);
-    // Retrieve the listing post using the listing ID
-    $listing = get_post($post_id);
-            
-    // Check if the listing post exists and is of type 'listing'
-    if ($listing && $listing->post_type === 'listing') {
-        $form_handler = new FormHandler();
-        $form_handler->updateListing($post_id);
-        include get_stylesheet_directory() . '/library/memberpress/templates/forms/account-listing-form.php';
+    $args = array(
+        'post_type' => 'listing',
+        'p' => $post_id,
+        'post_status' => 'publish',
+        'posts_per_page' => 1
+    );
+
+    $query = new WP_Query($args);
+
+    if ($query->have_posts()) {
+        while ($query->have_posts()) {
+            $query->the_post();
+            $form_handler = new FormHandler();
+            $form_handler->updateListing($post_id);
+        }
+        wp_reset_postdata();
     }
+    include get_stylesheet_directory() . '/library/memberpress/templates/forms/account-listing-form.php';
 }

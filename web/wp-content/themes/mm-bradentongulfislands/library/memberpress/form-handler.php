@@ -10,6 +10,7 @@ class MemberPressFormHandler {
 
     function __construct () {
 
+        session_start();
 		$this->listing_fields = [
             'partnerportal_description',
             'partnerportal_business_name',
@@ -54,28 +55,30 @@ class MemberPressFormHandler {
 	}
 
     public function addEvent() {
+        
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_post_nonce']) && wp_verify_nonce($_POST['update_post_nonce'], 'update_post_meta')) {
-            session_start();
-            if(!$_SESSION['post_creation_attempted'] || empty($_SESSION['post_creation_attempted'])) {
+
+            if(!$_SESSION['post_creation_attempted'] || !isset($_SESSION['post_creation_attempted'])) {
+
                 $_SESSION['post_creation_attempted'] = true;
-            // Sanitize post title
-            $post_title = sanitize_text_field($_POST['post_title'] ?? '');
-            $post_content = sanitize_text_field($_POST['eventastic_description'] ?? '');
-        
-            // Prepare post data
-            $post_data = array(
-                'post_title'    => $post_title,
-                'post_content'  => $post_content,
-                'post_status'   => 'pending', // Set status to pending
-                'post_type'     => 'event' // Adjust post type as needed
-            );
-        
-            // Insert the post
-            $post_id = wp_insert_post($post_data);
-            $_SESSION['post_creation_attempted'] = $post_id;
+                // Sanitize post title
+                $post_title = sanitize_text_field($_POST['post_title'] ?? '');
+                $post_content = sanitize_text_field($_POST['eventastic_description'] ?? '');
+              
+                // Insert the post
+                error_log($_POST['eventastic_website_link']);
+                $post_id = wp_insert_post(array(
+                    'post_title'    => $post_title,
+                    'post_content'  => $post_content,
+                    'post_status'   => 'pending', // Set status to pending
+                    'post_type'     => 'event' // Adjust post type as needed
+                ));
+                $_SESSION['post_creation_attempted'] = $post_id;
+                error_log('Post Insert');
         }
-        error_log('Test:'. $_SESSION['post_creation_attempted']);
+        
         $post_id = $_SESSION['post_creation_attempted'];
+        var_dump('Test:'. $post_id);
         
             if (!is_wp_error($post_id)) {
                 // Update post meta fields
@@ -127,14 +130,15 @@ class MemberPressFormHandler {
             }
             $_SESSION['post_creation_attempted'] = false;
              // Redirect to the same page with action=events
-             wp_redirect(add_query_arg('action', 'events', $_SERVER['REQUEST_URI']));
+             wp_redirect(add_query_arg('update', 'true'));
              exit;
         }
     }
 
     public function updateEvent($post_id) {
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_post_nonce']) && wp_verify_nonce($_POST['update_post_nonce'], 'update_post_meta')) {
-            session_start();
+
             if(!$_SESSION['post_creation_attempted'] || empty($_SESSION['post_creation_attempted'])) {
 
                 $_SESSION['post_creation_attempted'] = true;
@@ -218,9 +222,9 @@ class MemberPressFormHandler {
     }
 
     public function addListing() {
-        
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_post_nonce']) && wp_verify_nonce($_POST['update_post_nonce'], 'update_post_meta')) {
-            session_start();
+
             if(!$_SESSION['post_creation_attempted'] || empty($_SESSION['post_creation_attempted'])) {
                 $_SESSION['post_creation_attempted'] = true;
             // Sanitize post title
@@ -299,7 +303,7 @@ class MemberPressFormHandler {
     }
 
     public function updateListing($post_id) {
-        session_start();
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_post_nonce']) && wp_verify_nonce($_POST['update_post_nonce'], 'update_post_meta')) {
             
             if(!$_SESSION['post_creation_attempted'] || empty($_SESSION['post_creation_attempted'])) {
@@ -383,50 +387,4 @@ class MemberPressFormHandler {
                 exit;
             }
         }
-        
-
-    public function oldUpdateListing() {
-        session_start();
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_post_nonce']) && wp_verify_nonce($_POST['update_post_nonce'], 'update_post_meta')) {
-
-            // Update post title
-            $post_title = sanitize_text_field($_POST['post_title'] ?? ''); // Sanitize post title
-            wp_update_post(array('ID' => $post_id, 'post_title' => $post_title)); // Update post title
-            
-            // Update post meta fields
-            $fields = $this->listing_fields;
-
-            // Loop through each field and update post meta
-            foreach ($fields as $field) {
-                if (isset($_POST[$field])) {
-                    update_post_meta($post_id, $field, sanitize_text_field($_POST[$field]));
-                }
-            }
-            // Handle image upload and update partnerportal_gallery_square_featured_image
-            if (!empty($_FILES['partnerportal_gallery_square_featured_image']['name'])) {
-                $upload = wp_upload_bits($_FILES['partnerportal_gallery_square_featured_image']['name'], null, file_get_contents($_FILES['partnerportal_gallery_square_featured_image']['tmp_name']));
-                if (!$upload['error']) {
-                    update_post_meta($post_id, 'partnerportal_gallery_square_featured_image', $upload['url']);
-                    // Set the uploaded image as the post thumbnail
-                    $attachment_id = wp_insert_attachment(array(
-                        'post_mime_type' => $_FILES['partnerportal_gallery_square_featured_image']['type'],
-                        'post_title' => $_FILES['partnerportal_gallery_square_featured_image']['name'],
-                        'post_content' => '',
-                        'post_status' => 'inherit'
-                    ), $upload['file'], $post_id);
-                    if (!is_wp_error($attachment_id)) {
-                        require_once(ABSPATH . 'wp-admin/includes/image.php');
-                        $attachment_data = wp_generate_attachment_metadata($attachment_id, $upload['file']);
-                        wp_update_attachment_metadata($attachment_id, $attachment_data);
-                        set_post_thumbnail($post_id, $attachment_id);
-                    }
-                }
-            }
-
-            // Redirect to the same page with update=true
-            wp_redirect(add_query_arg('update', 'true'));
-            exit;
-        }
-    }
-
 }

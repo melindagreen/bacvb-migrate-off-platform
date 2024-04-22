@@ -5,7 +5,7 @@
     <div class="mepr-account-form__featured-image">
         <label for="eventastic_gallery_square_featured_image">Featured Image:</label>
         <?php
-        $post_thumbnail_url = get_the_post_thumbnail_url($post_id, 'thumbnail');
+        $post_thumbnail_url = isset($post_id) ? get_the_post_thumbnail_url($post_id, 'thumbnail') : false;
         if ($post_thumbnail_url) : ?>
             <img src="<?php echo esc_url($post_thumbnail_url); ?>" alt="Featured Image" style="max-width: 100px;">
         <?php endif; ?>
@@ -17,7 +17,7 @@
 
     <!-- Post Title -->
     <label for="post_title">Title:</label>
-    <input type="text" name="post_title" id="post_title" value="<?php echo esc_attr(get_the_title($post_id)); ?>">
+    <input type="text" name="post_title" id="post_title" value="<?php echo isset($post_id) ? esc_attr(get_the_title($post_id)) : ''; ?>">
 
     <!-- Description -->
     <label for="eventastic_description">Description:</label>
