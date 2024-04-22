@@ -73,7 +73,7 @@ class MemberPressPortal {
     
             // Set up email parameters
             $to = $author_email;
-            $subject = ucwords($post->post_type) .'Submission Review';
+            $subject = ucwords($post->post_type) .' Submission Review';
             $message = '<!doctype html>
             <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
               <head>
