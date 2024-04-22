@@ -71,7 +71,7 @@ class MemberPressPortal {
             $author_email = get_the_author_meta( 'user_email', $author_id );
     
             // Set up email parameters
-            $to = 'aaronfields03@gmail.com';
+            $to = $author_email;
             $subject = 'Your listing has been published';
             $message = '<!DOCTYPE html>
             <html xmlns="http://www.w3.org/1999/xhtml">
@@ -96,7 +96,7 @@ class MemberPressPortal {
             $author_email = get_the_author_meta( 'user_email', $author_id );
     
             // Set up email parameters
-            $to = 'aaronfields03@gmail.com';
+            $to = $author_email;
             $subject = 'Your listing has been rejected';
             $message = '<!DOCTYPE html>
             <html xmlns="http://www.w3.org/1999/xhtml">
