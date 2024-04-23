@@ -37,7 +37,7 @@ if ($listings->have_posts() && $listings->found_posts === 1) {
         $meta_data = get_post_meta($post_id);
 
         $form_handler = new FormHandler();
-        $form_handler->updateListing();
+        $form_handler->updateListing($post_id);
 
         if (isset($_GET['update']) && $_GET['update'] === 'true') {
             echo '<div style="background-color: #c96a39db; border: 0.5px solid #c96a39; padding: 0.2rem; width:33%;margin-bottom:1rem" class="notice notice-success is-dismissible"><p style="color:white;margin:0;margin-left:1rem;">Listing has been updated successfully.</p></div>';
