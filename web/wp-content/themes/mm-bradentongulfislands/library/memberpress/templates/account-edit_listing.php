@@ -7,6 +7,7 @@ use MaddenNino\Library\Memberpress\MemberPressFormHandler as FormHandler;
 if (isset($_GET['listing_id'])) {
 
     $post_id = intval($_GET['listing_id']);
+    $meta_data = get_post_meta($post_id);
     $args = array(
         'post_type' => 'listing',
         'p' => $post_id,

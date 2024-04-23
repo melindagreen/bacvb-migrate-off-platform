@@ -5,6 +5,7 @@ use MaddenNino\Library\Memberpress\MemberPressFormHandler as FormHandler;
 
 if (isset($_GET['event_id'])) {
     $post_id = intval($_GET['event_id']);
+    $meta_data = get_post_meta($post_id);
     $args = array(
         'post_type' => 'event',
         'p' => $post_id,

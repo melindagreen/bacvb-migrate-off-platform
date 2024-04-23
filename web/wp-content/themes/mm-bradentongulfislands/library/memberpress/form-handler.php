@@ -70,7 +70,7 @@ class MemberPressFormHandler {
                 $post_content = sanitize_text_field($_POST['eventastic_description'] ?? '');
               
                 // Insert the post
-                error_log($_POST['eventastic_website_link']);
+                // error_log($_POST['eventastic_website_link']);
                 $post_id = wp_insert_post(array(
                     'post_title'    => $post_title,
                     'post_content'  => $post_content,
@@ -78,7 +78,7 @@ class MemberPressFormHandler {
                     'post_type'     => 'event' // Adjust post type as needed
                 ));
                 $_SESSION['post_creation_attempted'] = $post_id;
-                error_log('Post Insert');
+                // error_log('Post Insert');
         }
         
         $post_id = $_SESSION['post_creation_attempted'];
@@ -148,7 +148,7 @@ class MemberPressFormHandler {
                 $_SESSION['post_creation_attempted'] = true;
                 // Sanitize post title
                 $post_title = sanitize_text_field($_POST['post_title'] ?? '');
-                $post_content = sanitize_text_field($_POST['partnerportal_description'] ?? '');
+                $post_content = sanitize_text_field($_POST['eventastic_description'] ?? '');
         
                 // Clone the post
                 $cloned_post_id = wp_insert_post(array(
@@ -183,14 +183,14 @@ class MemberPressFormHandler {
                 add_post_meta($original_post_id, 'cloned_post_id', $cloned_post_id);
         
                 // Handle image upload and set as post thumbnail for cloned post
-                if (!empty($_FILES['partnerportal_gallery_square_featured_image']['name'])) {
-                    $upload = wp_upload_bits($_FILES['partnerportal_gallery_square_featured_image']['name'], null, file_get_contents($_FILES['partnerportal_gallery_square_featured_image']['tmp_name']));
+                if (!empty($_FILES['eventastic_gallery_square_featured_image']['name'])) {
+                    $upload = wp_upload_bits($_FILES['eventastic_gallery_square_featured_image']['name'], null, file_get_contents($_FILES['eventastic_gallery_square_featured_image']['tmp_name']));
                     if (!$upload['error']) {
-                        update_post_meta($cloned_postt_id, 'partnerportal_gallery_square_featured_image', $upload['url']);
+                        update_post_meta($cloned_postt_id, 'eventastic_gallery_square_featured_image', $upload['url']);
                         // Set the uploaded image as the post thumbnail
                         $attachment_id = wp_insert_attachment(array(
-                            'post_mime_type' => $_FILES['partnerportal_gallery_square_featured_image']['type'],
-                            'post_title' => $_FILES['partnerportal_gallery_square_featured_image']['name'],
+                            'post_mime_type' => $_FILES['eventastic_gallery_square_featured_image']['type'],
+                            'post_title' => $_FILES['eventastic_gallery_square_featured_image']['name'],
                             'post_content' => '',
                             'post_status' => 'inherit'
                         ), $upload['file'], $cloned_post_id);
@@ -216,7 +216,7 @@ class MemberPressFormHandler {
                     }
                 }
                 $updated_group_events = array_merge($group_events_ID, array($cloned_post_id)); // Merge the arrays
-                update_field('group_event', $updated_group_events, $current_user_group[0]->ID); 
+                update_field('group_events', $updated_group_events, $current_user_group[0]->ID); 
 
                 $_SESSION['post_creation_attempted'] = false;
                 // Redirect to the same page with update=true
