@@ -1,5 +1,4 @@
 <?php
-
 include_once get_stylesheet_directory() . '/library/memberpress/form-handler.php';
 
 use MaddenNino\Library\Memberpress\MemberPressFormHandler as FormHandler;

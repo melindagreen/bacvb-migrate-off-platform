@@ -10,7 +10,11 @@ class MemberPressFormHandler {
 
     function __construct () {
 
-        session_start();
+        if (session_status() == PHP_SESSION_NONE) {
+
+            session_start();
+        }
+
 		$this->listing_fields = [
             'partnerportal_description',
             'partnerportal_business_name',
