@@ -2,7 +2,7 @@
 include_once get_stylesheet_directory() .'/library/memberpress/form-handler.php';
 
 use MaddenNino\Library\Memberpress\MemberPressFormHandler as FormHandler;
-error_log(isset($_GET['event_id']));
+
 if (isset($_GET['event_id'])) {
     $post_id = intval($_GET['event_id']);
     $args = array(
@@ -19,7 +19,6 @@ if (isset($_GET['event_id'])) {
             $query->the_post();
             $form_handler = new FormHandler();
             $form_handler->updateEvent($post_id);
-            error_log($query->have_posts());
         }
         wp_reset_postdata();
     }

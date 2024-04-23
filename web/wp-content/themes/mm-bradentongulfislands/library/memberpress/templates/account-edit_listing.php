@@ -1,9 +1,11 @@
 <?php
+
 include_once get_stylesheet_directory() . '/library/memberpress/form-handler.php';
 
 use MaddenNino\Library\Memberpress\MemberPressFormHandler as FormHandler;
 
 if (isset($_GET['listing_id'])) {
+
     $post_id = intval($_GET['listing_id']);
     $args = array(
         'post_type' => 'listing',
