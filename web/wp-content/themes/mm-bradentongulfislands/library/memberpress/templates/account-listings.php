@@ -56,7 +56,7 @@ else if ($listings->have_posts() && $listings->found_posts > 1) {
     ?>
     <div class="mepr-listing-cards__card">
             <h3><?php the_title(); ?></h3>
-            <h4 class="listing-card-status<?php echo get_post_status() === 'publish' ? '--green' : '--red' ?>">Status: <span><?php echo get_post_status() === 'publish' ? 'published' : get_post_status(); ?></span></h4>
+            <h4 class="listing-card-status--<?php echo $status[get_post_status()]; ?>">Status: <span><?php echo $status[get_post_status()]; ?></span></h4>
             <div class="listing-content">
                 <?php
                 // Display trimmed content or excerpt
