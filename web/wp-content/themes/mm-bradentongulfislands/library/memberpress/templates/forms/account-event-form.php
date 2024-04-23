@@ -21,7 +21,7 @@
 
     <!-- Description -->
     <label for="eventastic_description">Description:</label>
-    <textarea name="eventastic_description" id="eventastic_description"><?php echo isset($post_id) ? esc_html(get_the_content($post_id)) : ''; ?></textarea>
+    <textarea name="eventastic_description" id="eventastic_description"><?php echo esc_html($meta_data['eventastic_description'][0] ?? ''); ?></textarea>
 
     <div class="mepr-account-form__col-2">
         <!-- Business Name -->
