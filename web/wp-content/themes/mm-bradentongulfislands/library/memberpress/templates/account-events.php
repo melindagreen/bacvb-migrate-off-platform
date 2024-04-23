@@ -16,7 +16,7 @@ $events = new WP_Query(array(
     'post_type'      => 'event',
     'post__in'       => $group_events_ID, 
     'posts_per_page' => -1,
-    'post_status'    => array('publish', 'pending'), // Include both published and pending review posts
+    'post_status'    => array('publish', 'pending', 'draft'), // Include both published and pending review posts
     'meta_query'     => array(
         array(
             'key'     => 'cloned_post_id',
@@ -24,6 +24,12 @@ $events = new WP_Query(array(
         ),
     )
 ));
+
+$status = [
+    'publish' => 'published',
+    'draft' => 'rejected',
+    'pending' => 'pending'
+];
         
             
 // Display frontend form for editing events
@@ -33,7 +39,7 @@ if ($events->have_posts() && !empty($group_events)) : ?>
     while ($events->have_posts()) : $events->the_post(); ?>
         <div class="mepr-event-cards__card">
             <h3><?php the_title(); ?></h3>
-            <h4 class="event-card-status<?php echo get_post_status() === 'publish' ? '--green' : '--red' ?>">Status: <span><?php echo get_post_status() === 'publish' ? 'published' : get_post_status(); ?></span></h4>
+            <h4 class="event-card-status<?php echo $status[get_post_status()]; ?>">Status: <span><?php echo $status[get_post_status()]; ?></span></h4>
             <div class="event-content">
                 <?php
                 // Display trimmed content or excerpt

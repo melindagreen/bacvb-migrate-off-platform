@@ -20,7 +20,7 @@ $listings = new WP_Query(array(
     'post_type'      => 'listing',
     'post__in'       => $group_listings_ID, 
     'posts_per_page' => -1, 
-    'post_status'    => array('publish', 'pending'),
+    'post_status'    => array('publish', 'pending', 'draft'),
     'meta_query'     => array(
         array(
             'key'     => 'cloned_post_id',

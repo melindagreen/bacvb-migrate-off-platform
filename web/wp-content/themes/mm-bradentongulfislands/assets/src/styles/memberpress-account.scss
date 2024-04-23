@@ -68,14 +68,19 @@ GLOBAL STYLES
     justify-content: center;
 }
 
-.event-card-status--red, .listing-card-status--red {
+.event-card-status--pending, .listing-card-status--pending {
 
     color: $rust;
 }
 
-.event-card-status--green, .listing-card-status--green {
+.event-card-status--published, .listing-card-status--published {
 
     color: limegreen;
+}
+
+.event-card-status--rejected, .listing-card-status--rejected {
+
+    color: red;
 }
 
 .mepr-event-cards__card, .mepr-listing-cards__card {

@@ -11,7 +11,6 @@ if (isset($_GET['listing_id'])) {
     $args = array(
         'post_type' => 'listing',
         'p' => $post_id,
-        'post_status' => 'publish',
         'posts_per_page' => 1
     );
 
