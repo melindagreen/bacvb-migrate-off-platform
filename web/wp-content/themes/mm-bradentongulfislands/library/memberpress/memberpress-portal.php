@@ -614,9 +614,14 @@ class MemberPressPortal {
             </html>';
             $results = "Hello {{fname}}, thanks for your submission! After review from our team, we regret to inform you that your {{post_type}} has been declined for the following reason(s):
                 <br>
+                {{reason}}
+                <br>
                 If you have any questions or need further clarification, please don’t hesitate to reach out to emily.knight@bacvb.com.
                 ";
+            $reason = get_field('submission_note', $post->ID) !== null ? get_field('submission_note', $post->ID) : '';
             $message = str_replace("{{message}}", $results, $message);
+            $message = str_replace("{{reason}}", $reason, $message);
+            $message = str_replace("{{reason}}", '', $message);
             $message = str_replace("{{fname}}", $author_first_name, $message);
             $message = str_replace("{{post_type}}", $post->post_type, $message);
             $message = str_replace("{{listing_url}}", get_permalink($post), $message);
