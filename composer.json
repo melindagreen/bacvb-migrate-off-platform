@@ -108,7 +108,7 @@
     "wpackagist-plugin/tiny-compress-images": "3.4.3",
     "wpackagist-plugin/translatepress-multilingual": "2.7.4",
     "wpackagist-plugin/wordpress-importer": "0.8.2",
-    "wpackagist-plugin/wordpress-seo": "22.3",
+    "wpackagist-plugin/wordpress-seo": "22.5",
     "wpackagist-plugin/wp-media-library-categories": "*",
     "wpackagist-plugin/seo-by-rank-math":"*",
     "rankmath/seo-by-rank-math-pro": "^3.0.54"
