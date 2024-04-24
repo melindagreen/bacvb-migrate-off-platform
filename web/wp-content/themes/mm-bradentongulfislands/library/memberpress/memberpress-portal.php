@@ -348,7 +348,7 @@ class MemberPressPortal {
             We're excited to feature your {{post_type}} on our platform and look forward to its success! If you have any further questions or need assistance in making any changes or updates, feel free to reach out to emily.knight@bacvb.com.
             ";
             $original_post_id = get_post_meta($post->ID, 'original_post_id', true);
-            $permalink = isset($original_post_id) ? get_permalink($original_post_id) : get_permalink($post);
+            $permalink = $original_post_id ? get_permalink($original_post_id) : get_permalink($post);
             $message = str_replace("{{message}}", $results, $message);
             $message = str_replace("{{fname}}", $author_first_name, $message);
             $message = str_replace("{{post_type}}", $post->post_type, $message);
