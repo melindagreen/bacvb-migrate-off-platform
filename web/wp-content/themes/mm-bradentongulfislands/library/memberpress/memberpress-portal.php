@@ -15,7 +15,7 @@ class MemberPressPortal {
 
 		add_filter( 'mepr_account_nav_content', array(get_called_class(), 'nav_tabs'), 10, 1);
         add_action('mepr_enqueue_scripts', array(get_called_class(),'mepr_enqueue_scripts'), 10, 3);
-        add_action( 'transition_post_status', array(get_called_class(),'post_status_notification'), 10, 3 );
+        add_action( 'transition_post_status', array(get_called_class(),'post_status_notification'), 9, 3 );
         add_action('mepr_account_nav', array(get_called_class(),'mepr_add_some_tabs'));
         add_action( 'transition_post_status', array(get_called_class(),'handle_post_status'), 10, 3 );
 	}
@@ -347,10 +347,12 @@ class MemberPressPortal {
             $results = "Hello {{fname}}, thanks for your submission! After review from our team, your {{post_type}} has been approved! Here’s a link to your {{post_type}} on our {{post_type}} page.
             We're excited to feature your {{post_type}} on our platform and look forward to its success! If you have any further questions or need assistance in making any changes or updates, feel free to reach out to emily.knight@bacvb.com.
             ";
+            $original_post_id = get_post_meta($post->ID, 'original_post_id', true);
+            $permalink = isset($original_post_id) ? get_permalink($original_post_id) : get_permalink($post);
             $message = str_replace("{{message}}", $results, $message);
             $message = str_replace("{{fname}}", $author_first_name, $message);
             $message = str_replace("{{post_type}}", $post->post_type, $message);
-            $message = str_replace("{{listing_url}}", get_permalink($post), $message);
+            $message = str_replace("{{listing_url}}", $permalink, $message);
 
             $headers = array('Content-Type: text/html; charset=UTF-8');
             // Send email
