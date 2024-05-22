@@ -81,7 +81,7 @@
   "require": {
     "advanced-custom-fields/advanced-custom-fields-pro": "6.2.7",
     "davidbarratt/custom-installer": "^1.1",
-    "johnpbloch/wordpress": "^6.4",
+    "johnpbloch/wordpress": "6.5.3",
     "maddenmedia/gravityforms": "*",
     "maddenmedia/madden-cookie-consent": "*",
     "maddenmedia/mm-madre-theme": "v1.4.5",
