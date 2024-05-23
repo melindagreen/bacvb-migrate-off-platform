@@ -29,6 +29,10 @@
     },
     {
       "type": "vcs",
+      "url": "git@github.com:maddenmedia/wp-plugin-madden-banners.git"
+    },
+    {
+      "type": "vcs",
       "url": "git@github.com:maddenmedia/mm-madre-theme.git"
     },
     {
@@ -86,6 +90,7 @@
     "maddenmedia/madden-cookie-consent": "*",
     "maddenmedia/mm-madre-theme": "v1.4.5",
     "maddenmedia/wp-plugin-eventastic": "*",
+    "maddenmedia/wp-plugin-madden-banners": "*",
     "platformsh/config-reader": "^2.0",
     "psy/psysh": "^0.10.8",
     "tonik/cli": "^3.0",
