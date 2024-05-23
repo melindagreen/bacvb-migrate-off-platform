@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "86863691e111ef26a3f832d7091d1db0",
+    "content-hash": "93d7e05b0a24db30795a3b4c27b996c8",
     "packages": [
         {
             "name": "advanced-custom-fields/advanced-custom-fields-pro",
@@ -1243,12 +1243,12 @@
             "version": "v5.2.13",
             "source": {
                 "type": "git",
-                "url": "https://github.com/justinrainbow/json-schema.git",
+                "url": "https://github.com/jsonrainbow/json-schema.git",
                 "reference": "fbbe7e5d79f618997bc3332a6f49246036c45793"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/justinrainbow/json-schema/zipball/fbbe7e5d79f618997bc3332a6f49246036c45793",
+                "url": "https://api.github.com/repos/jsonrainbow/json-schema/zipball/fbbe7e5d79f618997bc3332a6f49246036c45793",
                 "reference": "fbbe7e5d79f618997bc3332a6f49246036c45793",
                 "shasum": ""
             },
@@ -1303,8 +1303,8 @@
                 "schema"
             ],
             "support": {
-                "issues": "https://github.com/justinrainbow/json-schema/issues",
-                "source": "https://github.com/justinrainbow/json-schema/tree/v5.2.13"
+                "issues": "https://github.com/jsonrainbow/json-schema/issues",
+                "source": "https://github.com/jsonrainbow/json-schema/tree/v5.2.13"
             },
             "time": "2023-09-26T02:20:38+00:00"
         },
@@ -1517,6 +1517,31 @@
                 "issues": "https://github.com/maddenmedia/wp-plugin-eventastic/issues"
             },
             "time": "2024-05-14T15:05:07+00:00"
+        },
+        {
+            "name": "maddenmedia/wp-plugin-madden-banners",
+            "version": "v1.1.6",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:maddenmedia/wp-plugin-madden-banners.git",
+                "reference": "479b2664867fc131fb6ed2bdc826c8adebaead3f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/maddenmedia/wp-plugin-madden-banners/zipball/479b2664867fc131fb6ed2bdc826c8adebaead3f",
+                "reference": "479b2664867fc131fb6ed2bdc826c8adebaead3f",
+                "shasum": ""
+            },
+            "type": "wordpress-plugin",
+            "license": [
+                "proprietary"
+            ],
+            "description": "WordPress plugin for adding conditional banners and flyins",
+            "support": {
+                "source": "https://github.com/maddenmedia/wp-plugin-madden-banners/tree/v1.1.6",
+                "issues": "https://github.com/maddenmedia/wp-plugin-madden-banners/issues"
+            },
+            "time": "2023-09-29T21:30:52+00:00"
         },
         {
             "name": "mck89/peast",
@@ -5443,12 +5468,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-cli/wp-cli.git",
-                "reference": "6d78633580dbec4856979210b597a1c9c687e163"
+                "reference": "f701f406aa39f6aeca2af16e92712780e2675bad"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-cli/wp-cli/zipball/6d78633580dbec4856979210b597a1c9c687e163",
-                "reference": "6d78633580dbec4856979210b597a1c9c687e163",
+                "url": "https://api.github.com/repos/wp-cli/wp-cli/zipball/f701f406aa39f6aeca2af16e92712780e2675bad",
+                "reference": "f701f406aa39f6aeca2af16e92712780e2675bad",
                 "shasum": ""
             },
             "require": {
@@ -5506,7 +5531,7 @@
                 "issues": "https://github.com/wp-cli/wp-cli/issues",
                 "source": "https://github.com/wp-cli/wp-cli"
             },
-            "time": "2024-04-27T02:25:56+00:00"
+            "time": "2024-05-23T18:17:46+00:00"
         },
         {
             "name": "wp-cli/wp-cli-bundle",
