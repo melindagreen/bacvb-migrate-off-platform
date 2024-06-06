@@ -9,6 +9,20 @@
  *    ╩  ┴─┘┴ ┴ ┴ └  └─┘┴└─┴ ┴o└─┘┴ ┴     
  */
 
+/*********
+ * WP_ROCKET
+ *********/
+// Your license KEY.
+if ( ! defined( 'WP_ROCKET_KEY' ) ) {
+  define( 'WP_ROCKET_KEY', 'ea71e7e9');
+}
+
+// Your email, the one you used for the purchase.
+if ( ! defined( 'WP_ROCKET_EMAIL' ) ) {
+  define( 'WP_ROCKET_EMAIL', 'mmserv@maddenmedia.com' );
+}
+define( 'WP_CACHE', true ); // Added by WP Rocket
+
 // -- PLATFORM.SH CONFIG READER -- 
 // Create a new config object to ease reading the Platform.sh environment variables.
 // You can alternatively use getenv() yourself.
