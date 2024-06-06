@@ -245,17 +245,17 @@
                         <div class="social-container">
                             <h4>Follow Us</h4>
                             <div class="social-links">
-                                <a aria-label='Facebook' href="<?php echo C::SOCIAL_LINKS['facebook']['url'] ?>">
-                                    <?php echo file_get_contents( get_theme_file_uri() . "/assets/images/icons/social/facebook.svg" ) ?>
+                                <a aria-label='Facebook' href="<?php echo C::SOCIAL_LINKS['facebook']['url']; ?>">
+                                    <?php include( get_theme_file_path() . '/assets/images/icons/social/facebook.svg' ); ?>
                                 </a>
-                                <a aria-label='Pinterest' href="<?php echo C::SOCIAL_LINKS['pinterest']['url'] ?>">
-                                    <?php echo file_get_contents( get_theme_file_uri() . "/assets/images/icons/social/pinterest.svg" ) ?>
+                                <a aria-label='Pinterest' href="<?php echo C::SOCIAL_LINKS['pinterest']['url']; ?>">
+                                    <?php include( get_theme_file_path() . '/assets/images/icons/social/pinterest.svg' ); ?>
                                 </a>
-                                <a aria-label='Twitter' href="<?php echo C::SOCIAL_LINKS['twitter']['url'] ?>">
-                                    <?php echo file_get_contents( get_theme_file_uri() . "/assets/images/icons/social/x-icon.svg" ) ?>
+                                <a aria-label='Twitter' href="<?php echo C::SOCIAL_LINKS['twitter']['url']; ?>">
+                                    <?php include( get_theme_file_path() . '/assets/images/icons/social/twitter.svg' ); ?>
                                 </a>
-                                <a aria-label='Instagram' href="<?php echo C::SOCIAL_LINKS['instagram']['url'] ?>">
-                                    <?php echo file_get_contents( get_theme_file_uri() . "/assets/images/icons/social/instagram.svg" ) ?>
+                                <a aria-label='Instagram' href="<?php echo C::SOCIAL_LINKS['instagram']['url']; ?>">
+                                    <?php include( get_theme_file_path() . '/assets/images/icons/social/instagram.svg' ); ?>
                                 </a>
                             </div>
                         </div>

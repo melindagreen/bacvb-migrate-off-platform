@@ -92,6 +92,7 @@
     "maddenmedia/wp-plugin-eventastic": "*",
     "maddenmedia/wp-plugin-madden-banners": "*",
     "platformsh/config-reader": "^2.0",
+    "wp-media/wp-rocket": "v3.15.9",
     "psy/psysh": "^0.10.8",
     "tonik/cli": "^3.0",
     "maddenmedia/partner-portal": "*",
