@@ -53,9 +53,9 @@ web:
       scripts: false
       allow: false
      "/wp-content/wp-rocket-config":
-        root: "web/wp-content/wp-rocket-config"
-        scripts: false
-        allow: false
+      root: "web/wp-content/wp-rocket-config"
+      scripts: false
+      allow: false
     "/wp-content/uploads":
       root: "web/wp-content/uploads"
       scripts: false
