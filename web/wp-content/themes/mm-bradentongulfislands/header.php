@@ -252,7 +252,7 @@
                                     <?php include( get_theme_file_path() . '/assets/images/icons/social/pinterest.svg' ); ?>
                                 </a>
                                 <a aria-label='Twitter' href="<?php echo C::SOCIAL_LINKS['twitter']['url']; ?>">
-                                    <?php include( get_theme_file_path() . '/assets/images/icons/social/x-icon.svg' ); ?>
+                                    <?php include( get_theme_file_path() . '/assets/images/icons/social/twitter.svg' ); ?>
                                 </a>
                                 <a aria-label='Instagram' href="<?php echo C::SOCIAL_LINKS['instagram']['url']; ?>">
                                     <?php include( get_theme_file_path() . '/assets/images/icons/social/instagram.svg' ); ?>
