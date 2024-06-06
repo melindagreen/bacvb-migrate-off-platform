@@ -52,19 +52,8 @@
       "url": "git@github.com:maddenmedia/gravityforms.git"
     },
     {
-      "type": "package",
-      "package": {
-        "name": "advanced-custom-fields/advanced-custom-fields-pro",
-        "version": "6.2.7",
-        "type": "wordpress-plugin",
-        "dist": {
-          "type": "zip",
-          "url": "https://connect.advancedcustomfields.com/index.php?a=download&p=pro&k=b3JkZXJfaWQ9MTA5MTEyfHR5cGU9cGVyc29uYWx8ZGF0ZT0yMDE3LTA2LTI0IDIyOjE3OjEw"
-        },
-        "require": {
-          "ffraenz/private-composer-installer": "^5.0"
-        }
-      }
+      "type":"composer",
+      "url":"https://connect.advancedcustomfields.com"
     },
     {
       "type": "package",
@@ -83,7 +72,7 @@
     }
   ],
   "require": {
-    "advanced-custom-fields/advanced-custom-fields-pro": "6.2.7",
+    "wpengine/advanced-custom-fields-pro": "^6.3.1",
     "davidbarratt/custom-installer": "^1.1",
     "johnpbloch/wordpress": "6.5.3",
     "maddenmedia/gravityforms": "*",

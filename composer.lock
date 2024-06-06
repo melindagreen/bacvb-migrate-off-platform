@@ -4,20 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cbc59e50096a17a55f22335f3dbe4708",
+    "content-hash": "d1df52855f79717cf0a6d8d4f3016207",
     "packages": [
-        {
-            "name": "advanced-custom-fields/advanced-custom-fields-pro",
-            "version": "6.2.7",
-            "dist": {
-                "type": "zip",
-                "url": "https://connect.advancedcustomfields.com/index.php?a=download&p=pro&k=b3JkZXJfaWQ9MTA5MTEyfHR5cGU9cGVyc29uYWx8ZGF0ZT0yMDE3LTA2LTI0IDIyOjE3OjEw"
-            },
-            "require": {
-                "ffraenz/private-composer-installer": "^5.0"
-            },
-            "type": "wordpress-plugin"
-        },
         {
             "name": "cloudflare/cf-ip-rewrite",
             "version": "1.0.4",
@@ -856,73 +844,6 @@
             "time": "2021-04-17T13:49:01+00:00"
         },
         {
-            "name": "ffraenz/private-composer-installer",
-            "version": "v5.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ffraenz/private-composer-installer.git",
-                "reference": "8655e3da4e8f99203f13ccca33b9ab953ad30a31"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ffraenz/private-composer-installer/zipball/8655e3da4e8f99203f13ccca33b9ab953ad30a31",
-                "reference": "8655e3da4e8f99203f13ccca33b9ab953ad30a31",
-                "shasum": ""
-            },
-            "require": {
-                "composer-plugin-api": "^1.0 || ^2.0",
-                "php": "^7.1 || ^8.0",
-                "vlucas/phpdotenv": "^4.1 || ^5.2"
-            },
-            "require-dev": {
-                "composer/composer": "^1.0 || ^2.0",
-                "laminas/laminas-coding-standard": "^2.0",
-                "symfony/phpunit-bridge": "^5.1",
-                "symfony/process": "^4.4 || ^5.1"
-            },
-            "type": "composer-plugin",
-            "extra": {
-                "class": "FFraenz\\PrivateComposerInstaller\\Plugin",
-                "plugin-modifies-downloads": true
-            },
-            "autoload": {
-                "psr-4": {
-                    "FFraenz\\PrivateComposerInstaller\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fränz Friederes",
-                    "email": "fraenz@frieder.es",
-                    "homepage": "https://fraenz.frieder.es"
-                }
-            ],
-            "description": "A composer install helper for private packages",
-            "keywords": [
-                "composer",
-                "env",
-                "plugin",
-                "private",
-                "wordpress",
-                "wp"
-            ],
-            "support": {
-                "issues": "https://github.com/ffraenz/private-composer-installer/issues",
-                "source": "https://github.com/ffraenz/private-composer-installer/tree/v5.0.1"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/ffraenz",
-                    "type": "github"
-                }
-            ],
-            "time": "2020-10-30T09:35:33+00:00"
-        },
-        {
             "name": "gettext/gettext",
             "version": "v4.8.12",
             "source": {
@@ -1076,68 +997,6 @@
                 }
             ],
             "time": "2022-10-18T15:00:10+00:00"
-        },
-        {
-            "name": "graham-campbell/result-type",
-            "version": "v1.1.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/GrahamCampbell/Result-Type.git",
-                "reference": "fbd48bce38f73f8a4ec8583362e732e4095e5862"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/GrahamCampbell/Result-Type/zipball/fbd48bce38f73f8a4ec8583362e732e4095e5862",
-                "reference": "fbd48bce38f73f8a4ec8583362e732e4095e5862",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.2.5 || ^8.0",
-                "phpoption/phpoption": "^1.9.2"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^8.5.34 || ^9.6.13 || ^10.4.2"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "GrahamCampbell\\ResultType\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Graham Campbell",
-                    "email": "hello@gjcampbell.co.uk",
-                    "homepage": "https://github.com/GrahamCampbell"
-                }
-            ],
-            "description": "An Implementation Of The Result Type",
-            "keywords": [
-                "Graham Campbell",
-                "GrahamCampbell",
-                "Result Type",
-                "Result-Type",
-                "result"
-            ],
-            "support": {
-                "issues": "https://github.com/GrahamCampbell/Result-Type/issues",
-                "source": "https://github.com/GrahamCampbell/Result-Type/tree/v1.1.2"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/GrahamCampbell",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/graham-campbell/result-type",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2023-11-12T22:16:48+00:00"
         },
         {
             "name": "johnpbloch/wordpress",
@@ -1791,81 +1650,6 @@
                 "source": "https://github.com/nikic/PHP-Parser/tree/v4.19.1"
             },
             "time": "2024-03-17T08:10:35+00:00"
-        },
-        {
-            "name": "phpoption/phpoption",
-            "version": "1.9.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/schmittjoh/php-option.git",
-                "reference": "80735db690fe4fc5c76dfa7f9b770634285fa820"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/schmittjoh/php-option/zipball/80735db690fe4fc5c76dfa7f9b770634285fa820",
-                "reference": "80735db690fe4fc5c76dfa7f9b770634285fa820",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.2.5 || ^8.0"
-            },
-            "require-dev": {
-                "bamarni/composer-bin-plugin": "^1.8.2",
-                "phpunit/phpunit": "^8.5.34 || ^9.6.13 || ^10.4.2"
-            },
-            "type": "library",
-            "extra": {
-                "bamarni-bin": {
-                    "bin-links": true,
-                    "forward-command": true
-                },
-                "branch-alias": {
-                    "dev-master": "1.9-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "PhpOption\\": "src/PhpOption/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Apache-2.0"
-            ],
-            "authors": [
-                {
-                    "name": "Johannes M. Schmitt",
-                    "email": "schmittjoh@gmail.com",
-                    "homepage": "https://github.com/schmittjoh"
-                },
-                {
-                    "name": "Graham Campbell",
-                    "email": "hello@gjcampbell.co.uk",
-                    "homepage": "https://github.com/GrahamCampbell"
-                }
-            ],
-            "description": "Option Type for PHP",
-            "keywords": [
-                "language",
-                "option",
-                "php",
-                "type"
-            ],
-            "support": {
-                "issues": "https://github.com/schmittjoh/php-option/issues",
-                "source": "https://github.com/schmittjoh/php-option/tree/1.9.2"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/GrahamCampbell",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/phpoption/phpoption",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2023-11-12T21:59:55+00:00"
         },
         {
             "name": "platformsh/config-reader",
@@ -3475,90 +3259,6 @@
                 "source": "https://github.com/tonik/cli/tree/master"
             },
             "time": "2018-03-27T13:58:50+00:00"
-        },
-        {
-            "name": "vlucas/phpdotenv",
-            "version": "v5.6.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/vlucas/phpdotenv.git",
-                "reference": "2cf9fb6054c2bb1d59d1f3817706ecdb9d2934c4"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/2cf9fb6054c2bb1d59d1f3817706ecdb9d2934c4",
-                "reference": "2cf9fb6054c2bb1d59d1f3817706ecdb9d2934c4",
-                "shasum": ""
-            },
-            "require": {
-                "ext-pcre": "*",
-                "graham-campbell/result-type": "^1.1.2",
-                "php": "^7.2.5 || ^8.0",
-                "phpoption/phpoption": "^1.9.2",
-                "symfony/polyfill-ctype": "^1.24",
-                "symfony/polyfill-mbstring": "^1.24",
-                "symfony/polyfill-php80": "^1.24"
-            },
-            "require-dev": {
-                "bamarni/composer-bin-plugin": "^1.8.2",
-                "ext-filter": "*",
-                "phpunit/phpunit": "^8.5.34 || ^9.6.13 || ^10.4.2"
-            },
-            "suggest": {
-                "ext-filter": "Required to use the boolean validator."
-            },
-            "type": "library",
-            "extra": {
-                "bamarni-bin": {
-                    "bin-links": true,
-                    "forward-command": true
-                },
-                "branch-alias": {
-                    "dev-master": "5.6-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Dotenv\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Graham Campbell",
-                    "email": "hello@gjcampbell.co.uk",
-                    "homepage": "https://github.com/GrahamCampbell"
-                },
-                {
-                    "name": "Vance Lucas",
-                    "email": "vance@vancelucas.com",
-                    "homepage": "https://github.com/vlucas"
-                }
-            ],
-            "description": "Loads environment variables from `.env` to `getenv()`, `$_ENV` and `$_SERVER` automagically.",
-            "keywords": [
-                "dotenv",
-                "env",
-                "environment"
-            ],
-            "support": {
-                "issues": "https://github.com/vlucas/phpdotenv/issues",
-                "source": "https://github.com/vlucas/phpdotenv/tree/v5.6.0"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/GrahamCampbell",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/vlucas/phpdotenv",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2023-11-12T22:43:29+00:00"
         },
         {
             "name": "wp-cli/cache-command",
@@ -6173,6 +5873,21 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/wp-media-library-categories/"
+        },
+        {
+            "name": "wpengine/advanced-custom-fields-pro",
+            "version": "6.3.1.1",
+            "dist": {
+                "type": "zip",
+                "url": "https://connect.advancedcustomfields.com/v2/plugins/composer_download?p=pro&t=6.3.1.1"
+            },
+            "require": {
+                "composer/installers": "~1.0 || ~2.0"
+            },
+            "replace": {
+                "wpackagist-plugin/advanced-custom-fields": "self.version"
+            },
+            "type": "wordpress-plugin"
         }
     ],
     "packages-dev": [],
