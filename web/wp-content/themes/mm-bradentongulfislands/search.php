@@ -7,9 +7,20 @@
 global $query_string;
 
 $search_str = isset( $_GET['s'] ) ? $_GET['s'] : '';
+wp_parse_str($query_string, $search_query);
 
-wp_parse_str( $query_string, $search_query );
-$search = new WP_Query( $search_query );
+
+$exclude_post_type = 'memberpressgroup';
+$all_post_types = get_post_types(array('public' => true));
+
+// Remove the excluded post type
+if (isset($all_post_types[$exclude_post_type])) {
+    unset($all_post_types[$exclude_post_type]);
+}
+
+$search_query['post_type'] = array_keys($all_post_types);
+
+$search = new WP_Query($search_query);
 
 use MaddenNino\Library\Utilities as U;
 
