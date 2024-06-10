@@ -417,6 +417,10 @@ $(window).scroll(function() {
 
 // Function to check if an element is in the viewport
 function isElementInViewport(el) {
+
+	if(el === undefined) {
+		return false;
+	}
     var rect = el.getBoundingClientRect();
     return (
         rect.top >= 0 &&
