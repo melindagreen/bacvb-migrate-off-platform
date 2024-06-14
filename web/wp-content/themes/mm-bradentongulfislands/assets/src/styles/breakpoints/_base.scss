@@ -1446,17 +1446,19 @@ MADDEN BANNER
         background: white !important;
         color: $rust !important;
         justify-content: left !important;
+        position: relative;
 
         &::after {
             content: ' ';
             transition: all 0.3s ease-in-out;
             position: absolute;
-            right: -2rem;
-            bottom: -35%;
-            height: 25px;
-            width: 25px;
+            right: 0.8rem;
+            bottom: 6px;
+            height: 22px;
+            width: 22px;
             background-size: contain !important;
             background: url('images/ui-next-on.png');
+            background-repeat: no-repeat;
           }
               &:hover {
     
@@ -1469,6 +1471,22 @@ MADDEN BANNER
                   transform: translateX(8%);
                 }
               }
+    }
+
+    .close-flyin {
+
+        img {
+
+            display: none;
+
+            &::after {
+
+                height: 35px;
+                width: 35px;
+                fill: $bradenton-teal;
+                background: url('images/icons/close.svg');
+            }
+        }
     }
 }
 
