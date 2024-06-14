@@ -88,7 +88,8 @@
 				description = truncateText(description, 15);
 				date = '';
 
-				let amenities = listing?.meta_fields?.['partnerportal_accomodations-facility-amenities'];
+				let amenities = unserialize(listing?.meta_fields?.['partnerportal_accomodations-facility-amenities']);
+				console.log(listing.meta_fields);
 				if(typeof amenities !== 'undefined') {
 				amenities.forEach(amenity => {
 					if(amenity == 'pet-friendly' || amenity =='eco-friendly' || amenity == 'on-site-dining') {
@@ -448,6 +449,30 @@
 		});
 
 		loadPage();
+	}
+
+	/**
+	 * Unserialize
+	 */
+	function unserialize(serializedString) {
+		var result = [];
+		var match;
+	
+		// Regex to match strings and integers
+		var regex = /s:\d+:"([^"]+)";|i:(\d+);|b:(\d);/g;
+		
+		// Iterate over the matches and push them to the result array
+		while ((match = regex.exec(serializedString)) !== null) {
+			if (match[1] !== undefined) {
+				result.push(match[1]); // Push string
+			} else if (match[2] !== undefined) {
+				result.push(parseInt(match[2], 10)); // Push integer
+			} else if (match[3] !== undefined) {
+				result.push(Boolean(parseInt(match[3], 10))); // Push boolean
+			}
+		}
+		
+		return result;
 	}
 
 	/** LISTENERS *********************************************************************/
