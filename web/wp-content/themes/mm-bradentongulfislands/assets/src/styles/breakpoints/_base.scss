@@ -1482,10 +1482,14 @@ MADDEN BANNER
             &::after {
 
                 content: ' ';
-                height: 35px;
-                width: 35px;
-                fill: $bradenton-teal;
                 background: url('images/icons/close.svg');
+                height: 30px;
+                width: 30px;
+                display: block;
+                position: absolute;
+                background-repeat: no-repeat;
+                top: 0;
+                right: 0;
             }
         }
     }
