@@ -1477,10 +1477,11 @@ MADDEN BANNER
 
         img {
 
-            display: none;
+            visibility: hidden;
 
             &::after {
 
+                content: ' ';
                 height: 35px;
                 width: 35px;
                 fill: $bradenton-teal;
