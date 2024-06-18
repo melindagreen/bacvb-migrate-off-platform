@@ -1,7 +1,4 @@
 (function ($) {
-
-var perPage;
-
 	/** FUNCTIONS *********************************************************************/
 
     function truncateText(description, maxWords) {
@@ -42,15 +39,10 @@ var perPage;
 			case 'event':
 				description = listing?.excerpt.rendered || '';
 				description = truncateText(description, 15);
-
-				console.log(listing);
 				if (listing?.meta_fields?.eventastic_start_date) {
 
-					// let startDate = listing?.startDate;
-					// let endDate = listing?.endDate;
-
-					let startDate = listing?.meta_fields?.eventastic_start_date;
-					let endDate = listing?.meta_fields?.eventastic_end_date;
+					let startDate = listing?.startDate;
+					let endDate = listing?.endDate;
 
 					// Start day Format
 					let startdateObject = new Date(startDate);
@@ -62,7 +54,6 @@ var perPage;
 					//     startDay = 1;
 					//     startdateObject.setMonth(startdateObject.getMonth() + 1);
 					// }
-
 					const startMonth = new Intl.DateTimeFormat('en-US', { month: 'short' }).format(startdateObject);
 
 					startDate = `${startMonth} ${startDay}`;
@@ -310,10 +301,8 @@ var perPage;
 		const instances = await loadAllInstances(); //Returns all instances that match dates
 		const result = await reconcileEvents(events, instances);
 		//use page and PAGE_LENGTH to slice result
-		// const start = (page - 1) * PAGE_LENGTH;
-		const start = (page - 1) * perPage;
-		// const end = start + PAGE_LENGTH;
-		const end = start + perPage;
+		const start = (page - 1) * PAGE_LENGTH;
+		const end = start + PAGE_LENGTH;
 		const slicedResult = result.slice(start, end);
 
 		return {
@@ -344,39 +333,38 @@ var perPage;
 		var order = ['posts'].includes(postType) ? 'desc' : 'asc';
 		var orderBy = ['listing',].includes(postType) ? 'title' : 'date';
 
-		// if(postType == 'event'){
-		// 	// get the page back up where it needs to be for viewing (it's slightly less jarring to do this pre-ajax call)
-		// 	if (adjustScroll) {
-		// 		$("html, body").animate({
-		// 			scrollTop: $('.grid-body').offset().top
-		// 		}, "10");
-		// 	}
+		if(postType == 'event'){
+			// get the page back up where it needs to be for viewing (it's slightly less jarring to do this pre-ajax call)
+			if (adjustScroll) {
+				$("html, body").animate({
+					scrollTop: $('.grid-body').offset().top
+				}, "10");
+			}
 
-		// 	const {total, events} = await getEvents(page);
-		// 	// var totalPages = parseInt(total / PAGE_LENGTH + 1);
-		// 	var totalPages = parseInt(total / perPage + 1);
-		// 	$(".count__page-total").text(total);
-		// 	$(".pagination__button--last").attr("data-page", totalPages);
+			const {total, events} = await getEvents(page);
+			var totalPages = parseInt(total / PAGE_LENGTH + 1);
+			$(".count__page-total").text(total);
+			$(".pagination__button--last").attr("data-page", totalPages);
 
-		// 	// update pagination
-		// 	updatePagination(page);
-		// 	$(".counts").addClass("show");
+			// update pagination
+			updatePagination(page);
+			$(".counts").addClass("show");
 
-		// 	// load listings
-		// 	$(".loading, .pagination__loading").removeClass("show");
+			// load listings
+			$(".loading, .pagination__loading").removeClass("show");
 
-		// 	if(events.length > 0) {
-		// 		$('.listings-container--grid').empty();
-		// 		$('.listings-container--grid')
-		// 			.append(events.map(listing => templateListing(listing, postType)));
-		// 	}
-		// 	else {
-		// 		$('.listings-container--grid').empty();
-		// 		$('.listings-container--grid').addClass('listings-container--no-listings')
-		// 		.append(`<h2>No ${postType}s available at this time</h2>`);
-		// 	}
+			if(events.length > 0) {
+				$('.listings-container--grid').empty();
+				$('.listings-container--grid')
+					.append(events.map(listing => templateListing(listing, postType)));
+			}
+			else {
+				$('.listings-container--grid').empty();
+				$('.listings-container--grid').addClass('listings-container--no-listings')
+				.append(`<h2>No ${postType}s available at this time</h2>`);
+			}
 
-		// } else {
+		} else {
 			var url = `/wp-json/wp/v2/${postType}?order=${order}&orderby=${orderBy}&page=${page}&per_page=${perPage}&include_child_terms=true&`;
 
 			// add filters
@@ -440,7 +428,7 @@ var perPage;
 						.append(`<h2>No ${postType}s available at this time</h2>`);
 					}
 				});
-		// }
+		}
 	}
 
 	/**
