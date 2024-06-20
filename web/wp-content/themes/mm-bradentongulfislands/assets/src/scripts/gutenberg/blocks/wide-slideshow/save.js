@@ -11,6 +11,19 @@ const save = (props) => {
 
   return (
     <div className={`wp-block-mm-bradentongulfislands-wideslideshow` }>
+    <div className='wideslideshow-ligthbox-overlay wideslideshow-ligthbox-overlay--hide'>
+      <div class="wideslideshow-ligthbox-overlay__close">x</div>
+      <div className='wideslideshow-ligthbox-overlay__content'>
+        <iframe id="lightbox-iframe" src=""></iframe>
+        <div className='lightbox-info'>
+          <span>
+            <h3 id="lightbox-title"></h3>
+            <h4 id="lightbox-subtitle"></h4>
+          </span>
+          <a id="lightbox-buttontext" aria-label="more info button" href="#" target="__blank"></a>
+        </div>
+      </div>
+    </div>
     <div className={`swiper-wideslideshow swiper` }>
       <div className={`swiper-wrapper bc-wrapper`}>
         <InnerBlocks.Content/> 
@@ -38,7 +51,8 @@ const save = (props) => {
       <div className={`swiper-wrapper bc-wrapper`}>
       </div>
     </div>
-    </div>);
+    </div>
+    );
 }
 
 /*** EXPORTS ****************************************************************/

@@ -3,7 +3,7 @@
  const save = (props) => {
 
     const {attributes} = props;
-    const {mediaUrl, mediaAlt, logoUrl, logoAlt, title, info, buttonUrl, buttonText, mediaPhotoCredit, imagePosition} = attributes;
+    const {mediaUrl, mediaAlt, logoUrl, logoAlt, title, info, buttonUrl, buttonText, mediaPhotoCredit, imagePosition, isLightbox, lightboxTitle, lightboxEmbedSrc, lightboxButtonText, lightboxSubtitle} = attributes;
     
     return (
         <div className="swiper-slide bc-wrapper__items" 
@@ -11,6 +11,11 @@
         data-info={info}
         data-buttontext={buttonText}
         data-buttonurl={buttonUrl}
+        data-islightbox={isLightbox}
+        data-lightboxembedsrc={lightboxEmbedSrc}
+        data-lightboxtitle={lightboxTitle}
+        data-lightboxsubtitle={lightboxSubtitle}
+        data-lightboxbuttontext={lightboxButtonText}
         >
                  {logoUrl.length !== 0 && <img className="wp-block-mm-bradentongulfislands-wideslideshow__logo" data-load-type="img" 
                 data-load-alt={logoAlt !== '' ? logoAlt : 'Carousel Image'}
