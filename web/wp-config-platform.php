@@ -102,6 +102,12 @@ if ($config->isValidPlatform()) {
     }
   }
 
+   // Debug mode should be disabled on Platform.sh. Set this constant to true
+    // in a wp-config-local.php file to skip this setting on local development.
+
+    if (!defined( 'WP_DEBUG' )) {
+      define( 'WP_DEBUG', false );
+    }
 
   // NEEDED FOR DC FRAMEWORK PLUGIN
   $_SERVER['APP_ENV'] = IS_PRODUCTION ? 'prod' : 'dev';
