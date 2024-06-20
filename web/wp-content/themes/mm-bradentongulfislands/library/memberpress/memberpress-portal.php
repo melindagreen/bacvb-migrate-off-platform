@@ -369,7 +369,7 @@ class MemberPressPortal {
             // Send email
             wp_mail($to, $subject, $message, $headers);
         }
-        else if ( ($old_status === 'pending' && ($new_status === 'trash' || $new_status === 'draft')) && ($post->post_type === 'event' || $post->post_type === 'listing') ) {
+        else if ( ($old_status === 'pending' && $new_status === 'draft') && ($post->post_type === 'event' || $post->post_type === 'listing') ) {
             // Get post author's email
             $author_id = $post->post_author;
             $author_email = get_the_author_meta( 'user_email', $author_id );
