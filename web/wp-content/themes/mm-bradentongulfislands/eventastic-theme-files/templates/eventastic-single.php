@@ -163,7 +163,7 @@ if (!$images && get_post_thumbnail_id()) {
                 <p class="dates detail">
                     <!-- <span class="fas fa-calendar-alt"></span> -->
                     <?php
-                    if ($recurring && $recurringRepeat) {
+                    if ($recurring && $recurringDays) {
                         if ($endDate && $startDate != $endDate) {
                             echo date('M j, Y', $startDate).' to '.date('M j, Y', $endDate).'<br>';
                         }
