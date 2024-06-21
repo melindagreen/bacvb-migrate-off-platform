@@ -3,7 +3,7 @@
 // WordPress dependencies
 import { __ } from '@wordpress/i18n';
 import { InspectorControls, MediaUpload, MediaUploadCheck, URLInput } from '@wordpress/block-editor';
-import { PanelBody, PanelRow, Button, ResponsiveWrapper, Spinner , TextControl, TextareaControl, SelectControl } from '@wordpress/components';
+import { PanelBody, PanelRow, Button, ResponsiveWrapper, Spinner , TextControl, TextareaControl, SelectControl, ToggleControl } from '@wordpress/components';
 import { Fragment } from '@wordpress/element';
 import { useSelect } from '@wordpress/data';
 
@@ -15,7 +15,7 @@ const ALLOWED_MEDIA_TYPES = ['image'];
 const Inspector = props => {
 
         const { attributes, setAttributes } = props;
-        const { mediaId, mediaUrl, mediaPhotoCredit, logoId, logoUrl, title, info, buttonUrl, buttonText, imagePosition } = attributes;
+        const { mediaId, mediaUrl, mediaPhotoCredit, logoId, logoUrl, title, info, buttonUrl, buttonText, imagePosition, lightboxTitle, lightboxSubtitle, lightboxEmbedSrc, lightboxButtonText, isLightbox } = attributes;
      
         const removeMedia = () => {
             setAttributes({
@@ -153,7 +153,50 @@ const Inspector = props => {
                             onChange={ ( buttonUrl ) => setAttributes({ buttonUrl })}
                             />
                         </PanelRow>
+                        <PanelRow>
+                            <ToggleControl
+                                label={__("Lightbox")}
+                                checked={isLightbox}
+                                onChange={(isLightbox) => setAttributes({ isLightbox })}
+                            />
+				        </PanelRow>
                 </PanelBody>
+                { isLightbox  &&
+                <PanelBody title="Lightbox Settings">
+                        <PanelRow>
+                            <TextControl
+                                label="Lightbox Title"
+                                help="Alternate title for the lightbox"
+                                onChange={ ( lightboxTitle ) => setAttributes( { lightboxTitle } ) }
+                                value={ lightboxTitle }
+                            />
+                        </PanelRow>
+                        <PanelRow>
+                            <TextControl
+                                label="Lightbox Subtitle"
+                                help="Alternate Subtitle for the lightbox"
+                                onChange={ ( lightboxSubtitle ) => setAttributes( { lightboxSubtitle } ) }
+                                value={ lightboxSubtitle }
+                            />
+                        </PanelRow>
+                        <PanelRow>
+                            <TextControl
+                                label="Lightbox Embed"
+                                help="Add url embed url here"
+                                onChange={ ( lightboxEmbedSrc ) => setAttributes( { lightboxEmbedSrc } ) }
+                                value={ lightboxEmbedSrc }
+                            />
+                        </PanelRow>
+                        <PanelRow>
+                            <TextControl
+                                label="Lightbox Button Text"
+                                help="Alternate button text for the lightbox"
+                                onChange={ ( lightboxButtonText ) => setAttributes( { lightboxButtonText } ) }
+                                value={ lightboxButtonText }
+                            />
+                        </PanelRow>
+                </PanelBody>
+                }
                 <PanelBody title="Image Settings">
                         <PanelRow>
                         <SelectControl

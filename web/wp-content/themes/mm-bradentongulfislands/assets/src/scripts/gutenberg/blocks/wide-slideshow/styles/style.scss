@@ -12,6 +12,90 @@ Wide Slideshow
 
     position: relative;
 
+    .wideslideshow-ligthbox-overlay {
+
+      display: block;
+      position: fixed;
+      height: 100%;
+      width: 100%;
+      background-color: $bradenton-teal;
+      top: 0;
+      z-index: 100000;
+
+      &--hide {
+
+        display: none;
+      }
+
+      #lightbox-iframe {
+
+        height: 50vh;
+        min-height: 400px;
+        max-height: 800px;
+        width: 100%;
+      }
+
+      #lightbox-title {
+          
+        color: #fff;
+        font-family: $font-title;
+        font-size: 2rem;
+        margin-top: 0.2rem;
+        margin-bottom: 0.2rem;
+      }
+
+      #lightbox-subtitle {
+
+        font-size: 1.25rem;
+        font-family: $font-body;
+        margin-top: 0;
+        color: white;
+      }
+
+      #lightbox-buttontext {
+
+        border-radius: 200px;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        font-weight: 600;
+        transition: all 0.3s ease-in-out;
+        color: $bradenton-teal;
+        background-color: $sky-blue;
+        text-decoration: none;
+        height: fit-content;
+        margin-top: 1rem;
+        padding: 0.3rem 0.7rem;
+      }
+
+      &__content {
+
+        left: 50%;
+        max-width: 95%;
+        position: relative;
+        padding-top: 8rem;
+        -webkit-transform: translateX(-50%);
+        transform: translateX(-50%);
+        width: 800px;
+
+        .lightbox-info {
+
+          display: flex;
+          justify-content: space-between;
+        }
+      }
+
+      &__close {
+        color: #fff;
+        cursor: pointer;
+        font-size: 4em;
+        opacity: .8;
+        position: absolute;
+        right: 2%;
+        top: -1%;
+        transition: opacity .3s;
+    }
+    }
+
     .swiper-wideslideshow {
     width: 100%;
     height: 600px;
