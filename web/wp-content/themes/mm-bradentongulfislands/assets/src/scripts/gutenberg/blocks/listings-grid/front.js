@@ -265,7 +265,7 @@
 			}
 		  });
 		}
-	  
+		console.log(url);
 		let page = 1;
 		const perPage = 100;
 		let allEvents = [];

@@ -327,6 +327,14 @@ class RestApi {
                 'type' => 'DATE',
             ) );
         }
+
+        // Filter To Exclude Category
+        $args['tax_query'][] = array(
+            'taxonomy' => 'eventastic_categories',
+            'terms' => array($request['eventastic_categories_exclude']),
+            'field' => 'term_id',
+            'operator' => 'NOT IN',
+        );
                 
         return $args;
     }
