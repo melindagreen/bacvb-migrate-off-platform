@@ -235,29 +235,45 @@
 		return instances;
 	}
 	async function loadAllEvents() {
-		// Update the URL to use the new custom endpoint
-		var endpoint = "wp/v2/event";
-		var order = "asc";
-		var orderBy = "date";
 
-		var url = `/wp-json/${endpoint}?order=${order}&orderby=${orderBy}`;
-		var filters = $(".filters").serializeArray();
+		const endpoint = "wp/v2/event";
+		const order = "asc";
+		const orderBy = "date";
+	  
+		let url = `/wp-json/${endpoint}?order=${order}&orderby=${orderBy}`;
+		const filters = $(".filters").serializeArray();
 		if (filters) {
-			filters.forEach(function (filter) {
-				if (!!filter.value) {
-					url += "&" + filter.name + "=" + filter.value;
-				}
-			});
+		  filters.forEach(filter => {
+			if (filter.value) {
+			  url += "&" + filter.name + "=" + filter.value;
+			}
+		  });
 		}
-
-		return $.get(url)
-			.done(function (events, status, xhr) {
-				return events.slice(0, 100); // slice the events array to only include the first 100 events
-			})
-			.fail(function (err) {
-				console.error(err);
-			});
-	}
+	  
+		let page = 1;
+		const perPage = 100;
+		let allEvents = [];
+		let moreEventsAvailable = true;
+	  
+		// Loop through pages until no more events are available
+		while (moreEventsAvailable) {
+		  try {
+			const currentUrl = `${url}&page=${page}&per_page=${perPage}`;
+			const response = await $.get(currentUrl);
+			if (response.length === 0) {
+			  moreEventsAvailable = false; // Exit the loop if no more events
+			} else {
+			  allEvents = allEvents.concat(response);
+			  page++;
+			}
+		  } catch (error) {
+			console.error(error);
+			moreEventsAvailable = false; 
+		  }
+		}
+	  
+		return allEvents;
+	}	  
 	async function reconcileEvents(events, instances) {
 		await Promise.all([events, instances]);
 		events = Object.values(events);
@@ -300,6 +316,7 @@
 		const events = await loadAllEvents(); //Return all events that match all filters
 		const instances = await loadAllInstances(); //Returns all instances that match dates
 		const result = await reconcileEvents(events, instances);
+
 		//use page and PAGE_LENGTH to slice result
 		const start = (page - 1) * PAGE_LENGTH;
 		const end = start + PAGE_LENGTH;
