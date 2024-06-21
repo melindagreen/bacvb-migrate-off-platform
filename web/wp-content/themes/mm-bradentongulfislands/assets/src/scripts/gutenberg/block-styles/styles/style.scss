@@ -1061,6 +1061,8 @@ CUSTOM BLOCKS
     @media only screen and (max-width: 768px) {
     .title {
 
+        line-height: 9rem;
+
         span {
 
             bottom: -15vw;
@@ -1076,11 +1078,13 @@ CUSTOM BLOCKS
 		
         top: 40%;
         font-size: 18vw;
+        top: 35%;
+        line-height: 15rem;
 
 		span {
 
             font-size: 4.5vw;
-            bottom: -0.5rem;
+            bottom: -2.5rem;
             left: 11%;
 		}
 	}

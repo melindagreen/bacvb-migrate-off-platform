@@ -21,6 +21,7 @@ Wide Slideshow
       background-color: $bradenton-teal;
       top: 0;
       z-index: 100000;
+      opacity: 0.98;
 
       &--hide {
 
@@ -93,6 +94,7 @@ Wide Slideshow
         right: 2%;
         top: -1%;
         transition: opacity .3s;
+        z-index: 10;
     }
     }
 
