@@ -11,6 +11,8 @@ $current_user_group = get_field('partner_group', 'user_' . get_current_user_id()
 $group_listings = get_field('group_listing', $current_user_group[0]->ID);
 $group_listings_ID = array();
 
+if(!empty($group_listings)) {
+
 if (!empty($group_listings)) {
     foreach ($group_listings as $listing) {
         $group_listings_ID[] = $listing->ID;
@@ -76,3 +78,5 @@ else if ($listings->have_posts() && $listings->found_posts > 1) {
 wp_reset_postdata(); ?>
 <br>
     <a style="margin-top:2rem;" href="<?php echo esc_url(add_query_arg(array('action' => 'add_listing'))); ?>" class="mepr-button btn-outline btn btn-outline">Add New Listing</a>
+
+<?php } ?>
