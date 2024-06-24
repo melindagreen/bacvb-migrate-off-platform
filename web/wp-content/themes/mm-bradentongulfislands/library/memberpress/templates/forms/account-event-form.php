@@ -16,17 +16,17 @@
     <h2 class="mepr-account-form__section-title">General Info</h2>
 
     <!-- Post Title -->
-    <label for="post_title">Title:</label>
-    <input type="text" name="post_title" id="post_title" value="<?php echo isset($post_id) ? esc_attr(get_the_title($post_id)) : ''; ?>">
+    <label for="post_title">Title: <span class="mepr-required-asterisk">*</span></label>
+    <input type="text" name="post_title" id="post_title" value="<?php echo isset($post_id) ? esc_attr(get_the_title($post_id)) : ''; ?>" required>
 
     <!-- Description -->
-    <label for="eventastic_description">Description:</label>
-    <textarea name="eventastic_description" id="eventastic_description"><?php echo esc_html(get_post_field('post_content', $post_id) ?? ''); ?></textarea>
+    <label for="eventastic_description">Description: <span class="mepr-required-asterisk">*</span></label>
+    <textarea name="eventastic_description" id="eventastic_description" required><?php echo esc_html(get_post_field('post_content', $post_id) ?? ''); ?></textarea>
 
     <div class="mepr-account-form__col-2">
         <!-- Business Name -->
         <label for="eventastic_business_name">Business Name:</label>
-        <input type="text" name="eventastic_business_name" id="eventastic_business_name" value="<?php echo esc_attr($meta_data['eventastic_business_name'][0] ?? ''); ?>">
+        <input type="text" name="eventastic_business_name" id="eventastic_business_name" value="<?php echo esc_attr($meta_data['eventastic_business_name'][0] ?? ''); ?>" required>
 
         <!-- Website Link -->
         <label for="eventastic_website_link">Website Link:</label>
@@ -48,8 +48,8 @@
 
     <div class="mepr-account-form__col-2">
         <!-- Address Line 1 -->
-        <label for="eventastic_address_1">Address Line 1:</label><br>
-        <input type="text" name="eventastic_address_1" id="eventastic_address_1" value="<?php echo esc_attr($meta_data['eventastic_address_1'][0] ?? ''); ?>">
+        <label for="eventastic_address_1">Address Line 1: <span class="mepr-required-asterisk">*</span></label><br>
+        <input type="text" name="eventastic_address_1" id="eventastic_address_1" value="<?php echo esc_attr($meta_data['eventastic_address_1'][0] ?? ''); ?>" required>
     </div>
     <div class="mepr-account-form__col-2">
         <!-- Address Line 2 -->
@@ -59,18 +59,18 @@
 
     <div class="mepr-account-form__col-3">
         <!-- City -->
-        <label for="eventastic_city">City:</label><br>
-        <input type="text" name="eventastic_city" id="eventastic_city" value="<?php echo esc_attr($meta_data['eventastic_city'][0] ?? ''); ?>">
+        <label for="eventastic_city">City: <span class="mepr-required-asterisk">*</span></label><br>
+        <input type="text" name="eventastic_city" id="eventastic_city" value="<?php echo esc_attr($meta_data['eventastic_city'][0] ?? ''); ?>" required>
     </div>
     <div class="mepr-account-form__col-3">
         <!-- Zip Code -->
-        <label for="eventastic_zip">Zip Code:</label><br>
-        <input type="text" name="eventastic_zip" id="eventastic_zip" value="<?php echo esc_attr($meta_data['eventastic_zip'][0] ?? ''); ?>">
+        <label for="eventastic_zip">Zip Code: <span class="mepr-required-asterisk">*</span></label><br>
+        <input type="text" name="eventastic_zip" id="eventastic_zip" value="<?php echo esc_attr($meta_data['eventastic_zip'][0] ?? ''); ?>" required>
     </div>
     <div class="mepr-account-form__col-3">
         <!-- State -->
-        <label for="eventastic_state">State:</label><br>
-        <input type="text" name="eventastic_state" id="eventastic_state" value="<?php echo esc_attr($meta_data['eventastic_state'][0] ?? ''); ?>">
+        <label for="eventastic_state">State: <span class="mepr-required-asterisk">*</span></label><br>
+        <input type="text" name="eventastic_state" id="eventastic_state" value="<?php echo esc_attr($meta_data['eventastic_state'][0] ?? ''); ?>" required>
     </div>
 
     <!-- ==== SOCIAL ==== -->
@@ -115,13 +115,13 @@
             
     <div class="mepr-account-form__col-2">
         <!-- Start Date -->
-        <label for="eventastic_start_date">Start Date:</label><br>
-        <input type="date" name="eventastic_start_date" id="eventastic_start_date" value="<?php echo esc_attr($meta_data['eventastic_start_date'][0] ?? ''); ?>">
+        <label for="eventastic_start_date">Start Date: <span class="mepr-required-asterisk">*</span></label><br>
+        <input type="date" name="eventastic_start_date" id="eventastic_start_date" value="<?php echo esc_attr($meta_data['eventastic_start_date'][0] ?? ''); ?>" required>
     </div>
     <div class="mepr-account-form__col-2">
         <!-- End Date -->
-        <label for="eventastic_end_date">End Date:</label><br>
-        <input type="date" name="eventastic_end_date" id="eventastic_end_date" value="<?php echo esc_attr($meta_data['eventastic_end_date'][0] ?? ''); ?>">
+        <label for="eventastic_end_date">End Date: <span class="mepr-required-asterisk">*</span></label><br>
+        <input type="date" name="eventastic_end_date" id="eventastic_end_date" value="<?php echo esc_attr($meta_data['eventastic_end_date'][0] ?? ''); ?>" required>
     </div>
     
     <!-- eventastic_event_end -->
@@ -138,13 +138,13 @@
 
     <div class="mepr-account-form__col-2">
         <!-- Start Time -->
-        <label for="eventastic_start_time">Start Time:</label><br>
-        <input type="time" name="eventastic_start_time" id="eventastic_start_time" value="<?php echo esc_attr($meta_data['eventastic_event_start_time'][0] ?? 'true'); ?>">
+        <label for="eventastic_start_time">Start Time: <span class="mepr-required-asterisk">*</span></label><br>
+        <input type="time" name="eventastic_start_time" id="eventastic_start_time" value="<?php echo esc_attr($meta_data['eventastic_event_start_time'][0] ?? 'true'); ?>" required>
     </div>
     <div class="mepr-account-form__col-2">
         <!-- End Time -->
-        <label for="eventastic_end_date">End Time:</label><br>
-        <input type="time" name="eventastic_end_time" id="eventastic_end_time" value="<?php echo esc_attr($meta_data['eventastic_event_end_time'][0] ?? 'true'); ?>">
+        <label for="eventastic_end_date">End Time: <span class="mepr-required-asterisk">*</span></label><br>
+        <input type="time" name="eventastic_end_time" id="eventastic_end_time" value="<?php echo esc_attr($meta_data['eventastic_event_end_time'][0] ?? 'true'); ?>" required>
     </div>
 
     <!-- ==== SUBMIT FORM ==== -->
