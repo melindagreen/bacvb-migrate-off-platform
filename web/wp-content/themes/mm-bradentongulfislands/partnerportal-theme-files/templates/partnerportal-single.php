@@ -242,7 +242,7 @@ $diningAmenities = (isset($meta['dining-amenities'])) ? $meta['dining-amenities'
 
 
                 <?php if(!empty($amenities) || !empty($location) || !empty($attractionsType) || !empty($recreationServices) || !empty($recreationType) || !empty($shopping) || !empty($diningType) || !empty($diningAmenities)) { ?>
-                <h2>Facility Amenities:</h2>
+                <h2>Services:</h2>
                 <?php } ?>
 
                 <?php if(!empty($amenities)): ?>
