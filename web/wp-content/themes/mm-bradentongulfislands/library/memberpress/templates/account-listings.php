@@ -11,7 +11,7 @@ $current_user_group = get_field('partner_group', 'user_' . get_current_user_id()
 $group_listings = get_field('group_listing', $current_user_group[0]->ID);
 $group_listings_ID = array();
 
-if(!empty($group_listings)) {
+if(!empty($current_user_group)) {
 
 if (!empty($group_listings)) {
     foreach ($group_listings as $listing) {
