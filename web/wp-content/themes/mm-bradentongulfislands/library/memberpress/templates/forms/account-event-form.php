@@ -16,7 +16,7 @@
     <h2 class="mepr-account-form__section-title">General Info</h2>
 
     <!-- Post Title -->
-    <label for="post_title">Title: <span class="mepr-required-asterisk">*</span></label>
+    <label for="post_title">Event Name: <span class="mepr-required-asterisk">*</span></label>
     <input type="text" name="post_title" id="post_title" value="<?php echo isset($post_id) ? esc_attr(get_the_title($post_id)) : ''; ?>" required>
 
     <!-- Description -->
