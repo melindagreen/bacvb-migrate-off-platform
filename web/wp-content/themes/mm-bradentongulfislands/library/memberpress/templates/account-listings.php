@@ -18,6 +18,7 @@ if (!empty($group_listings)) {
         $group_listings_ID[] = $listing->ID;
     }
 }
+
 $listings = new WP_Query(array(
     'post_type'      => 'listing',
     'post__in'       => $group_listings_ID, 
@@ -30,9 +31,17 @@ $listings = new WP_Query(array(
         ),
     )
 ));
-        
+
+$listings = !empty($group_listings) ? $listings : 'add_listing';
+
 // Display frontend form for editing listings
-if ($listings->have_posts() && $listings->found_posts === 1) {
+if ($listings === 'add_listing') {
+
+    wp_redirect(add_query_arg('action', 'add_listing'));
+}
+
+// Display frontend form for editing listings
+else if ($listings->have_posts() && $listings->found_posts === 1) {
     while ($listings->have_posts()) : $listings->the_post();
                     
         $post_id = get_the_ID();

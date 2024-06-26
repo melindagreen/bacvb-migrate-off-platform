@@ -25,7 +25,7 @@
 
     <div class="mepr-account-form__col-2">
         <!-- Business Name -->
-        <label for="eventastic_business_name">Business Name:</label>
+        <label for="eventastic_business_name">Business Name: <span class="mepr-required-asterisk">*</span></label>
         <input type="text" name="eventastic_business_name" id="eventastic_business_name" value="<?php echo esc_attr($meta_data['eventastic_business_name'][0] ?? ''); ?>" required>
 
         <!-- Website Link -->
