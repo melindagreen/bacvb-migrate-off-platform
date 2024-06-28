@@ -107,7 +107,7 @@ function render_grid_filter( $attrs, $filter_tax ) {
                 />
             <span class="control__text"><?php _e( 'All', 'mmnino' ); ?></span>
             </label>
-            <label for="control__input--categories" class="control__label control__label--categories">
+            <label for="control__input--categories" class="control__label control__label--categories exclude">
                 <input
                 type="checkbox"
                 id="control__input--categories-exclude" 
@@ -118,7 +118,6 @@ function render_grid_filter( $attrs, $filter_tax ) {
                 ?>"
                 <?php checked( !isset( $_GET['listings_term'] ) ); ?>
                 />
-                <span class="control__text"><?php _e( 'All', 'mmnino' ); ?></span>
             </label>
             <div class="date-controls">
                 <div class="control control--start-date">

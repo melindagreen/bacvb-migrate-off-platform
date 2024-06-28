@@ -73,7 +73,7 @@ $bar-height: 70px;
 			display: flex;
 			max-width: 70em;
 
-			.control__label--categories.all {
+			.control__label--categories.all, .control__label--categories.exclude {
 
 				display: none;
 			}
