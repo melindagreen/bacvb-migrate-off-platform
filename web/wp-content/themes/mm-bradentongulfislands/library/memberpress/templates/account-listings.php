@@ -11,13 +11,14 @@ $current_user_group = get_field('partner_group', 'user_' . get_current_user_id()
 $group_listings = get_field('group_listing', $current_user_group[0]->ID);
 $group_listings_ID = array();
 
-if(!empty($group_listings)) {
+if(!empty($current_user_group)) {
 
 if (!empty($group_listings)) {
     foreach ($group_listings as $listing) {
         $group_listings_ID[] = $listing->ID;
     }
 }
+
 $listings = new WP_Query(array(
     'post_type'      => 'listing',
     'post__in'       => $group_listings_ID, 
@@ -30,9 +31,17 @@ $listings = new WP_Query(array(
         ),
     )
 ));
-        
+
+$listings = !empty($group_listings) ? $listings : 'add_listing';
+
 // Display frontend form for editing listings
-if ($listings->have_posts() && $listings->found_posts === 1) {
+if ($listings === 'add_listing') {
+
+    wp_redirect(add_query_arg('action', 'add_listing'));
+}
+
+// Display frontend form for editing listings
+else if ($listings->have_posts() && $listings->found_posts === 1) {
     while ($listings->have_posts()) : $listings->the_post();
                     
         $post_id = get_the_ID();
