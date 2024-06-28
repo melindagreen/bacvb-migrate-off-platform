@@ -16,8 +16,8 @@
     <h2 class="mepr-account-form__section-title">General Info</h2>
 
     <!-- Post Title -->
-    <label for="post_title">Title:</label>
-    <input type="text" name="post_title" id="post_title" value="<?php echo esc_attr(get_the_title($post_id)); ?>">
+    <label for="post_title">Title: <span class="mepr-required-asterisk">*</span></label>
+    <input type="text" name="post_title" id="post_title" value="<?php echo esc_attr(get_the_title($post_id)); ?>" required>
 
     <!-- Description -->
     <label for="partnerportal_description">Description:</label>
@@ -25,8 +25,8 @@
 
     <div class="mepr-account-form__col-2">
         <!-- Business Name -->
-        <label for="partnerportal_business_name">Business Name:</label>
-        <input type="text" name="partnerportal_business_name" id="partnerportal_business_name" value="<?php echo esc_attr($meta_data['partnerportal_business_name'][0] ?? ''); ?>">
+        <label for="partnerportal_business_name">Business Name: <span class="mepr-required-asterisk">*</span></label>
+        <input type="text" name="partnerportal_business_name" id="partnerportal_business_name" value="<?php echo esc_attr($meta_data['partnerportal_business_name'][0] ?? ''); ?>" required>
 
         <!-- Website Link -->
         <label for="partnerportal_website_link">Website Link:</label>
@@ -35,12 +35,12 @@
 
     <div class="mepr-account-form__col-2">
         <!-- Phone Number -->
-        <label for="partnerportal_phone_number">Phone Number:</label><br>
-        <input type="tel" name="partnerportal_phone_number" id="partnerportal_phone_number" value="<?php echo esc_attr($meta_data['partnerportal_phone_number'][0] ?? ''); ?>"><br>
+        <label for="partnerportal_phone_number">Phone Number: <span class="mepr-required-asterisk">*</span></label><br>
+        <input type="tel" name="partnerportal_phone_number" id="partnerportal_phone_number" value="<?php echo esc_attr($meta_data['partnerportal_phone_number'][0] ?? ''); ?>" required><br>
 
         <!-- Contact Email for Visitors -->
-        <label for="partnerportal_contact_email_for_visitors">Contact Email for Visitors:</label><br>
-        <input type="email" name="partnerportal_contact_email_for_visitors" id="partnerportal_contact_email_for_visitors" value="<?php echo esc_attr($meta_data['partnerportal_contact_email_for_visitors'][0] ?? ''); ?>"><br>
+        <label for="partnerportal_contact_email_for_visitors">Contact Email for Visitors: <span class="mepr-required-asterisk">*</span></label><br>
+        <input type="email" name="partnerportal_contact_email_for_visitors" id="partnerportal_contact_email_for_visitors" value="<?php echo esc_attr($meta_data['partnerportal_contact_email_for_visitors'][0] ?? ''); ?>" required><br>
     </div>
 
     <!-- ==== HOURS ==== -->
@@ -55,8 +55,8 @@
     
     <div class="mepr-account-form__col-2">
         <!-- Address Line 1 -->
-        <label for="partnerportal_address_1">Address Line 1:</label><br>
-        <input type="text" name="partnerportal_address_1" id="partnerportal_address_1" value="<?php echo esc_attr($meta_data['partnerportal_address_1'][0] ?? ''); ?>">
+        <label for="partnerportal_address_1">Address Line 1: <span class="mepr-required-asterisk">*</span></label><br>
+        <input type="text" name="partnerportal_address_1" id="partnerportal_address_1" value="<?php echo esc_attr($meta_data['partnerportal_address_1'][0] ?? ''); ?>" required>
     </div>
     <div class="mepr-account-form__col-2">
          <!-- Address Line 2 -->
@@ -66,18 +66,18 @@
 
     <div class="mepr-account-form__col-3">
         <!-- City -->
-        <label for="partnerportal_city">City:</label><br>
-        <input type="text" name="partnerportal_city" id="partnerportal_city" value="<?php echo esc_attr($meta_data['partnerportal_city'][0] ?? ''); ?>">
+        <label for="partnerportal_city">City: <span class="mepr-required-asterisk">*</span></label><br>
+        <input type="text" name="partnerportal_city" id="partnerportal_city" value="<?php echo esc_attr($meta_data['partnerportal_city'][0] ?? ''); ?>" required>
     </div>
     <div class="mepr-account-form__col-3">
         <!-- Zip Code -->
-        <label for="partnerportal_zip">Zip Code:</label><br>
-        <input type="text" name="partnerportal_zip" id="partnerportal_zip" value="<?php echo esc_attr($meta_data['partnerportal_zip'][0] ?? ''); ?>">
+        <label for="partnerportal_zip">Zip Code: <span class="mepr-required-asterisk">*</span></label><br>
+        <input type="text" name="partnerportal_zip" id="partnerportal_zip" value="<?php echo esc_attr($meta_data['partnerportal_zip'][0] ?? ''); ?>" required>
     </div>
     <div class="mepr-account-form__col-3">
         <!-- State -->
-        <label for="partnerportal_state">State:</label><br>
-        <input type="text" name="partnerportal_state" id="partnerportal_state" value="<?php echo esc_attr($meta_data['partnerportal_state'][0] ?? ''); ?>">
+        <label for="partnerportal_state">State: <span class="mepr-required-asterisk">*</span></label><br>
+        <input type="text" name="partnerportal_state" id="partnerportal_state" value="<?php echo esc_attr($meta_data['partnerportal_state'][0] ?? ''); ?>" required>
     </div> 
 
     <!-- ==== SOCIAL ==== -->

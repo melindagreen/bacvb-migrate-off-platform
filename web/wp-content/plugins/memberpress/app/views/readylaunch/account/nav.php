@@ -7,7 +7,7 @@
   <nav id="mepr-account-nav" x-data="{ open: false }" class="mepr-nav" :class="open ? 'open' : ''" @toggle-menu.window="open=!open" >
     <span class="mepr-nav-item <?php MeprAccountHelper::active_nav( 'home' ); ?>">
       <a class=""
-        href="<?php echo MeprHooks::apply_filters( 'mepr-account-nav-home-link', $account_url . $delim . 'action=home' ); ?>"><?php echo MeprHooks::apply_filters( 'mepr-account-nav-home-label', _x( 'My Profile', 'ui', 'memberpress' ) ); ?></a>
+        href="<?php echo MeprHooks::apply_filters( 'mepr-account-nav-home-link', $account_url . $delim . 'action=home' ); ?>"><?php echo MeprHooks::apply_filters( 'mepr-account-nav-home-label', _x( 'Your Business Profile', 'ui', 'memberpress' ) ); ?></a>
     </span>
 
     <span class="mepr-nav-item <?php MeprAccountHelper::active_nav( 'payments' ); ?>">

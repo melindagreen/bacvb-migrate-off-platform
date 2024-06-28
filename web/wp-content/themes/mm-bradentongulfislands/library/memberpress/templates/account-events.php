@@ -6,6 +6,8 @@ $current_user_group = get_field('partner_group', 'user_' . get_current_user_id()
 $group_events = get_field('group_events', $current_user_group[0]->ID);
 $group_events_ID = array();
 
+if(!empty($group_events)) {
+
 if (!empty($group_events)) {
     foreach ($group_events as $event) {
         $group_events_ID[] = $event->ID;
@@ -63,3 +65,5 @@ if ($events->have_posts() && !empty($group_events)) : ?>
         ?>  
         <br>        
         <a href="<?php echo esc_url(add_query_arg('action', 'add_event', $_SERVER['REQUEST_URI'])); ?>" class="mepr-button btn">Create New Event</a>
+
+<?php } ?>

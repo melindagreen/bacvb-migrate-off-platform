@@ -97,15 +97,13 @@ function render_grid_filter( $attrs, $filter_tax ) {
             <?php if( isset( $attrs['postType'] ) && $attrs['postType'] === 'event' ):?>
             <!-- filter controls -->
             <label for="control__input--categories" class="control__label control__label--categories all">
-                <?php 
-                ?>
                 <input
                 type="checkbox"
                 id="control__input--categories-all" 
                 class="control__input control__input--categories control-input--checkbox" 
-                name="<?php echo $filter_tax === 'category' ? 'categories' : $filter_tax; ?>"
+                name="eventastic_categories_exclude"
                 value="<?php 
-                echo $pre_filter_cat ? $pre_filter_cat->term_id : $updatedCats;
+                echo $removeCat;
                 ?>"
                 <?php checked( !isset( $_GET['listings_term'] ) ); ?>
                 />

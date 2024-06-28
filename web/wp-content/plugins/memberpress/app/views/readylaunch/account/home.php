@@ -39,7 +39,7 @@ $user_message = MeprHooks::apply_filters( 'mepr-user-message', wpautop( do_short
     <dd class="mepr-profile-details__content"><?php echo esc_html( $mepr_current_user->user_email ); ?></dd>
     <?php if($mepr_options->show_address_fields){ ?>
     <dt class="">
-    <?php echo esc_html_x( 'Billing Address', 'ui', 'memberpress' ); ?>
+    <?php echo esc_html_x( 'Business Address', 'ui', 'memberpress' ); ?>
     <button data-name="billing_address" class="mepr-profile-details__button btn btn-link">
       <svg class="mepr-profile-details__icon" width="15" height="16" viewBox="0 0 15 16" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M14.1578 2.99018L12.6403 1.47272C11.9097 0.74209 10.7013 0.74209 9.97069 1.47272L1.03453 10.3527L0.360107 14.5397C0.275804 14.9894 0.66922 15.3828 1.11884 15.2985L5.30591 14.624L14.1859 5.68789C14.9165 4.95726 14.9165 3.74891 14.1578 2.99018ZM5.98033 9.67825C6.09274 9.79065 6.26134 9.84685 6.42995 9.84685C6.57046 9.84685 6.73906 9.79065 6.85147 9.67825L10.1955 6.33421L11.0104 7.14915L6.26134 11.9263V10.7461H4.91249V9.39724H3.73224L8.50943 4.64815L9.32437 5.46308L5.98033 8.80711C5.72742 9.06002 5.72742 9.42534 5.98033 9.67825ZM2.6644 13.8091L1.84947 12.9942L2.21478 10.9428L2.7206 10.4089H3.90085V11.7577H5.2497V12.938L4.71578 13.4438L2.6644 13.8091ZM13.3147 4.81675L11.9378 6.19371L9.46487 3.72081L10.8418 2.34385C11.0947 2.09094 11.5163 2.09094 11.7692 2.34385L13.2866 3.86131C13.5676 4.14233 13.5676 4.56384 13.3147 4.81675Z" fill="#777777" />
@@ -158,13 +158,13 @@ $user_message = MeprHooks::apply_filters( 'mepr-user-message', wpautop( do_short
       </div>
 
       <div id="mp-address-group-label" class="mp-form-label">
-        <label for="billing_address"><?php echo esc_html_x( 'Change your billing address:*', 'ui', 'memberpress' ); ?></label>
+        <label for="billing_address"><?php echo esc_html_x( 'Change your business address:*', 'ui', 'memberpress' ); ?></label>
       </div>
 
       <div class="mp-address-group">
         <div class="mp-form-row mepr_custom_field mepr_mepr-address-label">
         <div class="mp-form-label">
-          <label for="billing_address"><?php echo esc_html_x( 'Change your billing address:*', 'ui', 'memberpress' ); ?></label>
+          <label for="billing_address"><?php echo esc_html_x( 'Change your business address:*', 'ui', 'memberpress' ); ?></label>
         </div>
         </div>
 

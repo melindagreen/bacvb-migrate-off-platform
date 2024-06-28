@@ -14,7 +14,7 @@ const save = (props) => {
     <div className='wideslideshow-ligthbox-overlay wideslideshow-ligthbox-overlay--hide'>
       <div class="wideslideshow-ligthbox-overlay__close">x</div>
       <div className='wideslideshow-ligthbox-overlay__content'>
-        <iframe id="lightbox-iframe" src=""></iframe>
+        <iframe frameborder="0" id="lightbox-iframe" src=""></iframe>
         <div className='lightbox-info'>
           <span>
             <h3 id="lightbox-title"></h3>

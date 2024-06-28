@@ -89,7 +89,7 @@
 				date = '';
 
 				let amenities = unserialize(listing?.meta_fields?.['partnerportal_accomodations-facility-amenities']);
-				console.log(listing.meta_fields);
+	
 				if(typeof amenities !== 'undefined') {
 				amenities.forEach(amenity => {
 					if(amenity == 'pet-friendly' || amenity =='eco-friendly' || amenity == 'on-site-dining') {
@@ -203,10 +203,11 @@
 		return instances;
 	}
 	function isRecurring(event) {
-		const re1 = event?.meta_fields?.eventastic_recurring_repeat;
+		const re1 = event?.meta_fields?.eventastic_event_end;
 		const re2 = event?.meta_fields?.eventastic_recurring_days;
+		
 		if(
-			(re1 && re1.length > 0 && re1[0] !== '') ||
+			(re1 !== 'finite') &&
 			(re2 && re2.length > 0 && re2[0] !== '')
 		) {
 			return true;
@@ -232,32 +233,63 @@
 			if(count > 692) break; //Gotta stop somewhere... This allows roughly 500+ events to be displayed/searched
 
 		}
+		
+		// Gets instances without recurring date
+		for (const [_, value] of Object.entries(instanceData.event_objects)) {
+
+			const date = value.meta.end_date;
+			if(end && date > end) break; //if end date is set, skip any dates after it
+		
+			instances[count] = {
+				id: value.ID,
+				date: date
+			}
+			count++;
+			if(count > 692) break; //Gotta stop somewhere... This allows roughly 500+ events to be displayed/searched
+		}
+	
 		return instances;
 	}
 	async function loadAllEvents() {
-		// Update the URL to use the new custom endpoint
-		var endpoint = "wp/v2/event";
-		var order = "asc";
-		var orderBy = "date";
 
-		var url = `/wp-json/${endpoint}?order=${order}&orderby=${orderBy}`;
-		var filters = $(".filters").serializeArray();
+		const endpoint = "wp/v2/event";
+		const order = "asc";
+		const orderBy = "date";
+	  
+		let url = `/wp-json/${endpoint}?order=${order}&orderby=${orderBy}`;
+		const filters = $(".filters").serializeArray();
 		if (filters) {
-			filters.forEach(function (filter) {
-				if (!!filter.value) {
-					url += "&" + filter.name + "=" + filter.value;
-				}
-			});
+		  filters.forEach(filter => {
+			if (filter.value) {
+			  url += "&" + filter.name + "=" + filter.value;
+			}
+		  });
 		}
-
-		return $.get(url)
-			.done(function (events, status, xhr) {
-				return events.slice(0, 100); // slice the events array to only include the first 100 events
-			})
-			.fail(function (err) {
-				console.error(err);
-			});
-	}
+		console.log(url);
+		let page = 1;
+		const perPage = 100;
+		let allEvents = [];
+		let moreEventsAvailable = true;
+	  
+		// Loop through pages until no more events are available
+		while (moreEventsAvailable) {
+		  try {
+			const currentUrl = `${url}&page=${page}&per_page=${perPage}`;
+			const response = await $.get(currentUrl);
+			if (response.length === 0) {
+			  moreEventsAvailable = false; // Exit the loop if no more events
+			} else {
+			  allEvents = allEvents.concat(response);
+			  page++;
+			}
+		  } catch (error) {
+			console.error(error);
+			moreEventsAvailable = false; 
+		  }
+		}
+	  
+		return allEvents;
+	}	  
 	async function reconcileEvents(events, instances) {
 		await Promise.all([events, instances]);
 		events = Object.values(events);
@@ -267,11 +299,20 @@
 			return events.some(e => e.id === i.id);
 		});
 
+		// Sort the dates and removes duplicates
+		filtered.sort((a, b) => new Date(a.date) - new Date(b.date));
+		filtered = filtered.filter((value, index, self) =>
+			index === self.findIndex((t) => (
+				t.id === value.id && t.date === value.date
+			))
+		);
+
 		//map over filtered instances and add the event data to each instance
 		let singleEvents = [];
 		let reconciled = filtered.map(i => {
 			let event = {...events.find(e => e.id === i.id)};
 			const recurs = isRecurring(event);
+	
 			event.endDate = recurs ? i.date : event?.meta_fields?.eventastic_end_date;
 			event.startDate = recurs ? i.date : event?.meta_fields?.eventastic_start_date;
 			event.recurring = recurs;
@@ -300,6 +341,7 @@
 		const events = await loadAllEvents(); //Return all events that match all filters
 		const instances = await loadAllInstances(); //Returns all instances that match dates
 		const result = await reconcileEvents(events, instances);
+
 		//use page and PAGE_LENGTH to slice result
 		const start = (page - 1) * PAGE_LENGTH;
 		const end = start + PAGE_LENGTH;
@@ -352,7 +394,6 @@
 
 			// load listings
 			$(".loading, .pagination__loading").removeClass("show");
-
 			if(events.length > 0) {
 				$('.listings-container--grid').empty();
 				$('.listings-container--grid')
