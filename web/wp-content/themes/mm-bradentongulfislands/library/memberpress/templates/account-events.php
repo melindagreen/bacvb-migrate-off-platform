@@ -6,7 +6,7 @@ $current_user_group = get_field('partner_group', 'user_' . get_current_user_id()
 $group_events = get_field('group_events', $current_user_group[0]->ID);
 $group_events_ID = array();
 
-if(!empty($group_events)) {
+if(!empty($current_user_group)) {
 
 if (!empty($group_events)) {
     foreach ($group_events as $event) {
