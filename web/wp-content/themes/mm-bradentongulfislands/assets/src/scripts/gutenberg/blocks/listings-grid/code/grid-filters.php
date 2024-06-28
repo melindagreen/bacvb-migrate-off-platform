@@ -97,9 +97,20 @@ function render_grid_filter( $attrs, $filter_tax ) {
             <?php if( isset( $attrs['postType'] ) && $attrs['postType'] === 'event' ):?>
             <!-- filter controls -->
             <label for="control__input--categories" class="control__label control__label--categories all">
-                <input
+            <input
                 type="checkbox"
                 id="control__input--categories-all" 
+                class="control__input control__input--categories control-input--checkbox <?php echo $attrs['filterType'] === 'categories' ? 'control__input--catscheck' : ''; ?>" 
+                name="<?php echo $filter_tax === 'category' ? 'categories' : $filter_tax; ?>"
+                value="<?php echo $pre_filter_cat ? $pre_filter_cat->term_id : ''; ?>"
+                <?php checked( !isset( $_GET['listings_term'] ) ); ?>
+                />
+            <span class="control__text"><?php _e( 'All', 'mmnino' ); ?></span>
+            </label>
+            <label for="control__input--categories" class="control__label control__label--categories exclude">
+                <input
+                type="checkbox"
+                id="control__input--categories-exclude" 
                 class="control__input control__input--categories control-input--checkbox" 
                 name="eventastic_categories_exclude"
                 value="<?php 
@@ -107,7 +118,6 @@ function render_grid_filter( $attrs, $filter_tax ) {
                 ?>"
                 <?php checked( !isset( $_GET['listings_term'] ) ); ?>
                 />
-                <span class="control__text"><?php _e( 'All', 'mmnino' ); ?></span>
             </label>
             <div class="date-controls">
                 <div class="control control--start-date">

@@ -34,7 +34,8 @@ function render_block( $attrs, $content ) {
 		&& isset( $attrs['postType'] ) 
 		&& (
 			$attrs['postType'] === 'listing' ||
-			$attrs['postType'] === 'page'
+			$attrs['postType'] === 'page'	||
+			$attrs['postType'] === 'event'      
 		)
 	) {
 		$query_args['tax_query'][] = array(
@@ -60,7 +61,6 @@ function render_block( $attrs, $content ) {
 		data-postType="<?php echo $attrs['postType']; ?>"
 		data-perPage="<?php echo $attrs['listingsPerPage']; ?>"
 	>
-
 
 	<!-- grid body -->
 	<div class="grid-body">
