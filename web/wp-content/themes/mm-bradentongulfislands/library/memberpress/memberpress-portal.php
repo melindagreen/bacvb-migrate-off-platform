@@ -24,7 +24,7 @@ class MemberPressPortal {
 
   public static function partner_portal_maintenance() {
 
-    $isMaintenance = get_field('partner_portal_maintenance', 1295);
+    $isMaintenance = get_field('partner_portal_maintenance', 12925);
 
     if(is_page( 'mepr-account' ) && $isMaintenance) {
       wp_redirect(site_url() . '/404?maintenance=true');
