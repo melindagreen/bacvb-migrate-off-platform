@@ -18,8 +18,19 @@ class MemberPressPortal {
         add_action( 'transition_post_status', array(get_called_class(),'post_status_notification'), 9, 3 );
         add_action('mepr_account_nav', array(get_called_class(),'mepr_add_some_tabs'));
         add_action( 'transition_post_status', array(get_called_class(),'handle_post_status'), 10, 3 );
+        add_action( 'mepr_account_home', array(get_called_class(),'partner_portal_maintenance'), 10 );
         add_action( 'init', array(get_called_class(),'exclude_from_search'), 99 );
 	}
+
+  public static function partner_portal_maintenance() {
+
+    $isMaintenance = get_field('partner_portal_maintenance', 1295);
+
+    if($isMaintenance) {
+      wp_redirect(site_url() . '/404?maintenance=true');
+      exit;
+    }
+  }
 
     public static function exclude_from_search() {
       global $wp_post_types;
