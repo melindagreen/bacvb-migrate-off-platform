@@ -30,7 +30,7 @@ export default function ErrorHandler({
     ? __("Your plugin isn't authorized", 'leadin')
     : errorInfo.header;
   const errorMessage = isUnauthorized
-    ? __('Reauthorize your plugin to access your free HubSpot tools.', 'leadin')
+    ? __('Reauthorize your plugin to access your free HubSpot tools', 'leadin')
     : errorInfo.message;
 
   return (

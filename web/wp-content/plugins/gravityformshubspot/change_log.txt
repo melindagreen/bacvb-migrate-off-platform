@@ -1,3 +1,9 @@
+### 2.1.0 | 2024-03-14
+- Updated the additional contact field settings to use the generic field map instead of the deprecated dynamic field map field type.
+- Updated to use the v3 Owners API before v2 is sunset in August 2024.
+- Updated the minimum Gravity Forms version to 2.7.1.
+- Fixed a JavaScript error on the feed configuration page with Gravity Forms 2.8+.
+
 ### 2.0.0 | 2023-11-01
 - Fixed a bug where feeds can't be created or edited due to an invalid_lifecycle_stage error.
 

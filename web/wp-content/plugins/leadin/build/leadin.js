@@ -169,6 +169,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "activationTime": () => (/* binding */ activationTime),
 /* harmony export */   "adminUrl": () => (/* binding */ adminUrl),
 /* harmony export */   "connectionStatus": () => (/* binding */ connectionStatus),
+/* harmony export */   "contentEmbed": () => (/* binding */ contentEmbed),
+/* harmony export */   "decryptError": () => (/* binding */ decryptError),
 /* harmony export */   "deviceId": () => (/* binding */ deviceId),
 /* harmony export */   "didDisconnect": () => (/* binding */ didDisconnect),
 /* harmony export */   "env": () => (/* binding */ env),
@@ -179,6 +181,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "hubspotNonce": () => (/* binding */ hubspotNonce),
 /* harmony export */   "iframeUrl": () => (/* binding */ iframeUrl),
 /* harmony export */   "impactLink": () => (/* binding */ impactLink),
+/* harmony export */   "lastAuthorizeTime": () => (/* binding */ lastAuthorizeTime),
+/* harmony export */   "lastDeauthorizeTime": () => (/* binding */ lastDeauthorizeTime),
+/* harmony export */   "lastDisconnectTime": () => (/* binding */ lastDisconnectTime),
 /* harmony export */   "leadinPluginVersion": () => (/* binding */ leadinPluginVersion),
 /* harmony export */   "leadinQueryParams": () => (/* binding */ leadinQueryParams),
 /* harmony export */   "locale": () => (/* binding */ locale),
@@ -192,6 +197,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "portalId": () => (/* binding */ portalId),
 /* harmony export */   "redirectNonce": () => (/* binding */ redirectNonce),
 /* harmony export */   "refreshToken": () => (/* binding */ refreshToken),
+/* harmony export */   "requiresContentEmbedScope": () => (/* binding */ requiresContentEmbedScope),
 /* harmony export */   "restNonce": () => (/* binding */ restNonce),
 /* harmony export */   "restUrl": () => (/* binding */ restUrl),
 /* harmony export */   "reviewSkippedDate": () => (/* binding */ reviewSkippedDate),
@@ -215,6 +221,9 @@ var _window$leadinConfig = window.leadinConfig,
     hubspotNonce = _window$leadinConfig.hubspotNonce,
     iframeUrl = _window$leadinConfig.iframeUrl,
     impactLink = _window$leadinConfig.impactLink,
+    lastAuthorizeTime = _window$leadinConfig.lastAuthorizeTime,
+    lastDeauthorizeTime = _window$leadinConfig.lastDeauthorizeTime,
+    lastDisconnectTime = _window$leadinConfig.lastDisconnectTime,
     leadinPluginVersion = _window$leadinConfig.leadinPluginVersion,
     leadinQueryParams = _window$leadinConfig.leadinQueryParams,
     locale = _window$leadinConfig.locale,
@@ -232,7 +241,10 @@ var _window$leadinConfig = window.leadinConfig,
     reviewSkippedDate = _window$leadinConfig.reviewSkippedDate,
     theme = _window$leadinConfig.theme,
     trackConsent = _window$leadinConfig.trackConsent,
-    wpVersion = _window$leadinConfig.wpVersion;
+    wpVersion = _window$leadinConfig.wpVersion,
+    contentEmbed = _window$leadinConfig.contentEmbed,
+    requiresContentEmbedScope = _window$leadinConfig.requiresContentEmbedScope,
+    decryptError = _window$leadinConfig.decryptError;
 
 
 /***/ }),
@@ -307,9 +319,9 @@ var IframeErrorPage = function IframeErrorPage() {
     }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ErrorHeader, {
       children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('The HubSpot for WordPress plugin is not able to load pages', 'leadin')
     }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
-      children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Try disabling your browser extensions and ad blockers, then refresh the page.', 'leadin')
+      children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Try disabling your browser extensions and ad blockers, then refresh the page', 'leadin')
     }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
-      children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Or open the HubSpot for WordPress plugin in a different browser.', 'leadin')
+      children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Or open the HubSpot for WordPress plugin in a different browser', 'leadin')
     })]
   });
 };
@@ -365,7 +377,8 @@ var CoreMessages = {
   ReloadParentFrame: 'INTEGRATED_APP_EMBEDDER_RELOAD_PARENT_FRAME',
   RedirectParentFrame: 'INTEGRATED_APP_EMBEDDER_REDIRECT_PARENT_FRAME',
   SendLocale: 'INTEGRATED_APP_EMBEDDER_SEND_LOCALE',
-  SendDeviceId: 'INTEGRATED_APP_EMBEDDER_SEND_DEVICE_ID'
+  SendDeviceId: 'INTEGRATED_APP_EMBEDDER_SEND_DEVICE_ID',
+  SendIntegratedAppConfig: 'INTEGRATED_APP_EMBEDDER_CONFIG'
 };
 
 /***/ }),
@@ -459,7 +472,14 @@ var PluginMessages = {
   BusinessUnitChangeError: 'BUSINESS_UNIT_CHANGE_ERROR',
   SkipReviewRequest: 'SKIP_REVIEW_REQUEST',
   SkipReviewResponse: 'SKIP_REVIEW_RESPONSE',
-  SkipReviewError: 'SKIP_REVIEW_ERROR'
+  SkipReviewError: 'SKIP_REVIEW_ERROR',
+  RemoveParentQueryParam: 'REMOVE_PARENT_QUERY_PARAM',
+  ContentEmbedInstallRequest: 'CONTENT_EMBED_INSTALL_REQUEST',
+  ContentEmbedInstallResponse: 'CONTENT_EMBED_INSTALL_RESPONSE',
+  ContentEmbedInstallError: 'CONTENT_EMBED_INSTALL_ERROR',
+  ContentEmbedActivationRequest: 'CONTENT_EMBED_ACTIVATION_REQUEST',
+  ContentEmbedActivationResponse: 'CONTENT_EMBED_ACTIVATION_RESPONSE',
+  ContentEmbedActivationError: 'CONTENT_EMBED_ACTIVATION_ERROR'
 };
 
 /***/ }),
@@ -510,6 +530,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _iframe_integratedMessages__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../iframe/integratedMessages */ "./scripts/iframe/integratedMessages/index.ts");
 /* harmony import */ var _api_wordpressApiClient__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../api/wordpressApiClient */ "./scripts/api/wordpressApiClient.ts");
+/* harmony import */ var _utils_queryParams__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/queryParams */ "./scripts/utils/queryParams.ts");
+/* harmony import */ var _utils_contentEmbedInstaller__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/contentEmbedInstaller */ "./scripts/utils/contentEmbedInstaller.ts");
+
+
 
 
 var messageMapper = new Map([[_iframe_integratedMessages__WEBPACK_IMPORTED_MODULE_0__.PluginMessages.TrackConsent, function (message) {
@@ -572,6 +596,32 @@ var messageMapper = new Map([[_iframe_integratedMessages__WEBPACK_IMPORTED_MODUL
   })["catch"](function (payload) {
     embedder.postMessage({
       key: _iframe_integratedMessages__WEBPACK_IMPORTED_MODULE_0__.PluginMessages.SkipReviewError,
+      payload: payload
+    });
+  });
+}], [_iframe_integratedMessages__WEBPACK_IMPORTED_MODULE_0__.PluginMessages.RemoveParentQueryParam, function (message) {
+  (0,_utils_queryParams__WEBPACK_IMPORTED_MODULE_2__.removeQueryParamFromLocation)(message.payload);
+}], [_iframe_integratedMessages__WEBPACK_IMPORTED_MODULE_0__.PluginMessages.ContentEmbedInstallRequest, function (message, embedder) {
+  (0,_utils_contentEmbedInstaller__WEBPACK_IMPORTED_MODULE_3__.startInstall)(message.payload.nonce).then(function (payload) {
+    embedder.postMessage({
+      key: _iframe_integratedMessages__WEBPACK_IMPORTED_MODULE_0__.PluginMessages.ContentEmbedInstallResponse,
+      payload: payload
+    });
+  })["catch"](function (payload) {
+    embedder.postMessage({
+      key: _iframe_integratedMessages__WEBPACK_IMPORTED_MODULE_0__.PluginMessages.ContentEmbedInstallError,
+      payload: payload
+    });
+  });
+}], [_iframe_integratedMessages__WEBPACK_IMPORTED_MODULE_0__.PluginMessages.ContentEmbedActivationRequest, function (message, embedder) {
+  (0,_utils_contentEmbedInstaller__WEBPACK_IMPORTED_MODULE_3__.startActivation)(message.payload.activateAjaxUrl).then(function (payload) {
+    embedder.postMessage({
+      key: _iframe_integratedMessages__WEBPACK_IMPORTED_MODULE_0__.PluginMessages.ContentEmbedActivationResponse,
+      payload: payload
+    });
+  })["catch"](function (payload) {
+    embedder.postMessage({
+      key: _iframe_integratedMessages__WEBPACK_IMPORTED_MODULE_0__.PluginMessages.ContentEmbedActivationError,
       payload: payload
     });
   });
@@ -678,10 +728,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../constants/leadinConfig */ "./scripts/constants/leadinConfig.ts");
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./constants */ "./scripts/iframe/constants.ts");
-/* harmony import */ var _messageMiddleware__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./messageMiddleware */ "./scripts/iframe/messageMiddleware.ts");
-/* harmony import */ var _utils_iframe__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/iframe */ "./scripts/utils/iframe.ts");
+/* harmony import */ var _lib_Raven__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../lib/Raven */ "./scripts/lib/Raven.ts");
+/* harmony import */ var _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../constants/leadinConfig */ "./scripts/constants/leadinConfig.ts");
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./constants */ "./scripts/iframe/constants.ts");
+/* harmony import */ var _messageMiddleware__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./messageMiddleware */ "./scripts/iframe/messageMiddleware.ts");
+/* harmony import */ var _utils_iframe__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/iframe */ "./scripts/utils/iframe.ts");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
@@ -694,33 +745,50 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+
+var getIntegrationConfig = function getIntegrationConfig() {
+  return {
+    adminUrl: _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_2__.leadinQueryParams.adminUrl
+  };
+};
+
 var getLeadinConfig = function getLeadinConfig() {
-  var utm_query_params = Object.keys(_constants_leadinConfig__WEBPACK_IMPORTED_MODULE_1__.leadinQueryParams).filter(function (x) {
+  var utm_query_params = Object.keys(_constants_leadinConfig__WEBPACK_IMPORTED_MODULE_2__.leadinQueryParams).filter(function (x) {
     return /^utm/.test(x);
   }).reduce(function (p, c) {
-    return _objectSpread(_defineProperty({}, c, _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_1__.leadinQueryParams[c]), p);
+    return _objectSpread(_defineProperty({}, c, _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_2__.leadinQueryParams[c]), p);
   }, {});
   return _objectSpread({
-    accountName: _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_1__.accountName,
-    adminUrl: _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_1__.adminUrl,
-    company: _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_1__.leadinQueryParams.company,
-    deviceId: _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_1__.deviceId,
-    email: _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_1__.leadinQueryParams.email,
-    firstName: _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_1__.leadinQueryParams.firstName,
-    irclickid: _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_1__.leadinQueryParams.irclickid,
-    lastName: _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_1__.leadinQueryParams.lastName,
-    mpid: _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_1__.leadinQueryParams.mpid,
-    nonce: _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_1__.leadinQueryParams.nonce,
-    plugins: _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_1__.plugins,
-    portalDomain: _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_1__.portalDomain,
-    portalEmail: _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_1__.portalEmail,
-    portalId: _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_1__.portalId,
-    reviewSkippedDate: _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_1__.reviewSkippedDate,
-    theme: _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_1__.theme,
-    trackConsent: _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_1__.leadinQueryParams.trackConsent,
-    websiteName: _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_1__.leadinQueryParams.websiteName,
-    admin: _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_1__.leadinQueryParams.admin,
-    justConnected: _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_1__.leadinQueryParams.justConnected
+    accountName: _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_2__.accountName,
+    admin: _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_2__.leadinQueryParams.admin,
+    adminUrl: _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_2__.adminUrl,
+    company: _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_2__.leadinQueryParams.company,
+    connectionStatus: _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_2__.connectionStatus,
+    deviceId: _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_2__.deviceId,
+    email: _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_2__.leadinQueryParams.email,
+    firstName: _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_2__.leadinQueryParams.firstName,
+    irclickid: _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_2__.leadinQueryParams.irclickid,
+    justConnected: _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_2__.leadinQueryParams.justConnected,
+    lastName: _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_2__.leadinQueryParams.lastName,
+    lastAuthorizeTime: _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_2__.lastAuthorizeTime,
+    lastDeauthorizeTime: _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_2__.lastDeauthorizeTime,
+    lastDisconnectTime: _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_2__.lastDisconnectTime,
+    leadinPluginVersion: _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_2__.leadinPluginVersion,
+    mpid: _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_2__.leadinQueryParams.mpid,
+    nonce: _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_2__.leadinQueryParams.nonce,
+    phpVersion: _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_2__.phpVersion,
+    plugins: _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_2__.plugins,
+    portalDomain: _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_2__.portalDomain,
+    portalEmail: _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_2__.portalEmail,
+    portalId: _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_2__.portalId,
+    reviewSkippedDate: _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_2__.reviewSkippedDate,
+    theme: _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_2__.theme,
+    trackConsent: _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_2__.leadinQueryParams.trackConsent,
+    websiteName: _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_2__.leadinQueryParams.websiteName,
+    wpVersion: _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_2__.wpVersion,
+    contentEmbed: _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_2__.contentEmbed,
+    requiresContentEmbedScope: _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_2__.requiresContentEmbedScope,
+    decryptError: _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_2__.decryptError
   }, utm_query_params);
 };
 
@@ -734,16 +802,16 @@ var getAppOptions = function getAppOptions(app) {
   var options;
 
   switch (app) {
-    case _constants__WEBPACK_IMPORTED_MODULE_2__.App.Plugin:
+    case _constants__WEBPACK_IMPORTED_MODULE_3__.App.Plugin:
       options = new PluginAppOptions().setLeadinConfig(getLeadinConfig());
       break;
 
-    case _constants__WEBPACK_IMPORTED_MODULE_2__.App.PluginSettings:
+    case _constants__WEBPACK_IMPORTED_MODULE_3__.App.PluginSettings:
       options = new PluginAppOptions().setLeadinConfig(getLeadinConfig()).setPluginSettingsInit();
       break;
 
-    case _constants__WEBPACK_IMPORTED_MODULE_2__.App.Forms:
-      options = new FormsAppOptions();
+    case _constants__WEBPACK_IMPORTED_MODULE_3__.App.Forms:
+      options = new FormsAppOptions().setIntegratedAppConfig(getIntegrationConfig());
 
       if (createRoute) {
         options = options.setCreateFormAppInit();
@@ -751,7 +819,7 @@ var getAppOptions = function getAppOptions(app) {
 
       break;
 
-    case _constants__WEBPACK_IMPORTED_MODULE_2__.App.LiveChat:
+    case _constants__WEBPACK_IMPORTED_MODULE_3__.App.LiveChat:
       options = new LiveChatAppOptions();
 
       if (createRoute) {
@@ -768,21 +836,44 @@ var getAppOptions = function getAppOptions(app) {
 };
 
 function useAppEmbedder(app, createRoute, container) {
-  var iframeNotRendered = (0,_utils_iframe__WEBPACK_IMPORTED_MODULE_4__.useIframeNotRendered)(_constants__WEBPACK_IMPORTED_MODULE_2__.AppIframe[app]);
+  console.info('HubSpot plugin - starting app embedder for:', _constants__WEBPACK_IMPORTED_MODULE_3__.AppIframe[app], container);
+  var iframeNotRendered = (0,_utils_iframe__WEBPACK_IMPORTED_MODULE_5__.useIframeNotRendered)(_constants__WEBPACK_IMPORTED_MODULE_3__.AppIframe[app]);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     var _window2 = window,
         IntegratedAppEmbedder = _window2.IntegratedAppEmbedder;
 
     if (IntegratedAppEmbedder) {
-      var options = getAppOptions(app, createRoute).setLocale(_constants_leadinConfig__WEBPACK_IMPORTED_MODULE_1__.locale).setDeviceId(_constants_leadinConfig__WEBPACK_IMPORTED_MODULE_1__.deviceId).setRefreshToken(_constants_leadinConfig__WEBPACK_IMPORTED_MODULE_1__.refreshToken);
-      var embedder = new IntegratedAppEmbedder(_constants__WEBPACK_IMPORTED_MODULE_2__.AppIframe[app], _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_1__.portalId, _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_1__.hubspotBaseUrl, _utils_iframe__WEBPACK_IMPORTED_MODULE_4__.resizeWindow, _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_1__.refreshToken ? '' : _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_1__.impactLink).setOptions(options);
-      embedder.subscribe((0,_messageMiddleware__WEBPACK_IMPORTED_MODULE_3__.messageMiddleware)(embedder));
+      var options = getAppOptions(app, createRoute).setLocale(_constants_leadinConfig__WEBPACK_IMPORTED_MODULE_2__.locale).setDeviceId(_constants_leadinConfig__WEBPACK_IMPORTED_MODULE_2__.deviceId).setRefreshToken(_constants_leadinConfig__WEBPACK_IMPORTED_MODULE_2__.refreshToken);
+      var embedder = new IntegratedAppEmbedder(_constants__WEBPACK_IMPORTED_MODULE_3__.AppIframe[app], _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_2__.portalId, _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_2__.hubspotBaseUrl, _utils_iframe__WEBPACK_IMPORTED_MODULE_5__.resizeWindow, _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_2__.refreshToken ? '' : _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_2__.impactLink).setOptions(options);
+      embedder.subscribe((0,_messageMiddleware__WEBPACK_IMPORTED_MODULE_4__.messageMiddleware)(embedder));
       embedder.attachTo(container, true);
       embedder.postStartAppMessage(); // lets the app know all all data has been passed to it
 
       window.embedder = embedder;
     }
   }, []);
+
+  if (iframeNotRendered) {
+    console.error('HubSpot plugin Iframe not rendered', {
+      portalId: _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_2__.portalId,
+      container: container,
+      appName: _constants__WEBPACK_IMPORTED_MODULE_3__.AppIframe[app],
+      hasIntegratedAppEmbedder: !!window.IntegratedAppEmbedder
+    });
+    _lib_Raven__WEBPACK_IMPORTED_MODULE_1__["default"].captureException(new Error('Leadin Iframe not rendered'), {
+      fingerprint: ['USE_APP_EMBEDDER', 'IFRAME_SETUP_ERROR'],
+      extra: {
+        portalId: _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_2__.portalId,
+        container: container,
+        app: app,
+        hubspotBaseUrl: _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_2__.hubspotBaseUrl,
+        impactLink: _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_2__.impactLink,
+        appName: _constants__WEBPACK_IMPORTED_MODULE_3__.AppIframe[app],
+        hasRefreshToken: !!_constants_leadinConfig__WEBPACK_IMPORTED_MODULE_2__.refreshToken
+      }
+    });
+  }
+
   return iframeNotRendered;
 }
 
@@ -863,6 +954,42 @@ function initAppOnReady(initFn) {
 
 /***/ }),
 
+/***/ "./scripts/utils/contentEmbedInstaller.ts":
+/*!************************************************!*\
+  !*** ./scripts/utils/contentEmbedInstaller.ts ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "startActivation": () => (/* binding */ startActivation),
+/* harmony export */   "startInstall": () => (/* binding */ startInstall)
+/* harmony export */ });
+function startInstall(nonce) {
+  var formData = new FormData();
+  var ajaxUrl = window.ajaxurl;
+  formData.append('_wpnonce', nonce);
+  formData.append('action', 'content_embed_install');
+  return fetch(ajaxUrl, {
+    method: 'POST',
+    body: formData,
+    keepalive: true
+  }).then(function (res) {
+    return res.json();
+  });
+}
+function startActivation(requestUrl) {
+  return fetch(requestUrl, {
+    method: 'POST',
+    keepalive: true
+  }).then(function (res) {
+    return res.json();
+  });
+}
+
+/***/ }),
+
 /***/ "./scripts/utils/iframe.ts":
 /*!*********************************!*\
   !*** ./scripts/utils/iframe.ts ***!
@@ -877,7 +1004,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _lib_Raven__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../lib/Raven */ "./scripts/lib/Raven.ts");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -889,7 +1015,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
 
 
 var IFRAME_DISPLAY_TIMEOUT = 5000;
@@ -904,9 +1029,6 @@ function useIframeNotRendered(app) {
       var iframe = document.getElementById(app);
 
       if (!iframe) {
-        _lib_Raven__WEBPACK_IMPORTED_MODULE_1__["default"].captureException(new Error("Leadin Iframe blocked"), {
-          fingerprint: ['IFRAME_SETUP_ERROR']
-        });
         setIframeNotRendered(true);
       }
     }, IFRAME_DISPLAY_TIMEOUT);
@@ -943,12 +1065,18 @@ var resizeWindow = function resizeWindow() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "addQueryObjectToUrl": () => (/* binding */ addQueryObjectToUrl)
+/* harmony export */   "addQueryObjectToUrl": () => (/* binding */ addQueryObjectToUrl),
+/* harmony export */   "removeQueryParamFromLocation": () => (/* binding */ removeQueryParamFromLocation)
 /* harmony export */ });
 function addQueryObjectToUrl(urlObject, queryParams) {
   Object.keys(queryParams).forEach(function (key) {
     urlObject.searchParams.append(key, queryParams[key]);
   });
+}
+function removeQueryParamFromLocation(key) {
+  var location = new URL(window.location.href);
+  location.searchParams["delete"](key);
+  window.history.replaceState(null, '', location.href);
 }
 
 /***/ }),

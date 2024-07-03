@@ -12,6 +12,7 @@ use Leadin\admin\NoticeManager;
 use Leadin\admin\PluginActionsManager;
 use Leadin\admin\DeactivationForm;
 use Leadin\admin\Links;
+use Leadin\admin\ContentEmbedInstaller;
 use Leadin\auth\OAuth;
 use Leadin\admin\utils\Background;
 use Leadin\utils\QueryParameters;
@@ -25,6 +26,7 @@ use Leadin\data\Filters;
  * Class responsible for initializing the admin side of the plugin.
  */
 class LeadinAdmin {
+
 	const REDIRECT_TRANSIENT = 'leadin_redirect_after_activation';
 
 	/**
@@ -50,6 +52,7 @@ class LeadinAdmin {
 		new DeactivationForm();
 		new NoticeManager();
 		new Gutenberg();
+		new ContentEmbedInstaller();
 		add_action( 'elementor/documents/register_controls', array( $this, 'register_document_controls' ) );
 	}
 
@@ -74,7 +77,7 @@ class LeadinAdmin {
 		$document->add_control(
 			'content_type',
 			array(
-				'label'       => esc_html__( 'Select the content type HubSpot Analytics uses to track this page.', 'leadin' ),
+				'label'       => esc_html__( 'Select the content type HubSpot Analytics uses to track this page', 'leadin' ),
 				'label_block' => true,
 				'type'        => \Elementor\Controls_Manager::SELECT,
 				'options'     => array(
@@ -140,12 +143,11 @@ class LeadinAdmin {
 		if ( User::is_admin() ) {
 			if ( Connection::is_connection_requested() ) {
 				$redirect_params = array();
-				if ( ! Connection::is_connected() || Connection::is_same_portal() ) {
-					Connection::oauth_connect();
-					$redirect_params['leadin_just_connected'] = 1;
-					if ( Connection::is_new_portal() ) {
-						$redirect_params['is_new_portal'] = 1;
-					}
+				Connection::oauth_connect();
+				$redirect_params['leadin_just_connected'] = 1;
+
+				if ( Connection::is_new_portal() ) {
+					$redirect_params['is_new_portal'] = 1;
 				}
 				Routing::redirect( MenuConstants::USER_GUIDE, $redirect_params );
 			} elseif ( Connection::is_disconnection_requested() ) {
@@ -195,22 +197,22 @@ class LeadinAdmin {
 	 */
 	public function build_menu() {
 		if ( Connection::is_connected() ) {
-				add_menu_page( __( 'HubSpot', 'leadin' ), __( 'HubSpot', 'leadin' ), Filters::apply_view_plugin_menu_capability_filters(), MenuConstants::ROOT, array( $this, 'build_integrated_app' ), 'dashicons-sprocket', '25.100713' );
+			add_menu_page( __( 'HubSpot', 'leadin' ), __( 'HubSpot', 'leadin' ), Filters::apply_view_plugin_menu_capability_filters(), MenuConstants::ROOT, array( $this, 'build_integrated_app' ), 'dashicons-sprocket', '25.100713' );
 
-				add_submenu_page( MenuConstants::ROOT, __( 'User Guide', 'leadin' ), __( 'User Guide', 'leadin' ), Filters::apply_view_plugin_menu_capability_filters(), MenuConstants::USER_GUIDE, array( $this, 'build_integrated_app' ) );
-				add_submenu_page( MenuConstants::ROOT, __( 'Forms', 'leadin' ), __( 'Forms', 'leadin' ), Filters::apply_view_plugin_menu_capability_filters(), MenuConstants::FORMS, array( $this, 'build_integrated_app' ) );
-				add_submenu_page( MenuConstants::ROOT, __( 'Live Chat', 'leadin' ), __( 'Live Chat', 'leadin' ), Filters::apply_view_plugin_menu_capability_filters(), MenuConstants::CHATFLOWS, array( $this, 'build_integrated_app' ) );
+			add_submenu_page( MenuConstants::ROOT, __( 'User Guide', 'leadin' ), __( 'User Guide', 'leadin' ), Filters::apply_view_plugin_menu_capability_filters(), MenuConstants::USER_GUIDE, array( $this, 'build_integrated_app' ) );
+			add_submenu_page( MenuConstants::ROOT, __( 'Forms', 'leadin' ), __( 'Forms', 'leadin' ), Filters::apply_view_plugin_menu_capability_filters(), MenuConstants::FORMS, array( $this, 'build_integrated_app' ) );
+			add_submenu_page( MenuConstants::ROOT, __( 'Live Chat', 'leadin' ), __( 'Live Chat', 'leadin' ), Filters::apply_view_plugin_menu_capability_filters(), MenuConstants::CHATFLOWS, array( $this, 'build_integrated_app' ) );
 
-				add_submenu_page( MenuConstants::ROOT, __( 'Contacts', 'leadin' ), self::make_external_link( Links::get_iframe_src( MenuConstants::CONTACTS ), __( 'Contacts', 'leadin' ), 'leadin_contacts_link' ), Filters::apply_view_plugin_menu_capability_filters(), MenuConstants::CONTACTS, array( $this, 'build_app' ) );
-				add_submenu_page( MenuConstants::ROOT, __( 'Email', 'leadin' ), self::make_external_link( Links::get_iframe_src( MenuConstants::EMAIL ), __( 'Email', 'leadin' ), 'leadin_email_link' ), Filters::apply_view_plugin_menu_capability_filters(), MenuConstants::EMAIL, array( $this, 'build_app' ) );
-				add_submenu_page( MenuConstants::ROOT, __( 'Lists', 'leadin' ), self::make_external_link( Links::get_iframe_src( MenuConstants::LISTS ), __( 'Lists', 'leadin' ), 'leadin_lists_link' ), Filters::apply_view_plugin_menu_capability_filters(), MenuConstants::LISTS, array( $this, 'build_app' ) );
-				add_submenu_page( MenuConstants::ROOT, __( 'Reporting', 'leadin' ), self::make_external_link( Links::get_iframe_src( MenuConstants::REPORTING ), __( 'Reporting', 'leadin' ), 'leadin_reporting_link' ), Filters::apply_view_plugin_menu_capability_filters(), MenuConstants::REPORTING, array( $this, 'build_app' ) );
+			add_submenu_page( MenuConstants::ROOT, __( 'Contacts', 'leadin' ), self::make_external_link( Links::get_iframe_src( MenuConstants::CONTACTS ), __( 'Contacts', 'leadin' ), 'leadin_contacts_link' ), Filters::apply_view_plugin_menu_capability_filters(), MenuConstants::CONTACTS, array( $this, 'build_app' ) );
+			add_submenu_page( MenuConstants::ROOT, __( 'Email', 'leadin' ), self::make_external_link( Links::get_iframe_src( MenuConstants::EMAIL ), __( 'Email', 'leadin' ), 'leadin_email_link' ), Filters::apply_view_plugin_menu_capability_filters(), MenuConstants::EMAIL, array( $this, 'build_app' ) );
+			add_submenu_page( MenuConstants::ROOT, __( 'Lists', 'leadin' ), self::make_external_link( Links::get_iframe_src( MenuConstants::LISTS ), __( 'Lists', 'leadin' ), 'leadin_lists_link' ), Filters::apply_view_plugin_menu_capability_filters(), MenuConstants::LISTS, array( $this, 'build_app' ) );
+			add_submenu_page( MenuConstants::ROOT, __( 'Reporting', 'leadin' ), self::make_external_link( Links::get_iframe_src( MenuConstants::REPORTING ), __( 'Reporting', 'leadin' ), 'leadin_reporting_link' ), Filters::apply_view_plugin_menu_capability_filters(), MenuConstants::REPORTING, array( $this, 'build_app' ) );
 
-				add_submenu_page( MenuConstants::ROOT, __( 'Settings', 'leadin' ), __( 'Settings', 'leadin' ), Filters::apply_view_plugin_menu_capability_filters(), MenuConstants::SETTINGS, array( $this, 'build_integrated_app' ) );
+			add_submenu_page( MenuConstants::ROOT, __( 'Settings', 'leadin' ), __( 'Settings', 'leadin' ), Filters::apply_view_plugin_menu_capability_filters(), MenuConstants::SETTINGS, array( $this, 'build_integrated_app' ) );
 
-				add_submenu_page( MenuConstants::ROOT, __( 'Upgrade', 'leadin' ), self::make_external_link( Links::get_iframe_src( MenuConstants::PRICING ), __( 'Upgrade', 'leadin' ), 'leadin_pricing_link' ), Filters::apply_view_plugin_menu_capability_filters(), MenuConstants::PRICING, array( $this, 'build_app' ) );
+			add_submenu_page( MenuConstants::ROOT, __( 'Upgrade', 'leadin' ), self::make_external_link( Links::get_iframe_src( MenuConstants::PRICING ), __( 'Upgrade', 'leadin' ), 'leadin_pricing_link' ), Filters::apply_view_plugin_menu_capability_filters(), MenuConstants::PRICING, array( $this, 'build_app' ) );
 
-				remove_submenu_page( MenuConstants::ROOT, MenuConstants::ROOT );
+			remove_submenu_page( MenuConstants::ROOT, MenuConstants::ROOT );
 		} else {
 			$notification_icon = ' <span class="update-plugins count-1"><span class="plugin-count">!</span></span>';
 			add_menu_page( __( 'HubSpot', 'leadin' ), __( 'HubSpot', 'leadin' ) . $notification_icon, Filters::apply_connect_plugin_capability_filters(), MenuConstants::ROOT, array( $this, 'build_integrated_app' ), 'dashicons-sprocket', '25.100713' );
@@ -221,9 +223,9 @@ class LeadinAdmin {
 	/**
 	 * Wraps external link.
 	 *
-	 * @param String $href link destination.
+	 * @param String $href    link destination.
 	 * @param String $content link content.
-	 * @param String $class class for ATs.
+	 * @param String $class   class for ATs.
 	 */
 	public function make_external_link( $href, $content, $class ) {
 		return "<a href=\"$href\" class=\"external_link $class\" target=\"_blank\" onclick=\"blur()\">$content</a>";
@@ -253,13 +255,13 @@ class LeadinAdmin {
 
 		if ( Versions::is_php_version_not_supported() ) {
 			$error_message = sprintf(
-				__( 'HubSpot All-In-One Marketing %1$s requires PHP %2$s or higher. Please upgrade WordPress first.', 'leadin' ),
+				__( 'HubSpot All-In-One Marketing %1$s requires PHP %2$s or higher Please upgrade WordPress first', 'leadin' ),
 				LEADIN_PLUGIN_VERSION,
 				LEADIN_REQUIRED_PHP_VERSION
 			);
 		} elseif ( Versions::is_wp_version_not_supported() ) {
 			$error_message = sprintf(
-				__( 'HubSpot All-In-One Marketing %1$s requires PHP %2$s or higher. Please upgrade WordPress first.', 'leadin' ),
+				__( 'HubSpot All-In-One Marketing %1$s requires PHP %2$s or higher Please upgrade WordPress first', 'leadin' ),
 				LEADIN_PLUGIN_VERSION,
 				LEADIN_REQUIRED_WP_VERSION
 			);

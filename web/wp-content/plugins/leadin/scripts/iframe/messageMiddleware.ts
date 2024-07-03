@@ -7,6 +7,8 @@ import {
   setBusinessUnitId,
   skipReview,
 } from '../api/wordpressApiClient';
+import { removeQueryParamFromLocation } from '../utils/queryParams';
+import { startActivation, startInstall } from '../utils/contentEmbedInstaller';
 
 export type Message = { key: MessageType; payload?: any };
 
@@ -102,6 +104,48 @@ const messageMapper: Map<MessageType, Function> = new Map([
         .catch(payload => {
           embedder.postMessage({
             key: PluginMessages.SkipReviewError,
+            payload,
+          });
+        });
+    },
+  ],
+  [
+    PluginMessages.RemoveParentQueryParam,
+    (message: Message) => {
+      removeQueryParamFromLocation(message.payload);
+    },
+  ],
+  [
+    PluginMessages.ContentEmbedInstallRequest,
+    (message: Message, embedder: any) => {
+      startInstall(message.payload.nonce)
+        .then(payload => {
+          embedder.postMessage({
+            key: PluginMessages.ContentEmbedInstallResponse,
+            payload: payload,
+          });
+        })
+        .catch(payload => {
+          embedder.postMessage({
+            key: PluginMessages.ContentEmbedInstallError,
+            payload,
+          });
+        });
+    },
+  ],
+  [
+    PluginMessages.ContentEmbedActivationRequest,
+    (message: Message, embedder: any) => {
+      startActivation(message.payload.activateAjaxUrl)
+        .then(payload => {
+          embedder.postMessage({
+            key: PluginMessages.ContentEmbedActivationResponse,
+            payload: payload,
+          });
+        })
+        .catch(payload => {
+          embedder.postMessage({
+            key: PluginMessages.ContentEmbedActivationError,
             payload,
           });
         });

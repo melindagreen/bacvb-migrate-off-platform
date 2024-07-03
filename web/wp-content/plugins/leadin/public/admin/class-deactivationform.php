@@ -9,6 +9,7 @@ use \Leadin\includes\utils as utils;
  * Class responsible for rendering the deactivation feedback form.
  */
 class DeactivationForm {
+
 	/**
 	 * Class constructor, adds necessary hooks.
 	 */
@@ -35,7 +36,7 @@ class DeactivationForm {
 					<div class="leadin-feedback-body">
 						<div>
 							<strong>
-								<?php echo esc_html( __( "If you have a moment, please let us know why you're deactivating the plugin.", 'leadin' ) ); ?>
+								<?php echo esc_html( __( "If you have a moment, please let us know why you're deactivating the plugin", 'leadin' ) ); ?>
 							</strong>
 						</div>
 						<form id='leadin-deactivate-form' class="leadin-deactivate-form">
@@ -77,7 +78,7 @@ class DeactivationForm {
 								<?php
 							}
 							?>
-							<textarea name="details" class="leadin-feedback-text-area leadin-feedback-text-control" placeholder="<?php echo esc_html( __( 'Feedback...', 'leadin' ) ); ?>"></textarea>
+							<textarea name="details" class="leadin-feedback-text-area leadin-feedback-text-control" placeholder="<?php echo esc_html( __( 'Feedback', 'leadin' ) ); ?>"></textarea>
 							<input type="hidden" name="portal_id" value="<?php echo esc_html( Portal_Options::get_portal_id() ); ?>">
 							<div class="leadin-button-container">
 								<button type="submit" id="leadin-feedback-submit" class="leadin-button leadin-primary-button leadin-loader-button">

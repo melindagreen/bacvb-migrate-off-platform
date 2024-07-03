@@ -329,11 +329,12 @@ class GF_HubSpot_API {
 	 * Get contact owners from HubSpot.
 	 *
 	 * @since 1.0
+	 * @since 2.1 Updated to use the v3 endpoint.
 	 *
 	 * @return array|WP_Error
 	 */
 	public function get_owners() {
-		return $this->make_request( 'owners/v2/owners/' );
+		return $this->make_request( 'crm/v3/owners', array( 'limit' => 500 ), 'GET', 'results' );
 	}
 
 	/**

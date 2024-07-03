@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import Raven from '../lib/Raven';
 
 const IFRAME_DISPLAY_TIMEOUT = 5000;
 
@@ -9,9 +8,6 @@ export function useIframeNotRendered(app: string) {
     const timer = setTimeout(() => {
       const iframe = document.getElementById(app);
       if (!iframe) {
-        Raven.captureException(new Error(`Leadin Iframe blocked`), {
-          fingerprint: ['IFRAME_SETUP_ERROR'],
-        });
         setIframeNotRendered(true);
       }
     }, IFRAME_DISPLAY_TIMEOUT);

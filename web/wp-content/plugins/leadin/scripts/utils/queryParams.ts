@@ -6,3 +6,9 @@ export function addQueryObjectToUrl(
     urlObject.searchParams.append(key, queryParams[key]);
   });
 }
+
+export function removeQueryParamFromLocation(key: string) {
+  const location = new URL(window.location.href);
+  location.searchParams.delete(key);
+  window.history.replaceState(null, '', location.href);
+}

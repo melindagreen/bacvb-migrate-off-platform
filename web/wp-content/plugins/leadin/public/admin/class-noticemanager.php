@@ -13,6 +13,7 @@ use Leadin\admin\ReviewBanner;
  */
 class NoticeManager {
 
+
 	/**
 	 * Class constructor, adds the necessary hooks.
 	 */
@@ -30,11 +31,11 @@ class NoticeManager {
 					<img src="<?php echo esc_attr( LEADIN_ASSETS_PATH . '/images/sprocket.svg' ); ?>" height="16" style="margin-bottom: -3px" />
 					&nbsp;
 					<?php
-						echo sprintf(
-							esc_html( __( 'The HubSpot plugin isn’t connected right now. To use HubSpot tools on your WordPress site, %1$sconnect the plugin now%2$s.', 'leadin' ) ),
-							'<a class="leadin-banner__link" href="admin.php?page=leadin&bannerClick=true">',
-							'</a>'
-						);
+					echo sprintf(
+						esc_html( __( 'The HubSpot plugin is not connected right now To use HubSpot tools on your WordPress site, %1$sconnect the plugin now%2$s', 'leadin' ) ),
+						'<a class="leadin-banner__link" href="admin.php?page=leadin&bannerClick=true">',
+						'</a>'
+					);
 					?>
 				</p>
 			</div>
@@ -68,24 +69,10 @@ class NoticeManager {
 	 * Find if review notice should be shown
 	 */
 	public function should_show_review_notice() {
-		$current_screen        = get_current_screen();
-		$is_dashboard          = 'index' === $current_screen->parent_base;
-		$is_not_skipped        = empty( User_Metadata::get_skip_review() );
-		$last_call_ts          = User_Metadata::get_review_banner_last_call();
-		$has_last_call_timeout = empty( $last_call_ts );
-
-		if ( ! $has_last_call_timeout ) {
-			$last_call_date = new \DateTime();
-			$last_call_date->setTimestamp( $last_call_ts );
-			$diff                  = $last_call_date->diff( new \DateTime() );
-			$has_last_call_timeout = $diff->days >= 1;
-		}
-
-		if ( $has_last_call_timeout ) {
-			User_Metadata::set_review_banner_last_call( time() );
-		}
-
-		return $is_dashboard && Connection::is_connected() && $is_not_skipped && $has_last_call_timeout;
+		$current_screen = get_current_screen();
+		$is_dashboard   = 'index' === $current_screen->parent_base;
+		$is_not_skipped = empty( User_Metadata::get_skip_review() );
+		return $is_dashboard && Connection::is_connected() && $is_not_skipped;
 	}
 
 }

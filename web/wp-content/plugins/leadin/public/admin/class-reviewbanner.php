@@ -11,6 +11,7 @@ use Leadin\AssetsManager;
  */
 class ReviewBanner {
 
+
 	/**
 	 * Constructor enqueues scripts for tracking events and creates background leadin iframe
 	 */
@@ -23,13 +24,13 @@ class ReviewBanner {
 	 */
 	public function leadin_render_review_banner() {
 		$nonce               = wp_create_nonce( 'leadin-review' );
-		$dismiss_notice_text = __( 'Dismiss this notice.', 'leadin' );
+		$dismiss_notice_text = __( 'Dismiss this notice', 'leadin' );
 		$hello_text          = sprintf(
 			__( 'Hey %1$s,', 'leadin' ),
 			User_Metadata::get_first_name() ? User_Metadata::get_first_name() : User_Metadata::get_nickname()
 		);
 		$notice_text         = __( 'Have you got 2 minutes to complete %1$sthis survey%2$s about the HubSpot for WordPress plugin?', 'leadin' );
-		$feedback_text       = __( 'We read every response. Your feedback helps our team make the improvements that you need the most.', 'leadin' );
+		$feedback_text       = __( 'We read every response Your feedback helps our team make the improvements that you need the most', 'leadin' );
 		$from_hubspot_text   = __( 'HubSpot for WordPress Team', 'leadin' );
 		$thanks_message      = __( 'Thanks,', 'leadin' );
 		?>

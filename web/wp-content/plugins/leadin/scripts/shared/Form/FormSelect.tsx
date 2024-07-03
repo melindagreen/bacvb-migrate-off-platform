@@ -64,7 +64,7 @@ export default function FormSelect({
       errorInfo={{
         header: __('There was a problem retrieving your forms', 'leadin'),
         message: __(
-          'Please refresh your forms or try again in a few minutes.',
+          'Please refresh your forms or try again in a few minutes',
           'leadin'
         ),
         action: __('Refresh forms', 'leadin'),

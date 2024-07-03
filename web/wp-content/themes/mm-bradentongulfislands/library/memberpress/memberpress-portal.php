@@ -13,7 +13,7 @@ class MemberPressPortal {
 
         self::$account_actions = ['listings','events','add_listing','edit_event','add_event', 'edit_listing'];
 
-		add_filter( 'mepr_account_nav_content', array(get_called_class(), 'nav_tabs'), 10, 1);
+		    add_filter( 'mepr_account_nav_content', array(get_called_class(), 'nav_tabs'), 10, 1);
         add_action('mepr_enqueue_scripts', array(get_called_class(),'mepr_enqueue_scripts'), 10, 3);
         add_action( 'transition_post_status', array(get_called_class(),'post_status_notification'), 9, 3 );
         add_action('mepr_account_nav', array(get_called_class(),'mepr_add_some_tabs'));
@@ -21,16 +21,6 @@ class MemberPressPortal {
         add_action( 'mepr_account_nav', array(get_called_class(),'partner_portal_maintenance'), 10 );
         add_action( 'init', array(get_called_class(),'exclude_from_search'), 99 );
 	}
-
-  public static function partner_portal_maintenance() {
-
-    $isMaintenance = get_field('partner_portal_maintenance', 12925);
-
-    if($isMaintenance) {
-      wp_redirect(site_url() . '/404?maintenance=true');
-      exit;
-    }
-  }
 
     public static function exclude_from_search() {
       global $wp_post_types;

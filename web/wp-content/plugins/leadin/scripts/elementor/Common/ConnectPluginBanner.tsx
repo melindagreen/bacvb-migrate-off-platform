@@ -8,7 +8,7 @@ export default function ConnectPluginBanner() {
       <b
         dangerouslySetInnerHTML={{
           __html: __(
-            'The HubSpot plugin isn’t connected right now. To use HubSpot tools on your WordPress site, %1$sconnect the plugin now%2$s.'
+            'The HubSpot plugin is not connected right now To use HubSpot tools on your WordPress site, %1$sconnect the plugin now%2$s'
           )
             .replace(
               '%1$s',

@@ -2,11 +2,15 @@ interface KeyStringObject {
   [key: string]: string;
 }
 
-interface Routes {
-  [key: string]: string | KeyStringObject;
-}
+export type ContentEmbedDetails = {
+  activated: boolean;
+  installed: boolean;
+  canActivate: boolean;
+  canInstall: boolean;
+  nonce: string;
+};
 
-interface LeadinConfig {
+export interface LeadinConfig {
   accountName: string;
   adminUrl: string;
   activationTime: string;
@@ -22,6 +26,9 @@ interface LeadinConfig {
   hubspotNonce: string;
   iframeUrl: string;
   impactLink?: string;
+  lastAuthorizeTime: string;
+  lastDeauthorizeTime: string;
+  lastDisconnectTime: string;
   leadinPluginVersion: string;
   leadinQueryParams: KeyStringObject;
   loginUrl: string;
@@ -38,8 +45,11 @@ interface LeadinConfig {
   reviewSkippedDate: string;
   refreshToken?: string;
   theme: string;
-  trackConsent?: boolean;
+  trackConsent?: boolean | string;
   wpVersion: string;
+  contentEmbed: ContentEmbedDetails;
+  requiresContentEmbedScope?: boolean;
+  decryptError?: string;
 }
 
 const {
@@ -58,6 +68,9 @@ const {
   hubspotNonce,
   iframeUrl,
   impactLink,
+  lastAuthorizeTime,
+  lastDeauthorizeTime,
+  lastDisconnectTime,
   leadinPluginVersion,
   leadinQueryParams,
   locale,
@@ -76,6 +89,9 @@ const {
   theme,
   trackConsent,
   wpVersion,
+  contentEmbed,
+  requiresContentEmbedScope,
+  decryptError,
 }: //@ts-expect-error global
 LeadinConfig = window.leadinConfig;
 
@@ -95,6 +111,9 @@ export {
   hubspotNonce,
   iframeUrl,
   impactLink,
+  lastAuthorizeTime,
+  lastDeauthorizeTime,
+  lastDisconnectTime,
   leadinPluginVersion,
   leadinQueryParams,
   loginUrl,
@@ -113,4 +132,7 @@ export {
   theme,
   trackConsent,
   wpVersion,
+  contentEmbed,
+  requiresContentEmbedScope,
+  decryptError,
 };

@@ -20,15 +20,15 @@ export default function MeetingWarning({
 }: IMeetingWarningPros) {
   const isMeetingOwner = status === CURRENT_USER_CALENDAR_MISSING;
   const titleText = isMeetingOwner
-    ? __('Your calendar is not connected.', 'leadin')
-    : __('Calendar is not connected.', 'leadin');
+    ? __('Your calendar is not connected', 'leadin')
+    : __('Calendar is not connected', 'leadin');
   const titleMessage = isMeetingOwner
     ? __(
-        'Please connect your calendar to activate your scheduling pages.',
+        'Please connect your calendar to activate your scheduling pages',
         'leadin'
       )
     : __(
-        'Make sure that everybody in this meeting has connected their calendar from the Meetings page in HubSpot.',
+        'Make sure that everybody in this meeting has connected their calendar from the Meetings page in HubSpot',
         'leadin'
       );
   return (

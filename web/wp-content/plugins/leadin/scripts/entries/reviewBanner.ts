@@ -7,6 +7,18 @@ import { domElements } from '../constants/selectors';
 import { refreshToken, activationTime } from '../constants/leadinConfig';
 import { ProxyMessages } from '../iframe/integratedMessages';
 
+const REVIEW_BANNER_INTRO_PERIOD_DAYS = 15;
+
+const userIsAfterIntroductoryPeriod = () => {
+  const activationDate = new Date(+activationTime * 1000);
+  const currentDate = new Date();
+  const timeElapsed = new Date(
+    currentDate.getTime() - activationDate.getTime()
+  );
+
+  return timeElapsed.getUTCDate() - 1 >= REVIEW_BANNER_INTRO_PERIOD_DAYS;
+};
+
 /**
  * Adds some methods to window when review banner is
  * displayed to monitor events
@@ -15,7 +27,7 @@ export function initMonitorReviewBanner() {
   if (refreshToken) {
     const embedder = getOrCreateBackgroundApp(refreshToken);
     const container = $(domElements.reviewBannerContainer);
-    if (container) {
+    if (container && userIsAfterIntroductoryPeriod()) {
       $(domElements.reviewBannerLeaveReviewLink)
         .off('click')
         .on('click', () => {

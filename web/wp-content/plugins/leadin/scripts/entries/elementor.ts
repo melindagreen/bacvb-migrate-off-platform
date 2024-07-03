@@ -3,7 +3,10 @@ import registerFormWidget from '../elementor/FormWidget/registerFormWidget';
 import { initBackgroundApp } from '../utils/backgroundAppUtils';
 import registerMeetingsWidget from '../elementor/MeetingWidget/registerMeetingWidget';
 
-window.addEventListener('elementor/init', () => {
+const ELEMENTOR_READY_INTERVAL = 500;
+const MAX_POLL_TIMEOUT = 30000;
+
+const registerElementorWidgets = () => {
   initBackgroundApp(() => {
     let FormWidget: any;
     let MeetingsWidget: any;
@@ -61,4 +64,16 @@ window.addEventListener('elementor/init', () => {
       leadinSelectMeetingItemView
     );
   });
-});
+};
+
+const pollForElementorReady = setInterval(() => {
+  const elementorFrontend = (window as any).elementorFrontend;
+  if (elementorFrontend) {
+    registerElementorWidgets();
+    clearInterval(pollForElementorReady);
+  }
+}, ELEMENTOR_READY_INTERVAL);
+
+setTimeout(() => {
+  clearInterval(pollForElementorReady);
+}, MAX_POLL_TIMEOUT);
