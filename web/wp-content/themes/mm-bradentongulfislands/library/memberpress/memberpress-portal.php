@@ -33,7 +33,7 @@ class MemberPressPortal {
             $allowedUsers = [];
         }
 
-        if ($isMaintenance && !in_array($currentUserId, $allowedUsers)) {
+        if ($isMaintenance && !in_array($currentUserId, $allowedUsers) && !current_user_can('administrator')) {
             wp_redirect(site_url() . '/404?maintenance=true');
             exit;
         }
