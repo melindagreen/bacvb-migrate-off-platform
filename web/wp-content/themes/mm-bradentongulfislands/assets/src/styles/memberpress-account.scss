@@ -13,6 +13,11 @@ GLOBAL STYLES
     margin: auto;
     text-align: center;
 
+    textarea {
+
+        padding: 10px;
+    }
+
     &__separator {
 
         background-color: $bradenton-teal;

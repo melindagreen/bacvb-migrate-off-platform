@@ -61,9 +61,17 @@ else if ($listings->have_posts() && $listings->found_posts === 1) {
 
 // Displays listings grid 
 else if ($listings->have_posts() && $listings->found_posts > 1) { 
+    ?>
+    <div class="mepr-listing-cards">
+    <?php
     while ($listings->have_posts()) : $listings->the_post(); 
     $post_id = get_the_ID();
     $meta_data = get_post_meta($post_id);
+    $status = [
+        'publish' => 'published',
+        'draft' => 'rejected',
+        'pending' => 'pending'
+    ];
     ?>
     <div class="mepr-listing-cards__card">
             <h3><?php the_title(); ?></h3>
@@ -82,7 +90,8 @@ else if ($listings->have_posts() && $listings->found_posts > 1) {
             </div>
              <?php
             endwhile; ?>
-    </div>
+    </div> 
+ </div>
 <?php }
 wp_reset_postdata(); ?>
 <br>

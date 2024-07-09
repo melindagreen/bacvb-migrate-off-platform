@@ -3,6 +3,7 @@
 namespace MaddenNino\Library\Memberpress;
 
 use MaddenNino\Library\Constants as C;
+use MaddenNino\Library\MemberPress\Utilities as MeprU;
 use WP_Query;
 
 class MemberPressPortal {
@@ -690,19 +691,20 @@ class MemberPressPortal {
 
             }
 
+            
             else if ($old_status === 'pending' && $new_status === 'draft') {
                 $original_post_id = get_post_meta($post->ID, 'original_post_id', true);
                 if ($original_post_id) {
 
                     wp_update_post(array(
                         'ID' => $post->ID,
-                        'post_status' => 'trash' 
+                        'post_status' => 'draft' 
                     ));
                 }
             }
 
-            //Prevents post status from changing to draft
-            else if($old_status === 'pending' && $new_status === 'trash') {
+            
+            else if(($old_status === 'pending' || $old_status === 'draft') && $new_status === 'trash') {
                 
             // If post is moved to trash, change its title
             $new_title = '[REJECTED] ' . $post->post_title;

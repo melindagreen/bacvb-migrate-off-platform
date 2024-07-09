@@ -21,7 +21,7 @@
 
     <!-- Description -->
     <label for="eventastic_description">Description: <span class="mepr-required-asterisk">*</span></label>
-    <textarea name="eventastic_description" id="eventastic_description" required><?php echo esc_html(get_post_field('post_content', $post_id) ?? ''); ?></textarea>
+    <textarea name="eventastic_description" id="eventastic_description" required><?php echo isset($post_id) ? esc_html(get_post_field('post_content', $post_id) ?? '') : ''; ?></textarea>
 
     <div class="mepr-account-form__col-2">
         <!-- Business Name -->

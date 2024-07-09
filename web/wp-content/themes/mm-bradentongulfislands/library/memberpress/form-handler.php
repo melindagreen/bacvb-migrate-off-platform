@@ -2,6 +2,7 @@
 
 namespace MaddenNino\Library\Memberpress;
 use WP_Query;
+use MaddenNino\Library\MemberPress\Utilities as MeprU;
 
 class MemberPressFormHandler {
 
@@ -134,7 +135,7 @@ class MemberPressFormHandler {
             }
             $_SESSION['post_creation_attempted'] = false;
              // Redirect to the same page with action=events
-             wp_redirect(add_query_arg('update', 'true'));
+             wp_redirect(add_query_arg('action', 'events', $_SERVER['REQUEST_URI']));
              exit;
         }
     }
@@ -142,6 +143,8 @@ class MemberPressFormHandler {
     public function updateEvent($post_id) {
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_post_nonce']) && wp_verify_nonce($_POST['update_post_nonce'], 'update_post_meta')) {
+            // $test = MeprU::is_cloned_post($post_id);
+            // error_log($test);
 
             if(!$_SESSION['post_creation_attempted'] || empty($_SESSION['post_creation_attempted'])) {
 
@@ -162,6 +165,24 @@ class MemberPressFormHandler {
         
             $cloned_post_id = $_SESSION['post_creation_attempted'];
 
+            //Replace Cloned Post ID with the original 
+            if(MeprU::is_cloned_post($post_id) || get_post_status($post_id) === 'pending') {
+
+                $old_post_id = $post_id;
+                $post_id = MeprU::get_original_post_id($post_id);
+
+                error_log('Event Test');
+                error_log($old_post_id);
+                error_log($post_id);
+                error_log(get_post_status($old_post_id));
+                error_log(MeprU::is_cloned_post($old_post_id));
+
+                // Remove cloned_post_id meta data
+                delete_post_meta($post_id, 'cloned_post_id');
+                // Remove original_post_id post meta from the original post
+                delete_post_meta($old_post_id, 'original_post_id');
+                wp_delete_post($old_post_id, true);
+            }
 
             // Original post ID
             $original_post_id = $post_id;
@@ -219,8 +240,8 @@ class MemberPressFormHandler {
                 update_field('group_events', $updated_group_events, $current_user_group[0]->ID); 
 
                 $_SESSION['post_creation_attempted'] = false;
-                // Redirect to the same page with update=true
-                wp_redirect(add_query_arg('update', 'true'));
+                // Redirect to the same page with action=events
+                wp_redirect(site_url(). '/account/?action=events');
                 exit;
             }
     }
@@ -300,8 +321,8 @@ class MemberPressFormHandler {
             }
 
             $_SESSION['post_creation_attempted'] = false;
-            // Redirect to the same page with action=events
-            wp_redirect(add_query_arg('action', 'listings', $_SERVER['REQUEST_URI']));
+            // Redirect to the same page with action=listings
+            wp_redirect(site_url(). '/account/?action=listings&update=true');
             exit;
         }
     }
@@ -328,6 +349,24 @@ class MemberPressFormHandler {
             }
         
             $cloned_post_id = $_SESSION['post_creation_attempted'];
+
+            error_log(MeprU::get_original_post_id($post_id));
+             //Replace Cloned Post ID with the original 
+             if(MeprU::is_cloned_post($post_id) || get_post_status($post_id) === 'pending') {
+                error_log(MeprU::is_cloned_post($post_id));
+                $old_post_id = $post_id;
+                $post_id = MeprU::get_original_post_id($post_id);
+
+                error_log('Listing Test');
+                error_log($old_post_id);
+                error_log($post_id);
+                error_log(get_post_status($old_post_id));
+                // Remove cloned_post_id meta data
+                delete_post_meta($post_id, 'cloned_post_id');
+                // Remove original_post_id post meta from the original post
+                delete_post_meta($old_post_id, 'original_post_id');
+                wp_delete_post($old_post_id, true);
+            }
 
 
             // Original post ID
@@ -386,8 +425,8 @@ class MemberPressFormHandler {
                 update_field('group_listing', $updated_group_listing, $current_user_group[0]->ID); 
 
                 $_SESSION['post_creation_attempted'] = false;
-                // Redirect to the same page with update=true
-                wp_redirect(add_query_arg('update', 'true'));
+                // Redirect to the same page with action=listings
+                wp_redirect(site_url(). '/account/?action=listings&update=true');
                 exit;
             }
         }
