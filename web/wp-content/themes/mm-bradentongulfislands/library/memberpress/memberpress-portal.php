@@ -20,8 +20,29 @@ class MemberPressPortal {
         add_action('mepr_account_nav', array(get_called_class(),'mepr_add_some_tabs'));
         add_action( 'transition_post_status', array(get_called_class(),'handle_post_status'), 10, 3 );
         add_action( 'mepr_account_nav', array(get_called_class(),'partner_portal_maintenance'), 10 );
+        add_filter('mepr-account-nav-home-label', array(get_called_class(),'mepr_account_nav_home_label'), 10);
+        add_action('after_setup_theme', array(get_called_class(),'customize_partner_access'), 10);
+        add_action('admin_init', array(get_called_class(),'customize_partner_access'), 10);
         add_action( 'init', array(get_called_class(),'exclude_from_search'), 99 );
 	}
+
+      public static function customize_partner_access() {
+        if (current_user_can('partner')) {
+            // Remove admin bar
+            add_filter('show_admin_bar', '__return_false');
+            
+            // Redirect from admin area
+            if (is_admin() && !defined('DOING_AJAX')) {
+                wp_redirect(home_url());
+                exit;
+            }
+        }
+    }
+
+      public static function mepr_account_nav_home_label() {
+        // Return a new label
+        return 'Your Business Profile';
+      }
 
       public static function partner_portal_maintenance() {
 

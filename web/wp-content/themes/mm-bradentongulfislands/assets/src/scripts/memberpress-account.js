@@ -25,6 +25,9 @@ import '../styles/memberpress-account.scss';
         var $dl = $businessAddressDt.parent();
         $businessAddressDt.appendTo($dl);
         $businessAddressDd.appendTo($dl);
+
+        // Change Profile Header
+        $('.mepr_page_header').text('Your Business Profile');
     }
 	  
     $(document).ready(function ($) {
