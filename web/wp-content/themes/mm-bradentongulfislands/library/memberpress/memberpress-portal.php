@@ -23,6 +23,22 @@ class MemberPressPortal {
         add_action( 'init', array(get_called_class(),'exclude_from_search'), 99 );
 	}
 
+      public static function partner_portal_maintenance() {
+
+        $isMaintenance = get_field('partner_portal_maintenance', 12925);
+        $currentUserId = get_current_user_id();
+
+        $allowedUsers = get_field('maintenance_redirect_override', 12925);
+        if (!is_array($allowedUsers)) {
+            $allowedUsers = [];
+        }
+
+        if ($isMaintenance && !in_array($currentUserId, $allowedUsers)) {
+            wp_redirect(site_url() . '/404?maintenance=true');
+            exit;
+        }
+    }
+
     public static function exclude_from_search() {
       global $wp_post_types;
 
