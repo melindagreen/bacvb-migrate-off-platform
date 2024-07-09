@@ -16,6 +16,7 @@ GLOBAL STYLES
     textarea {
 
         padding: 10px;
+        height: 8rem;
     }
 
     &__separator {
@@ -48,6 +49,7 @@ GLOBAL STYLES
         display: inline-block; 
         padding-right: 1rem;
         margin-bottom:1rem;
+        vertical-align: top;
     }
 
     &__col-2 {
@@ -63,6 +65,13 @@ GLOBAL STYLES
     .mepr-button {
 
         width: 10rem;
+    }
+
+    #eventastic_price_varies, #eventastic_event_all_day {
+
+        width: unset;
+        display: block;
+        margin-top: 0.5rem;
     }
 }
 

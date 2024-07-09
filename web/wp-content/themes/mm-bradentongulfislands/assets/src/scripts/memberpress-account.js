@@ -31,5 +31,16 @@ import '../styles/memberpress-account.scss';
         /*** EVENT LISTENERS **************************************************************/
         themeOnLoad();
 
+        // Event All Day is Checked Hide Start & End Time Fields
+        $('#eventastic_event_all_day').change(function() {
+
+            if ($(this).prop('checked')) {
+                // If checked, hide the start and end time fields
+                $('#eventastic_start_col, #eventastic_end_col').hide();
+            } else {
+                // If not checked, show the start and end time fields
+                $('#eventastic_start_col, #eventastic_end_col').show();
+            }
+        });
     });
 })(jQuery);
