@@ -16,7 +16,7 @@ class ThemeSetup {
 		// tell yoast to not show some sitemaps
 		add_filter( 'wpseo_sitemap_exclude_taxonomy', array( get_called_class(), 'sitemap_exclude_taxonomy' ), 10, 2 );
 
-		add_filter('render_block', array( get_called_class(), 'add_photo_credit' ), 10, 2);
+		add_filter('render_block', array( get_called_class(), 'add_photo_credit' ), 10, 1);
 		add_filter('wp_get_attachment_url', array( get_called_class(), 'photo_credit_url_param' ), 10, 2);
 
 		// global override for from emails
