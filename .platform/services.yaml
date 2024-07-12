@@ -11,11 +11,11 @@ cacheredis:
     type: redis-persistent:6.0
     disk: 1024
 
-varnish:
-    type: varnish:7.2
-    relationships:
-        application: 'app:http'
-    configuration:
-        vcl: !include
-            type: string
-            path: config.vcl
+# varnish:
+#     type: varnish:7.2
+#     relationships:
+#         application: 'app:http'
+#     configuration:
+#         vcl: !include
+#             type: string
+#             path: config.vcl
