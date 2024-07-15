@@ -5,6 +5,7 @@ export const CoreMessages = {
   RedirectParentFrame: 'INTEGRATED_APP_EMBEDDER_REDIRECT_PARENT_FRAME',
   SendLocale: 'INTEGRATED_APP_EMBEDDER_SEND_LOCALE',
   SendDeviceId: 'INTEGRATED_APP_EMBEDDER_SEND_DEVICE_ID',
+  SendIntegratedAppConfig: 'INTEGRATED_APP_EMBEDDER_CONFIG',
 } as const;
 
 export type CoreMessageType = typeof CoreMessages[keyof typeof CoreMessages];

@@ -40,13 +40,13 @@ export const IframeErrorPage = () => (
     </ErrorHeader>
     <p>
       {__(
-        'Try disabling your browser extensions and ad blockers, then refresh the page.',
+        'Try disabling your browser extensions and ad blockers, then refresh the page',
         'leadin'
       )}
     </p>
     <p>
       {__(
-        'Or open the HubSpot for WordPress plugin in a different browser.',
+        'Or open the HubSpot for WordPress plugin in a different browser',
         'leadin'
       )}
     </p>

@@ -429,12 +429,6 @@ if ('serviceWorker' in navigator) {
 		        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
 		    );
 		}
-
-
-		// Modifications to the Partner Portal -- this is short term to save time
-		$('.mepr-profile-wrapper__footer a:lt(2)').hide();
-		$('#mepr-account-nav .mepr-payments, #mepr-account-nav .mepr-subscriptions').hide();
-
 	}
 
     /**

@@ -1216,11 +1216,16 @@ class GF_HubSpot extends GFFeedAddOn {
 				array(
 					'name'              => 'additional_fields',
 					'label'             => '',
-					'type'              => 'dynamic_field_map',
-					'key_field_title'   => 'HubSpot',
-					'value_field_title' => 'Gravity Forms',
-					'enable_custom_key' => false,
-					'field_map'         => rgar( $contact_properties, 'grouped', array() ),
+					'type'              => 'generic_map',
+					'key_field'         => array(
+						'title'         => 'HubSpot',
+						'allow_custom'  => false,
+						'choices'       => rgar( $contact_properties, 'grouped', array() ),
+					),
+					'value_field'       => array(
+						'title'         => 'Gravity Forms',
+						'allow_custom'  => false,
+					),
 				),
 			),
 		);
@@ -2001,7 +2006,7 @@ class GF_HubSpot extends GFFeedAddOn {
 			$_owner_choices = array();
 			foreach ( $owners as $owner ) {
 
-				if ( ! rgar( $owner, 'ownerId' ) ) {
+				if ( empty( $owner['id'] ) ) {
 					continue;
 				}
 
@@ -2013,9 +2018,11 @@ class GF_HubSpot extends GFFeedAddOn {
 
 				$_owner_choices[] = array(
 					'label' => $owner_label,
-					'value' => $owner['ownerId'],
+					'value' => $owner['id'],
 				);
 			}
+
+			$_owner_choices = wp_list_sort( $_owner_choices, 'label' );
 		}
 
 		return $_owner_choices;

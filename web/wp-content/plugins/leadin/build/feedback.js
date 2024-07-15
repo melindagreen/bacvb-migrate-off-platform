@@ -14,6 +14,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "activationTime": () => (/* binding */ activationTime),
 /* harmony export */   "adminUrl": () => (/* binding */ adminUrl),
 /* harmony export */   "connectionStatus": () => (/* binding */ connectionStatus),
+/* harmony export */   "contentEmbed": () => (/* binding */ contentEmbed),
+/* harmony export */   "decryptError": () => (/* binding */ decryptError),
 /* harmony export */   "deviceId": () => (/* binding */ deviceId),
 /* harmony export */   "didDisconnect": () => (/* binding */ didDisconnect),
 /* harmony export */   "env": () => (/* binding */ env),
@@ -24,6 +26,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "hubspotNonce": () => (/* binding */ hubspotNonce),
 /* harmony export */   "iframeUrl": () => (/* binding */ iframeUrl),
 /* harmony export */   "impactLink": () => (/* binding */ impactLink),
+/* harmony export */   "lastAuthorizeTime": () => (/* binding */ lastAuthorizeTime),
+/* harmony export */   "lastDeauthorizeTime": () => (/* binding */ lastDeauthorizeTime),
+/* harmony export */   "lastDisconnectTime": () => (/* binding */ lastDisconnectTime),
 /* harmony export */   "leadinPluginVersion": () => (/* binding */ leadinPluginVersion),
 /* harmony export */   "leadinQueryParams": () => (/* binding */ leadinQueryParams),
 /* harmony export */   "locale": () => (/* binding */ locale),
@@ -37,6 +42,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "portalId": () => (/* binding */ portalId),
 /* harmony export */   "redirectNonce": () => (/* binding */ redirectNonce),
 /* harmony export */   "refreshToken": () => (/* binding */ refreshToken),
+/* harmony export */   "requiresContentEmbedScope": () => (/* binding */ requiresContentEmbedScope),
 /* harmony export */   "restNonce": () => (/* binding */ restNonce),
 /* harmony export */   "restUrl": () => (/* binding */ restUrl),
 /* harmony export */   "reviewSkippedDate": () => (/* binding */ reviewSkippedDate),
@@ -60,6 +66,9 @@ var _window$leadinConfig = window.leadinConfig,
     hubspotNonce = _window$leadinConfig.hubspotNonce,
     iframeUrl = _window$leadinConfig.iframeUrl,
     impactLink = _window$leadinConfig.impactLink,
+    lastAuthorizeTime = _window$leadinConfig.lastAuthorizeTime,
+    lastDeauthorizeTime = _window$leadinConfig.lastDeauthorizeTime,
+    lastDisconnectTime = _window$leadinConfig.lastDisconnectTime,
     leadinPluginVersion = _window$leadinConfig.leadinPluginVersion,
     leadinQueryParams = _window$leadinConfig.leadinQueryParams,
     locale = _window$leadinConfig.locale,
@@ -77,7 +86,10 @@ var _window$leadinConfig = window.leadinConfig,
     reviewSkippedDate = _window$leadinConfig.reviewSkippedDate,
     theme = _window$leadinConfig.theme,
     trackConsent = _window$leadinConfig.trackConsent,
-    wpVersion = _window$leadinConfig.wpVersion;
+    wpVersion = _window$leadinConfig.wpVersion,
+    contentEmbed = _window$leadinConfig.contentEmbed,
+    requiresContentEmbedScope = _window$leadinConfig.requiresContentEmbedScope,
+    decryptError = _window$leadinConfig.decryptError;
 
 
 /***/ }),
@@ -242,7 +254,8 @@ var CoreMessages = {
   ReloadParentFrame: 'INTEGRATED_APP_EMBEDDER_RELOAD_PARENT_FRAME',
   RedirectParentFrame: 'INTEGRATED_APP_EMBEDDER_REDIRECT_PARENT_FRAME',
   SendLocale: 'INTEGRATED_APP_EMBEDDER_SEND_LOCALE',
-  SendDeviceId: 'INTEGRATED_APP_EMBEDDER_SEND_DEVICE_ID'
+  SendDeviceId: 'INTEGRATED_APP_EMBEDDER_SEND_DEVICE_ID',
+  SendIntegratedAppConfig: 'INTEGRATED_APP_EMBEDDER_CONFIG'
 };
 
 /***/ }),
@@ -336,7 +349,14 @@ var PluginMessages = {
   BusinessUnitChangeError: 'BUSINESS_UNIT_CHANGE_ERROR',
   SkipReviewRequest: 'SKIP_REVIEW_REQUEST',
   SkipReviewResponse: 'SKIP_REVIEW_RESPONSE',
-  SkipReviewError: 'SKIP_REVIEW_ERROR'
+  SkipReviewError: 'SKIP_REVIEW_ERROR',
+  RemoveParentQueryParam: 'REMOVE_PARENT_QUERY_PARAM',
+  ContentEmbedInstallRequest: 'CONTENT_EMBED_INSTALL_REQUEST',
+  ContentEmbedInstallResponse: 'CONTENT_EMBED_INSTALL_RESPONSE',
+  ContentEmbedInstallError: 'CONTENT_EMBED_INSTALL_ERROR',
+  ContentEmbedActivationRequest: 'CONTENT_EMBED_ACTIVATION_REQUEST',
+  ContentEmbedActivationResponse: 'CONTENT_EMBED_ACTIVATION_RESPONSE',
+  ContentEmbedActivationError: 'CONTENT_EMBED_ACTIVATION_ERROR'
 };
 
 /***/ }),

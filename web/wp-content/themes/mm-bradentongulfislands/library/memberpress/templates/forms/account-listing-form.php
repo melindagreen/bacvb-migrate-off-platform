@@ -101,5 +101,5 @@
 
     <!-- ==== SUBMIT FORM ==== -->
     <br style="clear:both;">
-    <input class="mepr-button btn-outline btn btn-outline" type="submit" value="Submit Listing">
+    <input class="mepr-button btn-outline btn btn-outline" type="submit" value="<?php echo isset($post_id) ? 'Update Listing' : 'Add Listing'; ?>">
 </form>

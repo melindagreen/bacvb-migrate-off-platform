@@ -15,6 +15,13 @@ export const PluginMessages = {
   SkipReviewRequest: 'SKIP_REVIEW_REQUEST',
   SkipReviewResponse: 'SKIP_REVIEW_RESPONSE',
   SkipReviewError: 'SKIP_REVIEW_ERROR',
+  RemoveParentQueryParam: 'REMOVE_PARENT_QUERY_PARAM',
+  ContentEmbedInstallRequest: 'CONTENT_EMBED_INSTALL_REQUEST',
+  ContentEmbedInstallResponse: 'CONTENT_EMBED_INSTALL_RESPONSE',
+  ContentEmbedInstallError: 'CONTENT_EMBED_INSTALL_ERROR',
+  ContentEmbedActivationRequest: 'CONTENT_EMBED_ACTIVATION_REQUEST',
+  ContentEmbedActivationResponse: 'CONTENT_EMBED_ACTIVATION_RESPONSE',
+  ContentEmbedActivationError: 'CONTENT_EMBED_ACTIVATION_ERROR',
 } as const;
 
 export type PluginMessageType = typeof PluginMessages[keyof typeof PluginMessages];

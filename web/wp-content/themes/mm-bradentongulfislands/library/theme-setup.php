@@ -159,7 +159,7 @@ class ThemeSetup {
      * Change default email from name for all sends to the domain
      */
     public static function custom_wp_mail_from_name ($original_email_from) {
-        return "Do Not Reply";
+        return "Bradenton Gulf Islands";
     }
 
 

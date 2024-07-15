@@ -3,7 +3,6 @@
 namespace Leadin;
 
 use Leadin\api\Healthcheck_Api_Controller;
-use Leadin\api\OAuth_Api_Controller;
 
 use Leadin\admin\api\Internal_Tracking_Api_Controller;
 use Leadin\admin\api\Hublet_Api_Controller;
@@ -20,7 +19,6 @@ add_action(
  */
 function leadin_register_routes() {
 	new Healthcheck_Api_Controller();
-	new OAuth_Api_Controller();
 	// Admin routes.
 	new Internal_Tracking_Api_Controller();
 	new Hublet_Api_Controller();

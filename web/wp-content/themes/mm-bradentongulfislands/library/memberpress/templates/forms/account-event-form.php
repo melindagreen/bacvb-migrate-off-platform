@@ -21,7 +21,7 @@
 
     <!-- Description -->
     <label for="eventastic_description">Description: <span class="mepr-required-asterisk">*</span></label>
-    <textarea name="eventastic_description" id="eventastic_description" required><?php echo esc_html(get_post_field('post_content', $post_id) ?? ''); ?></textarea>
+    <textarea name="eventastic_description" id="eventastic_description" required><?php echo isset($post_id) ? esc_html(get_post_field('post_content', $post_id) ?? '') : ''; ?></textarea>
 
     <div class="mepr-account-form__col-2">
         <!-- Business Name -->
@@ -103,7 +103,7 @@
     <div class="mepr-account-form__col-2">
         <!-- Price Varies -->
         <label for="eventastic_price_varies">Price Varies:</label><br>
-        <input type="checkbox" name="eventastic_price_varies" id="eventastic_price_varies" value="<?php echo esc_attr($meta_data['eventastic_price_varies'][0] ?? 'varies'); ?>">
+        <input type="checkbox" name="eventastic_price_varies" id="eventastic_price_varies" value="varies" <?php echo isset($meta_data['eventastic_price_varies'][0]) ? 'checked' : ''; ?>>
     </div>
 
      <!-- Tickets -->
@@ -133,21 +133,20 @@
 
 
     <!-- Event Runs All Day -->
-    <label for="eventastic_price_varies">Event runs all day:</label><br>
-    <input type="checkbox" name="eventastic_event_all_day" id="eventastic_event_all_day" value="<?php echo esc_attr($meta_data['eventastic_event_all_day'][0] ?? 'true'); ?>">
-
-    <div class="mepr-account-form__col-2">
+    <label for="eventastic_event_all_day">Event runs all day:</label><br>
+    <input type="checkbox" name="eventastic_event_all_day" id="eventastic_event_all_day" value="true" <?php echo isset($meta_data['eventastic_event_all_day'][0]) ? 'checked' : ''; ?>>
+    <div id="eventastic_start_col" class="mepr-account-form__col-2">
         <!-- Start Time -->
         <label for="eventastic_start_time">Start Time: <span class="mepr-required-asterisk">*</span></label><br>
-        <input type="time" name="eventastic_start_time" id="eventastic_start_time" value="<?php echo esc_attr($meta_data['eventastic_event_start_time'][0] ?? 'true'); ?>" required>
+        <input type="time" name="eventastic_start_time" id="eventastic_start_time" value="<?php echo esc_attr($meta_data['eventastic_start_time'][0] ?? 'true'); ?>" required>
     </div>
-    <div class="mepr-account-form__col-2">
+    <div id="eventastic_end_col" class="mepr-account-form__col-2">
         <!-- End Time -->
         <label for="eventastic_end_date">End Time: <span class="mepr-required-asterisk">*</span></label><br>
-        <input type="time" name="eventastic_end_time" id="eventastic_end_time" value="<?php echo esc_attr($meta_data['eventastic_event_end_time'][0] ?? 'true'); ?>" required>
+        <input type="time" name="eventastic_end_time" id="eventastic_end_time" value="<?php echo esc_attr($meta_data['eventastic_end_time'][0] ?? 'true'); ?>" required>
     </div>
 
     <!-- ==== SUBMIT FORM ==== -->
     <br style="clear:both;">
-    <input class="mepr-button btn-outline btn btn-outline" type="submit" value="Add Event">
+    <input class="mepr-button btn-outline btn btn-outline" type="submit" value="<?php echo isset($post_id) ? 'Update Event' : 'Add Event'; ?>">
 </form>

@@ -234,6 +234,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "activationTime": () => (/* binding */ activationTime),
 /* harmony export */   "adminUrl": () => (/* binding */ adminUrl),
 /* harmony export */   "connectionStatus": () => (/* binding */ connectionStatus),
+/* harmony export */   "contentEmbed": () => (/* binding */ contentEmbed),
+/* harmony export */   "decryptError": () => (/* binding */ decryptError),
 /* harmony export */   "deviceId": () => (/* binding */ deviceId),
 /* harmony export */   "didDisconnect": () => (/* binding */ didDisconnect),
 /* harmony export */   "env": () => (/* binding */ env),
@@ -244,6 +246,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "hubspotNonce": () => (/* binding */ hubspotNonce),
 /* harmony export */   "iframeUrl": () => (/* binding */ iframeUrl),
 /* harmony export */   "impactLink": () => (/* binding */ impactLink),
+/* harmony export */   "lastAuthorizeTime": () => (/* binding */ lastAuthorizeTime),
+/* harmony export */   "lastDeauthorizeTime": () => (/* binding */ lastDeauthorizeTime),
+/* harmony export */   "lastDisconnectTime": () => (/* binding */ lastDisconnectTime),
 /* harmony export */   "leadinPluginVersion": () => (/* binding */ leadinPluginVersion),
 /* harmony export */   "leadinQueryParams": () => (/* binding */ leadinQueryParams),
 /* harmony export */   "locale": () => (/* binding */ locale),
@@ -257,6 +262,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "portalId": () => (/* binding */ portalId),
 /* harmony export */   "redirectNonce": () => (/* binding */ redirectNonce),
 /* harmony export */   "refreshToken": () => (/* binding */ refreshToken),
+/* harmony export */   "requiresContentEmbedScope": () => (/* binding */ requiresContentEmbedScope),
 /* harmony export */   "restNonce": () => (/* binding */ restNonce),
 /* harmony export */   "restUrl": () => (/* binding */ restUrl),
 /* harmony export */   "reviewSkippedDate": () => (/* binding */ reviewSkippedDate),
@@ -280,6 +286,9 @@ var _window$leadinConfig = window.leadinConfig,
     hubspotNonce = _window$leadinConfig.hubspotNonce,
     iframeUrl = _window$leadinConfig.iframeUrl,
     impactLink = _window$leadinConfig.impactLink,
+    lastAuthorizeTime = _window$leadinConfig.lastAuthorizeTime,
+    lastDeauthorizeTime = _window$leadinConfig.lastDeauthorizeTime,
+    lastDisconnectTime = _window$leadinConfig.lastDisconnectTime,
     leadinPluginVersion = _window$leadinConfig.leadinPluginVersion,
     leadinQueryParams = _window$leadinConfig.leadinQueryParams,
     locale = _window$leadinConfig.locale,
@@ -297,7 +306,10 @@ var _window$leadinConfig = window.leadinConfig,
     reviewSkippedDate = _window$leadinConfig.reviewSkippedDate,
     theme = _window$leadinConfig.theme,
     trackConsent = _window$leadinConfig.trackConsent,
-    wpVersion = _window$leadinConfig.wpVersion;
+    wpVersion = _window$leadinConfig.wpVersion,
+    contentEmbed = _window$leadinConfig.contentEmbed,
+    requiresContentEmbedScope = _window$leadinConfig.requiresContentEmbedScope,
+    decryptError = _window$leadinConfig.decryptError;
 
 
 /***/ }),
@@ -444,17 +456,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ FormSaveBlock)
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__);
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
 
 
 function FormSaveBlock(_ref) {
@@ -463,9 +466,10 @@ function FormSaveBlock(_ref) {
       formId = attributes.formId;
 
   if (portalId && formId) {
-    return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__.RawHTML, _objectSpread(_objectSpread({}, _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save()), {}, {
+    return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.RawHTML, {
+      className: "wp-block-leadin-hubspot-form-block",
       children: "[hubspot portal=\"".concat(portalId, "\" id=\"").concat(formId, "\" type=\"form\"]")
-    }));
+    });
   }
 
   return null;
@@ -527,11 +531,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _shared_enums_connectionStatus__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../shared/enums/connectionStatus */ "./scripts/shared/enums/connectionStatus.ts");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _utils_withMetaData__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../utils/withMetaData */ "./scripts/utils/withMetaData.ts");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -557,9 +563,14 @@ function registerFormBlock() {
         status: 401
       });
     }
-  };
+  }; // We do not support the full site editor: https://issues.hubspotcentral.com/browse/WP-1033
 
-  (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__.registerBlockType)('leadin/hubspot-form-block', {
+
+  if (!_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__ || (0,_utils_withMetaData__WEBPACK_IMPORTED_MODULE_10__.isFullSiteEditor)()) {
+    return null;
+  }
+
+  _wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__.registerBlockType('leadin/hubspot-form-block', {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_9__.__)('HubSpot Form', 'leadin'),
     description: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_9__.__)('Select and embed a HubSpot form', 'leadin'),
     icon: _Common_SprocketIcon__WEBPACK_IMPORTED_MODULE_2__["default"],
@@ -640,15 +651,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-
 
 
 function MeetingSaveBlock(_ref) {
@@ -656,9 +658,10 @@ function MeetingSaveBlock(_ref) {
   var url = attributes.url;
 
   if (url) {
-    return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.RawHTML, _objectSpread(_objectSpread({}, _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps.save()), {}, {
+    return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.RawHTML, {
+      className: "wp-block-leadin-hubspot-meeting-block",
       children: "[hubspot url=\"".concat(url, "\" type=\"meeting\"]")
-    }));
+    });
   }
 
   return null;
@@ -688,11 +691,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _shared_Common_ErrorHandler__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../shared/Common/ErrorHandler */ "./scripts/shared/Common/ErrorHandler.tsx");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _utils_withMetaData__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../utils/withMetaData */ "./scripts/utils/withMetaData.ts");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -721,11 +726,16 @@ function registerMeetingBlock() {
         status: 401
       });
     }
-  };
+  }; // We do not support the full site editor: https://issues.hubspotcentral.com/browse/WP-1033
 
-  (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__.registerBlockType)('leadin/hubspot-meeting-block', {
+
+  if (!_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__ || (0,_utils_withMetaData__WEBPACK_IMPORTED_MODULE_9__.isFullSiteEditor)()) {
+    return null;
+  }
+
+  _wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__.registerBlockType('leadin/hubspot-meeting-block', {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_8__.__)('Hubspot Meetings Scheduler', 'leadin'),
-    description: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_8__.__)('Schedule meetings faster and forget the back-and-forth emails. Your calendar stays full, and you stay productive', 'leadin'),
+    description: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_8__.__)('Schedule meetings faster and forget the back-and-forth emails Your calendar stays full, and you stay productive', 'leadin'),
     icon: _Common_CalendarIcon__WEBPACK_IMPORTED_MODULE_2__["default"],
     category: 'leadin-blocks',
     attributes: {
@@ -800,7 +810,7 @@ function registerHubspotSidebar() {
   var ContentTypeLabelStyle = styled_components__WEBPACK_IMPORTED_MODULE_11__["default"].div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    white-space: normal;\n    text-transform: none;\n  "])));
 
   var ContentTypeLabel = (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ContentTypeLabelStyle, {
-    children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)('Select the content type HubSpot Analytics uses to track this page.', 'leadin')
+    children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)('Select the content type HubSpot Analytics uses to track this page', 'leadin')
   });
 
   var LeadinPluginSidebar = function LeadinPluginSidebar(_ref) {
@@ -852,10 +862,13 @@ function registerHubspotSidebar() {
       postType: data && data.getCurrentPostType() && data.getEditedPostAttribute('meta')
     };
   })(LeadinPluginSidebar);
-  (0,_wordpress_plugins__WEBPACK_IMPORTED_MODULE_1__.registerPlugin)('leadin', {
-    render: LeadinPluginSidebarWrapper,
-    icon: _Common_SidebarSprocketIcon__WEBPACK_IMPORTED_MODULE_6__["default"]
-  });
+
+  if (_wordpress_plugins__WEBPACK_IMPORTED_MODULE_1__) {
+    _wordpress_plugins__WEBPACK_IMPORTED_MODULE_1__.registerPlugin('leadin', {
+      render: LeadinPluginSidebarWrapper,
+      icon: _Common_SidebarSprocketIcon__WEBPACK_IMPORTED_MODULE_6__["default"]
+    });
+  }
 }
 
 /***/ }),
@@ -970,7 +983,8 @@ var CoreMessages = {
   ReloadParentFrame: 'INTEGRATED_APP_EMBEDDER_RELOAD_PARENT_FRAME',
   RedirectParentFrame: 'INTEGRATED_APP_EMBEDDER_REDIRECT_PARENT_FRAME',
   SendLocale: 'INTEGRATED_APP_EMBEDDER_SEND_LOCALE',
-  SendDeviceId: 'INTEGRATED_APP_EMBEDDER_SEND_DEVICE_ID'
+  SendDeviceId: 'INTEGRATED_APP_EMBEDDER_SEND_DEVICE_ID',
+  SendIntegratedAppConfig: 'INTEGRATED_APP_EMBEDDER_CONFIG'
 };
 
 /***/ }),
@@ -1064,7 +1078,14 @@ var PluginMessages = {
   BusinessUnitChangeError: 'BUSINESS_UNIT_CHANGE_ERROR',
   SkipReviewRequest: 'SKIP_REVIEW_REQUEST',
   SkipReviewResponse: 'SKIP_REVIEW_RESPONSE',
-  SkipReviewError: 'SKIP_REVIEW_ERROR'
+  SkipReviewError: 'SKIP_REVIEW_ERROR',
+  RemoveParentQueryParam: 'REMOVE_PARENT_QUERY_PARAM',
+  ContentEmbedInstallRequest: 'CONTENT_EMBED_INSTALL_REQUEST',
+  ContentEmbedInstallResponse: 'CONTENT_EMBED_INSTALL_RESPONSE',
+  ContentEmbedInstallError: 'CONTENT_EMBED_INSTALL_ERROR',
+  ContentEmbedActivationRequest: 'CONTENT_EMBED_ACTIVATION_REQUEST',
+  ContentEmbedActivationResponse: 'CONTENT_EMBED_ACTIVATION_RESPONSE',
+  ContentEmbedActivationError: 'CONTENT_EMBED_ACTIVATION_ERROR'
 };
 
 /***/ }),
@@ -1504,7 +1525,7 @@ function ErrorHandler(_ref) {
   } : _ref$errorInfo;
   var isUnauthorized = status === 401 || status === 403;
   var errorHeader = isUnauthorized ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__.__)("Your plugin isn't authorized", 'leadin') : errorInfo.header;
-  var errorMessage = isUnauthorized ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__.__)('Reauthorize your plugin to access your free HubSpot tools.', 'leadin') : errorInfo.message;
+  var errorMessage = isUnauthorized ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__.__)('Reauthorize your plugin to access your free HubSpot tools', 'leadin') : errorInfo.message;
   return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_HubspotWrapper__WEBPACK_IMPORTED_MODULE_3__["default"], {
     pluginPath: _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_4__.pluginPath,
     children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_UIComponents_UIContainer__WEBPACK_IMPORTED_MODULE_2__["default"], {
@@ -1771,7 +1792,7 @@ function FormSelect(_ref) {
     },
     errorInfo: {
       header: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('There was a problem retrieving your forms', 'leadin'),
-      message: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Please refresh your forms or try again in a few minutes.', 'leadin'),
+      message: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Please refresh your forms or try again in a few minutes', 'leadin'),
       action: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Refresh forms', 'leadin')
     }
   }) : (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_FormSelector__WEBPACK_IMPORTED_MODULE_1__["default"], {
@@ -2185,7 +2206,7 @@ function MeetingController(_ref) {
       },
       errorInfo: {
         header: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_9__.__)('There was a problem retrieving your meetings', 'leadin'),
-        message: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_9__.__)('Please refresh your meetings or try again in a few minutes.', 'leadin'),
+        message: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_9__.__)('Please refresh your meetings or try again in a few minutes', 'leadin'),
         action: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_9__.__)('Refresh meetings', 'leadin')
       }
     }) : (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_Common_HubspotWrapper__WEBPACK_IMPORTED_MODULE_6__["default"], {
@@ -2360,8 +2381,8 @@ function MeetingWarning(_ref) {
   var status = _ref.status,
       onConnectCalendar = _ref.onConnectCalendar;
   var isMeetingOwner = status === _constants__WEBPACK_IMPORTED_MODULE_3__.CURRENT_USER_CALENDAR_MISSING;
-  var titleText = isMeetingOwner ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Your calendar is not connected.', 'leadin') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Calendar is not connected.', 'leadin');
-  var titleMessage = isMeetingOwner ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Please connect your calendar to activate your scheduling pages.', 'leadin') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Make sure that everybody in this meeting has connected their calendar from the Meetings page in HubSpot.', 'leadin');
+  var titleText = isMeetingOwner ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Your calendar is not connected', 'leadin') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Calendar is not connected', 'leadin');
+  var titleMessage = isMeetingOwner ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Please connect your calendar to activate your scheduling pages', 'leadin') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Make sure that everybody in this meeting has connected their calendar from the Meetings page in HubSpot', 'leadin');
   return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_UIComponents_UIAlert__WEBPACK_IMPORTED_MODULE_1__["default"], {
     titleText: titleText,
     titleMessage: titleMessage,
@@ -3236,13 +3257,18 @@ var getOrCreateBackgroundApp = function getOrCreateBackgroundApp(refreshToken) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
+/* harmony export */   "isFullSiteEditor": () => (/* binding */ isFullSiteEditor)
 /* harmony export */ });
 /* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
 /* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_0__);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+ // from answer here: https://github.com/WordPress/gutenberg/issues/44477#issuecomment-1263026599
 
+var isFullSiteEditor = function isFullSiteEditor() {
+  return _wordpress_data__WEBPACK_IMPORTED_MODULE_0__.select && !!(0,_wordpress_data__WEBPACK_IMPORTED_MODULE_0__.select)('core/edit-site');
+};
 var applyWithSelect = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_0__.withSelect)(function (select, props) {
   return {
     metaValue: select('core/editor').getEditedPostAttribute('meta')[props.metaKey]
@@ -12743,17 +12769,6 @@ module.exports = window["React"];
 
 "use strict";
 module.exports = window["jQuery"];
-
-/***/ }),
-
-/***/ "@wordpress/block-editor":
-/*!*************************************!*\
-  !*** external ["wp","blockEditor"] ***!
-  \*************************************/
-/***/ ((module) => {
-
-"use strict";
-module.exports = window["wp"]["blockEditor"];
 
 /***/ }),
 

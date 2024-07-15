@@ -1,5 +1,5 @@
 import React from 'react';
-import { BlockAttribute, registerBlockType } from '@wordpress/blocks';
+import * as WpBlocksApi from '@wordpress/blocks';
 import SprocketIcon from '../Common/SprocketIcon';
 import FormBlockSave from './FormBlockSave';
 import { connectionStatus } from '../../constants/leadinConfig';
@@ -8,6 +8,7 @@ import ErrorHandler from '../../shared/Common/ErrorHandler';
 import FormEdit from '../../shared/Form/FormEdit';
 import ConnectionStatus from '../../shared/enums/connectionStatus';
 import { __ } from '@wordpress/i18n';
+import { isFullSiteEditor } from '../../utils/withMetaData';
 
 export interface IFormBlockAttributes {
   attributes: {
@@ -21,6 +22,7 @@ export interface IFormBlockAttributes {
 export interface IFormBlockProps extends IFormBlockAttributes {
   setAttributes: Function;
   isSelected: boolean;
+  context?: any;
 }
 
 export default function registerFormBlock() {
@@ -34,7 +36,12 @@ export default function registerFormBlock() {
     }
   };
 
-  registerBlockType('leadin/hubspot-form-block', {
+  // We do not support the full site editor: https://issues.hubspotcentral.com/browse/WP-1033
+  if (!WpBlocksApi || isFullSiteEditor()) {
+    return null;
+  }
+
+  WpBlocksApi.registerBlockType('leadin/hubspot-form-block', {
     title: __('HubSpot Form', 'leadin'),
     description: __('Select and embed a HubSpot form', 'leadin'),
     icon: SprocketIcon,
@@ -43,17 +50,17 @@ export default function registerFormBlock() {
       portalId: {
         type: 'string',
         default: '',
-      } as BlockAttribute<string>,
+      } as WpBlocksApi.BlockAttribute<string>,
       formId: {
         type: 'string',
-      } as BlockAttribute<string>,
+      } as WpBlocksApi.BlockAttribute<string>,
       formName: {
         type: 'string',
-      } as BlockAttribute<string>,
+      } as WpBlocksApi.BlockAttribute<string>,
       preview: {
         type: 'boolean',
         default: false,
-      } as BlockAttribute<boolean>,
+      } as WpBlocksApi.BlockAttribute<boolean>,
     },
     example: {
       attributes: {

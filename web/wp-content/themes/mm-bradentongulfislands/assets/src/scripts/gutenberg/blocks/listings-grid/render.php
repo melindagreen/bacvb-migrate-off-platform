@@ -62,7 +62,6 @@ function render_block( $attrs, $content ) {
 		data-perPage="<?php echo $attrs['listingsPerPage']; ?>"
 	>
 
-
 	<!-- grid body -->
 	<div class="grid-body">
 

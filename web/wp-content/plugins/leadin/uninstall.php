@@ -23,3 +23,4 @@ delete_option( 'leadin_access_token' );
 delete_option( 'leadin_refresh_token' );
 delete_option( 'leadin_expiry_time' );
 delete_option( 'leadin_activation_time' );
+delete_option( 'leadin_content_embed_ui_install' );

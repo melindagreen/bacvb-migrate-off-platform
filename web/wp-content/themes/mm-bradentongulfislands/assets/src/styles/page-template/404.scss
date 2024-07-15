@@ -86,3 +86,20 @@
 	margin-top: 0 !important;
 }
 }
+
+.page-content--maintenance {
+
+	min-height: 800px !important;
+
+	.content-inner {
+
+		.maintenance-message {
+
+			margin: -2rem 1% 1rem 1%;
+			padding: 2% 3%;
+			border-radius: 22px;
+			color: white;
+			background: $rust;
+		}
+	}
+}

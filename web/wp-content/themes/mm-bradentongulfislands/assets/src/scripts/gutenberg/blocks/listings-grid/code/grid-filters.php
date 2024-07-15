@@ -107,7 +107,7 @@ function render_grid_filter( $attrs, $filter_tax ) {
                 />
             <span class="control__text"><?php _e( 'All', 'mmnino' ); ?></span>
             </label>
-            <label for="control__input--categories" class="control__label control__label--categories exclude">
+            <label for="control__input--categories" class="events control__label control__label--categories exclude">
                 <input
                 type="checkbox"
                 id="control__input--categories-exclude" 

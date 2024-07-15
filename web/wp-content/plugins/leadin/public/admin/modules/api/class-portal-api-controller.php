@@ -16,11 +16,6 @@ class Portal_Api_Controller extends Base_Api_Controller {
 	 */
 	public function __construct() {
 		self::register_leadin_admin_route(
-			'/portal',
-			\WP_REST_Server::DELETABLE,
-			array( $this, 'disconnect_portal' )
-		);
-		self::register_leadin_admin_route(
 			'/business-unit',
 			\WP_REST_Server::READABLE,
 			array( $this, 'get_business_unit_option' )
@@ -30,17 +25,6 @@ class Portal_Api_Controller extends Base_Api_Controller {
 			\WP_REST_Server::EDITABLE,
 			array( $this, 'set_business_unit_option' )
 		);
-	}
-
-	/**
-	 * Removes portal id and domain from the WordPress options.
-	 */
-	public function disconnect_portal() {
-		if ( Connection::is_connected() ) {
-			Connection::disconnect();
-			return new \WP_REST_Response( 'OK', 200 );
-		}
-		return new \WP_REST_Response( 'No leadin_portal_id found, cannot disconnect', 400 );
 	}
 
 	/**

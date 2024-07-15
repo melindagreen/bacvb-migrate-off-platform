@@ -27,7 +27,7 @@ function ElementorFormSelect({
     </div>
   ) : hasError ? (
     <ElementorBanner type="danger">
-      {__('Please refresh your forms or try again in a few minutes.', 'leadin')}
+      {__('Please refresh your forms or try again in a few minutes', 'leadin')}
     </ElementorBanner>
   ) : (
     <select

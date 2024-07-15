@@ -3,6 +3,7 @@
 namespace MaddenNino\Library\Memberpress;
 
 use MaddenNino\Library\Constants as C;
+use MaddenNino\Library\MemberPress\Utilities as MeprU;
 use WP_Query;
 
 class MemberPressPortal {
@@ -13,13 +14,51 @@ class MemberPressPortal {
 
         self::$account_actions = ['listings','events','add_listing','edit_event','add_event', 'edit_listing'];
 
-		add_filter( 'mepr_account_nav_content', array(get_called_class(), 'nav_tabs'), 10, 1);
+		    add_filter( 'mepr_account_nav_content', array(get_called_class(), 'nav_tabs'), 10, 1);
         add_action('mepr_enqueue_scripts', array(get_called_class(),'mepr_enqueue_scripts'), 10, 3);
         add_action( 'transition_post_status', array(get_called_class(),'post_status_notification'), 9, 3 );
         add_action('mepr_account_nav', array(get_called_class(),'mepr_add_some_tabs'));
         add_action( 'transition_post_status', array(get_called_class(),'handle_post_status'), 10, 3 );
+        add_action( 'mepr_account_nav', array(get_called_class(),'partner_portal_maintenance'), 10 );
+        add_filter('mepr-account-nav-home-label', array(get_called_class(),'mepr_account_nav_home_label'), 10);
+        add_action('after_setup_theme', array(get_called_class(),'customize_partner_access'), 10);
+        add_action('admin_init', array(get_called_class(),'customize_partner_access'), 10);
         add_action( 'init', array(get_called_class(),'exclude_from_search'), 99 );
 	}
+
+      public static function customize_partner_access() {
+        if (current_user_can('partner')) {
+            // Remove admin bar
+            add_filter('show_admin_bar', '__return_false');
+            
+            // Redirect from admin area
+            if (is_admin() && !defined('DOING_AJAX')) {
+                wp_redirect(home_url());
+                exit;
+            }
+        }
+    }
+
+      public static function mepr_account_nav_home_label() {
+        // Return a new label
+        return 'Your Business Profile';
+      }
+
+      public static function partner_portal_maintenance() {
+
+        $isMaintenance = get_field('partner_portal_maintenance', 12925);
+        $currentUserId = get_current_user_id();
+
+        $allowedUsers = get_field('maintenance_redirect_override', 12925);
+        if (!is_array($allowedUsers)) {
+            $allowedUsers = [];
+        }
+
+        if ($isMaintenance && !in_array($currentUserId, $allowedUsers) && !current_user_can('administrator')) {
+            wp_redirect(site_url() . '/404?maintenance=true');
+            exit;
+        }
+    }
 
     public static function exclude_from_search() {
       global $wp_post_types;
@@ -689,19 +728,20 @@ class MemberPressPortal {
 
             }
 
+            
             else if ($old_status === 'pending' && $new_status === 'draft') {
                 $original_post_id = get_post_meta($post->ID, 'original_post_id', true);
                 if ($original_post_id) {
 
                     wp_update_post(array(
                         'ID' => $post->ID,
-                        'post_status' => 'trash' 
+                        'post_status' => 'draft' 
                     ));
                 }
             }
 
-            //Prevents post status from changing to draft
-            else if($old_status === 'pending' && $new_status === 'trash') {
+            
+            else if(($old_status === 'pending' || $old_status === 'draft') && $new_status === 'trash') {
                 
             // If post is moved to trash, change its title
             $new_title = '[REJECTED] ' . $post->post_title;

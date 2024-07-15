@@ -67,7 +67,7 @@ export default function MeetingController({
               'leadin'
             ),
             message: __(
-              'Please refresh your meetings or try again in a few minutes.',
+              'Please refresh your meetings or try again in a few minutes',
               'leadin'
             ),
             action: __('Refresh meetings', 'leadin'),

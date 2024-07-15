@@ -54,7 +54,7 @@ function ElementorMeetingSelect({
       ) : error ? (
         <ElementorBanner type="danger">
           {__(
-            'Please refresh your meetings or try again in a few minutes.',
+            'Please refresh your meetings or try again in a few minutes',
             'leadin'
           )}
         </ElementorBanner>
