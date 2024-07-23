@@ -294,12 +294,6 @@ class RestApi {
                         'compare' => '<=',
                         'type' => 'DATE',
                     ),
-                    array(
-                        'key' => 'eventastic_start_date',
-                        'value' => date( 'Y-m-d' ),
-                        'compare' => '>=',
-                        'type' => 'DATE',
-                    )
                 ),
                 array(
                     'relation' => 'AND',
