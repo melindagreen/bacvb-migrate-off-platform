@@ -56,7 +56,7 @@
         <a href="https://visitflorida.com" target="_blank"><img 
             data-load-type="img"
             data-load-offset="lg" 
-            data-load-all="<?php echo get_theme_file_uri().'/assets/images/logo-VisitFlorida.svg';?>" 
+            data-load-all="<?php echo get_theme_file_uri().'/assets/images/VF_Logo2019_Primary_White.png';?>" 
             data-load-alt="visitflorida.com" 
             src="<?php echo get_theme_file_uri() ?>/assets/images/pixel.png" 
         /></a>
