@@ -73,10 +73,9 @@ $bar-height: 70px;
 			display: flex;
 			max-width: 70em;
 
-			.control__label--categories {
-				&.all, &.events {
-					display: none;
-				}
+			.control__label--categories.all, .control__label--categories.exclude {
+
+				display: none;
 			}
 
 			.control--search {

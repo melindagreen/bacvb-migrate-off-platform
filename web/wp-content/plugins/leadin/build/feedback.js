@@ -420,6 +420,9 @@ function configureRaven() {
     instrument: {
       tryCatch: false
     },
+    shouldSendCallback: function shouldSendCallback(data) {
+      return !!data && !!data.culprit && /plugins\/leadin\//.test(data.culprit);
+    },
     release: _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_1__.leadinPluginVersion
   }).install();
   raven_js__WEBPACK_IMPORTED_MODULE_0___default().setTagsContext({
@@ -498,7 +501,9 @@ function initBackgroundApp(initFn) {
 
   (0,_appUtils__WEBPACK_IMPORTED_MODULE_1__.initApp)(main);
 }
-var getOrCreateBackgroundApp = function getOrCreateBackgroundApp(refreshToken) {
+var getOrCreateBackgroundApp = function getOrCreateBackgroundApp() {
+  var refreshToken = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+
   if (window.LeadinBackgroundApp) {
     return window.LeadinBackgroundApp;
   }
@@ -3779,8 +3784,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _feedback_ThickBoxModal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../feedback/ThickBoxModal */ "./scripts/feedback/ThickBoxModal.ts");
 /* harmony import */ var _feedback_feedbackFormApi__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../feedback/feedbackFormApi */ "./scripts/feedback/feedbackFormApi.ts");
 /* harmony import */ var _utils_backgroundAppUtils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/backgroundAppUtils */ "./scripts/utils/backgroundAppUtils.ts");
-/* harmony import */ var _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../constants/leadinConfig */ "./scripts/constants/leadinConfig.ts");
-/* harmony import */ var _iframe_integratedMessages__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../iframe/integratedMessages */ "./scripts/iframe/integratedMessages/index.ts");
+/* harmony import */ var _iframe_integratedMessages__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../iframe/integratedMessages */ "./scripts/iframe/integratedMessages/index.ts");
 
 
 
@@ -3788,7 +3792,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
+var embedder;
 
 function deactivatePlugin() {
   var href = jquery__WEBPACK_IMPORTED_MODULE_0___default()(_constants_selectors__WEBPACK_IMPORTED_MODULE_2__.domElements.deactivatePluginButton).attr('href');
@@ -3809,10 +3813,9 @@ function submitAndDeactivate(e) {
     return field.name === 'feedback';
   });
   (0,_feedback_feedbackFormApi__WEBPACK_IMPORTED_MODULE_4__.submitFeedbackForm)(_constants_selectors__WEBPACK_IMPORTED_MODULE_2__.domElements.deactivateFeedbackForm).then(function () {
-    if (feedback && _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_6__.refreshToken) {
-      var embedder = (0,_utils_backgroundAppUtils__WEBPACK_IMPORTED_MODULE_5__.getOrCreateBackgroundApp)(_constants_leadinConfig__WEBPACK_IMPORTED_MODULE_6__.refreshToken);
+    if (feedback) {
       embedder.postMessage({
-        key: _iframe_integratedMessages__WEBPACK_IMPORTED_MODULE_7__.ProxyMessages.TrackPluginDeactivation,
+        key: _iframe_integratedMessages__WEBPACK_IMPORTED_MODULE_6__.ProxyMessages.TrackPluginDeactivation,
         payload: {
           type: feedback.value.trim().replace(/[\s']+/g, '_')
         }
@@ -3826,7 +3829,8 @@ function submitAndDeactivate(e) {
 }
 
 function init() {
-  // eslint-disable-next-line no-new
+  embedder = (0,_utils_backgroundAppUtils__WEBPACK_IMPORTED_MODULE_5__.getOrCreateBackgroundApp)(); // eslint-disable-next-line no-new
+
   new _feedback_ThickBoxModal__WEBPACK_IMPORTED_MODULE_3__["default"](_constants_selectors__WEBPACK_IMPORTED_MODULE_2__.domElements.deactivatePluginButton, 'leadin-feedback-container', 'leadin-feedback-window', 'leadin-feedback-content');
   jquery__WEBPACK_IMPORTED_MODULE_0___default()(_constants_selectors__WEBPACK_IMPORTED_MODULE_2__.domElements.deactivateFeedbackForm).off('submit').on('submit', submitAndDeactivate);
   jquery__WEBPACK_IMPORTED_MODULE_0___default()(_constants_selectors__WEBPACK_IMPORTED_MODULE_2__.domElements.deactivateFeedbackSkip).off('click').on('click', deactivatePlugin);

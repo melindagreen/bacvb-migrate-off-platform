@@ -1273,6 +1273,9 @@ function configureRaven() {
     instrument: {
       tryCatch: false
     },
+    shouldSendCallback: function shouldSendCallback(data) {
+      return !!data && !!data.culprit && /plugins\/leadin\//.test(data.culprit);
+    },
     release: _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_1__.leadinPluginVersion
   }).install();
   raven_js__WEBPACK_IMPORTED_MODULE_0___default().setTagsContext({
@@ -3317,7 +3320,9 @@ function initBackgroundApp(initFn) {
 
   (0,_appUtils__WEBPACK_IMPORTED_MODULE_1__.initApp)(main);
 }
-var getOrCreateBackgroundApp = function getOrCreateBackgroundApp(refreshToken) {
+var getOrCreateBackgroundApp = function getOrCreateBackgroundApp() {
+  var refreshToken = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+
   if (window.LeadinBackgroundApp) {
     return window.LeadinBackgroundApp;
   }

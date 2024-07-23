@@ -803,11 +803,11 @@ var getAppOptions = function getAppOptions(app) {
 
   switch (app) {
     case _constants__WEBPACK_IMPORTED_MODULE_3__.App.Plugin:
-      options = new PluginAppOptions().setLeadinConfig(getLeadinConfig());
+      options = new PluginAppOptions();
       break;
 
     case _constants__WEBPACK_IMPORTED_MODULE_3__.App.PluginSettings:
-      options = new PluginAppOptions().setLeadinConfig(getLeadinConfig()).setPluginSettingsInit();
+      options = new PluginAppOptions().setPluginSettingsInit();
       break;
 
     case _constants__WEBPACK_IMPORTED_MODULE_3__.App.Forms:
@@ -843,7 +843,7 @@ function useAppEmbedder(app, createRoute, container) {
         IntegratedAppEmbedder = _window2.IntegratedAppEmbedder;
 
     if (IntegratedAppEmbedder) {
-      var options = getAppOptions(app, createRoute).setLocale(_constants_leadinConfig__WEBPACK_IMPORTED_MODULE_2__.locale).setDeviceId(_constants_leadinConfig__WEBPACK_IMPORTED_MODULE_2__.deviceId).setRefreshToken(_constants_leadinConfig__WEBPACK_IMPORTED_MODULE_2__.refreshToken);
+      var options = getAppOptions(app, createRoute).setLocale(_constants_leadinConfig__WEBPACK_IMPORTED_MODULE_2__.locale).setDeviceId(_constants_leadinConfig__WEBPACK_IMPORTED_MODULE_2__.deviceId).setRefreshToken(_constants_leadinConfig__WEBPACK_IMPORTED_MODULE_2__.refreshToken).setLeadinConfig(getLeadinConfig());
       var embedder = new IntegratedAppEmbedder(_constants__WEBPACK_IMPORTED_MODULE_3__.AppIframe[app], _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_2__.portalId, _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_2__.hubspotBaseUrl, _utils_iframe__WEBPACK_IMPORTED_MODULE_5__.resizeWindow, _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_2__.refreshToken ? '' : _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_2__.impactLink).setOptions(options);
       embedder.subscribe((0,_messageMiddleware__WEBPACK_IMPORTED_MODULE_4__.messageMiddleware)(embedder));
       embedder.attachTo(container, true);
@@ -904,6 +904,9 @@ function configureRaven() {
   raven_js__WEBPACK_IMPORTED_MODULE_0___default().config('https://e9b8f382cdd130c0d415cd977d2be56f@exceptions.hubspot.com/1', {
     instrument: {
       tryCatch: false
+    },
+    shouldSendCallback: function shouldSendCallback(data) {
+      return !!data && !!data.culprit && /plugins\/leadin\//.test(data.culprit);
     },
     release: _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_1__.leadinPluginVersion
   }).install();

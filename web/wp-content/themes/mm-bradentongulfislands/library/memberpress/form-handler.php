@@ -285,7 +285,7 @@ class MemberPressFormHandler {
         
                 // Handle image upload and update partnerportal_gallery_square_featured_image
                 if (!empty($_FILES['partnerportal_gallery_square_featured_image']['name'])) {
-                    $upload = wp_upload_bits($_FILES['partnerportal_gallery_square_featured_image']['name'], null, file_get_contents($_FILES['eventastic_gallery_square_featured_image']['tmp_name']));
+                    $upload = wp_upload_bits($_FILES['partnerportal_gallery_square_featured_image']['name'], null, file_get_contents($_FILES['partnerportal_gallery_square_featured_image']['tmp_name']));
                     if (!$upload['error']) {
                         update_post_meta($post_id, 'partnerportal_gallery_square_featured_image', $upload['url']);
                         // Set the uploaded image as the post thumbnail
