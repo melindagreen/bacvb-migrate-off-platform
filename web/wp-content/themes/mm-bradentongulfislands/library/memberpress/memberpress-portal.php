@@ -24,8 +24,31 @@ class MemberPressPortal {
         add_action('after_setup_theme', array(get_called_class(),'customize_partner_access'), 10);
         add_action('admin_init', array(get_called_class(),'customize_partner_access'), 10);
         add_action( 'init', array(get_called_class(),'exclude_from_search'), 99 );
+        add_action( 'mepr-user-message', array(get_called_class(),'mepr_account_welcome_message'), 10, 2 );
+
+
 	}
 
+
+  public static function mepr_account_welcome_message($message, $user) {
+    // Get the current user ID
+    $user_id = $user->ID;
+
+    // Check if the user has the 'partner_group' selected in the ACF relationship field
+    $partner_group = get_field('partner_group', 'user_' . $user_id);
+
+    if ($partner_group) {
+        // Display the welcome message
+        $message = 'Welcome to your Business Profile. Here you can manage your listings and events.';
+    } else {
+        // Display the instructional message
+        $message = 'You do not have a partner group assigned. Please contact support for assistance in setting up your partner group.';
+    }
+
+    return $message;
+}
+
+	
       public static function customize_partner_access() {
         if (current_user_can('partner')) {
             // Remove admin bar
@@ -71,33 +94,45 @@ class MemberPressPortal {
     }
 
     public static function mepr_add_some_tabs($action) {
-        $support_active = (isset($_GET['action']) && $_GET['action'] == 'premium-support')?'mepr-active-nav-tab':'';
-        ?>
-          <span class="mepr-nav-item listing <?php echo $support_active; ?>">
-            <a href="/account/?action=listings">Listings</a>
-          </span>
-          <span class="mepr-nav-item events <?php echo $support_active; ?>">
-            <a href="/account/?action=events">Events</a>
-          </span>
-          <?php
-    }
+      
+        // Get the current user ID
+        $user_id = get_current_user_id();
+    
+        // Check if the user has the 'partner_group' selected in the ACF relationship field
+        $partner_group = get_field('partner_group', 'user_' . $user_id);
 
-    public static function nav_tabs($action) {
-        
-         // Memberpress Account styles
-         wp_enqueue_style(
-            C::THEME_PREFIX . "-memberpress-account-css", // handle
-            get_stylesheet_directory_uri()."/assets/build/memberpress-account.css", // src
-            [], // dependencies
-            null
-        );
-
-        // Retrieves template of defined account action
-        if(in_array($_GET['action'], self::$account_actions)) {
-
-            include get_stylesheet_directory() . '/library/memberpress/templates/account-'.$_GET['action'].'.php';
+        if ($partner_group) {
+            // Check if 'action' is set and matches 'premium-support' for active class
+            $listings_active = (isset($_GET['action']) && $_GET['action'] == 'listings') ? 'mepr-active-nav-tab' : '';
+            $events_active = (isset($_GET['action']) && $_GET['action'] == 'events') ? 'mepr-active-nav-tab' : '';
+    
+            ?>
+            <span class="mepr-nav-item listings <?php echo $listings_active; ?>">
+                <a href="/account/?action=listings">Listings</a>
+            </span>
+            <span class="mepr-nav-item events <?php echo $events_active; ?>">
+                <a href="/account/?action=events">Events</a>
+            </span>
+            <?php
+        }else{
+          $action->user_message = 'You do not have access to this page.';
         }
     }
+  
+
+    public static function nav_tabs($action) {
+      // Memberpress Account styles
+      wp_enqueue_style(
+          C::THEME_PREFIX . "-memberpress-account-css", // handle
+          get_stylesheet_directory_uri()."/assets/build/memberpress-account.css", // src
+          [], // dependencies
+          null
+      );
+    // Retrieves template of defined account action
+    if (isset($_GET['action']) && in_array($_GET['action'], self::$account_actions)) {
+      include get_stylesheet_directory() . '/library/memberpress/templates/account-' . $_GET['action'] . '.php';
+    }
+  }
 
     public static function mepr_enqueue_scripts($is_product_page, $is_group_page, $is_account_page) {
 

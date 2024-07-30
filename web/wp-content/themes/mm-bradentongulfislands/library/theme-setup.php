@@ -13,6 +13,12 @@ class ThemeSetup {
 		add_action( 'template_redirect', array(get_called_class(), 'redirect_single_posts'));
 		// add_action('gform_after_submission', array( get_called_class(), 'add_to_newsletter' ), 10, 2);
 
+		add_action( 'template_redirect', array(get_called_class(), 'disable_author_archives'));
+		add_action( 'template_redirect', array(get_called_class(), 'disable_team_archives'));
+		//add_action( 'template_redirect', array(get_called_class(), 'redirect_non_logged_in_users'));
+
+			
+
 		// tell yoast to not show some sitemaps
 		add_filter( 'wpseo_sitemap_exclude_taxonomy', array( get_called_class(), 'sitemap_exclude_taxonomy' ), 10, 2 );
 
@@ -52,7 +58,7 @@ class ThemeSetup {
 	 */
 	public static function add_photo_credit($block_content, $block) {
 
-		if (($block['blockName'] === 'core/image' || $block['blockName'] === 'core/cover') && $block['attrs']['photoCredit'] ) {
+		if (($block['blockName'] === 'core/image' || $block['blockName'] === 'core/cover') && isset($block['attrs']['photoCredit']) && $block['attrs']['photoCredit'] ) {
 			$imageId = $block['attrs']['id'];
 			$photoCredit = get_field('photo_credit', $imageId);
 			$position = strpos($block_content, '<img ');
@@ -61,9 +67,10 @@ class ThemeSetup {
 			$modifiedContent = substr_replace($block_content, $photoCreditContent . '<img ', $position, 0);
 			$block_content = $position !== false ? $modifiedContent : $block_content;
 		}
-	
+
 		return $block_content;
 	}
+
 
 	public static function photo_credit_url_param($url, $attachment_id) {
 
@@ -180,4 +187,38 @@ class ThemeSetup {
 
 		if ( in_array( $taxonomy, $skipTaxonomies ) ) return true;
 	}		
+
+
+		// Disable author archives
+	public static function disable_author_archives() {
+		if (is_author()) {
+			global $wp_query;
+			$wp_query->set_404();
+			status_header(404);
+			nocache_headers();
+			include(get_query_template('404'));
+			exit;
+		}
+	}
+
+	// Disable custom post type "teams" archives
+	public static function disable_team_archives() {
+		if (is_post_type_archive('teams') || is_singular('teams')) {
+			global $wp_query;
+			$wp_query->set_404();
+			status_header(404);
+			nocache_headers();
+			include(get_query_template('404'));
+			exit;
+		}
+	}
+
+	// Redirect non-logged-in users from account page to login page
+	public static function redirect_non_logged_in_users() {
+		if (!is_user_logged_in() && is_page('account')) {
+			wp_redirect(home_url('/login/'));
+			exit;
+		}
+	}
+
 }

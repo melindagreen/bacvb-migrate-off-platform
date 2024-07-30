@@ -48,26 +48,20 @@ if( $hours_description ){
     $hours .= "<div class='hours-description'>" . $hours_description . "</div>";
 }
 $days_array = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday'];
-foreach( $days_array as $day ){
-    $open = $meta['open_' . $day];
-    $closed = $meta['closed_' . $day];
-    if( $open || $closed){
-        $open = date("g:i a", strtotime($open . " UTC"));
-        $closed = date("g:i a", strtotime($closed . " UTC"));
-        if( !$open || $open == '12:00 am'){
-            $open = "CLOSED";
-        }
-        if( !$closed || $closed == '12:00 am' ){
-            $closed = "";
-        }
-        
-        if(!empty($closed)) {
+foreach ($days_array as $day) {
+    $open = isset($meta['open_' . $day]) ? $meta['open_' . $day] : null;
+    $closed = isset($meta['closed_' . $day]) ? $meta['closed_' . $day] : null;
+    if ($open || $closed) {
+        $open = $open ? date("g:i a", strtotime($open . " UTC")) : "CLOSED";
+        $closed = $closed ? date("g:i a", strtotime($closed . " UTC")) : "";
+        if (!empty($closed)) {
             $hours .= "<div class='day'>" . ucfirst($day) . ": " . $open . " - " . $closed . "</div>";
         } else {
             $hours .= "<div class='day'>" . ucfirst($day) . ": " . $open . "</div>";
         }
     }
 }
+
 $published_name =(isset($meta['business_name'])) ? $meta['business_name'] : "";
 if( preg_match('#,The#', $published_name ) ){
     $published_name = "The " . preg_replace('#,The#','',$published_name); 
@@ -211,7 +205,7 @@ $diningAmenities = (isset($meta['dining-amenities'])) ? $meta['dining-amenities'
                         <?php if ( $street): //make sure we got somethin at least?>
                         <p class="address">
                             <?php
-                            if ($street) echo ($stree2) ? $street.', '.$street2 : $street;
+                            if ($street) echo ($street2) ? $street.', '.$street2 : $street;
 
                             echo "<br>";
                             
