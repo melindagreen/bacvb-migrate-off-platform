@@ -190,12 +190,12 @@
     <div id="eventastic_start_col" class="mepr-account-form__col-2">
         <!-- Start Time -->
         <label for="eventastic_start_time">Start Time: <span class="mepr-required-asterisk">*</span></label><br>
-        <input type="time" name="eventastic_start_time" id="eventastic_start_time" value="<?php echo esc_attr($meta_data['eventastic_start_time'][0] ?? 'true'); ?>" required>
+        <input type="time" name="eventastic_start_time" id="eventastic_start_time" value="<?php echo esc_attr($meta_data['eventastic_start_time'][0] ?? 'true'); ?>">
     </div>
     <div id="eventastic_end_col" class="mepr-account-form__col-2">
         <!-- End Time -->
         <label for="eventastic_end_date">End Time: <span class="mepr-required-asterisk">*</span></label><br>
-        <input type="time" name="eventastic_end_time" id="eventastic_end_time" value="<?php echo esc_attr($meta_data['eventastic_end_time'][0] ?? 'true'); ?>" required>
+        <input type="time" name="eventastic_end_time" id="eventastic_end_time" value="<?php echo esc_attr($meta_data['eventastic_end_time'][0] ?? 'true'); ?>">
     </div>
 
     <!-- ==== SUBMIT FORM ==== -->
