@@ -53,7 +53,7 @@
             <h3 class="top-banner__title">Ferry Alert</h3>
             <p class="top-banner__message"><?php echo get_field('banner_message'); ?></p>
             <?php if(get_field('banner_button_url') !== ""): ?>
-            <a href="<?php echo get_field('banner_button_url'); ?>" class="top-banner__cta">Learn More</a>
+            <a href="<?php echo get_field('banner_button_url'); ?>" class="top-banner__cta" target="__blank">Learn More</a>
             <?php endif; ?>
             <div class="top-banner__close">
                 <?php include( get_theme_file_path() . '/assets/images/icons/close.svg' ); ?>
