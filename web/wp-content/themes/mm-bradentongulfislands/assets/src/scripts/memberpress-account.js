@@ -14,7 +14,7 @@ import '../styles/memberpress-account.scss';
 	function themeOnLoad() {
 		
         // Modifications to the Partner Portal -- this is short term to save time
-	    $('.mepr-profile-wrapper__footer a:lt(2)').hide();
+	    //$('.mepr-profile-wrapper__footer a:lt(2)').hide();
 	    $('#mepr-account-nav .mepr-payments, #mepr-account-nav .mepr-subscriptions').hide();
 
         // Select the dt and dd containing the Business Address

@@ -5,47 +5,47 @@
 get_header();
 global $post;
 $meta = eventastic_get_event_meta($post->ID);
-//calculate dates
-$startDate = strtotime($meta['start_date']); //convert to time so we can use the date() function for rendering
-$endDate = strtotime($meta['end_date']);
-$dateFormat = 'M jS';
-if (date('Y') != date('Y', $startDate) || date('Y') != date('Y', $endDate)) $dateFormat .= ', Y'; //only show year if it's not the current year
 
-//calculate recurrance
-$recurring = ($meta['event_end'] == 'finite') ? false : true;
-if ($recurring) {
-    $recurringDays = $meta['recurring_days'];
-    $recurringRepeat = $meta['recurring_repeat'];
-}
-$allDay = (isset($meta['event_all_day'])) ? $meta['event_all_day'] : false;
-$startTime = $meta['start_time'];
-$endTime = $meta['end_time'];
+//calculate dates
+$startDate = isset($meta['start_date']) ? strtotime($meta['start_date']) : null;
+$endDate = isset($meta['end_date']) ? strtotime($meta['end_date']) : null;
+$dateFormat = 'M jS';
+if ($startDate && $endDate && (date('Y') != date('Y', $startDate) || date('Y') != date('Y', $endDate))) $dateFormat .= ', Y'; //only show year if it's not the current year
+
+//calculate recurrence
+$recurring = isset($meta['event_end']) && $meta['event_end'] != 'finite';
+$recurringDays = isset($meta['recurring_days']) ? $meta['recurring_days'] : null;
+$recurringRepeat = isset($meta['recurring_repeat']) ? $meta['recurring_repeat'] : null;
+
+$allDay = isset($meta['event_all_day']) ? $meta['event_all_day'] : false;
+$startTime = isset($meta['start_time']) ? $meta['start_time'] : null;
+$endTime = isset($meta['end_time']) ? $meta['end_time'] : null;
 
 //prices
-$price = (isset($meta['price'])) ? $meta['price'] : "";
-$priceVarries = (isset($meta['price_varies'])) ? $meta['price_varies'] : "";
-$ticketUrl = (isset($meta['ticket_link'])) ? $meta['ticket_link'] : "";
+$price = isset($meta['price']) ? $meta['price'] : "";
+$priceVarries = isset($meta['price_varies']) ? $meta['price_varies'] : "";
+$ticketUrl = isset($meta['ticket_link']) ? $meta['ticket_link'] : "";
 
 //address
-$location = (isset($meta['addr_multi'])) ? $meta['addr_multi'] : "";
-$street =(isset($meta['addr1'])) ? $meta['addr1'] : "";
-$street2 = (isset($meta['addr2'])) ? $meta['addr2'] : "";
-$city = (isset($meta['city'])) ? $meta['city'] : "";
-$state = (isset($meta['state'])) ? $meta['state'] : "";
-$zip = (isset($meta['zip'])) ? $meta['zip'] : "";
-$lat = (isset($meta['lat'])) ? $meta['lat'] : "";
-$lng = (isset($meta['lng'])) ? $meta['lng'] : "";
+$location = isset($meta['addr_multi']) ? $meta['addr_multi'] : "";
+$street = isset($meta['addr1']) ? $meta['addr1'] : "";
+$street2 = isset($meta['addr2']) ? $meta['addr2'] : "";
+$city = isset($meta['city']) ? $meta['city'] : "";
+$state = isset($meta['state']) ? $meta['state'] : "";
+$zip = isset($meta['zip']) ? $meta['zip'] : "";
+$lat = isset($meta['lat']) ? $meta['lat'] : "";
+$lng = isset($meta['lng']) ? $meta['lng'] : "";
 
 //social
-$website = (isset($meta['url'])) ? $meta['url'] : "";
-$email = (isset($meta['email'])) ? $meta['email'] : "";
-$phone = (isset($meta['phone'])) ? $meta['phone'] : "";
-$facebook = (isset($meta['facebook'])) ? $meta['facebook'] : "";
-$twitter = (isset($meta['twitter'])) ? $meta['twitter'] : "";
-$instagram = (isset($meta['instagram'])) ? $meta['instagram'] : "";
+$website = isset($meta['url']) ? $meta['url'] : "";
+$email = isset($meta['email']) ? $meta['email'] : "";
+$phone = isset($meta['phone']) ? $meta['phone'] : "";
+$facebook = isset($meta['facebook']) ? $meta['facebook'] : "";
+$twitter = isset($meta['twitter']) ? $meta['twitter'] : "";
+$instagram = isset($meta['instagram']) ? $meta['instagram'] : "";
 
 //images
-$images = (isset($meta['gallery_images'])) ? $meta['gallery_images'] : "";
+$images = isset($meta['gallery_images']) ? $meta['gallery_images'] : "";
 if (!$images && get_post_thumbnail_id()) {
     $images = array(get_post_thumbnail_id());
 }
