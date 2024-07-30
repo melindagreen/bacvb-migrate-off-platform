@@ -415,6 +415,20 @@ if ('serviceWorker' in navigator) {
 		    }
 		});
 
+		// Top Banner
+		if ($('.top-banner').length && $('.top-banner').css('display') !== 'none') {
+			// Change padding-bottom of .nav
+			$('.mega-menu__nav-wrap').css('padding-top', '5.5rem');
+		}
+		// Add click event listener to .top-banner__close
+		$('.top-banner__close').click(function() {
+			// Hide the .top-banner
+			$('.top-banner').hide();
+	
+			// Change padding-bottom of .nav on click
+			$('.mega-menu__nav-wrap').css('padding-top', 'unset');
+		});
+
 		// Function to check if an element is in the viewport
 		function isElementInViewport(el) {
 

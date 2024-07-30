@@ -27,7 +27,8 @@ class MemberPressPortal {
 	}
 
       public static function customize_partner_access() {
-        if (current_user_can('partner')) {
+        $current_user = wp_get_current_user();
+        if(in_array('partner', $current_user->roles)) {
             // Remove admin bar
             add_filter('show_admin_bar', '__return_false');
             
