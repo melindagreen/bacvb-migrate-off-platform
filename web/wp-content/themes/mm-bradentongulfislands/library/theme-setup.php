@@ -63,20 +63,56 @@ class ThemeSetup {
 	 */
 	 public static function add_custom_roles() {
 
-		//Water Ferry
-		add_role( 'water_ferry', 'Water Ferry', array(
-			'read' => true,
-			'edit_posts' => true,
-			'delete_posts' => false,
-			'publish_posts' => true,
-			'upload_files' => true,
-			'edit_others_posts' => false,
-			'edit_published_posts' => true,
-			'read_private_posts' => true,
-			'delete_others_posts' => false,
-			'delete_private_posts' => false,
-			'delete_published_posts' => false,
-		) );
+		remove_role('water_ferry');
+		   // Get the editor role
+		   $editor = get_role('editor');
+    
+		   // Define the custom capabilities
+		//    $custom_capabilities = array(
+		// 	   'read' => true,
+		// 	   'edit_posts' => true,
+		// 	   'delete_posts' => false,
+		// 	   'publish_posts' => true,
+		// 	   'upload_files' => true,
+		// 	   'edit_others_posts' => false,
+		// 	   'edit_published_posts' => true,
+		// 	   'read_private_posts' => true,
+		// 	   'delete_others_posts' => false,
+		// 	   'delete_private_posts' => false,
+		// 	   'delete_published_posts' => false,
+		// //    );
+		   
+		   // Merge editor capabilities with custom capabilities
+		   $editor_capabilities = $editor->capabilities;
+	   
+		   // Add a new role with the merged capabilities
+		   add_role('water_ferry', 'Water Ferry', $editor_capabilities);
+
+		   $role = get_role('water_ferry');
+		   if ($role) {
+			// Add custom capabilities
+			$role->add_cap('read', true);
+			$role->add_cap('edit_posts', true);
+			$role->add_cap('publish_posts', true);
+			$role->add_cap('edit_others_posts', false);
+			$role->add_cap('delete_others_posts', false);
+			$role->add_cap('delete_private_posts', false);
+			$role->add_cap('delete_published_posts', false);
+			$role->add_cap('edit_others_pages', false);
+			$role->add_cap('delete_others_pages', false);
+			$role->add_cap('delete_private_pages', false);
+			$role->add_cap('delete_published_pages', false);
+			$role->add_cap('upload_files', true);
+			$role->add_cap('edit_published_posts', true);
+			$role->add_cap('read_private_posts', true);
+			
+			// Remove specific capabilities
+			// $role->remove_cap('delete_posts');
+			// $role->remove_cap('edit_others_posts');
+			// $role->remove_cap('delete_others_posts');
+			// $role->remove_cap('delete_private_posts');
+			// $role->remove_cap('delete_published_posts');
+		}
 	 }
 
 
