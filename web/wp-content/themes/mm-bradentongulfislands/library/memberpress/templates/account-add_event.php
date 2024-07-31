@@ -4,9 +4,8 @@ include_once get_stylesheet_directory() . '/library/memberpress/form-handler.php
 
 use MaddenNino\Library\Memberpress\MemberPressFormHandler as FormHandler;
 
-$form_handler = new FormHandler();
+    $form_handler = new FormHandler();
 
-if (isset($_GET['event_id'])) {
     $event_id = intval($_GET['event_id']);
     // Set up query arguments
     $args = array(
@@ -29,9 +28,5 @@ if (isset($_GET['event_id'])) {
     } else {
         echo 'Event not found.';
     }
-} else {
-    // Display the form for a new event submission
-    $form_handler->addEvent();
-    include get_stylesheet_directory() . '/library/memberpress/templates/forms/account-event-form.php';
-}
+
 ?>

@@ -1,12 +1,9 @@
 <?php 
-
 include_once get_stylesheet_directory() . '/library/memberpress/form-handler.php';
 
 use MaddenNino\Library\Memberpress\MemberPressFormHandler as FormHandler;
 
-$form_handler = new FormHandler();
-
-if (isset($_GET['listing_id'])) {
+    $form_handler = new FormHandler();
     $listing_id = intval($_GET['listing_id']);
     // Set up query arguments
     $args = array(
@@ -29,9 +26,5 @@ if (isset($_GET['listing_id'])) {
     } else {
         echo 'Listing not found.';
     }
-} else {
-    // Display the form for a new listing submission
-    $form_handler->addListing();
-    include get_stylesheet_directory() . '/library/memberpress/templates/forms/account-listing-form.php';
-}
+
 ?>
