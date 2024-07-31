@@ -151,6 +151,126 @@
         <input type="url" name="partnerportal_twitter" id="partnerportal_twitter" value="<?php echo isset($post_id) ? esc_attr($meta_data['partnerportal_twitter'][0] ?? '') : ''; ?>">
     </div>
 
+    <!-- ==== CATEGORIES ==== -->
+     <?php 
+        function render_categories_checkboxes($categories, $p_id = null) {
+            foreach ($categories as $slug) {
+                // Get the term by slug for the custom taxonomy
+                $term = get_term_by('slug', $slug, 'listing_categories');
+                
+                // Check if the term exists and is valid
+                if ($term && !is_wp_error($term)) {
+                    // Check if the post has this term
+                    $checked = '';
+                    if (has_term($term->term_id, 'listing_categories', $p_id)) {
+                        $checked = 'checked';
+                    }
+        
+                    // Display the checkbox
+                    echo '<label class="mepr-tabs-checkbox"><input type="checkbox" name="listing_categories[]" value="' . esc_attr($slug) . '" ' . $checked . '> <span>' . esc_html($term->name) . '</span></label><br>';
+                }
+            }
+        }
+     ?>
+    <div class="tabs">
+        <button class="tab-button active" onclick="openTab(event, 'arts-culture')">Arts & Culture</button>
+        <button class="tab-button" onclick="openTab(event, 'eat-drink')">Eat & Drink</button>
+        <button class="tab-button" onclick="openTab(event, 'outdoor-activities')">Outdoor Activities</button>
+        <button class="tab-button" onclick="openTab(event, 'shopping')">Shopping</button>
+        <button class="tab-button" onclick="openTab(event, 'spas-wellness')">Spas & Wellness</button>
+        <button class="tab-button" onclick="openTab(event, 'stay')">Stay</button>
+    </div>
+    
+    <!-- Arts & Culture -->
+     <?php 
+        $artsCultureCat = [
+            "arts-culture",
+            "historic-attractions",
+            "art-gallery"
+        ];
+     ?>
+    <div id="arts-culture" class="tab-content">
+        <h3>Categories</h3>
+        <?php render_categories_checkboxes($artsCultureCat, isset($post_id) ? $post_id : null); ?>
+    </div>
+    <!-- Eat & Drink -->
+    <?php 
+        $eatDrinkCat = [
+            "eat-drink",
+            "breakfast-cafes",
+            "bar-lounge",
+            "cafe",
+            "waterfront",
+            "boat-dock"
+        ];
+     ?>
+    <div id="eat-drink" class="tab-content">
+        <h3>Categories</h3>
+        <?php render_categories_checkboxes($eatDrinkCat, isset($post_id) ? $post_id : null); ?>
+    </div>
+
+    <!-- Outdoor Activities -->
+     <?php
+        $outdoorActivitiesCat = [
+            "outdoors",
+            "boat-tours-charters",
+            "sports-venue",
+            "water-sport-rentals",
+            "beach-rentals",
+            "nature-tours"
+        ];
+    ?>
+    <div id="outdoor-activities" class="tab-content">
+        <h3>Categories</h3>
+        <?php render_categories_checkboxes($outdoorActivitiesCat, isset($post_id) ? $post_id : null) ?>
+    </div>
+
+    <!-- Shopping -->
+    <?php
+        $shoppingCat = [
+            "shopping",
+            "shopping-malls-areas",
+            "boutique",
+            "beach-and-swimwear"
+        ];
+    ?>
+    <div id="shopping" class="tab-content">
+        <h3>Categories</h3>
+        <?php render_categories_checkboxes($shoppingCat, isset($post_id) ? $post_id : null) ?>
+    </div>
+
+    <!-- Spas & Wellness -->
+    <?php
+        $spasWellnessCat = [
+            "spa-wellness",
+            "day-spa",
+            "salon-nail-bar",
+            "yoga-space"
+        ];
+    ?>
+    <div id="spas-wellness" class="tab-content">
+        <h3>Categories</h3>
+        <?php render_categories_checkboxes($spasWellnessCat, isset($post_id) ? $post_id : null) ?>
+    </div>
+
+    <!-- Stay -->
+    <?php
+        $stayCat = [
+            "where-to-stay",
+            "hotels-resorts",
+            "homes-condos",
+            "rv-parks"
+        ];
+    ?>
+    <div id="stay" class="tab-content">
+        <div class="mepr-account-form__col-2">
+            <h3>Categories</h3>
+            <?php render_categories_checkboxes($stayCat, isset($post_id) ? $post_id : null) ?>
+        </div>
+    </div>
+
+
+
     <!-- ==== SUBMIT FORM ==== -->
     <br style="clear:both;">
     <input class="mepr-button btn-outline btn btn-outline" type="submit" value="<?php echo isset($post_id) ? 'Update Listing' : 'Add Listing'; ?>">

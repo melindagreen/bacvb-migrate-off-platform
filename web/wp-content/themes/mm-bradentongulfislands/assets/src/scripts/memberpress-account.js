@@ -28,6 +28,29 @@ import '../styles/memberpress-account.scss';
 
         // Change Profile Header
         $('.mepr_page_header').text('Your Business Profile');
+
+        //Tab Info
+         // Show the first tab by default
+            $('.tab-content').hide();
+            $('.tab-content').first().show();
+            $('.tab-button').first().addClass('active');
+
+            // Handle tab click
+            $('.tab-button').click(function(e) {
+                e.preventDefault();
+                // Remove 'active' class from all tab buttons
+                $('.tab-button').removeClass('active');
+                
+                // Hide all tab content
+                $('.tab-content').hide();
+                
+                // Show the clicked tab content
+                var target = $(this).attr('onclick').split("'")[1]; // Extract tab ID from onclick attribute
+                $('#' + target).show();
+                
+                // Add 'active' class to the clicked button
+                $(this).addClass('active');
+            });
     }
 	  
     $(document).ready(function ($) {

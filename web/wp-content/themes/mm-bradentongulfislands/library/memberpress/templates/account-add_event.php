@@ -31,6 +31,7 @@ if (isset($_GET['event_id'])) {
     }
 } else {
     // Display the form for a new event submission
+    $form_handler->addEvent();
     include get_stylesheet_directory() . '/library/memberpress/templates/forms/account-event-form.php';
 }
 ?>

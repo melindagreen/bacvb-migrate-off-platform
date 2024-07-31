@@ -31,6 +31,7 @@ if (isset($_GET['listing_id'])) {
     }
 } else {
     // Display the form for a new listing submission
+    $form_handler->addListing();
     include get_stylesheet_directory() . '/library/memberpress/templates/forms/account-listing-form.php';
 }
 ?>
