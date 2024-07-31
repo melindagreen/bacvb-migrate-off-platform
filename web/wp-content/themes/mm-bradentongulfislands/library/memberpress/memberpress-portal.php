@@ -30,6 +30,7 @@ class MemberPressPortal {
 	}
 
 
+
   public static function mepr_account_welcome_message($message, $user) {
     // Get the current user ID
     $user_id = $user->ID;
@@ -39,14 +40,16 @@ class MemberPressPortal {
 
     if ($partner_group) {
         // Display the welcome message
-        $message = 'Welcome to your Business Profile. Here you can manage your listings and events.';
+        //$message = 'Welcome to your Business Profile. Here you can manage your listings and events.';
     } else {
         // Display the instructional message
-        $message = 'You do not have a partner group assigned. Please contact support for assistance in setting up your partner group.';
+        $message = "To access your listings and events, please reach out to Emily Knight at <a href='mailto:Emily.Knight@BACVB.com'>Emily.Knight@BACVB.com</a> and ask to be registered to your partner group. Thank you!";
     }
 
     return $message;
 }
+
+	
 
 	
       public static function customize_partner_access() {
