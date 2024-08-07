@@ -3,72 +3,140 @@ Stylesheet: MemberPress Account Stylesheet
 ******************************************************************/
 @import "utils/mixins";
 @import "utils/variables";
+@import "utils/typography";
 
 /*********************
 GLOBAL STYLES
 *********************/
-.mepr-account-form {
 
+
+
+.mepr-account-container a:visited {
+    color: white;
+}
+
+.mepr-courses-wrapper a:visited {
+    color: $bradenton-teal;
+}
+
+.mepr-required-asterisk {
+    color: red;
+}
+
+
+.mepr-button{
+    background-color: $bradenton-teal;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-weight:bold;
+    border-radius: 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.3s;
+
+    &:hover{
+        background-color: darken($bradenton-teal, 10%);
+    }
+    &:visited{
+        color:white;
+    }
+    &.mepr-button--primary {
+        background-color: $bradenton-teal;
+        font-weight:bold;
+        color:white;
+    }
+    &.mepr-button--primary:hover{
+        background-color: darken($bradenton-teal, 10%);
+        color:white;
+    }
+    &.mepr-button--primary:visited{
+        color:white;
+    }
+    &.mepr-button--secondary {
+        background-color: $rust;
+        font-weight:bold;
+    }
+    &.mepr-button--secondary:hover{
+        background-color: darken($rust, 10%);
+        color:white;
+    }
+    &.mepr-button--tertiary:visited{
+        color:white;
+    }
+    &.mepr-button--tertiary {
+        background-color: $white;
+        font-weight:bold;
+        color: black;
+        border-radius:25px;
+        border: 1px solid $rust;
+        font-size:1rem;
+        text-transform: uppercase;
+    }
+    &.mepr-button--tertiary:hover{
+        background-color: darken($white, 10%);
+        color:black;
+    }
+    &.mepr-button--tertiary:visited{
+        color:black;
+    }
+}
+.mepr-account-form {
     max-width: 50rem;
     margin: auto;
     text-align: center;
 
     textarea {
-
         padding: 10px;
         height: 8rem;
     }
 
     &__separator {
-
         background-color: $bradenton-teal;
     }
 
     .mepr-account-form__featured-image {
-
         margin: auto;
         text-align: center;
     }
-    .mp_wrapper img, .mepr-account-form__featured-image img {
 
+    .mp_wrapper img,
+    .mepr-account-form__featured-image img {
         border-radius: 100% !important;
         margin-top: 0.5rem;
         margin-bottom: 0.5rem;
         max-width: 130px !important;
-        height: auto;    
+        height: auto;
     }
 
-    input, textarea {
-
+    input,
+    textarea {
         width: 100%;
-        margin-bottom:1rem;
+        margin-bottom: 1rem;
     }
 
-    &__col-2, &__col-3 {
-
-        display: inline-block; 
+    &__col-2,
+    &__col-3 {
+        display: inline-block;
         padding-right: 1rem;
-        margin-bottom:1rem;
+        margin-bottom: 1rem;
         vertical-align: top;
     }
 
     &__col-2 {
-
         width: 45%;
     }
 
     &__col-3 {
-
         width: 30%;
     }
 
     .mepr-button {
-
         width: 10rem;
     }
 
-    #eventastic_price_varies, #eventastic_event_all_day {
-
+    #eventastic_price_varies,
+    #eventastic_event_all_day {
         width: unset;
         display: block;
         margin-top: 0.5rem;
@@ -76,64 +144,265 @@ GLOBAL STYLES
 }
 
 /* CSS for event cards */
-.mepr-event-cards, .mepr-listing-cards {
-    display: flex;
-    flex-wrap: wrap;
+.mepr-event-cards,
+.mepr-listing-cards {
+    display: grid;
+    gap: 2rem;
     justify-content: center;
+
+    @media (min-width: 1450px) { // large desktop
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    @media (min-width: 1201px) and (max-width: 1449px) { // regular desktop
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (min-width: 768px) and (max-width: 1200px) { // tablet
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 767px) { // mobile
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .mepr-event-cards__card,
+    .mepr-listing-cards__card {
+        width: 100%;
+        padding: 0.5rem;
+        border: 1px solid $bradenton-teal;
+        border-radius: 5px;
+        background-color: white;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        transition: box-shadow 0.3s;
+
+        &:hover {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+    }
+
+    h2 {
+        margin-top: 0;
+    }
+
+    .mepr-event-status,
+    .mepr-listing-status {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+        font-weight:bold;
+        p{
+            margin:0;
+            padding:0;
+        }
+        .event-card-status--pending,
+        .listing-card-status--pending {
+            color: $rust;
+        }
+
+        .event-card-status--published,
+        .listing-card-status--published {
+            color: limegreen;
+        }
+
+        .event-card-status--rejected,
+        .listing-card-status--rejected {
+            color: red;
+        }
+    }
+
+    .event-content,
+    .listing-content {
+        margin: 0;
+        background-color: $light-blue;
+        display: flex;
+        flex-direction: column;
+        min-height: 200px;
+        .content-main{
+            padding:1rem;
+            h2{
+                margin:0;  
+                font-family: "Melburch";
+                font-weight:bold;
+                font-size:1.125rem;
+                line-height:1.1;
+                text-transform: uppercase;
+                padding-bottom:0.5rem;
+                color:$dk-blue;
+            }
+            p{
+                margin:0;
+            }
+        }
+        a{
+            margin-top: auto;
+            margin-bottom: 0.5rem;
+            margin-left: auto;
+            margin-right: 0.5rem;
+        }
+    }
+
+    .mepr-image-date, .mepr-image{
+        .event-image, .listing-image{
+            position:relative;
+            img{
+                width:100%;
+                min-height:250px;
+                object-fit: cover;
+            }
+            .event-date{
+                position:absolute;
+                top: -0.5rem;
+                left: 0.25rem;
+                p{
+                    background-color: $bradenton-teal;
+                    color: white;
+                    max-width:115px;
+                    padding:0.5rem 0.5rem;
+                    text-align: center;
+                    margin:0;
+                    line-height:1.1;
+                    font-size:2rem !important;
+                    font-family: "Lifehack";
+                    font-weight:bold;
+                }
+            }
+        }
+    }
 }
 
-.event-card-status--pending, .listing-card-status--pending {
+// Tabs
 
-    color: $rust;
+
+.tabs {
+    overflow: hidden;
 }
 
-.event-card-status--published, .listing-card-status--published {
-
-    color: limegreen;
+.tab-button {
+    background-color:white !important;
+    border: 2px solid #ddd !important;
+    border-bottom: 3px solid #ddd !important;
+    outline: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    text-align: center;
+    display: inline-block;
+    color: $soft-black !important;
+    margin-right: -0.23rem;
+    border-bottom-left-radius: 0 !important; 
+    border-bottom-right-radius: 0 !important;
 }
 
-.event-card-status--rejected, .listing-card-status--rejected {
-
-    color: red;
+.tab-button.active {
+    border-bottom: none !important;
 }
 
-.mepr-event-cards__card, .mepr-listing-cards__card {
-    background-color: #e4e2e27e;
-    border: 1px solid #ccc;
+.tab-content {
+    display: none;
     padding: 20px;
-    margin: 10px;
-    flex: 1 0 300px; /* Adjust the width as needed */
-    max-width: 20rem;
-    border-radius: 20px;
-    border-top-left-radius: 0;
+    border: 2px solid #ddd;
+    border-top: none;
+    min-height: 22rem;
+    width: 44.02rem;
+    margin-top: -1rem;
+
+    h3 {
+
+        color: $bradenton-teal;
+    }
 }
 
-.mepr-event-cards__card h3, .mepr-listing-cards__card h3 {
-    margin-top: 0;
-}
+.mepr-tabs-checkbox {
 
-.mepr-event-cards__card .event-content, .mepr-listing-cards__card .listing-content {
-    margin-bottom: 10px;
-}
+    align-items: flex-start;
+    display: flex !important;
+    flex-grow: 1;
+    flex: 0 0 30%;
+    font-size: 1rem;
+    gap: 10px;
+    margin: 2px 5px;
+    margin-bottom: 0;
 
-.mepr-account-container a:visited {
-    color: white;
-}
+    input {
 
-.mepr-courses-wrapper a:visited {
 
-    color: $bradenton-teal;
-}
+        -webkit-appearance: none;
+        appearance: none;
+        background-color: var(--form-background);
+        border: .15em solid;
+        border-radius: .15em;
+        color: #ddd;
+        display: -ms-grid;
+        display: grid;
+        flex-shrink: 0;
+        font: inherit;
+        height: 1.5em;
+        place-content: center;
+        -webkit-transform: translateY(-.075em);
+        transform: translateY(-.075em);
+        width: 1.5em;
+        margin-bottom: 0;
 
-.mepr-required-asterisk {
+        &::before {
 
-    color: red;
+            background-color: CanvasText;
+            background-color: $soft-black;
+            box-shadow: inset 1em 1em var(--form-control-color);
+            -webkit-clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0, 43% 62%);
+            clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0, 43% 62%);
+            content: "";
+            height: 1em;
+            -webkit-transform: scale(0);
+            transform: scale(0);
+            -webkit-transform-origin: bottom left;
+            transform-origin: bottom left;
+            transition: -webkit-transform .12s ease-in-out;
+            transition: transform .12s ease-in-out;
+            transition: transform .12s ease-in-out, -webkit-transform .12s ease-in-out;
+            width: 1em;
+        }
+
+        &:checked:before {
+            -webkit-transform: scale(1);
+            transform: scale(1);
+        }
+    }
 }
 
 /*********************
 CUSTOM STYLE OVERRIDES
 *********************/
 
+#mepr-account-nav .mepr-payments, #mepr-account-nav .mepr-subscriptions {
+    display: none;
+}
+
+.mepr-profile-wrapper__footer a:nth-of-type(1),
+.mepr-profile-wrapper__footer a:nth-of-type(2) {
+    display: none;
+}
+
 /*****************************
 CUSTOM PARTNER PORTAL STYLES
 *****************************/
+.mepr-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+        margin-bottom: 1rem;
+        color: $rust;
+        font-size:3.5rem;
+        font-weight:bold;
+        font-family: "Melburch";
+    }
+
+    a {
+        margin-bottom: 2rem;
+    }
+}

@@ -77,7 +77,59 @@
     <div class="mepr-account-form__col-3">
         <!-- State -->
         <label for="partnerportal_state">State: <span class="mepr-required-asterisk">*</span></label><br>
-        <input type="text" name="partnerportal_state" id="partnerportal_state" value="<?php echo isset($post_id) ? esc_attr($meta_data['partnerportal_state'][0] ?? '') : ''; ?>" required>
+        <select name="partnerportal_state" id="partnerportal_state" required>
+            <option value="">Select a state</option>
+            <option value="AL" <?php selected($meta_data['partnerportal_state'][0] ?? '', 'AL'); ?>>Alabama</option>
+            <option value="AK" <?php selected($meta_data['partnerportal_state'][0] ?? '', 'AK'); ?>>Alaska</option>
+            <option value="AZ" <?php selected($meta_data['partnerportal_state'][0] ?? '', 'AZ'); ?>>Arizona</option>
+            <option value="AR" <?php selected($meta_data['partnerportal_state'][0] ?? '', 'AR'); ?>>Arkansas</option>
+            <option value="CA" <?php selected($meta_data['partnerportal_state'][0] ?? '', 'CA'); ?>>California</option>
+            <option value="CO" <?php selected($meta_data['partnerportal_state'][0] ?? '', 'CO'); ?>>Colorado</option>
+            <option value="CT" <?php selected($meta_data['partnerportal_state'][0] ?? '', 'CT'); ?>>Connecticut</option>
+            <option value="DE" <?php selected($meta_data['partnerportal_state'][0] ?? '', 'DE'); ?>>Delaware</option>
+            <option value="FL" <?php selected($meta_data['partnerportal_state'][0] ?? '', 'FL'); ?>>Florida</option>
+            <option value="GA" <?php selected($meta_data['partnerportal_state'][0] ?? '', 'GA'); ?>>Georgia</option>
+            <option value="HI" <?php selected($meta_data['partnerportal_state'][0] ?? '', 'HI'); ?>>Hawaii</option>
+            <option value="ID" <?php selected($meta_data['partnerportal_state'][0] ?? '', 'ID'); ?>>Idaho</option>
+            <option value="IL" <?php selected($meta_data['partnerportal_state'][0] ?? '', 'IL'); ?>>Illinois</option>
+            <option value="IN" <?php selected($meta_data['partnerportal_state'][0] ?? '', 'IN'); ?>>Indiana</option>
+            <option value="IA" <?php selected($meta_data['partnerportal_state'][0] ?? '', 'IA'); ?>>Iowa</option>
+            <option value="KS" <?php selected($meta_data['partnerportal_state'][0] ?? '', 'KS'); ?>>Kansas</option>
+            <option value="KY" <?php selected($meta_data['partnerportal_state'][0] ?? '', 'KY'); ?>>Kentucky</option>
+            <option value="LA" <?php selected($meta_data['partnerportal_state'][0] ?? '', 'LA'); ?>>Louisiana</option>
+            <option value="ME" <?php selected($meta_data['partnerportal_state'][0] ?? '', 'ME'); ?>>Maine</option>
+            <option value="MD" <?php selected($meta_data['partnerportal_state'][0] ?? '', 'MD'); ?>>Maryland</option>
+            <option value="MA" <?php selected($meta_data['partnerportal_state'][0] ?? '', 'MA'); ?>>Massachusetts</option>
+            <option value="MI" <?php selected($meta_data['partnerportal_state'][0] ?? '', 'MI'); ?>>Michigan</option>
+            <option value="MN" <?php selected($meta_data['partnerportal_state'][0] ?? '', 'MN'); ?>>Minnesota</option>
+            <option value="MS" <?php selected($meta_data['partnerportal_state'][0] ?? '', 'MS'); ?>>Mississippi</option>
+            <option value="MO" <?php selected($meta_data['partnerportal_state'][0] ?? '', 'MO'); ?>>Missouri</option>
+            <option value="MT" <?php selected($meta_data['partnerportal_state'][0] ?? '', 'MT'); ?>>Montana</option>
+            <option value="NE" <?php selected($meta_data['partnerportal_state'][0] ?? '', 'NE'); ?>>Nebraska</option>
+            <option value="NV" <?php selected($meta_data['partnerportal_state'][0] ?? '', 'NV'); ?>>Nevada</option>
+            <option value="NH" <?php selected($meta_data['partnerportal_state'][0] ?? '', 'NH'); ?>>New Hampshire</option>
+            <option value="NJ" <?php selected($meta_data['partnerportal_state'][0] ?? '', 'NJ'); ?>>New Jersey</option>
+            <option value="NM" <?php selected($meta_data['partnerportal_state'][0] ?? '', 'NM'); ?>>New Mexico</option>
+            <option value="NY" <?php selected($meta_data['partnerportal_state'][0] ?? '', 'NY'); ?>>New York</option>
+            <option value="NC" <?php selected($meta_data['partnerportal_state'][0] ?? '', 'NC'); ?>>North Carolina</option>
+            <option value="ND" <?php selected($meta_data['partnerportal_state'][0] ?? '', 'ND'); ?>>North Dakota</option>
+            <option value="OH" <?php selected($meta_data['partnerportal_state'][0] ?? '', 'OH'); ?>>Ohio</option>
+            <option value="OK" <?php selected($meta_data['partnerportal_state'][0] ?? '', 'OK'); ?>>Oklahoma</option>
+            <option value="OR" <?php selected($meta_data['partnerportal_state'][0] ?? '', 'OR'); ?>>Oregon</option>
+            <option value="PA" <?php selected($meta_data['partnerportal_state'][0] ?? '', 'PA'); ?>>Pennsylvania</option>
+            <option value="RI" <?php selected($meta_data['partnerportal_state'][0] ?? '', 'RI'); ?>>Rhode Island</option>
+            <option value="SC" <?php selected($meta_data['partnerportal_state'][0] ?? '', 'SC'); ?>>South Carolina</option>
+            <option value="SD" <?php selected($meta_data['partnerportal_state'][0] ?? '', 'SD'); ?>>South Dakota</option>
+            <option value="TN" <?php selected($meta_data['partnerportal_state'][0] ?? '', 'TN'); ?>>Tennessee</option>
+            <option value="TX" <?php selected($meta_data['partnerportal_state'][0] ?? '', 'TX'); ?>>Texas</option>
+            <option value="UT" <?php selected($meta_data['partnerportal_state'][0] ?? '', 'UT'); ?>>Utah</option>
+            <option value="VT" <?php selected($meta_data['partnerportal_state'][0] ?? '', 'VT'); ?>>Vermont</option>
+            <option value="VA" <?php selected($meta_data['partnerportal_state'][0] ?? '', 'VA'); ?>>Virginia</option>
+            <option value="WA" <?php selected($meta_data['partnerportal_state'][0] ?? '', 'WA'); ?>>Washington</option>
+            <option value="WV" <?php selected($meta_data['partnerportal_state'][0] ?? '', 'WV'); ?>>West Virginia</option>
+            <option value="WI" <?php selected($meta_data['partnerportal_state'][0] ?? '', 'WI'); ?>>Wisconsin</option>
+            <option value="WY" <?php selected($meta_data['partnerportal_state'][0] ?? '', 'WY'); ?>>Wyoming</option>
+        </select>
     </div> 
 
     <!-- ==== SOCIAL ==== -->
@@ -98,6 +150,126 @@
         <label for="partnerportal_twitter">Twitter</label><br>
         <input type="url" name="partnerportal_twitter" id="partnerportal_twitter" value="<?php echo isset($post_id) ? esc_attr($meta_data['partnerportal_twitter'][0] ?? '') : ''; ?>">
     </div>
+
+    <!-- ==== CATEGORIES ==== -->
+     <?php 
+        function render_categories_checkboxes($categories, $p_id = null) {
+            foreach ($categories as $slug) {
+                // Get the term by slug for the custom taxonomy
+                $term = get_term_by('slug', $slug, 'listing_categories');
+                
+                // Check if the term exists and is valid
+                if ($term && !is_wp_error($term)) {
+                    // Check if the post has this term
+                    $checked = '';
+                    if (has_term($term->term_id, 'listing_categories', $p_id)) {
+                        $checked = 'checked';
+                    }
+        
+                    // Display the checkbox
+                    echo '<label class="mepr-tabs-checkbox"><input type="checkbox" name="listing_categories[]" value="' . esc_attr($slug) . '" ' . $checked . '> <span>' . esc_html($term->name) . '</span></label><br>';
+                }
+            }
+        }
+     ?>
+    <div class="tabs">
+        <button class="tab-button active" onclick="openTab(event, 'arts-culture')">Arts & Culture</button>
+        <button class="tab-button" onclick="openTab(event, 'eat-drink')">Eat & Drink</button>
+        <button class="tab-button" onclick="openTab(event, 'outdoor-activities')">Outdoor Activities</button>
+        <button class="tab-button" onclick="openTab(event, 'shopping')">Shopping</button>
+        <button class="tab-button" onclick="openTab(event, 'spas-wellness')">Spas & Wellness</button>
+        <button class="tab-button" onclick="openTab(event, 'stay')">Stay</button>
+    </div>
+    
+    <!-- Arts & Culture -->
+     <?php 
+        $artsCultureCat = [
+            "arts-culture",
+            "historic-attractions",
+            "art-gallery"
+        ];
+     ?>
+    <div id="arts-culture" class="tab-content">
+        <h3>Categories</h3>
+        <?php render_categories_checkboxes($artsCultureCat, isset($post_id) ? $post_id : null); ?>
+    </div>
+    <!-- Eat & Drink -->
+    <?php 
+        $eatDrinkCat = [
+            "eat-drink",
+            "breakfast-cafes",
+            "bar-lounge",
+            "cafe",
+            "waterfront",
+            "boat-dock"
+        ];
+     ?>
+    <div id="eat-drink" class="tab-content">
+        <h3>Categories</h3>
+        <?php render_categories_checkboxes($eatDrinkCat, isset($post_id) ? $post_id : null); ?>
+    </div>
+
+    <!-- Outdoor Activities -->
+     <?php
+        $outdoorActivitiesCat = [
+            "outdoors",
+            "boat-tours-charters",
+            "sports-venue",
+            "water-sport-rentals",
+            "beach-rentals",
+            "nature-tours"
+        ];
+    ?>
+    <div id="outdoor-activities" class="tab-content">
+        <h3>Categories</h3>
+        <?php render_categories_checkboxes($outdoorActivitiesCat, isset($post_id) ? $post_id : null) ?>
+    </div>
+
+    <!-- Shopping -->
+    <?php
+        $shoppingCat = [
+            "shopping",
+            "shopping-malls-areas",
+            "boutique",
+            "beach-and-swimwear"
+        ];
+    ?>
+    <div id="shopping" class="tab-content">
+        <h3>Categories</h3>
+        <?php render_categories_checkboxes($shoppingCat, isset($post_id) ? $post_id : null) ?>
+    </div>
+
+    <!-- Spas & Wellness -->
+    <?php
+        $spasWellnessCat = [
+            "spa-wellness",
+            "day-spa",
+            "salon-nail-bar",
+            "yoga-space"
+        ];
+    ?>
+    <div id="spas-wellness" class="tab-content">
+        <h3>Categories</h3>
+        <?php render_categories_checkboxes($spasWellnessCat, isset($post_id) ? $post_id : null) ?>
+    </div>
+
+    <!-- Stay -->
+    <?php
+        $stayCat = [
+            "where-to-stay",
+            "hotels-resorts",
+            "homes-condos",
+            "rv-parks"
+        ];
+    ?>
+    <div id="stay" class="tab-content">
+        <div class="mepr-account-form__col-2">
+            <h3>Categories</h3>
+            <?php render_categories_checkboxes($stayCat, isset($post_id) ? $post_id : null) ?>
+        </div>
+    </div>
+
+
 
     <!-- ==== SUBMIT FORM ==== -->
     <br style="clear:both;">

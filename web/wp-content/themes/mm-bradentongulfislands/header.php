@@ -46,6 +46,20 @@
 
     <!-- HEADER -->
     <header class="mm-bradentongulfislands-header bradenton-header">
+        <!-- BANNER -->
+         <?php if(get_field('banner_toggle')) { ?>
+        <div class="top-banner">
+            <?php include( get_theme_file_path() . '/assets/images/warning.svg' ); ?>
+            <h3 class="top-banner__title">Ferry Alert</h3>
+            <p class="top-banner__message"><?php echo get_field('banner_message'); ?></p>
+            <?php if(get_field('banner_button_url') !== ""): ?>
+            <a href="<?php echo get_field('banner_button_url'); ?>" class="top-banner__cta" target="__blank">Learn More</a>
+            <?php endif; ?>
+            <div class="top-banner__close">
+                <?php include( get_theme_file_path() . '/assets/images/icons/close.svg' ); ?>
+            </div>
+        </div>
+        <?php } ?>
             <div class="top-bar">
                 <a class="top-bar__brand" href="<?php echo home_url(); ?>">
                     <!-- Logo  -->

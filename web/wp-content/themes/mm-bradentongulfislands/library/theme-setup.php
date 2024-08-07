@@ -13,11 +13,22 @@ class ThemeSetup {
 		add_action( 'template_redirect', array(get_called_class(), 'redirect_single_posts'));
 		// add_action('gform_after_submission', array( get_called_class(), 'add_to_newsletter' ), 10, 2);
 
+		add_action( 'template_redirect', array(get_called_class(), 'disable_author_archives'));
+		add_action( 'template_redirect', array(get_called_class(), 'disable_team_archives'));
+		//add_action( 'template_redirect', array(get_called_class(), 'redirect_non_logged_in_users'));
+
+			
+
 		// tell yoast to not show some sitemaps
 		add_filter( 'wpseo_sitemap_exclude_taxonomy', array( get_called_class(), 'sitemap_exclude_taxonomy' ), 10, 2 );
 
 		add_filter('render_block', array( get_called_class(), 'add_photo_credit' ), 10, 2);
 		add_filter('wp_get_attachment_url', array( get_called_class(), 'photo_credit_url_param' ), 10, 2);
+
+		// User Role
+		add_filter( 'init', array( get_called_class(), 'add_custom_roles' ) );
+		add_action('admin_menu', array( get_called_class(), 'restrict_admin_menu'), 999);
+		add_action('pre_get_posts', array( get_called_class(), 'filter_posts_by_author'));
 
 		// global override for from emails
         add_filter( 'wp_mail_from', array( get_called_class(), 'custom_wp_mail_from' ) );
@@ -48,11 +59,121 @@ class ThemeSetup {
 	}
 
 	/**
+	 * Custom Role
+	 */
+	 public static function add_custom_roles() {
+
+		remove_role('water_ferry');
+		   // Get the editor role
+		   $editor = get_role('editor');
+    
+		   // Define the custom capabilities
+		//    $custom_capabilities = array(
+		// 	   'read' => true,
+		// 	   'edit_posts' => true,
+		// 	   'delete_posts' => false,
+		// 	   'publish_posts' => true,
+		// 	   'upload_files' => true,
+		// 	   'edit_others_posts' => false,
+		// 	   'edit_published_posts' => true,
+		// 	   'read_private_posts' => true,
+		// 	   'delete_others_posts' => false,
+		// 	   'delete_private_posts' => false,
+		// 	   'delete_published_posts' => false,
+		// //    );
+		   
+		   // Merge editor capabilities with custom capabilities
+		   $editor_capabilities = $editor->capabilities;
+	   
+		   // Add a new role with the merged capabilities
+		   add_role('water_ferry', 'Water Ferry', $editor_capabilities);
+
+		   $role = get_role('water_ferry');
+		   if ($role) {
+			// Add custom capabilities
+			$role->add_cap('read', true);
+			$role->add_cap('edit_posts', true);
+			$role->add_cap('publish_posts', true);
+			$role->add_cap('edit_others_posts', false);
+			$role->add_cap('delete_others_posts', false);
+			$role->add_cap('delete_private_posts', false);
+			$role->add_cap('delete_published_posts', false);
+			$role->add_cap('edit_others_pages', false);
+			$role->add_cap('delete_others_pages', false);
+			$role->add_cap('delete_private_pages', false);
+			$role->add_cap('delete_published_pages', false);
+			$role->add_cap('upload_files', true);
+			$role->add_cap('edit_published_posts', true);
+			$role->add_cap('read_private_posts', true);
+			
+			// Remove specific capabilities
+			// $role->remove_cap('delete_posts');
+			// $role->remove_cap('edit_others_posts');
+			// $role->remove_cap('delete_others_posts');
+			// $role->remove_cap('delete_private_posts');
+			// $role->remove_cap('delete_published_posts');
+		}
+	 }
+
+
+	 public static function restrict_admin_menu() {
+		// Get the current user
+		$current_user = wp_get_current_user();
+	
+		// Water Ferry
+		if (in_array('water_ferry', $current_user->roles)) {
+	
+			remove_menu_page('index.php');                  
+			remove_menu_page('upload.php');                 
+			remove_menu_page('edit-comments.php');       
+			remove_menu_page('themes.php');               
+			remove_menu_page('plugins.php');             
+			remove_menu_page('users.php');             
+			remove_menu_page('tools.php');              
+			remove_menu_page('options-general.php');    
+			remove_menu_page('admin.php');    
+			remove_menu_page('edit.php?post_type=listing');       
+			remove_menu_page('edit.php?post_type=event'); 
+
+			// Remove Rank Math menu items
+			remove_menu_page('rank-math'); 
+			remove_submenu_page('rank-math', 'rank-math-dashboard');
+			remove_submenu_page('rank-math', 'rank-math-general');
+			remove_submenu_page('rank-math', 'rank-math-titles'); 
+			remove_submenu_page('rank-math', 'rank-math-sitemap'); 
+			remove_submenu_page('rank-math', 'rank-math-status'); 
+			remove_submenu_page('rank-math', 'rank-math-help'); 
+
+			// Remove MemberPress menu items
+			remove_menu_page('memberpress'); 
+			remove_submenu_page('memberpress', 'admin.php?page=memberpress-options'); 
+			remove_submenu_page('memberpress', 'admin.php?page=memberpress-reports'); 
+			remove_submenu_page('memberpress', 'admin.php?page=memberpress-trans'); 
+			remove_submenu_page('memberpress', 'admin.php?page=memberpress-members');
+	
+			// Remove HubSpot menu items
+			remove_menu_page('leadin');
+        	remove_submenu_page('leadin', 'admin.php?page=leadin_user_guide'); 
+		}
+	}	
+
+	public static function filter_posts_by_author($query) {
+		// Check if the user has the 'water_ferry' role and if we're in the admin area
+		if (in_array('water_ferry', wp_get_current_user()->roles)) {
+			// Check if we're querying posts or pages
+			if ($query->is_main_query() && ($query->is_post_type_archive('post') || $query->is_post_type_archive('page'))) {
+				// Set the author parameter to the current user's ID
+				$query->set('author', get_current_user_id());
+			}
+		}
+	}
+
+	/**
 	 * Photo Credit for Core Block
 	 */
 	public static function add_photo_credit($block_content, $block) {
 
-		if (($block['blockName'] === 'core/image' || $block['blockName'] === 'core/cover') && $block['attrs']['photoCredit'] ) {
+		if (($block['blockName'] === 'core/image' || $block['blockName'] === 'core/cover') && isset($block['attrs']['photoCredit']) && $block['attrs']['photoCredit'] ) {
 			$imageId = $block['attrs']['id'];
 			$photoCredit = get_field('photo_credit', $imageId);
 			$position = strpos($block_content, '<img ');
@@ -61,9 +182,10 @@ class ThemeSetup {
 			$modifiedContent = substr_replace($block_content, $photoCreditContent . '<img ', $position, 0);
 			$block_content = $position !== false ? $modifiedContent : $block_content;
 		}
-	
+
 		return $block_content;
 	}
+
 
 	public static function photo_credit_url_param($url, $attachment_id) {
 
@@ -180,4 +302,38 @@ class ThemeSetup {
 
 		if ( in_array( $taxonomy, $skipTaxonomies ) ) return true;
 	}		
+
+
+		// Disable author archives
+	public static function disable_author_archives() {
+		if (is_author()) {
+			global $wp_query;
+			$wp_query->set_404();
+			status_header(404);
+			nocache_headers();
+			include(get_query_template('404'));
+			exit;
+		}
+	}
+
+	// Disable custom post type "teams" archives
+	public static function disable_team_archives() {
+		if (is_post_type_archive('teams') || is_singular('teams')) {
+			global $wp_query;
+			$wp_query->set_404();
+			status_header(404);
+			nocache_headers();
+			include(get_query_template('404'));
+			exit;
+		}
+	}
+
+	// Redirect non-logged-in users from account page to login page
+	public static function redirect_non_logged_in_users() {
+		if (!is_user_logged_in() && is_page('account')) {
+			wp_redirect(home_url('/login/'));
+			exit;
+		}
+	}
+
 }

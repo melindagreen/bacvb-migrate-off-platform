@@ -247,9 +247,9 @@ class MemberPressFormHandler {
     }
 
     public function addListing() {
-
+        error_log('Test');
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_post_nonce']) && wp_verify_nonce($_POST['update_post_nonce'], 'update_post_meta')) {
-
+            error_log('Running');
             if(!$_SESSION['post_creation_attempted'] || empty($_SESSION['post_creation_attempted'])) {
                 $_SESSION['post_creation_attempted'] = true;
             // Sanitize post title
@@ -302,6 +302,28 @@ class MemberPressFormHandler {
                             set_post_thumbnail($post_id, $attachment_id);
                         }
                     }
+                }
+
+                // Assign Categories if selected
+                error_log($_POST['listing_categories']);
+                if (isset($_POST['listing_categories'])) {
+                    // Sanitize the category slugs
+                    $category_slugs = array_map('sanitize_text_field', $_POST['listing_categories']);
+                    
+                    // Get term IDs for the slugs
+                    $term_ids = [];
+                    foreach ($category_slugs as $slug) {
+                        $term = get_term_by('slug', $slug, 'listing_categories');
+                        if ($term && !is_wp_error($term)) {
+                            $term_ids[] = $term->term_id;
+                        }
+                    }
+
+                    // Set the terms for the post
+                    wp_set_post_terms($post_id, $term_ids, 'listing_categories');
+                } else {
+                    // If no categories are checked, remove all terms
+                    wp_set_post_terms($post_id, [], 'listing_categories');
                 }
 
                 // Retrieve the current user's group
@@ -407,6 +429,28 @@ class MemberPressFormHandler {
                             set_post_thumbnail($cloned_post_id, $attachment_id);
                         }
                     }
+                }
+
+                // Assign Categories if selected
+                error_log($_POST['listing_categories']);
+                if (isset($_POST['listing_categories'])) {
+                    // Sanitize the category slugs
+                    $category_slugs = array_map('sanitize_text_field', $_POST['listing_categories']);
+                    
+                    // Get term IDs for the slugs
+                    $term_ids = [];
+                    foreach ($category_slugs as $slug) {
+                        $term = get_term_by('slug', $slug, 'listing_categories');
+                        if ($term && !is_wp_error($term)) {
+                            $term_ids[] = $term->term_id;
+                        }
+                    }
+
+                    // Set the terms for the post
+                    wp_set_post_terms($cloned_post_id, $term_ids, 'listing_categories');
+                } else {
+                    // If no categories are checked, remove all terms
+                    wp_set_post_terms($cloned_post_id, [], 'listing_categories');
                 }
 
                 // Retrieve the current user's group
