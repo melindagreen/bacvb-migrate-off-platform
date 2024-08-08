@@ -529,7 +529,7 @@ HEADER
 
         position: relative;
         flex-grow: 1;
-        flex: 0 0 600px;
+        flex: 0 0 40vw;
         width: 600px;
         max-width: 50%;
         padding: 0 10px;
@@ -755,13 +755,14 @@ HEADER
         }
         .mega-menu-shortcuts {
             display: flex;
-            margin-right: 4rem;
+            margin-right: 5rem;
             margin-left: 0;
             .menu__shortcuts {
                 display: flex;
                 
                 .menu-item {
-                    min-width: 180px;
+                    min-width: max-content;
+                    font-size: 1rem;
                     a {
 
                         display: flex;
