@@ -184,7 +184,6 @@
                 <ul class="mm-bradentongulfislands-menu menu__shortcuts">
                     <li class="menu-item"><a href="/gulf-islands-ferry/">Water Ferry</a></li>
                     <li class="menu-item"><a href="/enews/">Newsletter</a></li>
-                    <li class="menu-item"><a href="/travel-guide/">Travel Guide</a></li>
                     <li class="menu-item"><a href="/love-it-like-a-local/">Sustainability</a></li>
                 </ul>
             </div>

@@ -302,15 +302,15 @@ HEADER
                 .menu-item {
                     width: auto;
                 }
-                .menu-item:first-child {
-                   width: 100%;
+                // .menu-item:first-child {
+                //    width: 100%;
 
-                   a {
-                    margin-top: -2rem;
-                    display: block;
-                    text-align: center;
-                   }
-                }
+                //    a {
+                //     margin-top: -2rem;
+                //     display: block;
+                //     text-align: center;
+                //    }
+                // }
                 &:after {
                     content: " ";
                     background: #fff url('images/top-nav-solid.png');
