@@ -38,7 +38,7 @@ class Constants {
         ],
         'instagram' => [
             'name' => 'Instagram',
-            'url' => 'https://www.instagram.com/visit_bradenton',
+            'url' => 'https://www.instagram.com/visitbradentongulfislands',
         ]
     ];
 }
