@@ -307,7 +307,7 @@ HEADER
                 .menu-item {
                     min-width: auto;
                     width: auto;
-                    font-size: 3.5vw;
+                    font-size: 3.3vw;
                     flex-basis: auto;
                     // flex-grow: 1;
                     white-space: nowrap;
@@ -315,6 +315,15 @@ HEADER
                         padding: 5px;
                     }         
                 }
+                // .menu-item:first-child {
+                //     width: 100%;
+ 
+                //     a {
+                //      margin-top: -1rem;
+                //      display: block;
+                //      text-align: center;
+                //     }
+                //  }
                 &:after {
                     content: " ";
                     background: #fff url('images/top-nav-solid.png');

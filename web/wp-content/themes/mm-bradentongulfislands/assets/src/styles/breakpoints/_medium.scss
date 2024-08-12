@@ -262,6 +262,11 @@ HEADER
     }
     &.open {
 
+        .nav__shortcuts {
+            max-width: 38rem;
+            margin-left: 0.5rem;
+        }
+
         .top-bar {
             background: $bradenton-teal;
         }
@@ -288,7 +293,7 @@ HEADER
                 position: relative;
                 background: $bradenton-teal;
                 margin-top: 0;
-                flex-wrap: wrap-reverse;
+                flex-wrap: wrap;
                 justify-content: center;
                 // flex-direction: column;
                 gap: 0.5rem;
@@ -297,6 +302,15 @@ HEADER
                 .menu-item {
                     width: auto;
                 }
+                // .menu-item:first-child {
+                //    width: 100%;
+
+                //    a {
+                //     margin-top: -2rem;
+                //     display: block;
+                //     text-align: center;
+                //    }
+                // }
                 &:after {
                     content: " ";
                     background: #fff url('images/top-nav-solid.png');
@@ -332,6 +346,11 @@ HEADER
         width: 100%;
         text-align: center;
         margin-top: 2em;
+
+        h4 {
+
+            text-align: center;
+        }
     }
    
 }

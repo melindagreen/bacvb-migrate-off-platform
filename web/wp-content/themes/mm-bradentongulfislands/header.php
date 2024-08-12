@@ -164,6 +164,7 @@
 
                     <div class="mm-bradentongulfislands-nav nav__shortcuts mega-menu-shortcuts">
                         <ul class="mm-bradentongulfislands-menu menu__shortcuts">
+                            <li class="menu-item"><a href="/gulf-islands-ferry/"><img src="<?php echo get_theme_file_uri() ?>/assets/images/icons/nav-icon-ferry.png" alt="<?php _e( 'Ferry Icon', 'mmnino' ); ?>" width="24px" height="24px"> Water Ferry</a></li>
                             <li class="menu-item"><a href="/enews"><img src="<?php echo get_theme_file_uri() ?>/assets/images/icons/envelope.png" alt="<?php _e( 'Envelope Icon', 'mmnino' ); ?>" width="24px" height="24px"> Newsletter</a></li>
                             <li class="menu-item"><a href="/travel-guide"><img src="<?php echo get_theme_file_uri() ?>/assets/images/icons/literature.png" alt="<?php _e( 'Literature Icon', 'mmnino' ); ?>" width="24px" height="24px"> Travel Guide</a></li>
                             <li class="menu-item"><a href="/love-it-like-a-local/"><img src="<?php echo get_theme_file_uri() ?>/assets/images/icons/starfish-icon.png" alt="<?php _e( 'Accessibility Icon', 'mmnino' ); ?>" width="24px" height="24px"> Sustainability</a></li>
@@ -181,9 +182,9 @@
             </div>
             <div class="mm-bradentongulfislands-nav nav__shortcuts mega-menu-shortcuts mega-menu-shortcuts--mobile">
                 <ul class="mm-bradentongulfislands-menu menu__shortcuts">
-                    <li class="menu-item"><a href="/enews/"><img src="<?php echo get_theme_file_uri() ?>/assets/images/icons/envelope.png" alt="<?php _e( 'Envelope Icon', 'mmnino' ); ?>" width="24px" height="24px"> Newsletter</a></li>
-                    <li class="menu-item"><a href="/travel-guide/"><img src="<?php echo get_theme_file_uri() ?>/assets/images/icons/literature.png" alt="<?php _e( 'Literature Icon', 'mmnino' ); ?>" width="24px" height="24px"> Travel Guide</a></li>
-                    <li class="menu-item"><a href="/love-it-like-a-local/"><img src="<?php echo get_theme_file_uri() ?>/assets/images/icons/starfish-icon.png" alt="<?php _e( 'Accessibility Icon', 'mmnino' ); ?>" width="24px" height="24px"> Sustainability</a></li>
+                    <li class="menu-item"><a href="/gulf-islands-ferry/">Water Ferry</a></li>
+                    <li class="menu-item"><a href="/enews/">Newsletter</a></li>
+                    <li class="menu-item"><a href="/love-it-like-a-local/">Sustainability</a></li>
                 </ul>
             </div>
             <div class="mega-menu">
