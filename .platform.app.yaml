@@ -156,6 +156,6 @@ crons:
 source:
   operations:
     purge-varnish:
-    role: admin
-    commands:
-      start: curl -X PURGE http://127.0.0.1
+      role: admin
+      commands:
+        start: curl -X PURGE http://127.0.0.1
