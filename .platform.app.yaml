@@ -154,15 +154,7 @@ crons:
 
 # Runtime Operations
 operations:
-  purge-varnish:
+  Purge Varnish:
     role: admin
     commands:
-      start: curl -X PURGE http://127.0.0.1
-  purge-varnish-2:
-    role: admin
-    commands:
-      start: curl -X PURGE /
-  purge-varnish-3:
-    role: admin
-    commands:
-      start: curl -X PURGE https://bradentongulfislands.com
+      start: curl -X PURGE https://www.bradentongulfislands.com
