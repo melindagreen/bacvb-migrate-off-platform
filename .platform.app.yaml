@@ -144,14 +144,6 @@ crons:
           platform snapshot:create --yes --no-wait
       fi
 
-  # Runtime Operations
-  source:
-    operations:
-      purge-varnish:
-        role: admin
-        commands:
-          start: curl -X PURGE http://127.0.0.1
-
   # Run WordPress cron every 15 minutes
   # NOTE: DISABLE_WP_CRON has been turned on wp-config-platform.php 
   # uncomment lines below to enable 
@@ -159,3 +151,10 @@ crons:
   #   spec: "*/15 * * * *"
   #   cmd: |
   #     php ${PLATFORM_DOCUMENT_ROOT}/wp-cron.php
+
+# Runtime Operations
+operations:
+  purge-varnish:
+  role: admin
+  commands:
+    start: curl -X PURGE http://127.0.0.1
