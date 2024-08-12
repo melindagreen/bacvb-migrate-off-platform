@@ -30,6 +30,16 @@ HEADER
                 padding-right: 5%;
             }
         }
+
+        .menu__shortcuts {
+            .menu-item {
+                margin: 0 0.7rem;
+            }
+        }
+        .nav__shortcuts {
+            max-width: 38rem;
+            margin-left: 0.5rem;
+        }
     }
    
     .top-bar {
