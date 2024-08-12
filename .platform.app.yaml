@@ -146,7 +146,7 @@ crons:
 
   # Runtime Operations
   operations:
-    purge_varnish:
+    purge-varnish:
       role: admin
       commands:
         start: curl -X PURGE http://127.0.0.1
