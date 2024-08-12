@@ -153,9 +153,8 @@ crons:
   #     php ${PLATFORM_DOCUMENT_ROOT}/wp-cron.php
 
 # Runtime Operations
-source:
-  operations:
-    purge-varnish:
-      role: admin
-      commands:
-        start: curl -X PURGE http://127.0.0.1
+operations:
+  purge-varnish:
+    role: admin
+    commands:
+      start: curl -X PURGE http://127.0.0.1
