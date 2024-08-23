@@ -172,6 +172,7 @@ LAYOUT
 *********************/
 .is-root-container > .custom-style-wrapper > .wp-block-columns {
     margin: $block-margin 0;
+    
     & > .wp-block-column:only-child {
         width: $main-column-width;
         max-width: $main-column-max-width;
@@ -194,6 +195,7 @@ TEMPLATES
     &.aligncenter {
         display: flex !important;
         justify-content: center;
+        flex-wrap: wrap;
     }    
 }
 

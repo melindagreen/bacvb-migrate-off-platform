@@ -233,6 +233,10 @@ TEMPLATES
         display: block;
     }    
 }
+.wp-block-image.aligncenter>figcaption {
+    
+    display: block;
+}
 // pre, for notes
 .wp-block-preformatted {
     margin: 0;
