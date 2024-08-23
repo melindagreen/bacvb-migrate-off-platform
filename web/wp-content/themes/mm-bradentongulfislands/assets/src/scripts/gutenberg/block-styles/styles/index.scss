@@ -62,13 +62,34 @@ TEXT
 /*********************
 COLUMNS
 *********************/
+
 .wp-block-columns {
 
-    margin-right: 5vw;
-    margin-left: 5vw;
+    padding-right: 6vw;
+    padding-left: 6vw;
+    max-width: 90rem;
+    margin-left: auto;
+    margin-right: auto;
+
+    // overlapping style for header on Beaches page
+    &.beachesHeader {
+        margin-bottom: -12%;
+    }
+}
+
+.is-layout-flex {
+
+    @media only screen and (min-width: 782px) {
+        flex-direction: inherit !important;
+    }
+
+    // @media only screen and (max-width: $screen-md) {
+    //     flex-wrap: wrap !important;
+    // }
 }
 
 //groups
+
 .is-style-collage-square {
 
     --webkit-mask: url("images/collage-square-long.svg") no-repeat center;
@@ -164,7 +185,16 @@ TEMPLATES
     &.aligncenter {
         margin-left: auto;
         margin-right: auto;
+        display: flex;
     }
+}
+
+.wp-block-image {
+
+    &.aligncenter {
+        display: flex !important;
+        justify-content: center;
+    }    
 }
 
 /*********************
@@ -214,17 +244,20 @@ BUTTONS
 .is-style-arrow-button {
 
     position: relative;
+    max-width: 300px !important;
 
-    .wp-block-button__link, .wp-element-button {
+    .wp-block-button__link {
 
         background-color: transparent !important;
         border: none !important;
+        font-size: 1.15rem !important;
+        padding: 0 !important;
         color: $bradenton-teal !important;
         font-family: $font-header !important;
-        text-transform: uppercase;
-        font-size: 1.15rem;
-        margin-bottom: 1.5rem;
-        padding: 0 !important;
+        text-transform: uppercase !important;
+        margin-bottom: 1.5rem !important;
+        transition: all 0.3s ease-in-out !important;
+        text-align: left !important;
     }
 
     &::after {
@@ -233,91 +266,53 @@ BUTTONS
         position: absolute;
         width: 50px;
         height: 50px;
-        right: -18%;
-        bottom: 2%;
+        right: -2.5rem;
+        bottom: -0.5rem;
         background: url("images/curve-arrow-small.png");
         background-repeat: no-repeat;
         background-size: contain;
+        transition: all 0.3s ease-in-out;
     }
-}
 
-.is-style-round-arrow-button {
+    &--rotate {
 
-    text-transform: uppercase;
-    font-family: $font-header;
-    color: $white;
-    position: relative;
-    transition: all 0.3s ease-in-out;
-    min-width: 7rem;
-    display: inline-block;
+        &::after {
 
-    &::after {
-      content: ' ';
-      background: url('images/ui-link-arrow.png');
-      transition: all 0.3s ease-in-out;
-      position: absolute;
-      right: -2rem;
-      bottom: -35%;
-      height: 25px;
-      width: 25px;
-      background-size: contain !important;
+            transition: all 0.3s ease-in-out;
+            transform: rotate(-20deg);
+        }
     }
-}
 
-.is-style-round-arrow-button {
+    &:hover {
 
-    .wp-block-button__link {
+        .wp-block-button__link {
 
-      background-color: transparent;
-      border: none;
-      font-size: 1.15rem;
-      padding: 0;
-      text-transform: uppercase;
-      font-family: $font-header;
-      color: $bradenton-teal;
-      position: relative;
-      transition: all 0.3s ease-in-out;
-      min-width: 7rem;
-      display: inline-block;
+            text-decoration: none;
+            transition: all 0.3s ease-in-out;
+            color: $dk-blue !important;
+        }
+        &::after {
 
-      &:hover {
-
-          text-decoration: none;
-          
-          &::after {
-
-            transition: all 0.2s ease-in-out;
-            transform: translateX(8%);
-          }
-      }
-
-      &::after {
-          content: ' ';
-          background: url('images/ui-next-on.png') no-repeat;
-          transition: all 0.3s ease-in-out;
-          position: absolute;
-          right: -2rem;
-          bottom: -35%;
-          height: 25px;
-          width: 25px;
-          background-size: contain !important;
+            transition: all 0.3s ease-in-out;
+            transform: rotate(-10deg);
         }
     }
 }
 
 .is-style-round-button {
 
-    .wp-block-button__link, .wp-element-button {
+    .wp-block-button__link {
 
-        border-radius: 200px;
-        text-transform: uppercase;
-        font-size: 0.8rem;
-        font-weight: 600;
-        transition: all 0.3s ease-in-out;
-        color: #2B7B7C;
-        background-color: #B0D9E6;
-        padding-left: 0.7rem;
-        padding-right: 0.7rem;
+        border-radius: 200px !important;
+        text-transform: uppercase !important;
+        font-size: 0.8rem !important;
+        font-weight: 600 !important;
+        transition: all 0.3s ease-in-out !important;
+        color: #2B7B7C !important;
+        background-color: #B0D9E6 !important;
+        padding-left: 0.7rem !important;
+        padding-right: 0.7rem !important;
+        text-decoration: none !important;
 
         &:hover {
 
@@ -326,6 +321,88 @@ BUTTONS
             transform: scale(1.05);
         }
     }
+}
+
+.is-style-round-arrow-button, .is-style-round-arrow-button-blue {
+
+      .wp-block-button__link {
+        text-decoration: none !important;
+        background-color: transparent !important;
+        border: none !important;
+        font-size: 1.15rem !important;
+        padding: 0 !important;
+        text-transform: uppercase;
+        font-family: $font-header !important;
+        color: $bradenton-teal !important;
+        position: relative !important;
+        transition: all 0.3s ease-in-out;
+        min-width: 7rem !important;
+        display: inline-block !important;
+
+        &:hover {
+
+            text-decoration: none;
+            
+            &::after {
+
+              transition: all 0.2s ease-in-out;
+              transform: translateX(8%);
+            }
+        }
+
+        &::after {
+            content: ' ';
+            background: url('images/ui-next-on.png') no-repeat;
+            transition: all 0.3s ease-in-out;
+            position: absolute;
+            right: -2rem;
+            bottom: -35%;
+            height: 25px;
+            width: 25px;
+            background-size: contain !important;
+          }
+      }
+
+      .wp-block-button__link.has-background {
+
+        color: white !important;
+        padding: 2rem 3rem !important;
+        border-radius: 12px !important;
+        max-width: 23rem !important;
+        line-height: 1.5rem !important;
+
+        &::after {
+
+            bottom: -15%;
+            height: 35px;
+            right: 45%;
+            width: 35px;
+        }
+
+        &:hover {
+
+            &::after {
+
+              transition: all 0.2s ease-in-out;
+              transform: scale(1.1);
+            }
+        }
+    }
+}
+
+.is-style-round-arrow-button-blue {
+
+    .wp-block-button__link {
+
+
+        &::after {
+            content: ' ';
+            background: url('images/blue-arrow.png') no-repeat !important;
+            transition: all 0.3s ease-in-out;
+            background-size: contain !important;
+          }
+      }
+
 }
 
 /*********************

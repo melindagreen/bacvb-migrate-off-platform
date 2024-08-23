@@ -227,6 +227,12 @@ TEMPLATES
         margin-right: auto;
     }
 }
+.wp-block-image {
+
+    &.aligncenter {
+        display: block;
+    }    
+}
 // pre, for notes
 .wp-block-preformatted {
     margin: 0;
