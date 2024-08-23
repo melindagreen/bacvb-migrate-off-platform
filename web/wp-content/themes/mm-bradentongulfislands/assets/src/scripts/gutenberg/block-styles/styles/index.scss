@@ -171,7 +171,7 @@ COLUMNS
 LAYOUT
 *********************/
 .is-root-container > .custom-style-wrapper > .wp-block-columns {
-    margin: $block-margin 0;
+    margin: $block-margin auto;
     
     & > .wp-block-column:only-child {
         width: $main-column-width;
@@ -197,6 +197,9 @@ TEMPLATES
         justify-content: center;
         flex-wrap: wrap;
     }    
+    figcaption {
+        flex: 100%;
+    }
 }
 
 /*********************
