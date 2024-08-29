@@ -241,7 +241,7 @@
                                 </div>
                             </a>
                             <a href="/venues/convention-center/" class="venue bacc">
-                                <img src="/wp-content/uploads/BACC-logo.png" alt="Bradenton Area Convention Center logo" class="logo">
+                                <img src="/wp-content/uploads/BACVB_Convention-Center-Logo_Color_CMYK.png" alt="Bradenton Area Convention Center logo" class="logo">
                                 <div class="featImg">
                                     <img src="/wp-content/uploads/2023/11/Bradenton_Area_Convention_Center_SfnOoYA6fwp2lbHiQUepT_t18q0ABlZBh_rgb_l-300x200.jpg" alt="Bradenton Area Convention Center image">
                                 </div>
