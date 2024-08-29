@@ -44,7 +44,7 @@ const FerryStop = ({ attributes, setAttributes }) => {
             onChange={(value) => updateAttributes({bridgeStreetUrl : value })}
             />
 
-            <Media mediaId={localAttributes.bradentonRiverwalkMediaId} placeholderText={"Bradenton Riverwalk Image"} setAttributes={setAttributes} mediaAttribute="bradentonRiverwalkId" />
+            <Media mediaId={localAttributes.bradentonRiverwalkMediaId} placeholderText={"Bradenton Riverwalk Image"} setAttributes={setAttributes} mediaAttribute="bradentonRiverwalkMediaId" />
             <TextareaControl
                 label="Bradenton Riverwalk Description"
                 onChange={(value) => updateAttributes({ bradentonRiverwalkDescription: value })}
