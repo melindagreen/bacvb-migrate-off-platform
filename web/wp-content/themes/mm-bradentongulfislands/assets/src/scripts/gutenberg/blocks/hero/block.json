@@ -65,6 +65,14 @@
 			"mode": {
 				"type": "string",
 				"default": "edit"
+			},
+			"bannerTitle": {
+				"type": "string",
+				"default": ""
+			},
+			"bannerDescription": {
+				"type": "string",
+				"default": ""
 			}
 		}
 	}

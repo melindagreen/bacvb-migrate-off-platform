@@ -96,6 +96,13 @@ function render_block( $attrs, $content ) {
                     <h1 class="title <?php if (!is_front_page()) { echo "alt-title"; } ?>"><?php if (isset($attrs['subtitle']) && $attrs['subtitle']) echo '<span>'.$attrs['subtitle'].'</span>'; ?><?php echo $attrs['title']; ?></h1>
                 <?php } ?>
 
+            <?php if($attrs['bannerTitle'] !== "" || $attrs['bannerDescription'] !== "") { ?>
+                <div class="hero-banner">
+                    <h3 class="hero-banner__title"><?php echo $attrs['bannerTitle']; ?></h3>
+                    <p class="hero-banner__description"><?php echo $attrs['bannerDescription']; ?></p>
+                    <img class="hero-banner__crab" src="<?php echo get_theme_file_uri()?>/assets/images/crab.png" alt="Crab Illustration">
+                </div>
+            <?php } ?>
     </section>
 
     <?php } ?>
