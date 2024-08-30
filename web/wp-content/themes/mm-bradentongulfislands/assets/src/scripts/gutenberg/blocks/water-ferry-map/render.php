@@ -22,7 +22,7 @@ function render_block( $attrs, $content ) {
     $html .= '</div>';
   $html .= "</div>";
 
-  $html .= '<div class="ferry-stop-lightbox"><div class="close">X</div>';
+  $html .= '<div class="ferry-stop-lightbox"><div class="close"><img height="50px" width="50px" src="/wp-content/themes/mm-bradentongulfislands/assets/images/icons/close-x.png" alt="close"></div>';
       
         foreach($ferryStops as $stop => $stop_name){
 
