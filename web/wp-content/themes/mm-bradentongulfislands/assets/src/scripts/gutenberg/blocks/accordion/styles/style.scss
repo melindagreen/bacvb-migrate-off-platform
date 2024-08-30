@@ -25,6 +25,15 @@
       padding: 1rem 0.5rem 0 0.5rem;
       line-height: 1.15em;    
     }
+    p {
+
+      padding: 0 1rem 1.5rem 1rem;
+      font-weight: 600;
+      color: white;
+      text-align: center;
+      max-width: 50rem;
+      margin: auto;  
+    }
   }
 
   .#{$block-prefix}-accordion-section:first-child {
