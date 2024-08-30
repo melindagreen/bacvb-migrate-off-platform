@@ -1,0 +1,32 @@
+{
+  "name": "social-button",
+  "scripts": [
+    "front.js"
+  ],
+  "settings": {
+    "title": "Social Button",
+    "description": "social button",
+    "icon": "share-alt",
+    "category": "layout",
+    "attributes": {
+      "imageUrl": {
+        "type": "string",
+        "default": ""
+      },
+      "imageAlt": {
+        "type": "string",
+        "default": ""
+      },
+      "title": {
+        "type": "string",
+        "default": "",
+        "source": "html",
+        "selector": "h3.contents-title"
+      },
+      "mode": {
+        "type": "string",
+        "default": "preview"
+      }
+    }
+  }
+}
