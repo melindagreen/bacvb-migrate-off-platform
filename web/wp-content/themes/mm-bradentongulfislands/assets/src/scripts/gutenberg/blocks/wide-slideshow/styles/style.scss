@@ -12,6 +12,32 @@ Wide Slideshow
 
     position: relative;
 
+    &__banner-title {
+      position: relative;
+      z-index: 5;
+      background: $bradenton-teal;
+      width: 100%;
+      text-align: center;
+      padding: 1em 10px;
+      box-sizing: border-box;
+      --webkit-mask: url("images/large-image-mask.svg") no-repeat center;
+      mask: url("images/large-image-mask.svg") no-repeat center;
+      --webkit-mask-size: 100% 100%;
+      mask-size: 100% 100%;
+      margin-bottom: -10px;
+  
+      h2 {
+        position: relative;
+        z-index: 1;
+        color: #fff;
+        font-size: 3em;
+        font-family: $font-header;
+        font-weight: 400;
+        text-transform: uppercase;
+        margin: 0;
+      }
+    }
+
     .wideslideshow-ligthbox-overlay {
 
       display: block;
@@ -540,6 +566,11 @@ SMALL SCREENS
 @media only screen and (max-width: $screen-sm) {
   .#{$block-prefix}-wideslideshow {
 
+    &__banner-title {
+      h2 {
+        font-size: 2em;
+      }
+    }
 
   .swiper-wideslideshow {
 

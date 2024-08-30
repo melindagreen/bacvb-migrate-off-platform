@@ -1479,13 +1479,54 @@ Query Loop
         font-family: $font-body;
         color: #414141;
     }
+    tr {
+
+        padding: 0 1.5rem;
+        position: relative;
+
+        &::after {
+            content: " ";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            height: 1px;
+            background-color: $warm-gray; 
+          }
+    }
+
+    tr:last-child {
+
+        &::after {
+            height: 0;
+          }
+    }
+    td {
+
+        background-color: #EEEEEE;
+        text-align: left;
+        font-weight: 600;
+    }
     td, th{
-      border: 1px solid #2B7B7C;
+      border: none;
       margin: 0;
-      padding: 1em;
+      padding: 1em 2.5rem;
+      color: $bradenton-teal;
     }
     th{
         border-width: 0 0 5px 0;
-        color: #2B7B7C;
+        color: white;
+        background-color: $bradenton-teal;
+        text-align: left;
+    }
+    thead {
+
+        border-bottom: none;
+
+        tr {
+
+            border-bottom: 0;
+        }
     }
 }
