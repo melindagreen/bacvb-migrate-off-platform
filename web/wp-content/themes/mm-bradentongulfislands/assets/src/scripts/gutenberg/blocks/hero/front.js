@@ -24,5 +24,14 @@
                 $('.video video').get(0).play();
             }
         });
+
+        // Logo Url Variable
+        var $title = $('.title');
+        var logoUrl = $title.data('logo-url');
+    
+        if (logoUrl) {
+            $title.css('--logo-url', `url(${logoUrl})`);
+        }
+    
     });
 })(jQuery);

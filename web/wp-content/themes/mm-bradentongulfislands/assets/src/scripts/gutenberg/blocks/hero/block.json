@@ -73,7 +73,23 @@
 			"bannerDescription": {
 				"type": "string",
 				"default": ""
-			}
+			},
+			"logoId": {
+				"type": "number",
+				"default": 0
+			  },
+			  "logoUrl": {
+				  "type": "array",
+				  "default": [],
+				  "selector": "img",
+				  "attribute": "src"
+			  },
+			  "logoAlt": {
+				"type": "string",
+				"default": "",
+				"selector": "img",
+				"attribute": "alt"
+			  }
 		}
 	}
 }
