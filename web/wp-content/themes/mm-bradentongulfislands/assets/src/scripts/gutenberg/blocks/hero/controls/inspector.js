@@ -2,8 +2,8 @@
 
 // WordPress dependencies
 import { __ } from '@wordpress/i18n';
-import { InspectorControls } from '@wordpress/block-editor'
-import { FocalPointPicker, PanelBody, PanelRow, ToggleControl, TextControl } from '@wordpress/components'
+import { InspectorControls, MediaUpload, MediaUploadCheck } from '@wordpress/block-editor'
+import { FocalPointPicker, PanelBody, PanelRow, ToggleControl, Button, ResponsiveWrapper, Spinner, TextControl} from '@wordpress/components'
 
 import { } from '@wordpress/block-editor'
 // Local dependencies
@@ -23,7 +23,29 @@ const Inspector = props => {
 		focalPoint,
 		mobileImage,
 		focalPointMobile,
+		logoId, 
+		logoUrl
 	}, setAttributes } = props;
+
+	const removeLogo = () => {
+		setAttributes({
+			logoId: 0,
+			logoUrl: [],
+			logoAlt: ''
+		});
+	}
+ 
+	 const onSelectLogo= (logo) => {
+		let logoLG = typeof logo?.sizes?.full?.url !== 'undefined' ? logo.sizes.full.url : logo.url;
+		let logoMD = logoLG;
+		let logoSM = typeof logo?.sizes?.madden_hero_md?.url !== 'undefined' ? logo.sizes.madden_hero_md.url : logoMD;
+		console.log(logo);
+		setAttributes({
+			logoId: logo.id,
+			logoUrl: [logoLG, logoMD, logoSM],
+			logoAlt: logo.alt
+		});
+	 }
 
     return (
         <InspectorControls>
@@ -107,6 +129,50 @@ const Inspector = props => {
 					)}
 				</PanelBody>
 			)}
+				<PanelBody title="Badge Settings" initialOpen={ false }>
+                		<div className="editor-post-featured-image">
+                        <MediaUploadCheck>
+                            <MediaUpload
+                                onSelect={onSelectLogo}
+                                value={logoId}
+                                allowedTypes={ ['image'] }
+                                render={({open}) => (
+                                    <Button
+                                                className={ ! logoId ? 'editor-post-featured-image__toggle' : 'editor-post-featured-image__preview' }
+                                                onClick={ open }>
+                                                { ! logoId && ( __( 'Set badge image', 'image-selector-example' ) ) }
+                                                { !! logoId && ! logoUrl[0] && <Spinner /> }
+                                                { !! logoId && logoUrl[0] &&
+                                                    <ResponsiveWrapper>
+                                                        <img className="components-responsive-wrapper__content--imgsize" src={ logoUrl[0] } alt={ __( 'Background image', 'image-selector-example' ) } />
+                                                    </ResponsiveWrapper>
+                                                }
+                                            </Button>
+                                )}
+                            />
+                        </MediaUploadCheck>
+                        <div className="component-buttons">
+                            {logoId != 0 && 
+                                <MediaUploadCheck>
+                                    <MediaUpload
+                                        title={__('Replace image')}
+                                        value={logoId}
+                                        onSelect={onSelectLogo}
+                                        allowedTypes={['image']}
+                                        render={({open}) => (
+                                            <Button onClick={open}>{__('Replace image')}</Button>
+                                        )}
+                                    />
+                                </MediaUploadCheck>
+                            }
+                            {logoId != 0 && 
+                                <MediaUploadCheck>
+                                    <Button onClick={removeLogo} isDestructive>{__('Remove image')}</Button>
+                                </MediaUploadCheck>
+                            }
+                        </div>
+                    </div>
+                </PanelBody>
         </InspectorControls>
     )
 }

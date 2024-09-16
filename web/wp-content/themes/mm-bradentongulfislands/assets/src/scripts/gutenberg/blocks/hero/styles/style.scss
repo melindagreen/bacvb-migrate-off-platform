@@ -196,6 +196,19 @@
 			left: 10.5rem;
 			margin: auto;
 		}
+
+		&::before {
+			content: '';
+			display: block;
+			width: 200px; 
+			height: 200px;
+			background-image: var(--logo-url);
+			background-size: contain;
+			background-repeat: no-repeat;
+			position: absolute;
+			top: -15rem; 
+			left: 0;
+		}
 	}
 }
 
@@ -261,6 +274,16 @@ SMALL SCREENS
 				font-size: 4vw;
 				line-height: 1em;
 				bottom: 5rem;
+				left: 50%;
+				transform: translateX(-50%);
+			}
+
+			&::before {
+
+				width: 180px; 
+				height: 180px;
+				position: absolute;
+				top: -13rem; 
 				left: 50%;
 				transform: translateX(-50%);
 			}

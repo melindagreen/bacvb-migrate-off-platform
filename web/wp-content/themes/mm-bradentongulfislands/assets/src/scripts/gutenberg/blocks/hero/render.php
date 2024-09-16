@@ -9,6 +9,7 @@ use MaddenNino\Library\Constants as Constants;
  * @param string $content
  */
 function render_block( $attrs, $content ) {
+
     if (!isset($attrs['videoHero']) || !$attrs['videoHero']) {
         $mobileImage = isset($attrs['mobileImage']) ? $attrs['mobileImage'] : $attrs['image'];
         $caption = wp_get_attachment_caption($attrs['image']['id']);
@@ -21,7 +22,7 @@ function render_block( $attrs, $content ) {
 
     <?php if (!isset($attrs['smallHero']) || !$attrs['smallHero']) { ?>
 
-    <section class="<?php echo Constants::BLOCK_CLASS; ?>-hero<?php if (isset($attrs['videoHero']) && $attrs['videoHero']) echo ' videoHero'; ?> <?php echo $classes; ?>">
+    <section class="<?php echo Constants::BLOCK_CLASS; ?>-hero<?php if (isset($attrs['videoHero']) && $attrs['videoHero']) echo ' videoHero'; ?> <?php echo $classes; ?><?php echo $attrs['className'] !== 'is-style-small-font-header' && $attrs['logoId'] ? ' is-style-small-font-header' : ''; ?>">
 
     <?php if (is_front_page()) { ?>
         <!-- <div class="badge">
@@ -93,7 +94,12 @@ function render_block( $attrs, $content ) {
                     <span class="description"><?php echo $caption; ?></span>
                 <?php } ?>
                 <?php if (isset($attrs['title']) && $attrs['title']) { ?>
-                    <h1 class="title <?php if (!is_front_page()) { echo "alt-title"; } ?>"><?php if (isset($attrs['subtitle']) && $attrs['subtitle']) echo '<span>'.$attrs['subtitle'].'</span>'; ?><?php echo $attrs['title']; ?></h1>
+                    <h1 class="title <?php if (!is_front_page()) { echo "alt-title"; } ?>"
+                    <?php if (isset($attrs['logoId']) && $attrs['logoId']) { ?>
+                        data-logo-url="<?php echo wp_get_attachment_url($attrs['logoId']); ?>"
+                    <?php } ?>
+                    >
+                    <?php if (isset($attrs['subtitle']) && $attrs['subtitle']) echo '<span>'.$attrs['subtitle'].'</span>'; ?><?php echo $attrs['title']; ?></h1>
                 <?php } ?>
 
     </section>
