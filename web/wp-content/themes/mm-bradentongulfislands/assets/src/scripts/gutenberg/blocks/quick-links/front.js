@@ -5,7 +5,9 @@
         
 
 
-      const element = $('.wp-block-mm-bradentongulfislands-quick-links');
+      function quickLinks() {
+
+        const element = $('.wp-block-mm-bradentongulfislands-quick-links');
       let isTucked = false;
       let lastScrollY = $(window).scrollTop();
 
@@ -45,5 +47,8 @@
         });
       }
 
+      }
+      quickLinks();
+      window.onresize = function () {quickLinks();}
     });
 })(jQuery);
