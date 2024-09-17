@@ -1,18 +1,19 @@
-// this is the front-end script for the block example-dynamic
-
 (function($) {
-    $(document).ready(function() {
-        
+  $(document).ready(function() {
 
+    function quickLinks() {
 
-      function quickLinks() {
-
-        const element = $('.wp-block-mm-bradentongulfislands-quick-links');
+      const element = $('.wp-block-mm-bradentongulfislands-quick-links');
       let isTucked = false;
       let lastScrollY = $(window).scrollTop();
 
+      // Clear previous scroll and click event handlers to avoid conflicts
+      $(window).off('scroll');
+      element.find('.quick-links-heading').off('click');
 
-      if($(window).width() > 768) {
+      // Desktop behavior
+      if ($(window).width() > 768) {
+
         $(window).scroll(function() {
           const currentScrollY = $(window).scrollTop();
 
@@ -29,9 +30,10 @@
           lastScrollY = currentScrollY;
         });
 
-      } else {
+      } else { 
+        // Mobile behavior
 
-        element.find('.quick-links-heading').click(function(){
+        element.find('.quick-links-heading').click(function() {
           element.find('.quick-link-items').slideToggle();
         });
 
@@ -47,8 +49,13 @@
         });
       }
 
-      }
+    }
+
+    quickLinks();
+
+    // Listen for window resize and reset the behavior accordingly
+    $(window).resize(function() {
       quickLinks();
-      window.onresize = function () {quickLinks();}
     });
+  });
 })(jQuery);
