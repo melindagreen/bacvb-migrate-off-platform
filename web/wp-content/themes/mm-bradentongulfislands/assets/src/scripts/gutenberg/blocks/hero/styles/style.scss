@@ -51,6 +51,41 @@
 			height: auto;
 			right: 0;
 		}
+
+		&--cta {
+
+			border-color: $bradenton-teal;
+			border-right-color: $bradenton-teal !important;
+
+			.hero-banner__title {
+				
+				font-size: 1.75rem;
+				margin-bottom: 0;
+				background: $bradenton-teal;
+				border-color: $bradenton-teal;
+			}
+
+			.hero-banner__description {
+
+				width: 49%;
+				padding: 0.5rem 1rem;
+				display: inline-block;
+			}
+
+			.hero-banner__cta {
+
+				width: 50%;
+				display: inline-block;
+				vertical-align: text-bottom;
+
+				a {
+
+					padding: 0.8em 1.5em;
+					border-radius: 16px;
+					font-size: 1.75rem;
+				}
+			}
+		}
 	}
 
 	.fade {
@@ -295,6 +330,8 @@ SMALL SCREENS
 			border-right: 3px $rust solid;
 			width: 90%;
 			border-radius: 25px;
+
+			margin-bottom: 1rem;
 	
 			&__title {
 	
@@ -314,6 +351,35 @@ SMALL SCREENS
 			&__crab {
 
 				display: none;
+			}
+
+			&--cta {
+
+	
+				.hero-banner__title {
+					
+					font-size: 1.5rem;
+					text-align: center;
+				}
+	
+				.hero-banner__description {
+	
+					width: 100%;
+					padding: 0.5rem 2rem;
+					text-align: center;
+					display: inline-block;
+				}
+	
+				.hero-banner__cta {
+
+					width: 100%;
+					text-align: center;
+					padding: 0.5rem 1rem;
+					a {
+						
+						font-size: 1.5rem;
+					}
+				}
 			}
 		}
 

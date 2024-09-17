@@ -74,6 +74,14 @@
 				"type": "string",
 				"default": ""
 			},
+			"bannerUrl": {
+				"type": "string",
+				"default": ""
+			},
+			"bannerText": {
+				"type": "string",
+				"default": "Learn More"
+			},
 			"logoId": {
 				"type": "number",
 				"default": 0

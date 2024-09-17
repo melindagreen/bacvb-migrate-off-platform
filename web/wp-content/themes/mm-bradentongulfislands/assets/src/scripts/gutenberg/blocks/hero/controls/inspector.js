@@ -24,6 +24,8 @@ const Inspector = props => {
 		focalPointMobile,
 		bannerTitle,
 		bannerDescription,
+		bannerUrl,
+		bannerText,
 		logoId, 
 		logoUrl
 	}, setAttributes } = props;
@@ -138,6 +140,20 @@ const Inspector = props => {
                     	label="Banner Description"
                         onChange={ ( bannerDescription ) => setAttributes( { bannerDescription } ) }
                         value={ bannerDescription }
+                    />
+                </PanelRow>
+				<PanelRow>
+                    <TextControl
+                    	label="Banner Text"
+                        onChange={ ( bannerText) => setAttributes( { bannerText } ) }
+                        value={ bannerText }
+                    />
+                </PanelRow>
+				<PanelRow>
+                    <TextControl
+                    	label="Banner Url"
+                        onChange={ ( bannerUrl ) => setAttributes( { bannerUrl } ) }
+                        value={ bannerUrl }
                     />
                 </PanelRow>
 			</PanelBody>

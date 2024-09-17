@@ -77,12 +77,13 @@
 .ferry-map-help {
 
   text-align: center;
-  width: fit-content;
-  background-color: $bradenton-teal;
-  padding: 1% 2%;
-  position: relative;
-  bottom: 4.5rem;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 0 2%;
+  position: absolute;
+  bottom: -0.2rem;
   margin: auto;
+  z-index: 2;
 
   p {
 
@@ -94,6 +95,7 @@
 .ferry-stop-lightbox {
 
   display: none;
+  overflow-y: scroll;
   position: fixed;
   z-index: 1000;
   top: 0;
@@ -204,92 +206,72 @@
 SMALL SCREENS
 *********************/
 @media only screen and (max-width: $screen-md) {
-  .#{$block-prefix}-map {
+  .#{$block-prefix}-water-ferry-map {
 
-    flex-wrap: wrap-reverse;
-    padding: 25px 2% 0 2%;
-    margin-top: 0rem;
-    height: 70vw;
-    align-items: baseline;
+    height: max-content;
+    overflow: hidden;
 
+    #bradentonRiverwalk {
+      transform: translate(-8831px, 3277.174px) scale(1.7); 
+    }
+    #bridgeStreet {
+      transform: translate(-8861px, 3277.174px) scale(1.7); 
+    }
+    #ami {
+      transform: translate(-8861px, 3277.174px) scale(1.7); 
+    }
 
-    .infoContainer {
-  
-      .title {
-  
-        font-size: 3rem;
-      }
-      .subtitle {
-
-        font-size: 2rem;
-      }
+    .ferry-map-help  {
+    
       p {
-  
-        font-size: 1rem;
-
-      }
-  
-      a {
-  
-        padding: 2.5% 6.5%;
-        width: fit-content;
+        
+        margin: 0.4rem auto;
+        font-size: 0.75rem;
       }
     }
-  
+  }
 
-    .mapContainer {
+  .ferry-stop-lightbox {
+
+    height: fit-content;
+
+    .close {
+
+      top: 1%;
+    }
+    .ferry-stop-card {
+
+      transform: scale(0) !important; /* Center by default, but scale down */
+      flex-direction: column-reverse;
+      top: 60%;
+      gap: 1.5rem;
+      margin-top: 5rem !important;
+      transform: none !important;
+      position: unset;
+      width: 95% !important;
       margin: auto;
-      width: 100%;
-
-      padding: 0 6%;
-      
-      .cls-4.county {
-
-        display: none;
-      }
-
- 
-      .map-logo {
-
-        display: none;
-      }
-    }
-
-    margin-bottom: 3rem;
-  }
-
-  .ferry-map-help {
-
-    text-align: center;
-    width: fit-content;
-    background-color: $bradenton-teal;
-    padding: 1% 2%;
-    position: relative;
-    bottom: 1rem;
-    font-size: 0.8rem;
   
-    p {
+    
+      &__content {
+    
+        width: inherit !important;
+        padding: 0;
   
-      color: white;
-      font-weight: 500;
+        .ferry-card-cta {
+  
+          a {
+  
+            
+          }
+        }
+      }
+    
+      img {
+    
+        width: 100% !important;
+      }
     }
   }
 
-  .ferry-stop-card {
-
-    transform: scale(0) !important; /* Center by default, but scale down */
-    width: 92% !important;
-    flex-direction: column-reverse;
-    top: 60%;
-
-    &__content {
-
-      width: inherit !important;
-    }
-
-    img {
-
-      width: 100% !important;
-    }
-  }
 }
+
