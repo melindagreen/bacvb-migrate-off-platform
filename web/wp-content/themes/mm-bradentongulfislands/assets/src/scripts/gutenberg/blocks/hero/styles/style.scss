@@ -11,6 +11,14 @@
 	position: relative;
 	overflow-x: clip;
 
+	&--banner {
+
+		.title {
+
+			top: 65% !important;
+		}
+	}
+
 	.hero-banner {
 
 		position: absolute;
@@ -18,12 +26,10 @@
 		bottom: 0;
 		z-index: 3;
 		border: 3px $rust solid;
-		border-radius: 25px;
-		border-top-right-radius: 0;
-		border-bottom-right-radius: 0;
 		border-right: none;
 		background-color: white;
 		max-width: 32rem;
+		border-radius: 0;
 
 		&__title {
 
@@ -32,9 +38,9 @@
 			color: white;
     		padding: 0.8rem 2rem;
 			font-family: $font-header;
-			border-top-left-radius: 18px;
 			border: 2px $rust solid;
 			font-size: 1.3rem;
+			border-radius: 0;
 		}
 
 
@@ -52,40 +58,76 @@
 			right: 0;
 		}
 
-		&--cta {
+	}
 
+	.cta-hero-banner {
+
+		position: absolute;
+		left: 0;
+		top: 25%;
+		z-index: 3;
+		border: 3px $bradenton-teal solid;
+		border-radius: 25px;
+		border-top-left-radius: 0;
+		border-bottom-left-radius: 0;
+		border-right: none;
+		background-color: $bradenton-teal;
+		max-width: 40rem;
+		padding: 2rem;
+		border: 2px solid white;
+		border-left: 0;
+
+		&__title {
+
+			color: white;
+    		padding: 0.8rem 2rem;
+			font-family: $font-header;
+			font-size: 1.2rem;	
 			border-color: $bradenton-teal;
-			border-right-color: $bradenton-teal !important;
+			text-align: right;
+			margin: 0 1.5rem;
+			margin-bottom: -2rem;
+		
+		}
 
-			.hero-banner__title {
-				
-				font-size: 1.75rem;
-				margin-bottom: 0;
-				background: $bradenton-teal;
-				border-color: $bradenton-teal;
+
+		&__description {
+
+			padding: 0.5rem 2rem;
+		}
+
+
+		&__cta {
+
+			display: flex;
+
+			.cta-hero-banner__logo {
+
+				width: 200px;
+				height: auto;
 			}
 
-			.hero-banner__description {
+			.wp-block-button__link {
 
-				width: 49%;
-				padding: 0.5rem 1rem;
-				display: inline-block;
-			}
+				background: white;
+				padding: 2rem;
+				font-size: 2rem;
+				margin: 0 2rem;
+				color: $bradenton-teal !important;
+				border-radius: 22px;
+				align-self: end;
+				text-decoration: none;
+				transition: all 0.3s ease-in-out;
 
-			.hero-banner__cta {
+				&:hover {
 
-				width: 50%;
-				display: inline-block;
-				vertical-align: text-bottom;
-
-				a {
-
-					padding: 0.8em 1.5em;
-					border-radius: 16px;
-					font-size: 1.75rem;
+					background-color: $rust;
+					color: white !important;
+					transition: all 0.2s ease-in-out;
 				}
 			}
 		}
+
 	}
 
 	.fade {
@@ -318,8 +360,15 @@ SMALL SCREENS
 		// 	}
 		// }
 
-		.hero-banner {
+		&--banner {
 
+			.title {
+	
+				top: 40% !important;
+			}
+		}
+
+		.hero-banner {
 
 			border-radius: 0;
 			position: relative;
@@ -328,18 +377,13 @@ SMALL SCREENS
 			margin: 0 auto;
 			margin-top: -5rem;
 			border-right: 3px $rust solid;
-			width: 90%;
-			border-radius: 25px;
+			width: 100%;
 
 			margin-bottom: 1rem;
 	
 			&__title {
 	
 				padding: 0.8rem 1.5rem;
-				border-top-left-radius: 0;
-				border-radius: 18px;
-				border-bottom-left-radius: 0;
-				border-bottom-right-radius: 0;
 			}
 	
 	
@@ -379,6 +423,55 @@ SMALL SCREENS
 						
 						font-size: 1.5rem;
 					}
+				}
+			}
+		}
+
+		.cta-hero-banner {
+
+
+			border-radius: 0;
+			position: relative;
+			right: 0;
+			margin: 0 auto;
+			border-right: 3px $rust solid;
+			width: 90%;
+			border-radius: 25px;
+			padding: 2rem 0.5rem;
+			margin-bottom: 1rem;
+			border: none;
+	
+	
+			&__title {
+	
+				margin-bottom: 0;
+				text-align: center;
+			}
+	
+	
+			&__description {
+	
+				padding: 0.5rem 1.5rem;
+			}
+
+			&__cta {
+
+				display: flex;
+				justify-content: center;
+				gap: 2rem;
+
+	
+				.cta-hero-banner__logo {
+	
+					width: 95px;
+        			height: auto;
+				}
+	
+				.wp-block-button__link {
+
+					padding: 1rem 2rem;
+					font-size: 1.5rem;
+					margin: 0;			
 				}
 			}
 		}

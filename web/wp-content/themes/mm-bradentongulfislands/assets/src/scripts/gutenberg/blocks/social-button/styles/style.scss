@@ -13,6 +13,10 @@
     border-radius: 100%;
     margin-right: -2rem;
     z-index: 2;
+    img {
+    height: 100px;
+    width: 100px;
+    }
   }
 
   &__contents {

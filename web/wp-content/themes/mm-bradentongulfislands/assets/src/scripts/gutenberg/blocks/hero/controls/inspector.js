@@ -24,8 +24,9 @@ const Inspector = props => {
 		focalPointMobile,
 		bannerTitle,
 		bannerDescription,
-		bannerUrl,
-		bannerText,
+		ctaBannerUrl,
+		ctaBannerText,
+		ctaBannerTitle,
 		logoId, 
 		logoUrl
 	}, setAttributes } = props;
@@ -142,22 +143,31 @@ const Inspector = props => {
                         value={ bannerDescription }
                     />
                 </PanelRow>
+			</PanelBody>
+			<PanelBody title="CTA Banner Settings">
 				<PanelRow>
                     <TextControl
-                    	label="Banner Text"
-                        onChange={ ( bannerText) => setAttributes( { bannerText } ) }
-                        value={ bannerText }
+                    	label="Banner Title"
+                        onChange={ ( ctaBannerTitle ) => setAttributes( { ctaBannerTitle } ) }
+                        value={ ctaBannerTitle }
+                    />
+                </PanelRow>
+				<PanelRow>
+                    <TextControl
+                    	label="Banner Button Text"
+                        onChange={ ( ctaBannerText) => setAttributes( { ctaBannerText } ) }
+                        value={ ctaBannerText }
                     />
                 </PanelRow>
 				<PanelRow>
                     <TextControl
                     	label="Banner Url"
-                        onChange={ ( bannerUrl ) => setAttributes( { bannerUrl } ) }
-                        value={ bannerUrl }
+                        onChange={ ( ctaBannerUrl ) => setAttributes( { ctaBannerUrl } ) }
+                        value={ ctaBannerUrl }
                     />
                 </PanelRow>
 			</PanelBody>
-				<PanelBody title="Badge Settings" initialOpen={ false }>
+			<PanelBody title="Badge Settings" initialOpen={ false }>
                 		<div className="editor-post-featured-image">
                         <MediaUploadCheck>
                             <MediaUpload
@@ -200,7 +210,7 @@ const Inspector = props => {
                             }
                         </div>
                     </div>
-                </PanelBody>
+            </PanelBody>
         </InspectorControls>
     )
 }

@@ -74,11 +74,15 @@
 				"type": "string",
 				"default": ""
 			},
-			"bannerUrl": {
+			"ctaBannerTitle": {
 				"type": "string",
 				"default": ""
 			},
-			"bannerText": {
+			"ctaBannerUrl": {
+				"type": "string",
+				"default": ""
+			},
+			"ctaBannerText": {
 				"type": "string",
 				"default": "Learn More"
 			},
