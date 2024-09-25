@@ -82,11 +82,11 @@
 			color: white;
     		padding: 0.8rem 2rem;
 			font-family: $font-header;
-			font-size: 1.2rem;	
+			font-size: 1.2vw;	
 			border-color: $bradenton-teal;
 			text-align: right;
-			margin: 0 1.5rem;
-			margin-bottom: -2rem;
+			margin: 0 1vw;
+			margin-bottom: -0.5vw;
 		
 		}
 
@@ -103,15 +103,16 @@
 
 			.cta-hero-banner__logo {
 
-				width: 200px;
+				width: 9vw;
+				min-width: 100px;
 				height: auto;
 			}
 
 			.wp-block-button__link {
 
 				background: white;
-				padding: 2rem;
-				font-size: 2rem;
+				padding: 1.5vw;
+				font-size: 2vw;
 				margin: 0 2rem;
 				color: $bradenton-teal !important;
 				border-radius: 22px;
@@ -345,6 +346,45 @@
 }
 
 /*********************
+MEDIUM SCREENS
+*********************/
+@media only screen and (min-width: ($screen-sm + 1)) and (max-width: $screen-lg) {
+
+	.#{$block-prefix}-hero {
+
+		.cta-hero-banner {
+
+	
+	
+			&__title {
+	
+				margin-bottom: 0;
+				text-align: center;
+				font-size: 1.2rem;
+			}
+	
+
+			&__cta {
+
+
+	
+				.cta-hero-banner__logo {
+	
+		
+				}
+	
+				.wp-block-button__link {
+					
+					padding: 1rem;
+					font-size: 1.5rem;
+				
+				}
+			}
+		}
+	}
+}
+
+/*********************
 SMALL SCREENS
 *********************/
 
@@ -447,6 +487,7 @@ SMALL SCREENS
 	
 				margin-bottom: 0;
 				text-align: center;
+				font-size: 1.2rem;
 			}
 	
 	
