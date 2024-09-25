@@ -77,18 +77,36 @@
 .ferry-map-help {
 
   text-align: center;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
+  width: fit-content;
+  background-color: $bradenton-teal;
+  font-family: $font-title;
+  font-size: 4rem;
   padding: 0 2%;
   position: absolute;
-  bottom: -0.2rem;
+  bottom: 4rem;
+  right: 0;
   margin: auto;
   z-index: 2;
+  max-width: 16rem;
+  border-top-left-radius: 100px;
+  border-bottom-left-radius: 100px;
+  padding: 0 2rem 0 3rem;
+
+  h4 {
+
+    font-family: $font-header;
+    font-size: 0.9rem;
+    color: $yellow-tan;
+    margin: 1rem auto;
+  }
 
   p {
 
     color: white;
     font-weight: 600;
+    font-size: 1.85rem;
+    line-height: 1.2em;
+    margin: 1rem auto;
   }
 }
 
@@ -223,11 +241,23 @@ SMALL SCREENS
     }
 
     .ferry-map-help  {
+
+
+      bottom: unset;
+      top: 1rem;
+      max-width: 13rem;
+      padding: 0 1rem 0 2rem;
+
+      h4 {
+
+        font-size: 0.6rem;
+        margin-bottom: 0.5rem;
+      }
     
       p {
         
-        margin: 0.4rem auto;
-        font-size: 0.75rem;
+        font-size: 0.9rem;
+        margin-top: 0.5rem;
       }
     }
   }

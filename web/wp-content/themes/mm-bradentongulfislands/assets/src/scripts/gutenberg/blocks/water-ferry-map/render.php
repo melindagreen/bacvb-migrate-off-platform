@@ -20,7 +20,7 @@ function render_block( $attrs, $content ) {
       $html .= file_get_contents(get_stylesheet_directory() . '/assets/images/water-ferry-map.svg');
 
     $html .= '</div>';
-    $html .= '<div class="ferry-map-help"><p>Click Location to Book Your Trip</p></div>'; 
+    $html .= '<div class="ferry-map-help"><h4>Interactive Map</h4><p>Click Location to Book Your Trip</p></div>'; 
   $html .= "</div>";
 
   $html .= '<div class="ferry-stop-lightbox"><div class="close"><img height="25px" width="25px" src="/wp-content/themes/mm-bradentongulfislands/assets/images/icons/close-x.png" alt="close"></div>';

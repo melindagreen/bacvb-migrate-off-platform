@@ -39,6 +39,10 @@
       "mode": {
         "type": "string",
         "default": "preview"
+      },
+      "hideOnMobile": {
+        "type": "boolean",
+        "default": false
       }
     }
   }
