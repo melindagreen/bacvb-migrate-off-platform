@@ -32,13 +32,14 @@ function render_block( $attrs, $content ) {
           $cityTitle = $stop_name;
           $cityDescription = $attrs[$stop.'Description'];
           $cityUrl = $attrs[$stop.'Url'];
+          $ferryCardCta = isset($cityUrl) && $cityUrl !== '' ? '<div class="ferry-card-cta"><a href="'. $cityUrl .'">Book Now at '. $stop_name .'</a></div>' : '';
 
           $html .= <<<HTML
           <div class="ferry-stop-card is-style-collage-square {$stop}" data-city="{$stop}">
               <div class="ferry-stop-card__content">
                 <h3>{$cityTitle}</h3>
                 <p>{$cityDescription}</p>
-                <div class="ferry-card-cta"><a href="{$cityUrl}">Book Now at {$stop_name}</a></div>
+                $ferryCardCta
               </div>
               <img 
                   data-load-type="img" 
