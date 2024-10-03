@@ -12,7 +12,7 @@ const ALLOWED_MEDIA_TYPES = ['image'];
 const Inspector = props => {
 
     const { attributes, setAttributes } = props;
-    const { bannerTitle } = attributes;
+    const { bannerTitle, bannerDescription } = attributes;
 
     return (
         <Fragment>
@@ -23,6 +23,13 @@ const Inspector = props => {
                             label="Banner Title"
                             onChange={ ( bannerTitle ) => setAttributes( { bannerTitle } ) }
                             value={ bannerTitle }
+                        />
+                    </PanelRow>
+                    <PanelRow>
+                        <TextControl
+                            label="Banner Description"
+                            onChange={ ( bannerDescription ) => setAttributes( { bannerDescription } ) }
+                            value={ bannerDescription }
                         />
                     </PanelRow>
                 </PanelBody>
