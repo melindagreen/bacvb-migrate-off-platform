@@ -17,12 +17,16 @@ const Inspector = props => {
     const { attributes: { 
 		videoHero, 
 		showBottomWave, 
-		doParallax,
-		hidePalmFronds, 	
+		doParallax,	
 		image,
 		focalPoint,
 		mobileImage,
 		focalPointMobile,
+		bannerTitle,
+		bannerDescription,
+		ctaBannerUrl,
+		ctaBannerText,
+		ctaBannerTitle,
 		logoId, 
 		logoUrl
 	}, setAttributes } = props;
@@ -55,11 +59,6 @@ const Inspector = props => {
 						checked={ showBottomWave }
 						label={ __( 'Show Bottom Wave' ) }
 						onChange={ ( showBottomWave ) => setAttributes({ showBottomWave })}
-					/>
-					<ToggleControl
-						checked={ hidePalmFronds }
-						label={ __( 'Hide Palm Fronds' ) }
-						onChange={ ( hidePalmFronds ) => setAttributes({ hidePalmFronds })}
 					/>
 				</PanelRow>
 				<PanelRow>
@@ -129,7 +128,46 @@ const Inspector = props => {
 					)}
 				</PanelBody>
 			)}
-				<PanelBody title="Badge Settings" initialOpen={ false }>
+			<PanelBody title="Banner Settings">
+				<PanelRow>
+                    <TextControl
+                    	label="Banner Title"
+                        onChange={ ( bannerTitle ) => setAttributes( { bannerTitle } ) }
+                        value={ bannerTitle }
+                    />
+                </PanelRow>
+				<PanelRow>
+                    <TextControl
+                    	label="Banner Description"
+                        onChange={ ( bannerDescription ) => setAttributes( { bannerDescription } ) }
+                        value={ bannerDescription }
+                    />
+                </PanelRow>
+			</PanelBody>
+			<PanelBody title="CTA Banner Settings">
+				<PanelRow>
+                    <TextControl
+                    	label="Banner Title"
+                        onChange={ ( ctaBannerTitle ) => setAttributes( { ctaBannerTitle } ) }
+                        value={ ctaBannerTitle }
+                    />
+                </PanelRow>
+				<PanelRow>
+                    <TextControl
+                    	label="Banner Button Text"
+                        onChange={ ( ctaBannerText) => setAttributes( { ctaBannerText } ) }
+                        value={ ctaBannerText }
+                    />
+                </PanelRow>
+				<PanelRow>
+                    <TextControl
+                    	label="Banner Url"
+                        onChange={ ( ctaBannerUrl ) => setAttributes( { ctaBannerUrl } ) }
+                        value={ ctaBannerUrl }
+                    />
+                </PanelRow>
+			</PanelBody>
+			<PanelBody title="Badge Settings" initialOpen={ false }>
                 		<div className="editor-post-featured-image">
                         <MediaUploadCheck>
                             <MediaUpload
@@ -172,7 +210,7 @@ const Inspector = props => {
                             }
                         </div>
                     </div>
-                </PanelBody>
+            </PanelBody>
         </InspectorControls>
     )
 }

@@ -99,7 +99,10 @@ SMALL SCREENS
 @media only screen and (max-width: $screen-sm) {
   .#{$block-prefix}-quick-links {
 
-    // display: none;
+    &--hideonmobile {
+
+      display: none;
+    }
 
     position: relative;
     top: auto;

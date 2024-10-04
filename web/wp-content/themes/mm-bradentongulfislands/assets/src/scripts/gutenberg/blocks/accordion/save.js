@@ -1,12 +1,13 @@
 import { InnerBlocks } from '@wordpress/block-editor';
 
 const Save = (props) => {
-  const { attributes: { title }, className } = props;
+  const { attributes: { title, description }, className } = props;
 
   return <section className={className}>
     {title !== '' && 
     <div className='section-title'>
       <h2>{title}</h2>
+      {description !== '' && <p>{description}</p>}
     </div>
     }
     <InnerBlocks.Content />

@@ -17,7 +17,7 @@ const ALLOWED_MEDIA_TYPES = ['image'];
 
 const Inspector = props => {
 
-    const { attributes: { title }, setAttributes, className } = props;
+    const { attributes: { title, description }, setAttributes, className } = props;
 
     return (
         <InspectorControls>
@@ -27,6 +27,13 @@ const Inspector = props => {
                                 label="Title"
                                 onChange={ ( title ) => setAttributes( { title } ) }
                                 value={ title }
+                            />
+                        </PanelRow>
+                        <PanelRow>
+                            <TextControl
+                                label="Description"
+                                onChange={ ( description ) => setAttributes( { description } ) }
+                                value={ description }
                             />
                         </PanelRow>
             </PanelBody>

@@ -11,6 +11,126 @@
 	position: relative;
 	overflow-x: clip;
 
+	&--banner {
+
+		.title {
+
+			top: 65% !important;
+		}
+	}
+
+	.hero-banner {
+
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		z-index: 3;
+		border: 3px $rust solid;
+		border-right: none;
+		background-color: white;
+		max-width: 32rem;
+		border-radius: 0;
+
+		&__title {
+
+			background: $rust;
+			margin-top: 0px;
+			color: white;
+    		padding: 0.8rem 2rem;
+			font-family: $font-header;
+			border: 2px $rust solid;
+			font-size: 1.3rem;
+			border-radius: 0;
+		}
+
+
+		&__description {
+
+			padding: 0.5rem 2rem;
+		}
+
+		&__crab {
+
+			position: absolute;
+			bottom: -7rem;
+			width: 10rem;
+			height: auto;
+			right: 0;
+		}
+
+	}
+
+	.cta-hero-banner {
+
+		position: absolute;
+		left: 0;
+		top: 25%;
+		z-index: 3;
+		border: 3px $bradenton-teal solid;
+		border-radius: 25px;
+		border-top-left-radius: 0;
+		border-bottom-left-radius: 0;
+		border-right: none;
+		background-color: $bradenton-teal;
+		max-width: 40rem;
+		padding: 2rem;
+		border: 2px solid white;
+		border-left: 0;
+
+		&__title {
+
+			color: white;
+    		padding: 0.8rem 2rem;
+			font-family: $font-header;
+			font-size: 1.2vw;	
+			border-color: $bradenton-teal;
+			text-align: right;
+			margin: 0 1vw;
+			margin-bottom: -0.5vw;
+		
+		}
+
+
+		&__description {
+
+			padding: 0.5rem 2rem;
+		}
+
+
+		&__cta {
+
+			display: flex;
+
+			.cta-hero-banner__logo {
+
+				width: 9vw;
+				min-width: 100px;
+				height: auto;
+			}
+
+			.wp-block-button__link {
+
+				background: white;
+				padding: 1.5vw;
+				font-size: 2vw;
+				margin: 0 2rem;
+				color: $bradenton-teal !important;
+				border-radius: 22px;
+				align-self: end;
+				text-decoration: none;
+				transition: all 0.3s ease-in-out;
+
+				&:hover {
+
+					background-color: $rust;
+					color: white !important;
+					transition: all 0.2s ease-in-out;
+				}
+			}
+		}
+
+	}
+
 	.fade {
 		background: linear-gradient(to top, rgba($dk-blue, 70%), rgba($dk-blue, 0) 100%);
 		width: 100%;
@@ -226,6 +346,45 @@
 }
 
 /*********************
+MEDIUM SCREENS
+*********************/
+@media only screen and (min-width: ($screen-sm + 1)) and (max-width: $screen-lg) {
+
+	.#{$block-prefix}-hero {
+
+		.cta-hero-banner {
+
+	
+	
+			&__title {
+	
+				margin-bottom: 0;
+				text-align: center;
+				font-size: 1.2rem;
+			}
+	
+
+			&__cta {
+
+
+	
+				.cta-hero-banner__logo {
+	
+		
+				}
+	
+				.wp-block-button__link {
+					
+					padding: 1rem;
+					font-size: 1.5rem;
+				
+				}
+			}
+		}
+	}
+}
+
+/*********************
 SMALL SCREENS
 *********************/
 
@@ -240,6 +399,124 @@ SMALL SCREENS
 		// 		padding-bottom: 137%;
 		// 	}
 		// }
+
+		&--banner {
+
+			.title {
+	
+				top: 40% !important;
+			}
+		}
+
+		.hero-banner {
+
+			border-radius: 0;
+			position: relative;
+			right: 0;
+			bottom: -2%;
+			margin: 0 auto;
+			margin-top: -5rem;
+			border-right: 3px $rust solid;
+			width: 100%;
+
+			margin-bottom: 1rem;
+	
+			&__title {
+	
+				padding: 0.8rem 1.5rem;
+			}
+	
+	
+			&__description {
+	
+				padding: 0.5rem 1.5rem;
+			}
+
+			&__crab {
+
+				display: none;
+			}
+
+			&--cta {
+
+	
+				.hero-banner__title {
+					
+					font-size: 1.5rem;
+					text-align: center;
+				}
+	
+				.hero-banner__description {
+	
+					width: 100%;
+					padding: 0.5rem 2rem;
+					text-align: center;
+					display: inline-block;
+				}
+	
+				.hero-banner__cta {
+
+					width: 100%;
+					text-align: center;
+					padding: 0.5rem 1rem;
+					a {
+						
+						font-size: 1.5rem;
+					}
+				}
+			}
+		}
+
+		.cta-hero-banner {
+
+
+			border-radius: 0;
+			position: relative;
+			right: 0;
+			margin: 0 auto;
+			border-right: 3px $rust solid;
+			width: 90%;
+			border-radius: 25px;
+			padding: 2rem 0.5rem;
+			margin-bottom: 1rem;
+			border: none;
+			max-width: 32rem;
+	
+	
+			&__title {
+	
+				margin-bottom: 0;
+				text-align: center;
+				font-size: 1.2rem;
+			}
+	
+	
+			&__description {
+	
+				padding: 0.5rem 1.5rem;
+			}
+
+			&__cta {
+
+				display: flex;
+				justify-content: center;
+				gap: 2rem;
+
+	
+				.cta-hero-banner__logo {
+	
+					width: 95px;
+        			height: auto;
+				}
+	
+				.wp-block-button__link {
+
+					padding: 1rem 2rem;
+					font-size: 1.5rem;
+					margin: 0;			
+				}
+			}
+		}
 
 		&.videoHero {
 

@@ -66,6 +66,26 @@
 				"type": "string",
 				"default": "edit"
 			},
+			"bannerTitle": {
+				"type": "string",
+				"default": ""
+			},
+			"bannerDescription": {
+				"type": "string",
+				"default": ""
+			},
+			"ctaBannerTitle": {
+				"type": "string",
+				"default": ""
+			},
+			"ctaBannerUrl": {
+				"type": "string",
+				"default": ""
+			},
+			"ctaBannerText": {
+				"type": "string",
+				"default": "Learn More"
+			},
 			"logoId": {
 				"type": "number",
 				"default": 0

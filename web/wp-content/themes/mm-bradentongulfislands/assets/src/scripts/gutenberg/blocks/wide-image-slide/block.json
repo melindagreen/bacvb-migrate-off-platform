@@ -91,6 +91,10 @@
   "lightboxEmbedSrc": {
     "type": "string",
     "default": ""
+  },
+  "bannerTitle": {
+    "type": "string",
+    "default": ""
   }
 }
   }
