@@ -755,7 +755,7 @@ HEADER
         }
         .mega-menu-shortcuts {
             display: flex;
-            margin-right: 3rem;
+            margin-right: 3vw;
             margin-left: 0;
             .menu__shortcuts {
                 display: flex;
@@ -763,6 +763,9 @@ HEADER
                 .menu-item {
                     min-width: max-content;
                     font-size: 1rem;
+                    @media screen and (max-width: 1200px) {
+                        font-size: 0.9rem;
+                    }
                     a {
 
                         display: flex;
