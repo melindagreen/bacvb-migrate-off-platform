@@ -160,7 +160,7 @@ if ('serviceWorker' in navigator) {
 		const scrollTop = $(window).scrollTop();
 		const topBar = $('.bradenton-header .top-banner--global');
 	  
-		if (scrollTop < 500 || !getIsSmall) {
+		if (scrollTop < 500 || !getIsSmall()) {
 		  
 		  topBar.removeClass('top-banner--hide');
 		} else {
