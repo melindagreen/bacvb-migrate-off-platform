@@ -1515,8 +1515,17 @@ TOP BANNER
     padding: 0 5%;
     background-color: $rust;
     width: 100%;
+    height: initial;
     color: white;
     font-family: $font-body;
+    transition: all 0.2s ease-in-out;
+
+    &--hide {
+        
+        height: 5px;
+        transition: all 0.3s ease-in-out;
+        overflow: hidden;
+    }
 
     &__title {
 

@@ -47,17 +47,25 @@
     <!-- HEADER -->
     <header class="mm-bradentongulfislands-header bradenton-header">
         <!-- BANNER -->
-         <?php if(get_field('banner_toggle')) { ?>
-        <div class="top-banner">
+         <?php if(get_field('banner_toggle') || get_field('global_banner_toggle', 'option')) { 
+            $title = get_field('banner_toggle') ?  'Ferry Alert' :  get_field('global_banner_title', 'option');
+            $description = get_field('banner_toggle') ?  get_field('banner_message') : get_field('global_banner_description', 'option');
+            $buttonText = get_field('banner_toggle') ?  'Learn More' :  get_field('global_banner_button_text', 'option');
+            $buttonUrl = get_field('banner_toggle') ?  get_field('banner_button_url') :  get_field('global_banner_url', 'option');
+            
+            ?>
+        <div class="top-banner <?php echo get_field('global_banner_toggle', 'option') ? 'top-banner--global' : '' ; ?>">
             <?php include( get_theme_file_path() . '/assets/images/warning.svg' ); ?>
-            <h3 class="top-banner__title">Ferry Alert</h3>
-            <p class="top-banner__message"><?php echo get_field('banner_message'); ?></p>
-            <?php if(get_field('banner_button_url') !== ""): ?>
-            <a href="<?php echo get_field('banner_button_url'); ?>" class="top-banner__cta" target="__blank">Learn More</a>
+            <h3 class="top-banner__title"><?php echo $title; ?></h3>
+            <p class="top-banner__message"><?php echo $description; ?></p>
+            <?php if($buttonUrl !== ""): ?>
+            <a href="<?php echo $buttonUrl; ?>" class="top-banner__cta" target="__blank"><?php echo $buttonText; ?></a>
             <?php endif; ?>
+            <?php if(!get_field('global_banner_toggle','option')): ?>
             <div class="top-banner__close">
                 <?php include( get_theme_file_path() . '/assets/images/icons/close.svg' ); ?>
             </div>
+            <?php endif; ?>
         </div>
         <?php } ?>
             <div class="top-bar">
