@@ -1,3 +1,13 @@
+const PAGE_LENGTH = 12;
+const STARTING_COORDS = [27.4890314, -82.7521034];
+const STARTING_ZOOM = 10;
+var map = false;
+var markers = false;
+var markersObject = {};
+
+const getIsLarge = () =>
+	jQuery("#isLarge").length && jQuery("#isLarge").css("float") !== "none";
+
 (function ($) {
 	/** FUNCTIONS *********************************************************************/
 
@@ -14,8 +24,103 @@
 	        return description;
 	    }
 	}
-	const PAGE_LENGTH = 12;
 
+	/**
+	 * Load the leaflet map to its container
+	 * @param {String} mapId
+	 */
+	function loadMap(mapId) {
+		if (!$("#" + mapId).length) return false;
+	
+		// init map object
+		var map = L.map(mapId, {
+			zoomControl: false,
+		}).setView(STARTING_COORDS, STARTING_ZOOM);
+
+		// set tileset
+		// NOT USING STADIA FOR THIS BUILD
+		L.tileLayer(
+			"https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+			{
+				maxZoom: 19,
+				attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+			}
+		).addTo(map);
+		
+		// add zoom cntrls back in preferable corner
+		L.control
+			.zoom({
+				position: "bottomright",
+			})
+			.addTo(map);
+
+		markers = L.layerGroup();
+
+		return map;
+	}
+
+	/**
+	 * Load map points from listings data
+	 * @param {Object[]} listings       The listings data
+	 */
+	function loadMapPoints(listings) {
+		var icon = L.icon({
+			iconUrl:
+				"/wp-content/themes/mm-bradentongulfislands/assets/images/icons/map-pin.svg",
+			iconSize: [24, 48],
+			iconAnchor: [12, 24],
+		});
+		console.log(listings);
+		// Icon size and anchor size added to ensure correct placement of icons and markers throughout zoom positions
+		listings.forEach(function (listing) {
+
+			// get lat/long
+			if (
+				typeof listing.meta_fields.partnerportal_longitude === "string" &&
+				typeof listing.meta_fields.partnerportal_latitude === "string"
+			) {
+				var coords = [
+					parseFloat(listing.meta_fields.partnerportal_latitude),
+					parseFloat(listing.meta_fields.partnerportal_longitude),
+				];
+				console.log(coords);
+
+				// add marker to layer group
+				var marker = L.marker(coords, {
+					icon: icon,
+				}).on("click", markerOnClick);
+
+				marker.listingID = listing.id;
+
+				markersObject[listing.id] = marker;
+
+				marker.bindPopup(
+					`<a href="${listing.link}">${listing.title.rendered}</a>`
+				);
+				markers.addLayer(marker);
+			}
+		});
+
+		// add all markers to map
+		map.addLayer(markers);
+	}
+
+	function markerOnClick(e) {
+		let showCaseSlider = jQuery("#listings-container--map");
+		if (
+			!getIsLarge() &&
+			typeof showCaseSlider[0].swiper !== "undefined" &&
+			showCaseSlider[0].swiper !== null
+		) {
+			// FUTURE no card scrolling thing for large - it doesn't work so good
+			var cardIndex = jQuery('[data-listingID="' + this.listingID + '"]').attr(
+				"data-swiper-slide-index"
+			);
+			if (cardIndex) {
+				showCaseSlider[0].swiper.slideToLoop(cardIndex);
+			}
+		}
+	}
 
 	/**
 	 * Generate an HTML string for the given listing object
@@ -30,10 +135,9 @@
 		let placeHolder = $(".wp-block-mm-bradentongulfislands-listings-grid").attr("data-default-thumb");
 		let accommodations = '';
 		let accommodationIcons = '';
-
-		let testing = '';
-
+		var viewType = $(".view.active").data("view-type");
 		let thumbUrl = listing?.thumb_url || listing?.yoast_head_json?.og_image?.[0]?.url || placeHolder;
+		let mapClasses = viewType === "map" ? "swiper-slide" : ""; 
 
 		switch (postType) {
 			case 'event':
@@ -111,7 +215,8 @@
 		}
 
 		let html = `${month}
-			<article class='listing listing--${postType}'>
+			<article data-listingID='${listing.id
+			}' class='listing listing--${postType} ${mapClasses}'>
 			<a aria-label='${listing.title.rendered}' href='${listing.link}'>
 				${date}
 				<div class='listing__thumb'>`;
@@ -375,6 +480,9 @@
 		var order = ['posts'].includes(postType) ? 'desc' : 'asc';
 		var orderBy = ['listing',].includes(postType) ? 'title' : 'date';
 
+		var viewType = $(".view.active").data("view-type");
+		var listingsContainer = $(".listings-container.listings-container--grid");
+
 		if(postType == 'event'){
 			// get the page back up where it needs to be for viewing (it's slightly less jarring to do this pre-ajax call)
 			if (adjustScroll) {
@@ -407,7 +515,7 @@
 
 		} else {
 			var url = `/wp-json/wp/v2/${postType}?order=${order}&orderby=${orderBy}&page=${page}&per_page=${perPage}&include_child_terms=true&`;
-
+		
 			// add filters
 			var filters = $(".filters")
 				.serializeArray()
@@ -438,6 +546,10 @@
 					scrollTop: $('.grid-body').offset().top
 				}, "10");
 			}
+			// if (viewType) {
+			// 	url += `activity=active&`
+			// }
+			
 			$.get(url)
 				.done(function (listings, status, xhr) {
 
@@ -446,7 +558,7 @@
 					var totalPages = parseInt(xhr.getResponseHeader("X-WP-TotalPages"));
 					$(".count__page-total").text(total);
 					$(".pagination__button--last").attr("data-page", totalPages);
-
+					console.log(url);
 					// update pagination
 					updatePagination(page);
 					$(".counts").addClass("show");
@@ -458,16 +570,58 @@
 						return true; 
 					});
 
+
+
+					if (viewType === "map") {
+						listingsContainer = $(
+							".view.active .listings-container .swiper-wrapper"
+						);
+					}
+					console.log(listingsContainer);
+
 					if(listings.length > 0) {
-						$('.listings-container--grid').empty();
-						$('.listings-container--grid')
+						listingsContainer.empty();
+						listingsContainer
 							.append(listings.map(listing => templateListing(listing, postType)));
 					}
 					else {
-						$('.listings-container--grid').empty();
-						$('.listings-container--grid').addClass('listings-container--no-listings')
+						listingsContainer.empty();
+						listingsContainer.addClass('listings-container--no-listings')
 						.append(`<h2>No ${postType}s available at this time</h2>`);
 					}
+
+					// load map points
+					if (map) loadMapPoints(listings);
+
+					//slider for mobile listings
+					if (viewType === "map") {
+						enableListingSlider();
+					}
+
+					// listen to the listings grid scroll and update the map
+					$(".listings-container--map").on("scroll", function () {
+						// get the scrolling div element
+						var $scrollingDiv = $(this);
+
+						// get the current vertical scroll position of the div
+						var scrollTop = $scrollingDiv.scrollTop();
+
+						// loop through all the elements inside the div and check which one is at the top
+						var $currentElement;
+						$scrollingDiv.find(".swiper-wrapper").each(function () {
+							var $this = $(this);
+							if ($this.position().top <= scrollTop) {
+								$currentElement = $this;
+							} else {
+								// break out of the loop if the element is below the view
+								return false;
+							}
+						});
+
+						// now $currentElement is the element currently at the top of the view
+						markersObject[$($currentElement).attr("data-listingid")].openPopup();
+					});
+
 				});
 		}
 	}
@@ -518,6 +672,16 @@
 
 	/** LISTENERS *********************************************************************/
 	$(document).ready(async function () {
+
+		if ($('.view--map')) {
+			console.log('Test');
+			$('.view--map').addClass("active");
+			$('.view--grid').removeClass("active");
+			if (map) map.invalidateSize();
+			loadPage(1, true);	
+			map = loadMap("listings-grid__map-container");		
+		}
+
 		perPage = parseInt($('#listings-grid').attr('data-perpage'));
 		await loadPage();
 		
@@ -567,3 +731,60 @@
 
 	});
 })(jQuery);
+
+let listingCards = document.getElementById("listings-container--map");
+let swiperListingCard;
+window.onresize = enableListingSlider;
+window.onresize = enableListingSlider;
+
+function enableListingSlider() {
+	var postType = jQuery(".madden-block-listings-grid").attr("data-postType");
+	// if (postType !== "listing") {
+	// 	window.onresize = null;
+	// 	return false;
+	// }
+	var viewType = jQuery(".view.active").data("view-type");
+	if (viewType === "map") {
+		listingsContainer = jQuery(
+			".view.active .listings-container .swiper-wrapper"
+		);
+	}
+
+	// if (mql.matches) {
+	if (listingCards.classList.contains("swiper-initialized")) {
+		swiperListingCard.destroy();
+	}
+	// args
+	let swiperArgs = {
+			slidesPerView: 3,
+			centeredSlides: true,
+			freeMode: true,
+			loop: false,
+			direction: "horizontal",
+			spaceBetween: 35,
+			slideClass: "listing-holder",
+			allowTouchMove: true
+		};
+	
+
+	if (!listingCards.classList.contains("swiper-initialized")) {
+		
+		swiperListingCard = new Swiper(listingCards, swiperArgs);
+		console.log(swiperListingCard);
+		var listingID = jQuery(
+			swiperListingCard.slides[swiperListingCard.activeIndex]
+		).attr("data-listingID");
+		if (typeof listingID !== "undefined") {
+			markersObject[listingID].openPopup();
+		}
+		swiperListingCard.on("slideChange", function (e) {
+			var listingID = jQuery(
+				swiperListingCard.slides[swiperListingCard.activeIndex]
+			).attr("data-listingID");
+			if (typeof listingID !== "undefined") {
+				markersObject[listingID].openPopup();
+			}
+		});
+	}
+	// }
+}

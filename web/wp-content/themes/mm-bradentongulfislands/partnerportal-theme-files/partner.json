@@ -103,7 +103,18 @@
           "label" : "Description", 
           "cssClass" : "regular-text",
           "type" : "textarea"
-        } 
+        },
+        {
+          "key" : "activity", 
+          "label" : "Active", 
+          "type" : "select",
+          "newLineAfter" : false,        
+          "options" : {
+            "active":"Active",
+            "inactive":"Inactive"
+          },
+          "defaultChoice" : "inactive"
+        }  
       ]
     },
     {
