@@ -191,7 +191,7 @@ function render_grid_filter( $attrs, $filter_tax ) {
                             </label>
 
                             <?php if($attrs['filterType'] == 'accommodations' || $attrs['map']) { 
-                               if($attrs['map']) {
+                               if(!$attrs['map']) {
                             ?>
                             <label class='control__label control__label--categories control__label--accomodations'>
                                 <input
