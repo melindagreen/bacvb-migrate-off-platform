@@ -34,7 +34,7 @@ const getIsLarge = () =>
 	
 		// init map object
 		var map = L.map(mapId, {
-			zoomControl: false,
+			zoomControl: true,
 		}).setView(STARTING_COORDS, STARTING_ZOOM);
 
 		// set tileset
@@ -42,7 +42,8 @@ const getIsLarge = () =>
 		L.tileLayer(
 			"https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
 			{
-				maxZoom: 19,
+				maxZoom: 18,
+				minZoom: 9,
 				attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 			}
 		).addTo(map);
