@@ -39,11 +39,13 @@ const getIsLarge = () =>
 
 		// set tileset
 		// NOT USING STADIA FOR THIS BUILD
+		// set tileset
 		L.tileLayer(
-			"https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+			"https://tiles.stadiamaps.com/tiles/osm_bright/{z}/{x}/{y}{r}.png",
 			{
-				maxZoom: 19,
-				attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+				maxZoom: 20,
+				attribution:
+					'&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
 			}
 		).addTo(map);
 		
