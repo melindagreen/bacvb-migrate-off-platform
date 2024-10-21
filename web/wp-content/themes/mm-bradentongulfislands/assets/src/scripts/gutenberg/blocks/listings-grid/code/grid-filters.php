@@ -190,7 +190,7 @@ function render_grid_filter( $attrs, $filter_tax ) {
                                 <span class="control__text"><?php _e( 'All', 'mmnino' ); ?></span>
                             </label>
 
-                            <?php if($attrs['filterType'] == 'accommodations') { ?>
+                            <?php if($attrs['filterType'] == 'accommodations' || $attrs['map']) { ?>
                             <label class='control__label control__label--categories control__label--accomodations'>
                                 <input
                                     class='control__input control__input--categories control__input--checkbox'
