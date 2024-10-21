@@ -155,7 +155,7 @@ $bar-height: 70px;
 			a {
 			color: $bradenton-teal !important;
 			font-family: $font-header;
-			font-size: 1.5rem;
+			font-size: 1.15rem;
 
 			&:hover {
 
@@ -756,6 +756,14 @@ SMALL SCREENS
 		.view--map {
 			&.active {
 				height: auto;
+			}
+
+			.leaflet-popup-content {
+				width: 200px !important;
+
+				a {
+				font-size: 0.8rem;
+				}
 			}
 		}
 	}

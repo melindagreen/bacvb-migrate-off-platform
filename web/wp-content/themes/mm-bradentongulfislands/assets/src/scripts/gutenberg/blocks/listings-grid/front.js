@@ -489,6 +489,9 @@ const getIsLarge = () =>
 		var viewType = $(".view.active").data("view-type");
 		var listingsContainer = $(".listings-container.listings-container--grid");
 
+		// clear out map pointers
+		if (markers) markers.clearLayers();
+
 		if(postType == 'event'){
 			// get the page back up where it needs to be for viewing (it's slightly less jarring to do this pre-ajax call)
 			if (adjustScroll) {

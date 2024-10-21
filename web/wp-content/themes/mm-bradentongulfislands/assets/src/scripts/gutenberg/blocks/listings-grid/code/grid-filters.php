@@ -190,7 +190,9 @@ function render_grid_filter( $attrs, $filter_tax ) {
                                 <span class="control__text"><?php _e( 'All', 'mmnino' ); ?></span>
                             </label>
 
-                            <?php if($attrs['filterType'] == 'accommodations' || $attrs['map']) { ?>
+                            <?php if($attrs['filterType'] == 'accommodations' || $attrs['map']) { 
+                               if($attrs['map']) {
+                            ?>
                             <label class='control__label control__label--categories control__label--accomodations'>
                                 <input
                                     class='control__input control__input--categories control__input--checkbox'
@@ -211,6 +213,7 @@ function render_grid_filter( $attrs, $filter_tax ) {
                                 <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/waterfront.png" class="icon" alt="Waterfront icon">
                                 <span class='controsl__text'>Waterfront</span>
                             </label>
+                            <?php } ?>
                             <label class='control__label control__label--categories control__label--accomodations'>
                                 <input
                                     class='control__input control__input--categories control__input--checkbox'
