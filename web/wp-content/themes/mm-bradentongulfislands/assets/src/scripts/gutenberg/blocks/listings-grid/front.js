@@ -39,13 +39,11 @@ const getIsLarge = () =>
 
 		// set tileset
 		// NOT USING STADIA FOR THIS BUILD
-		// set tileset
 		L.tileLayer(
-			"https://tiles.stadiamaps.com/tiles/osm_bright/{z}/{x}/{y}{r}.png",
+			"https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
 			{
-				maxZoom: 20,
-				attribution:
-					'&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
+				maxZoom: 19,
+				attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 			}
 		).addTo(map);
 		
@@ -76,35 +74,40 @@ const getIsLarge = () =>
 		// Icon size and anchor size added to ensure correct placement of icons and markers throughout zoom positions
 		listings.forEach(function (listing) {
 
-			// get lat/long
+			// Check for NaN and get lat/long
 			if (
 				typeof listing.meta_fields.partnerportal_longitude === "string" &&
 				typeof listing.meta_fields.partnerportal_latitude === "string"
 			) {
-				var coords = [
-					parseFloat(listing.meta_fields.partnerportal_latitude),
-					parseFloat(listing.meta_fields.partnerportal_longitude),
-				];
-				console.log(coords);
+				var latitude = parseFloat(listing.meta_fields.partnerportal_latitude);
+				var longitude = parseFloat(listing.meta_fields.partnerportal_longitude);
 
-				// add marker to layer group
-				var marker = L.marker(coords, {
-					icon: icon,
-				}).on("click", markerOnClick);
+				// Ensure latitude and longitude are valid numbers
+				if (!isNaN(latitude) && !isNaN(longitude)) {
+					var coords = [latitude, longitude];
+					console.log(coords);
 
-				marker.listingID = listing.id;
+					// Add marker to layer group
+					var marker = L.marker(coords, {
+						icon: icon,
+					}).on("click", markerOnClick);
 
-				markersObject[listing.id] = marker;
+					marker.listingID = listing.id;
+					markersObject[listing.id] = marker;
 
-				marker.bindPopup(
-					`<a href="${listing.link}">${listing.title.rendered}</a>`
-				);
-				markers.addLayer(marker);
+					marker.bindPopup(
+						`<a href="${listing.link}">${listing.title.rendered}</a>`
+					);
+					markers.addLayer(marker);
+				} else {
+					console.error(`Invalid coordinates for listing ID: ${listing.id}`);
+				}
 			}
-		});
 
-		// add all markers to map
-		map.addLayer(markers);
+			// Add all markers to map
+			map.addLayer(markers);
+
+		})
 	}
 
 	function markerOnClick(e) {
