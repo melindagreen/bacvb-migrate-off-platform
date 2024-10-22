@@ -1,6 +1,6 @@
 const PAGE_LENGTH = 12;
 const STARTING_COORDS = [27.4890314, -82.7521034];
-const STARTING_ZOOM = 10;
+const STARTING_ZOOM = 11;
 var map = false;
 var markers = false;
 var markersObject = {};
@@ -555,9 +555,9 @@ const getIsLarge = () =>
 					scrollTop: $('.grid-body').offset().top
 				}, "10");
 			}
-			// if (viewType) {
-			// 	url += `activity=active&`
-			// }
+			if (viewType) {
+				url += `activity=active&`
+			}
 			
 			$.get(url)
 				.done(function (listings, status, xhr) {
