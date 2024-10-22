@@ -1,5 +1,5 @@
 const PAGE_LENGTH = 12;
-const STARTING_COORDS = [27.4890314, -82.7521034];
+const STARTING_COORDS = [27.4190314, -82.3921034];
 const STARTING_ZOOM = 11;
 var map = false;
 var markers = false;
@@ -555,9 +555,9 @@ const getIsLarge = () =>
 					scrollTop: $('.grid-body').offset().top
 				}, "10");
 			}
-			if (viewType) {
-				url += `activity=active&`
-			}
+			// if (viewType) {
+			// 	url += `&activity=active&`
+			// }
 			
 			$.get(url)
 				.done(function (listings, status, xhr) {
@@ -609,24 +609,27 @@ const getIsLarge = () =>
 
 					// listen to the listings grid scroll and update the map
 					$(".listings-container--map").on("scroll", function () {
+					
 						// get the scrolling div element
 						var $scrollingDiv = $(this);
 
 						// get the current vertical scroll position of the div
-						var scrollTop = $scrollingDiv.scrollTop();
+						var scrollTop = $scrollingDiv.scrollLeft();
 
 						// loop through all the elements inside the div and check which one is at the top
 						var $currentElement;
-						$scrollingDiv.find(".swiper-wrapper").each(function () {
+						$scrollingDiv.find(".listing--listing").each(function () {
 							var $this = $(this);
-							if ($this.position().top <= scrollTop) {
+
+							if (($this.offset().left) <= scrollTop) {
 								$currentElement = $this;
+								return;
 							} else {
 								// break out of the loop if the element is below the view
 								return false;
 							}
 						});
-
+						
 						// now $currentElement is the element currently at the top of the view
 						markersObject[$($currentElement).attr("data-listingid")].openPopup();
 					});
