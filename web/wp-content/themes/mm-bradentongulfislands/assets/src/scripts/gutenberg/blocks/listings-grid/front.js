@@ -555,9 +555,9 @@ const getIsLarge = () =>
 					scrollTop: $('.grid-body').offset().top
 				}, "10");
 			}
-			// if (viewType) {
-			// 	url += `&activity=active&`
-			// }
+			if (viewType) {
+				url += `&activity=active&`
+			}
 			
 			$.get(url)
 				.done(function (listings, status, xhr) {
