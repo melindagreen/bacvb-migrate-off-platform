@@ -643,7 +643,7 @@ const getIsLarge = () =>
 					}
 
 					// load map points
-					if (map) loadMapPoints(listings);
+					// if (map) loadMapPoints(listings);
 
 					//slider for mobile listings
 					if (viewType === "map") {
@@ -734,9 +734,11 @@ const getIsLarge = () =>
 			$('.view--grid').removeClass("active");
 			if (map) map.invalidateSize();
 			loadPage(1, true);	
-			map = loadMap("listings-grid__map-container");		
+			map = loadMap("listings-grid__map-container");	
+			if(map)	{
 			allListings = await loadAllListings();
 			loadMapPoints(allListings);
+			}
 		}
 
 		perPage = parseInt($('#listings-grid').attr('data-perpage'));
@@ -784,8 +786,11 @@ const getIsLarge = () =>
 		$('.filters').on('submit', function (e) {
 			e.preventDefault();
 			loadPage();
+			map = loadMap("listings-grid__map-container");	
+			if(map)	{
 			allListings = loadAllListings();
 			loadMapPoints(allListings);
+			}
 		});
 
 	});
