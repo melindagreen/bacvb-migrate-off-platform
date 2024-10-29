@@ -2,6 +2,7 @@ const PAGE_LENGTH = 12;
 const STARTING_COORDS = [27.4190314, -82.3921034];
 const STARTING_ZOOM = 11;
 var map = false;
+var allListings = false;
 var markers = false;
 var markersObject = {};
 
@@ -65,6 +66,10 @@ const getIsLarge = () =>
 	 * @param {Object[]} listings       The listings data
 	 */
 	function loadMapPoints(listings) {
+
+		// clear out map pointers
+		if (markers) markers.clearLayers();
+
 		var icon = L.icon({
 			iconUrl:
 				"/wp-content/themes/mm-bradentongulfislands/assets/images/icons/map-pin.svg",
@@ -361,6 +366,46 @@ const getIsLarge = () =>
 	
 		return instances;
 	}
+	async function loadAllListings() {
+
+		const endpoint = "wp/v2/listing";
+		const order = "asc";
+		const orderBy = "date";
+	  
+		let url = `/wp-json/${endpoint}?order=${order}&orderby=${orderBy}`;
+		const filters = $(".filters").serializeArray();
+		if (filters) {
+		  filters.forEach(filter => {
+			if (filter.value) {
+			  url += "&" + filter.name + "=" + filter.value;
+			}
+		  });
+		}
+		console.log(url);
+		let page = 1;
+		const perPage = 100;
+		let allEvents = [];
+		let moreEventsAvailable = true;
+	  
+		// Loop through pages until no more events are available
+		while (moreEventsAvailable) {
+		  try {
+			const currentUrl = `${url}&page=${page}&per_page=${perPage}`;
+			const response = await $.get(currentUrl);
+			if (response.length === 0) {
+			  moreEventsAvailable = false; // Exit the loop if no more events
+			} else {
+			  allEvents = allEvents.concat(response);
+			  page++;
+			}
+		  } catch (error) {
+			console.error(error);
+			moreEventsAvailable = false; 
+		  }
+		}
+	  
+		return allEvents;
+	}
 	async function loadAllEvents() {
 
 		const endpoint = "wp/v2/event";
@@ -489,8 +534,6 @@ const getIsLarge = () =>
 		var viewType = $(".view.active").data("view-type");
 		var listingsContainer = $(".listings-container.listings-container--grid");
 
-		// clear out map pointers
-		if (markers) markers.clearLayers();
 
 		if(postType == 'event'){
 			// get the page back up where it needs to be for viewing (it's slightly less jarring to do this pre-ajax call)
@@ -692,6 +735,8 @@ const getIsLarge = () =>
 			if (map) map.invalidateSize();
 			loadPage(1, true);	
 			map = loadMap("listings-grid__map-container");		
+			allListings = await loadAllListings();
+			loadMapPoints(allListings);
 		}
 
 		perPage = parseInt($('#listings-grid').attr('data-perpage'));
@@ -739,6 +784,8 @@ const getIsLarge = () =>
 		$('.filters').on('submit', function (e) {
 			e.preventDefault();
 			loadPage();
+			allListings = loadAllListings();
+			loadMapPoints(allListings);
 		});
 
 	});
