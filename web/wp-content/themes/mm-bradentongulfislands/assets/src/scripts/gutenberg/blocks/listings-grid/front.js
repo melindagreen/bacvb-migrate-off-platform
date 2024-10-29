@@ -684,7 +684,7 @@ const getIsLarge = () =>
 	/**
 	 * Check 'all' checkbox if none are selected, otherwise uncheck it
 	 */
-	async function updateCatChecks() {
+	function updateCatChecks() {
 		$('#control__input--categories-all.control__input--catscheck').prop(
 			'checked',
 			!$('.control__input--categories:not(#control__input--categories-all):checked').length
@@ -700,7 +700,7 @@ const getIsLarge = () =>
 
 		map = loadMap("listings-grid__map-container");	
 		if(map)	{
-			allListings = await loadAllListings();
+			allListings = loadAllListings();
 			loadMapPoints(allListings);
 		}
 
