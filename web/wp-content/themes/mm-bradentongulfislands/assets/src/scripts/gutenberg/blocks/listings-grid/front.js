@@ -372,7 +372,7 @@ const getIsLarge = () =>
 		const order = "asc";
 		const orderBy = "date";
 	  
-		let url = `/wp-json/${endpoint}?order=${order}&orderby=${orderBy}`;
+		let url = `/wp-json/${endpoint}?order=${order}&orderby=${orderBy}&&activity=active`;
 		const filters = $(".filters").serializeArray();
 		if (filters) {
 		  filters.forEach(filter => {
