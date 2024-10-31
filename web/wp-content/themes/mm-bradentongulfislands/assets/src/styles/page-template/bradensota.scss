@@ -1,3 +1,4 @@
+
 $font-bradensota: "Josefin Sans", sans-serif;
 
 .page-template-bradensota {
@@ -64,6 +65,9 @@ $font-bradensota: "Josefin Sans", sans-serif;
             display: unset !important;
             color:  #F2F0E2;
             font-weight: bold;
+            align-self: center;
+            text-align: center;
+            font-size: 1.5rem;
           }
       
           .swiper-button-prev {
@@ -80,9 +84,16 @@ $font-bradensota: "Josefin Sans", sans-serif;
             }
           }
 
+          .swiper-button-lock {
+
+            display: unset !important;
+        }
+
         .swiper-wrapper {
 
             .swiper-slide {
+
+                display: none;
 
                 .wp-block-columns {
 
@@ -118,6 +129,12 @@ $font-bradensota: "Josefin Sans", sans-serif;
                     }
                 }
             }
+
+            .swiper-slide-active {
+
+                display: unset !important;
+            }
+
         }
     }
 }
@@ -205,4 +222,18 @@ $font-bradensota: "Josefin Sans", sans-serif;
 #bradensotaMap {
 
     display: none;
+}
+
+
+@media only screen and (max-width: 768px) {
+	
+    .wp-block-mm-bradentongulfislands-wideslideshow.is-style-hero-slider {
+
+        &::after {
+
+            background-position: center !important;
+            bottom: -5rem !important;
+            height: 17rem !important;
+        }
+    }
 }

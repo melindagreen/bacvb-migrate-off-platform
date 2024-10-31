@@ -104,11 +104,19 @@
 SMALL SCREENS
 *********************/
 @media only screen and (max-width: $screen-md) {
-  .#{$block-prefix}-water-ferry-map {
+  .#{$block-prefix}-bradensota-map {
 
     height: max-content;
     overflow: hidden;
+    display: block;
+    .bradensota-map-content {
 
+      margin: 2rem auto;
+        margin-top: -3rem;
+        z-index: 4;
+        position: relative;
+        width: 85vw;
+    }
   }
 
 
