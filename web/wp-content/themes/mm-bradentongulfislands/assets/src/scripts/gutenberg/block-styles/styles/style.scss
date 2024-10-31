@@ -121,6 +121,22 @@ COLUMNS
     --webkit-mask-size: 100% 100%;
     mask-size: 100% 100%;
 }
+.is-style-wave-top {
+
+    padding-top: 6rem;
+
+    &::before {
+
+        content: " ";
+        background-image: url("images/bradensota-wave-bottom.svg");
+        position: absolute;
+        top: 0rem;
+        height: 8rem;
+        width: 100%;
+        z-index: 9;
+        background-position: center;
+    }
+}
 
 // media text block
 .wp-block-media-text {

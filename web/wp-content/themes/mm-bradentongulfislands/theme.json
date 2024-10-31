@@ -29,7 +29,7 @@
       }
     },
     "color": {
-      "custom": false,
+      "custom": true,
       "defaultPalette": false,
       "palette": [
         {

@@ -96,6 +96,10 @@
             {
                 "name": "content-width-rough-edges",
                 "label": "Content Width w/ Rough Edges"
+            },
+            {
+                "name": "wave-top",
+                "label": "Wave Top"
             }
         ]
     },

@@ -1,3 +1,16 @@
+$font-bradensota: "Josefin Sans", sans-serif;
+
+.page-template-bradensota {
+
+    background: #F7F5EC;
+    
+
+    p,h1,h2,h2,h4,h5,h6 {
+
+        font-family: $font-bradensota !important;
+    }
+}
+
 .bradensota-header {
 
     display: flex;
@@ -13,11 +26,6 @@
         width: 500px;
         height: auto;
     }
-}
-
-.page-template-bradensota {
-
-    background: transparent linear-gradient(180deg, #FFFFFF 60%, #F2EFE1 100%) 0% 0% no-repeat padding-box;
 }
 
 .main--bradensota {
@@ -38,6 +46,86 @@
         .swiper-pagination {
 
             
+        }
+    }
+}
+
+.bradensota-footer {
+
+    position: relative;
+    padding: 4rem 6vw 1rem 6vw;
+    background: url("images/bradensota-footer-image.jpg") center no-repeat;
+
+    &__overlay {
+
+        content: " ";
+        z-index: 1;
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        opacity: 0.7;
+        background: transparent linear-gradient(0deg, #125852 0%, #174E46 100%) 0% 0% no-repeat padding-box;
+    }
+
+    &__logos {
+
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        justify-content: center;
+        position: relative;
+        z-index: 2;
+        align-items: center;
+
+        .bradensota-logo {
+            flex: 0 0 70%;
+
+        
+            &__sarasota, &__bradenton {
+
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                gap: 2rem;            
+
+                img {
+
+                    width: 200px;
+                    height: auto;                
+                }
+            }
+
+            hr {
+
+                border: 0.1rem white solid;
+                margin: 1rem auto;
+            }
+        }
+
+        .visitflorida-logo {
+
+            align-items: center;
+
+            img {
+
+                width: 300px;
+                height: auto;
+            }
+        }
+    }
+
+    &__copyright {
+
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        margin-top: 3rem;
+
+        p {
+
+            color: white;
         }
     }
 }

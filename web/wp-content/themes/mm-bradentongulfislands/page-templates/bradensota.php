@@ -69,7 +69,52 @@
     
     <!-- FOOTER -->
     <footer class="bradensota-footer">
-
+        <div class="bradensota-footer__overlay"></div>
+        <div class="bradensota-footer__logos">
+            <div class="bradensota-logo">
+                <div class="bradensota-logo__bradenton">
+                    <a href="https://visitflorida.com" target="_blank"><img 
+                        data-load-type="img"
+                        data-load-offset="lg" 
+                        data-load-all="<?php echo get_theme_file_uri().'/assets/images/Brad-logo-footer.png';?>" 
+                        data-load-alt="visitflorida.com" 
+                        src="<?php echo get_theme_file_uri() ?>/assets/images/pixel.png" 
+                    /></a>
+                    <div class="social-container">
+                        <?php get_template_part( C::TEMPLATE_PARTIALS_PATH . 'social-links', null, array(
+                            'links' => C::SOCIAL_LINKS,
+                        ) ); ?>
+                    </div>
+                </div>
+                <hr>
+                <div class="bradensota-logo__sarasota">
+                    <a href="https://visitflorida.com" target="_blank"><img 
+                        data-load-type="img"
+                        data-load-offset="lg" 
+                        data-load-all="<?php echo get_theme_file_uri().'/assets/images/Sara-logo-footer.png';?>" 
+                        data-load-alt="visitflorida.com" 
+                        src="<?php echo get_theme_file_uri() ?>/assets/images/pixel.png" 
+                    /></a>
+                    <div class="social-container">
+                        <?php get_template_part( C::TEMPLATE_PARTIALS_PATH . 'social-links', null, array(
+                            'links' => C::SOCIAL_LINKS,
+                        ) ); ?>
+                    </div>
+                </div>
+            </div>
+            <div class="visitflorida-logo">
+                <a href="https://visitflorida.com" target="_blank"><img 
+                data-load-type="img"
+                data-load-offset="lg" 
+                data-load-all="<?php echo get_theme_file_uri().'/assets/images/VF_Logo2019_Primary_White.png';?>" 
+                data-load-alt="visitflorida.com" 
+                src="<?php echo get_theme_file_uri() ?>/assets/images/pixel.png" 
+                /></a>
+            </div>
+        </div>
+        <div class="bradensota-footer__copyright">
+            <p>©2024 Bradenton Area Convention and Visitors Bureau in Bradenton, Florida | All Rights Reserved</p>
+        </div>
     </footer>
 
     <?php wp_footer();
