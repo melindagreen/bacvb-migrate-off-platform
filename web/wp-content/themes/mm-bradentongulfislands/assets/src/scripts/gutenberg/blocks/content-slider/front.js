@@ -5,6 +5,13 @@ jQuery(document).ready(function ($) {
     $(this).find('.swiper-wrapper > div').each(function() {
       $(this).wrap('<div class="swiper-slide"></div>');
     });
+
+    if ($('.main').hasClass('main--bradensota')) {
+      // Change the image sources for the buttons
+      $('.content-slider-swiper-button-prev img').attr('src', '/wp-content/themes/mm-bradentongulfislands/assets/images/bradensota-prev.png');
+      $('.content-slider-swiper-button-next img').attr('src', '/wp-content/themes/mm-bradentongulfislands/assets/images/bradensota-next.png');
+    }
+
     new Swiper($(this)[0], {
       slidesPerView: 1,
       loop: true,
@@ -15,14 +22,16 @@ jQuery(document).ready(function ($) {
         pauseOnMouseEnter: true
       },
       navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
+        nextEl: ".content-slider-swiper-button-next",
+        prevEl: ".content-slider-swiper-button-prev",
       },
       pagination: {
-        el: '.swiper-pagination',
+        el: '.content-sliderswiper-pagination',
+        type: "fraction",
         clickable: true
       },
     });
+
   });
  
 });

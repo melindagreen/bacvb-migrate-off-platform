@@ -7,6 +7,10 @@ Content Slider
   .mm-content-slider { 
     overflow: hidden;
 
+    .content-sliderswiper-pagination {
+      display: none;
+    }
+
     .swiper-button-prev {
       left: -10px;
     }

@@ -48,6 +48,78 @@ $font-bradensota: "Josefin Sans", sans-serif;
             
         }
     }
+
+ 
+    .mm-content-slider {
+
+        .content-slider-controls {
+
+            display: flex;
+            justify-content: center;
+            max-width: 15rem;
+            margin: auto;
+        }
+
+        .content-sliderswiper-pagination {
+            display: unset !important;
+            color:  #F2F0E2;
+            font-weight: bold;
+          }
+      
+          .swiper-button-prev {
+            left: -10px;
+          }
+          .swiper-button-next {
+            right: -10px;
+          }
+          .swiper-button-next,
+          .swiper-button-prev {
+            &:before,
+            &:after {
+              display: none;
+            }
+          }
+
+        .swiper-wrapper {
+
+            .swiper-slide {
+
+                .wp-block-columns {
+
+                    align-items: stretch !important;
+
+                    .wp-block-column {
+
+                        .wp-block-cover-link {
+
+                            position: relative;
+
+                            &::before {
+
+                                content: ' ';
+                                top: 1%;
+                                right: 1%;
+                                height: 15px;
+                                width: 15px;
+                                position: absolute;
+                                background: url("images/new-window.svg") no-repeat contain;
+                            }
+                        }
+
+                        .wp-block-cover {
+
+                            height: 100%;
+
+                            &__background {
+
+                                background: transparent linear-gradient(180deg, #00000000 40%, #000000CC 100%) 0% 0% no-repeat padding-box;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 .bradensota-footer {
