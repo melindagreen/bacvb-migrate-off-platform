@@ -1,6 +1,6 @@
 @import 'styles/utils/variables';
 @import 'styles/utils/typography';
-
+$font-bradensota: "Josefin Sans", sans-serif;
 .#{$block-prefix}-bradensota-map {
   position: relative;
   display: flex;
@@ -89,6 +89,7 @@
     &__location {
 
       color: #305A6C;
+      font-family: $font-bradensota;
     }
     &__description {
 
@@ -112,7 +113,7 @@ SMALL SCREENS
     .bradensota-map-content {
 
       margin: 2rem auto;
-        margin-top: -3rem;
+        margin-top: -1rem;
         z-index: 4;
         position: relative;
         width: 85vw;

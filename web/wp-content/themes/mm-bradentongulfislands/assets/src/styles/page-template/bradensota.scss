@@ -24,7 +24,8 @@ $font-bradensota: "Josefin Sans", sans-serif;
     &__logo {
 
         margin: 0 auto;
-        width: 500px;
+        max-width: 500px;
+        width: 90%;
         height: auto;
     }
 }
@@ -196,6 +197,7 @@ $font-bradensota: "Josefin Sans", sans-serif;
         .visitflorida-logo {
 
             align-items: center;
+            margin-top: 2rem;
 
             img {
 
@@ -217,6 +219,23 @@ $font-bradensota: "Josefin Sans", sans-serif;
             color: white;
         }
     }
+
+    .social-container {
+
+        .social-icon {
+
+            text-decoration: none;
+            margin: 0 0.2rem;
+
+            svg {
+
+                #Path_91188 {
+
+                    fill: #174E46;
+                }
+            }
+        }
+    }
 }
 
 #bradensotaMap {
@@ -232,8 +251,22 @@ $font-bradensota: "Josefin Sans", sans-serif;
         &::after {
 
             background-position: center !important;
-            bottom: -5rem !important;
+            bottom: 0 !important;
             height: 17rem !important;
+        }
+    }
+
+    .bradensota-footer {
+
+        &__logos {
+
+            .bradensota-logo {
+
+                &__bradenton, &__sarasota {
+
+                    justify-content: center;
+                }
+            }
         }
     }
 }

@@ -16,7 +16,7 @@
       }
     
       // Populate content with the first element's data on page load
-      var firstElement = $('.mapContainer image').first();
+      var firstElement = $('.mapContainer #anna-maria-city-pier')
       populateContent(firstElement);
     
       // Update content on hover over any SVG element
