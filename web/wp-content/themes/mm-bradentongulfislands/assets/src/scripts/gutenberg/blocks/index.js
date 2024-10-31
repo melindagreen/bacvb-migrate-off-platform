@@ -26,13 +26,14 @@ import BeachesMap from './beaches-map';
 import HeroShowcase from './hero-showcase';
 import WaterFerryMap from './water-ferry-map';
 import SocialButton from './social-button';
+import BradensotaMap from './bradensota-map';
 
 /*** CONSTANTS **************************************************************/
 
 // Collect blocks
 // NOTE: ACF blocks should not be registered here, only imported, or they will
 // appear twice in the editor!
-const blocks = [ ContentSlider, Hero, PortraitGrid, WideSlideshow, WideImageSlide, ShowcaseCard, AccordionSection, Accordion, ContentSelector, ContentSection, QuickLinks, UpcomingEvents, ListingsGrid, BeachesMap, HeroShowcase, WaterFerryMap, SocialButton ];
+const blocks = [ ContentSlider, Hero, PortraitGrid, WideSlideshow, WideImageSlide, ShowcaseCard, AccordionSection, Accordion, ContentSelector, ContentSection, QuickLinks, UpcomingEvents, ListingsGrid, BeachesMap, HeroShowcase, WaterFerryMap, BradensotaMap, SocialButton ];
 
 /*** EXPORTS ****************************************************************/
 export default () => {
