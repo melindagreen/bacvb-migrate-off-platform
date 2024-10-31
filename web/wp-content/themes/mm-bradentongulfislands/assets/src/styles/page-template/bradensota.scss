@@ -1,0 +1,43 @@
+.bradensota-header {
+
+    display: flex;
+    background: transparent linear-gradient(180deg, #FFFFFF 70%, #FFFFFF00 100%) 0% 0% no-repeat padding-box;
+    position: absolute;
+    top: 0;
+    z-index: 10;
+    width: 100%;
+    
+    &__logo {
+
+        margin: 0 auto;
+        width: 500px;
+        height: auto;
+    }
+}
+
+.page-template-bradensota {
+
+    background: transparent linear-gradient(180deg, #FFFFFF 60%, #F2EFE1 100%) 0% 0% no-repeat padding-box;
+}
+
+.main--bradensota {
+
+    .wp-block-mm-bradentongulfislands-wideslideshow.is-style-hero-slider {
+
+        &::after {
+
+            background: transparent url("images/bradensota-wave-top.svg") no-repeat;
+            height: 13rem;
+            bottom: 55px;
+        }
+        &::before {
+
+            height: 0;
+        }
+
+        .swiper-pagination {
+
+            
+        }
+    }
+}
