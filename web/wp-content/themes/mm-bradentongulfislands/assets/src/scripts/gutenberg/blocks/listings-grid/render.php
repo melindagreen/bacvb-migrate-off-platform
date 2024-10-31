@@ -75,14 +75,32 @@ function render_block( $attrs, $content ) {
 		?>
 
 		<!--grid  -->
-		<div class="listings-container listings-container--grid">
-			<!-- loaded in js -->
-			<div class="loading show">
-				<span class="sr-only"><?php _e( 'loading' ); ?></span>
-				<i class="fas fa-spinner fa-pulse"></i>
+		<?php if( !$attrs['map'] ) { ?>
+	
+			<div class="listings-container listings-container--grid">
+				<!-- loaded in js -->
+				<div class="loading show">
+					<span class="sr-only"><?php _e( 'loading' ); ?></span>
+					<i class="fas fa-spinner fa-pulse"></i>
+				</div>
 			</div>
-		</div>
+		<?php } ?>
 		<!--/ end grid -->
+
+		<?php if( isset($attrs['map']) && $attrs['map'] ) { ?>
+			<div class="view view--map" data-view-type="map">			
+				<div id="listings-grid__map-container" class="map-container"></div>
+
+				<div id="listings-container--map" class="listings-container listings-container--map swiper">
+					<div class="loading show">
+						<span class="sr-only"><?php _e( 'loading' ); ?></span>
+						<i class="fas fa-spinner fa-pulse"></i>
+					</div>
+					
+					<div class="swiper-wrapper"></div>
+				</div>
+			</div>
+		<?php } ?>
 
 		<?php
 			include_once( 'code/grid-pagination.php' );

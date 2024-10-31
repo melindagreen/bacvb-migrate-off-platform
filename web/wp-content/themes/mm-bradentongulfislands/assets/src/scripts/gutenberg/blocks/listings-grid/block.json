@@ -27,6 +27,10 @@
           "type": "string",
           "default": "listing"
         },
+        "map": {
+          "type": "boolean",
+          "default": false
+        },
         "listingsPerPage": {
           "type": "number",
           "default": 12

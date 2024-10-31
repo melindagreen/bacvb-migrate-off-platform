@@ -9,6 +9,7 @@ class RestApi {
         add_action( 'rest_listing_query', array( get_called_class(), 'filter_by_amenities' ), 10, 2 );
         add_filter( 'rest_event_query', array( get_called_class(), 'custom_date_filters' ), 10, 2 );
         add_action( 'rest_listing_query', array( get_called_class(), 'filter_by_rooms' ), 10, 2 );
+        add_action ( 'rest_listing_query', array( get_called_class(), 'filter_by_activity' ), 10, 2 );
         // add_action( 'rest_listing_query', array( get_called_class(), 'filter_by_parent_category' ), 10, 3 );
     }
 
@@ -183,6 +184,27 @@ class RestApi {
         
         return $args;
     
+    }
+
+     /**
+     * Filters by activity
+     * @param array $args                   The existing query args
+     * @param array $request                The incomming REST request
+     * @return array                        The modified query args
+     */
+    function filter_by_activity($args, $request) {
+
+        if (isset($request['activity'])) {
+      
+                $args['meta_query'][] = array(
+                    'key'     => 'partnerportal_activity',
+                    'value'   => $request['activity'],
+                    'compare' => '=', 
+                );
+        }
+    
+
+        return $args;
     }
 
 

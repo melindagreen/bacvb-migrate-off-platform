@@ -145,6 +145,15 @@ class AssetHandler {
             true // in footer?
         );
 
+        //Leaflet Enqueue CDN
+        wp_enqueue_script(
+            C::THEME_PREFIX . "-leaflet-js", // handle
+            "https://unpkg.com/leaflet@1.7.1/dist/leaflet.js", // src
+            NULL, // dependencies
+            NULL, // version
+            true // in footer?
+        );
+
         global $template; 
         $filename = str_replace( ".php", "", basename( $template ) );
 
@@ -239,6 +248,13 @@ class AssetHandler {
             [], // dependencies
             $assets_file_front["version"] // version
         );
+
+        wp_enqueue_style(
+            C::THEME_PREFIX . "-leaflet", // handle,
+            "https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.min.css", // src
+            [], // dependencies
+            "1.9.4" // version
+        ); 
     }
 
     /**

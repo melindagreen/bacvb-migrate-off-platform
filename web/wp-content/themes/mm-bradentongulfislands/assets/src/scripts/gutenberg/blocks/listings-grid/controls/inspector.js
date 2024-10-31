@@ -3,7 +3,7 @@
 // WordPress dependencies
 import { __ } from '@wordpress/i18n';
 import { InspectorControls } from '@wordpress/block-editor'
-import { Button, PanelBody, TextControl, SelectControl, } from '@wordpress/components'
+import { Button, PanelBody, TextControl, SelectControl, ToggleControl } from '@wordpress/components'
 import { MediaUpload, MediaUploadCheck } from '@wordpress/block-editor'
 
 // Local dependencies
@@ -47,7 +47,7 @@ const MediaControls = props => {
 }
 
 const Inspector = props => {
-    const { attributes: { listingsTitle, postType, listingsPerPage, preFilterCat, excludeCat, filterType, catFilterSelections }, setAttributes } = props;
+    const { attributes: { listingsTitle, postType, listingsPerPage, preFilterCat, excludeCat, filterType, catFilterSelections, map }, setAttributes } = props;
 
     const onFilterTypeChange = newFilterType => {
         setAttributes({ filterType: newFilterType });
@@ -111,6 +111,11 @@ const Inspector = props => {
                     onChange={categories => setAttributes({ excludeCat: categories[0] })}
                 />}
 
+                    <ToggleControl
+						checked={ map }
+						label={ __( 'Show Map' ) }
+						onChange={ ( map ) => setAttributes({ map })}
+					/>
 
             </PanelBody>
 
