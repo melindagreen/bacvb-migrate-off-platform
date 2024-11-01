@@ -3,7 +3,7 @@ $font-bradensota: "Josefin Sans", sans-serif;
 
 .page-template-bradensota {
 
-    background: #F7F5EC;
+    background: #F2EFE1;
     
 
     p,h1,h2,h2,h4,h5,h6 {
@@ -106,25 +106,43 @@ $font-bradensota: "Josefin Sans", sans-serif;
 
                             position: relative;
 
-                            &::before {
-
-                                content: ' ';
-                                top: 1%;
-                                right: 1%;
-                                height: 15px;
-                                width: 15px;
-                                position: absolute;
-                                background: url("images/new-window.svg") no-repeat contain;
-                            }
+                           
                         }
 
                         .wp-block-cover {
 
                             height: 100%;
+                            border-radius: 6px;
+
+                            &::before {
+
+                                content: ' ';
+                                top: 5%;
+                                right: 5%;
+                                height: 25px;
+                                width: 25px;
+                                position: absolute;
+                                background: url("images/new-window.png");
+                                background-size: contain;
+                            }
+
 
                             &__background {
 
-                                background: transparent linear-gradient(180deg, #00000000 40%, #000000CC 100%) 0% 0% no-repeat padding-box;
+                                background: var(--wp--preset--color--soft-black) !important;
+                                opacity: 0.3;
+                                border-radius: 6px;
+                            }
+
+                            img {
+                                border-radius: 6px;
+                            }
+
+                            &__inner-container {
+
+                                p {
+                                line-height: 1em !important;
+                                }
                             }
                         }
                     }
