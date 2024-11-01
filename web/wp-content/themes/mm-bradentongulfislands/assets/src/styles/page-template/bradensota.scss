@@ -3,7 +3,7 @@ $font-bradensota: "Josefin Sans", sans-serif;
 
 .page-template-bradensota {
 
-    background: #F2EFE1;
+    background: #F7F5ED;
     
 
     p,h1,h2,h2,h4,h5,h6 {
@@ -124,6 +124,7 @@ $font-bradensota: "Josefin Sans", sans-serif;
                                 position: absolute;
                                 background: url("images/new-window.png");
                                 background-size: contain;
+                                z-index: 2;
                             }
 
 
