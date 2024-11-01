@@ -94,7 +94,8 @@ $font-bradensota: "Josefin Sans", sans-serif;
 
             .swiper-slide {
 
-                display: none;
+               opacity: 0 !important;
+               transition: all 0.2s ease-in-out;
 
                 .wp-block-columns {
 
@@ -152,7 +153,8 @@ $font-bradensota: "Josefin Sans", sans-serif;
 
             .swiper-slide-active {
 
-                display: unset !important;
+                opacity: 1 !important;
+                transition: all 0.2s ease-in-out;
             }
 
         }

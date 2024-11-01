@@ -24,6 +24,7 @@ jQuery(document).ready(function ($) {
       navigation: {
         nextEl: ".content-slider-swiper-button-next",
         prevEl: ".content-slider-swiper-button-prev",
+        clickable: true
       },
       pagination: {
         el: '.content-sliderswiper-pagination',
