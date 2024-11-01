@@ -79,6 +79,7 @@ $font-bradensota: "Josefin Sans", sans-serif;
           }
           .swiper-button-next,
           .swiper-button-prev {
+            cursor: pointer;
             &:before,
             &:after {
               display: none;

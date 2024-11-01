@@ -13,7 +13,7 @@ $font-bradensota: "Josefin Sans", sans-serif;
   background-size: cover;
   height: 48vw;
   max-width: 105rem;
-  overflow: scroll;
+  overflow: hidden;
   padding: 0 6vw;
 
   @media only screen and (max-width: $screen-lg) {
