@@ -71,15 +71,10 @@ $font-bradensota: "Josefin Sans", sans-serif;
             font-size: 1.5rem;
           }
       
-          .swiper-button-prev {
-            left: -10px;
-          }
-          .swiper-button-next {
-            right: -10px;
-          }
-          .swiper-button-next,
-          .swiper-button-prev {
+          .content-slider-swiper-button-next,
+          .content-slider-swiper-button-prev {
             cursor: pointer;
+            position: relative;
             &:before,
             &:after {
               display: none;

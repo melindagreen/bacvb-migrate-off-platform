@@ -484,6 +484,30 @@ function StylesheetErrorBondary(_ref) {
 
 /***/ }),
 
+/***/ "./scripts/gutenberg/Common/useCustomCssBlockProps.ts":
+/*!************************************************************!*\
+  !*** ./scripts/gutenberg/Common/useCustomCssBlockProps.ts ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ useCustomCssBlockProps)
+/* harmony export */ });
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__);
+
+function useCustomCssBlockProps(defaultCssClasses) {
+  var blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.useBlockProps.save();
+  if (!blockProps.className || !blockProps.className.includes(defaultCssClasses)) {
+    blockProps.className = "".concat(blockProps.className, " ").concat(defaultCssClasses);
+  }
+  return blockProps;
+}
+
+/***/ }),
+
 /***/ "./scripts/gutenberg/FormBlock/FormBlockSave.tsx":
 /*!*******************************************************!*\
   !*** ./scripts/gutenberg/FormBlock/FormBlockSave.tsx ***!
@@ -498,17 +522,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _Common_useCustomCssBlockProps__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Common/useCustomCssBlockProps */ "./scripts/gutenberg/Common/useCustomCssBlockProps.ts");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
 
 
+
+var DefaultCssClasses = 'wp-block-leadin-hubspot-form-block';
 function FormSaveBlock(_ref) {
   var attributes = _ref.attributes;
   var portalId = attributes.portalId,
     formId = attributes.formId;
+  var blockProps = (0,_Common_useCustomCssBlockProps__WEBPACK_IMPORTED_MODULE_2__["default"])(DefaultCssClasses);
   if (portalId && formId) {
-    return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.RawHTML, {
-      className: "wp-block-leadin-hubspot-form-block",
+    return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.RawHTML, _objectSpread(_objectSpread({}, blockProps), {}, {
       children: "[hubspot portal=\"".concat(portalId, "\" id=\"").concat(formId, "\" type=\"form\"]")
-    });
+    }));
   }
   return null;
 }
@@ -596,14 +629,15 @@ function registerFormBlock() {
     return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_Common_StylesheetErrorBondary__WEBPACK_IMPORTED_MODULE_3__["default"], {
       children: isPreview ? (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_FormGutenbergPreview__WEBPACK_IMPORTED_MODULE_6__["default"], {}) : isConnected ? (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_shared_Form_FormEdit__WEBPACK_IMPORTED_MODULE_8__["default"], _objectSpread(_objectSpread({}, props), {}, {
         origin: "gutenberg",
-        preview: true
+        preview: true,
+        fullSiteEditor: (0,_utils_withMetaData__WEBPACK_IMPORTED_MODULE_11__.isFullSiteEditor)()
       })) : (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_shared_Common_ErrorHandler__WEBPACK_IMPORTED_MODULE_7__["default"], {
         status: 401
       })
     });
   };
   // We do not support the full site editor: https://issues.hubspotcentral.com/browse/WP-1033
-  if (!_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__ || (0,_utils_withMetaData__WEBPACK_IMPORTED_MODULE_11__.isFullSiteEditor)()) {
+  if (!_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__) {
     return null;
   }
   _wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__.registerBlockType('leadin/hubspot-form-block', {
@@ -687,16 +721,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _Common_useCustomCssBlockProps__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Common/useCustomCssBlockProps */ "./scripts/gutenberg/Common/useCustomCssBlockProps.ts");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
 
 
+
+var DefaultCssClasses = 'wp-block-leadin-hubspot-meeting-block';
 function MeetingSaveBlock(_ref) {
   var attributes = _ref.attributes;
   var url = attributes.url;
+  var blockProps = (0,_Common_useCustomCssBlockProps__WEBPACK_IMPORTED_MODULE_2__["default"])(DefaultCssClasses);
   if (url) {
-    return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.RawHTML, {
-      className: "wp-block-leadin-hubspot-meeting-block",
+    return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.RawHTML, _objectSpread(_objectSpread({}, blockProps), {}, {
       children: "[hubspot url=\"".concat(url, "\" type=\"meeting\"]")
-    });
+    }));
   }
   return null;
 }
@@ -755,14 +798,15 @@ function registerMeetingBlock() {
     return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_Common_StylesheetErrorBondary__WEBPACK_IMPORTED_MODULE_10__["default"], {
       children: isPreview ? (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_MeetingGutenbergPreview__WEBPACK_IMPORTED_MODULE_4__["default"], {}) : isConnected ? (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_shared_Meeting_MeetingEdit__WEBPACK_IMPORTED_MODULE_6__["default"], _objectSpread(_objectSpread({}, props), {}, {
         preview: true,
-        origin: "gutenberg"
+        origin: "gutenberg",
+        fullSiteEditor: (0,_utils_withMetaData__WEBPACK_IMPORTED_MODULE_9__.isFullSiteEditor)()
       })) : (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_shared_Common_ErrorHandler__WEBPACK_IMPORTED_MODULE_7__["default"], {
         status: 401
       })
     });
   };
   // We do not support the full site editor: https://issues.hubspotcentral.com/browse/WP-1033
-  if (!_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__ || (0,_utils_withMetaData__WEBPACK_IMPORTED_MODULE_9__.isFullSiteEditor)()) {
+  if (!_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__) {
     return null;
   }
   _wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__.registerBlockType('leadin/hubspot-meeting-block', {
@@ -816,12 +860,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _UIComponents_UISidebarSelectControl__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../UIComponents/UISidebarSelectControl */ "./scripts/gutenberg/UIComponents/UISidebarSelectControl.tsx");
 /* harmony import */ var _Common_SidebarSprocketIcon__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Common/SidebarSprocketIcon */ "./scripts/gutenberg/Common/SidebarSprocketIcon.tsx");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__);
 /* harmony import */ var _iframe_useBackgroundApp__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../iframe/useBackgroundApp */ "./scripts/iframe/useBackgroundApp.ts");
 /* harmony import */ var _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../constants/leadinConfig */ "./scripts/constants/leadinConfig.ts");
 /* harmony import */ var _utils_backgroundAppUtils__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../utils/backgroundAppUtils */ "./scripts/utils/backgroundAppUtils.ts");
+/* harmony import */ var _utils_withMetaData__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../utils/withMetaData */ "./scripts/utils/withMetaData.ts");
 var _templateObject;
 function _taggedTemplateLiteral(e, t) { return t || (t = e.slice(0)), Object.freeze(Object.defineProperties(e, { raw: { value: Object.freeze(t) } })); }
 
@@ -836,14 +881,15 @@ function _taggedTemplateLiteral(e, t) { return t || (t = e.slice(0)), Object.fre
 
 
 
+
 function registerHubspotSidebar() {
-  var ContentTypeLabelStyle = styled_components__WEBPACK_IMPORTED_MODULE_11__["default"].div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    white-space: normal;\n    text-transform: none;\n  "])));
+  var ContentTypeLabelStyle = styled_components__WEBPACK_IMPORTED_MODULE_12__["default"].div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    white-space: normal;\n    text-transform: none;\n  "])));
   var ContentTypeLabel = (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ContentTypeLabelStyle, {
     children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)('Select the content type HubSpot Analytics uses to track this page', 'leadin')
   });
   var LeadinPluginSidebar = function LeadinPluginSidebar(_ref) {
     var postType = _ref.postType;
-    return postType ? (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_2__.PluginSidebar, {
+    return postType && !(0,_utils_withMetaData__WEBPACK_IMPORTED_MODULE_11__.isFullSiteEditor)() ? (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_2__.PluginSidebar, {
       name: "leadin",
       title: "HubSpot",
       icon: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Icon, {
@@ -1613,6 +1659,48 @@ function LoadingBlock() {
 
 /***/ }),
 
+/***/ "./scripts/shared/Common/PreviewDisabled.tsx":
+/*!***************************************************!*\
+  !*** ./scripts/shared/Common/PreviewDisabled.tsx ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ PreviewDisabled)
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _UIComponents_UIContainer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../UIComponents/UIContainer */ "./scripts/shared/UIComponents/UIContainer.ts");
+/* harmony import */ var _HubspotWrapper__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./HubspotWrapper */ "./scripts/shared/Common/HubspotWrapper.ts");
+/* harmony import */ var _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../constants/leadinConfig */ "./scripts/constants/leadinConfig.ts");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__);
+
+
+
+
+
+function PreviewDisabled() {
+  var errorHeader = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Preview Unavailable', 'leadin');
+  var errorMessage = "".concat((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('This block cannot be previewed within the Full Site Editor', 'leadin'), " ").concat((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Switch to the Block Editor to view the content', 'leadin'));
+  return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_HubspotWrapper__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    pluginPath: _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_3__.pluginPath,
+    children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_UIComponents_UIContainer__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      textAlign: "center",
+      children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h4", {
+        children: errorHeader
+      }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
+        children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("b", {
+          children: errorMessage
+        })
+      })]
+    })
+  });
+}
+
+/***/ }),
+
 /***/ "./scripts/shared/Form/FormEdit.tsx":
 /*!******************************************!*\
   !*** ./scripts/shared/Form/FormEdit.tsx ***!
@@ -1658,7 +1746,8 @@ function FormEdit(_ref) {
     _ref$preview = _ref.preview,
     preview = _ref$preview === void 0 ? true : _ref$preview,
     _ref$origin = _ref.origin,
-    origin = _ref$origin === void 0 ? 'gutenberg' : _ref$origin;
+    origin = _ref$origin === void 0 ? 'gutenberg' : _ref$origin,
+    fullSiteEditor = _ref.fullSiteEditor;
   var formId = attributes.formId,
     formName = attributes.formName;
   var formSelected = _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_2__.portalId && formId;
@@ -1688,7 +1777,8 @@ function FormEdit(_ref) {
     }), formSelected && (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
       children: [isSelected && (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_UIComponents_UISpacer__WEBPACK_IMPORTED_MODULE_3__["default"], {}), preview && (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_PreviewForm__WEBPACK_IMPORTED_MODULE_4__["default"], {
         portalId: _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_2__.portalId,
-        formId: formId
+        formId: formId,
+        fullSiteEditor: fullSiteEditor
       })]
     })]
   });
@@ -1849,7 +1939,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _UIComponents_UIOverlay__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../UIComponents/UIOverlay */ "./scripts/shared/UIComponents/UIOverlay.ts");
 /* harmony import */ var _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../constants/leadinConfig */ "./scripts/constants/leadinConfig.ts");
-/* harmony import */ var _hooks_useFormsScript__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./hooks/useFormsScript */ "./scripts/shared/Form/hooks/useFormsScript.ts");
+/* harmony import */ var _Common_PreviewDisabled__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Common/PreviewDisabled */ "./scripts/shared/Common/PreviewDisabled.tsx");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
 
 
 
@@ -1857,22 +1953,30 @@ __webpack_require__.r(__webpack_exports__);
 
 function PreviewForm(_ref) {
   var portalId = _ref.portalId,
-    formId = _ref.formId;
+    formId = _ref.formId,
+    fullSiteEditor = _ref.fullSiteEditor;
   var inputEl = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)(null);
-  var ready = (0,_hooks_useFormsScript__WEBPACK_IMPORTED_MODULE_4__["default"])();
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    if (!ready) {
-      return;
-    }
     if (inputEl.current) {
-      inputEl.current.innerHTML = '';
-      var embedScript = document.createElement('script');
-      embedScript.innerHTML = "hbspt.forms.create({ portalId: '".concat(portalId, "', formId: '").concat(formId, "', region: '").concat(_constants_leadinConfig__WEBPACK_IMPORTED_MODULE_3__.hublet, "', ").concat(_constants_leadinConfig__WEBPACK_IMPORTED_MODULE_3__.formsScriptPayload, " });");
-      inputEl.current.appendChild(embedScript);
+      //@ts-expect-error Hubspot global
+      var hbspt = window.parent.hbspt || window.hbspt;
+      var additionalParams = _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_3__.formsScriptPayload.includes('qa') ? {
+        env: 'qa'
+      } : {};
+      hbspt.forms.create(_objectSpread({
+        portalId: portalId,
+        formId: formId,
+        region: _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_3__.hublet,
+        target: "#".concat(inputEl.current.id)
+      }, additionalParams));
     }
-  }, [formId, portalId, ready, inputEl]);
+  }, [formId, portalId, inputEl]);
+  if (fullSiteEditor) {
+    return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_Common_PreviewDisabled__WEBPACK_IMPORTED_MODULE_4__["default"], {});
+  }
   return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_UIComponents_UIOverlay__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    ref: inputEl
+    ref: inputEl,
+    id: "hbspt-previewform-".concat(formId)
   });
 }
 
@@ -2024,59 +2128,6 @@ function useForms() {
 
 /***/ }),
 
-/***/ "./scripts/shared/Form/hooks/useFormsScript.ts":
-/*!*****************************************************!*\
-  !*** ./scripts/shared/Form/hooks/useFormsScript.ts ***!
-  \*****************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ useFormScript)
-/* harmony export */ });
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../constants/leadinConfig */ "./scripts/constants/leadinConfig.ts");
-/* harmony import */ var _lib_Raven__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../lib/Raven */ "./scripts/lib/Raven.ts");
-function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
-function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
-function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
-
-
-
-
-var promise;
-function loadFormsScript() {
-  if (!promise) {
-    promise = new Promise(function (resolve, reject) {
-      return jquery__WEBPACK_IMPORTED_MODULE_0___default().getScript(_constants_leadinConfig__WEBPACK_IMPORTED_MODULE_2__.formsScript).done(resolve).fail(reject);
-    });
-  }
-  return promise;
-}
-function useFormScript() {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
-    _useState2 = _slicedToArray(_useState, 2),
-    ready = _useState2[0],
-    setReady = _useState2[1];
-  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    loadFormsScript().then(function () {
-      return setReady(true);
-    })["catch"](function (error) {
-      return _lib_Raven__WEBPACK_IMPORTED_MODULE_3__["default"].captureException(error);
-    });
-  }, []);
-  return ready;
-}
-
-/***/ }),
-
 /***/ "./scripts/shared/Meeting/MeetingController.tsx":
 /*!******************************************************!*\
   !*** ./scripts/shared/Meeting/MeetingController.tsx ***!
@@ -2214,7 +2265,8 @@ function MeetingEdit(_ref) {
     _ref$preview = _ref.preview,
     preview = _ref$preview === void 0 ? true : _ref$preview,
     _ref$origin = _ref.origin,
-    origin = _ref$origin === void 0 ? 'gutenberg' : _ref$origin;
+    origin = _ref$origin === void 0 ? 'gutenberg' : _ref$origin,
+    fullSiteEditor = _ref.fullSiteEditor;
   var isBackgroundAppReady = (0,_iframe_useBackgroundApp__WEBPACK_IMPORTED_MODULE_4__.useBackgroundAppContext)();
   var monitorFormPreviewRender = (0,_iframe_useBackgroundApp__WEBPACK_IMPORTED_MODULE_4__.usePostBackgroundMessage)();
   var handleChange = function handleChange(newUrl) {
@@ -2235,7 +2287,8 @@ function MeetingEdit(_ref) {
       url: url,
       handleChange: handleChange
     }), preview && url && (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_PreviewMeeting__WEBPACK_IMPORTED_MODULE_3__["default"], {
-      url: url
+      url: url,
+      fullSiteEditor: fullSiteEditor
     })]
   });
 }
@@ -2353,33 +2406,30 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _UIComponents_UIOverlay__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../UIComponents/UIOverlay */ "./scripts/shared/UIComponents/UIOverlay.ts");
-/* harmony import */ var _hooks_useMeetingsScript__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./hooks/useMeetingsScript */ "./scripts/shared/Meeting/hooks/useMeetingsScript.ts");
+/* harmony import */ var _Common_PreviewDisabled__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Common/PreviewDisabled */ "./scripts/shared/Common/PreviewDisabled.tsx");
 
 
 
 
 function PreviewForm(_ref) {
-  var url = _ref.url;
-  var ready = (0,_hooks_useMeetingsScript__WEBPACK_IMPORTED_MODULE_3__["default"])();
+  var url = _ref.url,
+    fullSiteEditor = _ref.fullSiteEditor;
   var inputEl = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)(null);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    if (!ready) {
-      return;
-    }
     if (inputEl.current) {
-      inputEl.current.innerHTML = '';
-      var container = document.createElement('div');
-      container.dataset.src = "".concat(url, "?embed=true");
-      container.classList.add('meetings-iframe-container');
-      inputEl.current.appendChild(container);
-      var embedScript = document.createElement('script');
-      embedScript.innerHTML = 'hbspt.meetings.create(".meetings-iframe-container");';
-      inputEl.current.appendChild(embedScript);
+      //@ts-expect-error Hubspot global
+      var hbspt = window.parent.hbspt || window.hbspt;
+      hbspt.meetings.create('.meetings-iframe-container');
     }
-  }, [url, ready, inputEl]);
+  }, [url, inputEl]);
+  if (fullSiteEditor) {
+    return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_Common_PreviewDisabled__WEBPACK_IMPORTED_MODULE_3__["default"], {});
+  }
   return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
     children: url && (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_UIComponents_UIOverlay__WEBPACK_IMPORTED_MODULE_2__["default"], {
-      ref: inputEl
+      ref: inputEl,
+      className: "meetings-iframe-container",
+      "data-src": "".concat(url, "?embed=true")
     })
   });
 }
@@ -2674,59 +2724,6 @@ function useMeetingsFetch() {
     error: error,
     reload: reload
   };
-}
-
-/***/ }),
-
-/***/ "./scripts/shared/Meeting/hooks/useMeetingsScript.ts":
-/*!***********************************************************!*\
-  !*** ./scripts/shared/Meeting/hooks/useMeetingsScript.ts ***!
-  \***********************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ useMeetingsScript)
-/* harmony export */ });
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _constants_leadinConfig__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../constants/leadinConfig */ "./scripts/constants/leadinConfig.ts");
-/* harmony import */ var _lib_Raven__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../lib/Raven */ "./scripts/lib/Raven.ts");
-function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
-function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
-function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
-
-
-
-
-var promise;
-function loadMeetingsScript() {
-  if (!promise) {
-    promise = new Promise(function (resolve, reject) {
-      return jquery__WEBPACK_IMPORTED_MODULE_0___default().getScript(_constants_leadinConfig__WEBPACK_IMPORTED_MODULE_2__.meetingsScript).done(resolve).fail(reject);
-    });
-  }
-  return promise;
-}
-function useMeetingsScript() {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
-    _useState2 = _slicedToArray(_useState, 2),
-    ready = _useState2[0],
-    setReady = _useState2[1];
-  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    loadMeetingsScript().then(function () {
-      return setReady(true);
-    })["catch"](function (error) {
-      return _lib_Raven__WEBPACK_IMPORTED_MODULE_3__["default"].captureException(error);
-    });
-  }, []);
-  return ready;
 }
 
 /***/ }),
@@ -12752,6 +12749,17 @@ module.exports = window["React"];
 
 "use strict";
 module.exports = window["jQuery"];
+
+/***/ }),
+
+/***/ "@wordpress/block-editor":
+/*!*************************************!*\
+  !*** external ["wp","blockEditor"] ***!
+  \*************************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = window["wp"]["blockEditor"];
 
 /***/ }),
 
