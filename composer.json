@@ -74,7 +74,7 @@
   "require": {
     "wpengine/advanced-custom-fields-pro": "^6.3.3",
     "davidbarratt/custom-installer": "^1.1",
-    "johnpbloch/wordpress": "6.6.1",
+    "johnpbloch/wordpress": "6.6.2",
     "maddenmedia/gravityforms": "*",
     "maddenmedia/madden-cookie-consent": "*",
     "maddenmedia/mm-madre-theme": "v1.4.5",
