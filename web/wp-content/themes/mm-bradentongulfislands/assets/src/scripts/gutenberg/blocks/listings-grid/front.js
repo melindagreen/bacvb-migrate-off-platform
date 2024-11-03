@@ -372,15 +372,26 @@ const getIsLarge = () =>
 		const order = "asc";
 		const orderBy = "date";
 	  
-		let url = `/wp-json/${endpoint}?order=${order}&orderby=${orderBy}&&activity=active`;
-		const filters = $(".filters").serializeArray();
-		if (filters) {
-		  filters.forEach(filter => {
-			if (filter.value) {
-			  url += "&" + filter.name + "=" + filter.value;
-			}
-		  });
-		}
+		let url = `/wp-json/${endpoint}?order=${order}&orderby=${orderBy}&activity=active&`;
+
+		var filters = $(".filters")
+				.serializeArray()
+				.reduce(function (prev, current) {
+					if (!!current.value) {
+						if (prev[current.name]) {
+							prev[current.name].push(encodeURIComponent(current.value));
+						} else prev[current.name] = [current.value];
+					}
+					return prev;
+				}, {});
+
+
+			url += Object.keys(filters)
+				.map(function (key) {
+					return `${key}=${filters[key].join(',')}`
+				})
+				.join('&');
+
 		console.log(url);
 		let page = 1;
 		const perPage = 100;
@@ -601,7 +612,7 @@ const getIsLarge = () =>
 			if (viewType) {
 				url += `&activity=active&`
 			}
-			
+			console.log(url);
 			$.get(url)
 				.done(function (listings, status, xhr) {
 
@@ -733,6 +744,8 @@ const getIsLarge = () =>
 	/** LISTENERS *********************************************************************/
 	$(document).ready(async function () {
 
+		perPage = parseInt($('#listings-grid').attr('data-perpage'));
+
 		if ($('.view--map')) {
 			console.log('Test');
 			$('.view--map').addClass("active");
@@ -745,8 +758,6 @@ const getIsLarge = () =>
 			loadMapPoints(allListings);
 			}
 		}
-
-		perPage = parseInt($('#listings-grid').attr('data-perpage'));
 		await loadPage();
 		
 		// var dateFormat = "mm/dd/yy";
