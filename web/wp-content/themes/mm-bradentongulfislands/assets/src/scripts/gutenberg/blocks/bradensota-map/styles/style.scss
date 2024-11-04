@@ -12,6 +12,8 @@ $font-bradensota: "Josefin Sans", sans-serif;
   background-repeat: no-repeat;
   background-size: cover;
   height: 48vw;
+  max-height: max-content;
+  margin: 4rem auto;
   max-width: 105rem;
   overflow: hidden;
   padding: 0 6vw;
@@ -110,13 +112,26 @@ SMALL SCREENS
     height: max-content;
     overflow: hidden;
     display: block;
+    padding: 0;
+
+    .mapContainer {
+      border: 15px solid white;
+      border-left: 0;
+      border-right: 0;
+      border-radius: 0;
+
+      #bradensotaMap {
+
+        border-radius: 0;
+      }
+    }
     .bradensota-map-content {
 
-      margin: 2rem auto;
-        margin-top: -1rem;
+        margin: 2rem auto;
+        margin-top: -1.5rem;
         z-index: 4;
         position: relative;
-        width: 85vw;
+        width: 90vw;
     }
   }
 

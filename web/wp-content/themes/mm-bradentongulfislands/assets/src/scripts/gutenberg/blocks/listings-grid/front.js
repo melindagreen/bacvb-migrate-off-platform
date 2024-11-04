@@ -745,7 +745,7 @@ const getIsLarge = () =>
 	$(document).ready(async function () {
 
 		perPage = parseInt($('#listings-grid').attr('data-perpage'));
-
+			
 		if ($('.view--map')) {
 			console.log('Test');
 			$('.view--map').addClass("active");
