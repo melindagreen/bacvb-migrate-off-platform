@@ -42,7 +42,6 @@ $font-bradensota: "Josefin Sans", sans-serif;
 
         height: fit-content;
         max-height: 700px;
-        margin-bottom: 4vw;
 
 
         &::after {
@@ -296,9 +295,12 @@ $font-bradensota: "Josefin Sans", sans-serif;
         .social-icon {
 
             text-decoration: none;
-            margin: 0 0.2rem;
+            margin: 0 0.4rem;
 
             svg {
+
+                height: 40px;
+                width: 40px;
 
                 #Path_91188 {
 
