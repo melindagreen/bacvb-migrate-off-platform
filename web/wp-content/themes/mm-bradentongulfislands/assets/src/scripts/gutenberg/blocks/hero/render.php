@@ -102,11 +102,11 @@ function render_block( $attrs, $content ) {
                     <?php if (isset($attrs['subtitle']) && $attrs['subtitle']) echo '<span>'.$attrs['subtitle'].'</span>'; ?><?php echo $attrs['title']; ?></h1>
                 <?php } ?>
 
-            <?php if($attrs['bannerTitle'] !== "" || $attrs['bannerDescription'] !== "") { ?>
+                <?php if(is_page('gulf-islands-ferry') && (get_field('herobanner_toggle', 'option') || get_field('herobanner_toggle', 'option'))) { ?>
                 <div class="hero-banner">
-                    <h3 class="hero-banner__title"><?php echo $attrs['bannerTitle']; ?></h3>
+                    <h3 class="hero-banner__title"><?php echo get_field('herobanner_title', 'option'); ?></h3>
                     <p class="hero-banner__description">
-                        <?php echo $attrs['bannerDescription']; ?>
+                        <?php echo get_field('herobanner_description', 'option'); ?>
                     </p>
                     <img class="hero-banner__crab" src="<?php echo get_theme_file_uri()?>/assets/images/crab.png" alt="Crab Illustration">
                     

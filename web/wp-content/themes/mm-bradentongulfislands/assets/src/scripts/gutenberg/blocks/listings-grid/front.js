@@ -751,7 +751,7 @@ const getIsLarge = () =>
 			$('.view--map').addClass("active");
 			$('.view--grid').removeClass("active");
 			if (map) map.invalidateSize();
-			loadPage(1, true);	
+			loadPage(1, false);	
 			map = loadMap("listings-grid__map-container");	
 			if(map)	{
 			allListings = await loadAllListings();

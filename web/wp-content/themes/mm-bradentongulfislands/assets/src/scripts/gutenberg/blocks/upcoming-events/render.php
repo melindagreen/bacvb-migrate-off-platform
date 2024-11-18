@@ -11,7 +11,8 @@ use MaddenNino\Library\Constants as Constants;
 function render_block( $attrs, $content ) {
 
   $args = array(
-      'posts_per_page' => -1
+      'posts_per_page' => -1,
+      'start_date' => date('Y-m-d')
   );
   $events = eventastic_get_events($args);
   $eventCategories = eventastic_get_categories();

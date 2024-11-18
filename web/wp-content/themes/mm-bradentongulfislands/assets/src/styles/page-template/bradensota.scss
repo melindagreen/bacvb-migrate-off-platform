@@ -87,9 +87,30 @@ $font-bradensota: "Josefin Sans", sans-serif;
                 right: 3%;
                 transform: unset;
 
+
+                &__content {
+
+                    #infoblock-title {
+
+                        display: block;
+                        position: absolute;
+                        right: 0;
+                        color: #164E46;
+                        max-width: 12vw;
+                        bottom: -0.2rem;
+                        line-height: 0.9em;
+                        font-size: 1rem;
+                        margin-left: auto;
+                        text-align: end;
+                        font-weight: bold;
+                        font-family: $font-bradensota;
+                    }
+                }
+
                 .swiper-pagination {
 
                     text-align: end;
+                    bottom: 1vw;
 
                     .swiper-pagination-bullet {
 
@@ -350,6 +371,14 @@ $font-bradensota: "Josefin Sans", sans-serif;
             bottom: 15rem !important;
             
             .bc-infoblock {
+
+                &__content {
+
+                    #infoblock-title {
+
+                        display: none !important;
+                    }
+                }
 
                 .swiper-pagination {
 

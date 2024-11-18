@@ -90,30 +90,31 @@ class ThemeSetup {
 
 		   $role = get_role('water_ferry');
 		   if ($role) {
-			// Add custom capabilities
-			$role->add_cap('read', true);
-			$role->add_cap('edit_posts', true);
-			$role->add_cap('publish_posts', true);
-			$role->add_cap('edit_others_posts', false);
-			$role->add_cap('delete_others_posts', false);
-			$role->add_cap('delete_private_posts', false);
-			$role->add_cap('delete_published_posts', false);
-			$role->add_cap('edit_others_pages', false);
-			$role->add_cap('delete_others_pages', false);
-			$role->add_cap('delete_private_pages', false);
-			$role->add_cap('delete_published_pages', false);
-			$role->add_cap('upload_files', true);
-			$role->add_cap('edit_published_posts', true);
-			$role->add_cap('read_private_posts', true);
-			
-			// Remove specific capabilities
-			// $role->remove_cap('delete_posts');
-			// $role->remove_cap('edit_others_posts');
-			// $role->remove_cap('delete_others_posts');
-			// $role->remove_cap('delete_private_posts');
-			// $role->remove_cap('delete_published_posts');
-		}
-	 }
+				// Add custom capabilities
+				$role->add_cap('read', true);
+				$role->add_cap('edit_posts', true);
+				$role->add_cap('publish_posts', true);
+				$role->add_cap('edit_others_posts', false);
+				$role->add_cap('delete_others_posts', false);
+				$role->add_cap('delete_private_posts', false);
+				$role->add_cap('delete_published_posts', false);
+				$role->add_cap('edit_others_pages', false);
+				$role->add_cap('delete_others_pages', false);
+				$role->add_cap('delete_private_pages', false);
+				$role->add_cap('delete_published_pages', false);
+				$role->add_cap('upload_files', true);
+				$role->add_cap('edit_published_posts', true);
+				$role->add_cap('read_private_posts', true);
+				
+				// Remove specific capabilities
+				// $role->remove_cap('delete_posts');
+				// $role->remove_cap('edit_others_posts');
+				// $role->remove_cap('delete_others_posts');
+				// $role->remove_cap('delete_private_posts');
+				// $role->remove_cap('delete_published_posts');
+			}
+	 
+	}
 
 
 	 public static function restrict_admin_menu() {
@@ -134,6 +135,8 @@ class ThemeSetup {
 			remove_menu_page('admin.php');    
 			remove_menu_page('edit.php?post_type=listing');       
 			remove_menu_page('edit.php?post_type=event'); 
+			remove_menu_page('edit.php?post_type=page'); 
+			remove_menu_page('edit.php'); 
 
 			// Remove Rank Math menu items
 			remove_menu_page('rank-math'); 
