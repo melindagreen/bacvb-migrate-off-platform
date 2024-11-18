@@ -95,9 +95,10 @@ $font-bradensota: "Josefin Sans", sans-serif;
                         display: block;
                         position: absolute;
                         right: 0;
-                        bottom: 0vw;
                         color: #164E46;
                         max-width: 12vw;
+                        bottom: -0.2rem;
+                        line-height: 0.9em;
                         font-size: 1rem;
                         margin-left: auto;
                         text-align: end;
@@ -349,7 +350,7 @@ $font-bradensota: "Josefin Sans", sans-serif;
 
 #bradensotaMap {
 
-    display: none;
+    display: none !important;
 }
 
 
