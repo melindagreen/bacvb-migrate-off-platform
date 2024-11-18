@@ -47,7 +47,7 @@
     <!-- HEADER -->
     <header class="mm-bradentongulfislands-header bradenton-header">
         <!-- BANNER -->
-         <?php if(is_page('gulf-islands-ferry') && (get_field('banner_toggle', 'option') || get_field('global_banner_toggle', 'option'))) { 
+         <?php if(get_field('banner_toggle', 'option') || get_field('global_banner_toggle', 'option')) { 
             $title = get_field('banner_toggle', 'option') ?  'Ferry Alert' :  get_field('global_banner_title', 'option');
             $description = get_field('banner_toggle', 'option') ?  get_field('banner_message', 'option') : get_field('global_banner_description', 'option');
             $buttonText = get_field('banner_toggle', 'option') ?  'Learn More' :  get_field('global_banner_button_text', 'option');
