@@ -350,7 +350,7 @@ $font-bradensota: "Josefin Sans", sans-serif;
 
 #bradensotaMap {
 
-    display: none !important;
+    display: none;
 }
 
 
@@ -376,7 +376,7 @@ $font-bradensota: "Josefin Sans", sans-serif;
 
                     #infoblock-title {
 
-                        display: none;
+                        display: none !important;
                     }
                 }
 
