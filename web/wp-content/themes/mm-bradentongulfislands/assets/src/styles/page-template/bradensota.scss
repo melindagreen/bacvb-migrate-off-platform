@@ -38,6 +38,21 @@ $font-bradensota: "Josefin Sans", sans-serif;
 
 .main--bradensota {
 
+    .cr__gallery {
+
+        padding: 0 1%;
+    
+        .cr__asset__overlay {
+        box-shadow: 0px 3px 6px #00000029;
+        border-radius: 6px;
+        }
+    
+        .loadMore {
+            color: #FFFFFF !important;
+            background-color: #063632 !important;
+        }
+    }
+
     .wp-block-mm-bradentongulfislands-wideslideshow.is-style-hero-slider {
 
         height: fit-content;
@@ -311,20 +326,6 @@ $font-bradensota: "Josefin Sans", sans-serif;
     }
 }
 
-.cr__gallery {
-
-    padding: 0 1%;
-
-    .cr__asset__overlay {
-    box-shadow: 0px 3px 6px #00000029;
-    border-radius: 6px;
-    }
-
-    .loadMore {
-        color: #FFFFFF !important;
-        background-color: #063632 !important;
-    }
-}
 
 #bradensotaMap {
 
