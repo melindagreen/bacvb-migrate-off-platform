@@ -102,7 +102,7 @@ function render_block( $attrs, $content ) {
                     <?php if (isset($attrs['subtitle']) && $attrs['subtitle']) echo '<span>'.$attrs['subtitle'].'</span>'; ?><?php echo $attrs['title']; ?></h1>
                 <?php } ?>
 
-                <?php if(is_page('gulf-islands-ferry') && get_field('herobanner_toggle', 'option') || get_field('herobanner_toggle', 'option')) { ?>
+                <?php if(is_page('gulf-islands-ferry') && (get_field('herobanner_toggle', 'option') || get_field('herobanner_toggle', 'option'))) { ?>
                 <div class="hero-banner">
                     <h3 class="hero-banner__title"><?php echo get_field('herobanner_title', 'option'); ?></h3>
                     <p class="hero-banner__description">
