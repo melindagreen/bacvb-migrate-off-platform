@@ -77,7 +77,7 @@ web:
         - "index.html"
 
 # The size of the persistent disk of the application (in MB).
-disk: 10000
+disk: 11000
 
 # Dependencies needed for build - yarn, bower, gulp, ruby etc.
 dependencies:
