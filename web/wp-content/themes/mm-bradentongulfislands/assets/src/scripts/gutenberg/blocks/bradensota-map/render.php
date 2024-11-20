@@ -17,7 +17,7 @@ function render_block( $attrs, $content ) {
 
     $html .= '<div class="mapContainer">';
 
-    $html .= '</div>';
+    $html .= '<div class="zoomInfo">Click Images To Zoom</div><button id="resetZoom">Reset Map</buton></div>';
 
     $html .= '<div class="bradensota-map-content">';
       $html .= '<h2 class="bradensota-map-content__title"></h2>';
