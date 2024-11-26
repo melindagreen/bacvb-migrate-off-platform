@@ -1,13 +1,10 @@
 const PAGE_LENGTH = 12;
-const STARTING_COORDS = [27.4190314, -82.3921034];
-const STARTING_ZOOM = 11;
+var STARTING_ZOOM = 11;
+var STARTING_COORDS = [27.4190314, -82.3921034];
 var map = false;
 var allListings = false;
 var markers = false;
 var markersObject = {};
-
-const getIsLarge = () =>
-	jQuery("#isLarge").length && jQuery("#isLarge").css("float") !== "none";
 
 (function ($) {
 	/** FUNCTIONS *********************************************************************/
@@ -733,6 +730,21 @@ const getIsLarge = () =>
 	/** LISTENERS *********************************************************************/
 	$(document).ready(async function () {
 
+		const getIsLarge = () =>
+			jQuery("#isLarge").length && jQuery("#isLarge").css("float") !== "none";
+		
+		const getIsSmall = () =>
+			jQuery("#isSmall").length && jQuery("#isSmall").css("float") !== "none";
+		
+		console.log(jQuery("#isLarge").css("float"));
+		
+
+		// Map Coordinate start point
+		if(!getIsLarge()) {
+		
+			STARTING_COORDS = [27.4590324, -82.6521034];
+		}
+
 		if ($('.view--map')) {
 			console.log('Test');
 			$('.view--map').addClass("active");
@@ -792,6 +804,13 @@ const getIsLarge = () =>
 			e.preventDefault();
 			loadPage();
 		});
+
+		// Resizing 
+		$(window).resize(()=> {
+
+			STARTING_COORDS = getIsLarge() ? [27.4190314, -82.3921034] : [27.4590324, -82.6521034];
+			map.setView(STARTING_COORDS, STARTING_ZOOM);
+		})
 
 	});
 })(jQuery);
