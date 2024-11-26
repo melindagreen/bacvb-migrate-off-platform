@@ -41,4 +41,18 @@ class Constants {
             'url' => 'https://www.instagram.com/visitbradentongulfislands',
         ]
     ];
+    const SARASOTA_SOCIAL_LINKS = [
+        'facebook' => [
+            'name' => 'Facebook',
+            'url' => 'https://facebook.com/VisitSarasota',
+        ],
+        'twitter' => [
+            'name' => 'Twitter',
+            'url' => 'https://twitter.com/visitsarasota',
+        ],
+        'instagram' => [
+            'name' => 'Instagram',
+            'url' => 'https://www.instagram.com/visitsarasotacounty',
+        ]
+    ];
 }

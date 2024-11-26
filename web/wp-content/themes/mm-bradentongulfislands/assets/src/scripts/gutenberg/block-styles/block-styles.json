@@ -23,6 +23,11 @@
                 "name": "pill-shape",
                 "label": "Pill Shape",
                 "isDefault": false
+            },
+            {
+                "name": "circle",
+                "label": "Circle Shape",
+                "isDefault": false
             }
         ]
     },
@@ -96,6 +101,10 @@
             {
                 "name": "content-width-rough-edges",
                 "label": "Content Width w/ Rough Edges"
+            },
+            {
+                "name": "wave-top",
+                "label": "Wave Top"
             }
         ]
     },

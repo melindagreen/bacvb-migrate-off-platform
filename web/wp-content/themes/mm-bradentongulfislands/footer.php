@@ -1,5 +1,5 @@
 <?php use \MaddenNino\Library\Constants as C; ?>
-    
+
     </main>
     
     <!-- FOOTER -->

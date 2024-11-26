@@ -94,7 +94,7 @@ class AdminConstants {
 			'theme'        => get_option( 'stylesheet' ),
 			'adminUrl'     => admin_url(),
 			'websiteName'  => get_bloginfo( 'name' ),
-			'domain'       => parse_url( get_site_url(), PHP_URL_HOST ),
+			'domain'       => wp_parse_url( get_site_url(), PHP_URL_HOST ),
 			'wp_user'      => $wp_user->first_name ? $wp_user->first_name : $wp_user->user_nicename,
 			'nonce'        => self::get_connection_nonce(),
 			'accountName'  => Portal_Options::get_account_name(),
