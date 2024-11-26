@@ -116,7 +116,6 @@ var markersObject = {};
 	function markerOnClick(e) {
 		let showCaseSlider = jQuery("#listings-container--map");
 		if (
-			!getIsLarge() &&
 			typeof showCaseSlider[0].swiper !== "undefined" &&
 			showCaseSlider[0].swiper !== null
 		) {
