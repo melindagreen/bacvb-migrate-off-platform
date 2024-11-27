@@ -23,7 +23,7 @@ function render_block( $attrs, $content ) {
     <?php if (!isset($attrs['smallHero']) || !$attrs['smallHero']) { ?>
     
     <section class="<?php echo Constants::BLOCK_CLASS; ?>-hero<?php if (isset($attrs['videoHero']) && $attrs['videoHero']) echo ' videoHero'; ?> <?php echo $classes; ?><?php echo $attrs['className'] !== 'is-style-small-font-header' && ($attrs['logoId'] || $attrs['ctaBannerTitle'] !== "") ? ' is-style-small-font-header' : ''; ?> <?php echo $attrs['ctaBannerTitle'] !== "" ? ' '. Constants::BLOCK_CLASS . '-hero--banner' : ''; ?>">
-    <?php if (!$attrs['title']) { ?> <h1> <?php } ?>
+    <?php if (!$attrs['title']) { ?> <h1 class="no-title"> <?php } ?>
 
     <?php if (is_front_page()) { ?>
         <!-- <div class="badge">
