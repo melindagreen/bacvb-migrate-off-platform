@@ -74,7 +74,7 @@
   "require": {
     "wpengine/advanced-custom-fields-pro": "^6.3.3",
     "davidbarratt/custom-installer": "^1.1",
-    "johnpbloch/wordpress": "6.6.2",
+    "johnpbloch/wordpress": "6.7.1",
     "maddenmedia/gravityforms": "*",
     "maddenmedia/madden-cookie-consent": "*",
     "maddenmedia/mm-madre-theme": "v1.4.5",
@@ -86,7 +86,7 @@
     "tonik/cli": "^3.0",
     "maddenmedia/partner-portal": "*",
     "wp-cli/wp-cli-bundle": "^2.5",
-    "wpackagist-plugin/akismet": "5.3.3",
+    "wpackagist-plugin/akismet": "^5.3",
     "wpackagist-plugin/broken-link-checker": "^2.4",
     "wpackagist-plugin/cache-control": "^2.2",
     "wpackagist-plugin/duplicate-post": "^4.4",
