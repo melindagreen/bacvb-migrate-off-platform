@@ -155,6 +155,14 @@ COLUMNS
     grid-template-columns: repeat(12, 1fr); 
     grid-auto-rows: auto; 
 
+    .wp-block-video {
+
+        video {
+
+            height: 100%;
+            object-fit: cover;
+        }
+    }
 
     > *:nth-child(6n + 1) {
     grid-column: span 3;
@@ -184,6 +192,11 @@ COLUMNS
   > *:nth-child(6n) {
     grid-column: span 2;
     grid-row: auto;
+  }
+
+  @media screen and (max-width: 768px) {
+
+    grid-template-columns: repeat(3, 1fr); 
   }
 }
 
