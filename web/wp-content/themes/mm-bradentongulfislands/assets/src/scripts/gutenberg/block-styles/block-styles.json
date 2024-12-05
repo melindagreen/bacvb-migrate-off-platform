@@ -105,6 +105,10 @@
             {
                 "name": "wave-top",
                 "label": "Wave Top"
+            },
+            {
+                "name": "custom-grid",
+                "label": "Custom Grid"
             }
         ]
     },

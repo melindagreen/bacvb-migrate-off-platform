@@ -148,6 +148,27 @@ COLUMNS
     }
 }
 
+.is-style-custom-grid.is-layout-grid {
+
+    @media screen and (max-width: 382px ) {
+
+        display: block;
+    }
+    @media screen and ((max-width: 383px) and (min-width: 501px) ) {
+
+        grid-template-columns: repeat(auto-fit, minmax(min(7rem, 100%), 1fr));
+    }
+    @media screen and ((max-width: 502px) and (min-width: 629px) ) {
+
+        grid-template-columns: repeat(auto-fit, minmax(min(8rem, 100%), 1fr));
+    }
+    @media screen and ((max-width: 630px) and (min-width: 693px) ) {
+
+        grid-template-columns: repeat(auto-fit, minmax(min(10rem, 100%), 1fr));
+    }
+    grid-template-columns: repeat(auto-fit, minmax(min(7rem, 100%), 1fr));
+}
+
 // media text block
 .wp-block-media-text {
     &.is-style-icon {
