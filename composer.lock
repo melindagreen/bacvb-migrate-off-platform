@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b70aa544a9e620dc1229e94bf301c439",
+    "content-hash": "555b04fc3ffcc7ef7d4d772f2109ce5b",
     "packages": [
         {
             "name": "berlindb/core",
@@ -1898,18 +1898,6 @@
                 "source": "https://github.com/bobthecow/psysh/tree/v0.10.12"
             },
             "time": "2021-11-30T14:05:36+00:00"
-        },
-        {
-            "name": "rankmath/seo-by-rank-math-pro",
-            "version": "3.0.54",
-            "dist": {
-                "type": "zip",
-                "url": "https://rankmath.com/download/510590/?username=madden%20media&api_key=8330bc817f11ccc9d602921e293ecd5b"
-            },
-            "require": {
-                "composer/installers": "*"
-            },
-            "type": "wordpress-plugin"
         },
         {
             "name": "react/promise",
