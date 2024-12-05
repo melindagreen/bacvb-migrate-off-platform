@@ -106,7 +106,7 @@
     "wpackagist-plugin/wordpress-seo": "^23.3",
     "wpackagist-plugin/wp-media-library-categories": "*",
     "wpackagist-plugin/seo-by-rank-math":"*",
-    "rankmath/seo-by-rank-math-pro": "^3.0.54",
+    "rankmath/seo-by-rank-math-pro": "^3.0",
     "wpackagist-plugin/fareharbor": "^3.6"
   },
   "minimum-stability": "dev",

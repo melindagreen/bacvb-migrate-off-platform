@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d854dfe42451727fdbe6d818e7573436",
+    "content-hash": "b70aa544a9e620dc1229e94bf301c439",
     "packages": [
         {
             "name": "berlindb/core",
@@ -6050,15 +6050,15 @@
         },
         {
             "name": "wpackagist-plugin/safe-svg",
-            "version": "2.3.0",
+            "version": "2.3.1",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/safe-svg/",
-                "reference": "tags/2.3.0"
+                "reference": "tags/2.3.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/safe-svg.2.3.0.zip"
+                "url": "https://downloads.wordpress.org/plugin/safe-svg.2.3.1.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
