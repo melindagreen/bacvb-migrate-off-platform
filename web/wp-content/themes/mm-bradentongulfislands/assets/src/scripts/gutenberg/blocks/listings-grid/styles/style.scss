@@ -425,6 +425,7 @@ $bar-height: 70px;
 		margin: 2rem auto;
 		justify-content: flex-start;
 		gap: 7px;
+		min-height: 150px;
 
 		&--no-listings {
 			min-height: 30rem !important;
