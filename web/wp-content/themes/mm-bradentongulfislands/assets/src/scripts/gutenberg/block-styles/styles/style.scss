@@ -203,6 +203,12 @@ COLUMNS
   }
 }
 
+//Video Block
+.wp-block-video {
+
+    position: relative;
+}
+
 // media text block
 .wp-block-media-text {
     &.is-style-icon {
