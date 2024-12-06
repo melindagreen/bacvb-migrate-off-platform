@@ -155,6 +155,15 @@ COLUMNS
     grid-template-columns: repeat(12, 1fr); 
     grid-auto-rows: auto; 
 
+    .photocredit {
+
+        &::before {
+
+            top: 2rem;
+            left: 0;
+        }
+    }
+
     .wp-block-video {
 
         video {
@@ -383,10 +392,12 @@ IMAGES
 
 .is-style-portrait {
 
+    img {
     --webkit-mask: url("images/portraitmask1.svg") no-repeat center;
     mask: url("images/portraitmask1.svg") no-repeat center;
     --webkit-mask-size: 100% 100%;
     mask-size: 100% 100%;
+    }
 
     .wp-block-cover__background {
 
