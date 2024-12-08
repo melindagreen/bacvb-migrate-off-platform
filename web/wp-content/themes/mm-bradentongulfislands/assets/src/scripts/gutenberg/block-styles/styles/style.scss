@@ -161,6 +161,8 @@ COLUMNS
 
             top: 2rem;
             left: 0;
+            max-width: calc(100vw - 19rem);
+            min-width: 5rem;
         }
     }
 
