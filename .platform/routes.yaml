@@ -30,6 +30,26 @@
 # vanity domains
 #
 
+"http://floridaswestcoast.com":
+    type: upstream
+    upstream: "app:http"
+    redirects:
+        paths:
+            '^/(.*)':
+                to: 'https://www.{default}/floridaswestcoast/$is_args$args'
+                code: 301
+                regexp: true
+
+"http://www.floridaswestcoast.com":
+    type: upstream
+    upstream: "app:http"
+    redirects:
+        paths:
+            '^/(.*)':
+                to: 'https://www.{default}/floridaswestcoast/$is_args$args'
+                code: 301
+                regexp: true
+
 "http://bacvb.com":
     type: upstream
     upstream: "app:http"
