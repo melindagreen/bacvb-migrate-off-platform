@@ -21,8 +21,9 @@ function render_block( $attrs, $content ) {
 ?>
 
     <?php if (!isset($attrs['smallHero']) || !$attrs['smallHero']) { ?>
-
+    
     <section class="<?php echo Constants::BLOCK_CLASS; ?>-hero<?php if (isset($attrs['videoHero']) && $attrs['videoHero']) echo ' videoHero'; ?> <?php echo $classes; ?><?php echo $attrs['className'] !== 'is-style-small-font-header' && ($attrs['logoId'] || $attrs['ctaBannerTitle'] !== "") ? ' is-style-small-font-header' : ''; ?> <?php echo $attrs['ctaBannerTitle'] !== "" ? ' '. Constants::BLOCK_CLASS . '-hero--banner' : ''; ?>">
+    <?php if (!$attrs['title']) { ?> <h1 class="no-title"> <?php } ?>
 
     <?php if (is_front_page()) { ?>
         <!-- <div class="badge">
@@ -31,7 +32,7 @@ function render_block( $attrs, $content ) {
     <?php } ?>
 
         <?php if (!isset($attrs['videoHero']) || !$attrs['videoHero']) { ?>
-            <div class="hero<?php if (isset($attrs["doParallax"]) && $attrs["doParallax"]) echo " has-parallax" ?><?php if (!isset($attrs['showBottomWave']) || !$attrs['showBottomWave']) echo " full" ?>"
+            <div <?php if (!$attrs['title']) { ?> title="<?php echo get_the_title($post->ID); ?>" <?php } ?>  class="hero<?php if (isset($attrs["doParallax"]) && $attrs["doParallax"]) echo " has-parallax" ?><?php if (!isset($attrs['showBottomWave']) || !$attrs['showBottomWave']) echo " full" ?>"
                 data-load-type="bg"    
                 data-load-onload="true"
                 data-load-lg="<?php echo wp_get_attachment_image_src($attrs['image']['id'], 'full')[0]; ?>"
@@ -123,7 +124,9 @@ function render_block( $attrs, $content ) {
                     <?php } ?>
                 </div>
             <?php } ?>
-    </section>
+    
+            <?php if (!$attrs['title']) { ?> </h1> <?php } ?>
+        </section>
 
     <?php } ?>
     <?php 

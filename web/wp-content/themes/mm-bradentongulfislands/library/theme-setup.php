@@ -176,13 +176,13 @@ class ThemeSetup {
 	 */
 	public static function add_photo_credit($block_content, $block) {
 
-		if (($block['blockName'] === 'core/image' || $block['blockName'] === 'core/cover') && isset($block['attrs']['photoCredit']) && $block['attrs']['photoCredit'] ) {
+		if (($block['blockName'] === 'core/image' || $block['blockName'] === 'core/cover' || $block['blockName'] === 'core/video') && isset($block['attrs']['photoCredit']) && $block['attrs']['photoCredit'] ) {
 			$imageId = $block['attrs']['id'];
 			$photoCredit = get_field('photo_credit', $imageId);
-			$position = strpos($block_content, '<img ');
+			$position = $block['blockName'] === 'core/video' ? strpos($block_content, '<video ') : strpos($block_content, '<img ');
 			$photoIcon = '<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 302.5 214.5" style="enable-background:new 0 0 302.5 214.5;" xml:space="preserve"> <style type="text/css"> .st0{fill:#FFFFFF;} </style> <path class="st0" d="M279.8,44.5h-50.4l-7.9-23.7c-3.2-9.8-12.4-16.3-22.6-16.3h-95.6c-10.3,0-19.4,6.6-22.6,16.3l-7.9,23.7H22.2 C9.7,44.5-0.5,54.7-0.5,67.2v124.6c0,12.6,10.2,22.7,22.7,22.7h257.6c12.5,0,22.7-10.2,22.7-22.7V67.2 C302.5,54.7,292.3,44.5,279.8,44.5z M151,191.7c-37.7,0-68.2-30.6-68.2-68.2s30.6-68.2,68.2-68.2s68.2,30.6,68.2,68.3 S188.7,191.7,151,191.7z"/> </svg>';
 			$photoCreditContent = '<div class="photocredit" data-photocredit="'. $photoCredit .'">'. $photoIcon .'</div>';
-			$modifiedContent = substr_replace($block_content, $photoCreditContent . '<img ', $position, 0);
+			$modifiedContent = $block['blockName'] === 'core/video' ? substr_replace($block_content, $photoCreditContent . '<video ', $position, 0) : substr_replace($block_content, $photoCreditContent . '<img ', $position, 0);
 			$block_content = $position !== false ? $modifiedContent : $block_content;
 		}
 
