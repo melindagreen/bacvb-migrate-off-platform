@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "555b04fc3ffcc7ef7d4d772f2109ce5b",
+    "content-hash": "1c146e8bf0477b85b59d3025c82d44bb",
     "packages": [
         {
             "name": "berlindb/core",
@@ -1032,7 +1032,6 @@
         },
         {
             "name": "johnpbloch/wordpress",
-<<<<<<< HEAD
             "version": "6.7.1",
             "source": {
                 "type": "git",
@@ -1047,22 +1046,6 @@
             },
             "require": {
                 "johnpbloch/wordpress-core": "6.7.1",
-=======
-            "version": "6.6.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/johnpbloch/wordpress.git",
-                "reference": "1bd4fb6bbee375a3428e2aa3593ee2549974b0c1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/johnpbloch/wordpress/zipball/1bd4fb6bbee375a3428e2aa3593ee2549974b0c1",
-                "reference": "1bd4fb6bbee375a3428e2aa3593ee2549974b0c1",
-                "shasum": ""
-            },
-            "require": {
-                "johnpbloch/wordpress-core": "6.6.2",
->>>>>>> recovery
                 "johnpbloch/wordpress-core-installer": "^1.0 || ^2.0",
                 "php": ">=7.0.0"
             },
@@ -1091,7 +1074,6 @@
                 "issues": "https://core.trac.wordpress.org/",
                 "source": "https://core.trac.wordpress.org/browser"
             },
-<<<<<<< HEAD
             "time": "2024-11-21T14:47:07+00:00"
         },
         {
@@ -1106,22 +1088,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/johnpbloch/wordpress-core/zipball/1975a1deaef23914b391f37314cc0e6a23ae16d7",
                 "reference": "1975a1deaef23914b391f37314cc0e6a23ae16d7",
-=======
-            "time": "2024-09-10T15:26:46+00:00"
-        },
-        {
-            "name": "johnpbloch/wordpress-core",
-            "version": "6.6.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/johnpbloch/wordpress-core.git",
-                "reference": "dbb5f96e78905e26cbfb4c4796d9d5b92c451a81"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/johnpbloch/wordpress-core/zipball/dbb5f96e78905e26cbfb4c4796d9d5b92c451a81",
-                "reference": "dbb5f96e78905e26cbfb4c4796d9d5b92c451a81",
->>>>>>> recovery
                 "shasum": ""
             },
             "require": {
@@ -1129,11 +1095,7 @@
                 "php": ">=7.2.24"
             },
             "provide": {
-<<<<<<< HEAD
                 "wordpress/core-implementation": "6.7.1"
-=======
-                "wordpress/core-implementation": "6.6.2"
->>>>>>> recovery
             },
             "type": "wordpress-core",
             "notification-url": "https://packagist.org/downloads/",
@@ -1160,11 +1122,7 @@
                 "source": "https://core.trac.wordpress.org/browser",
                 "wiki": "https://codex.wordpress.org/"
             },
-<<<<<<< HEAD
             "time": "2024-11-21T14:47:02+00:00"
-=======
-            "time": "2024-09-10T15:26:41+00:00"
->>>>>>> recovery
         },
         {
             "name": "johnpbloch/wordpress-core-installer",
@@ -1940,6 +1898,18 @@
                 "source": "https://github.com/bobthecow/psysh/tree/v0.10.12"
             },
             "time": "2021-11-30T14:05:36+00:00"
+        },
+        {
+            "name": "rankmath/seo-by-rank-math-pro",
+            "version": "3.0.54",
+            "dist": {
+                "type": "zip",
+                "url": "https://rankmath.com/download/510590/?username=madden%20media&api_key=8330bc817f11ccc9d602921e293ecd5b"
+            },
+            "require": {
+                "composer/installers": "*"
+            },
+            "type": "wordpress-plugin"
         },
         {
             "name": "react/promise",
@@ -6080,17 +6050,6 @@
         },
         {
             "name": "wpackagist-plugin/safe-svg",
-<<<<<<< HEAD
-            "version": "2.3.0",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/safe-svg/",
-                "reference": "tags/2.3.0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/safe-svg.2.3.0.zip"
-=======
             "version": "2.3.1",
             "source": {
                 "type": "svn",
@@ -6100,7 +6059,6 @@
             "dist": {
                 "type": "zip",
                 "url": "https://downloads.wordpress.org/plugin/safe-svg.2.3.1.zip"
->>>>>>> recovery
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
