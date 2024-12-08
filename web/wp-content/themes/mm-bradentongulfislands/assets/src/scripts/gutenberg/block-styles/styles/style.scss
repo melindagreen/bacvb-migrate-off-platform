@@ -392,7 +392,7 @@ IMAGES
 
 .is-style-portrait {
 
-    img, video {
+    img, video, .wp-block-cover__background  {
     --webkit-mask: url("images/portraitmask1.svg") no-repeat center;
     mask: url("images/portraitmask1.svg") no-repeat center;
     --webkit-mask-size: 100% 100%;
