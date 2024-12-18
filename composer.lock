@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1c146e8bf0477b85b59d3025c82d44bb",
+    "content-hash": "e973c23a3371d2ea99509a4dcbba84b0",
     "packages": [
         {
             "name": "berlindb/core",
@@ -164,16 +164,16 @@
         },
         {
             "name": "composer/composer",
-            "version": "2.2.24",
+            "version": "2.2.25",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/composer.git",
-                "reference": "91d9d38ebc274267f952ee1fd3892dc7962075f4"
+                "reference": "0374e6fa9d20beeffa0765c890ace6b33cbb33bd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/composer/zipball/91d9d38ebc274267f952ee1fd3892dc7962075f4",
-                "reference": "91d9d38ebc274267f952ee1fd3892dc7962075f4",
+                "url": "https://api.github.com/repos/composer/composer/zipball/0374e6fa9d20beeffa0765c890ace6b33cbb33bd",
+                "reference": "0374e6fa9d20beeffa0765c890ace6b33cbb33bd",
                 "shasum": ""
             },
             "require": {
@@ -243,7 +243,7 @@
             "support": {
                 "irc": "ircs://irc.libera.chat:6697/composer",
                 "issues": "https://github.com/composer/composer/issues",
-                "source": "https://github.com/composer/composer/tree/2.2.24"
+                "source": "https://github.com/composer/composer/tree/2.2.25"
             },
             "funding": [
                 {
@@ -259,7 +259,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-06-10T20:51:52+00:00"
+            "time": "2024-12-11T10:58:02+00:00"
         },
         {
             "name": "composer/installers",
@@ -1032,20 +1032,20 @@
         },
         {
             "name": "johnpbloch/wordpress",
-            "version": "6.7.1",
+            "version": "6.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/johnpbloch/wordpress.git",
-                "reference": "840a1b37dd240fad0f657537d0936be68e1c55e6"
+                "reference": "84161516e8208d2a4a53754108f5b9f0428021e3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johnpbloch/wordpress/zipball/840a1b37dd240fad0f657537d0936be68e1c55e6",
-                "reference": "840a1b37dd240fad0f657537d0936be68e1c55e6",
+                "url": "https://api.github.com/repos/johnpbloch/wordpress/zipball/84161516e8208d2a4a53754108f5b9f0428021e3",
+                "reference": "84161516e8208d2a4a53754108f5b9f0428021e3",
                 "shasum": ""
             },
             "require": {
-                "johnpbloch/wordpress-core": "6.7.1",
+                "johnpbloch/wordpress-core": "6.4.0",
                 "johnpbloch/wordpress-core-installer": "^1.0 || ^2.0",
                 "php": ">=7.0.0"
             },
@@ -1074,28 +1074,28 @@
                 "issues": "https://core.trac.wordpress.org/",
                 "source": "https://core.trac.wordpress.org/browser"
             },
-            "time": "2024-11-21T14:47:07+00:00"
+            "time": "2023-11-07T19:31:22+00:00"
         },
         {
             "name": "johnpbloch/wordpress-core",
-            "version": "6.7.1",
+            "version": "6.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/johnpbloch/wordpress-core.git",
-                "reference": "1975a1deaef23914b391f37314cc0e6a23ae16d7"
+                "reference": "9affce6bea176c5449353603f888cc6b8b066778"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johnpbloch/wordpress-core/zipball/1975a1deaef23914b391f37314cc0e6a23ae16d7",
-                "reference": "1975a1deaef23914b391f37314cc0e6a23ae16d7",
+                "url": "https://api.github.com/repos/johnpbloch/wordpress-core/zipball/9affce6bea176c5449353603f888cc6b8b066778",
+                "reference": "9affce6bea176c5449353603f888cc6b8b066778",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
-                "php": ">=7.2.24"
+                "php": ">=7.0.0"
             },
             "provide": {
-                "wordpress/core-implementation": "6.7.1"
+                "wordpress/core-implementation": "6.4.0"
             },
             "type": "wordpress-core",
             "notification-url": "https://packagist.org/downloads/",
@@ -1122,7 +1122,7 @@
                 "source": "https://core.trac.wordpress.org/browser",
                 "wiki": "https://codex.wordpress.org/"
             },
-            "time": "2024-11-21T14:47:02+00:00"
+            "time": "2023-11-07T19:31:18+00:00"
         },
         {
             "name": "johnpbloch/wordpress-core-installer",
@@ -1311,16 +1311,16 @@
         },
         {
             "name": "maddenmedia/gravityforms",
-            "version": "v2.9.0.1",
+            "version": "v2.9.1",
             "source": {
                 "type": "git",
                 "url": "git@github.com:maddenmedia/gravityforms.git",
-                "reference": "75666e94740ea3022650bfe67a16c4fde16b3446"
+                "reference": "e26b2f21067962e2563a504ab3ff6ef2e80c0ec8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/maddenmedia/gravityforms/zipball/75666e94740ea3022650bfe67a16c4fde16b3446",
-                "reference": "75666e94740ea3022650bfe67a16c4fde16b3446",
+                "url": "https://api.github.com/repos/maddenmedia/gravityforms/zipball/e26b2f21067962e2563a504ab3ff6ef2e80c0ec8",
+                "reference": "e26b2f21067962e2563a504ab3ff6ef2e80c0ec8",
                 "shasum": ""
             },
             "type": "wordpress-plugin",
@@ -1329,10 +1329,10 @@
             ],
             "description": "gravity forms",
             "support": {
-                "source": "https://github.com/maddenmedia/gravityforms/tree/v2.9.0.1",
+                "source": "https://github.com/maddenmedia/gravityforms/tree/v2.9.1",
                 "issues": "https://github.com/maddenmedia/gravityforms/issues"
             },
-            "time": "2024-11-20T16:42:31+00:00"
+            "time": "2024-12-13T15:24:57+00:00"
         },
         {
             "name": "maddenmedia/madden-cookie-consent",
@@ -1431,16 +1431,16 @@
         },
         {
             "name": "maddenmedia/wp-plugin-eventastic",
-            "version": "v2.0.1",
+            "version": "2.0.2",
             "source": {
                 "type": "git",
                 "url": "git@github.com:maddenmedia/wp-plugin-eventastic.git",
-                "reference": "9546e80077d096d54dfa372ac774e422674543f7"
+                "reference": "0f82908c5d934776f79d432fde0e276ece09e3b5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/maddenmedia/wp-plugin-eventastic/zipball/9546e80077d096d54dfa372ac774e422674543f7",
-                "reference": "9546e80077d096d54dfa372ac774e422674543f7",
+                "url": "https://api.github.com/repos/maddenmedia/wp-plugin-eventastic/zipball/0f82908c5d934776f79d432fde0e276ece09e3b5",
+                "reference": "0f82908c5d934776f79d432fde0e276ece09e3b5",
                 "shasum": ""
             },
             "type": "wordpress-plugin",
@@ -1449,10 +1449,10 @@
             ],
             "description": "Wordpress Events Plugin for Madden Media",
             "support": {
-                "source": "https://github.com/maddenmedia/wp-plugin-eventastic/tree/v2.0.1",
+                "source": "https://github.com/maddenmedia/wp-plugin-eventastic/tree/2.0.2",
                 "issues": "https://github.com/maddenmedia/wp-plugin-eventastic/issues"
             },
-            "time": "2024-11-25T18:14:54+00:00"
+            "time": "2024-12-13T15:56:07+00:00"
         },
         {
             "name": "maddenmedia/wp-plugin-madden-banners",
@@ -2531,8 +2531,8 @@
             "type": "library",
             "extra": {
                 "thanks": {
-                    "name": "symfony/polyfill",
-                    "url": "https://github.com/symfony/polyfill"
+                    "url": "https://github.com/symfony/polyfill",
+                    "name": "symfony/polyfill"
                 }
             },
             "autoload": {
@@ -2607,8 +2607,8 @@
             "type": "library",
             "extra": {
                 "thanks": {
-                    "name": "symfony/polyfill",
-                    "url": "https://github.com/symfony/polyfill"
+                    "url": "https://github.com/symfony/polyfill",
+                    "name": "symfony/polyfill"
                 }
             },
             "autoload": {
@@ -2685,8 +2685,8 @@
             "type": "library",
             "extra": {
                 "thanks": {
-                    "name": "symfony/polyfill",
-                    "url": "https://github.com/symfony/polyfill"
+                    "url": "https://github.com/symfony/polyfill",
+                    "name": "symfony/polyfill"
                 }
             },
             "autoload": {
@@ -2769,8 +2769,8 @@
             "type": "library",
             "extra": {
                 "thanks": {
-                    "name": "symfony/polyfill",
-                    "url": "https://github.com/symfony/polyfill"
+                    "url": "https://github.com/symfony/polyfill",
+                    "name": "symfony/polyfill"
                 }
             },
             "autoload": {
@@ -2843,8 +2843,8 @@
             "type": "library",
             "extra": {
                 "thanks": {
-                    "name": "symfony/polyfill",
-                    "url": "https://github.com/symfony/polyfill"
+                    "url": "https://github.com/symfony/polyfill",
+                    "name": "symfony/polyfill"
                 }
             },
             "autoload": {
@@ -2919,8 +2919,8 @@
             "type": "library",
             "extra": {
                 "thanks": {
-                    "name": "symfony/polyfill",
-                    "url": "https://github.com/symfony/polyfill"
+                    "url": "https://github.com/symfony/polyfill",
+                    "name": "symfony/polyfill"
                 }
             },
             "autoload": {
@@ -3671,9 +3671,6 @@
             },
             "type": "wp-cli-package",
             "extra": {
-                "branch-alias": {
-                    "dev-main": "2.x-dev"
-                },
                 "bundled": true,
                 "commands": [
                     "core",
@@ -3686,7 +3683,10 @@
                     "core update",
                     "core update-db",
                     "core version"
-                ]
+                ],
+                "branch-alias": {
+                    "dev-main": "2.x-dev"
+                }
             },
             "autoload": {
                 "files": [
@@ -3807,9 +3807,6 @@
             },
             "type": "wp-cli-package",
             "extra": {
-                "branch-alias": {
-                    "dev-main": "2.x-dev"
-                },
                 "bundled": true,
                 "commands": [
                     "db",
@@ -3829,7 +3826,10 @@
                     "db tables",
                     "db size",
                     "db columns"
-                ]
+                ],
+                "branch-alias": {
+                    "dev-main": "2.x-dev"
+                }
             },
             "autoload": {
                 "files": [
@@ -4310,9 +4310,6 @@
             },
             "type": "wp-cli-package",
             "extra": {
-                "branch-alias": {
-                    "dev-main": "2.x-dev"
-                },
                 "bundled": true,
                 "commands": [
                     "plugin",
@@ -4347,7 +4344,10 @@
                     "theme status",
                     "theme update",
                     "theme mod list"
-                ]
+                ],
+                "branch-alias": {
+                    "dev-main": "2.x-dev"
+                }
             },
             "autoload": {
                 "files": [
@@ -5942,15 +5942,15 @@
         },
         {
             "name": "wpackagist-plugin/post-expirator",
-            "version": "4.1.3",
+            "version": "4.2.0",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/post-expirator/",
-                "reference": "tags/4.1.3"
+                "reference": "tags/4.2.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/post-expirator.4.1.3.zip"
+                "url": "https://downloads.wordpress.org/plugin/post-expirator.4.2.0.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -6068,15 +6068,15 @@
         },
         {
             "name": "wpackagist-plugin/seo-by-rank-math",
-            "version": "1.0.233",
+            "version": "1.0.234",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/seo-by-rank-math/",
-                "reference": "tags/1.0.233"
+                "reference": "tags/1.0.234"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/seo-by-rank-math.1.0.233.zip"
+                "url": "https://downloads.wordpress.org/plugin/seo-by-rank-math.1.0.234.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -6104,15 +6104,15 @@
         },
         {
             "name": "wpackagist-plugin/translatepress-multilingual",
-            "version": "2.9.0",
+            "version": "2.9.3",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/translatepress-multilingual/",
-                "reference": "tags/2.9.0"
+                "reference": "tags/2.9.3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/translatepress-multilingual.2.9.0.zip"
+                "url": "https://downloads.wordpress.org/plugin/translatepress-multilingual.2.9.3.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
