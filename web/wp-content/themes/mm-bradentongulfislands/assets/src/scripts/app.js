@@ -235,7 +235,7 @@ if ('serviceWorker' in navigator) {
 	
 			// Initialize Swiper for each element with different options
 			var swiper = new Swiper('.' + uniqueContainer, {
-				loop: true,
+				loop: false,
 				autoplay: {
 					delay: 5500,
 					disableOnInteraction: false,
