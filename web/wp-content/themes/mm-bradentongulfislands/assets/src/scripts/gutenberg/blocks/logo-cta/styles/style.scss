@@ -56,7 +56,7 @@
         display: block;
         color: white;
         text-decoration: none;
-        font-weight: 200;
+        font-weight: 400;
         position: relative;
         background-color: $rust;
         border-radius: 15px;
@@ -64,6 +64,7 @@
         padding: 3% 0;
         font-size: 1.4rem;
         text-transform: uppercase;
+        font-family: $font-body;
         transition: all 0.3s ease-in-out;   
 
         &::after {
@@ -78,7 +79,7 @@
           transition: all 0.2s ease-in-out;
           background-position: center;
           margin-left: 0.8rem; 
-          margin-top: 0.2rem;
+          margin-top: 0.35rem;
         }
 
         &:hover {
