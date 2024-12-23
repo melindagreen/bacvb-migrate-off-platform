@@ -36,7 +36,12 @@ export default function registerMeetingBlock() {
         {isPreview ? (
           <MeetingGutenbergPreview />
         ) : isConnected ? (
-          <MeetingEdit {...props} preview={true} origin="gutenberg" />
+          <MeetingEdit
+            {...props}
+            preview={true}
+            origin="gutenberg"
+            fullSiteEditor={isFullSiteEditor()}
+          />
         ) : (
           <ErrorHandler status={401} />
         )}
@@ -45,7 +50,7 @@ export default function registerMeetingBlock() {
   };
 
   // We do not support the full site editor: https://issues.hubspotcentral.com/browse/WP-1033
-  if (!WpBlocksApi || isFullSiteEditor()) {
+  if (!WpBlocksApi) {
     return null;
   }
 

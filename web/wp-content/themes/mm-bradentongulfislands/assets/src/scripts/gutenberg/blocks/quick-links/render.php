@@ -13,7 +13,7 @@ function render_block( $attrs, $content ) {
 
   ob_start();
   ?>
-  <section class="<?php echo Constants::BLOCK_CLASS ?>-quick-links <?php if($attrs['className']) { echo $attrs['className']; } ?>">
+  <section class="<?php echo Constants::BLOCK_CLASS ?>-quick-links <?php if($attrs['className']) { echo $attrs['className']; } ?> <?php if($attrs['hideOnMobile']) { echo Constants::BLOCK_CLASS . '-quick-links--hideonmobile'; } ?>">
   <?php if($attr['blockTitle'] !== '') { ?>
   <h2 class="wp-block-heading has-text-align-center quick-links-heading"><?php echo $attrs['blockTitle']; ?></h2>
   <?php } ?>

@@ -10,6 +10,14 @@
     "icon": "leftright",
     "category": "layout",
     "attributes": {
+      "bannerTitle": {
+        "type": "string",
+        "default": ""
+      },
+      "bannerDescription": {
+        "type": "string",
+        "default": ""
+      }
     }
   }
 }

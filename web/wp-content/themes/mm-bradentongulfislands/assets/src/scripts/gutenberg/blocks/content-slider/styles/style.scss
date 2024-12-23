@@ -7,14 +7,25 @@ Content Slider
   .mm-content-slider { 
     overflow: hidden;
 
-    .swiper-button-prev {
+    .content-sliderswiper-pagination {
+      display: none;
+    }
+
+    .content-slider-swiper-button-prev {
       left: -10px;
     }
-    .swiper-button-next {
+    .content-slider-swiper-button-next {
       right: -10px;
     }
-    .swiper-button-next,
-    .swiper-button-prev {
+    .content-slider-swiper-button-next,
+    .content-slider-swiper-button-prev {
+      position: absolute;
+      top: 25%;
+      z-index: 10;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       &:before,
       &:after {
         display: none;

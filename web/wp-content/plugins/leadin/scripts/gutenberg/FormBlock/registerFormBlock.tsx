@@ -35,7 +35,12 @@ export default function registerFormBlock() {
         {isPreview ? (
           <FormGutenbergPreview />
         ) : isConnected ? (
-          <FormEdit {...props} origin="gutenberg" preview={true} />
+          <FormEdit
+            {...props}
+            origin="gutenberg"
+            preview={true}
+            fullSiteEditor={isFullSiteEditor()}
+          />
         ) : (
           <ErrorHandler status={401} />
         )}
@@ -44,7 +49,7 @@ export default function registerFormBlock() {
   };
 
   // We do not support the full site editor: https://issues.hubspotcentral.com/browse/WP-1033
-  if (!WpBlocksApi || isFullSiteEditor()) {
+  if (!WpBlocksApi) {
     return null;
   }
 

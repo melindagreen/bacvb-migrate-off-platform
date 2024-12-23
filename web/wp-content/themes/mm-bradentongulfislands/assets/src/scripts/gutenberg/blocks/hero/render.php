@@ -9,6 +9,7 @@ use MaddenNino\Library\Constants as Constants;
  * @param string $content
  */
 function render_block( $attrs, $content ) {
+
     if (!isset($attrs['videoHero']) || !$attrs['videoHero']) {
         $mobileImage = isset($attrs['mobileImage']) ? $attrs['mobileImage'] : $attrs['image'];
         $caption = wp_get_attachment_caption($attrs['image']['id']);
@@ -20,8 +21,9 @@ function render_block( $attrs, $content ) {
 ?>
 
     <?php if (!isset($attrs['smallHero']) || !$attrs['smallHero']) { ?>
-
-    <section class="<?php echo Constants::BLOCK_CLASS; ?>-hero<?php if (isset($attrs['videoHero']) && $attrs['videoHero']) echo ' videoHero'; ?> <?php echo $classes; ?>">
+    
+    <section class="<?php echo Constants::BLOCK_CLASS; ?>-hero<?php if (isset($attrs['videoHero']) && $attrs['videoHero']) echo ' videoHero'; ?> <?php echo $classes; ?><?php echo $attrs['className'] !== 'is-style-small-font-header' && ($attrs['logoId'] || $attrs['ctaBannerTitle'] !== "") ? ' is-style-small-font-header' : ''; ?> <?php echo $attrs['ctaBannerTitle'] !== "" ? ' '. Constants::BLOCK_CLASS . '-hero--banner' : ''; ?>">
+    <?php if (!$attrs['title']) { ?> <h1 class="no-title"> <?php } ?>
 
     <?php if (is_front_page()) { ?>
         <!-- <div class="badge">
@@ -30,7 +32,7 @@ function render_block( $attrs, $content ) {
     <?php } ?>
 
         <?php if (!isset($attrs['videoHero']) || !$attrs['videoHero']) { ?>
-            <div class="hero<?php if (isset($attrs["doParallax"]) && $attrs["doParallax"]) echo " has-parallax" ?><?php if (!isset($attrs['showBottomWave']) || !$attrs['showBottomWave']) echo " full" ?>"
+            <div <?php if (!$attrs['title']) { ?> title="<?php echo get_the_title($post->ID); ?>" <?php } ?>  class="hero<?php if (isset($attrs["doParallax"]) && $attrs["doParallax"]) echo " has-parallax" ?><?php if (!isset($attrs['showBottomWave']) || !$attrs['showBottomWave']) echo " full" ?>"
                 data-load-type="bg"    
                 data-load-onload="true"
                 data-load-lg="<?php echo wp_get_attachment_image_src($attrs['image']['id'], 'full')[0]; ?>"
@@ -93,10 +95,38 @@ function render_block( $attrs, $content ) {
                     <span class="description"><?php echo $caption; ?></span>
                 <?php } ?>
                 <?php if (isset($attrs['title']) && $attrs['title']) { ?>
-                    <h1 class="title <?php if (!is_front_page()) { echo "alt-title"; } ?>"><?php if (isset($attrs['subtitle']) && $attrs['subtitle']) echo '<span>'.$attrs['subtitle'].'</span>'; ?><?php echo $attrs['title']; ?></h1>
+                    <h1 class="title <?php if (!is_front_page()) { echo "alt-title"; } ?>"
+                    <?php if (isset($attrs['logoId']) && $attrs['logoId'] && $attrs['ctaBannerTitle'] === "") { ?>
+                        data-logo-url="<?php echo wp_get_attachment_url($attrs['logoId']); ?>"
+                    <?php } ?>
+                    >
+                    <?php if (isset($attrs['subtitle']) && $attrs['subtitle']) echo '<span>'.$attrs['subtitle'].'</span>'; ?><?php echo $attrs['title']; ?></h1>
                 <?php } ?>
 
-    </section>
+                <?php if(is_page('gulf-islands-ferry') && (get_field('herobanner_toggle', 'option') || get_field('herobanner_toggle', 'option'))) { ?>
+                <div class="hero-banner">
+                    <h3 class="hero-banner__title"><?php echo get_field('herobanner_title', 'option'); ?></h3>
+                    <p class="hero-banner__description">
+                        <?php echo get_field('herobanner_description', 'option'); ?>
+                    </p>
+                    <img class="hero-banner__crab" src="<?php echo get_theme_file_uri()?>/assets/images/crab.png" alt="Crab Illustration">
+                    
+                </div>
+            <?php } ?>
+            <?php if($attrs['ctaBannerTitle'] !== "") { ?>
+                <div class="cta-hero-banner">
+                    <h3 class="cta-hero-banner__title"><?php echo $attrs['ctaBannerTitle']; ?></h3>
+                    <?php if($attrs['bannerUrl'] !== "") { ?>
+                            <div class="cta-hero-banner__cta">
+                                <img class="cta-hero-banner__logo" src="<?php echo wp_get_attachment_url($attrs['logoId']); ?>" alt="">
+                                <a class="wp-block-button__link has-white-color has-bradenton-white-background-color has-text-color has-background has-link-color has-text-align-center wp-element-button" href="<?php echo $attrs['ctaBannerUrl'] ?>"><?php echo $attrs['ctaBannerText'] ?></a>
+                            </div>
+                    <?php } ?>
+                </div>
+            <?php } ?>
+    
+            <?php if (!$attrs['title']) { ?> </h1> <?php } ?>
+        </section>
 
     <?php } ?>
     <?php 

@@ -87,6 +87,180 @@ $bar-height: 70px;
 		}
 	}
 
+	.view--map {
+		flex-direction: column;
+		position: relative;
+		height: fit-content;
+		padding: 0 6vw;
+
+		&.active {
+			height: fit-content;
+		}
+
+		.listing {
+
+			margin-right: 0.5rem;
+		}
+
+		.listing-card {
+			flex: 0 0 auto;
+			flex-direction: column;
+			justify-content: stretch;
+			max-width: 21rem;
+
+			+ .listing-card {
+				margin: 0 1rem;
+			}
+
+			.listing-image {
+				max-width: 100%;
+			}
+
+			.listing-detail {
+				display: flex;
+				flex-direction: column;
+				justify-content: space-around;
+				padding: 15px;
+
+				.category-icons,
+				.listing-links .listing-contact-links {
+					display: none;
+				}
+				
+				h5 {
+					font-size: 1.125rem;
+					margin: 0 0 20px;
+					text-align: center;
+					a {
+						text-decoration:none;
+					}
+				}
+
+				.listing-links {
+					.listing-detail-link {
+						flex: 1;
+
+						a {
+							font-size: 1rem;
+							flex-direction: row-reverse;
+							justify-content: center;
+						}
+					}
+				}
+			}
+		}
+
+		.leaflet-popup-content {
+
+			a {
+			color: $bradenton-teal !important;
+			font-family: $font-body;
+    		font-size: 1.1rem;
+
+			&:hover {
+
+				color: $rust !important;
+			}
+			}
+		}
+
+		.map-container {
+			min-height: 400px;
+		}
+
+		.listings-container {
+			padding: 20px;
+			max-width: 100%;
+			overflow-x: auto;
+		}
+	}
+
+	.view--map {
+		width: 100%;
+		height: 80vh;
+		
+		&.active {
+			display: flex;
+			align-items: stretch;
+			height: 70vh;
+			min-height: fit-content;
+			overflow: hidden;
+		}
+		.listing-card {
+			// flex-direction: row;
+			+ .listing-card {
+				margin-top: 18px;
+			}
+			.listing-image {
+				max-width: 160px;
+				max-height: 180px;
+				img {
+					max-height: 180px; //some images are really tall
+					height: 100%;
+				}
+			}
+			.listing-detail {
+				padding: 20px 15px;
+				.listing-links {
+					flex-direction: row;
+					.listing-contact-links {
+						.icon-row {
+							+ .icon-row {
+								margin-top: 10px;
+							}
+						}
+					}
+					.listing-detail-link {
+						align-self: flex-end;
+						flex: 0 0 auto;
+						a {
+							flex-direction: column;
+							gap: 8px;
+						}
+					}
+				}
+			}
+		}
+		.listings-container {
+			flex: 0 0 auto;
+			// max-width: 400px;
+			overflow-y: auto;
+			padding: 20px 0;
+			width: 100%;
+			margin: 0 auto;
+		}
+		.map-container {
+			flex: 1;
+			height: 100%;
+			z-index: 0;
+			.listing-card {
+				border: none;
+				box-shadow: none;
+				flex-direction: column;
+				&:hover {
+					transform: none;
+				}
+				.listing-image {
+					max-width: 100%;
+					max-height: 150px;
+					img {
+						max-height: 150px;
+					}
+				}
+				.listing-detail {
+					padding: 15px 0 10px;
+					.listing-links {
+						.listing-detail-link {
+							a {
+								font-size: 1rem;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
 	.grid-title {
 		color: $bradenton-teal;
 		font-size: 2.5em;
@@ -248,9 +422,10 @@ $bar-height: 70px;
 		flex-wrap: wrap;
 		width: 1200px;
 		max-width: 95%;
-		margin: 2em auto;
+		margin: 2rem auto;
 		justify-content: flex-start;
 		gap: 7px;
+		min-height: 150px;
 
 		&--no-listings {
 			min-height: 30rem !important;
@@ -267,9 +442,8 @@ $bar-height: 70px;
 		font-size: 5rem;
 		opacity: 0.7;
 		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
+		top: 25%;
+		left: 45%;
 		border: 16px solid #ffffff; 
 		border-top: 16px solid #000;
 		border-radius: 50%;
@@ -291,6 +465,10 @@ $bar-height: 70px;
 		margin: 2px 0;
 		background-color: $light-blue;
 
+		.listing:first-child {
+
+			margin-left: 0;
+		}
 		a {
 			font-weight: 400;
 			text-decoration: none;
@@ -494,6 +672,7 @@ $bar-height: 70px;
 
 }
 
+
 /*********************
 MEDIUM AND LARGE SCREENS
 *********************/
@@ -572,6 +751,20 @@ SMALL SCREENS
 		.grid-title {
 			font-size: 2em;
 			margin: 0 0 -13px 1em;
+		}
+
+		.view--map {
+			&.active {
+				height: auto;
+			}
+
+			.leaflet-popup-content {
+				width: 200px !important;
+
+				a {
+				font-size: 0.8rem;
+				}
+			}
 		}
 	}
 }

@@ -47,17 +47,25 @@
     <!-- HEADER -->
     <header class="mm-bradentongulfislands-header bradenton-header">
         <!-- BANNER -->
-         <?php if(get_field('banner_toggle')) { ?>
-        <div class="top-banner">
+         <?php if(get_field('banner_toggle', 'option') || get_field('global_banner_toggle', 'option')) { 
+            $title = get_field('banner_toggle', 'option') ?  'Ferry Alert' :  get_field('global_banner_title', 'option');
+            $description = get_field('banner_toggle', 'option') ?  get_field('banner_message', 'option') : get_field('global_banner_description', 'option');
+            $buttonText = get_field('banner_toggle', 'option') ?  'Learn More' :  get_field('global_banner_button_text', 'option');
+            $buttonUrl = get_field('banner_toggle', 'option') ?  get_field('banner_button_url', 'option') :  get_field('global_banner_url', 'option');
+            
+            ?>
+        <div class="top-banner <?php echo get_field('global_banner_toggle', 'option') ? 'top-banner--global' : '' ; ?>">
             <?php include( get_theme_file_path() . '/assets/images/warning.svg' ); ?>
-            <h3 class="top-banner__title">Ferry Alert</h3>
-            <p class="top-banner__message"><?php echo get_field('banner_message'); ?></p>
-            <?php if(get_field('banner_button_url') !== ""): ?>
-            <a href="<?php echo get_field('banner_button_url'); ?>" class="top-banner__cta" target="__blank">Learn More</a>
+            <h3 class="top-banner__title"><?php echo $title; ?></h3>
+            <p class="top-banner__message"><?php echo $description; ?></p>
+            <?php if($buttonUrl !== ""): ?>
+            <a href="<?php echo $buttonUrl; ?>" class="top-banner__cta" target="__blank"><?php echo $buttonText; ?></a>
             <?php endif; ?>
+            <?php if(!get_field('global_banner_toggle','option')): ?>
             <div class="top-banner__close">
                 <?php include( get_theme_file_path() . '/assets/images/icons/close.svg' ); ?>
             </div>
+            <?php endif; ?>
         </div>
         <?php } ?>
             <div class="top-bar">
@@ -164,7 +172,7 @@
 
                     <div class="mm-bradentongulfislands-nav nav__shortcuts mega-menu-shortcuts">
                         <ul class="mm-bradentongulfislands-menu menu__shortcuts">
-                            <li class="menu-item"><a href="/gulf-islands-ferry/"><img src="<?php echo get_theme_file_uri() ?>/assets/images/icons/nav-icon-ferry.png" alt="<?php _e( 'Ferry Icon', 'mmnino' ); ?>" width="24px" height="24px"> Water Ferry</a></li>
+                            <li class="menu-item"><a href="/blogs/hurricane-helene-recovery/"><img src="<?php echo get_theme_file_uri() ?>/assets/images/icons/hurricane.svg" alt="<?php _e( 'Hurricane Icon', 'mmnino' ); ?>" width="24px" height="24px"> Hurricane Recovery</a></li>
                             <li class="menu-item"><a href="/enews"><img src="<?php echo get_theme_file_uri() ?>/assets/images/icons/envelope.png" alt="<?php _e( 'Envelope Icon', 'mmnino' ); ?>" width="24px" height="24px"> Newsletter</a></li>
                             <li class="menu-item"><a href="/travel-guide"><img src="<?php echo get_theme_file_uri() ?>/assets/images/icons/literature.png" alt="<?php _e( 'Literature Icon', 'mmnino' ); ?>" width="24px" height="24px"> Travel Guide</a></li>
                             <li class="menu-item"><a href="/love-it-like-a-local/"><img src="<?php echo get_theme_file_uri() ?>/assets/images/icons/starfish-icon.png" alt="<?php _e( 'Accessibility Icon', 'mmnino' ); ?>" width="24px" height="24px"> Sustainability</a></li>
@@ -182,7 +190,7 @@
             </div>
             <div class="mm-bradentongulfislands-nav nav__shortcuts mega-menu-shortcuts mega-menu-shortcuts--mobile">
                 <ul class="mm-bradentongulfislands-menu menu__shortcuts">
-                    <li class="menu-item"><a href="/gulf-islands-ferry/">Water Ferry</a></li>
+                    <li class="menu-item"><a href="/blogs/hurricane-helene-recovery/">Hurricane Recovery</a></li>
                     <li class="menu-item"><a href="/enews/">Newsletter</a></li>
                     <li class="menu-item"><a href="/love-it-like-a-local/">Sustainability</a></li>
                 </ul>
@@ -241,7 +249,7 @@
                                 </div>
                             </a>
                             <a href="/venues/convention-center/" class="venue bacc">
-                                <img src="/wp-content/uploads/BACC-logo.png" alt="Bradenton Area Convention Center logo" class="logo">
+                                <img src="/wp-content/uploads/BACVB_Convention-Center-Logo_Color_CMYK.png" alt="Bradenton Area Convention Center logo" class="logo">
                                 <div class="featImg">
                                     <img src="/wp-content/uploads/2023/11/Bradenton_Area_Convention_Center_SfnOoYA6fwp2lbHiQUepT_t18q0ABlZBh_rgb_l-300x200.jpg" alt="Bradenton Area Convention Center image">
                                 </div>

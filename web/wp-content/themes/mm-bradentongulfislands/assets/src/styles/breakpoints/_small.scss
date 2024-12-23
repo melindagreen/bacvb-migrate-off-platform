@@ -419,6 +419,27 @@ TOP BANNER
     }
 }
 
+/*********************
+MADDEN BANNER
+*********************/
+.madden-banners-flyin {
+
+    width: 98%;
+    height: auto;
+    max-height: unset !important;
+
+    .flyin-content {
+
+
+        h3 {
+        font-size: 1.8rem !important;
+        }
+        p {
+
+            font-size: 1rem !important;
+        }
+    }
+}
 
 /*********************
 WEATHER

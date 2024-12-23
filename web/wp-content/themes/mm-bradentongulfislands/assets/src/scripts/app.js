@@ -152,6 +152,23 @@ if ('serviceWorker' in navigator) {
 		}
 	}
 
+	   /**
+	 * Switch in the transparent nav class when we're over the hero or if the megamenu is open
+	 */
+	function toggleTopBannerClasses() {
+
+		const scrollTop = $(window).scrollTop();
+		const topBar = $('.bradenton-header .top-banner--global');
+	  
+		if (scrollTop < 500 || !getIsSmall()) {
+		  
+		  topBar.removeClass('top-banner--hide');
+		} else {
+		  
+			topBar.addClass('top-banner--hide');
+		}
+	}
+
 	// truncate long body of text
 	function truncateText(description, maxWords) {
 	    // Split the description into an array of words
@@ -173,6 +190,9 @@ if ('serviceWorker' in navigator) {
 	 * Fires on initial document load
 	 */
 	function themeOnLoad() {
+
+		// Toggle Top Bar Banner
+		toggleTopBannerClasses();
 		
 		// Toggle menu
 		$(`.${THEME_PREFIX}-header .toggle`).click(function () {
@@ -215,7 +235,7 @@ if ('serviceWorker' in navigator) {
 	
 			// Initialize Swiper for each element with different options
 			var swiper = new Swiper('.' + uniqueContainer, {
-				loop: true,
+				loop: false,
 				autoplay: {
 					delay: 5500,
 					disableOnInteraction: false,
@@ -598,6 +618,7 @@ if ('serviceWorker' in navigator) {
     function themeOnScroll() {
         
 		toggleTopBarClasses();
+		toggleTopBannerClasses();
 		scrollAnimation('.is-style-arrow-button', 600, 'is-style-arrow-button--rotate');
 		scrollAnimation('.grid-item-body--2 .grid-item-body__arrow', 600, 'grid-item-body__arrow--forward');
 		scrollAnimation('.grid-item-body--3 .grid-item-body__arrow', 600, 'grid-item-body__arrow--rotate');

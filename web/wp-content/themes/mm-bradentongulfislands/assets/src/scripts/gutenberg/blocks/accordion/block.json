@@ -9,6 +9,10 @@
       "title": {
         "type": "string",
         "default": "Frequently Asked Questions"
+      },
+      "description": {
+        "type": "string",
+        "default": ""
       }
     }
   }

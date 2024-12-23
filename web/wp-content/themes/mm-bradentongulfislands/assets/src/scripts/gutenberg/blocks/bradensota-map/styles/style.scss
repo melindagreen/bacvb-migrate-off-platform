@@ -1,0 +1,190 @@
+@import 'styles/utils/variables';
+@import 'styles/utils/typography';
+$font-bradensota: "Josefin Sans", sans-serif;
+.#{$block-prefix}-bradensota-map {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin: auto;
+  justify-content: center;
+  gap: 4rem 8rem;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 48vw;
+  max-height: max-content;
+  margin: 4rem auto;
+  max-width: 105rem;
+  // overflow: hidden;
+  padding: 0 6vw;
+
+  @media only screen and (max-width: $screen-lg) {
+    gap: 4rem 4vw;
+  }
+
+  .mapContainer {
+    height: fit-content;
+    width: 100%;
+    z-index: 1;
+    border: 15px solid white;
+    border-radius: 32px;
+    position: relative;
+
+    .zoomInfo {
+
+      position: absolute;
+      right: -4rem;
+      top: -4rem;
+      color: white;
+      background: $bradenton-teal;
+      border-radius: 100%;
+      width: 8rem;
+      height: 8rem;
+      padding: 1.25rem 1rem;
+      padding-top: 3rem;
+      font-weight: 600;
+      font-weight: 600;
+      text-align: center;
+      font-family: $font-bradensota;
+    }
+
+    #resetZoom {
+
+      position: absolute;
+      right: 1rem;
+      top: 1rem;
+      background: $rust;
+      color: white;
+      border: none;
+      padding: 0.75rem 1rem;
+      padding-bottom: 0.6rem;
+      border-radius: 16px;
+      cursor: pointer;
+      display: none;
+      font-family: $font-bradensota;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    svg {
+
+      border-radius: 17px;
+
+      image {
+
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
+
+        &:hover {
+
+          transition: all 0.2s ease-in-out;
+        }
+      }
+    }
+
+    #bradensotaMap {
+
+      display: block;
+    }
+
+    .map-logo {
+
+      position: absolute;
+      top: 57%;
+    }
+
+    .county {
+      cursor: pointer;
+      transition: all 0.3s;
+
+      &:hover, &.active {
+        fill: rgba($bradenton-teal,1) !important;
+      }
+    }
+
+   
+
+  }
+
+  .bradensota-map-content {
+
+    border-radius: 55px;
+    background-color: white;
+    box-shadow: 0px 3px 6px #00000029;
+    width: 30rem;
+    margin-left: -11vw;
+    z-index: 3;
+    padding: 1.5rem;
+
+    &__title, &__location, &__description {
+      line-height: 1.2em;
+      margin-bottom: 0.2rem;
+    }
+
+    &__title {
+
+      color: #F26B39;
+    }
+    &__location {
+
+      color: #305A6C;
+      font-family: $font-bradensota;
+    }
+    &__description {
+
+      color: #2797C6;
+    }
+    hr {
+      border: 1px solid #B59939;
+    }
+  }
+}
+
+/*********************
+SMALL SCREENS
+*********************/
+@media only screen and (max-width: $screen-md) {
+  .#{$block-prefix}-bradensota-map {
+
+    height: max-content;
+    overflow: hidden;
+    display: block;
+    padding: 0;
+    overflow: hidden;
+
+    .mapContainer {
+      border: 15px solid white;
+      border-left: 0;
+      border-right: 0;
+      border-radius: 0;
+      overflow: hidden;
+
+      #bradensotaMap {
+
+        border-radius: 0;
+      }
+
+      .zoomInfo {
+
+        transform: scale(0.5) translateX(105%);
+        right: 50%;
+        top: -4rem;
+        width: 8.8rem;
+        height: 8.8rem;
+        padding: 1.25rem;
+        padding-top: 4.5rem;
+      }
+    }
+    .bradensota-map-content {
+
+        margin: 2rem auto;
+        margin-top: -1.5rem;
+        z-index: 4;
+        position: relative;
+        width: 90vw;
+    }
+  }
+
+
+}
+

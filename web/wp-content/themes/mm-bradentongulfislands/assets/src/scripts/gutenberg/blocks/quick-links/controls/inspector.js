@@ -3,7 +3,7 @@
 // WordPress dependencies
 import { __ } from '@wordpress/i18n';
 import { InspectorControls } from '@wordpress/block-editor'
-import { PanelBody, PanelRow, TextControl } from '@wordpress/components'
+import { PanelBody, PanelRow, TextControl, ToggleControl } from '@wordpress/components'
 import { ColorPalette } from '@wordpress/block-editor'
 import { useSelect, } from '@wordpress/data';
 
@@ -19,7 +19,7 @@ const ALLOWED_MEDIA_TYPES = ['image'];
 
 
 const Inspector = props => {
-    const { attributes: { blockTitle, color }, setAttributes } = props;
+    const { attributes: { blockTitle, color, hideOnMobile }, setAttributes } = props;
 
     return (
         <InspectorControls>
@@ -38,6 +38,13 @@ const Inspector = props => {
                         colors={wp.data.select('core/editor').getEditorSettings().colors}
                     />
                 </PanelRow>
+                <PanelRow>
+					<ToggleControl
+						checked={ hideOnMobile }
+						label={ __( 'Hide On Mobile' ) }
+						onChange={ ( hideOnMobile ) => setAttributes({ hideOnMobile })}
+					/>
+				</PanelRow>
             </PanelBody>
         </InspectorControls>
     )
