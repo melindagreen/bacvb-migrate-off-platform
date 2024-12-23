@@ -11,7 +11,12 @@ const save = (props) => {
 
   return (
     <div className={`wp-block-mm-bradentongulfislands-wideslideshow` }>
-    <div class="wp-block-mm-bradentongulfislands-wideslideshow__banner-title"><h2>{bannerTitle}</h2><p>{bannerDescription}</p></div>
+    {bannerTitle?.length > 0 && (
+      <div className="wp-block-mm-bradentongulfislands-wideslideshow__banner-title">
+        <h2>{bannerTitle}</h2>
+        <p>{bannerDescription}</p>
+      </div>
+    )}
     <div className='wideslideshow-ligthbox-overlay wideslideshow-ligthbox-overlay--hide'>
       <div class="wideslideshow-ligthbox-overlay__close">x</div>
       <div className='wideslideshow-ligthbox-overlay__content'>
