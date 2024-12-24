@@ -1,0 +1,32 @@
+{
+  "name": "logo-cta",
+  "scripts": [
+    "front.js"
+  ],
+  "settings": {
+    "title": "Logo CTA",
+    "description": "cta with logo",
+    "icon": "share-alt",
+    "category": "layout",
+    "attributes": {
+      "imageUrl": {
+        "type": "string",
+        "default": ""
+      },
+      "imageAlt": {
+        "type": "string",
+        "default": ""
+      },
+      "title": {
+        "type": "string",
+        "default": "",
+        "source": "html",
+        "selector": "button.contents-title"
+      },
+      "mode": {
+        "type": "string",
+        "default": "preview"
+      }
+    }
+  }
+}
