@@ -269,16 +269,16 @@ var markersObject = {};
 	 */
 	function updatePagination(page) {
 		// update buttons
-		var prev = page > 1 ? page - 1 : 1;
+		var prev = page > 1 && !isNaN(page) ? page - 1 : 1;
 		var lastPage = parseInt($(".pagination__button--last").attr("data-page"));
-		var next = page < lastPage ? page + 1 : lastPage;
+		var next = page < lastPage && !isNaN(page) ? page + 1 : lastPage;
 		$(".pagination__button--prev").attr("data-page", prev);
 		$(".pagination__button--next").attr("data-page", next);
 
 		// update counts
 		var total = parseInt($(".count__page-total:first").text());
-		var countStart = (page - 1) * perPage + 1;
-		var countEnd = page * perPage > total ? total : page * perPage;
+		var countStart = !isNaN(page) ? (page - 1) * perPage + 1 : 1;
+		var countEnd = page * perPage > total || isNaN(page) ? total : page * perPage;
 		$(".count__page-start").text(countStart);
 		$(".count__page-end").text(countEnd);
 
@@ -519,12 +519,15 @@ var markersObject = {};
 		const result = await reconcileEvents(events, instances);
 
 		page = !isNaN(page) ? page : 1;
+		console.log(page);
 
 		//use page and PAGE_LENGTH to slice result
 		let start = (page - 1) * PAGE_LENGTH;
 		start = !isNaN(start) ? start : 1;
+		console.log(start);
 		let end = start + PAGE_LENGTH;
 		end = !isNaN(end) ? end : result.length;
+		console.log(end);
 		let slicedResult = result.slice(start, end);
 		slicedResult = slicedResult.length !== 0 ? slicedResult : result;
 

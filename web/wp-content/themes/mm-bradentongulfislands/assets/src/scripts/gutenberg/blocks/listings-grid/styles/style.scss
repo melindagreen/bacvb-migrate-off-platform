@@ -9,40 +9,40 @@ $bar-height: 70px;
   100% { transform: rotate(360deg); }
 }
 
-#ui-datepicker-div {
-	position: relative;
-	z-index: 1000;
-	background-color: #fff;
-	.ui-datepicker-header {
-		text-align: center;
-		font-size: 0.8em;
-		color: #fff;
-		background-color: $bradenton-teal;
+// #ui-datepicker-div {
+// 	position: relative;
+// 	z-index: 1000;
+// 	background-color: #fff;
+// 	.ui-datepicker-header {
+// 		text-align: center;
+// 		font-size: 0.8em;
+// 		color: #fff;
+// 		background-color: $bradenton-teal;
 
-		.ui-corner-all {
-			display: inline-block;
-			margin: 0 5px;
-		}
-	}
-	.ui-datepicker-calendar {
-		text-align: center;
-		a {
-			color: $bradenton-teal;
-			text-decoration: none;
-		}
-	}
-}
+// 		.ui-corner-all {
+// 			display: inline-block;
+// 			margin: 0 5px;
+// 		}
+// 	}
+// 	.ui-datepicker-calendar {
+// 		text-align: center;
+// 		a {
+// 			color: $bradenton-teal;
+// 			text-decoration: none;
+// 		}
+// 	}
+// }
 
 .#{$block-prefix}-listings-grid {
 	margin: 4rem 0;
 
 	.venue-icon {
 
-		border: 1px solid $rust;
-		background: $rust;
+		border: 1px solid #CE7C4F;
+		background: #CE7C4F;
 		border-radius: 100%;
-		padding: 18%;
-    	width: 2.8rem;
+		padding: 19%;
+    	width: 3rem;
 		text-align: center;
 		display: inline-block;
 		font-weight: 600;
@@ -133,9 +133,7 @@ $bar-height: 70px;
 
 					content: '';
 					position: absolute;
-					top: 54%;
-
-					transform: translate(-35px, -50%) rotate(180deg);
+					transform: translate(-35px, 22px) rotate(180deg);
 					border-left: 8px solid transparent;
 					border-right: 8px solid transparent;
 					border-bottom: 8px solid white; 
@@ -417,6 +415,7 @@ $bar-height: 70px;
 			padding: 0 1em;
 			width: 400px;
 			max-width: 50%;
+			flex-wrap: wrap;
 			margin: 0 auto;
 			.control__label {
 				color: $bradenton-teal;
@@ -430,6 +429,7 @@ $bar-height: 70px;
 				border-bottom-left-radius: 20px;
 				height: 35px;
 				border: 1px solid $rust;
+				font-family: $font-body;
 			}
 			.submit-filter {
 				border: 0;
@@ -546,6 +546,7 @@ $bar-height: 70px;
 			border: 2px solid $rust;
 			border-radius: 20px;
 			padding: 5px 1em;
+			font-family: $font-body;
 		}
 	}
 
@@ -848,6 +849,14 @@ SMALL SCREENS
 @media only screen and (max-width: 700px) {
 	.#{$block-prefix}-listings-grid {
 
+		.listingContainer {
+
+			&--sports-venue {
+
+				margin-bottom: 1rem;
+			}
+		}
+
 		.filters {
 			flex-direction: column;
 
@@ -862,6 +871,8 @@ SMALL SCREENS
 
 			.control--search {
 				margin: 0;
+				gap: 1rem;
+				max-width: 67%;
 			}
 		}
 		margin: 2rem 0;
