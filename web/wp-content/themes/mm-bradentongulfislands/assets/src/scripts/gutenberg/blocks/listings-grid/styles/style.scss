@@ -72,6 +72,7 @@ $bar-height: 70px;
 		.filters {		
 			display: flex;
 			max-width: 70em;
+			flex-wrap: wrap;
 
 			.control__label--categories.all, .control__label--categories.exclude {
 
@@ -84,6 +85,32 @@ $bar-height: 70px;
 					color: white;
 				}
 			} 
+			.control--venues {
+
+				width: 100%;
+				flex: 0 1 auto;
+				margin: 1rem auto;
+				text-align: center;
+
+				.control__label {
+
+					display: block;
+					font-size: 1.5rem;
+					font-family: $font-header;
+					color: white;
+					margin-bottom: 1rem;
+				}
+
+				.control__select {
+
+					background: none;
+					border: 1px solid white;
+					border-radius: 12px;
+					padding: 1rem;
+					color: white;
+				}
+			}
+
 		}
 	}
 
@@ -272,6 +299,43 @@ $bar-height: 70px;
 	.filterContainer {
 		position: relative;
 		z-index: 99;
+
+		.sports-key {
+
+			position: absolute;
+			top: 0;
+			left: 5%;
+			color: white;
+			width: 14rem;
+
+			&__title {
+				
+				text-align: center;
+				font-size: 1rem;
+				text-transform: uppercase;
+				font-weight: 400;
+				margin-bottom: 0;
+			}
+
+			&__item {
+
+				color: white;
+				margin: 1rem 0;
+				font-size: 0.9rem;
+				margin-bottom: 0;
+
+				span {
+
+					border: 1px solid white;
+					border-radius: 100%;
+					padding: 2.5%;
+					width: 2.5rem;
+					text-align: center;
+					margin-right: 0.5rem;
+					display: inline-block;
+				}
+			}
+		}
 	}
 
 	.filters {

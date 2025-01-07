@@ -119,6 +119,27 @@ function render_grid_filter( $attrs, $filter_tax ) {
                 <?php checked( !isset( $_GET['listings_term'] ) ); ?>
                 />
             </label>
+            <!-- venue filter -->
+            <?php if($attrs['filterType'] === 'sports'): ?>
+                <div class="control control--venues">
+                    <label for="eventastic_venues" class="control__label control__label--eventastic_venues"><?php _e('Venue'); ?></label>
+                    <select name="eventastic_venues" id="eventastic_venues" class="control__select">
+                        <option value="" <?php selected(isset($_GET['eventastic_venues']) ? $_GET['eventastic_venues'] : '', 'eventastic_venues'); ?>>
+                            <?php _e('Select Venue'); ?>
+                        </option>
+                        <option value="premier-sports-campus" <?php selected(isset($_GET['eventastic_venues']) ? $_GET['eventastic_venues'] : '', 'eventastic_venues'); ?>>
+                            <?php _e('Premier Sports Campus'); ?>
+                        </option>
+                        <option value="lecom-park" <?php selected(isset($_GET['eventastic_venues']) ? $_GET['eventastic_venues'] : '', 'eventastic_venues'); ?>>
+                            <?php _e('Lecom Park'); ?>
+                        </option>
+                        <option value="img-academy" <?php selected(isset($_GET['eventastic_venues']) ? $_GET['eventastic_venues'] : '', 'eventastic_venues'); ?>>
+                            <?php _e('IMG Academy'); ?>
+                        </option>
+                    </select>
+                </div>
+            <?php endif; ?>
+            <!--/ venue filter -->
             <div class="date-controls">
                 <div class="control control--start-date">
                     <label for="control__input--start-date" class="control__label control__label--start-date">
@@ -315,6 +336,17 @@ function render_grid_filter( $attrs, $filter_tax ) {
             <?php endif;?>
         </form>
         <!--/ end filters -->
+
+        <!-- sports venue Key -->
+        <?php if($attrs['filterType'] === 'sports'): ?>
+            <div class="sports-key">
+                <h6 class="sports-key__title">Key</h6>
+                <p class="sports-key__item"><span>PSC</span> Premier Sports Complex</p>
+                <p class="sports-key__item"><span>LP</span> Lecom Park</p>
+                <p class="sports-key__item"><span>IMG</span> IMG Academy</p>
+            </div>
+        <?php endif; ?>
+        <!--/ end sports venue Key -->
     </div>
     <?php
 }
