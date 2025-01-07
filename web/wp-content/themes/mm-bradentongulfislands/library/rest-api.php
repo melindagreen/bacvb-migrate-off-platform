@@ -207,7 +207,6 @@ class RestApi {
         return $args;
     }
 
-
     /**
      * Add custom start and end date paramters to event query
      */

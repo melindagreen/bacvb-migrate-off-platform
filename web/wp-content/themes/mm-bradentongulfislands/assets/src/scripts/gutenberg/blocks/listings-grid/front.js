@@ -312,6 +312,7 @@ var markersObject = {};
 			var instanceData = JSON.parse( response );
 			instances = await processInstances(instanceData);
 		});
+		
 		return instances;
 	}
 	function isRecurring(event) {
@@ -450,7 +451,7 @@ var markersObject = {};
 			moreEventsAvailable = false; 
 		  }
 		}
-	  
+
 		return allEvents;
 	}	  
 	async function reconcileEvents(events, instances) {
@@ -496,8 +497,8 @@ var markersObject = {};
 			}
 		});
 
-		
-		return pruned;
+		console.log(pruned);
+		return pruned.length !== 0 ? pruned : events;
 	}
 	async function getEvents(page) {
 		//Run both queries simultaneously
@@ -810,6 +811,7 @@ var markersObject = {};
 
 		// Form filters
 		$('.control--categories').on('change', updateCatChecks);
+		$('#eventastic_venues').on('change', loadPage);
 		$('.filters').on('submit', function (e) {
 			e.preventDefault();
 			loadPage();

@@ -87,7 +87,7 @@ function render_grid_filter( $attrs, $filter_tax ) {
 
     ?> 
     
-    <div class="filterContainer <?php echo isset( $attrs['postType'] ) && $attrs['postType'] === 'event' ? 'is-style-collage-square' : ''; ?>">
+    <div class="filterContainer <?php echo isset( $attrs['postType'] ) && $attrs['postType'] === 'event' ? 'is-style-collage-square' : ''; ?> <?php echo $attrs['filterType'] === 'sports' ? 'filterContainer--sports-venue': ''; ?>">
         <!-- filters -->
         <?php if( isset( $attrs['postType'] ) && $attrs['postType'] === 'event' ):?>
         <h2 class="grid-title"><?php echo $attrs['listingsTitle']; ?></h2>
@@ -127,13 +127,13 @@ function render_grid_filter( $attrs, $filter_tax ) {
                         <option value="" <?php selected(isset($_GET['eventastic_venues']) ? $_GET['eventastic_venues'] : '', 'eventastic_venues'); ?>>
                             <?php _e('Select Venue'); ?>
                         </option>
-                        <option value="premier-sports-campus" <?php selected(isset($_GET['eventastic_venues']) ? $_GET['eventastic_venues'] : '', 'eventastic_venues'); ?>>
+                        <option value="361" <?php selected(isset($_GET['eventastic_venues']) ? $_GET['eventastic_venues'] : '', 'eventastic_venues'); ?>>
                             <?php _e('Premier Sports Campus'); ?>
                         </option>
-                        <option value="lecom-park" <?php selected(isset($_GET['eventastic_venues']) ? $_GET['eventastic_venues'] : '', 'eventastic_venues'); ?>>
+                        <option value="364" <?php selected(isset($_GET['eventastic_venues']) ? $_GET['eventastic_venues'] : '', 'eventastic_venues'); ?>>
                             <?php _e('Lecom Park'); ?>
                         </option>
-                        <option value="img-academy" <?php selected(isset($_GET['eventastic_venues']) ? $_GET['eventastic_venues'] : '', 'eventastic_venues'); ?>>
+                        <option value="365" <?php selected(isset($_GET['eventastic_venues']) ? $_GET['eventastic_venues'] : '', 'eventastic_venues'); ?>>
                             <?php _e('IMG Academy'); ?>
                         </option>
                     </select>
