@@ -189,7 +189,20 @@ var markersObject = {};
 					if(startDate != endDate) {
 						date += ` - <span class='date__end'>${endDate}</span>`;
 					}
+
+					let venue = listing?.venue_name[0]?.slug;
+					if (typeof venue !== 'undefined') {
+
+						const venueAbbreviations = {
+							'premier-sports-campus': 'PSC',
+							'lecom-park': 'LP',
+							'img-academy': 'IMG'
+						};
+						
 					
+						venue = venueAbbreviations[venue] || venue; 
+						accommodationIcons += `<span class="venue-icon">${venue}</span>`;
+					}
 					date += `</div>`;
 				}
 				break;
@@ -496,8 +509,7 @@ var markersObject = {};
 				}
 			}
 		});
-
-		console.log(pruned);
+		console.log(events);
 		return pruned.length !== 0 ? pruned : events;
 	}
 	async function getEvents(page) {
@@ -506,10 +518,15 @@ var markersObject = {};
 		const instances = await loadAllInstances(); //Returns all instances that match dates
 		const result = await reconcileEvents(events, instances);
 
+		page = !isNaN(page) ? page : 1;
+
 		//use page and PAGE_LENGTH to slice result
-		const start = (page - 1) * PAGE_LENGTH;
-		const end = start + PAGE_LENGTH;
-		const slicedResult = result.slice(start, end);
+		let start = (page - 1) * PAGE_LENGTH;
+		start = !isNaN(start) ? start : 1;
+		let end = start + PAGE_LENGTH;
+		end = !isNaN(end) ? end : result.length;
+		let slicedResult = result.slice(start, end);
+		slicedResult = slicedResult.length !== 0 ? slicedResult : result;
 
 		return {
 			total: result.length,

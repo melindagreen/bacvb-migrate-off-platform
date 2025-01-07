@@ -36,6 +36,21 @@ $bar-height: 70px;
 .#{$block-prefix}-listings-grid {
 	margin: 4rem 0;
 
+	.venue-icon {
+
+		border: 1px solid $rust;
+		background: $rust;
+		border-radius: 100%;
+		padding: 18%;
+    	width: 2.8rem;
+		text-align: center;
+		display: inline-block;
+		font-weight: 600;
+		color: white;
+		position: relative;
+		bottom: 1rem;
+	}
+
 	// For all listings, the container will have a tan graident
 	&.listings-grid--listing {
 		.grid-body {
@@ -111,6 +126,7 @@ $bar-height: 70px;
 					position: relative;
 					appearance: none; 
 					width: 15rem;
+					font-family: $font-body;
 				}
 
 				&::after {
@@ -360,6 +376,7 @@ $bar-height: 70px;
 					text-align: center;
 					margin-right: 0.5rem;
 					display: inline-block;
+					font-weight: 600;
 				}
 			}
 

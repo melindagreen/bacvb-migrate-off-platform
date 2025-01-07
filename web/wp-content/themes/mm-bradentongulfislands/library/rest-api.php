@@ -66,6 +66,17 @@ class RestApi {
             ) );
         }
 
+        // category name 
+        $venue_types = array( 'event' );
+        foreach( $venue_types as $type ) {
+            register_rest_field( $type, 'venue_name', array(
+                'get_callback' => function( $object ) use( $type ) {
+                    $venue = get_the_terms($object['id'], 'eventastic_venues');;
+                    return $venue;
+                }
+            ) );
+        }
+
         // thumb
         $thumb_types = array( 'listing', 'event', 'post' );
         foreach( $thumb_types as $type ) {
