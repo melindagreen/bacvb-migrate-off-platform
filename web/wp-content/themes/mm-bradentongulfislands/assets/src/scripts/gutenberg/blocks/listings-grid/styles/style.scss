@@ -110,19 +110,20 @@ $bar-height: 70px;
 					color: white;
 					position: relative;
 					appearance: none; 
+					width: 15rem;
+				}
 
-					&::after {
+				&::after {
 
-						content: '';
-						position: absolute;
-						right: 10px;
-						top: 50%;
-						transform: translateY(-50%) rotate(180deg); 
-						border-left: 5px solid transparent;
-						border-right: 5px solid transparent;
-						border-bottom: 5px solid white; 
-						pointer-events: none;
-					}
+					content: '';
+					position: absolute;
+					top: 54%;
+
+					transform: translate(-35px, -50%) rotate(180deg);
+					border-left: 8px solid transparent;
+					border-right: 8px solid transparent;
+					border-bottom: 8px solid white; 
+					pointer-events: none;
 				}
 			}
 
