@@ -183,7 +183,7 @@ var markersObject = {};
 
 					endDate = `${endMonth} ${endDay}`;
 
-					date = `<div class='date'>
+					date = `<div class='date is-style-collage-square'>
 						<span class='date__start'>${startDate}</span>`;
 
 					if(startDate != endDate) {
@@ -283,30 +283,9 @@ var markersObject = {};
 		$(".count__page-end").text(countEnd);
 
 		// enable appropraite buttons
-		if (page > 1) {
-			$(".pagination__button--first, .pagination__button--prev").prop(
-				"disabled",
-				false
-			);
-		}
-		else {
-			$(".pagination__button--first, .pagination__button--prev").prop(
-				"disabled",
-				true
-			);
-		}
-		if (!((perPage*lastPage)-countEnd)) {
-			$(".pagination__button--next, .pagination__button--last").prop(
-				"disabled",
-				true
-			);
-		}
-		else {
-			$(".pagination__button--next, .pagination__button--last").prop(
-				"disabled",
-				false
-			);
-		}
+		$(".pagination__button--first, .pagination__button--prev").prop("disabled", page <= 1);
+		$(".pagination__button--next, .pagination__button--last").prop("disabled", total <= countEnd);
+
 	}
 	/*
 	 * Event functions

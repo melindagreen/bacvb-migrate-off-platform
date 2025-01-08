@@ -41,14 +41,16 @@ $bar-height: 70px;
 		border: 1px solid #CE7C4F;
 		background: #CE7C4F;
 		border-radius: 100%;
-		padding: 19%;
-    	width: 3rem;
+		padding: 20%;
+		width: 3rem;
+		height: 2.8rem;
 		text-align: center;
 		display: inline-block;
 		font-weight: 600;
 		color: white;
 		position: relative;
 		bottom: 1rem;
+		transform: scale(0.8);
 	}
 
 	// For all listings, the container will have a tan graident
@@ -127,6 +129,7 @@ $bar-height: 70px;
 					appearance: none; 
 					width: 15rem;
 					font-family: $font-body;
+					cursor: pointer;
 
 					option {
 
@@ -360,7 +363,7 @@ $bar-height: 70px;
 				font-size: 1rem;
 				text-transform: uppercase;
 				font-weight: 400;
-				margin-bottom: 0;
+				margin-bottom: -0.8rem;
 			}
 
 			&__item {
