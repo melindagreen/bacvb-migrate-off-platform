@@ -131,7 +131,7 @@ function render_grid_filter( $attrs, $filter_tax ) {
                             <?php _e('Premier Sports Campus'); ?>
                         </option>
                         <option value="364" <?php selected(isset($_GET['eventastic_venues']) ? $_GET['eventastic_venues'] : '', 'eventastic_venues'); ?>>
-                            <?php _e('Lecom Park'); ?>
+                            <?php _e('LECOM Park'); ?>
                         </option>
                         <option value="365" <?php selected(isset($_GET['eventastic_venues']) ? $_GET['eventastic_venues'] : '', 'eventastic_venues'); ?>>
                             <?php _e('IMG Academy'); ?>
@@ -341,8 +341,8 @@ function render_grid_filter( $attrs, $filter_tax ) {
         <?php if($attrs['filterType'] === 'sports'): ?>
             <div class="sports-key">
                 <h6 class="sports-key__title">Key</h6>
-                <p class="sports-key__item"><span>PSC</span> Premier Sports Complex</p>
-                <p class="sports-key__item"><span>LP</span> Lecom Park</p>
+                <p class="sports-key__item"><span>PSC</span> Premier Sports Campus</p>
+                <p class="sports-key__item"><span>LP</span> LECOM Park</p>
                 <p class="sports-key__item"><span>IMG</span> IMG Academy</p>
             </div>
         <?php endif; ?>
