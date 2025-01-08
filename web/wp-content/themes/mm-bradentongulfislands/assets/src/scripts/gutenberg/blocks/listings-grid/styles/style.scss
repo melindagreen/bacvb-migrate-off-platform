@@ -58,6 +58,7 @@ $bar-height: 70px;
 		.grid-body {
 			background: linear-gradient(to bottom, #f4eee1, #f5e7cc);
 			padding: 1rem;
+			margin: auto;
 		}
 	}
 
@@ -100,6 +101,8 @@ $bar-height: 70px;
 
 				.control__label {
 					color: white;
+					text-align: justify;
+    				line-height: 1.1em;
 				}
 			} 
 			.control--venues {
@@ -422,9 +425,10 @@ $bar-height: 70px;
 			align-items: center;
 			padding: 0 1em;
 			width: 400px;
-			max-width: 50%;
-			flex-wrap: wrap;
+			max-width: 75%;
+			margin: auto;
 			margin: 0 auto;
+			text-align: center;
 			.control__label {
 				color: $bradenton-teal;
 			}
@@ -450,6 +454,7 @@ $bar-height: 70px;
 				margin-left: -10px;
 				padding: 5px;
 				box-sizing: border-box;
+				cursor: pointer;
 				img {
 					width: 80%;
 				}
@@ -865,6 +870,27 @@ SMALL SCREENS
 			}
 		}
 
+		.date-controls {
+
+			width: 75%;
+			margin: auto;
+			text-align: center;
+			max-width: 38rem;
+
+			.control__label--start-date {
+
+				font-size: 1.5rem;
+				text-align: center;
+				margin: auto;
+			}
+
+			#control__input--start-date, #control__input--end-date {
+				margin: 0 auto 1rem auto;
+				padding: 10px 0.8em;
+				font-size: 1rem;
+			}
+		}
+
 		.filters {
 			flex-direction: column;
 
@@ -878,7 +904,7 @@ SMALL SCREENS
 			}
 
 			.control--search {
-				margin: 0;
+				margin: 0 auto;
 				gap: 1rem;
 				max-width: 67%;
 			}
@@ -904,6 +930,7 @@ SMALL SCREENS
 			font-size: 2em;
 			margin: 0 0 -13px 1em;
 			margin-bottom: 1rem;
+			line-height: 1.2em;
 		}
 
 		.view--map {
