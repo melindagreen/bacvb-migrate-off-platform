@@ -73,7 +73,7 @@ var markersObject = {};
 			iconSize: [24, 48],
 			iconAnchor: [12, 24],
 		});
-		console.log(listings);
+
 		// Icon size and anchor size added to ensure correct placement of icons and markers throughout zoom positions
 		listings.forEach(function (listing) {
 
@@ -88,7 +88,6 @@ var markersObject = {};
 				// Ensure latitude and longitude are valid numbers
 				if (!isNaN(latitude) && !isNaN(longitude)) {
 					var coords = [latitude, longitude];
-					console.log(coords);
 
 					// Add marker to layer group
 					var marker = L.marker(coords, {
@@ -381,7 +380,6 @@ var markersObject = {};
 				})
 				.join('&');
 
-		console.log(url);
 		let page = 1;
 		const perPage = 100;
 		let allEvents = [];
@@ -421,7 +419,7 @@ var markersObject = {};
 			}
 		  });
 		}
-		console.log(url);
+
 		let page = 1;
 		const perPage = 100;
 		let allEvents = [];
@@ -488,7 +486,7 @@ var markersObject = {};
 				}
 			}
 		});
-		console.log(events);
+
 		return pruned.length !== 0 ? pruned : events;
 	}
 	async function getEvents(page) {
@@ -498,15 +496,14 @@ var markersObject = {};
 		const result = await reconcileEvents(events, instances);
 
 		page = !isNaN(page) ? page : 1;
-		console.log(page);
 
 		//use page and PAGE_LENGTH to slice result
 		let start = (page - 1) * PAGE_LENGTH;
 		start = !isNaN(start) ? start : 1;
-		console.log(start);
+
 		let end = start + PAGE_LENGTH;
 		end = !isNaN(end) ? end : result.length;
-		console.log(end);
+
 		let slicedResult = result.slice(start, end);
 		slicedResult = slicedResult.length !== 0 ? slicedResult : result;
 
@@ -619,7 +616,7 @@ var markersObject = {};
 					var totalPages = parseInt(xhr.getResponseHeader("X-WP-TotalPages"));
 					$(".count__page-total").text(total);
 					$(".pagination__button--last").attr("data-page", totalPages);
-					console.log(url);
+
 					// update pagination
 					updatePagination(page);
 					$(".counts").addClass("show");
@@ -638,7 +635,6 @@ var markersObject = {};
 							".view.active .listings-container .swiper-wrapper"
 						);
 					}
-					console.log(listingsContainer);
 
 					if(listings.length > 0) {
 						listingsContainer.empty();
@@ -748,9 +744,6 @@ var markersObject = {};
 		const getIsSmall = () =>
 			jQuery("#isSmall").length && jQuery("#isSmall").css("float") !== "none";
 		
-		console.log(jQuery("#isLarge").css("float"));
-		
-
 		// Map Coordinate start point
 		if(!getIsLarge()) {
 		
@@ -760,7 +753,7 @@ var markersObject = {};
 		perPage = parseInt($('#listings-grid').attr('data-perpage'));
 			
 		if ($('.view--map')) {
-			console.log('Test');
+
 			$('.view--map').addClass("active");
 			$('.view--grid').removeClass("active");
 			if (map) map.invalidateSize();
@@ -866,7 +859,7 @@ function enableListingSlider() {
 	if (!listingCards.classList.contains("swiper-initialized")) {
 		
 		swiperListingCard = new Swiper(listingCards, swiperArgs);
-		console.log(swiperListingCard);
+
 		var listingID = jQuery(
 			swiperListingCard.slides[swiperListingCard.activeIndex]
 		).attr("data-listingID");
