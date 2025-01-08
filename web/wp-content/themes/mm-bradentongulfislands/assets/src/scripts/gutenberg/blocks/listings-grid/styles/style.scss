@@ -127,6 +127,11 @@ $bar-height: 70px;
 					appearance: none; 
 					width: 15rem;
 					font-family: $font-body;
+
+					option {
+
+						color: $soft-black;
+					}
 				}
 
 				&::after {

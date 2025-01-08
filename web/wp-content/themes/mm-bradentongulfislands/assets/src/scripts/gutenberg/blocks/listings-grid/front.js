@@ -552,7 +552,7 @@ var markersObject = {};
 	async function loadPage(page = 1, adjustScroll = false) {
 		// clear existing listings and show loader
 		$('.listing').remove();
-		$(".loading, .pagination__loading").addClass("show");
+		$(".loading").addClass("show");
 
 		// create wp-json URL for query
 		var postType = $(".wp-block-mm-bradentongulfislands-listings-grid").attr("data-postType");
@@ -571,6 +571,8 @@ var markersObject = {};
 				}, "10");
 			}
 
+			$('.listings-container--grid').append(`<div class="loading show"><span class="sr-only"><?php _e( 'loading' ); ?></span><i class="fas fa-spinner fa-pulse"></i></div>`);
+
 			const {total, events} = await getEvents(page);
 			var totalPages = parseInt(total / PAGE_LENGTH + 1);
 			$(".count__page-total").text(total);
@@ -581,7 +583,7 @@ var markersObject = {};
 			$(".counts").addClass("show");
 
 			// load listings
-			$(".loading, .pagination__loading").removeClass("show");
+			$(".loading").removeClass("show");
 			if(events.length > 0) {
 				$('.listings-container--grid').empty();
 				$('.listings-container--grid')
@@ -629,7 +631,7 @@ var markersObject = {};
 			if (viewType) {
 				url += `&activity=active&`
 			}
-			console.log(url);
+
 			$.get(url)
 				.done(function (listings, status, xhr) {
 
@@ -644,7 +646,7 @@ var markersObject = {};
 					$(".counts").addClass("show");
 
 					// load listings
-					$(".loading, .pagination__loading").removeClass("show");
+					$(".loading").removeClass("show");
 
 					listings = listings.filter(element => {
 						return true; 
