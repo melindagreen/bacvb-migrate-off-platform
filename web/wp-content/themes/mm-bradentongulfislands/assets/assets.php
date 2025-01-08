@@ -161,7 +161,7 @@ class AssetHandler {
             "build/app.js",
         );
 
-        $dependencies = array( "jquery" );
+        $dependencies = array( "jquery", "jquery-ui-datepicker" );
         
         $has_ajax = false;
 
@@ -255,6 +255,8 @@ class AssetHandler {
             [], // dependencies
             "1.9.4" // version
         ); 
+
+        wp_enqueue_style('jquery-ui', get_stylesheet_directory_uri() . '/assets/src/styles/library/jquery-ui.min.css');
     }
 
     /**

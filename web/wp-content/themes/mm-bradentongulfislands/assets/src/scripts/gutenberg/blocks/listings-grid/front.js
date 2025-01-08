@@ -73,7 +73,7 @@ var markersObject = {};
 			iconSize: [24, 48],
 			iconAnchor: [12, 24],
 		});
-		console.log(listings);
+
 		// Icon size and anchor size added to ensure correct placement of icons and markers throughout zoom positions
 		listings.forEach(function (listing) {
 
@@ -88,7 +88,6 @@ var markersObject = {};
 				// Ensure latitude and longitude are valid numbers
 				if (!isNaN(latitude) && !isNaN(longitude)) {
 					var coords = [latitude, longitude];
-					console.log(coords);
 
 					// Add marker to layer group
 					var marker = L.marker(coords, {
@@ -183,13 +182,26 @@ var markersObject = {};
 
 					endDate = `${endMonth} ${endDay}`;
 
-					date = `<div class='date'>
+					date = `<div class='date is-style-collage-square'>
 						<span class='date__start'>${startDate}</span>`;
 
 					if(startDate != endDate) {
 						date += ` - <span class='date__end'>${endDate}</span>`;
 					}
+
+					let venue = listing?.venue_name[0]?.slug;
+					if (typeof venue !== 'undefined') {
+
+						const venueAbbreviations = {
+							'premier-sports-campus': 'PSC',
+							'lecom-park': 'LP',
+							'img-academy': 'IMG'
+						};
+						
 					
+						venue = venueAbbreviations[venue] || venue; 
+						accommodationIcons += `<span class="venue-icon">${venue}</span>`;
+					}
 					date += `</div>`;
 				}
 				break;
@@ -256,44 +268,23 @@ var markersObject = {};
 	 */
 	function updatePagination(page) {
 		// update buttons
-		var prev = page > 1 ? page - 1 : 1;
+		var prev = page > 1 && !isNaN(page) ? page - 1 : 1;
 		var lastPage = parseInt($(".pagination__button--last").attr("data-page"));
-		var next = page < lastPage ? page + 1 : lastPage;
+		var next = page < lastPage && !isNaN(page) ? page + 1 : lastPage;
 		$(".pagination__button--prev").attr("data-page", prev);
 		$(".pagination__button--next").attr("data-page", next);
 
 		// update counts
 		var total = parseInt($(".count__page-total:first").text());
-		var countStart = (page - 1) * perPage + 1;
-		var countEnd = page * perPage > total ? total : page * perPage;
+		var countStart = !isNaN(page) ? (page - 1) * perPage + 1 : 1;
+		var countEnd = page * perPage > total || isNaN(page) ? total : page * perPage;
 		$(".count__page-start").text(countStart);
 		$(".count__page-end").text(countEnd);
 
 		// enable appropraite buttons
-		if (page > 1) {
-			$(".pagination__button--first, .pagination__button--prev").prop(
-				"disabled",
-				false
-			);
-		}
-		else {
-			$(".pagination__button--first, .pagination__button--prev").prop(
-				"disabled",
-				true
-			);
-		}
-		if (!((perPage*lastPage)-countEnd)) {
-			$(".pagination__button--next, .pagination__button--last").prop(
-				"disabled",
-				true
-			);
-		}
-		else {
-			$(".pagination__button--next, .pagination__button--last").prop(
-				"disabled",
-				false
-			);
-		}
+		$(".pagination__button--first, .pagination__button--prev").prop("disabled", page <= 1);
+		$(".pagination__button--next, .pagination__button--last").prop("disabled", total <= countEnd);
+
 	}
 	/*
 	 * Event functions
@@ -312,6 +303,7 @@ var markersObject = {};
 			var instanceData = JSON.parse( response );
 			instances = await processInstances(instanceData);
 		});
+		
 		return instances;
 	}
 	function isRecurring(event) {
@@ -388,7 +380,6 @@ var markersObject = {};
 				})
 				.join('&');
 
-		console.log(url);
 		let page = 1;
 		const perPage = 100;
 		let allEvents = [];
@@ -428,7 +419,7 @@ var markersObject = {};
 			}
 		  });
 		}
-		console.log(url);
+
 		let page = 1;
 		const perPage = 100;
 		let allEvents = [];
@@ -450,7 +441,7 @@ var markersObject = {};
 			moreEventsAvailable = false; 
 		  }
 		}
-	  
+
 		return allEvents;
 	}	  
 	async function reconcileEvents(events, instances) {
@@ -496,8 +487,7 @@ var markersObject = {};
 			}
 		});
 
-		
-		return pruned;
+		return pruned.length !== 0 ? pruned : events;
 	}
 	async function getEvents(page) {
 		//Run both queries simultaneously
@@ -505,10 +495,17 @@ var markersObject = {};
 		const instances = await loadAllInstances(); //Returns all instances that match dates
 		const result = await reconcileEvents(events, instances);
 
+		page = !isNaN(page) ? page : 1;
+
 		//use page and PAGE_LENGTH to slice result
-		const start = (page - 1) * PAGE_LENGTH;
-		const end = start + PAGE_LENGTH;
-		const slicedResult = result.slice(start, end);
+		let start = (page - 1) * PAGE_LENGTH;
+		start = !isNaN(start) ? start : 1;
+
+		let end = start + PAGE_LENGTH;
+		end = !isNaN(end) ? end : result.length;
+
+		let slicedResult = result.slice(start, end);
+		slicedResult = slicedResult.length !== 0 ? slicedResult : result;
 
 		return {
 			total: result.length,
@@ -531,7 +528,7 @@ var markersObject = {};
 	async function loadPage(page = 1, adjustScroll = false) {
 		// clear existing listings and show loader
 		$('.listing').remove();
-		$(".loading, .pagination__loading").addClass("show");
+		$(".loading").addClass("show");
 
 		// create wp-json URL for query
 		var postType = $(".wp-block-mm-bradentongulfislands-listings-grid").attr("data-postType");
@@ -550,6 +547,8 @@ var markersObject = {};
 				}, "10");
 			}
 
+			$('.listings-container--grid').append(`<div class="loading show"><span class="sr-only"><?php _e( 'loading' ); ?></span><i class="fas fa-spinner fa-pulse"></i></div>`);
+
 			const {total, events} = await getEvents(page);
 			var totalPages = parseInt(total / PAGE_LENGTH + 1);
 			$(".count__page-total").text(total);
@@ -560,7 +559,7 @@ var markersObject = {};
 			$(".counts").addClass("show");
 
 			// load listings
-			$(".loading, .pagination__loading").removeClass("show");
+			$(".loading").removeClass("show");
 			if(events.length > 0) {
 				$('.listings-container--grid').empty();
 				$('.listings-container--grid')
@@ -608,7 +607,7 @@ var markersObject = {};
 			if (viewType) {
 				url += `&activity=active&`
 			}
-			console.log(url);
+
 			$.get(url)
 				.done(function (listings, status, xhr) {
 
@@ -617,13 +616,13 @@ var markersObject = {};
 					var totalPages = parseInt(xhr.getResponseHeader("X-WP-TotalPages"));
 					$(".count__page-total").text(total);
 					$(".pagination__button--last").attr("data-page", totalPages);
-					console.log(url);
+
 					// update pagination
 					updatePagination(page);
 					$(".counts").addClass("show");
 
 					// load listings
-					$(".loading, .pagination__loading").removeClass("show");
+					$(".loading").removeClass("show");
 
 					listings = listings.filter(element => {
 						return true; 
@@ -636,7 +635,6 @@ var markersObject = {};
 							".view.active .listings-container .swiper-wrapper"
 						);
 					}
-					console.log(listingsContainer);
 
 					if(listings.length > 0) {
 						listingsContainer.empty();
@@ -746,9 +744,6 @@ var markersObject = {};
 		const getIsSmall = () =>
 			jQuery("#isSmall").length && jQuery("#isSmall").css("float") !== "none";
 		
-		console.log(jQuery("#isLarge").css("float"));
-		
-
 		// Map Coordinate start point
 		if(!getIsLarge()) {
 		
@@ -758,7 +753,7 @@ var markersObject = {};
 		perPage = parseInt($('#listings-grid').attr('data-perpage'));
 			
 		if ($('.view--map')) {
-			console.log('Test');
+
 			$('.view--map').addClass("active");
 			$('.view--grid').removeClass("active");
 			if (map) map.invalidateSize();
@@ -810,6 +805,7 @@ var markersObject = {};
 
 		// Form filters
 		$('.control--categories').on('change', updateCatChecks);
+		$('#eventastic_venues').on('change', loadPage);
 		$('.filters').on('submit', function (e) {
 			e.preventDefault();
 			loadPage();
@@ -863,7 +859,7 @@ function enableListingSlider() {
 	if (!listingCards.classList.contains("swiper-initialized")) {
 		
 		swiperListingCard = new Swiper(listingCards, swiperArgs);
-		console.log(swiperListingCard);
+
 		var listingID = jQuery(
 			swiperListingCard.slides[swiperListingCard.activeIndex]
 		).attr("data-listingID");
