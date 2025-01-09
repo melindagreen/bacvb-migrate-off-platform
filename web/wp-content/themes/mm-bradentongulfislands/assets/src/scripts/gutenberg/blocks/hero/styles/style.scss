@@ -337,6 +337,11 @@
 	}
 }
 
+.hero--wave + * {
+	margin-top: -4rem;
+  }
+  
+
 
 .#{$block-prefix}-hero {
 	&.wave-alter {
