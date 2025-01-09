@@ -5,9 +5,7 @@
 	width: 100%;
 	justify-content: center;
 	align-items: center;
-	// curtis (9.jan) this was messing with the video play/pause button working and seems not needed
-	// z-index: -1;
-	z-index: 0;
+	z-index: -1;
 	position: relative;
 	overflow-x: clip;
 
@@ -211,7 +209,7 @@
 			content: " ";
 			background: transparent url("images/hero-bottom.png") no-repeat;
 			background-size: 100% auto;
-			height: 12em;
+			height: 12rem;
 			left: 0;
 			position: absolute;
 			width: 105%;
@@ -338,7 +336,7 @@
 }
 
 .hero--wave + .wp-block-heading, .hero--wave + p, .hero--wave + .wp-block-group, .hero--wave + .wp-block-image {
-	margin-top: -4rem;
+	margin-top: -2rem;
 	position: relative;
 }
   
