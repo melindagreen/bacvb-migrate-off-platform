@@ -337,9 +337,9 @@
 	}
 }
 
-.hero--wave + * {
+.hero--wave + .wp-block-heading, .hero--wave + p, .hero--wave + .wp-block-group, .hero--wave + .wp-block-image {
 	margin-top: -4rem;
-  }
+}
   
 
 
