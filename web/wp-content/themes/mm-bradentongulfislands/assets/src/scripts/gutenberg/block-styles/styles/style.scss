@@ -152,7 +152,7 @@ COLUMNS
 
 
     display: grid;
-    grid-template-columns: repeat(12, 1fr); 
+    grid-template-columns: repeat(12, 1fr) !important; 
     grid-auto-rows: auto; 
 
     .photocredit {
