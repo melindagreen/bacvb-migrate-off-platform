@@ -127,6 +127,7 @@ const Inspector = props => {
                         { label: __('Categories'), value: 'categories' },
                         { label: __('Accommodations'), value: 'accommodations' },
                         { label: __('Rooms'), value: 'room-count' },
+                        { label: __('Sports'), value: 'sports' },
                     ]}
                     onChange={onFilterTypeChange}
                 />

@@ -9,38 +9,56 @@ $bar-height: 70px;
   100% { transform: rotate(360deg); }
 }
 
-#ui-datepicker-div {
-	position: relative;
-	z-index: 1000;
-	background-color: #fff;
-	.ui-datepicker-header {
-		text-align: center;
-		font-size: 0.8em;
-		color: #fff;
-		background-color: $bradenton-teal;
+// #ui-datepicker-div {
+// 	position: relative;
+// 	z-index: 1000;
+// 	background-color: #fff;
+// 	.ui-datepicker-header {
+// 		text-align: center;
+// 		font-size: 0.8em;
+// 		color: #fff;
+// 		background-color: $bradenton-teal;
 
-		.ui-corner-all {
-			display: inline-block;
-			margin: 0 5px;
-		}
-	}
-	.ui-datepicker-calendar {
-		text-align: center;
-		a {
-			color: $bradenton-teal;
-			text-decoration: none;
-		}
-	}
-}
+// 		.ui-corner-all {
+// 			display: inline-block;
+// 			margin: 0 5px;
+// 		}
+// 	}
+// 	.ui-datepicker-calendar {
+// 		text-align: center;
+// 		a {
+// 			color: $bradenton-teal;
+// 			text-decoration: none;
+// 		}
+// 	}
+// }
 
 .#{$block-prefix}-listings-grid {
 	margin: 4rem 0;
+
+	.venue-icon {
+
+		border: 1px solid #CE7C4F;
+		background: #CE7C4F;
+		border-radius: 100%;
+		padding: 20%;
+		width: 3rem;
+		height: 2.8rem;
+		text-align: center;
+		display: inline-block;
+		font-weight: 600;
+		color: white;
+		position: relative;
+		bottom: 1rem;
+		transform: scale(0.8);
+	}
 
 	// For all listings, the container will have a tan graident
 	&.listings-grid--listing {
 		.grid-body {
 			background: linear-gradient(to bottom, #f4eee1, #f5e7cc);
 			padding: 1rem;
+			margin: auto;
 		}
 	}
 
@@ -72,6 +90,7 @@ $bar-height: 70px;
 		.filters {		
 			display: flex;
 			max-width: 70em;
+			flex-wrap: wrap;
 
 			.control__label--categories.all, .control__label--categories.exclude {
 
@@ -82,8 +101,57 @@ $bar-height: 70px;
 
 				.control__label {
 					color: white;
+					text-align: justify;
+    				line-height: 1.1em;
 				}
 			} 
+			.control--venues {
+
+				width: 100%;
+				flex: 0 1 auto;
+				margin: 1rem auto;
+				text-align: center;
+
+				.control__label {
+
+					display: block;
+					font-size: 1.25rem;
+					font-family: $font-header;
+					color: white;
+					margin-bottom: 1rem;
+				}
+
+				.control__select {
+
+					background: none;
+					border: 1px solid white;
+					border-radius: 12px;
+					padding: 1rem;
+					color: white;
+					position: relative;
+					appearance: none; 
+					width: 15rem;
+					font-family: $font-body;
+					cursor: pointer;
+
+					option {
+
+						color: $soft-black;
+					}
+				}
+
+				&::after {
+
+					content: '';
+					position: absolute;
+					transform: translate(-35px, 22px) rotate(180deg);
+					border-left: 8px solid transparent;
+					border-right: 8px solid transparent;
+					border-bottom: 8px solid white; 
+					pointer-events: none;
+				}
+			}
+
 		}
 	}
 
@@ -272,6 +340,80 @@ $bar-height: 70px;
 	.filterContainer {
 		position: relative;
 		z-index: 99;
+
+		&--sports-venue {
+
+			.grid-title {
+
+				font-size: 2rem;
+				max-width: 55rem;
+				margin-left: auto;
+				margin-right: auto;
+			}
+		}
+
+		.sports-key {
+
+			position: absolute;
+			top: 0;
+			left: 3%;
+			color: white;
+			width: 14rem;
+
+			&__title {
+				
+				text-align: center;
+				font-size: 1rem;
+				text-transform: uppercase;
+				font-weight: 400;
+				margin-bottom: -0.8rem;
+			}
+
+			&__item {
+
+				color: white;
+				margin: 1rem 0;
+				font-size: 0.9rem;
+				margin-bottom: 0;
+
+				span {
+
+					border: 1px solid white;
+					border-radius: 100%;
+					padding: 2.5%;
+					width: 2.5rem;
+					text-align: center;
+					margin-right: 0.5rem;
+					display: inline-block;
+					font-weight: 600;
+				}
+			}
+
+			@media only screen and (max-width: 1400px) {
+
+				display: flex;
+				position: static;
+				justify-content: center;
+				margin: auto;
+				width: fit-content;
+				column-gap: 1.2rem;
+				row-gap: 0;
+				flex-wrap: wrap;
+				margin-top: 1rem;
+
+				&__title {
+
+					display: none;
+				}
+
+				&__item {
+
+					display: inline-flex;
+					align-items: center;
+					width: max-content;
+				}
+			}
+		}
 	}
 
 	.filters {
@@ -283,8 +425,10 @@ $bar-height: 70px;
 			align-items: center;
 			padding: 0 1em;
 			width: 400px;
-			max-width: 50%;
+			max-width: 75%;
+			margin: auto;
 			margin: 0 auto;
+			text-align: center;
 			.control__label {
 				color: $bradenton-teal;
 			}
@@ -297,6 +441,7 @@ $bar-height: 70px;
 				border-bottom-left-radius: 20px;
 				height: 35px;
 				border: 1px solid $rust;
+				font-family: $font-body;
 			}
 			.submit-filter {
 				border: 0;
@@ -309,6 +454,7 @@ $bar-height: 70px;
 				margin-left: -10px;
 				padding: 5px;
 				box-sizing: border-box;
+				cursor: pointer;
 				img {
 					width: 80%;
 				}
@@ -413,6 +559,7 @@ $bar-height: 70px;
 			border: 2px solid $rust;
 			border-radius: 20px;
 			padding: 5px 1em;
+			font-family: $font-body;
 		}
 	}
 
@@ -715,6 +862,35 @@ SMALL SCREENS
 @media only screen and (max-width: 700px) {
 	.#{$block-prefix}-listings-grid {
 
+		.listingContainer {
+
+			&--sports-venue {
+
+				margin-bottom: 1rem;
+			}
+		}
+
+		.date-controls {
+
+			width: 75%;
+			margin: auto;
+			text-align: center;
+			max-width: 38rem;
+
+			.control__label--start-date {
+
+				font-size: 1.5rem;
+				text-align: center;
+				margin: auto;
+			}
+
+			#control__input--start-date, #control__input--end-date {
+				margin: 0 auto 1rem auto;
+				padding: 10px 0.8em;
+				font-size: 1rem;
+			}
+		}
+
 		.filters {
 			flex-direction: column;
 
@@ -728,7 +904,9 @@ SMALL SCREENS
 			}
 
 			.control--search {
-				margin: 0;
+				margin: 0 auto;
+				gap: 1rem;
+				max-width: 67%;
 			}
 		}
 		margin: 2rem 0;
@@ -751,6 +929,8 @@ SMALL SCREENS
 		.grid-title {
 			font-size: 2em;
 			margin: 0 0 -13px 1em;
+			margin-bottom: 1rem;
+			line-height: 1.2em;
 		}
 
 		.view--map {

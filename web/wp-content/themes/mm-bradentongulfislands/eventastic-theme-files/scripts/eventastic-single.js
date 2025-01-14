@@ -1,17 +1,28 @@
 jQuery(document).ready(function($) {
-    $(".images .arrowNext").click(function(){
+    $(".images .arrowNext").click(function() {
         var active = $(".images .active");
+        var next;
+        
         if (active.is(":last-of-type")) {
-            var next = $(".images .image:first-child");
-        } else var next = active.next();
+            next = $(".images .image:first-child");
+        } else {
+            next = active.next(); 
+        }
+        
         $(".images .image").removeClass('active');
         next.addClass('active');
     });
-    $(".images .arrowPrev").click(function(){
+
+    $(".images .arrowPrev").click(function() {
         var active = $(".images .active");
-        if (active.is(":first")) {
-            var next = $(".images .image:last-of-type");
-        } else var next = active.prev();
+        var next;
+        
+        if (active.is(":first-of-type")) {
+            next = $(".images .image:last-of-type"); 
+        } else {
+            next = active.prev();
+        }
+        
         $(".images .image").removeClass('active');
         next.addClass('active');
     });
