@@ -430,10 +430,14 @@ var markersObject = {};
 		  try {
 			const currentUrl = `${url}&page=${page}&per_page=${perPage}`;
 			const response = await $.get(currentUrl);
-			if (response.length === 0) {
+			if (response.length === 0 ) {
 			  moreEventsAvailable = false; // Exit the loop if no more events
 			} else {
 			  allEvents = allEvents.concat(response);
+
+			  if(response.length < 100) {
+				moreEventsAvailable = false;
+			  }
 			  page++;
 			}
 		  } catch (error) {
@@ -444,7 +448,7 @@ var markersObject = {};
 
 		return allEvents;
 	}	  
-	async function reconcileEvents(events, instances) {
+	async function reconcileEvents(events, instances, expand = true) {
 		await Promise.all([events, instances]);
 		events = Object.values(events);
 		instances = Object.values(instances);
@@ -539,39 +543,39 @@ var markersObject = {};
 		var listingsContainer = $(".listings-container.listings-container--grid");
 
 
-		if(postType == 'event'){
-			// get the page back up where it needs to be for viewing (it's slightly less jarring to do this pre-ajax call)
-			if (adjustScroll) {
-				$("html, body").animate({
-					scrollTop: $('.grid-body').offset().top
-				}, "10");
-			}
+		// if(postType == 'event'){
+		// 	// get the page back up where it needs to be for viewing (it's slightly less jarring to do this pre-ajax call)
+		// 	if (adjustScroll) {
+		// 		$("html, body").animate({
+		// 			scrollTop: $('.grid-body').offset().top
+		// 		}, "10");
+		// 	}
 
-			$('.listings-container--grid').append(`<div class="loading show"><span class="sr-only"><?php _e( 'loading' ); ?></span><i class="fas fa-spinner fa-pulse"></i></div>`);
+		// 	$('.listings-container--grid').append(`<div class="loading show"><span class="sr-only"><?php _e( 'loading' ); ?></span><i class="fas fa-spinner fa-pulse"></i></div>`);
 
-			const {total, events} = await getEvents(page);
-			var totalPages = parseInt(total / PAGE_LENGTH + 1);
-			$(".count__page-total").text(total);
-			$(".pagination__button--last").attr("data-page", totalPages);
+		// 	const {total, events} = await getEvents(page);
+		// 	var totalPages = parseInt(total / PAGE_LENGTH + 1);
+		// 	$(".count__page-total").text(total);
+		// 	$(".pagination__button--last").attr("data-page", totalPages);
 
-			// update pagination
-			updatePagination(page);
-			$(".counts").addClass("show");
+		// 	// update pagination
+		// 	updatePagination(page);
+		// 	$(".counts").addClass("show");
 
-			// load listings
-			$(".loading").removeClass("show");
-			if(events.length > 0) {
-				$('.listings-container--grid').empty();
-				$('.listings-container--grid')
-					.append(events.map(listing => templateListing(listing, postType)));
-			}
-			else {
-				$('.listings-container--grid').empty();
-				$('.listings-container--grid').addClass('listings-container--no-listings')
-				.append(`<h2>No ${postType}s available at this time</h2>`);
-			}
+		// 	// load listings
+		// 	$(".loading").removeClass("show");
+		// 	if(events.length > 0) {
+		// 		$('.listings-container--grid').empty();
+		// 		$('.listings-container--grid')
+		// 			.append(events.map(listing => templateListing(listing, postType)));
+		// 	}
+		// 	else {
+		// 		$('.listings-container--grid').empty();
+		// 		$('.listings-container--grid').addClass('listings-container--no-listings')
+		// 		.append(`<h2>No ${postType}s available at this time</h2>`);
+		// 	}
 
-		} else {
+		// } else {
 			var url = `/wp-json/wp/v2/${postType}?order=${order}&orderby=${orderBy}&page=${page}&per_page=${perPage}&include_child_terms=true&`;
 		
 			// add filters
@@ -608,6 +612,9 @@ var markersObject = {};
 				url += `&activity=active&`
 			}
 
+			$('.listings-container--grid').append(`<div class="loading show"><span class="sr-only"><?php _e( 'loading' ); ?></span><i class="fas fa-spinner fa-pulse"></i></div>`);
+
+
 			$.get(url)
 				.done(function (listings, status, xhr) {
 
@@ -624,11 +631,22 @@ var markersObject = {};
 					// load listings
 					$(".loading").removeClass("show");
 
-					listings = listings.filter(element => {
-						return true; 
-					});
+					if(postType === 'event') {
 
-
+						listings = listings.map(i => {
+							let event = {...listings.find(e => e.id === i.id)};
+							const recurs = isRecurring(event);
+					
+							event.endDate = recurs ? i.date : event?.meta_fields?.eventastic_end_date;
+							event.startDate = recurs ? i.date : event?.meta_fields?.eventastic_start_date;
+							event.recurring = recurs;
+							return event;
+						});
+					}else {
+						listings = listings.filter(element => {
+							return true; 
+						});
+					}
 
 					if (viewType === "map") {
 						listingsContainer = $(
@@ -683,7 +701,7 @@ var markersObject = {};
 					});
 
 				});
-		}
+		// }
 	}
 
 	/**
@@ -815,7 +833,9 @@ var markersObject = {};
 		$(window).resize(()=> {
 
 			STARTING_COORDS = getIsLarge() ? [27.4190314, -82.3921034] : [27.4590324, -82.6521034];
+			if(map !== undefined) {
 			map.setView(STARTING_COORDS, STARTING_ZOOM);
+			}
 		})
 
 	});
