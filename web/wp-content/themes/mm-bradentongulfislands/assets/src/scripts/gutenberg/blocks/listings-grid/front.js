@@ -448,7 +448,7 @@ var markersObject = {};
 
 		return allEvents;
 	}	  
-	async function reconcileEvents(events, instances, expand = true) {
+	async function reconcileEvents(events, instances, isExpand = true) {
 		await Promise.all([events, instances]);
 		events = Object.values(events);
 		instances = Object.values(instances);
@@ -469,7 +469,7 @@ var markersObject = {};
 		let singleEvents = [];
 		let reconciled = filtered.map(i => {
 			let event = {...events.find(e => e.id === i.id)};
-			const recurs = isRecurring(event);
+			const recurs = isRecurring(event) && isExpand;
 	
 			event.endDate = recurs ? i.date : event?.meta_fields?.eventastic_end_date;
 			event.startDate = recurs ? i.date : event?.meta_fields?.eventastic_start_date;
@@ -497,7 +497,7 @@ var markersObject = {};
 		//Run both queries simultaneously
 		const events = await loadAllEvents(); //Return all events that match all filters
 		const instances = await loadAllInstances(); //Returns all instances that match dates
-		const result = await reconcileEvents(events, instances);
+		const result = await reconcileEvents(events, instances, false);
 
 		page = !isNaN(page) ? page : 1;
 
@@ -613,7 +613,7 @@ var markersObject = {};
 			}
 
 			$('.listings-container--grid').append(`<div class="loading show"><span class="sr-only"><?php _e( 'loading' ); ?></span><i class="fas fa-spinner fa-pulse"></i></div>`);
-			
+
 			$.get(url)
 				.done(function (listings, status, xhr) {
 
