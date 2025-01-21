@@ -613,8 +613,7 @@ var markersObject = {};
 			}
 
 			$('.listings-container--grid').append(`<div class="loading show"><span class="sr-only"><?php _e( 'loading' ); ?></span><i class="fas fa-spinner fa-pulse"></i></div>`);
-
-
+			
 			$.get(url)
 				.done(function (listings, status, xhr) {
 
@@ -823,7 +822,9 @@ var markersObject = {};
 
 		// Form filters
 		$('.control--categories').on('change', updateCatChecks);
-		$('#eventastic_venues').on('change', loadPage);
+		$('#eventastic_venues').on('change', function () {
+			loadPage();
+		});
 		$('.filters').on('submit', function (e) {
 			e.preventDefault();
 			loadPage();
@@ -833,7 +834,7 @@ var markersObject = {};
 		$(window).resize(()=> {
 
 			STARTING_COORDS = getIsLarge() ? [27.4190314, -82.3921034] : [27.4590324, -82.6521034];
-			if(map !== undefined) {
+			if(map) {
 			map.setView(STARTING_COORDS, STARTING_ZOOM);
 			}
 		})
