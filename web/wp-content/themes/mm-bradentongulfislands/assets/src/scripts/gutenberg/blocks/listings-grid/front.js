@@ -449,6 +449,7 @@ var markersObject = {};
 		return allEvents;
 	}	  
 	async function reconcileEvents(events, instances, isExpand = true) {
+
 		await Promise.all([events, instances]);
 		events = Object.values(events);
 		instances = Object.values(instances);
@@ -497,7 +498,7 @@ var markersObject = {};
 		//Run both queries simultaneously
 		const events = await loadAllEvents(); //Return all events that match all filters
 		const instances = await loadAllInstances(); //Returns all instances that match dates
-		const result = await reconcileEvents(events, instances, false);
+		const result = await reconcileEvents(events, instances);
 
 		page = !isNaN(page) ? page : 1;
 
@@ -636,8 +637,8 @@ var markersObject = {};
 							let event = {...listings.find(e => e.id === i.id)};
 							const recurs = isRecurring(event);
 					
-							event.endDate = recurs ? i.date : event?.meta_fields?.eventastic_end_date;
-							event.startDate = recurs ? i.date : event?.meta_fields?.eventastic_start_date;
+							event.endDate = event?.meta_fields?.eventastic_end_date;
+							event.startDate = event?.meta_fields?.eventastic_start_date;
 							event.recurring = recurs;
 							return event;
 						});
