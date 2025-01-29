@@ -248,12 +248,12 @@ class RestApi {
         );
 
         // add start and end date filters
-        $start_date_parsed = ( isset( $request['eventastic_start_date'] ) )
-            ? new \DateTime($request['eventastic_start_date'])
-            : null;
-        $end_date_parsed = ( isset( $request['eventastic_end_date'] ) )
-            ? new \DateTime($request['eventastic_end_date'])
-            : null;
+        if (isset($request['eventastic_start_date'])) {
+            error_log('eventastic_start_date received: ' . print_r($request['eventastic_start_date'], true));
+        }
+        if (isset($request['eventastic_end_date'])) {
+            error_log('eventastic_end_date received: ' . print_r($request['eventastic_end_date'], true));
+        }
 
         // update dates to reflect today
         $today = new \DateTime();
