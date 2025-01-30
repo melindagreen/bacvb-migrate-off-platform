@@ -38,7 +38,7 @@ class ThemeSetup {
 
 	public static function add_raf_trademark($content) {
 		$raf_phrase = 'Real. Authentic. Florida.';
-		$tm_markup = $raf_phrase . '<sup class="raf-tm">TM</sup>';
+		$tm_markup = $raf_phrase . '<sup class="raf-tm">TM</sup> ';
 	
 		// Replace occurrences of the phrase with the trademarked version
 		$content = str_replace($raf_phrase, $tm_markup, $content);
