@@ -18,12 +18,13 @@ class ThemeSetup {
 		//add_action( 'template_redirect', array(get_called_class(), 'redirect_non_logged_in_users'));
 
 			
-
 		// tell yoast to not show some sitemaps
 		add_filter( 'wpseo_sitemap_exclude_taxonomy', array( get_called_class(), 'sitemap_exclude_taxonomy' ), 10, 2 );
 
 		add_filter('render_block', array( get_called_class(), 'add_photo_credit' ), 10, 2);
 		add_filter('wp_get_attachment_url', array( get_called_class(), 'photo_credit_url_param' ), 10, 2);
+
+		add_filter('the_content', array( get_called_class(),'add_raf_trademark'));
 
 		// User Role
 		add_filter( 'init', array( get_called_class(), 'add_custom_roles' ) );
@@ -33,6 +34,16 @@ class ThemeSetup {
 		// global override for from emails
         add_filter( 'wp_mail_from', array( get_called_class(), 'custom_wp_mail_from' ) );
         add_filter( 'wp_mail_from_name', array( get_called_class(), 'custom_wp_mail_from_name' ) );
+	}
+
+	public static function add_raf_trademark($content) {
+		$raf_phrase = 'Real. Authentic. Florida.';
+		$tm_markup = $raf_phrase . '<sup class="raf-tm">TM</sup>';
+	
+		// Replace occurrences of the phrase with the trademarked version
+		$content = str_replace($raf_phrase, $tm_markup, $content);
+	
+		return $content;
 	}
 
 
