@@ -38,6 +38,12 @@
     align-content: center;
   }
 
+  &__front {
+
+    object-fit: contain;
+    max-height: 8rem;
+  }
+
   &__back {
     background: $bradenton-teal;
     color: white;
@@ -58,10 +64,8 @@
     font-family: $font-title;
     color: $bradenton-teal;
     font-weight: 300;
-    margin-bottom: 3rem;
     font-size: clamp(1rem, 2vw, 1.5rem);
     position: relative;
-    bottom: 0.5rem;
   }
 
   img {
