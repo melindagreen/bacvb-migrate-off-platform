@@ -38,12 +38,6 @@
     align-content: center;
   }
 
-  &__front {
-
-    object-fit: contain;
-    max-height: 8rem;
-  }
-
   &__back {
     background: $bradenton-teal;
     color: white;
@@ -73,6 +67,8 @@
     position: relative;
     top: 1rem;
     width: 70%;
+    max-height: 8rem;
+    object-fit: contain;
   }
 }
 
