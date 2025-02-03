@@ -348,6 +348,33 @@ COLUMNS
     }
 }
 
+.is-style-infographic {
+
+    position: relative;
+
+    .wp-block-media-text__media {
+        position: absolute;
+        z-index: 1;
+        left: 1.5rem;
+    }
+    .wp-block-media-text__content {
+
+        background: $bradenton-teal;
+        border-radius: 6px;
+        position: relative;
+        padding: 1rem 2rem;
+
+        p {
+
+            font-family: $font-title;
+            color: white;
+            font-weight: bold;
+            font-size: 1.75rem;
+            margin: 0;
+        }
+    }
+}
+
 
 /*********************
 TEMPLATES
@@ -551,6 +578,16 @@ IMAGES
         mask: url("images/large-image-mask.svg") no-repeat center;
         --webkit-mask-size: 100% 100%;
         mask-size: 100% 100%;
+    }
+}
+
+.is-style-polaroid {
+
+    img {
+
+        box-shadow: 0px 3px 6px #00000029;
+        border: 12px solid #FFFFFF;
+        transform: matrix(1, -0.09, 0.09, 1, 0, 0);
     }
 }
 
@@ -1210,6 +1247,7 @@ BUTTONS
 
     .wp-block-button__link {
 
+        min-width: 14rem;
         text-decoration: none;
         background-color: $bradenton-teal;
         border: none;
