@@ -375,26 +375,31 @@ COLUMNS
         z-index: 1;
         width: 80px;
         height: 80px;
+
+        img {
+        width: 80px;
+        height: 80px;
+        }
     }
 
     
 
-    right: 40px;
+    right: 60px;
 
     .wp-block-media-text__media {
 
-        margin-right: -40px;
+        left: 60px;
     }
 
     &.has-media-on-the-right {
 
         right: unset;
-        left: 40px;
+        left: 60px;
 
         .wp-block-media-text__media {
 
-            margin-right: unset;
-            margin-left: -40px;
+            left: unset;
+            right: 60px;
         }
     }
 }
