@@ -31,7 +31,7 @@ const Editor = props => {
       <div className={`${className}__contents`}>
       <RichText
         { ...blockProps }
-        tagName="button" 
+        tagName="h3" 
         className="contents-title"
         allowedFormats={ [ "core/bold", "core/italic", "core/link" ] } 
         value={ title }
