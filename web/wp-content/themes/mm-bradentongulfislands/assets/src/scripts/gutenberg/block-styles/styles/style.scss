@@ -351,12 +351,7 @@ COLUMNS
 .is-style-infographic {
 
     position: relative;
-
-    .wp-block-media-text__media {
-        position: absolute;
-        z-index: 1;
-        left: 1.5rem;
-    }
+ 
     .wp-block-media-text__content {
 
         background: $bradenton-teal;
@@ -371,6 +366,29 @@ COLUMNS
             font-weight: bold;
             font-size: 1.75rem;
             margin: 0;
+        }
+    }
+
+    .wp-block-media-text__media {
+        position: relative;
+        z-index: 1;
+    }
+
+    &.has-media-on-the-left {
+
+        margin-left: -40px;
+
+        .wp-block-media-text__media {
+            margin-right: -40px;
+        }
+    }
+
+    &.has-media-on-the-right {
+
+        margin-right: -40px;
+
+        .wp-block-media-text__media {
+            margin-left: -40px;
         }
     }
 }
