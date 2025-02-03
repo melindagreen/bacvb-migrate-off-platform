@@ -3,7 +3,7 @@
 // WordPress dependencies
 import { __ } from '@wordpress/i18n';
 import { InspectorControls } from '@wordpress/block-editor'
-import { Button, PanelBody } from '@wordpress/components'
+import { Button, PanelBody, PanelRow, TextControl } from '@wordpress/components'
 import { MediaUpload, MediaUploadCheck } from '@wordpress/block-editor'
 
 // Local dependencies
@@ -48,13 +48,22 @@ const MediaControls = props => {
 const Inspector = props => {
 
     const { attributes, setAttributes } = props;
+    const { info } = attributes;
 
     return (
         <InspectorControls>
             <PanelBody
-                title="Social Button Image"
+                title="Chip Settings"
             >
                 <MediaControls {...props} />
+
+                <PanelRow>
+                    <TextControl
+                    	label="Chip Info"
+                        onChange={ ( info ) => setAttributes( { info } ) }
+                        value={ info }
+                    />
+                </PanelRow>
             </PanelBody>
         </InspectorControls>
     )

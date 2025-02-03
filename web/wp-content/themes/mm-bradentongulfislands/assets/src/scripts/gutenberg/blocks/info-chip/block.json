@@ -1,11 +1,11 @@
 {
-  "name": "logo-cta",
+  "name": "info-chip",
   "scripts": [
     "front.js"
   ],
   "settings": {
-    "title": "Logo CTA",
-    "description": "cta with logo",
+    "title": "Info Chip",
+    "description": "Chip that flips with info on the back",
     "icon": "share-alt",
     "category": "layout",
     "attributes": {
@@ -22,6 +22,11 @@
         "default": "",
         "source": "html",
         "selector": "button.contents-title"
+      },
+      "info": {
+        "type": "string",
+        "default": "",
+        "source": "html"
       },
       "mode": {
         "type": "string",

@@ -1,94 +1,74 @@
 @import 'styles/utils/variables';
 @import 'styles/utils/typography';
 
-.#{$block-prefix}-logo-cta {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  padding: 0.3rem;
-  max-width: 25rem;
-  margin: 0 auto;
-  background-color: white;
-  border-radius: 15px;
+.#{$block-prefix}-info-chip {
+  
+  width: 232px;
+  height: 232px;
+  perspective: 500px;
 
-  &__image {
+  &__content {
 
-    padding: 0 3vw;
-    margin-bottom: 1rem;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    transition: transform 1s;
+    transform-style: preserve-3d;
+    border-radius: 100%;
+  }
 
-    img {
+  &:hover &__content {
+    transform: rotateY( 180deg ) ;
+    transition: transform 0.5s;
+  }
 
-      height: 100%;
-      width: 100%;
+  &__front,
+  &__back {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: #F4F1EA;
+    border: 12px solid #FFFFFF;
+    text-align: center;
+    font-size: 60px;
+    border-radius: 100%;
+    backface-visibility: hidden;
+    box-shadow: 0px 3px 6px #00000029;
+    align-content: center;
+  }
+
+  &__back {
+    background: $bradenton-teal;
+    color: white;
+    transform: rotateY( 180deg );
+    padding: 2rem 1.5rem;
+
+    p {
+
+      font-size: clamp(0.7rem, 1vw, 0.8rem);
+      color: white;
+      line-height: 1em;
     }
   }
 
-  &__contents {
+  .contents-title {
 
-    width: 100%;
+    margin: 0;
+    font-family: $font-title;
+    color: $bradenton-teal;
+    font-weight: 300;
+    margin-bottom: 3rem;
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    position: relative;
+    bottom: 0.5rem;
+  }
 
-    .contents-title {
+  img {
 
-      border: none;
-      width: 100%;
-      background: none;  
-      padding: 0;
-
-      &:hover {
-
-        transition: all 0.2s ease-in-out;
-
-        a {
-
-          background-color: #b96030;
-
-          &::after {
-
-            transform: translateX(5px);
-            transition: all 0.2s ease-in-out;
-          }
-        }
-      }
-
-      a {
-
-        width: 100%;
-        display: block;
-        color: white;
-        text-decoration: none;
-        font-weight: 400;
-        position: relative;
-        background-color: $rust;
-        border-radius: 15px;
-        border: none;
-        padding: 3% 0;
-        font-size: 1.4rem;
-        text-transform: uppercase;
-        font-family: $font-body;
-        transition: all 0.3s ease-in-out;   
-
-        &::after {
-
-          content: " ";
-          background: url("images/icons/rt-arrow.svg");
-          background-size: contain;
-          background-repeat: no-repeat;
-          height: 20px;
-          width: 20px;
-          position: absolute;
-          transition: all 0.2s ease-in-out;
-          background-position: center;
-          margin-left: 0.8rem; 
-          margin-top: 0.35rem;
-        }
-
-        &:hover {
-
-          color: white;
-        }
-      }
-    }
+    position: relative;
+    top: 1rem;
+    width: 70%;
   }
 }
 
