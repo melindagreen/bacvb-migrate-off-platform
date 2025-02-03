@@ -357,7 +357,7 @@ COLUMNS
         background: $bradenton-teal;
         border-radius: 6px;
         position: relative;
-        padding: 1rem 2rem;
+        padding: 1rem 3rem;
 
         p {
 
@@ -388,7 +388,7 @@ COLUMNS
 
     .wp-block-media-text__media {
 
-        left: 60px;
+        left: 55%;
     }
 
     &.has-media-on-the-right {
@@ -399,7 +399,26 @@ COLUMNS
         .wp-block-media-text__media {
 
             left: unset;
-            right: 60px;
+            right: 55%;
+        }
+    }
+
+
+    @media only screen and (max-width: $screen-sm) {
+
+        right: 0;
+        left: 0;
+
+        .wp-block-media-text__media {
+
+            left: 0;
+            right: unset;
+
+            &.has-media-on-the-right {
+                
+                right: 0;
+                left: unset;
+            }
         }
     }
 }
@@ -1171,6 +1190,7 @@ BUTTONS
 
 .is-style-round-arrow-button, .is-style-round-arrow-button-blue {
 
+
       .wp-block-button__link {
         text-decoration: none;
         background-color: transparent;
@@ -1231,6 +1251,23 @@ BUTTONS
 
               transition: all 0.2s ease-in-out;
               transform: scale(1.1);
+            }
+        }
+    }
+
+    &.has-title-font-family {
+
+        a {
+
+            font-family: $font-title !important;
+            font-size: 1.75rem;
+
+            &::after {
+
+                right: -4rem;
+                height: 45px;
+                width: 45px;
+                bottom: -55%;
             }
         }
     }
