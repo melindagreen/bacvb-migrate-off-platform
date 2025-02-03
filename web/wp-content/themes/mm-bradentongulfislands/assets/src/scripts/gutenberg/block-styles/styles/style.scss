@@ -76,6 +76,30 @@ TEXT
     }
 }
 
+// Lists
+.is-style-arrow-markers {
+
+    li {
+        
+        list-style: none;
+        position: relative;
+        padding-left: 20px;
+        color: $soft-black;
+
+        &::before {
+
+            content: ' ';
+            background-image: url('images/ui-next-on.png');
+            position: absolute;
+            left: 0;
+            top: 0.2em;
+            width: 16px; 
+            height: 16px;
+            background-size: cover;
+        }
+    }
+}
+
 /*********************
 COLUMNS
 *********************/

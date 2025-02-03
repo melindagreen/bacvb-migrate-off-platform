@@ -19,6 +19,14 @@
             }
         ]
     },
+    "core/list": {
+        "add": [
+            {
+                "name": "arrow-markers",
+                "label": "Arrow Markers"
+            }
+        ]
+    },
     "core/image": {
         "add": [
             {
