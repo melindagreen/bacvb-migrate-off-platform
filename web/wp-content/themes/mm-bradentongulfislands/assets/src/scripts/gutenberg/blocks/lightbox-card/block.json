@@ -1,0 +1,58 @@
+{
+  "name": "lightbox-card",
+  "scripts": [
+    "front.js"
+  ],
+  "settings": {
+    "title": "LightBox Card",
+    "description": "Chip that flips with info on the back",
+    "icon": "share-alt",
+    "category": "layout",
+    "attributes": {
+      "imageUrl": {
+        "type": "string",
+        "default": ""
+      },
+      "imageAlt": {
+        "type": "string",
+        "default": ""
+      },
+      "title": {
+        "type": "string",
+        "default": "",
+        "source": "html",
+        "selector": "button.contents-title"
+      },
+      "description": {
+        "type": "string",
+        "default": ""
+      },
+      "lbTitle": {
+        "type": "string",
+        "default": "",
+        "source": "html",
+        "selector": "button.contents-title"
+      },
+      "lbDescription": {
+        "type": "string",
+        "default": ""
+      },
+      "lbImageUrl": {
+        "type": "string",
+        "default": ""
+      },
+      "lbImageAlt": {
+        "type": "string",
+        "default": ""
+      },
+      "mode": {
+        "type": "string",
+        "default": "preview"
+      },
+      "isAlternative": {
+        "type": "boolean",
+        "default": false
+      }
+    }
+  }
+}
