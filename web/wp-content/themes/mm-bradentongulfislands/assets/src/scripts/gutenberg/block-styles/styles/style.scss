@@ -31,6 +31,16 @@ TEXT
     }
 }
 
+.is-style-heading-shadow {
+
+    text-shadow: 3px 3px 0px #FFFFFF;
+
+    &.has-white-color {
+
+        text-shadow: 6px 6px 0px #2B7B7C;
+    }
+}
+
 // buttons
 .wp-block-button__link {
     display: inline-block;
@@ -1146,6 +1156,74 @@ BUTTONS
           }
       }
 
+}
+
+.is-style-quick-links {
+
+    position: relative;
+    max-width: 300px !important;
+
+    &::before, &::after {
+
+        content: "";
+        display: block;
+        position: absolute;
+        position: absolute;
+        bottom: 0;
+        left: -0.65rem;
+        width: 0.9rem;    
+        height: 100%;
+        background: url('images/section-side-turquoise.png') left center repeat-x;
+        background-size: cover;
+    }
+
+    &::after {
+
+        right: -0.65rem;
+        transform: rotate(180deg);
+        left: unset;
+    }
+
+    .wp-block-button__link {
+
+        text-decoration: none;
+        background-color: $bradenton-teal;
+        border: none;
+        font-size: 1.5rem;
+        text-transform: uppercase;
+        font-family: $font-title;
+        color: white;
+        position: relative;
+        transition: all 0.3s ease-in-out;
+        min-width: 7rem;
+        display: inline-block;
+        padding: 0.8rem 2rem 0.8rem 1.5rem;
+
+        &:hover {
+
+            text-decoration: none;
+            color: white;
+
+            &::after {
+
+              transition: all 0.2s ease-in-out;
+              transform: translateX(8%);
+            }
+        }
+
+        &::after {
+            content: ' ';
+            background: url('images/UI-white-right-arrow-default.svg') no-repeat;
+            transition: all 0.3s ease-in-out;
+            position: relative;
+            right: -1rem;
+            bottom: -0.25rem;
+            height: 25px;
+            width: 25px;
+            background-size: contain !important;
+            display: inline-block;
+          }
+      }
 }
 
 /*********************

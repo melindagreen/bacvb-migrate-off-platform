@@ -4,6 +4,18 @@
             {
                 "name": "brushstroke",
                 "label": "Brushstroke"
+            },
+            {
+                "name": "heading-shadow",
+                "label": "Shadow"
+            }
+        ]
+    },
+    "core/paragraph": {
+        "add": [
+            {
+                "name": "heading-shadow",
+                "label": "Shadow"
             }
         ]
     },
@@ -109,6 +121,10 @@
             {
                 "name": "custom-grid",
                 "label": "Custom Grid"
+            },
+            {
+                "name": "brushstroke",
+                "label": "Brushstroke"
             }
         ]
     },
@@ -141,6 +157,11 @@
             {
                 "name": "round-arrow-button-blue",
                 "label": "Round Arrow Blue",
+                "isDefault": false
+            },
+            {
+                "name": "quick-links",
+                "label": "Quick Links",
                 "isDefault": false
             }
         ]
