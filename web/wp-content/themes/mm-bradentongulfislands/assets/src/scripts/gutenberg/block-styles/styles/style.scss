@@ -1299,7 +1299,6 @@ BUTTONS
 
     position: relative;
     max-width: 300px !important;
-    min-width: 14rem;
 
     &::before, &::after {
 
@@ -1333,7 +1332,7 @@ BUTTONS
         color: white;
         position: relative;
         transition: all 0.3s ease-in-out;
-        min-width: 7rem;
+        min-width: 14rem;
         display: inline-block;
         padding: 0.8rem 2rem 0.8rem 1.5rem;
 

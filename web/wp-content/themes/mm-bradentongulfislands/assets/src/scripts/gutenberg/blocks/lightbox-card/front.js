@@ -9,7 +9,7 @@
         
 
         // Function to open the lightbox
-  $('.wp-block-mm-bradentongulfislands-lightbox-card__card img').on('click', function () {
+  $('.wp-block-mm-bradentongulfislands-lightbox-card__card').on('click', function () {
     const $card = $(this).closest('.wp-block-mm-bradentongulfislands-lightbox-card__card');
     const lightboxSelector = $card.data('lightbox-selector');
     const $lightbox = $(`.${lightboxSelector}`);

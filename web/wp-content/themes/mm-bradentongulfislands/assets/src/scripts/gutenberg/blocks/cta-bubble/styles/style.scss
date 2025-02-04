@@ -55,6 +55,12 @@
     color: white;
     font-size: 2rem;
 
+    a {
+
+      color: white;
+      text-decoration: none;
+    }
+
     &::after {
       content: ' ';
       background: url('images/UI-white-right-arrow-default.svg') no-repeat;
