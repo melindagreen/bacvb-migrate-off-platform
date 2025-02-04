@@ -5,7 +5,7 @@
     const $ctaBubble = $('.wp-block-mm-bradentongulfislands-cta-bubble');
     const $closeButton = $('.wp-block-mm-bradentongulfislands-cta-bubble .close');
 
-    const scrollOffset = 150; // Start animation 150px later than the viewport
+    const scrollOffset = 250; // Start animation 150px later than the viewport
 
   function isInViewport($element) {
     const elementTop = $element.offset().top + scrollOffset;
