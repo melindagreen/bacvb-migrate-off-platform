@@ -67,7 +67,7 @@
       border: 8px solid #FFFFFF;
       position: relative;
       aspect-ratio: 264/274;
-      transition: all 0.3s ease-in-out;
+      transition: all 0.1s ease-in-out;
       cursor: pointer;
 
       img {
@@ -100,7 +100,7 @@
 
       &:hover {
 
-        transition: all 0.2s ease-in-out;
+        transition: all 0.1s ease-in-out;
         border-width: 12px;
       }
     }
