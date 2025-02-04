@@ -192,7 +192,7 @@ if ('serviceWorker' in navigator) {
 	function themeOnLoad() {
 
 		// Heading Scroll Animation
-		scrollAnimation('.is-style-heading-shadow', 900, 'is-style-heading-shadow--shadow', true);
+		scrollAnimation('.is-style-heading-shadow', 300, 'is-style-heading-shadow--shadow', true);
 
 		// Toggle Top Bar Banner
 		toggleTopBannerClasses();
