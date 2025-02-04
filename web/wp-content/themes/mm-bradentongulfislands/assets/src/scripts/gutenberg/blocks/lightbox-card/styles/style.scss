@@ -185,30 +185,44 @@ MEDIUM AND LARGE SCREENS
 SMALL SCREENS
 *********************/
 @media only screen and (max-width: 469px) {
-  .#{$block-prefix}-logo-cta {
+  .#{$block-prefix}-lightbox-card {
 
-    margin: 0 6vw;
   
-    &__image {
-
-    }
+    &.is-style-primary {
+      width: 90%;
+      .#{$block-prefix}-lightbox-card__card {
   
-    &__contents {
+        display: flex;
+        width: 100%;
+        min-height: unset;
+        gap: 0.8rem;
   
-      .contents-title {
+        .contents-title, .contents-description {
+          
+          text-align: left;
+        }
   
-      }
-    }
+        .contents-title {
   
-    .wp-block-social-links {
-
-      .wp-social-link {
-
-        svg {
-
-
+          font-size: 1.15rem;
+          margin: 0.5rem;
+        }
+  
+        .contents-description {
+  
+          font-size: 1rem;
+          line-height: 1.5em;  
+          margin: 0;  
+        }
+  
+        img {
+  
+          width: 80px;
+          height: 80px;
+          object-fit: contain;
         }
       }
     }
+  
   }
 }
