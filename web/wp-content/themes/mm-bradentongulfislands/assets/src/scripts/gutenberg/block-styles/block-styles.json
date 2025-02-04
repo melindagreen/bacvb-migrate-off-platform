@@ -235,5 +235,19 @@
                 "isDefault": false
             }
         ]
+    },
+    "mm-bradentongulfislands/lightbox-card": {
+        "add": [
+            {
+                "name": "primary",
+                "label": "Primary",
+                "isDefault": true
+            },
+            {
+                "name": "lightbox-polaroid",
+                "label": "Polaroid",
+                "isDefault": false
+            }
+        ]
     }
 }

@@ -30,13 +30,14 @@ import BradensotaMap from './bradensota-map';
 import LogoCTA from './logo-cta';
 import InfoChip from './info-chip';
 import LightboxCard from './lightbox-card';
+import CtaBubble from './cta-bubble';
 
 /*** CONSTANTS **************************************************************/
 
 // Collect blocks
 // NOTE: ACF blocks should not be registered here, only imported, or they will
 // appear twice in the editor!
-const blocks = [ LightboxCard, InfoChip, ContentSlider, Hero, PortraitGrid, WideSlideshow, WideImageSlide, ShowcaseCard, AccordionSection, Accordion, ContentSelector, ContentSection, QuickLinks, UpcomingEvents, ListingsGrid, BeachesMap, HeroShowcase, WaterFerryMap, BradensotaMap, SocialButton, LogoCTA ];
+const blocks = [ CtaBubble, LightboxCard, InfoChip, ContentSlider, Hero, PortraitGrid, WideSlideshow, WideImageSlide, ShowcaseCard, AccordionSection, Accordion, ContentSelector, ContentSection, QuickLinks, UpcomingEvents, ListingsGrid, BeachesMap, HeroShowcase, WaterFerryMap, BradensotaMap, SocialButton, LogoCTA ];
 
 /*** EXPORTS ****************************************************************/
 export default () => {

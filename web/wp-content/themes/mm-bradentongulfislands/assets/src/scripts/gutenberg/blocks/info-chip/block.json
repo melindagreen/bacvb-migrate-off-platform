@@ -9,6 +9,10 @@
     "icon": "share-alt",
     "category": "layout",
     "attributes": {
+      "imageId": {
+        "type": "string",
+        "default": "" 
+      },
       "imageUrl": {
         "type": "string",
         "default": ""
@@ -21,7 +25,7 @@
         "type": "string",
         "default": "",
         "source": "html",
-        "selector": "button.contents-title"
+        "selector": "h3"
       },
       "info": {
         "type": "string",

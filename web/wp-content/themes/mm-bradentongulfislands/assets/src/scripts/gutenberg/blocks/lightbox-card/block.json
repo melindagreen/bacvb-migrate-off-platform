@@ -9,6 +9,10 @@
     "icon": "share-alt",
     "category": "layout",
     "attributes": {
+      "imageId": {
+        "type": "number",
+        "default": ""
+      },
       "imageUrl": {
         "type": "string",
         "default": ""
@@ -21,7 +25,7 @@
         "type": "string",
         "default": "",
         "source": "html",
-        "selector": "button.contents-title"
+        "selector": "h3"
       },
       "description": {
         "type": "string",
@@ -29,19 +33,9 @@
       },
       "lbTitle": {
         "type": "string",
-        "default": "",
-        "source": "html",
-        "selector": "button.contents-title"
+        "default": ""
       },
       "lbDescription": {
-        "type": "string",
-        "default": ""
-      },
-      "lbImageUrl": {
-        "type": "string",
-        "default": ""
-      },
-      "lbImageAlt": {
         "type": "string",
         "default": ""
       },
@@ -49,9 +43,9 @@
         "type": "string",
         "default": "preview"
       },
-      "isAlternative": {
-        "type": "boolean",
-        "default": false
+      "lightboxId": {
+        "type": "string",
+        "default": ""
       }
     }
   }

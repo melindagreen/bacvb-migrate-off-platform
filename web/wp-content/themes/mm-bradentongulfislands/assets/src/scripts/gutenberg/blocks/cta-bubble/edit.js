@@ -3,7 +3,6 @@
 // WordPress dependencies
 import { } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
-import { useEffect } from '@wordpress/element';
 import { RichText, useBlockProps } from '@wordpress/block-editor';
 
 // Local Dependencies
@@ -19,27 +18,14 @@ import Controls from './controls'
  */
 
 const Editor = props => {
-  const { attributes: { imageUrl, imageAlt, title, description, lightboxId }, setAttributes, className } = props;
+  const { attributes: { description, ctaText, title }, setAttributes, className } = props;
   const blockProps = useBlockProps();
-
-  useEffect(() => {
-    if (lightboxId === "") {
-      console.log('Loading');
-      setAttributes({ lightboxId: `wp-block-mm-bradentongulfislands-lightbox-card-${Date.now()}-${Math.floor(Math.random() * 10000)}` });
-    }
-  }, []);
 
   return (
     <section className={className}>
-      {imageUrl !== "" && 
-      <div className={`${className}__image`}>
-        <img src={imageUrl} data-load-alt={imageAlt !== "" ? imageAlt : "Showcase Card Image"} data-load-type="img" data-load-offset="lg" data-load-all={imageUrl} />
-      </div>
-      }
-      <div className={`${className}__contents`}>
       <RichText
         { ...blockProps }
-        tagName="h3" 
+        tagName="h2" 
         className="contents-title"
         allowedFormats={ [ "core/bold", "core/italic", "core/link" ] } 
         value={ title }
@@ -51,15 +37,25 @@ const Editor = props => {
       <RichText
         { ...blockProps }
         tagName="p" 
-        className="contents-title"
+        className="contents-description"
         allowedFormats={ [ "core/bold", "core/italic", "core/link" ] } 
         value={ description }
         onChange={ ( description ) => {
           setAttributes( { description } )
         } } 
-        placeholder={ __( "Add description..." ) } 
+        placeholder={ __( "Add Description..." ) } 
       />
-      </div>
+      <RichText
+        { ...blockProps }
+        tagName="button" 
+        className="contents-ctaText"
+        allowedFormats={ [ "core/bold", "core/italic", "core/link" ] } 
+        value={ ctaText }
+        onChange={ ( ctaText ) => {
+          setAttributes( { ctaText } )
+        } } 
+        placeholder={ __( "Add CTA..." ) } 
+      />
     </section>
   )
 }

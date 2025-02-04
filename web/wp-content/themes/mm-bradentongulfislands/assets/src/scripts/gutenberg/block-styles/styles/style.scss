@@ -33,11 +33,17 @@ TEXT
 
 .is-style-heading-shadow {
 
-    text-shadow: 3px 3px 0px #FFFFFF;
+    transition: 0.3s all ease-in-out;
 
-    &.has-white-color {
+    &--shadow {
+        text-shadow: 3px 3px 0px #FFFFFF;
+        transition: 0.2s all ease-in-out;
 
-        text-shadow: 6px 6px 0px #2B7B7C;
+        &.has-white-color {
+
+            text-shadow: 6px 6px 0px #2B7B7C;
+            transition: 0.2s all ease-in-out;
+        }
     }
 }
 
@@ -1208,6 +1214,7 @@ BUTTONS
         &:hover {
 
             text-decoration: none;
+            color: unset;
             
             &::after {
 
@@ -1292,6 +1299,7 @@ BUTTONS
 
     position: relative;
     max-width: 300px !important;
+    min-width: 14rem;
 
     &::before, &::after {
 
@@ -1316,7 +1324,6 @@ BUTTONS
 
     .wp-block-button__link {
 
-        min-width: 14rem;
         text-decoration: none;
         background-color: $bradenton-teal;
         border: none;

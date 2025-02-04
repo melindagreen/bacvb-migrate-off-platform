@@ -48,31 +48,20 @@ const MediaControls = props => {
 const Inspector = props => {
 
     const { attributes, setAttributes } = props;
-    const { lbTitle, lbDescription } = attributes;
+    const { info } = attributes;
 
     return (
         <InspectorControls>
             <PanelBody
-                title="Card Settings"
+                title="Chip Settings"
             >
                 <MediaControls {...props} />
-            </PanelBody>
-            <PanelBody
-                title="Lightbox Settings"
-            >
 
                 <PanelRow>
                     <TextControl
-                    	label="Lightbox Title"
-                        onChange={ ( lbTitle ) => setAttributes( { lbTitle } ) }
-                        value={ lbTitle }
-                    />
-                </PanelRow>
-                <PanelRow>
-                    <TextControl
-                    	label="Lightbox Description"
-                        onChange={ ( lbDescription ) => setAttributes( { lbDescription } ) }
-                        value={ lbDescription }
+                    	label="Chip Info"
+                        onChange={ ( info ) => setAttributes( { info } ) }
+                        value={ info }
                     />
                 </PanelRow>
             </PanelBody>

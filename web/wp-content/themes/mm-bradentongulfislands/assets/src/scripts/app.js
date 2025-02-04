@@ -191,6 +191,9 @@ if ('serviceWorker' in navigator) {
 	 */
 	function themeOnLoad() {
 
+		// Heading Scroll Animation
+		scrollAnimation('.is-style-heading-shadow', 600, 'is-style-heading-shadow--shadow', true);
+
 		// Toggle Top Bar Banner
 		toggleTopBannerClasses();
 		
@@ -517,7 +520,7 @@ if ('serviceWorker' in navigator) {
 		 * Animation on scroll
 		 * @returns {null}
 		 */
-		function scrollAnimation(selector, scrollThreshold, animationClass) {
+		function scrollAnimation(selector, scrollThreshold, animationClass, permanent = false) {
 			$(window).scroll(function() {
 				const scrollPosition = $(this).scrollTop();
 			
@@ -527,10 +530,12 @@ if ('serviceWorker' in navigator) {
 				  if (scrollPosition > itemOffset - scrollThreshold && !$(this).hasClass(animationClass) && !$(this).hasClass('animationoff')) {
 					$(this).addClass(animationClass);
 					const that = this;
+					if(!permanent) {
 					setTimeout(function() {
 					  $(that).removeClass(animationClass);
 					  $(that).addClass('animationoff');
 					}, 400); 
+					}
 				  }
 				});
 			  });

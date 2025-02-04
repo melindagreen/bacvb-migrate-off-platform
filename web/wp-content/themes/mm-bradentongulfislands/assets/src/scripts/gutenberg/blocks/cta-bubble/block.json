@@ -1,0 +1,32 @@
+{
+  "name": "cta-bubble",
+  "scripts": [
+    "front.js"
+  ],
+  "settings": {
+    "title": "CTA Bubble",
+    "description": "bubble cta",
+    "icon": "share-alt",
+    "category": "layout",
+    "attributes": {
+      "title": {
+        "type": "string",
+        "default": "",
+        "source": "html",
+        "selector": "h2"
+      },
+      "description": {
+        "type": "string",
+        "default": "",
+        "source": "html",
+        "selector": "p"
+      },
+      "ctaText": {
+        "type": "string",
+        "default": "",
+        "source": "html",
+        "selector": "button"
+      }
+    }
+  }
+}
