@@ -18,7 +18,7 @@
       transition: 0.3s ease-in-out all;
       outline: 0px solid white;
       cursor: pointer;
-      min-height: 15rem;
+      min-height: 16rem;
 
       &:hover {
 
@@ -136,6 +136,11 @@
     max-width: 65rem;
     text-align: center;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+
+    img {
+
+      max-height: 20rem;
+    }
 
     h2 {
       font-size: 2.5rem;
