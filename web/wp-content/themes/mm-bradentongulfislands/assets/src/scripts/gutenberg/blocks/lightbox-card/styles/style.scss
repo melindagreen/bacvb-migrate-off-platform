@@ -170,6 +170,7 @@
     height: 50px;
     transition: all 0.2s ease-in;
     cursor: pointer;
+    color: white;
 
     span {
 
@@ -180,7 +181,7 @@
     &:hover {
 
       transition: all 0.2s ease-in;
-      background: $rust;
+      background: $bradenton-teal;
     }
   }
 }
