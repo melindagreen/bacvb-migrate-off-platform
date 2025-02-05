@@ -34,6 +34,7 @@ TEXT
 .is-style-heading-shadow {
 
     transition: 0.3s all ease-in-out;
+    line-height: 1.1em;
 
     &--shadow {
         text-shadow: 3px 3px 0px #FFFFFF;
@@ -412,8 +413,8 @@ COLUMNS
 
     @media only screen and (max-width: $screen-sm) {
 
-        right: 0;
-        left: 0;
+        right: unset !important;
+        left: unset !important;
 
         .wp-block-media-text__media {
 
@@ -463,6 +464,11 @@ IMAGES
 .wp-block-cover {
 
     overflow: unset;
+
+    .wp-block-cover__background.wp-block-cover__gradient-background {
+
+        mix-blend-mode: multiply;
+    }
 }
 
 .is-style-rounded img {
@@ -1275,6 +1281,22 @@ BUTTONS
                 height: 45px;
                 width: 45px;
                 bottom: -55%;
+            }
+        }
+
+        @media only screen and (max-width: $screen-sm) {
+            a {
+
+                line-height: 1.1em;
+                font-size: 1.5rem;
+                text-align: left;
+
+                &::after {
+
+                    height: 35px;
+                    width: 35px;
+                    bottom: -15%;
+                }
             }
         }
     }
