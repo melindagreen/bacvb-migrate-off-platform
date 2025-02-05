@@ -39,6 +39,14 @@ TEXT
 
     position: relative;
 
+    @media screen and (max-width: 768px) {
+
+        .wp-block-heading {
+
+            font-size: 6vw !important;
+        }
+    }
+
     &::before {
         content: ' ';
         --webkit-mask: url("images/brushstroke.svg") no-repeat center;
@@ -1259,7 +1267,7 @@ BUTTONS
             background: url('images/ui-next-on.png') no-repeat;
             transition: all 0.3s ease-in-out;
             position: absolute;
-            right: -2rem;
+            right: -20%;
             bottom: -35%;
             height: 25px;
             width: 25px;
