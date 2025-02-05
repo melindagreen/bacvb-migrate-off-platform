@@ -169,6 +169,7 @@
     width: 50px;
     height: 50px;
     transition: all 0.2s ease-in;
+    cursor: pointer;
 
     span {
 
@@ -181,6 +182,20 @@
       transition: all 0.2s ease-in;
       background: $rust;
     }
+  }
+}
+
+.rock-flag {
+
+  &:hover {
+
+    animation: rock 0.5s ease-in-out;
+  }
+
+
+  &--rocking {
+
+    animation: rock 0.5s ease-in-out;
   }
 }
 

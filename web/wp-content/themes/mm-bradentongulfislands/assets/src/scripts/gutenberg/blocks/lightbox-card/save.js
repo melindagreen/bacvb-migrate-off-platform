@@ -16,7 +16,7 @@ const Save = (props) => {
       </div>
       <div className={`wp-block-mm-bradentongulfislands-lightbox-card__lightbox wp-block-mm-bradentongulfislands-lightbox-card__lightbox--hide ${lightboxId}`}>
           <div className='lightbox-card-overlay__content'>
-          <div class="lightbox-card-overlay__close">x</div>
+          <div class="lightbox-card-overlay__close"><span>x</span></div>
             <img src={`${imageUrl}`} alt={`${imageAlt}`} />
             <div className='lightbox-info'>
               <span>

@@ -191,8 +191,29 @@ if ('serviceWorker' in navigator) {
 	 */
 	function themeOnLoad() {
 
+		// Scroll
+		$('a[href^="#"]').on('click', function (e) {
+			e.preventDefault();
+		  
+			const targetId = $(this).attr('href');
+			const targetElement = $(targetId);
+		  
+			if (targetElement.length) {
+			  const offset = 110; 
+			  const offsetPosition = targetElement.offset().top - offset;
+		  
+			  $('html, body').animate(
+				{
+				  scrollTop: offsetPosition,
+				},
+				100 
+			  );
+			}
+		  });		  
+
 		// Heading Scroll Animation
 		scrollAnimation('.is-style-heading-shadow', 400, 'is-style-heading-shadow--shadow', true);
+		scrollAnimation('.rock-flag', 400, 'rock-flag--rocking');
 
 		// Toggle Top Bar Banner
 		toggleTopBannerClasses();

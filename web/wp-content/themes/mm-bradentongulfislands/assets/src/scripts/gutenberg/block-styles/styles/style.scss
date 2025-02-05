@@ -18,16 +18,41 @@ TEXT
 
 .is-style-brushstroke {
 
-    background: url('images/brushstroke.png');
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-    padding: 3rem;
     word-break: break-all;
+    padding: 3rem;
 
     @media only screen and (max-width: $screen-sm) {
         padding: 2rem 0;
         font-size: 1.5rem !important;
+    }
+}
+
+.wp-block-heading.is-style-brushstroke {
+
+    background: url('images/brushstroke.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+.is-style-brushstroke.wp-block-group {
+
+    position: relative;
+
+    &::before {
+        content: ' ';
+        --webkit-mask: url("images/brushstroke.svg") no-repeat center;
+        mask: url("images/brushstroke.svg") no-repeat center;
+        --webkit-mask-size: 100% 100%;
+        mask-size: 100% 100%;
+
+        inset: 0;
+        width: 100%;
+        display: block;
+        background: $turquoise;
+        position: absolute;
+        z-index: -1;   
+        bottom: 0; 
     }
 }
 
@@ -1296,6 +1321,7 @@ BUTTONS
                     height: 35px;
                     width: 35px;
                     bottom: -15%;
+                    right: 2rem;
                 }
             }
         }
