@@ -46,11 +46,10 @@
 
     p {
 
-      font-size: clamp(0.8rem, 2vw, 1rem);
-      color: white;
+      font-size: clamp(.7rem, 2vw, 0.8rem);
       line-height: 1em;
-      font-family: $font-title;
-      font-weight: bold;
+      color: white;
+      font-family: $font-body;
     }
   }
 
