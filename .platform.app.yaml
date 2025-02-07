@@ -107,6 +107,8 @@ variables:
     "opcache.memory_consumption": 96
     "opcache.validate_timestamps": 0
     "zlib.output_compression": "On"
+    upload_max_filesize: 80M
+    post_max_size: 80M
 
   # Environment variables to use on platform.sh
   env:
