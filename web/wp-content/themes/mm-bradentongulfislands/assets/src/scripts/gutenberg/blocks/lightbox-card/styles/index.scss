@@ -1,0 +1,101 @@
+@import 'styles/utils/variables';
+
+.#{$block-prefix}-logo-cta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 0.4rem;
+  max-width: 25rem;
+  margin: 0 auto;
+  background-color: white;
+  border-radius: 15px;
+
+  &__image {
+
+    padding: 0 3vw;
+    margin-bottom: 1rem;
+
+    img {
+
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  &__contents {
+
+    width: 100%;
+
+    .contents-title {
+
+
+      width: 100%;
+      background-color: $rust;
+      color: white;
+      border-radius: 15px;
+      border: none;
+      padding: 3% 0;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      font-weight: 200;
+      margin: 0;
+
+
+      a {
+
+        width: 100%;
+        display: block;
+        color: white;
+        text-decoration: none;
+        font-weight: 200;
+
+        &:hover {
+
+          color: white;
+        }
+      }
+    }
+  }
+}
+
+/*********************
+MEDIUM AND LARGE SCREENS
+*********************/
+@media only screen and (min-width: 769px) {
+  .#{$block-prefix}-logo-cta {
+
+  }
+}
+
+/*********************
+SMALL SCREENS
+*********************/
+@media only screen and (max-width: 469px) {
+  .#{$block-prefix}-logo-cta {
+
+    margin: 0 6vw;
+  
+    &__image {
+
+    }
+  
+    &__contents {
+  
+      .contents-title {
+  
+      }
+    }
+  
+    .wp-block-social-links {
+
+      .wp-social-link {
+
+        svg {
+
+
+        }
+      }
+    }
+  }
+}

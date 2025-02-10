@@ -1,0 +1,40 @@
+{
+  "name": "info-chip",
+  "scripts": [
+    "front.js"
+  ],
+  "settings": {
+    "title": "Info Chip",
+    "description": "Chip that flips with info on the back",
+    "icon": "share-alt",
+    "category": "layout",
+    "attributes": {
+      "imageId": {
+        "type": "string",
+        "default": "" 
+      },
+      "imageUrl": {
+        "type": "string",
+        "default": ""
+      },
+      "imageAlt": {
+        "type": "string",
+        "default": ""
+      },
+      "title": {
+        "type": "string",
+        "default": "",
+        "source": "html",
+        "selector": "h3"
+      },
+      "info": {
+        "type": "string",
+        "default": ""
+      },
+      "mode": {
+        "type": "string",
+        "default": "preview"
+      }
+    }
+  }
+}

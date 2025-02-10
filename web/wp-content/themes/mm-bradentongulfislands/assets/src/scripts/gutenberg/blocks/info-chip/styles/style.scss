@@ -1,0 +1,115 @@
+@import 'styles/utils/variables';
+@import 'styles/utils/typography';
+
+.#{$block-prefix}-info-chip {
+  
+  width: 232px;
+  height: 232px;
+  perspective: 500px;
+
+  &__content {
+
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    transition: transform 1s;
+    transform-style: preserve-3d;
+    border-radius: 100%;
+  }
+
+  &:hover &__content {
+    transform: rotateY( 180deg ) ;
+    transition: transform 0.5s;
+  }
+
+  &__front,
+  &__back {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: #F4F1EA;
+    border: 12px solid #FFFFFF;
+    text-align: center;
+    font-size: 60px;
+    border-radius: 100%;
+    backface-visibility: hidden;
+    box-shadow: 0px 3px 6px #00000029;
+    align-content: center;
+  }
+
+  &__back {
+    background: $bradenton-teal;
+    color: white;
+    transform: rotateY( 180deg );
+    padding: 2rem 1.5rem;
+
+    p {
+
+      font-size: clamp(.7rem, 2vw, 0.8rem);
+      line-height: 1em;
+      color: white;
+      font-family: $font-body;
+    }
+  }
+
+  .contents-title {
+
+    margin: 0;
+    font-family: $font-title;
+    color: $bradenton-teal;
+    font-weight: 300;
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    position: relative;
+  }
+
+  img {
+
+    position: relative;
+    top: 1rem;
+    width: 70%;
+    max-height: 8rem;
+    object-fit: contain;
+  }
+}
+
+/*********************
+MEDIUM AND LARGE SCREENS
+*********************/
+@media only screen and (min-width: 769px) {
+  .#{$block-prefix}-logo-cta {
+
+  }
+}
+
+/*********************
+SMALL SCREENS
+*********************/
+@media only screen and (max-width: 469px) {
+  .#{$block-prefix}-logo-cta {
+
+    margin: 0 6vw;
+  
+    &__image {
+
+    }
+  
+    &__contents {
+  
+      .contents-title {
+  
+      }
+    }
+  
+    .wp-block-social-links {
+
+      .wp-social-link {
+
+        svg {
+
+
+        }
+      }
+    }
+  }
+}

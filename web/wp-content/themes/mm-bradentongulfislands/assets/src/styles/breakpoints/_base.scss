@@ -5,6 +5,11 @@ GLOBAL STYLES
 
 $formWidth: 185px;
 
+html {
+
+    scroll-behavior: smooth;
+}
+
 html, body {
 
     overflow-x: hidden;

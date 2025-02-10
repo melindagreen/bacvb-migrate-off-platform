@@ -4,6 +4,26 @@
             {
                 "name": "brushstroke",
                 "label": "Brushstroke"
+            },
+            {
+                "name": "heading-shadow",
+                "label": "Shadow"
+            }
+        ]
+    },
+    "core/paragraph": {
+        "add": [
+            {
+                "name": "heading-shadow",
+                "label": "Shadow"
+            }
+        ]
+    },
+    "core/list": {
+        "add": [
+            {
+                "name": "arrow-markers",
+                "label": "Arrow Markers"
             }
         ]
     },
@@ -27,6 +47,11 @@
             {
                 "name": "circle",
                 "label": "Circle Shape",
+                "isDefault": false
+            },
+            {
+                "name": "polaroid",
+                "label": "Polaroid",
                 "isDefault": false
             }
         ]
@@ -109,6 +134,10 @@
             {
                 "name": "custom-grid",
                 "label": "Custom Grid"
+            },
+            {
+                "name": "brushstroke",
+                "label": "Brushstroke"
             }
         ]
     },
@@ -142,6 +171,11 @@
                 "name": "round-arrow-button-blue",
                 "label": "Round Arrow Blue",
                 "isDefault": false
+            },
+            {
+                "name": "quick-links",
+                "label": "Quick Links",
+                "isDefault": false
             }
         ]
     },
@@ -151,6 +185,10 @@
                 "name": "icon",
                 "label": "Icon",
                 "isDefault": false
+            },
+            {
+                "name": "infographic",
+                "label": "Infographic"
             },
             {
                 "name": "rough-edges",
@@ -194,6 +232,20 @@
             {
                 "name": "hero-slider",
                 "label": "Hero Slider",
+                "isDefault": false
+            }
+        ]
+    },
+    "mm-bradentongulfislands/lightbox-card": {
+        "add": [
+            {
+                "name": "primary",
+                "label": "Primary",
+                "isDefault": true
+            },
+            {
+                "name": "lightbox-polaroid",
+                "label": "Polaroid",
                 "isDefault": false
             }
         ]
