@@ -192,24 +192,18 @@ if ('serviceWorker' in navigator) {
 	function themeOnLoad() {
 
 		// Scroll
-		$('a[href^="#"]').on('click', function (e) {
-			e.preventDefault();
-		  
+		$('a[href^="#"]').not('a[href="#"]').on('click', function (e) {
 			const targetId = $(this).attr('href');
 			const targetElement = $(targetId);
-		  
+		
 			if (targetElement.length) {
-			  const offset = 110; 
-			  const offsetPosition = targetElement.offset().top - offset;
-		  
-			  $('html, body').animate(
-				{
-				  scrollTop: offsetPosition,
-				},
-				100 
-			  );
+				e.preventDefault(); // Prevent only if a valid target exists
+				const offset = 110;
+				const offsetPosition = targetElement.offset().top - offset;
+		
+				$('html, body').animate({ scrollTop: offsetPosition }, 100);
 			}
-		  });		  
+		});
 
 		// Heading Scroll Animation
 		scrollAnimation('.is-style-heading-shadow', 400, 'is-style-heading-shadow--shadow', true);
