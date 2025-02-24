@@ -481,6 +481,8 @@ TEMPLATES
 }
 .wp-block-image {
 
+    width: fit-content;
+
     &.aligncenter {
         display: block;
     }    

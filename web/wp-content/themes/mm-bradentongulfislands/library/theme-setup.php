@@ -187,9 +187,10 @@ class ThemeSetup {
 			//	same CSS cannot work for both to ensure that the credit icon is in the upper left, so we
 			//	have logic for either
 			// KEYWORD: photoCredit2025
-			$photoCreditContent = (strpos($block_content, 'wp-block-cover__image-background') !== false)
-				? '<div class="photocreditWrap contentIsBackground"><div class="photocredit" data-photocredit="'. $photoCredit .'">'. $photoIcon .'</div></div>'
-				: '<div class="photocreditWrap"><div class="photocredit" data-photocredit="'. $photoCredit .'">'. $photoIcon . '</div>';
+			// Causing issues with certain elements like grid blocks - Aaron F. 
+			// $photoCreditContent = (strpos($block_content, 'wp-block-cover__image-background') !== false)
+			// 	? '<div class="photocreditWrap contentIsBackground"><div class="photocredit" data-photocredit="'. $photoCredit .'">'. $photoIcon .'</div></div>'
+			// 	: '<div class="photocreditWrap"><div class="photocredit" data-photocredit="'. $photoCredit .'">'. $photoIcon . '</div>';
 
 			// add the svg and credit (either version)
 			$modifiedContent = $block['blockName'] === 'core/video' 
