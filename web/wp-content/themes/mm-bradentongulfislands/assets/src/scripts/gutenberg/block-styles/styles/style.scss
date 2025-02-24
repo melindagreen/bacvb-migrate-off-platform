@@ -484,9 +484,17 @@ TEMPLATES
     width: fit-content;
 
     &.aligncenter {
-        display: block;
-        margin: auto;
-    }    
+        margin-left: auto;
+        margin-right: auto;
+    } 
+    &.alignleft {
+
+        margin-right: auto;
+    }   
+    &.alignright {
+
+        margin-left: auto;
+    }
 }
 .wp-block-image.aligncenter>figcaption {
     
