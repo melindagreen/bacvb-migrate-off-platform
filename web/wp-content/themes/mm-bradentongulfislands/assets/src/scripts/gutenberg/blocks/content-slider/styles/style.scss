@@ -50,7 +50,13 @@ SMALL & MEDIUM SCREENS
     }
     .content-slider-swiper-button-next,
     .content-slider-swiper-button-prev {
-      opacity: 0.85;
+      opacity: 0.9;
+
+      img {
+
+        width: 65%;
+        height: auto;
+      }
     }
 	}
 }
