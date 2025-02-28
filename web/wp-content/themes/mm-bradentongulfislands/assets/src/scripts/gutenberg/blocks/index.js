@@ -6,9 +6,6 @@ import { registerBlockType } from "@wordpress/blocks";
 // Local Dependencies
 import { THEME_PREFIX, BLOCK_NAME_PREFIX } from "scripts/inc/constants";
 
-import ExampleACF from './example-acf';
-import ExampleDynamic from './example-dynamic';
-import ExampleStatic from './example-static';
 import Hero from './hero';
 import PortraitGrid from './portrait-grid';
 import WideSlideshow from './wide-slideshow';

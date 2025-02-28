@@ -2,11 +2,9 @@ import $ from 'jquery';
 
 $(window).on("load", () => {
     initInteractiveMap();
-    console.log('Testing');
 });
 
 export const initInteractiveMap = () => {
-    console.log('Test');
 
     $('.wp-block-mm-bradentongulfislands-water-ferry-map svg .water-ferry-stop').on('click', function(event) {
 

@@ -203,6 +203,20 @@ TEMPLATES
 }
 
 /*********************
+CUSTOM BLOCKS
+*********************/
+.is-style-nautical-illustrations {
+
+    .nautical-illustration {
+
+        display: unset;
+        @media only screen and (max-width: ($screen-md + 1)) {
+            display: none;
+        }
+    }
+}
+
+/*********************
 WIDGETS
 *********************/
 // pre, for notes

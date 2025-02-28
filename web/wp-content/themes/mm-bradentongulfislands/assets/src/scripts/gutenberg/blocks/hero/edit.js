@@ -12,10 +12,14 @@ import {
 } from "@wordpress/components";
 import { __ } from '@wordpress/i18n';
 
+import { useEffect } from '@wordpress/element';
+
 import ServerSideRender from '@wordpress/server-side-render';
 
 
-// Local Dependencies
+// Local dependencies
+import { initHero } from "./front.js";
+
 // Controls - add block/inspector controls here
 import Controls from './controls'
 import { THEME_PREFIX } from 'scripts/inc/constants';
@@ -249,8 +253,12 @@ const ALLOWED_MEDIA_TYPES = ["image", "video"];
 const Editor = props => {
   const { attributes: { mode }, className } = props;
 
+  useEffect(() => {
+    initHero();
+  }, [props.attributes]);
+
   return (
-    <section className={className}>
+    <section className={`${className} ${mode === 'edit' ? 'is-edit' : 'is-preview'}`}>
       {mode === 'edit'
         ? <Wizard {...props} />
         : <ServerSideRender block={props.name} {...props} />}

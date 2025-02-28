@@ -77,14 +77,14 @@ function render_block( $attrs, $content ) {
             <!-- Display both desktop and mobile videos when both hero video and mobile video are set -->
             <div class="video video--desktop">
                 <video poster="<?php if (isset($attrs['videoPoster'])) echo wp_get_attachment_image_src($attrs['videoPoster']['id'], 'full')[0]; ?>" playsinline autoplay muted loop>
-                    <source src="<?php echo wp_get_attachment_url($attrs['video']['id']); ?>" type="video/mp4">
+                    <source data-video-url="<?php echo wp_get_attachment_url($attrs['video']['id']); ?>" type="video/mp4">
                 </video>
                 <div class="fade"></div>
             </div>
 
             <div class="video video--mobile">
                 <video poster="<?php if (isset($attrs['videoPoster'])) echo wp_get_attachment_image_src($attrs['videoPoster']['id'], 'full')[0]; ?>" playsinline autoplay muted loop>
-                    <source src="<?php echo wp_get_attachment_url($attrs['videoForMobile']['id']); ?>" type="video/mp4">
+                    <source data-video-url="<?php echo wp_get_attachment_url($attrs['videoForMobile']['id']); ?>" type="video/mp4">
                 </video>
                 <div class="fade"></div>
             </div>    
@@ -116,7 +116,7 @@ function render_block( $attrs, $content ) {
             <?php if($attrs['ctaBannerTitle'] !== "") { ?>
                 <div class="cta-hero-banner">
                     <h3 class="cta-hero-banner__title"><?php echo $attrs['ctaBannerTitle']; ?></h3>
-                    <?php if($attrs['bannerUrl'] !== "") { ?>
+                    <?php if($attrs['ctaBannerUrl'] !== "") { ?>
                             <div class="cta-hero-banner__cta">
                                 <img class="cta-hero-banner__logo" src="<?php echo wp_get_attachment_url($attrs['logoId']); ?>" alt="">
                                 <a class="wp-block-button__link has-white-color has-bradenton-white-background-color has-text-color has-background has-link-color has-text-align-center wp-element-button" href="<?php echo $attrs['ctaBannerUrl'] ?>"><?php echo $attrs['ctaBannerText'] ?></a>

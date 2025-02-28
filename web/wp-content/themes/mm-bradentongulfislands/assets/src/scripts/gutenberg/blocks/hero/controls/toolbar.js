@@ -46,6 +46,7 @@ const TogglePreview = (props) => {
 const Tools = props => {
 	return (
 		<Toolbar>
+			<TogglePreview {...props} />
 		</Toolbar>
 	)
 }

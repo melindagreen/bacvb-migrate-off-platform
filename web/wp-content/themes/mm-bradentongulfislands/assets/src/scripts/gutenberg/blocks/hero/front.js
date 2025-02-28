@@ -1,7 +1,11 @@
 // this is the front-end script for the block hero
+import $ from 'jquery';
 
-(function ($) {
-    $(document).ready(function () {
+$(window).on("load", () => {
+    initHero();
+});
+
+export const initHero = () => {
         // set the bg position
         $('.hero').each(function () {
             if ($(this).data('lg-background-position')) {
@@ -32,6 +36,50 @@
         if (logoUrl) {
             $title.css('--logo-url', `url(${logoUrl})`);
         }
-    
-    });
-})(jQuery);
+
+         // put the video source in the tag for the size we need
+         const videoSize = (getIsSmall()) ? '.video-el.video--mobile' : '.video-el.video--desktop';
+         $(videoSize).each(function () {
+             const videoContainer = $(this);
+             const sources = videoContainer.find('source');
+             let foundSource = false;
+             
+             sources.each(function () {
+                 const source = $(this);
+                 const videoURL = source.data('video-url');
+ 
+                 // set the source
+                 source.attr('src', videoURL);
+                 source.removeAttr('data-video-url');
+                 foundSource = true;
+             });
+             // load and play the video
+             if (foundSource) {
+                 // large was just set to hidden to fill space, so logic depends here
+                 if (getIsSmall()) {
+                     $('.video.video--desktop').css('display', 'none');
+                     $('.video.video--mobile').css('display', 'block');
+                 }
+                 videoEl = videoContainer;
+                 videoContainer[0].load();
+                 videoContainer[0].play();
+                 $('.hero-video-play').css('visibility', 'visible');
+             }
+         
+             // Show the control after loading and playing the video
+             $('.hero-video-play').css('display', 'block');
+         });
+                 
+         // video controls
+         $('.hero-video-play').click(function () {
+             if (videoEl != null) {
+                 if ($(this).hasClass('pause')) {
+                     $(this).removeClass('pause').addClass('play');
+                     videoEl.get(0).pause();
+                 } else {
+                     $(this).removeClass('play').addClass('pause');
+                     videoEl.get(0).play();
+                 }
+             }
+         });
+    }
