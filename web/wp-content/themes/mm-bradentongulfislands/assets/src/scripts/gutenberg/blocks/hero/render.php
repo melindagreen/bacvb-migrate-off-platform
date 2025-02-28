@@ -68,7 +68,7 @@ function render_block( $attrs, $content ) {
             <!-- Display video for desktop only when there's no mobile video -->
             <div class="video no--mobile">
                 <video poster="<?php if (isset($attrs['videoPoster'])) echo wp_get_attachment_image_src($attrs['videoPoster']['id'], 'full')[0]; ?>" playsinline autoplay muted loop>
-                    <source src="<?php echo wp_get_attachment_url($attrs['video']['id']); ?>" type="video/mp4">
+                    <source data-video-url="<?php echo wp_get_attachment_url($attrs['video']['id']); ?>" type="video/mp4">
                 </video>
                 <div class="fade"></div>
             </div>

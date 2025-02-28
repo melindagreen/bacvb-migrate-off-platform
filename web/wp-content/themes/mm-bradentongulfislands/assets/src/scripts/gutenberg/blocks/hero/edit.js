@@ -18,7 +18,7 @@ import ServerSideRender from '@wordpress/server-side-render';
 
 
 // Local dependencies
-import { initHero } from "./front.js";
+import { initHero } from "./assets/hero.js";
 
 // Controls - add block/inspector controls here
 import Controls from './controls'
