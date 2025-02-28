@@ -11,6 +11,7 @@ class ThemeSetup {
 		add_action( 'init', array( get_called_class(), 'add_custom_rewrites' ) );
 		add_filter( 'pre_post_link', array(get_called_class(), 'prepend_post_permalinks'), 10, 2);
 		add_action( 'template_redirect', array(get_called_class(), 'redirect_single_posts'));
+		add_action( 'wp', array(get_called_class(),'fareharbor_scripts') );
 		// add_action('gform_after_submission', array( get_called_class(), 'add_to_newsletter' ), 10, 2);
 
 		add_action( 'template_redirect', array(get_called_class(), 'disable_author_archives'));
@@ -34,6 +35,22 @@ class ThemeSetup {
 		// global override for from emails
         add_filter( 'wp_mail_from', array( get_called_class(), 'custom_wp_mail_from' ) );
         add_filter( 'wp_mail_from_name', array( get_called_class(), 'custom_wp_mail_from_name' ) );
+	}
+
+
+	public static function fareharbor_scripts() {
+		// Check if the page/post contains the specific FareHarbor URL
+		if (is_page() || is_singular()) {
+			global $post;
+			// Check if the content contains the specific FareHarbor base URL
+			if ( strpos( $post->post_content, 'fareharbor.com/embeds/book/gulfislandsferry' ) !== false ) {
+				// If the link is found, enqueue the FareHarbor script
+				add_action( 'wp_enqueue_scripts', array( 'fareharbor', 'maybe_enqueue_fh_kit_styles' ) );
+			} else {
+				// If the link is not found, remove the script
+				remove_action( 'wp_enqueue_scripts', array( 'fareharbor', 'maybe_enqueue_fh_kit_styles' ) );
+			}
+		}
 	}
 
 	public static function add_raf_trademark($content) {

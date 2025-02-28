@@ -74,6 +74,7 @@ function render_block( $attrs, $content ) {
             <div class="grid-item__background">
               <?php if( $post['thumb'] ) { ?>
                 <img class="grid-item__image" src="<?php echo $post['thumb'] ?>" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/pixel.png"
+                data-load-type="img"
                 data-load-offset="lg"
                 data-load-lg="<?php echo $post['thumb'] ?>" alt="">
               <?php } ?>
