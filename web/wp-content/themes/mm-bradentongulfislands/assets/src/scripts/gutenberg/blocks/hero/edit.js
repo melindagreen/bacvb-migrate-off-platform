@@ -261,7 +261,7 @@ const Editor = props => {
     <section className={`${className} ${mode === 'edit' ? 'is-edit' : 'is-preview'}`}>
       {mode === 'edit'
         ? <Wizard {...props} />
-        : <ServerSideRender block={props.name} {...props} />}
+        : <ServerSideRender block={props.name} httpMethod={'POST'} {...props} />}
     </section>
   )
 }
