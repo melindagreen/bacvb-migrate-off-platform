@@ -1,5 +1,6 @@
 // this is the front-end script for the block hero
 import $ from 'jquery';
+import { getIsSmall, getIsLarge } from '../../inc/utils';
 
 $(window).on("load", () => {
     initHero();
