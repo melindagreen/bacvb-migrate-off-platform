@@ -50,7 +50,7 @@ function render_block( $attrs, $content ) {
         $clean_post['thumb'] = $post['customThumb']['url'];
       }
       else if( isset( $post['postObj']['id'] ) && has_post_thumbnail( $post['postObj']['id'] ) ) {
-        $clean_post['thumb'] = get_the_post_thumbnail_url( $post['postObj']['id'], 'full' );
+        $clean_post['thumb'] = get_the_post_thumbnail_url( $post['postObj']['id'], 'madden_hero_md' );
       }
   
       // link
