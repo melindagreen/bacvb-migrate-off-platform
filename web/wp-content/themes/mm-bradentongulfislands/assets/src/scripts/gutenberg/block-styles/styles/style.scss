@@ -776,11 +776,10 @@ IMAGES
 
             display: grid;
             grid-template-columns: repeat(6, 1fr);
-            grid-template-rows: repeat(6, 1fr);
+            grid-template-rows: repeat(auto-fit, minmax(50px, 1fr));
+            max-height: 1000px;
             gap: 10px;
             padding: 15px;
-            height: 1000px;
-
 
             img {
                 max-width: 100%;
@@ -1032,7 +1031,7 @@ IMAGES
 
                 /*grid-template-columns: repeat(10, 1fr);*/
                 grid-template-rows: repeat(8, 20vw);
-                height: auto;
+                max-height: 800px;
                 gap: 10px;
 
                 &.is-style-masonry-alternate-2 {
