@@ -39,7 +39,7 @@ export const initHero = () => {
         }
 
          // put the video source in the tag for the size we need
-         const videoSize = (getIsSmall()) ? '.video-el.video--mobile' : '.video-el.video--desktop';
+         const videoSize = (getIsSmall()) ? '.video.video--mobile' : '.video.video--desktop, .video.video--nomobile';
          $(videoSize).each(function () {
              const videoContainer = $(this);
              const sources = videoContainer.find('source');
