@@ -754,10 +754,6 @@ IMAGES
             padding-right: calc(6vw + 15px);
             grid-template-columns: repeat(6, 1fr) !important;
 
-            max-height: 800px;
-            height: fit-content;
-            grid-template-rows: repeat(auto-fit, minmax(0, 1fr));
-
             .wp-block-post {
 
                 position: relative;
@@ -880,7 +876,9 @@ IMAGES
 
                 /*grid-template-columns: repeat(10, 1fr);*/
                 grid-template-rows: repeat(8, 20vw);
-                // max-height: 800px;
+                max-height: 800px;
+                height: fit-content;
+                grid-template-rows: repeat(auto-fit, minmax(0, 1fr));
                 gap: 10px;
 
                 &.is-style-masonry-alternate-2 {
