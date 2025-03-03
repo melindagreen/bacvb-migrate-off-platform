@@ -749,6 +749,10 @@ IMAGES
 
         &.is-layout-grid {
 
+
+            padding-left: calc(6vw + 15px);
+            padding-right: calc(6vw + 15px);
+
             .wp-block-post {
 
                 position: relative;
@@ -763,6 +767,14 @@ IMAGES
                         height: 100%;
                         object-fit: cover;
                     }
+                }
+
+
+                .wp-block-post-title {
+
+                    padding: 0 1.1rem;
+                    bottom: 0.5rem;
+                    line-height: 1em;
                 }
             }
         }
@@ -791,7 +803,7 @@ IMAGES
 
     .wp-block-gallery, .wp-block-query {
         &.has-nested-images, .wp-block-post-template {
-            &.is-style-masonry, .is-layout-grid {
+            &.is-style-masonry, &.is-layout-grid {
 
 
                 &.is-style-masonry-block-mobile {
