@@ -600,7 +600,7 @@ IMAGES
             display: grid;
             grid-template-columns: repeat(6, 1fr);
             grid-template-rows: repeat(auto-fit, minmax(50px, 1fr));
-            max-height: 1000px;
+            // max-height: 1000px;
             gap: 10px;
             padding: 15px;
 
@@ -775,6 +775,7 @@ IMAGES
                     padding: 0 1.1rem;
                     bottom: 0.5rem;
                     line-height: 1em;
+                    position: absolute;
                 }
             }
         }
@@ -874,7 +875,7 @@ IMAGES
 
                 /*grid-template-columns: repeat(10, 1fr);*/
                 grid-template-rows: repeat(8, 20vw);
-                max-height: 800px;
+                // max-height: 800px;
                 gap: 10px;
 
                 &.is-style-masonry-alternate-2 {
@@ -994,6 +995,26 @@ IMAGES
                 }
             }
         }
+
+    // Additional Styling for Block Query
+    .wp-block-post-template {
+
+        &.is-layout-grid {
+
+
+            padding-left: calc(6vw + 15px);
+            padding-right: calc(6vw + 15px);
+
+            .wp-block-post {
+
+
+                .wp-block-post-title {
+
+                    font-size: 2.5vw;
+                }
+            }
+        }
+    }
     }
 	
 }
