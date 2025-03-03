@@ -706,35 +706,37 @@ IMAGES
                         }
                     }
 
-                    figcaption {
-                            background: transparent!important;
-                            bottom: 1.5rem;
-                            font-family: var(--wp--preset--font-family--header);
-                            font-size: calc(2.5rem - 100%);
-                            height: -webkit-fit-content;
-                            height: -moz-fit-content;
-                            height: fit-content;
-                            padding-left: 5%;
-                            margin-top: 0!important;
-                            text-align: left;
-                            width: fit-content;
-                            z-index: 1;
-                            text-shadow: 0 5px 10px #000000a3;
-
-                        a {
-                            height: 100%;
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;
-                            text-decoration: none !important;
-
-                            &:hover {
-                                text-decoration: none;
-                            }
-                        }
-                    }
-
                 }
+
+
+                figcaption, .wp-block-post-title {
+                    background: transparent!important;
+                    bottom: 1.5rem;
+                    font-family: var(--wp--preset--font-family--header);
+                    font-size: calc(2.5rem - 100%);
+                    height: -webkit-fit-content;
+                    height: -moz-fit-content;
+                    height: fit-content;
+                    padding-left: 5%;
+                    margin-top: 0!important;
+                    text-align: left;
+                    width: fit-content;
+                    z-index: 1;
+                    text-shadow: 0 5px 10px #000000a3;
+                    color: white;
+
+                a {
+                    height: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    text-decoration: none !important;
+
+                    &:hover {
+                        text-decoration: none;
+                    }
+                }
+            }
 
             }
 
@@ -742,25 +744,42 @@ IMAGES
 
     }
 
+    // Additional Styling for Block Query
+    .wp-block-post-template {
+
+        &.is-layout-grid {
+
+            .wp-block-post {
+
+                position: relative;
+
+                .wp-block-post-featured-image {
+
+                    height: 100%;
+                    position: relative;
+
+                    img {
+
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+            }
+        }
+    }
+
 }
 
 @media only screen and (min-width: ($screen-sm + 1)) and (max-width: $screen-md) {
 
-    .wp-block-gallery {
-		&.has-nested-images {
-			&.is-style-masonry {
+    .wp-block-gallery, .wp-block-query {
+		&.has-nested-images, .wp-block-post-template {
+			&.is-style-masonry, &.is-layout-grid {
 
-                
-
-
-
-				figure {
-					&.wp-block-image {
-						figcaption {
+				figure, .wp-block-post {
+						figcaption, .wp-block-post-title {
 							font-size: calc(30px - 10%);
 						}
-					}
-
 				}
 			}
 		}
@@ -770,21 +789,10 @@ IMAGES
 
 @media only screen and (max-width: $screen-sm) {
 
-    .wp-block-gallery {
-        &.has-nested-images {
-            &.is-style-masonry {
+    .wp-block-gallery, .wp-block-query {
+        &.has-nested-images, .wp-block-post-template {
+            &.is-style-masonry, .is-layout-grid {
 
-                // &.columns-3 {
-                //     grid-template-rows: repeat(4, 15vw) ;  
-                    
-                //     figure {
-                //         &:nth-child(4) {
-                //             grid-column: 1/10;
-                //             grid-row: 5 / 5;
-                //         }
-                       
-                //     }
-                // }
 
                 &.is-style-masonry-block-mobile {
                     display: flex;
@@ -909,7 +917,7 @@ IMAGES
                     }
                 }
     
-                figure {
+                figure, .wp-block-post {
     
 
                         &:nth-child(1) {
@@ -965,12 +973,11 @@ IMAGES
                             border-radius: 0 1rem 1rem 1rem;
                         }
     
-                        figcaption {
-                            font-size: 3.5vw
-                        }
-    
                     }
-    
+                    
+                    figcaption, .wp-block-post-title {
+                        font-size: 3.5vw
+                    }
     
                 }
             }
