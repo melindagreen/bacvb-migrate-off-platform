@@ -522,8 +522,8 @@ IMAGES
 
 // Gallery
 .wp-block-gallery, .wp-block-query {
-    &.has-nested-images {
-        &.is-style-masonry, .wp-block-post-template.is-layout-grid  {
+    &.has-nested-images, .wp-block-post-template {
+        &.is-style-masonry, &.is-layout-grid  {
 
             &.columns-3 {
                 grid-template-rows: repeat(2, 15vw) ;  
