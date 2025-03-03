@@ -752,6 +752,11 @@ IMAGES
 
             padding-left: calc(6vw + 15px);
             padding-right: calc(6vw + 15px);
+            grid-template-columns: repeat(6, 1fr) !important;
+
+            max-height: 800px;
+            height: fit-content;
+            grid-template-rows: repeat(auto-fit, minmax(0, 1fr));
 
             .wp-block-post {
 
