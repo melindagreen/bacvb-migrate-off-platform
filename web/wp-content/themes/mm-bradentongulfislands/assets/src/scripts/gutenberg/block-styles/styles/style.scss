@@ -521,9 +521,9 @@ IMAGES
 }
 
 // Gallery
-.wp-block-gallery {
+.wp-block-gallery, .wp-block-query {
     &.has-nested-images {
-        &.is-style-masonry {
+        &.is-style-masonry, .wp-block-post-template.is-layout-grid  {
 
             &.columns-3 {
                 grid-template-rows: repeat(2, 15vw) ;  
@@ -599,18 +599,17 @@ IMAGES
 
             display: grid;
             grid-template-columns: repeat(6, 1fr);
-            grid-template-rows: repeat(6, 1fr);
+            grid-template-rows: repeat(auto-fit, minmax(50px, 1fr));
+            max-height: 1000px;
             gap: 10px;
             padding: 15px;
-            height: 1000px;
-
 
             img {
                 max-width: 100%;
                 display: block;
             }
 
-            figure {
+            figure, .wp-block-post {
 
     
                 --webkit-mask: url("images/collage-square.svg") no-repeat center;
@@ -855,7 +854,7 @@ IMAGES
 
                 /*grid-template-columns: repeat(10, 1fr);*/
                 grid-template-rows: repeat(8, 20vw);
-                height: auto;
+                max-height: 800px;
                 gap: 10px;
 
                 &.is-style-masonry-alternate-2 {
