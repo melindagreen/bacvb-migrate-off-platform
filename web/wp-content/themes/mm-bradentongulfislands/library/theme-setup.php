@@ -33,7 +33,29 @@ class ThemeSetup {
 		// global override for from emails
         add_filter( 'wp_mail_from', array( get_called_class(), 'custom_wp_mail_from' ) );
         add_filter( 'wp_mail_from_name', array( get_called_class(), 'custom_wp_mail_from_name' ) );
+
+		//flush cache 
+		add_action('save_post', array( get_called_class(), 'clear_caches_on_update' ));
+		add_action('deleted_post', array( get_called_class(), 'clear_caches_on_update' ));
 	}
+
+
+	/**
+     * Clears cach when updating posts
+     */
+    public static function clear_caches_on_update($post_id) {
+
+        // Skip auto-saves and revisions
+        if (wp_is_post_autosave($post_id) || wp_is_post_revision($post_id)) {
+            return;
+        }
+
+        // Clear Breeze cache
+        if (function_exists('breeze_clear_cache')) {
+            breeze_clear_cache();
+            error_log('Breeze cache cleared.');
+        }
+    }
 
 
 	public static function madden_theme_support() {
