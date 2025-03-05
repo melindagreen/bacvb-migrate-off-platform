@@ -14,7 +14,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@wordpress/scripts": "22.5.0",
+    "@wordpress/scripts": "27.6.0",
     "import-glob": "^1.5.0",
     "prettier": "2.6.2"
   },
