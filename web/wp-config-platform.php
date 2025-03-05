@@ -9,26 +9,12 @@
  *    ╩  ┴─┘┴ ┴ ┴ └  └─┘┴└─┴ ┴o└─┘┴ ┴     
  */
 
-/*********
- * WP_ROCKET
- *********/
-// Your license KEY.
-if ( ! defined( 'WP_ROCKET_KEY' ) ) {
-  define( 'WP_ROCKET_KEY', 'ea71e7e9');
-}
-
-// Your email, the one you used for the purchase.
-if ( ! defined( 'WP_ROCKET_EMAIL' ) ) {
-  define( 'WP_ROCKET_EMAIL', 'mmserv@maddenmedia.com' );
-}
-define( 'WP_CACHE', true ); // Added by WP Rocket
-
 // -- PLATFORM.SH CONFIG READER -- 
 // Create a new config object to ease reading the Platform.sh environment variables.
 // You can alternatively use getenv() yourself.
 use Platformsh\ConfigReader\Config;
 
-$config = new Config();
+$platform_config = new Config();
 $site_scheme = 'http';
 
 // Update scheme and hostname for the requested page.
@@ -39,7 +25,7 @@ if (isset($_SERVER['HTTP_HOST'])) {
 define('WP_HOME', $site_scheme . '://' . $site_host);
 define('WP_SITEURL', WP_HOME);
 
-if ($config->isValidPlatform()) {
+if ($platform_config->isValidPlatform()) {
   // Running on platform
   // IS PRODUCTION
   define('IS_PRODUCTION', getenv('PRODUCTION'));
@@ -59,7 +45,7 @@ if ($config->isValidPlatform()) {
   }
 
   // Get the database credentials
-  $credentials = $config->credentials('database');
+  $credentials = $platform_config->credentials('database');
 
   // We are using the first relationship called "database" found in your
   // relationships. Note that you can call this relationship as you wish
@@ -72,8 +58,8 @@ if ($config->isValidPlatform()) {
   define('DB_COLLATE', '');
 
   // Get the credentials to connect to the Redis service.
-  if ($config->hasRelationship('rediscache')) {
-    $credentials_redis = $config->credentials('rediscache');
+  if ($platform_config->hasRelationship('rediscache')) {
+    $credentials_redis = $platform_config->credentials('rediscache');
     try {
         define( 'WP_REDIS_HOST', $credentials_redis['host'] );
         define( 'WP_REDIS_PORT', $credentials_redis['port'] );
@@ -84,12 +70,12 @@ if ($config->isValidPlatform()) {
 
   // Check whether a route is defined for this application in the Platform.sh
   // routes. Use it as the site hostname if so (it is not ideal to trust HTTP_HOST).
-  if ($config->routes()) {
+  if ($platform_config->routes()) {
 
-    $routes = $config->routes();
+    $routes = $platform_config->routes();
 
     foreach ($routes as $url => $route) {
-      if ($route['type'] === 'upstream' && $route['upstream'] === $config->applicationName) {
+      if ($route['type'] === 'upstream' && $route['upstream'] === $platform_config->applicationName) {
 
         // Pick the first hostname, or the first HTTPS hostname if one exists.
         $host = parse_url($url, PHP_URL_HOST);
@@ -115,7 +101,7 @@ if ($config->isValidPlatform()) {
 
   // Set all of the necessary keys to unique values, based on the Platform.sh
   // entropy value.
-  if ($config->projectEntropy) {
+  if ($platform_config->projectEntropy) {
     $keys = [
       'AUTH_KEY',
       'SECURE_AUTH_KEY',
@@ -126,7 +112,7 @@ if ($config->isValidPlatform()) {
       'LOGGED_IN_SALT',
       'NONCE_SALT',
     ];
-    $entropy = $config->projectEntropy;
+    $entropy = $platform_config->projectEntropy;
     foreach ($keys as $key) {
       if (!defined($key)) {
         define($key, $entropy . $key);
@@ -157,3 +143,6 @@ ini_set('session.gc_maxlifetime', 200000);
 ini_set('session.cookie_lifetime', 2000000);
 ini_set('pcre.backtrack_limit', 200000);
 ini_set('pcre.recursion_limit', 200000);
+
+// For Breeze
+define('FS_METHOD', 'direct');

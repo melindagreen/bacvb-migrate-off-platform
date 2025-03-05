@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+set -e
+
+if [ -f .env ]; then
+    source .env
+fi
+
+source ".composer/bin/helpers"
+RUN_UPDATE_COMPOSER_JSON="${RUN_UPDATE_COMPOSER_JSON:-false}"
+
+# Need to double check > Check if is the Production, if so don't run this!!!!!
+if [ "$PRODUCTION" = "true" ]; then
+    echo "PRODUCTION is set to true. Not running composer update-composer-json."
+    exit 0
+fi
+
+if [ "$RUN_UPDATE_COMPOSER_JSON" = "true" ]; then
+    echo "RUN_UPDATE_COMPOSER_JSON is set to true. Running composer update-composer-json..."
+    composer update-composer-json
+else
+    echo "RUN_UPDATE_COMPOSER_JSON is not set to true. Not running composer update-composer-json."
+fi
