@@ -191,6 +191,24 @@ if ('serviceWorker' in navigator) {
 	 */
 	function themeOnLoad() {
 
+		// Scroll
+		$('a[href^="#"]').not('a[href="#"]').on('click', function (e) {
+			const targetId = $(this).attr('href');
+			const targetElement = $(targetId);
+		
+			if (targetElement.length) {
+				e.preventDefault(); // Prevent only if a valid target exists
+				const offset = 110;
+				const offsetPosition = targetElement.offset().top - offset;
+		
+				$('html, body').animate({ scrollTop: offsetPosition }, 100);
+			}
+		});
+
+		// Heading Scroll Animation
+		scrollAnimation('.is-style-heading-shadow', 400, 'is-style-heading-shadow--shadow', true);
+		scrollAnimation('.rock-flag', 400, 'rock-flag--rocking');
+
 		// Toggle Top Bar Banner
 		toggleTopBannerClasses();
 		
@@ -517,7 +535,7 @@ if ('serviceWorker' in navigator) {
 		 * Animation on scroll
 		 * @returns {null}
 		 */
-		function scrollAnimation(selector, scrollThreshold, animationClass) {
+		function scrollAnimation(selector, scrollThreshold, animationClass, permanent = false) {
 			$(window).scroll(function() {
 				const scrollPosition = $(this).scrollTop();
 			
@@ -527,10 +545,12 @@ if ('serviceWorker' in navigator) {
 				  if (scrollPosition > itemOffset - scrollThreshold && !$(this).hasClass(animationClass) && !$(this).hasClass('animationoff')) {
 					$(this).addClass(animationClass);
 					const that = this;
+					if(!permanent) {
 					setTimeout(function() {
 					  $(that).removeClass(animationClass);
 					  $(that).addClass('animationoff');
 					}, 400); 
+					}
 				  }
 				});
 			  });

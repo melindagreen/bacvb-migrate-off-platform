@@ -4,100 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e973c23a3371d2ea99509a4dcbba84b0",
+    "content-hash": "62bf332a1f5a0e0bbc9be31b5cbaf76c",
     "packages": [
         {
-            "name": "berlindb/core",
-            "version": "2.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/berlindb/core.git",
-                "reference": "7dcddaddcffb69c58800d2fb3f6f169791cab1f7"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/berlindb/core/zipball/7dcddaddcffb69c58800d2fb3f6f169791cab1f7",
-                "reference": "7dcddaddcffb69c58800d2fb3f6f169791cab1f7",
-                "shasum": ""
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "BerlinDB\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "A collection of PHP classes and functions that aims to provide an ORM-like experience and interface to WordPress database tables.",
-            "support": {
-                "issues": "https://github.com/berlindb/core/issues",
-                "source": "https://github.com/berlindb/core/tree/2.0.1"
-            },
-            "time": "2022-03-10T21:12:11+00:00"
-        },
-        {
-            "name": "cloudflare/cf-ip-rewrite",
-            "version": "1.0.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/cloudflare/cf-ip-rewrite.git",
-                "reference": "48e2ce52e87d3d27cdb662584fccf82efa898bf1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/cloudflare/cf-ip-rewrite/zipball/48e2ce52e87d3d27cdb662584fccf82efa898bf1",
-                "reference": "48e2ce52e87d3d27cdb662584fccf82efa898bf1",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^4.8",
-                "squizlabs/php_codesniffer": "2.*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "CloudFlare\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "CloudFlare",
-                    "homepage": "http://www.cloudflare.com/"
-                }
-            ],
-            "description": "Library to rewrite CloudFlare IP Addresses to the end-user IP address",
-            "homepage": "https://github.com/cloudflare/cf-ip-rewrite",
-            "keywords": [
-                "cloudflare",
-                "ip rewrite"
-            ],
-            "support": {
-                "issues": "https://github.com/cloudflare/cf-ip-rewrite/issues",
-                "source": "https://github.com/cloudflare/cf-ip-rewrite/tree/master"
-            },
-            "time": "2017-10-10T15:44:33+00:00"
-        },
-        {
             "name": "composer/ca-bundle",
-            "version": "1.5.4",
+            "version": "1.5.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/ca-bundle.git",
-                "reference": "bc0593537a463e55cadf45fd938d23b75095b7e1"
+                "reference": "08c50d5ec4c6ced7d0271d2862dec8c1033283e6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/ca-bundle/zipball/bc0593537a463e55cadf45fd938d23b75095b7e1",
-                "reference": "bc0593537a463e55cadf45fd938d23b75095b7e1",
+                "url": "https://api.github.com/repos/composer/ca-bundle/zipball/08c50d5ec4c6ced7d0271d2862dec8c1033283e6",
+                "reference": "08c50d5ec4c6ced7d0271d2862dec8c1033283e6",
                 "shasum": ""
             },
             "require": {
@@ -144,7 +64,7 @@
             "support": {
                 "irc": "irc://irc.freenode.org/composer",
                 "issues": "https://github.com/composer/ca-bundle/issues",
-                "source": "https://github.com/composer/ca-bundle/tree/1.5.4"
+                "source": "https://github.com/composer/ca-bundle/tree/1.5.5"
             },
             "funding": [
                 {
@@ -160,7 +80,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-11-27T15:35:25+00:00"
+            "time": "2025-01-08T16:17:16+00:00"
         },
         {
             "name": "composer/composer",
@@ -1311,16 +1231,16 @@
         },
         {
             "name": "maddenmedia/gravityforms",
-            "version": "v2.9.1",
+            "version": "2.9.4",
             "source": {
                 "type": "git",
                 "url": "git@github.com:maddenmedia/gravityforms.git",
-                "reference": "e26b2f21067962e2563a504ab3ff6ef2e80c0ec8"
+                "reference": "f3da6fa474f96d7f7511039de529147e17fd7b0f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/maddenmedia/gravityforms/zipball/e26b2f21067962e2563a504ab3ff6ef2e80c0ec8",
-                "reference": "e26b2f21067962e2563a504ab3ff6ef2e80c0ec8",
+                "url": "https://api.github.com/repos/maddenmedia/gravityforms/zipball/f3da6fa474f96d7f7511039de529147e17fd7b0f",
+                "reference": "f3da6fa474f96d7f7511039de529147e17fd7b0f",
                 "shasum": ""
             },
             "type": "wordpress-plugin",
@@ -1329,10 +1249,10 @@
             ],
             "description": "gravity forms",
             "support": {
-                "source": "https://github.com/maddenmedia/gravityforms/tree/v2.9.1",
+                "source": "https://github.com/maddenmedia/gravityforms/tree/2.9.4",
                 "issues": "https://github.com/maddenmedia/gravityforms/issues"
             },
-            "time": "2024-12-13T15:24:57+00:00"
+            "time": "2025-02-28T15:42:57+00:00"
         },
         {
             "name": "maddenmedia/madden-cookie-consent",
@@ -2248,72 +2168,6 @@
                 }
             ],
             "time": "2024-11-06T11:30:55+00:00"
-        },
-        {
-            "name": "symfony/css-selector",
-            "version": "v5.4.45",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/css-selector.git",
-                "reference": "4f7f3c35fba88146b56d0025d20ace3f3901f097"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/css-selector/zipball/4f7f3c35fba88146b56d0025d20ace3f3901f097",
-                "reference": "4f7f3c35fba88146b56d0025d20ace3f3901f097",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2.5",
-                "symfony/polyfill-php80": "^1.16"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Component\\CssSelector\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                },
-                {
-                    "name": "Jean-François Simon",
-                    "email": "jeanfrancois.simon@sensiolabs.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Converts CSS selectors to XPath expressions",
-            "homepage": "https://symfony.com",
-            "support": {
-                "source": "https://github.com/symfony/css-selector/tree/v5.4.45"
-            },
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2024-09-25T14:11:13+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
@@ -3354,87 +3208,6 @@
             },
             "abandoned": true,
             "time": "2018-03-27T13:58:50+00:00"
-        },
-        {
-            "name": "voku/simple_html_dom",
-            "version": "4.8.10",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/voku/simple_html_dom.git",
-                "reference": "716822ed52ed3a1881542be07a786270de390e99"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/voku/simple_html_dom/zipball/716822ed52ed3a1881542be07a786270de390e99",
-                "reference": "716822ed52ed3a1881542be07a786270de390e99",
-                "shasum": ""
-            },
-            "require": {
-                "ext-dom": "*",
-                "ext-libxml": "*",
-                "ext-simplexml": "*",
-                "php": ">=7.0.0",
-                "symfony/css-selector": "~3.0 || ~4.0 || ~5.0 || ~6.0 || ~7.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~6.0 || ~7.0 || ~9.0"
-            },
-            "suggest": {
-                "voku/portable-utf8": "If you need e.g. UTF-8 fixed output."
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "voku\\helper\\": "src/voku/helper/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "dimabdc",
-                    "email": "support@titor.ru",
-                    "homepage": "https://github.com/dimabdc",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Lars Moelleken",
-                    "homepage": "https://www.moelleken.org/",
-                    "role": "Fork-Maintainer"
-                }
-            ],
-            "description": "Simple HTML DOM package.",
-            "homepage": "https://github.com/voku/simple_html_dom",
-            "keywords": [
-                "HTML Parser",
-                "dom",
-                "php dom"
-            ],
-            "support": {
-                "issues": "https://github.com/voku/simple_html_dom/issues",
-                "source": "https://github.com/voku/simple_html_dom/tree/4.8.10"
-            },
-            "funding": [
-                {
-                    "url": "https://www.paypal.me/moelleken",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/voku",
-                    "type": "github"
-                },
-                {
-                    "url": "https://www.patreon.com/voku",
-                    "type": "patreon"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/voku/simple_html_dom",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2024-07-03T16:05:14+00:00"
         },
         {
             "name": "wp-cli/cache-command",
@@ -4831,16 +4604,16 @@
         },
         {
             "name": "wp-cli/php-cli-tools",
-            "version": "v0.12.1",
+            "version": "v0.12.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-cli/php-cli-tools.git",
-                "reference": "d1fe500378f53fb5ae1072c0daa77095c384a082"
+                "reference": "fbb9c6eb83c04ee99b0c01454b47f47ab0e432bc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-cli/php-cli-tools/zipball/d1fe500378f53fb5ae1072c0daa77095c384a082",
-                "reference": "d1fe500378f53fb5ae1072c0daa77095c384a082",
+                "url": "https://api.github.com/repos/wp-cli/php-cli-tools/zipball/fbb9c6eb83c04ee99b0c01454b47f47ab0e432bc",
+                "reference": "fbb9c6eb83c04ee99b0c01454b47f47ab0e432bc",
                 "shasum": ""
             },
             "require": {
@@ -4888,9 +4661,9 @@
             ],
             "support": {
                 "issues": "https://github.com/wp-cli/php-cli-tools/issues",
-                "source": "https://github.com/wp-cli/php-cli-tools/tree/v0.12.1"
+                "source": "https://github.com/wp-cli/php-cli-tools/tree/v0.12.4"
             },
-            "time": "2024-10-01T11:13:49+00:00"
+            "time": "2025-03-05T14:35:01+00:00"
         },
         {
             "name": "wp-cli/rewrite-command",
@@ -5394,12 +5167,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-cli/wp-cli.git",
-                "reference": "0187f2b4ce7e83f31bf4beecd5ad4f11ddf8b57b"
+                "reference": "c0513d0195584132d9bbd4265092fd323ee6060b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-cli/wp-cli/zipball/0187f2b4ce7e83f31bf4beecd5ad4f11ddf8b57b",
-                "reference": "0187f2b4ce7e83f31bf4beecd5ad4f11ddf8b57b",
+                "url": "https://api.github.com/repos/wp-cli/wp-cli/zipball/c0513d0195584132d9bbd4265092fd323ee6060b",
+                "reference": "c0513d0195584132d9bbd4265092fd323ee6060b",
                 "shasum": ""
             },
             "require": {
@@ -5408,15 +5181,14 @@
                 "php": "^5.6 || ^7.0 || ^8.0",
                 "symfony/finder": ">2.7",
                 "wp-cli/mustangostang-spyc": "^0.6.3",
-                "wp-cli/php-cli-tools": "~0.12.1"
+                "wp-cli/php-cli-tools": "~0.12.3"
             },
             "require-dev": {
-                "roave/security-advisories": "dev-latest",
                 "wp-cli/db-command": "^1.3 || ^2",
                 "wp-cli/entity-command": "^1.2 || ^2",
                 "wp-cli/extension-command": "^1.1 || ^2",
                 "wp-cli/package-command": "^1 || ^2",
-                "wp-cli/wp-cli-tests": "^4.0.1"
+                "wp-cli/wp-cli-tests": "^4.3.7"
             },
             "suggest": {
                 "ext-readline": "Include for a better --prompt implementation",
@@ -5457,7 +5229,7 @@
                 "issues": "https://github.com/wp-cli/wp-cli/issues",
                 "source": "https://github.com/wp-cli/wp-cli"
             },
-            "time": "2024-11-26T19:13:58+00:00"
+            "time": "2025-03-04T19:27:42+00:00"
         },
         {
             "name": "wp-cli/wp-cli-bundle",
@@ -5582,238 +5354,40 @@
             "time": "2024-10-16T12:50:47+00:00"
         },
         {
-            "name": "wp-media/apply-filters-typed",
-            "version": "v1.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/wp-media/apply-filters-typed.git",
-                "reference": "d8f5bca83e85196d1f01d92283b63ef6f886ac4d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/wp-media/apply-filters-typed/zipball/d8f5bca83e85196d1f01d92283b63ef6f886ac4d",
-                "reference": "d8f5bca83e85196d1f01d92283b63ef6f886ac4d",
-                "shasum": ""
-            },
-            "require-dev": {
-                "phpcompatibility/phpcompatibility-wp": "^2.0",
-                "phpstan/extension-installer": "^1.4",
-                "szepeviktor/phpstan-wordpress": "^1.3",
-                "wp-coding-standards/wpcs": "^3",
-                "wp-media/phpunit": "^3"
-            },
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "functions.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-3.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "WP Media",
-                    "email": "contact@wp-media.me"
-                }
-            ],
-            "description": "Library for usage of WordPress filters in a safe-type way",
-            "support": {
-                "issues": "https://github.com/wp-media/apply-filters-typed/issues",
-                "source": "https://github.com/wp-media/apply-filters-typed/tree/v1.2"
-            },
-            "time": "2024-09-16T12:21:47+00:00"
-        },
-        {
-            "name": "wp-media/plugin-family",
-            "version": "v1.0.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/wp-media/plugin-family.git",
-                "reference": "9e138461d97ed44c455cdbc4bdd61b2dba6b1bf5"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/wp-media/plugin-family/zipball/9e138461d97ed44c455cdbc4bdd61b2dba6b1bf5",
-                "reference": "9e138461d97ed44c455cdbc4bdd61b2dba6b1bf5",
-                "shasum": ""
-            },
-            "require-dev": {
-                "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
-                "phpcompatibility/phpcompatibility-wp": "^2.0",
-                "phpstan/extension-installer": "^1.4",
-                "szepeviktor/phpstan-wordpress": "^1.3",
-                "wp-coding-standards/wpcs": "^3",
-                "wp-media/phpunit": "^3"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "WPMedia\\PluginFamily\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-3.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "WP Media",
-                    "email": "contact@wp-media.me",
-                    "homepage": "https://wp-media.me"
-                }
-            ],
-            "description": "Organizes and displays WP Media plugin family across other members.",
-            "support": {
-                "issues": "https://github.com/wp-media/plugin-family/issues",
-                "source": "https://github.com/wp-media/plugin-family/tree/v1.0.3"
-            },
-            "time": "2024-11-28T16:53:47+00:00"
-        },
-        {
-            "name": "wp-media/wp-rocket",
-            "version": "v3.17.3.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/wp-media/wp-rocket.git",
-                "reference": "d63767c5204c7f854fdba25dad763d938e2b2ec8"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/wp-media/wp-rocket/zipball/d63767c5204c7f854fdba25dad763d938e2b2ec8",
-                "reference": "d63767c5204c7f854fdba25dad763d938e2b2ec8",
-                "shasum": ""
-            },
-            "require": {
-                "berlindb/core": "^2.0",
-                "cloudflare/cf-ip-rewrite": "^1.0",
-                "composer/installers": "^1.0 || ^2.0",
-                "php": ">=7.3",
-                "voku/simple_html_dom": "^4.8",
-                "wp-media/apply-filters-typed": "^1.0",
-                "wp-media/plugin-family": "^1.0"
-            },
-            "require-dev": {
-                "brain/monkey": "^2.0",
-                "coenjacobs/mozart": "^0.7",
-                "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
-                "league/container": "^4.2",
-                "mikey179/vfsstream": "1.6.11",
-                "mnsami/composer-custom-directory-installer": "^2.0",
-                "mobiledetect/mobiledetectlib": "^2.8",
-                "php": "^7 || ^8",
-                "php-stubs/wordpress-tests-stubs": "^6.5",
-                "phpcompatibility/phpcompatibility-wp": "^2.0",
-                "phpstan/extension-installer": "^1.3",
-                "phpstan/phpstan-mockery": "^1.1",
-                "phpstan/phpstan-phpunit": "^1.4",
-                "phpunit/phpunit": "^7.5 || ^8 || ^9",
-                "psr/container": "1.1.1",
-                "roave/security-advisories": "dev-master",
-                "szepeviktor/phpstan-wordpress": "^1.3",
-                "woocommerce/action-scheduler": "^3.8",
-                "wp-coding-standards/wpcs": "^3",
-                "wp-media/background-processing": "^1.3",
-                "wp-media/monolog": "^0.0",
-                "wp-media/phpunit": "^3",
-                "wp-media/rocket-lazyload-common": "^3.0.11",
-                "wp-media/wp-imagify-partner": "^1.0",
-                "wpackagist-plugin/amp": "^1.1.4",
-                "wpackagist-plugin/cloudflare": "4.12.7",
-                "wpackagist-plugin/hummingbird-performance": "2.0.1",
-                "wpackagist-plugin/jetpack": "9.3.2",
-                "wpackagist-plugin/pdf-embedder": "4.6.*",
-                "wpackagist-plugin/simple-custom-css": "^4.0.3",
-                "wpackagist-plugin/spinupwp": "^1.1",
-                "wpackagist-plugin/the-events-calendar": "6.5.0.1",
-                "wpackagist-plugin/woocommerce": "^8",
-                "wpackagist-plugin/wp-smushit": "^3"
-            },
-            "type": "wordpress-plugin",
-            "extra": {
-                "mozart": {
-                    "packages": [
-                        "mobiledetect/mobiledetectlib",
-                        "wp-media/background-processing",
-                        "wp-media/rocket-lazyload-common",
-                        "wp-media/wp-imagify-partner",
-                        "wp-media/monolog",
-                        "league/container",
-                        "berlindb/core",
-                        "wp-media/plugin-family"
-                    ],
-                    "dep_directory": "/inc/Dependencies/",
-                    "dep_namespace": "WP_Rocket\\Dependencies\\",
-                    "classmap_prefix": "WP_Rocket_",
-                    "classmap_directory": "/inc/classes/dependencies/"
-                },
-                "installer-paths": {
-                    "vendor/{$vendor}/{$name}/": [
-                        "type:wordpress-plugin"
-                    ],
-                    "./inc/Dependencies/ActionScheduler/": [
-                        "woocommerce/action-scheduler"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "WP_Rocket\\": "inc/",
-                    "WPMedia\\Cloudflare\\": "inc/Addon/Cloudflare/"
-                },
-                "classmap": [
-                    "inc/classes",
-                    "inc/vendors/classes",
-                    "inc/deprecated"
-                ],
-                "exclude-from-classmap": [
-                    "inc/vendors/classes/class-rocket-mobile-detect.php",
-                    "inc/classes/class-wp-rocket-requirements-check.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "WP Media",
-                    "email": "contact@wp-media.me",
-                    "homepage": "https://wp-media.me"
-                }
-            ],
-            "description": "Performance optimization plugin for WordPress",
-            "homepage": "https://wp-rocket.me",
-            "keywords": [
-                "cache",
-                "lazyload",
-                "minification",
-                "wordpress"
-            ],
-            "support": {
-                "issues": "https://github.com/wp-media/wp-rocket/issues",
-                "source": "https://github.com/wp-media/wp-rocket"
-            },
-            "time": "2024-11-25T10:30:30+00:00"
-        },
-        {
             "name": "wpackagist-plugin/akismet",
-            "version": "5.3.5",
+            "version": "5.3.7",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/akismet/",
-                "reference": "tags/5.3.5"
+                "reference": "tags/5.3.7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/akismet.5.3.5.zip"
+                "url": "https://downloads.wordpress.org/plugin/akismet.5.3.7.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/akismet/"
+        },
+        {
+            "name": "wpackagist-plugin/breeze",
+            "version": "2.2.4",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/breeze/",
+                "reference": "tags/2.2.4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/breeze.2.2.4.zip"
+            },
+            "require": {
+                "composer/installers": "^1.0 || ^2.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/breeze/"
         },
         {
             "name": "wpackagist-plugin/broken-link-checker",
@@ -5943,15 +5517,15 @@
         },
         {
             "name": "wpackagist-plugin/post-expirator",
-            "version": "4.2.0",
+            "version": "4.3.3",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/post-expirator/",
-                "reference": "tags/4.2.0"
+                "reference": "tags/4.3.3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/post-expirator.4.2.0.zip"
+                "url": "https://downloads.wordpress.org/plugin/post-expirator.4.3.3.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -5997,15 +5571,15 @@
         },
         {
             "name": "wpackagist-plugin/redirection",
-            "version": "5.5.1",
+            "version": "5.5.2",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/redirection/",
-                "reference": "tags/5.5.1"
+                "reference": "tags/5.5.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/redirection.5.5.1.zip"
+                "url": "https://downloads.wordpress.org/plugin/redirection.5.5.2.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -6069,15 +5643,15 @@
         },
         {
             "name": "wpackagist-plugin/seo-by-rank-math",
-            "version": "1.0.234.1",
+            "version": "1.0.239",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/seo-by-rank-math/",
-                "reference": "tags/1.0.234.1"
+                "reference": "tags/1.0.239"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/seo-by-rank-math.1.0.234.1.zip"
+                "url": "https://downloads.wordpress.org/plugin/seo-by-rank-math.1.0.239.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -6105,15 +5679,15 @@
         },
         {
             "name": "wpackagist-plugin/translatepress-multilingual",
-            "version": "2.9.3",
+            "version": "2.9.5",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/translatepress-multilingual/",
-                "reference": "tags/2.9.3"
+                "reference": "tags/2.9.5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/translatepress-multilingual.2.9.3.zip"
+                "url": "https://downloads.wordpress.org/plugin/translatepress-multilingual.2.9.5.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -6159,15 +5733,15 @@
         },
         {
             "name": "wpackagist-plugin/wp-media-library-categories",
-            "version": "2.0.1",
+            "version": "2.0.2",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wp-media-library-categories/",
-                "reference": "tags/2.0.1"
+                "reference": "tags/2.0.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wp-media-library-categories.2.0.1.zip"
+                "url": "https://downloads.wordpress.org/plugin/wp-media-library-categories.2.0.2.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -6177,10 +5751,10 @@
         },
         {
             "name": "wpengine/advanced-custom-fields-pro",
-            "version": "6.3.11",
+            "version": "6.3.12",
             "dist": {
                 "type": "zip",
-                "url": "https://connect.advancedcustomfields.com/v2/plugins/composer_download?s=composer&p=pro&t=6.3.11"
+                "url": "https://connect.advancedcustomfields.com/v2/plugins/composer_download?s=composer&p=pro&t=6.3.12"
             },
             "require": {
                 "composer/installers": "~1.0 || ~2.0"
@@ -6195,11 +5769,11 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {},
     "prefer-stable": true,
     "prefer-lowest": false,
-    "platform": [],
-    "platform-dev": [],
+    "platform": {},
+    "platform-dev": {},
     "platform-overrides": {
         "php": "7.4.0"
     },

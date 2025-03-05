@@ -81,7 +81,6 @@
     "maddenmedia/wp-plugin-eventastic": "*",
     "maddenmedia/wp-plugin-madden-banners": "*",
     "platformsh/config-reader": "^2.0",
-    "wp-media/wp-rocket": "^3.1",
     "psy/psysh": "^0.10.8",
     "tonik/cli": "^3.0",
     "maddenmedia/partner-portal": "*",
@@ -107,7 +106,8 @@
     "wpackagist-plugin/wp-media-library-categories": "*",
     "wpackagist-plugin/seo-by-rank-math":"*",
     "rankmath/seo-by-rank-math-pro": "^3.0.54",
-    "wpackagist-plugin/fareharbor": "^3.6"
+    "wpackagist-plugin/fareharbor": "^3.6",
+    "wpackagist-plugin/breeze":"2.2.4"
   },
   "minimum-stability": "dev",
   "prefer-stable": true,
@@ -173,6 +173,7 @@
     "reinstall:parent": "@build reinstall:parent",
     "reinstall:child": "@build reinstall:child",
     "require-mm": "@script require-mm",
-    "theme:dir": "@script theme-dir"
+    "theme:dir": "@script theme-dir",
+    "check-updates": "@script check-updates"
   }
 }

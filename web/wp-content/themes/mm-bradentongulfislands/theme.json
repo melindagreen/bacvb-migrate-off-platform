@@ -3,7 +3,7 @@
   "version": 2,
   "settings": {
     "border": {
-      "radius": false,
+      "radius": true,
       "color": false,
       "style": false,
       "width": false
