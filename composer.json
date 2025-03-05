@@ -119,10 +119,7 @@
       "ffraenz/private-composer-installer": true,
       "johnpbloch/wordpress-core-installer": true,
       "davidbarratt/custom-installer": true
-    },
-    "platform": {
-      "php": "7.4.0"
-  }
+    }
   },
   "extra": {
     "wordpress-install-dir": "wp",
