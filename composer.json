@@ -77,7 +77,7 @@
     "johnpbloch/wordpress": "6.4",
     "maddenmedia/gravityforms": "*",
     "maddenmedia/madden-cookie-consent": "*",
-    "maddenmedia/mm-madre-theme": "v1.4.5",
+    "maddenmedia/mm-madre-theme": "v1.4.6",
     "maddenmedia/wp-plugin-eventastic": "*",
     "maddenmedia/wp-plugin-madden-banners": "*",
     "platformsh/config-reader": "^2.0",
