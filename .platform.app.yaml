@@ -106,9 +106,9 @@ mounts:
 hooks:
   build: |
     set -e
-    curl -sS https://platform.sh/cli/installer | php
     composer build
     composer check-updates
+    curl -fsSL https://raw.githubusercontent.com/platformsh/cli/main/installer.sh | bash
     ln -sf /app/web/wp-content/cache-config/advanced-cache.php /app/web/wp-content/advanced-cache.php
   deploy: |
     # Ensure the target file exists if it doesn't
