@@ -107,3 +107,17 @@
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# WordPress dynamic folders
+web/wp-content/cache/
+web/wp-content/breeze-config/
+web/wp-content/uploads/
+
+# Breeze
+/web/wp-content/breeze-config/breeze-config.php
+/web/wp-content/advanced-cache.php
+web/wp-content/breeze-config/breeze-config.php
+web/wp-content/advanced-cache.php
+advanced-cache.php
+web/wp-content/cache-config/advanced-cache.php
+/web/wp-content/cache-config/advanced-cache.php
