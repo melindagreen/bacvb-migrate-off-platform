@@ -37,7 +37,7 @@ function render_block( $attrs, $content ) {
                 data-load-onload="true"
                 data-load-lg="<?php echo wp_get_attachment_image_src($attrs['image']['id'], 'full')[0]; ?>"
                 data-load-md="<?php echo wp_get_attachment_image_src($attrs['image']['id'], 'full')[0]; ?>"
-                data-load-sm="<?php echo wp_get_attachment_image_src($attrs['mobileImage']['id'], 'large')[0]; ?>"
+                data-load-sm="<?php echo wp_get_attachment_image_src(isset($attrs['mobileImage']) ? $attrs['mobileImage']['id'] : $attrs['image']['id'], 'large')[0]; ?>"
                 <?php
                 // if no parallax, check for focal point - if it's not 50/50, employ it
                 if ((!isset($attrs["doParallax"]) || !$attrs["doParallax"]) && isset($attrs["focalPoint"])) {
