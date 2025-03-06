@@ -149,8 +149,7 @@
       "@script install-wp-local-config"
     ],
     "post-update-cmd": [
-      "@script move-wp",
-      "cp -r ./web/wp-content-addins/* ./web/wp-content/"
+      "@script move-wp"
     ],
     "build": "@script build",
     "build:parent": "@build build:parent",
