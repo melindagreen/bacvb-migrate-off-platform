@@ -1,82 +1,70 @@
-// This is the current worker version. Bump if you
-// need to update your cache.
-var version = 2;
+// Increment this version to force cache updates
+var version = 3;
 
-// These files will be added to the static cache
-// ONLY places files here that are very unlikely to
-// change. A missing file may throw errors and negate
-// the performance benefits of a service worker.
+// Files to cache (static assets only)
 var toCache = [
-    // Images:
-    // JS:
-    // CSS:
-    // Plugin files:
+    // Add files that should be cached
 ];
 
 // URLs to exclude from caching
 var excludeCachePatterns = [
-    /https:\/\/px\.adentifi\.com\/Pixels/
+    /https:\/\/px\.adentifi\.com\/Pixels/,
+    /\/wp-admin/,
+    /\/wp-json/
 ];
 
-// Cache vital files on install:
+// Cache static files on install:
 self.addEventListener('install', function(event) {
-    event.waitUntil(caches.open('mmmadre-core-v' + version)
-    .then(function(cache) {
-        return cache.addAll(toCache);
-    })
-    .catch(function(error) {
-        console.error('Service worker error: ' + error);
-    }));
+    event.waitUntil(
+        caches.open('mmmadre-core-v' + version).then(function(cache) {
+            return cache.addAll(toCache);
+        }).catch(function(error) {
+            console.error('Service worker install error:', error);
+        })
+    );
 });
 
-// Intercept requests and respond from cache if possible:
+// Intercept fetch requests:
 self.addEventListener('fetch', function(event) {
     var requestUrl = event.request.url;
-    
+
     // Ignore non-GET requests:
     if (event.request.method !== 'GET') {
         return;
     }
-    
-    // Exclude specific URLs from caching:
+
+    // Bypass cache for excluded URLs (admin, REST API, etc.)
     if (excludeCachePatterns.some(pattern => pattern.test(requestUrl))) {
+        event.respondWith(fetch(event.request));
         return;
     }
 
-    // Open cache:
     event.respondWith(
         caches.open('mmmadre-dynamic-v' + version).then(function(cache) {
-            return cache.match(event.request).then(function(response) {
-                // Return from cache if available:
-                if (response) return response;
-                
-                return fetch(event.request).then(function(networkResponse) {
-                    if (networkResponse.status === 200) {
-                        cache.put(event.request, networkResponse.clone());
-                    }
-                    return networkResponse;
-                }).catch(function(error) {
-                    console.error('Service worker error: ' + error);
-                });
+            return fetch(event.request).then(function(networkResponse) {
+                if (networkResponse.status === 200) {
+                    cache.put(event.request, networkResponse.clone());
+                }
+                return networkResponse;
+            }).catch(function() {
+                return cache.match(event.request) || fetch(event.request);
             });
         })
     );
 });
 
-// Clean out old versions:
+// Clean old caches on activation:
 self.addEventListener('activate', function(event) {
-    event.waitUntil(caches.keys()
-    .then(function(cacheNames) {
-        return Promise.all(
-            cacheNames.filter(function(cacheName) {
-                return cacheName.startsWith('mmmadre-') && cacheName !== 'mmmadre-dynamic-v' + version;
-            }).map(function(cacheName) {
-                console.log('Service worker has cleared outdated caches: ' + cacheName);
-                return caches.delete(cacheName);
-            })
-        );
-    })
-    .catch(function(error) {
-        console.error('Service worker error: ' + error);
-    }));
+    event.waitUntil(
+        caches.keys().then(function(cacheNames) {
+            return Promise.all(
+                cacheNames.filter(function(cacheName) {
+                    return cacheName.startsWith('mmmadre-') && !cacheName.includes(version);
+                }).map(function(cacheName) {
+                    console.log('Deleting old cache:', cacheName);
+                    return caches.delete(cacheName);
+                })
+            );
+        })
+    );
 });
