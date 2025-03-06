@@ -1,6 +1,6 @@
 // This is the current worker version. Bump if you
 // need to update your cache.
-var version = 2;
+var version = 3;
 
 // These files will be added to the static cache
 // ONLY places files here that are very unlikely to
