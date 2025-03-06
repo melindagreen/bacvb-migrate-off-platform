@@ -1,82 +1,76 @@
-// This is the current worker version. Bump if you
-// need to update your cache.
-var version = 2;
-
-// These files will be added to the static cache
-// ONLY places files here that are very unlikely to
-// change. A missing file may throw errors and negate
-// the performance benefits of a service worker.
-var toCache = [
-    // Images:
-    // JS:
-    // CSS:
-    // Plugin files:
-];
+// Service Worker Version - Change to force updates
+var version = 3;
 
 // URLs to exclude from caching
 var excludeCachePatterns = [
     /https:\/\/px\.adentifi\.com\/Pixels/
 ];
 
-// Cache vital files on install:
+// Install event - No static caching
 self.addEventListener('install', function(event) {
-    event.waitUntil(caches.open('mmmadre-core-v' + version)
-    .then(function(cache) {
-        return cache.addAll(toCache);
-    })
-    .catch(function(error) {
-        console.error('Service worker error: ' + error);
-    }));
+    self.skipWaiting(); // Immediately activate new worker
 });
 
-// Intercept requests and respond from cache if possible:
+// Fetch event - Handles requests
 self.addEventListener('fetch', function(event) {
     var requestUrl = event.request.url;
-    
+
     // Ignore non-GET requests:
     if (event.request.method !== 'GET') {
         return;
     }
-    
+
     // Exclude specific URLs from caching:
     if (excludeCachePatterns.some(pattern => pattern.test(requestUrl))) {
         return;
     }
 
-    // Open cache:
+    // Network-first for HTML pages to ensure fresh content
+    if (event.request.headers.get('Accept')?.includes('text/html')) {
+        event.respondWith(
+            fetch(event.request)  // Try fetching from network first
+            .then(response => {
+                return caches.open('mmmadre-dynamic-v' + version).then(cache => {
+                    cache.put(event.request, response.clone()); // Update cache
+                    return response;
+                });
+            })
+            .catch(() => caches.match(event.request)) // If offline, return cache
+        );
+        return;
+    }
+
+    // Cache-first for assets (CSS, JS, images) to improve performance
     event.respondWith(
-        caches.open('mmmadre-dynamic-v' + version).then(function(cache) {
-            return cache.match(event.request).then(function(response) {
-                // Return from cache if available:
-                if (response) return response;
+        caches.open('mmmadre-dynamic-v' + version).then(cache => {
+            return cache.match(event.request).then(response => {
+                if (response) return response; // Serve from cache if available
                 
-                return fetch(event.request).then(function(networkResponse) {
+                return fetch(event.request).then(networkResponse => {
                     if (networkResponse.status === 200) {
-                        cache.put(event.request, networkResponse.clone());
+                        cache.put(event.request, networkResponse.clone()); // Store in cache
                     }
                     return networkResponse;
-                }).catch(function(error) {
-                    console.error('Service worker error: ' + error);
+                }).catch(() => {
+                    console.error('Service worker fetch error:', event.request.url);
                 });
             });
         })
     );
 });
 
-// Clean out old versions:
+// Activate event - Cleanup old caches
 self.addEventListener('activate', function(event) {
-    event.waitUntil(caches.keys()
-    .then(function(cacheNames) {
-        return Promise.all(
-            cacheNames.filter(function(cacheName) {
-                return cacheName.startsWith('mmmadre-') && cacheName !== 'mmmadre-dynamic-v' + version;
-            }).map(function(cacheName) {
-                console.log('Service worker has cleared outdated caches: ' + cacheName);
-                return caches.delete(cacheName);
-            })
-        );
-    })
-    .catch(function(error) {
-        console.error('Service worker error: ' + error);
-    }));
+    event.waitUntil(
+        caches.keys().then(cacheNames => {
+            return Promise.all(
+                cacheNames.filter(cacheName => 
+                    cacheName.startsWith('mmmadre-') && cacheName !== 'mmmadre-dynamic-v' + version
+                ).map(cacheName => {
+                    console.log('Service worker cleared outdated cache:', cacheName);
+                    return caches.delete(cacheName);
+                })
+            );
+        }).then(() => self.clients.claim()) // Ensure new worker takes control
+    );
 });
