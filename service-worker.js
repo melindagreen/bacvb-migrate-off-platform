@@ -1,76 +1,83 @@
-// Service Worker Version - Change to force updates
-var version = 3;
+// This is the current worker version. Bump if you
+// need to update your cache.
+var version = 2;
+
+// These files will be added to the static cache
+// ONLY places files here that are very unlikely to
+// change. A missing file may throw errors and negate
+// the performance benefits of a service worker.
+var toCache = [
+    // Images:
+    // JS:
+    // CSS:
+    // Plugin files:
+];
 
 // URLs to exclude from caching
 var excludeCachePatterns = [
     /https:\/\/px\.adentifi\.com\/Pixels/
 ];
 
-// Install event - No static caching
+// Cache vital files on install:
 self.addEventListener('install', function(event) {
-    self.skipWaiting(); // Immediately activate new worker
+    event.waitUntil(caches.open('mmmadre-core-v' + version)
+    .then(function(cache) {
+        return cache.addAll(toCache);
+    })
+    .catch(function(error) {
+        console.error('Service worker error: ' + error);
+    }));
 });
 
-// Fetch event - Handles requests
+// Intercept requests and respond from cache if possible:
 self.addEventListener('fetch', function(event) {
     var requestUrl = event.request.url;
-
+    
     // Ignore non-GET requests:
     if (event.request.method !== 'GET') {
         return;
     }
-
+    
     // Exclude specific URLs from caching:
     if (excludeCachePatterns.some(pattern => pattern.test(requestUrl))) {
         return;
     }
 
-    // Network-first for HTML pages to ensure fresh content
-    if (event.request.headers.get('Accept')?.includes('text/html')) {
-        event.respondWith(
-            fetch(event.request)  // Try fetching from network first
-            .then(response => {
-                return caches.open('mmmadre-dynamic-v' + version).then(cache => {
-                    cache.put(event.request, response.clone()); // Update cache
-                    return response;
-                });
-            })
-            .catch(() => caches.match(event.request)) // If offline, return cache
-        );
-        return;
-    }
-
-    // Cache-first for assets (CSS, JS, images) to improve performance
+    // Open cache:
     event.respondWith(
-        caches.open('mmmadre-dynamic-v' + version).then(cache => {
-            return cache.match(event.request).then(response => {
-                if (response) return response; // Serve from cache if available
+        caches.open('mmmadre-dynamic-v' + version).then(function(cache) {
+            return cache.match(event.request).then(function(response) {
+                // Return from cache if available:
+                if (response) return response;
                 
-                return fetch(event.request).then(networkResponse => {
+                return fetch(event.request).then(function(networkResponse) {
                     if (networkResponse.status === 200) {
-                        cache.put(event.request, networkResponse.clone()); // Store in cache
+                        cache.put(event.request, networkResponse.clone());
                     }
                     return networkResponse;
-                }).catch(() => {
-                    console.error('Service worker fetch error:', event.request.url);
+                }).catch(function(error) {
+                    console.error('Service worker error: ' + error);
                 });
             });
         })
     );
 });
 
-// Activate event - Cleanup old caches
+// Clean out old versions:
 self.addEventListener('activate', function(event) {
-    event.waitUntil(
-        caches.keys().then(cacheNames => {
-            return Promise.all(
-                cacheNames.filter(cacheName => 
-                    cacheName.startsWith('mmmadre-') && cacheName !== 'mmmadre-dynamic-v' + version
-                ).map(cacheName => {
-                    console.log('Service worker cleared outdated cache:', cacheName);
-                    return caches.delete(cacheName);
-                })
-            );
-        }).then(() => self.clients.claim()) // Ensure new worker takes control
-    );
+    event.waitUntil(caches.keys()
+    .then(function(cacheNames) {
+        return Promise.all(
+            cacheNames.filter(function(cacheName) {
+                return cacheName.startsWith('mmmadre-') && cacheName !== 'mmmadre-dynamic-v' + version;
+            }).map(function(cacheName) {
+                console.log('Service worker has cleared outdated caches: ' + cacheName);
+                return caches.delete(cacheName);
+            })
+        );
+    }).then(() => self.clients.claim())
+    .catch(function(error) {
+        console.error('Service worker error: ' + error);
+    }));
+    
 });
