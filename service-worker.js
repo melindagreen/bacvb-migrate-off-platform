@@ -15,8 +15,10 @@ var toCache = [
 
 // URLs to exclude from caching
 var excludeCachePatterns = [
-    /https:\/\/px\.adentifi\.com\/Pixels/
+    /https:\/\/px\.adentifi\.com\/Pixels/,
+    /^chrome-extension:\/\//
 ];
+
 
 // Cache vital files on install:
 self.addEventListener('install', function(event) {
@@ -34,10 +36,7 @@ self.addEventListener('fetch', function(event) {
     var requestUrl = event.request.url;
     
     // Ignore non-GET requests:
-    if (
-        event.request.method !== 'GET' || 
-        requestUrl.startsWith('chrome-extension://')
-    ) {
+    if (event.request.method !== 'GET') {
         return;
     }
     
@@ -78,7 +77,7 @@ self.addEventListener('activate', function(event) {
                 return caches.delete(cacheName);
             })
         );
-    }).then(() => self.clients.claim())
+    })
     .catch(function(error) {
         console.error('Service worker error: ' + error);
     }));
