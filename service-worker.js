@@ -34,7 +34,10 @@ self.addEventListener('fetch', function(event) {
     var requestUrl = event.request.url;
     
     // Ignore non-GET requests:
-    if (event.request.method !== 'GET') {
+    if (
+        event.request.method !== 'GET' || 
+        requestUrl.startsWith('chrome-extension://')
+    ) {
         return;
     }
     
@@ -79,5 +82,4 @@ self.addEventListener('activate', function(event) {
     .catch(function(error) {
         console.error('Service worker error: ' + error);
     }));
-    
 });
