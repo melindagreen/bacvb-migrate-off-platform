@@ -35,8 +35,8 @@ class ThemeSetup {
         add_filter( 'wp_mail_from_name', array( get_called_class(), 'custom_wp_mail_from_name' ) );
 
 		//flush cache 
-		add_action('save_post', array( get_called_class(), 'clear_caches_on_update' ), 10, 3);
-		add_action('deleted_post', array( get_called_class(), 'clear_caches_on_update' ), 10, 3);
+		// add_action('save_post', array( get_called_class(), 'clear_caches_on_update' ), 10, 3);
+		// add_action('deleted_post', array( get_called_class(), 'clear_caches_on_update' ), 10, 3);
 	}
 
 
