@@ -112,14 +112,4 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . /index.php [L]
 </IfModule>
 
-# Cache-Control for HTML, PHP files (do not cache aggressively)
-<FilesMatch "\.(html|htm|php)$">
-  Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
-</FilesMatch>
-
-# Cache-Control for images, CSS, and JS (cache aggressively)
-<FilesMatch "\.(jpg|jpeg|png|gif|css|js|woff|woff2|eot|ttf|svg)$">
-  Header set Cache-Control "public, max-age=31536000, immutable"
-</FilesMatch>
-
 # END WordPress
