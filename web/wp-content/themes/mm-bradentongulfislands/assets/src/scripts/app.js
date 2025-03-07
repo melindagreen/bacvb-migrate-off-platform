@@ -8,16 +8,23 @@ import '../styles/style.scss';
 
 /*** SERVICE WORKER ************************************************************/
 
-// if ('serviceWorker' in navigator) {
-//     navigator.serviceWorker.register('/service-worker.js')
-//         .then((reg) => {
-//             // registration worked
-//             console.log('Registration succeeded. Scope is ' + reg.scope);
-//         }).catch((error) => {
-//             // registration failed
-//             console.log('Registration failed with ' + error);
-//         });
-// }
+if ('serviceWorker' in navigator) {
+	
+	navigator.serviceWorker.getRegistrations().then(registrations => {
+		for (const registration of registrations) {
+			registration.unregister();
+		} 
+	});
+
+    navigator.serviceWorker.register('/service-worker.js')
+        .then((reg) => {
+            // registration worked
+            console.log('Registration succeeded. Scope is ' + reg.scope);
+        }).catch((error) => {
+            // registration failed
+            console.log('Registration failed with ' + error);
+        });
+}
 
 (function ($) {
     /*** GLOBAL VARS *****************************************************************/

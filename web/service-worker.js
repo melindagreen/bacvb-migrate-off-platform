@@ -22,6 +22,7 @@ var excludeCachePatterns = [
 
 // Cache vital files on install:
 self.addEventListener('install', function(event) {
+
     event.waitUntil(caches.open('mmmadre-core-v' + version)
     .then(function(cache) {
         return cache.addAll(toCache);
