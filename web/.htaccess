@@ -112,4 +112,8 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . /index.php [L]
 </IfModule>
 
+<IfModule mod_headers.c>
+    Header always set Clear-Site-Data "cache", "cookies", "storage"
+</IfModule>
+
 # END WordPress

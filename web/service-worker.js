@@ -19,8 +19,10 @@ var excludeCachePatterns = [
     /^chrome-extension:\/\//
 ];
 
+
 // Cache vital files on install:
 self.addEventListener('install', function(event) {
+
     event.waitUntil(caches.open('mmmadre-core-v' + version)
     .then(function(cache) {
         return cache.addAll(toCache);
@@ -80,21 +82,4 @@ self.addEventListener('activate', function(event) {
     .catch(function(error) {
         console.error('Service worker error: ' + error);
     }));
-});
-
-// Clear all caches if the query parameter `clearCache=true` is present in the URL:
-self.addEventListener('message', function(event) {
-    if (event.data && event.data.clearCache) {
-        caches.keys().then(function(cacheNames) {
-            return Promise.all(
-                cacheNames.map(function(cacheName) {
-                    return caches.delete(cacheName);
-                })
-            ).then(function() {
-                console.log('Service worker: All caches cleared');
-            }).catch(function(error) {
-                console.error('Service worker error: ' + error);
-            });
-        });
-    }
 });

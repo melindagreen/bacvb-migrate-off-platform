@@ -9,16 +9,17 @@ import '../styles/style.scss';
 /*** SERVICE WORKER ************************************************************/
 
 if ('serviceWorker' in navigator) {
+	
+	navigator.serviceWorker.getRegistrations().then(registrations => {
+		for (const registration of registrations) {
+			registration.unregister();
+		} 
+	});
+
     navigator.serviceWorker.register('/service-worker.js')
         .then((reg) => {
             // registration worked
             console.log('Registration succeeded. Scope is ' + reg.scope);
-
-			if (navigator.serviceWorker.controller) {
-				navigator.serviceWorker.controller.postMessage({
-					clearCache: true
-				});
-			}
         }).catch((error) => {
             // registration failed
             console.log('Registration failed with ' + error);
