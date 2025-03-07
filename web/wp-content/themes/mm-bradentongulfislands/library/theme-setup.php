@@ -11,6 +11,7 @@ class ThemeSetup {
 		add_action( 'init', array( get_called_class(), 'add_custom_rewrites' ) );
 		add_filter( 'pre_post_link', array(get_called_class(), 'prepend_post_permalinks'), 10, 2);
 		add_action( 'template_redirect', array(get_called_class(), 'redirect_single_posts'));
+		add_action( 'wp', array(get_called_class(),'fareharbor_scripts') );
 		// add_action('gform_after_submission', array( get_called_class(), 'add_to_newsletter' ), 10, 2);
 
 		add_action( 'template_redirect', array(get_called_class(), 'disable_author_archives'));
@@ -18,12 +19,13 @@ class ThemeSetup {
 		//add_action( 'template_redirect', array(get_called_class(), 'redirect_non_logged_in_users'));
 
 			
-
 		// tell yoast to not show some sitemaps
 		add_filter( 'wpseo_sitemap_exclude_taxonomy', array( get_called_class(), 'sitemap_exclude_taxonomy' ), 10, 2 );
 
 		add_filter('render_block', array( get_called_class(), 'add_photo_credit' ), 10, 2);
 		add_filter('wp_get_attachment_url', array( get_called_class(), 'photo_credit_url_param' ), 10, 2);
+
+		add_filter('the_content', array( get_called_class(),'add_raf_trademark'));
 
 		// User Role
 		add_filter( 'init', array( get_called_class(), 'add_custom_roles' ) );
@@ -33,40 +35,33 @@ class ThemeSetup {
 		// global override for from emails
         add_filter( 'wp_mail_from', array( get_called_class(), 'custom_wp_mail_from' ) );
         add_filter( 'wp_mail_from_name', array( get_called_class(), 'custom_wp_mail_from_name' ) );
-
-		//flush cache 
-		// add_action('save_post', array( get_called_class(), 'clear_caches_on_update' ), 10, 3);
-		// add_action('deleted_post', array( get_called_class(), 'clear_caches_on_update' ), 10, 3);
-
-		add_action('send_headers', array( get_called_class(),'disable_cache_for_logged_in_users'));
 	}
 
-	public static function disable_cache_for_logged_in_users() {
-		if (is_user_logged_in()) {
-			header("Cache-Control: no-cache, must-revalidate, max-age=0");
-			header("Pragma: no-cache");
-			header("Expires: 0");
+
+	public static function fareharbor_scripts() {
+		// Check if the page/post contains the specific FareHarbor URL
+		if (is_page() || is_singular()) {
+			global $post;
+			// Check if the content contains the specific FareHarbor base URL
+			if ( strpos( $post->post_content, 'fareharbor.com/embeds/book/gulfislandsferry' ) !== false ) {
+				// If the link is found, enqueue the FareHarbor script
+				add_action( 'wp_enqueue_scripts', array( 'fareharbor', 'maybe_enqueue_fh_kit_styles' ) );
+			} else {
+				// If the link is not found, remove the script
+				remove_action( 'wp_enqueue_scripts', array( 'fareharbor', 'maybe_enqueue_fh_kit_styles' ) );
+			}
 		}
 	}
 
-	/**
-     * Clears cach when updating posts
-     */
-    public static function clear_caches_on_update($post_id) {
-
-        // Skip auto-saves and revisions
-        if (wp_is_post_autosave($post_id) || wp_is_post_revision($post_id)) {
-            return;
-        }
-
-        // Clear Breeze cache
-        if (function_exists('breeze_clear_cache')) {
-            breeze_clear_cache();
-            error_log('Breeze cache cleared.');
-        } else {
-			error_log('Breeze plugin is not active or function does not exist.');
-		}
-    }
+	public static function add_raf_trademark($content) {
+		$raf_phrase = 'Real. Authentic. Florida.';
+		$tm_markup = $raf_phrase . '<sup class="raf-tm">TM</sup> ';
+	
+		// Replace occurrences of the phrase with the trademarked version
+		$content = str_replace($raf_phrase, $tm_markup, $content);
+	
+		return $content;
+	}
 
 
 	public static function madden_theme_support() {
