@@ -13,6 +13,12 @@ if ('serviceWorker' in navigator) {
         .then((reg) => {
             // registration worked
             console.log('Registration succeeded. Scope is ' + reg.scope);
+
+			if (navigator.serviceWorker.controller) {
+				navigator.serviceWorker.controller.postMessage({
+					clearCache: true
+				});
+			}
         }).catch((error) => {
             // registration failed
             console.log('Registration failed with ' + error);
