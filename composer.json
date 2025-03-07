@@ -107,7 +107,8 @@
     "wpackagist-plugin/seo-by-rank-math":"*",
     "rankmath/seo-by-rank-math-pro": "^3.0.54",
     "wpackagist-plugin/fareharbor": "^3.6",
-    "wpackagist-plugin/breeze":"2.2.4"
+    "wpackagist-plugin/breeze":"2.2.4",
+    "wpackagist-plugin/varnish-http-purge": "5.2.2"
   },
   "minimum-stability": "dev",
   "prefer-stable": true,
