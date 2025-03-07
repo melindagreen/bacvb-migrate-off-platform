@@ -37,8 +37,17 @@ class ThemeSetup {
 		//flush cache 
 		// add_action('save_post', array( get_called_class(), 'clear_caches_on_update' ), 10, 3);
 		// add_action('deleted_post', array( get_called_class(), 'clear_caches_on_update' ), 10, 3);
+
+		add_action('send_headers', array( get_called_class(),'disable_cache_for_logged_in_users'));
 	}
 
+	public static function disable_cache_for_logged_in_users() {
+		if (is_user_logged_in()) {
+			header("Cache-Control: no-cache, must-revalidate, max-age=0");
+			header("Pragma: no-cache");
+			header("Expires: 0");
+		}
+	}
 
 	/**
      * Clears cach when updating posts
