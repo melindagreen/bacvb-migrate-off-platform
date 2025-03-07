@@ -19,6 +19,16 @@ var excludeCachePatterns = [
     /^chrome-extension:\/\//
 ];
 
+// Cache vital files on install:
+self.addEventListener('install', function(event) {
+    event.waitUntil(caches.open('mmmadre-core-v' + version)
+    .then(function(cache) {
+        return cache.addAll(toCache);
+    })
+    .catch(function(error) {
+        console.error('Service worker error: ' + error);
+    }));
+});
 
 // Intercept requests and respond from cache if possible:
 self.addEventListener('fetch', function(event) {
@@ -28,33 +38,21 @@ self.addEventListener('fetch', function(event) {
     if (event.request.method !== 'GET') {
         return;
     }
-
+    
     // Exclude specific URLs from caching:
     if (excludeCachePatterns.some(pattern => pattern.test(requestUrl))) {
         return;
     }
 
-    // Open cache and apply dynamic caching with expiration control:
+    // Open cache:
     event.respondWith(
         caches.open('mmmadre-dynamic-v' + version).then(function(cache) {
             return cache.match(event.request).then(function(response) {
-                if (response) {
-                    const cacheTime = response.headers.get('date');
-                    const currentTime = new Date().getTime();
-                    const cacheAge = (currentTime - new Date(cacheTime).getTime()) / 1000;  // Cache age in seconds
-
-                    // Set your expiration time (e.g., 10 minutes = 600 seconds)
-                    if (cacheAge < 600) {
-                        return response;  // Return from cache if not expired
-                    } else {
-                        // Remove expired content
-                        cache.delete(event.request);
-                    }
-                }
+                // Return from cache if available:
+                if (response) return response;
                 
                 return fetch(event.request).then(function(networkResponse) {
                     if (networkResponse.status === 200) {
-                        // Cache the response for future use
                         cache.put(event.request, networkResponse.clone());
                     }
                     return networkResponse;
@@ -64,4 +62,39 @@ self.addEventListener('fetch', function(event) {
             });
         })
     );
+});
+
+// Clean out old versions:
+self.addEventListener('activate', function(event) {
+    event.waitUntil(caches.keys()
+    .then(function(cacheNames) {
+        return Promise.all(
+            cacheNames.filter(function(cacheName) {
+                return cacheName.startsWith('mmmadre-') && cacheName !== 'mmmadre-dynamic-v' + version;
+            }).map(function(cacheName) {
+                console.log('Service worker has cleared outdated caches: ' + cacheName);
+                return caches.delete(cacheName);
+            })
+        );
+    })
+    .catch(function(error) {
+        console.error('Service worker error: ' + error);
+    }));
+});
+
+// Clear all caches if the query parameter `clearCache=true` is present in the URL:
+self.addEventListener('message', function(event) {
+    if (event.data && event.data.clearCache) {
+        caches.keys().then(function(cacheNames) {
+            return Promise.all(
+                cacheNames.map(function(cacheName) {
+                    return caches.delete(cacheName);
+                })
+            ).then(function() {
+                console.log('Service worker: All caches cleared');
+            }).catch(function(error) {
+                console.error('Service worker error: ' + error);
+            });
+        });
+    }
 });
