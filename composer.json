@@ -52,6 +52,10 @@
       "url": "git@github.com:maddenmedia/gravityforms.git"
     },
     {
+      "type": "vcs",
+      "url": "git@github.com:maddenmedia/kraken-purge.git"
+    },
+    {
       "type":"composer",
       "url":"https://connect.advancedcustomfields.com"
     },
@@ -78,6 +82,7 @@
     "maddenmedia/gravityforms": "*",
     "maddenmedia/madden-cookie-consent": "*",
     "maddenmedia/mm-madre-theme": "v1.4.6",
+    "maddenmedia/kraken-purge": "v1.1",
     "maddenmedia/wp-plugin-eventastic": "*",
     "maddenmedia/wp-plugin-madden-banners": "*",
     "platformsh/config-reader": "^2.0",
