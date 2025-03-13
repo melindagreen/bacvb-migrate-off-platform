@@ -103,6 +103,10 @@ mounts:
     source: local
     source_path: breeze-config
 
+runtime:
+  extensions:
+    - newrelic
+
 hooks:
   build: |
     set -e
