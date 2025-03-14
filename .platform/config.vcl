@@ -60,7 +60,7 @@ sub vcl_recv {
         return (pipe);
     }
 
-    if (req.url ~ "/(wp-login|wp-admin|wp-json|wp-cron|membership-account|membership-checkout)" && req.method != "URLPURGE") {
+    if (req.url ~ "/(wp-login|wp-admin|wp-json|wp-cron|membership-account|membership-checkout|admin-ajax)" && req.method != "URLPURGE") {
         return (pipe);
     }
 
