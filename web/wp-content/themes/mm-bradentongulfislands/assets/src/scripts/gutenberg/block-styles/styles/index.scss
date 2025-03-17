@@ -256,6 +256,18 @@ IMAGES
     mask-size: contain;
 }
 
+.is-style-irregular-shape {
+
+    --webkit-mask: url("images/irregular-mask.svg") no-repeat center;
+    mask: url("images/irregular-mask.svg") no-repeat center;
+    --webkit-mask-size: contain;
+    mask-size: contain;
+
+    @media only screen and (max-width: 768px) {
+        min-height: 70vw !important;
+    }
+}
+
 /*********************
 BUTTONS
 *********************/

@@ -6,16 +6,16 @@ import { Button, Toolbar } from '@wordpress/components';
 
 // Local dependencies
 import { THEME_PREFIX } from 'scripts/inc/constants';
+import { usePreview } from '../../../inc/hooks';
 
 /*** COMPONENTS **************************************************************/
 
 const TogglePreview = (props) => {
     const { attributes, setAttributes } = props;
-
-    const isEditing = attributes.mode === 'edit';
+    const [isPreview, togglePreview] = usePreview(attributes, setAttributes);
 
     const onClick = () => {
-        setAttributes({ mode: isEditing ? 'preview' : 'edit' });
+        togglePreview();
     };
 
     const PreviewButton = (
@@ -34,7 +34,7 @@ const TogglePreview = (props) => {
         />
     );
 
-    return isEditing
+    return isPreview
         ? PreviewButton
         : EditButton
 };

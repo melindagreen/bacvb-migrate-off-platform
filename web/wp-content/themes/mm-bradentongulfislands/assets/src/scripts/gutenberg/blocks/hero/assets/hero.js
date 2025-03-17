@@ -7,6 +7,7 @@ $(window).on("load", () => {
 });
 
 export const initHero = () => {
+    console.log('hero block loaded');
         // set the bg position
         $('.hero').each(function () {
             if ($(this).data('lg-background-position')) {

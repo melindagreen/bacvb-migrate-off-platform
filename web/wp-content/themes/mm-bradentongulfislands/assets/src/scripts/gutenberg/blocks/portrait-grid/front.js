@@ -1,11 +1,7 @@
-// this is the front-end script for the block example-dynamic
 
 (function($) {
-    $(document).ready(function() {
-        
 
-
-            var contentHeight = $(this).height();
+                    var contentHeight = $(this).height();
             var containerHeight = $(".grid-item-body").height();
           
             if (contentHeight > containerHeight) {
@@ -14,5 +10,4 @@
             } else {
               $(this).css("top", "0");
             }
-    });
 })(jQuery);

@@ -54,7 +54,7 @@ function render_block( $attrs, $content ) {
       }
   
       // link
-      $post['link'] = false;
+      $clean_post['link'] = false;
       if( isset( $post['postObj']['url'] ) ) $clean_post['link'] = $post['postObj']['url'];
   
       return $clean_post;

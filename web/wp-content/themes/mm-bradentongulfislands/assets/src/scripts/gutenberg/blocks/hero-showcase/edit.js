@@ -161,7 +161,7 @@ const Editor = props => {
     <section className={className} >
       {mode === 'edit'
         ? <Wizard {...props} />
-        : <ServerSideRender block={props.name} {...props} />}
+        : <ServerSideRender httpMethod={'POST'}  block={props.name} {...props} />}
     </section>
   )
 }

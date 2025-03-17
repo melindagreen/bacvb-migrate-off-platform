@@ -10,7 +10,6 @@ import Hero from './hero';
 import PortraitGrid from './portrait-grid';
 import WideSlideshow from './wide-slideshow';
 import WideImageSlide from './wide-image-slide';
-import ShowcaseCard from './showcase-card';
 import AccordionSection from './accordion-section';
 import Accordion from './accordion';
 import ContentSelector from './content-selector';
@@ -34,7 +33,7 @@ import CtaBubble from './cta-bubble';
 // Collect blocks
 // NOTE: ACF blocks should not be registered here, only imported, or they will
 // appear twice in the editor!
-const blocks = [ CtaBubble, LightboxCard, InfoChip, ContentSlider, Hero, PortraitGrid, WideSlideshow, WideImageSlide, ShowcaseCard, AccordionSection, Accordion, ContentSelector, ContentSection, QuickLinks, UpcomingEvents, ListingsGrid, BeachesMap, HeroShowcase, WaterFerryMap, BradensotaMap, SocialButton, LogoCTA ];
+const blocks = [ CtaBubble, LightboxCard, InfoChip, ContentSlider, Hero, PortraitGrid, WideSlideshow, WideImageSlide, AccordionSection, Accordion, ContentSelector, ContentSection, QuickLinks, UpcomingEvents, ListingsGrid, BeachesMap, HeroShowcase, WaterFerryMap, BradensotaMap, SocialButton, LogoCTA ];
 
 /*** EXPORTS ****************************************************************/
 export default () => {

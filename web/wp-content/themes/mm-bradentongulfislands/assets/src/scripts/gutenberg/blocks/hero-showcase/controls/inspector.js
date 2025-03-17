@@ -23,21 +23,6 @@ const Inspector = props => {
 
     return (
         <InspectorControls>
-            <PanelBody title={__('Grid Settings')}>
-                <PanelRow>
-                    <SelectControl
-                        label={__('Query mode')}
-                        value={queryMode}
-                        options={[
-                            {
-                                label: 'Manual',
-                                value: 'manual'
-                            }
-                        ]}
-                        onChange={queryMode => setAttributes({ queryMode })}
-                    />
-                </PanelRow>
-            </PanelBody>
         </InspectorControls>
     )
 }

@@ -146,6 +146,11 @@ PREVIEW MODE
     overflow-x: clip;
     z-index: 0;
 
+    .sr-only {
+
+      display: none;
+    }
+
     sup {
 
       font-size: medium;
