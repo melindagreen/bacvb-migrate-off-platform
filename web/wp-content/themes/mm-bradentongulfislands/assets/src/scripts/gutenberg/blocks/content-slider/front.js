@@ -32,6 +32,9 @@ jQuery(document).ready(function ($) {
         clickable: true
       },
     });
+    
+
+    $(this).find('.content-slider-controls').appendTo($(this).find('.swiper-wrapper'));
 
   });
  
