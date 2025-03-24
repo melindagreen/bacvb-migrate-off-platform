@@ -37,29 +37,30 @@ class ThemeSetup {
         add_filter( 'wp_mail_from_name', array( get_called_class(), 'custom_wp_mail_from_name' ) );
 
 		// Bypass Nonce
-		add_filter( 'acf/verify_nonce', array( get_called_class(), 'my_acf_verify_nonce' ), 10, 3 );
+		add_filter( 'acf/validate_value', array( get_called_class(), 'my_acf_validate_value' ), 10, 4 );
 	}
 
 	/**
-	 * Verifies the ACF nonce for a specific user and optionally for a specific ACF group.
+	 * Validates the ACF value for a specific user and optionally for a specific ACF group.
 	 *
-	 * @param bool   $valid  The current validity of the nonce.
-	 * @param string $nonce  The nonce that was submitted.
-	 * @param string $action The action for which the nonce was created.
+	 * @param bool   $valid  The current validity of the value.
+	 * @param mixed  $value  The value that was submitted.
+	 * @param array  $field  The field array containing all settings.
+	 * @param string $input  The input name.
 	 *
-	 * @return bool True if the nonce is valid for the specified user and optional ACF group, otherwise the original validity.
+	 * @return bool True if the value is valid for the specified user and optional ACF group, otherwise the original validity.
 	 */
-	public static function my_acf_verify_nonce( $valid, $nonce, $action ) {
-		error_log('Form Submitted');
+	public static function my_acf_validate_value( $valid, $value, $field, $input ) {
+		error_log('Form Submitted: ' . $_POST['acf_field_group']);
 		// Check if the current user is the user with the email 'info@gulfislandsferry.com'.
 		$user = get_user_by('email', 'info@gulfislandsferry.com');
 		$isValidUser = $user && $user->ID == get_current_user_id();
 
-		//Verify is the ACF group: Ferry Banner
+		// Verify if the ACF group: Ferry Banner
 		$isFerryBanner = isset($_POST['acf_field_group']) && $_POST['acf_field_group'] === 'group_673ae8f7c13d1';
 
 		if ($isValidUser && $isFerryBanner) {
-			error_log('ACF nonce verification: Valid user and Ferry Banner group detected.');
+			error_log('ACF validation: Valid user and Ferry Banner group detected.');
 			return true;
 		}
 		
