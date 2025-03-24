@@ -49,10 +49,10 @@ class ThemeSetup {
 		$isValidUser = $user && $user->ID == get_current_user_id();
 
 		// Verify if the ACF group: Ferry Banner exists in the form submission
-		$isFerryBanner = isset($_POST['acf_field_group']) && $_POST['acf_field_group'] === 'group_673ae8f7c13d1';
+		// $isFerryBanner = isset($_POST['acf_field_group']) && $_POST['acf_field_group'] === 'group_673ae8f7c13d1';
 
 		// If the user is valid and the correct ACF group is detected
-		if ($isValidUser && $isFerryBanner) {
+		if ($isValidUser) {
 			error_log('ACF validation: Valid user and Ferry Banner group detected.');
 
 			// Optionally, modify the form data or add custom nonce handling here
