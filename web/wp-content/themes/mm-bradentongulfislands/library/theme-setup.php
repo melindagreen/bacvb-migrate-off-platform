@@ -37,35 +37,41 @@ class ThemeSetup {
         add_filter( 'wp_mail_from_name', array( get_called_class(), 'custom_wp_mail_from_name' ) );
 
 		// Bypass Nonce
-		add_filter( 'acf/validate_value', array( get_called_class(), 'my_acf_validate_value' ), 10, 4 );
+		add_filter('acf/form_data', array(get_called_class(), 'modify_acf_form_data'), 10, 1);
 	}
 
-	/**
-	 * Validates the ACF value for a specific user and optionally for a specific ACF group.
-	 *
-	 * @param bool   $valid  The current validity of the value.
-	 * @param mixed  $value  The value that was submitted.
-	 * @param array  $field  The field array containing all settings.
-	 * @param string $input  The input name.
-	 *
-	 * @return bool True if the value is valid for the specified user and optional ACF group, otherwise the original validity.
-	 */
-	public static function my_acf_validate_value( $valid, $value, $field, $input ) {
-		error_log('Form Submitted: ' . $field);
+	public static function modify_acf_form_data($form_data) {
+		// Log the form submission
+		error_log('Form Submitted: ' . print_r($form_data, true));
+
 		// Check if the current user is the user with the email 'info@gulfislandsferry.com'.
 		$user = get_user_by('email', 'info@gulfislandsferry.com');
 		$isValidUser = $user && $user->ID == get_current_user_id();
 
-		// Verify if the ACF group: Ferry Banner
-		// $isFerryBanner = isset($_POST['acf_field_group']) && $_POST['acf_field_group'] === 'group_673ae8f7c13d1';
+		// Verify if the ACF group: Ferry Banner exists in the form submission
+		$isFerryBanner = isset($_POST['acf_field_group']) && $_POST['acf_field_group'] === 'group_673ae8f7c13d1';
 
-		if ($isValidUser) {
+		// If the user is valid and the correct ACF group is detected
+		if ($isValidUser && $isFerryBanner) {
 			error_log('ACF validation: Valid user and Ferry Banner group detected.');
-			return true;
+
+			// Optionally, modify the form data or add custom nonce handling here
+			$custom_nonce = wp_create_nonce('custom_acf_form_action');
+			$form_data['fields'][] = [
+				'type'  => 'hidden',
+				'name'  => '_acf_nonce',
+				'value' => $custom_nonce,
+			];
+		} else {
+			// If validation fails, log and return false to prevent form submission
+			error_log('ACF validation: Invalid user or Ferry Banner group not detected.');
+			return false;
 		}
-		
-		return $valid;
+
+		// Return the modified form data
+		return $form_data;
 	}
+
 
 
 	public static function fareharbor_scripts() {
