@@ -37,7 +37,7 @@ class ThemeSetup {
         add_filter( 'wp_mail_from_name', array( get_called_class(), 'custom_wp_mail_from_name' ) );
 
 		// Bypass Nonce
-		add_filter( 'acf/verify_nonce', array( get_called_class(), 'my_acf_verify_nonce' ), 10, 3 );
+		add_filter( 'acf/validate_value', array( get_called_class(), 'validate_ferry_operator' ), 10, 4 );
 	}
 
 	/**
@@ -49,23 +49,20 @@ class ThemeSetup {
 	 *
 	 * @return bool True if the nonce is valid for the specified user and optional ACF group, otherwise the original validity.
 	 */
-	public static function my_acf_verify_nonce( $valid, $nonce, $action ) {
-		
+	public static function validate_ferry_operator ($valid, $value, $field, $input_name) {
 		// Check if the current user is the user with the email 'info@gulfislandsferry.com'.
 		$user = get_user_by('email', 'info@gulfislandsferry.com');
 		$isValidUser = $user && $user->ID == get_current_user_id();
-
-		//Verify is the ACF group: Ferry Banner
-		$isFerryBanner = isset($_POST['acf_field_group']) && $_POST['acf_field_group'] === 'group_673ae8f7c13d1';
-
-		if ($isValidUser && $isFerryBanner) {
-			error_log('ACF nonce verification: Valid user and Ferry Banner group detected.');
-			return true;
+	
+		// Verify if it's a field from the ACF group: Ferry Banner
+		if ($isValidUser && isset($field['parent']) && $field['parent'] === 'group_673ae8f7c13d1') {
+			error_log('ACF validation bypassed for Ferry Banner group.');
+			return true; // Skip validation for this field
 		}
-		
+	
 		return $valid;
 	}
-
+	
 
 	public static function fareharbor_scripts() {
 		// Check if the page/post contains the specific FareHarbor URL
