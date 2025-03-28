@@ -9,6 +9,7 @@ import {
 } from '../../iframe/useBackgroundApp';
 import useForms from './hooks/useForms';
 import { getOrCreateBackgroundApp } from '../../utils/backgroundAppUtils';
+import { isRefreshTokenAvailable } from '../../utils/isRefreshTokenAvailable';
 
 interface IElementorFormSelectProps {
   formId: string;
@@ -78,7 +79,9 @@ export default function ElementorFormSelectContainer(
 ) {
   return (
     <BackgroudAppContext.Provider
-      value={refreshToken && getOrCreateBackgroundApp(refreshToken)}
+      value={
+        isRefreshTokenAvailable() && getOrCreateBackgroundApp(refreshToken)
+      }
     >
       <ElementorFormSelectWrapper {...props} />
     </BackgroudAppContext.Provider>
