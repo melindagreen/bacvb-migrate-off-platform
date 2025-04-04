@@ -163,16 +163,24 @@ $colorPalette: "black", "gray", "tan", "white", "red";
 			}
 		}
 		&.swiper-cards {
+			.swiper-slide {
+				opacity: 0;
+				transition: all 0.2s ease-in-out;	
+				article {
+					transition: all 0.2s ease-in-out;
+					outline: 20px white solid;
+				}
+			}
 			.swiper-slide-next,.swiper-slide-prev {
 				article{
 					transform: scale(0.8) translateY(16%);
 					transition: all 0.2s ease-in-out;
+					
 				}
 			}
-			.swiper-slide {
-				article {
-					transition: all 0.2s ease-in-out;
-				}
+			.swiper-slide-next,.swiper-slide-prev,.swiper-slide-prev-active {
+				opacity: 1;
+				transition: all 0.2s ease-in-out;				
 			}
 		}
 	}
