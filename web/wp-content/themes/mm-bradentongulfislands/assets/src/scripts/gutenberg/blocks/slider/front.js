@@ -46,7 +46,7 @@
 
                 cardsEffect: {
                     perSlideOffset: 80,
-                    perSlideRotate: 25
+                    perSlideRotate: 8
                 },
         
               simulateTouch: adminSlider ? false : true,
