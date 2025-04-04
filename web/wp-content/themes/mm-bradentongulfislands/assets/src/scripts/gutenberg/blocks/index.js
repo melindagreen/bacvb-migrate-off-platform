@@ -32,13 +32,15 @@ import InfoChip from './info-chip';
 import LightboxCard from './lightbox-card';
 import CtaBubble from './cta-bubble';
 import Slider from './slider';
+import ContentCard from './content-card';
+import SingleSlide from './slider/single-slide';
 
 /*** CONSTANTS **************************************************************/
 
 // Collect blocks
 // NOTE: ACF blocks should not be registered here, only imported, or they will
 // appear twice in the editor!
-const blocks = [ CtaBubble, LightboxCard, InfoChip, ContentSlider, Hero, PortraitGrid, WideSlideshow, WideImageSlide, ShowcaseCard, AccordionSection, Accordion, ContentSelector, ContentSection, QuickLinks, UpcomingEvents, ListingsGrid, BeachesMap, HeroShowcase, WaterFerryMap, BradensotaMap, SocialButton, LogoCTA, Slider ];
+const blocks = [ CtaBubble, LightboxCard, InfoChip, ContentSlider, Hero, PortraitGrid, WideSlideshow, WideImageSlide, ShowcaseCard, AccordionSection, Accordion, ContentSelector, ContentSection, QuickLinks, UpcomingEvents, ListingsGrid, BeachesMap, HeroShowcase, WaterFerryMap, BradensotaMap, SocialButton, LogoCTA, Slider, SingleSlide, ContentCard, ExampleACF, ExampleDynamic, ExampleStatic ];
 
 /*** EXPORTS ****************************************************************/
 export default () => {
