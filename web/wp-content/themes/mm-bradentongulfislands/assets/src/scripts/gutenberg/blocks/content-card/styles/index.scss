@@ -1,0 +1,45 @@
+/* Editor & Inspector styles */
+.#{$block-prefix}-content-card.content-selector {
+	.components-form-token-field__suggestions-list {
+		background-color: #fff;
+	}
+	.image-select {
+		display: flex;
+		align-items: flex-start;
+		gap: 0.5rem;
+		.components-responsive-wrapper {
+			flex: 1;
+			.components-responsive-wrapper__content {
+				height: 100px;
+				object-fit: cover;
+				position: unset;
+				width: 100px;
+			}
+		}
+	}
+}
+
+/* Editor only styles */
+.editor-styles-wrapper .#{$block-prefix}-content-card.content-selector {
+	background-color: #e3e3e3;
+	padding: 2rem;
+}
+
+/* Card preview styles */
+@import "./style.scss";
+
+/* Admin editor overrides for weirdness */
+article.#{$block-prefix}-content-card {
+	* {
+		box-sizing: border-box;
+	}
+
+	&:hover {
+		transform: none !important;
+	}
+
+	a {
+		pointer-events: none !important;
+		text-decoration: none !important;
+	}
+}

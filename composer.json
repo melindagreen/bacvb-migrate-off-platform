@@ -147,6 +147,7 @@
     }
   },
   "scripts": {
+    "blocks": "@script select-block",
     "script": ".composer/script",
     "script:permit": "x=.composer/script; chmod -R +x $x ${x}s",
     "post-install-cmd": [

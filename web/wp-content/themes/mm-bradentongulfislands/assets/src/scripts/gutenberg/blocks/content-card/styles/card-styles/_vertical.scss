@@ -1,0 +1,103 @@
+/*
+Vertical image on top, text on bottom
+*/
+.#{$block-prefix}-content-card.card-style-vertical {
+	background-color: #fff;
+	border-radius: 0.1875rem;
+	box-shadow: 0px 4px 31px -14px rgba(0, 0, 0, 0.3);
+	display: block;
+	max-width: 100%;
+	overflow: hidden;
+	position: relative;
+	@include standard-transition;
+
+	max-height: unset !important;
+	margin: 1rem; /* match the box shadow size to avoid overflow issues */
+
+	.featured-media {
+		background-color: color("black");
+		position: relative;
+		z-index: 0;
+		height: 250px;
+		display: block;
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+
+	.overlay-link {
+		color: #fff;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		text-decoration: none;
+		z-index: 1;
+	}
+
+	.content {
+		color: color("black");
+		display: flex;
+		align-items: flex-start;
+		flex-direction: column;
+		justify-content: flex-start;
+		gap: 1rem;
+		padding: 1.5rem;
+		position: relative;
+		text-align: left;
+		width: 100%;
+
+		.post-meta {
+			color: color("black");
+			font-size: var(--wp--preset--font-size--small);
+			line-height: 1em;
+			order: 1;
+			position: relative;
+			z-index: 2;
+			text-align: center;
+			text-transform: uppercase;
+			a {
+				border-bottom: 2px solid #00000070;
+				color: inherit;
+				display: inline-block;
+				font-size: inherit;
+				text-decoration: none;
+				&:hover {
+					border-color: color("black");
+				}
+			}
+		}
+
+		.post-title {
+			color: color("black");
+			font-family: $font-header;
+			font-size: 1.25rem;
+			line-height: 1.1em;
+			letter-spacing: 0;
+			margin: 0;
+			order: 2;
+		}
+
+		.excerpt {
+			order: 3;
+		}
+
+		.read-more {
+			color: color("red");
+			font-size: var(--wp--preset--font-size--small);
+			font-weight: 600;
+			order: 4;
+			text-decoration: underline;
+		}
+	}
+
+	&:focus,
+	&:focus-within,
+	&:hover {
+		transform: scale(1.025);
+	}
+}

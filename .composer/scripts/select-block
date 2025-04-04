@@ -1,0 +1,123 @@
+#!/usr/bin/env bash
+
+# @version 21.2023.07
+# @since 21.2023.07
+
+source ".composer/bin/helpers"
+
+# Function to find the parent theme folder path
+find_parent_theme_folder() {
+    # Use the find command to locate the parent theme folder
+    parent_theme_folder=$(find ./web/wp-content/themes -maxdepth 1 -type d -name "mm-*" | head -n 1)
+
+    # Check if the parent theme folder was found
+    if [ -z "$parent_theme_folder" ]; then
+        echo "Error: Parent theme folder not found. Make sure your parent theme starts with 'mmk-'."
+        exit 1
+    fi
+
+    echo "Parent theme folder found: $parent_theme_folder"
+}
+
+fetch_and_process_blocks_list() {
+    # Read the GitHub token from auth.json using grep and awk
+    PAT=$(grep -Eo '"github.com":\s*"[^"]+"' ~/.composer/auth.json | awk -F'"' '{print $4}')
+
+    # Check if the token is empty
+    if [ -z "$PAT" ]; then
+        echo "Error: GitHub token not found in auth.json. Make sure you have configured Composer with the correct token."
+        exit 1
+    fi
+
+    # Download the blocks_list.txt from the remote GitHub repository and store it in a variable
+    # This token is random; do we need something static in env?
+    URL="https://raw.githubusercontent.com/maddenmedia/mm-block-library/main/blocks_list.txt"
+
+    # Use the -H flag to add the Authorization header with the PAT
+    blocks_list=$(curl -H "Authorization: token $PAT" "$URL")
+
+    # Check if the download was successful
+    if [ $? -ne 0 ]; then
+        echo "Error: Failed to download blocks_list.txt from the remote repository."
+        exit 1
+    fi
+
+    # The 'blocks_list' variable already contains the content from the remote file,
+    # so there's no need to use awk to read a file. We can directly process the content.
+
+    # Store the processed blocks_list in a variable
+    blocks_list=$(echo "$blocks_list" | awk '{print NR, $0}')
+
+    # Return the value of blocks_list
+    echo "$blocks_list"
+}
+
+
+
+# Function to display available blocks and prompt user for selection
+select_block() {
+        echo "Available blocks:"
+    # Call the fetch_and_process_blocks_list function and capture its output in the blocks_list variable
+    blocks_list=$(fetch_and_process_blocks_list)
+
+    echo "$blocks_list"
+
+    echo "Enter the number of the block you want to install:"
+    read block_number
+
+    # Validate user input
+    if ! [[ "$block_number" =~ ^[0-9]+$ ]]; then
+        echo "Invalid input. Please enter a number."
+        exit 1
+    fi
+
+    # Get the total number of blocks (lines) from the processed blocks_list
+    num_blocks=$(echo "$blocks_list" | wc -l)
+
+    if [ "$block_number" -lt 1 ] || [ "$block_number" -gt "$num_blocks" ]; then
+        echo "Invalid block number. Please select a valid block between 1 and $num_blocks."
+        exit 1
+    fi
+
+    # Extract the block name based on the selected number
+    selected_block=$(echo "$blocks_list" | awk -v num="$block_number" 'NR == num {print $2}')
+
+    echo "Selected block: $selected_block"
+    
+    # Clone the remote repository locally (use the --depth flag for a shallow clone to reduce history)
+    git clone --depth=1 "https://github.com/maddenmedia/mm-block-library.git" tmp_block_repo
+
+    # Change directory to the cloned repository
+    cd tmp_block_repo
+
+    # Use git archive to create an archive of the specific subfolder
+    git archive --format=zip --output="../${selected_block}.zip" main "blocks/${selected_block}"
+
+    # Change directory back to the original location
+    cd ..
+
+    # Extract the archive to the desired folder in your parent theme
+    unzip "${selected_block}.zip" -d "$parent_theme_folder/assets/src/scripts/gutenberg/"
+
+    # Clean up - remove the temporary cloned repository and the zip archive
+    rm -rf tmp_block_repo
+    rm "${selected_block}.zip"
+    
+    # # Append the block import statement to the target file
+    # echo "" >> "$parent_theme_folder/assets/src/scripts/gutenberg/blocks/index.js"
+    # echo "import $(echo $selected_block | sed 's/.*/\u&/; s/-\([a-z]\)/\U\1/g') from './${selected_block}';" >> "$parent_theme_folder/assets/src/scripts/gutenberg/blocks/index.js"
+    # echo "" >> "$parent_theme_folder/assets/src/scripts/gutenberg/blocks/index.js"
+
+    # # Add the block name to the 'blocks' constant
+    # block_name=$(echo $selected_block | sed 's/.*/\u&/; s/-\([a-z]\)/\U\1/g')
+    # echo "blocks.push(${block_name});" >> "$parent_theme_folder/assets/src/scripts/gutenberg/blocks/index.js"
+
+    echo "Block installed successfully!"
+}
+
+
+# Run the function to find the parent theme folder path
+find_parent_theme_folder
+
+# Run the function to select and install the block
+select_block

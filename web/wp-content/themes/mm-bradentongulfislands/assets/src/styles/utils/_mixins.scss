@@ -48,7 +48,13 @@
     overflow: hidden;
 }
 
-@mixin main-column {
+@mixin main-column($maxWidth: $main-column-max-width) {
     width: $main-column-width;
-    max-width: $main-column-max-width;
+    max-width: $maxWidth;
 }
+  
+  @mixin main-column-auto($maxWidth: $main-column-max-width) {
+    @include main-column($maxWidth: $maxWidth);
+    margin-left: auto;
+    margin-right: auto;
+  }

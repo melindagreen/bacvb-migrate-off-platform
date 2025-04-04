@@ -1,0 +1,83 @@
+{
+	"name": "content-card",
+	"dynamic": true,
+	"render_callback": "MaddenNino\\Blocks\\ContentCard\\render_block",
+	"supports": {
+		"anchor": true
+	},
+	"settings": {
+		"title": "Content Card",
+		"description": "Display selected post or custom content in card format",
+		"icon": "embed-photo",
+		"category": "madden-media",
+		"attributes": {
+			"contentId": {
+				"type": "number",
+				"default": 0
+			},
+			"cardStyle": {
+				"type": "string",
+				"default": "vertical"
+			},
+			"contentType": {
+				"type": "string",
+				"default": "post"
+			},
+			"contentTitle": {
+				"type": "string",
+				"default": ""
+			},
+			"displayAdditionalContent": {
+				"type": "boolean",
+				"default": false
+			},
+			"displayExcerpt": {
+				"type": "boolean",
+				"default": false
+			},
+			"excerptLength": {
+				"type": "number",
+				"default": 12
+			},
+			"displayCategory": {
+				"type": "boolean",
+				"default": false
+			},
+			"displayReadMore": {
+				"type": "boolean",
+				"default": false
+			},
+			"readMoreText": {
+				"type": "string",
+				"default": "Read More"
+			},
+			"customImage": {
+				"type": "number",
+				"default": 0
+			},
+			"customImageUrl": {
+				"type": "string",
+				"default": ""
+			},
+			"customCtaText": {
+				"type": "string",
+				"default": ""
+			},
+			"customCtaUrl": {
+				"type": "object",
+				"default": {}
+			},
+			"mode": {
+				"type": "string",
+				"default": "edit"
+			}
+		},
+		"example": {
+			"attributes": {
+				"contentId": 9184,
+				"contentTitle": "Artwalk Event",
+				"mode": "preview"
+			}
+		}
+	}
+}

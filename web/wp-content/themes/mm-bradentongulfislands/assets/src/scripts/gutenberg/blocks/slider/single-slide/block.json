@@ -1,0 +1,13 @@
+{
+  "name": "single-slide",
+  "parent": [
+    "mmnino/slider"
+  ],
+  "settings": {
+    "title": "Single Slide",
+    "description": "Single slide child component",
+    "icon": "format-gallery",
+    "category": "madden-media",
+    "attributes": {}
+  }
+}
