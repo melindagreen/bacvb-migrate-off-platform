@@ -6,7 +6,7 @@
           }
         });
         
-        const sliderBlockSelector = ".wp-block-mmnino-slider .swiper";
+        const sliderBlockSelector = ".wp-block-mm-bradentongulfislands-slider .swiper";
         const swiperInstances = [];
         
         const adminSlider = null;
