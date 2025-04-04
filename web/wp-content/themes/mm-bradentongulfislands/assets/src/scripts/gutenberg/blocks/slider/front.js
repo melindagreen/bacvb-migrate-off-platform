@@ -49,11 +49,18 @@
                     perSlideRotate: 6,
                     slideShadows: false,
                 },
-                // initialSlide: 1,
+                initialSlide: 1,
         
               simulateTouch: adminSlider ? false : true,
               autoHeight: setAutoHeight,
               mousewheel: slider.dataset.enablemousescroll ? true : false,
+
+
+              modules: [Swiper.Virtual], // Needed if you're using modules manually
+              virtual: {
+                slides: Array.from({ length: 4 }, (_, i) => `<div class="swiper-slide">Slide ${i + 1}</div>`),
+              },
+
               
               //general settings
               autoplay: slider.dataset.enableautoplay ? true : false,
@@ -61,7 +68,7 @@
               effect: slider.dataset.effect ?? 'slide',
               loop: slider.dataset.loop ? true : false,
               loopPreventsSliding: false,
-              loopAdditionalSlides: 4,
+              loopAdditionalSlides: 1,
               loopAddBlankSlides: true,
               freeMode: {
                 enabled: slider.dataset.freemode ? true : false,
