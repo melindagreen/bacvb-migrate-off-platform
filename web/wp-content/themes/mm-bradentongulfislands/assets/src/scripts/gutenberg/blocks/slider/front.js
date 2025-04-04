@@ -60,7 +60,7 @@
               effect: slider.dataset.effect ?? 'slide',
               loop: slider.dataset.loop ? true : false,
               loopPreventsSliding: false,
-              loopAdditionalSlides: 1,
+              loopAdditionalSlides: 5,
               loopAddBlankSlides: true,
               freeMode: {
                 enabled: slider.dataset.freemode ? true : false,
