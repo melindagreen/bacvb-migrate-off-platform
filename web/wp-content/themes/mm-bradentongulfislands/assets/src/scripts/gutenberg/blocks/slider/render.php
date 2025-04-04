@@ -103,7 +103,7 @@ function render_block( $attrs, $content ) {
 
             foreach($posts as $post) {
               echo '<div class="swiper-slide">';
-              echo do_blocks('<!-- wp:mmnino/content-card {
+              echo do_blocks('<!-- wp:mm-bradentongulfislands/content-card {
                 "contentId":'.$post->ID.',
                 "contentType":"'.$attrs['postType'].'", 
                 "cardStyle": "'.$attrs['cardStyle'].'",
@@ -126,7 +126,7 @@ function render_block( $attrs, $content ) {
 
           foreach($attrs['manualPosts'] as $post) {
             echo '<div class="swiper-slide">';
-            echo do_blocks('<!-- wp:mmnino/content-card {
+            echo do_blocks('<!-- wp:mm-bradentongulfislands/content-card {
               "contentId":'.$post['id'].',
               "contentType":"'.$attrs['postType'].'", 
               "cardStyle": "'.$attrs['cardStyle'].'",
@@ -158,7 +158,7 @@ function render_block( $attrs, $content ) {
           ];
 
           echo '<div class="swiper-slide">';
-          echo do_blocks('<!-- wp:mmnino/content-card '.json_encode($customCardAttrs).' /-->');
+          echo do_blocks('<!-- wp:mm-bradentongulfislands/content-card '.json_encode($customCardAttrs).' /-->');
           echo '</div>';
         }
         ?>
