@@ -55,8 +55,6 @@
               autoHeight: setAutoHeight,
               mousewheel: slider.dataset.enablemousescroll ? true : false,
 
-
-              modules: [Swiper.Virtual], // Needed if you're using modules manually
               virtual: {
                 slides: Array.from({ length: 4 }, (_, i) => `<div class="swiper-slide">Slide ${i + 1}</div>`),
               },
