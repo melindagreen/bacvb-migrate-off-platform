@@ -165,15 +165,16 @@ $colorPalette: "black", "gray", "tan", "white", "red";
 		&.swiper-cards {
 			.swiper-slide {
 				opacity: 0;
-				transition: all 0.2s ease-in-out;	
+				transition: all 0.1s ease-in-out;	
 				article {
 					transition: all 0.2s ease-in-out;
+					transform: scale(0.8) translateY(16%);
 					outline: 20px white solid;
 				}
 			}
-			.swiper-slide-next,.swiper-slide-prev {
+			.swiper-slide-active {
 				article{
-					transform: scale(0.8) translateY(16%);
+					transform: scale(1) translateY(0);
 					transition: all 0.2s ease-in-out;
 					
 				}
