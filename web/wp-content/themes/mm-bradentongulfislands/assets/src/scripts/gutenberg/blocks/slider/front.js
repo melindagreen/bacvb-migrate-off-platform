@@ -45,8 +45,8 @@
             let swiperslider = new Swiper(slider, {
 
                 cardsEffect: {
-                    perSlideOffset: 80,
-                    perSlideRotate: 8,
+                    perSlideOffset: 65,
+                    perSlideRotate: 6,
                     slideShadows: false,
                 },
         

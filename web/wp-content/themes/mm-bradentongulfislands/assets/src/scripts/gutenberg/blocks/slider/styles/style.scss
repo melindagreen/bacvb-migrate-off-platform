@@ -165,7 +165,7 @@ $colorPalette: "black", "gray", "tan", "white", "red";
 		&.swiper-cards {
 			.swiper-slide-next,.swiper-slide-prev {
 				article{
-					transform: scale(0.8);
+					transform: scale(0.8) translateY(16%);
 					transition: all 0.2s ease-in-out;
 				}
 			}
