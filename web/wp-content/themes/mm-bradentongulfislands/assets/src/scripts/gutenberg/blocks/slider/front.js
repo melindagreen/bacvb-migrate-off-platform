@@ -50,7 +50,7 @@
                     slideShadows: false,
                 },
 
-              loopAdditionalSlides: 3,
+              loopAdditionalSlides: 8,
         
               simulateTouch: adminSlider ? false : true,
               autoHeight: setAutoHeight,
