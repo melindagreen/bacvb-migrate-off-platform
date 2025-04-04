@@ -49,7 +49,7 @@
                     perSlideRotate: 6,
                     slideShadows: false,
                 },
-                initialSlide: 1,
+                // initialSlide: 1,
         
               simulateTouch: adminSlider ? false : true,
               autoHeight: setAutoHeight,
@@ -60,9 +60,9 @@
               centeredSlides: slider.dataset.centeredslides ? true : false,
               effect: slider.dataset.effect ?? 'slide',
               loop: slider.dataset.loop ? true : false,
-              // loopPreventsSliding: false,
-              // loopAdditionalSlides: 1,
-              // loopAddBlankSlides: true,
+              loopPreventsSliding: false,
+              loopAdditionalSlides: 1,
+              loopAddBlankSlides: true,
               freeMode: {
                 enabled: slider.dataset.freemode ? true : false,
               },
