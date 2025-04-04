@@ -49,6 +49,7 @@
                     perSlideRotate: 6,
                     slideShadows: false,
                 },
+                initialSlide: 1,
         
               simulateTouch: adminSlider ? false : true,
               autoHeight: setAutoHeight,
