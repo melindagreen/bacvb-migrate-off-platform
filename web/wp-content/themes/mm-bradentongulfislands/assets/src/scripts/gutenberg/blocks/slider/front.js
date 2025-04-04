@@ -59,9 +59,9 @@
               centeredSlides: slider.dataset.centeredslides ? true : false,
               effect: slider.dataset.effect ?? 'slide',
               loop: slider.dataset.loop ? true : false,
-              loopPreventsSliding: false,
-              loopAdditionalSlides: 1,
-              loopAddBlankSlides: true,
+              // loopPreventsSliding: false,
+              // loopAdditionalSlides: 1,
+              // loopAddBlankSlides: true,
               freeMode: {
                 enabled: slider.dataset.freemode ? true : false,
               },
