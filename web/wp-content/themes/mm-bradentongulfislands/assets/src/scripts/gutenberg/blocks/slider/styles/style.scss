@@ -162,6 +162,19 @@ $colorPalette: "black", "gray", "tan", "white", "red";
 				}
 			}
 		}
+		&.swiper-cards {
+			.swiper-slide-next,.swiper-slide-prev {
+				article{
+					transform: scale(0.8);
+					transition: all 0.2s ease-in-out;
+				}
+			}
+			.swiper-slide {
+				article {
+					transition: all 0.2s ease-in-out;
+				}
+			}
+		}
 	}
 	&.slider-type-gallery {
 		.swiper {
