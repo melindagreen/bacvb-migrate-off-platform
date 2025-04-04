@@ -54,11 +54,6 @@
               simulateTouch: adminSlider ? false : true,
               autoHeight: setAutoHeight,
               mousewheel: slider.dataset.enablemousescroll ? true : false,
-
-              virtual: {
-                slides: Array.from({ length: 4 }, (_, i) => `<div class="swiper-slide">Slide ${i + 1}</div>`),
-              },
-
               
               //general settings
               autoplay: slider.dataset.enableautoplay ? true : false,
