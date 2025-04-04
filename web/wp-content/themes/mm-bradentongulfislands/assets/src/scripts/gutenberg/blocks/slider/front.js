@@ -43,6 +43,8 @@
             }
             
             let swiperslider = new Swiper(slider, {
+
+              perSlideOffset: 100,
         
               simulateTouch: adminSlider ? false : true,
               autoHeight: setAutoHeight,
