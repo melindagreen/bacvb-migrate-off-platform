@@ -84,8 +84,7 @@ const Wizard = (props) => {
 				label={__("Card Style")}
 				value={attributes.cardStyle}
 				options={[				
-					{ label: "Overlay", value: "overlay" }, 
-					{ label: "Vertical", value: "vertical" }
+					{ label: "Portrait", value: "portrait" }
 				]}
 				onChange={(val) => {
 					setAttributes({ cardStyle: val });
@@ -110,6 +109,13 @@ const Wizard = (props) => {
 						value={attributes.contentTitle}
 						onChange={(val) => {
 							setAttributes({ contentTitle: val });
+						}}
+					/>
+					<TextControl
+						label={__('Content Excerpt')}
+						value={attributes.contentExcerpt}
+						onChange={(val) => {
+							setAttributes({ contentExcerpt: val });
 						}}
 					/>
 					<TextControl

@@ -28,12 +28,14 @@ function render_block( $attrs, $content ) {
   if ($attrs['contentType'] !== 'custom') {
     $title      = get_the_title($id);
     $link       = get_the_permalink($id);
+    $excerpt = wp_trim_words(get_the_excerpt($id), 20, '…');
     $linkTitle  = get_the_title($id);
     $image      = get_the_post_thumbnail($id, 'large');
   } else {
     $attrs['displayAdditionalContent'] = false;
 
-    $title      = $attrs['contentTitle'];
+    $title = $attrs['contentTitle'];
+    $excerpt = $attrs['contentExcerpt'];
 
     if ($attrs['customCtaUrl'] !== '') {
       $link       = $attrs['customCtaUrl']['url'];
@@ -55,7 +57,7 @@ function render_block( $attrs, $content ) {
   ob_start(); 
   ?>
 
-<article id="<?php echo $anchor; ?>" class="<?php echo implode(' ', $classes); ?>">
+<article id="<?php echo $anchor; ?>" class="<?php echo implode(' ', $classes); ?>" data-title="<?php echo esc_attr($title); ?>" data-excerpt="<?php echo esc_attr($excerpt); ?>" data-link="<?php echo esc_attr($link); ?>">
 
     <a href="<?php echo $link; ?>" title="<?php echo $linkTitle; ?>" <?php echo $linkTarget; ?> class="overlay-link">
     </a>

@@ -90,6 +90,10 @@
 				"type": "string",
 				"default": ""
 			},
+			"ctaSlideExcerpt": {
+				"type": "string",
+				"default": ""
+			},
 			"ctaSlideImage": {
 				"type": "number",
 				"default": 0

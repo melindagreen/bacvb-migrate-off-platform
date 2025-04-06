@@ -27,6 +27,10 @@
 				"type": "string",
 				"default": ""
 			},
+			"contentExcerpt": {
+				"type": "string",
+				"default": ""
+			},
 			"displayAdditionalContent": {
 				"type": "boolean",
 				"default": false

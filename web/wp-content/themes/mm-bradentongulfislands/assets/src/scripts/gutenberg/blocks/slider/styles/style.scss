@@ -1,5 +1,6 @@
 @import "swiper/css/bundle";
 @import "styles/utils/variables";
+@import "styles/utils/typography";
 @import "styles/utils/mixins";
 
 /* Add your color variables here from theme.json for proper styling */
@@ -48,6 +49,10 @@ $colorPalette: "black", "gray", "tan", "white", "red";
 			align-items: center;
 			justify-content: center;
 			margin: -0.5rem 0 0;
+			padding-top: 3.5rem;
+			@include screen-sm-max {
+				padding-top: 7rem;
+			}
 			.swiper-pagination {
 				display: flex;
 				align-items: center;
@@ -58,9 +63,17 @@ $colorPalette: "black", "gray", "tan", "white", "red";
 			}
 			.swiper-button-prev {
 				order: 0;
+
+				&:after {
+					transform: rotate(270deg);
+				}
 			}
 			.swiper-button-next {
 				order: 2;
+
+				&:after {
+					transform: rotate(90deg);
+				}
 			}
 			.swiper-button-prev,
 			.swiper-button-next {
@@ -68,8 +81,15 @@ $colorPalette: "black", "gray", "tan", "white", "red";
 				margin: 0;
 				position: unset;
 				&:after {
-					color: #fff;
+					color: color("bradenton-teal");
 					font-size: 1rem;
+					border: solid transparent;
+					border-width: 0 0.9rem 0.9rem 0.9rem;
+					border-bottom-color: color("bradenton-teal");
+					content: "";
+					display: inline-block;
+					height: 0;
+					width: 0;
 				}
 				&:hover {
 					background-color: transparent;
@@ -94,11 +114,12 @@ $colorPalette: "black", "gray", "tan", "white", "red";
 		margin: 0.75rem auto 0;
 		position: unset;
 		.swiper-pagination-bullet {
-			background-color: color("black");
+			background-color: color("bradenton-teal");
 			width: 1.125rem;
 			height: 1.125rem;
+			opacity: 1;
 			&.swiper-pagination-bullet-active {
-				background-color: color("red");
+				background-color: color("rust");
 			}
 		}
 
@@ -163,25 +184,41 @@ $colorPalette: "black", "gray", "tan", "white", "red";
 			}
 		}
 		&.swiper-cards {
+
+			.content {
+				
+				display: none;
+			}
+
 			.swiper-slide {
-				opacity: 0;
-				transition: all 0.1s ease-in-out;	
+
 				article {
-					transition: all 0.2s ease-in-out;
-					transform: scale(0.8) translateY(16%);
+					
 					outline: 20px white solid;
 				}
 			}
-			.swiper-slide-active {
-				article{
-					transform: scale(1) translateY(0);
-					transition: all 0.2s ease-in-out;
-					
+
+			@include screen-sm-min {
+
+				.swiper-slide {
+					opacity: 0;
+					transition: all 0.1s ease-in-out;	
+					article {
+						transition: all 0.2s ease-in-out;
+						transform: scale(0.8) translateY(10%);
+					}
 				}
-			}
-			.swiper-slide-next,.swiper-slide-prev,.swiper-slide-active {
-				opacity: 1;
-				transition: all 0.2s ease-in-out;				
+				.swiper-slide-active {
+					article{
+						transform: scale(1) translateY(0);
+						transition: all 0.2s ease-in-out;
+						
+					}
+				}
+				.swiper-slide-next,.swiper-slide-prev,.swiper-slide-active {
+					opacity: 1;
+					transition: all 0.2s ease-in-out;				
+				}
 			}
 		}
 	}
@@ -201,5 +238,70 @@ $colorPalette: "black", "gray", "tan", "white", "red";
 				}
 			}
 		}
+	}
+
+	.slider-info-box {
+
+		background-color: color("turquoise");
+		width: 20rem;
+		position: absolute;
+		min-height: 10rem;
+		height: fit-content;
+		padding: 5% 3%;
+		color: $white;
+		bottom: 2.5rem;
+		z-index: 1;
+		right: -15vw;
+
+		@include screen-sm-max {
+			bottom: 3rem;
+			right: -4vw;		
+		}
+
+		#infoblock-buttonurl  {
+
+			text-transform: uppercase;
+			font-family: $font-header;
+			color: $white;
+			position: relative;
+			transition: all 0.3s ease-in-out;
+			min-width: 7rem;
+			max-width: 15rem;
+			font-size: 0.95rem;
+			display: inline-block;
+	  
+			&::after {
+			  content: ' ';
+			  transition: all 0.3s ease-in-out;
+			  position: absolute;
+			  right: -2rem;
+			  bottom: -35%;
+			  height: 25px;
+			  width: 25px;
+			  background-size: contain !important;
+			  background: url('images/ui-next-on.png');
+			}
+				&:hover {
+	  
+				  text-decoration: none;
+				  
+				  &::after {
+	  
+					transition: all 0.2s ease-in-out;
+					transform: translateX(8%);
+				  }
+				}
+		}
+		#infoblock-title {
+
+			margin-top: 0;
+			margin-bottom: 1rem;
+			font-family: $font-header;
+			font-size: 1rem;
+			text-transform: uppercase;
+			line-height: 1;
+			color: color("white");
+		}
+
 	}
 }

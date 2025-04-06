@@ -152,6 +152,7 @@ function render_block( $attrs, $content ) {
             'contentType'        => 'custom',
             'cardStyle'          => $attrs['cardStyle'],
             'contentTitle'       => $attrs['ctaSlideTitle'],
+            'contentExcerpt'       => $attrs['ctaSlideExcerpt'],
             'customImage'        => $attrs['ctaSlideImage'],
             'customCtaText'      => $attrs['ctaSlideBtnText'],
             'customCtaUrl'       => $ctaLink,
@@ -183,6 +184,13 @@ function render_block( $attrs, $content ) {
     if ($attrs['enableArrowNavigation']) {
       echo '<div class="swiper-button-prev" data-color="'.$arrow_color.'" data-color-background="'.$arrow_color_bg.'"></div><div class="swiper-button-next" data-color="'.$arrow_color.'" data-color-background="'.$arrow_color_bg.'"></div>';
     }
+    echo '</div>';
+  }
+  if ($attrs['effect'] === 'cards') {
+    echo '<div class="slider-info-box is-style-collage-square">';
+    echo '<h3 id="infoblock-title"></h3>';
+    echo '<p id="infoblock-excerpt"></p>';
+    echo '<a id="infoblock-buttonurl" href="#">See Details</a>';
     echo '</div>';
   }
   ?>

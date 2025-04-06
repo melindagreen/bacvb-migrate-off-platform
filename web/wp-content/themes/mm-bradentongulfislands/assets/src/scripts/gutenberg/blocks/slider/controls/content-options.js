@@ -216,6 +216,13 @@ const ContentOptions = (props) => {
 									}}
 								/>
 								<TextControl
+									label={__("CTA Excerpt")}
+									value={attributes.ctaSlideExcerpt}
+									onChange={(val) => {
+										setAttributes({ ctaSlideExcerpt: val });
+									}}
+								/>
+								<TextControl
 									label={__("CTA Text")}
 									value={attributes.ctaSlideBtnText}
 									onChange={(val) => {
