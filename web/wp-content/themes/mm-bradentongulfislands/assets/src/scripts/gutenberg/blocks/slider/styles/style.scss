@@ -198,6 +198,15 @@ $colorPalette: "black", "gray", "tan", "white", "red";
 				}
 			}
 
+			@include screen-sm-max {
+				
+				.swiper-slide {
+					article {
+						aspect-ratio: 7/9;
+					}
+				}
+			}
+
 			@include screen-sm-min {
 
 				.swiper-slide {
