@@ -264,7 +264,8 @@ $colorPalette: "black", "gray", "tan", "white", "red";
 
 		@include screen-sm-max {
 			bottom: 3rem;
-			right: -4vw;		
+			right: -4vw;	
+			width: 22rem;	
 		}
 
 		#infoblock-buttonurl  {
