@@ -252,7 +252,7 @@ $colorPalette: "black", "gray", "tan", "white", "red";
 	.slider-info-box {
 
 		background-color: color("turquoise");
-		width: 20rem;
+		width: 23rem;
 		position: absolute;
 		min-height: 10rem;
 		height: fit-content;
@@ -306,7 +306,7 @@ $colorPalette: "black", "gray", "tan", "white", "red";
 			margin-top: 0;
 			margin-bottom: 1rem;
 			font-family: $font-header;
-			font-size: 1rem;
+			font-size: 1.1rem;
 			text-transform: uppercase;
 			line-height: 1;
 			color: color("white");
@@ -315,6 +315,7 @@ $colorPalette: "black", "gray", "tan", "white", "red";
 		p {
 
 			line-height: 1.2em;
+			color: white;
 		}
 
 	}
