@@ -17,7 +17,7 @@
 			},
 			"cardStyle": {
 				"type": "string",
-				"default": "vertical"
+				"default": "portrait"
 			},
 			"contentType": {
 				"type": "string",
