@@ -35,7 +35,7 @@
         cardsEffect = {
           perSlideOffset: screenWidth >= 769 ? 65 : 8,
           perSlideRotate: screenWidth >= 769 ? 6 : 2,
-          slideShadows: false
+          slideShadows: screenWidth >= 769 ? false : true
         };
         if (screenWidth > 769) {
           initialSlide = 1;
