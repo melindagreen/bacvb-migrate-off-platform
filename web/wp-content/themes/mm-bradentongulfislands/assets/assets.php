@@ -239,6 +239,12 @@ class AssetHandler {
                     $path = "build/blocks/" . $block['name'] . '.js';
                     if (file_exists(__DIR__ . '/' . $path)) {
                         array_push($scripts, $path);
+                    } else {
+                        // If nothing in build blocks, look for front.js in the base of the block folder
+                        $fallback_path = "src/scripts/gutenberg/blocks/" . $block['name'] . '/front.js';
+                        if (file_exists(__DIR__ . '/' . $fallback_path)) {
+                            array_push($scripts, $fallback_path);
+                        }
                     }
                 }
 
