@@ -111,7 +111,7 @@ class RestApi {
      * @param array $request                The incomming REST request
      * @return array                        The modified query args
      */
-    function filter_by_amenities($args, $request) {
+    public static function filter_by_amenities($args, $request) {
 
         $meta_queries = ['accomodations-location','accomodations-facility-amenities', 'recreation-recreation-type'];
 
@@ -154,7 +154,7 @@ class RestApi {
      * @param string $request                The incomming REST request
      * @return array                        The modified query args
      */
-    function filter_by_rooms($args, $request) {
+    public static function filter_by_rooms($args, $request) {
 
             if (isset($request['rooms']) && !empty($request['rooms'])) {
                 $roomRange = explode('-', $request['rooms']);
@@ -203,7 +203,7 @@ class RestApi {
      * @param array $request                The incomming REST request
      * @return array                        The modified query args
      */
-    function filter_by_activity($args, $request) {
+    public static function filter_by_activity($args, $request) {
 
         if (isset($request['activity'])) {
       

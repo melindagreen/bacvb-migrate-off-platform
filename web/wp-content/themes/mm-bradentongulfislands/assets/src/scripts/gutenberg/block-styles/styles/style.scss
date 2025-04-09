@@ -687,6 +687,11 @@ IMAGES
         mask: url("images/large-image-mask.svg") no-repeat center;
         --webkit-mask-size: 100% 100%;
         mask-size: 100% 100%;
+
+        @media only screen and (max-width: $screen-sm) {
+            --webkit-mask-size: 200% 100%;
+            mask-size: 200% 100%;
+        }
     }
 }
 
@@ -1058,10 +1063,9 @@ IMAGES
                 }
 
                 /*grid-template-columns: repeat(10, 1fr);*/
-                grid-template-rows: repeat(8, 20vw);
-                max-height: 800px;
-                height: fit-content;
-                grid-template-rows: repeat(auto-fit, minmax(0, 1fr));
+                // grid-template-rows: repeat(8, 20vw);
+                grid-template-rows: repeat(auto-fit, minmax(50px, 1fr));
+                // max-height: 800px;
                 gap: 10px;
 
                 &.is-style-masonry-alternate-2 {

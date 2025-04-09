@@ -20,7 +20,8 @@ Content Slider
     .content-slider-swiper-button-next,
     .content-slider-swiper-button-prev {
       position: absolute;
-      top: 25%;
+      top: 50%;
+      transform: translateY(-50%);
       z-index: 10;
       cursor: pointer;
       display: flex;
@@ -32,3 +33,30 @@ Content Slider
       }
     }
   }
+
+
+/*********************
+SMALL & MEDIUM SCREENS
+*********************/
+@media only screen and (max-width: $screen-lg) {
+
+	.mm-content-slider { 
+    
+    .content-slider-swiper-button-prev {
+      left: -78px;
+    }
+    .content-slider-swiper-button-next {
+      right: -78px;
+    }
+    .content-slider-swiper-button-next,
+    .content-slider-swiper-button-prev {
+      opacity: 0.9;
+
+      img {
+
+        width: 65%;
+        height: auto;
+      }
+    }
+	}
+}

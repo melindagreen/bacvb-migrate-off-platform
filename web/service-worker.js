@@ -1,6 +1,6 @@
 // This is the current worker version. Bump if you
 // need to update your cache.
-var version = 2;
+var version = 3;
 
 // These files will be added to the static cache
 // ONLY places files here that are very unlikely to
@@ -15,11 +15,14 @@ var toCache = [
 
 // URLs to exclude from caching
 var excludeCachePatterns = [
-    /https:\/\/px\.adentifi\.com\/Pixels/
+    /https:\/\/px\.adentifi\.com\/Pixels/,
+    /^chrome-extension:\/\//
 ];
+
 
 // Cache vital files on install:
 self.addEventListener('install', function(event) {
+
     event.waitUntil(caches.open('mmmadre-core-v' + version)
     .then(function(cache) {
         return cache.addAll(toCache);

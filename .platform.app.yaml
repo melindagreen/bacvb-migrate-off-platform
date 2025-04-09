@@ -17,7 +17,6 @@ build:
 # side is in the form `<service name>:<endpoint name>`.
 relationships:
   database: "db:mysql"
-  rediscache: "cacheredis:redis"
 
 # The configuration of app when it is exposed to the web.
 web:
@@ -102,6 +101,10 @@ mounts:
   "web/wp-content/breeze-config":
     source: local
     source_path: breeze-config
+
+# runtime:
+#   extensions:
+#     - newrelic
 
 hooks:
   build: |

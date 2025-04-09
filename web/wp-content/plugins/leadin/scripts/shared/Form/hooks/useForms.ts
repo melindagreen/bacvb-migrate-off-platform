@@ -22,6 +22,7 @@ export default function useForms() {
             ...forms.map((form: IForm) => ({
               label: form.name,
               value: form.guid,
+              embedVersion: form.embedVersion,
             })),
             DEFAULT_OPTIONS,
           ]);
