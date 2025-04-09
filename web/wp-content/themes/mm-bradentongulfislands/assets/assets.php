@@ -120,13 +120,54 @@ class AssetHandler {
         );
     }
 
+
+    /**
+     * Finds front-end styles & scripts based on post type, slug, & custom body class.
+     * This helps us avoid creating unnecessary php templates when we only need custom css/js.
+     */
+    private static function _find_assets() {
+        global $template; 
+		global $post;
+
+        $assets = array(
+            str_replace(".php", "", basename($template)),
+        );
+
+        if (is_tax()) {
+            //taxonomy-specific styles
+            array_push($assets, 'tax-'.get_queried_object()->taxonomy);
+            //array_push($assets, 'term-'.get_queried_object()->slug);
+        } elseif (is_archive()) {
+            array_push($assets, 'archive');
+            if (isset($post) && isset($post->post_type)) {
+                array_push($assets, 'post-type-archive-' . $post->post_type);
+            }
+        } elseif (is_single() && isset($post)) {
+
+            if (isset($post->post_type)) {
+            array_push($assets, 'single-' . $post->post_type);
+            }
+
+            if (isset($post->post_name)) {
+            array_push($assets, $post->post_name);
+            }
+        } elseif (is_page() && isset($post)) {
+            //page slug and parent page slug
+            array_push($assets, $post->post_name);
+            if (isset($post->post_parent) && $post->post_parent) {
+                array_push($assets, get_page($post->post_parent)->post_name);
+            }
+        }
+
+        //print_r($assets);
+
+        return array_unique($assets);
+    }
+
     /**
      * Enqueue front-end scripts. Include template- and block-specific files if available.
      */
     public static function enqueue_front_scripts() {
-        // Enqueue front global styles & scripts
-        $assets_file_front = include( __DIR__ . "/build/app.asset.php" );
-        array_push( $assets_file_front["dependencies"], "jquery" );
 
         //Swiper 
         wp_enqueue_style(
@@ -154,14 +195,27 @@ class AssetHandler {
             true // in footer?
         );
 
+        // jQuery datepicker
+        wp_enqueue_style(
+            "jquery-datepicker-ui-style", // handle,
+            get_stylesheet_directory_uri() . "/assets/src/styles/library/jquery-ui.min.css", // src
+            NULL, // dependencies
+            '1'
+        );
+        wp_enqueue_script('jquery-ui-datepicker');
+
+        // Enqueue front global styles & scripts
+        $assets_file_front = include( __DIR__ . "/build/app.asset.php" );
+        array_push( $assets_file_front["dependencies"], "jquery" );
+
         global $template; 
-        $filename = str_replace( ".php", "", basename( $template ) );
+        $filename = str_replace(".php", "", basename($template));
 
         $scripts = array(
             "build/app.js",
         );
 
-        $dependencies = array( "jquery", "jquery-ui-datepicker" );
+        $dependencies = array( "jquery" );
         
         $has_ajax = false;
 
@@ -171,14 +225,9 @@ class AssetHandler {
             $prefix = isset( $block['acf'] ) && $block['acf'] ? 'acf' : C::THEME_PREFIX;
 
             // Enqueue front-end scripts for the block if it exists and the block is present on the page
-            if(
-                (
-                    has_block( $prefix . "/" . $block["name"] )
+            if ((has_block( $prefix . "/" . $block["name"] )
                     // Some templates have hardcoded static blocks, check for those
-                    || (
-                        isset( C::TEMPLATE_STATIC_BLOCKS[$filename] )
-                        && in_array( $block["name"], C::TEMPLATE_STATIC_BLOCKS[$filename] )
-                    ) 
+                    || (isset( C::TEMPLATE_STATIC_BLOCKS[$filename] ) && in_array( $block["name"], C::TEMPLATE_STATIC_BLOCKS[$filename] )) 
                     || U::enhanced_has_block( $prefix . "/" . $block["name"])
                 )
                 && isset( $block["scripts"] )
@@ -186,17 +235,22 @@ class AssetHandler {
                 && is_array( $block["scripts"] )
             ) {
                 foreach( $block["scripts"] as $script ) {
-                   $path = self::_locate_block_script( $script, $block["directory"] );
-                   if( $path ) array_push( $scripts, $path );
+                    //Changing the way these are enqueued so the files go through webpack and we can import packages to them
+                   $path = "build/blocks/" . $block['name'] . '.js';
+                   if ($path) array_push( $scripts, $path );
                 }
 
                 if( isset( $block["hasAjax"] ) && $block["hasAjax"] ) $has_ajax = true;
             }
         }
 
-        $js_path =  __DIR__ .  "/build/" . $filename . ".js";
-        if( file_exists( $js_path ) ) {
-            array_push( $scripts,  "/build/" .  $filename.".js" );
+        $loadJS = self::_find_assets();
+
+        foreach ($loadJS as $jsFile) {
+            $js_path =  __DIR__ .  "/build/" . $jsFile . ".js";
+            if( file_exists( $js_path ) ) {
+                array_push( $scripts,  "/build/" . $jsFile .".js" );
+            }
         }
  
         // Dedupe scripts

@@ -2,7 +2,7 @@
 	"name": "slider",
 	"dynamic": true,
 	"render_callback": "MaddenNino\\Blocks\\Slider\\render_block",
-	"scripts": ["front.js"],
+	"scripts": [ "assets/slider.js" ],
 	"supports": {
 		"anchor": true,
 		"color": true
