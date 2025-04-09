@@ -2,8 +2,6 @@
 (function($) {
     $(document).ready(function() {
         
-        console.log('Test');
-
     $('.wp-block-mm-bradentongulfislands-water-ferry-map svg .water-ferry-stop').on('click', function(event) {
 
         var stopId = $(this).attr('id');

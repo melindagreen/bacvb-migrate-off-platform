@@ -9,6 +9,15 @@
 	overflow-x: clip;
 	z-index: 0;
 
+	sup {
+
+		font-size: medium;
+    	font-family: 'Melburch';
+		left: -1.9375rem;
+		bottom: 0.3125rem;
+		position: relative;
+	}
+
 	&--banner {
 
 		.title {
@@ -581,15 +590,5 @@ SMALL SCREENS
 		&::after {
 			height: 12vh;
 		}
-	}
-}
-
-@media only screen and (min-width: 641px) and (max-width: 767px) {
-	.#{$block-prefix}-hero {
-		// .title {
-		// 	width: 70%;
-		// 	font-size: 16vw;
-		// 	line-height: 16vw;
-		// }
 	}
 }

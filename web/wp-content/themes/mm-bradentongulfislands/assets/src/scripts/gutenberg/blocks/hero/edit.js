@@ -12,10 +12,15 @@ import {
 } from "@wordpress/components";
 import { __ } from '@wordpress/i18n';
 
+import { useEffect } from '@wordpress/element';
+
 import ServerSideRender from '@wordpress/server-side-render';
 
 
-// Local Dependencies
+// Local dependencies
+import { initHero } from "./assets/hero.js";
+import { usePreview } from '../../inc/hooks.js';
+
 // Controls - add block/inspector controls here
 import Controls from './controls'
 import { THEME_PREFIX } from 'scripts/inc/constants';
@@ -247,13 +252,17 @@ const ALLOWED_MEDIA_TYPES = ["image", "video"];
  * @returns {WPElement}
  */
 const Editor = props => {
-  const { attributes: { mode }, className } = props;
+const { attributes, setAttributes, className } = props;
+  const [isPreview, togglePreview] = usePreview(attributes, setAttributes);
+
+  useEffect(() => {
+    initHero();
+  }, [props.attributes]);
 
   return (
-    <section className={className}>
-      {mode === 'edit'
-        ? <Wizard {...props} />
-        : <ServerSideRender block={props.name} {...props} />}
+    <section className={`${className} ${isPreview ? 'is-preview' : 'is-edit'}`}>
+      {isPreview
+        ? <ServerSideRender block={props.name} httpMethod={'POST'} {...props} /> : <Wizard {...props} /> }
     </section>
   )
 }

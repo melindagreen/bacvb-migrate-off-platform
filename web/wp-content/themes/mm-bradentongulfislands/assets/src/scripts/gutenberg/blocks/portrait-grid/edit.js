@@ -12,6 +12,7 @@ import { useSelect, } from '@wordpress/data';
 import Controls from './controls';
 import { Repeater } from '../../components';
 import { updateObjArrAttr } from '../../inc/utils';
+import { usePreview } from '../../inc/hooks';
 import { THEME_PREFIX } from 'scripts/inc/constants';
 
 /*** CONSTANTS **************************************************************/
@@ -114,12 +115,12 @@ const Wizard = props => {
  */
 const Editor = props => {
   const { attributes: { mode, }, className } = props;
+  const [isPreview, togglePreview] = usePreview(props.attributes, props.setAttributes);
 
   return (
     <section className={className} >
-      {mode === 'edit'
-        ? <Wizard {...props} />
-        : <ServerSideRender block={props.name} {...props} />}
+      {isPreview
+        ? <ServerSideRender httpMethod={'POST'} block={props.name} {...props} /> : <Wizard {...props} />}
     </section>
   )
 }

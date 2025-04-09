@@ -6,14 +6,10 @@ import { registerBlockType } from "@wordpress/blocks";
 // Local Dependencies
 import { THEME_PREFIX, BLOCK_NAME_PREFIX } from "scripts/inc/constants";
 
-import ExampleACF from './example-acf';
-import ExampleDynamic from './example-dynamic';
-import ExampleStatic from './example-static';
 import Hero from './hero';
 import PortraitGrid from './portrait-grid';
 import WideSlideshow from './wide-slideshow';
 import WideImageSlide from './wide-image-slide';
-import ShowcaseCard from './showcase-card';
 import AccordionSection from './accordion-section';
 import Accordion from './accordion';
 import ContentSelector from './content-selector';
@@ -40,7 +36,7 @@ import SingleSlide from './slider/single-slide';
 // Collect blocks
 // NOTE: ACF blocks should not be registered here, only imported, or they will
 // appear twice in the editor!
-const blocks = [ CtaBubble, LightboxCard, InfoChip, ContentSlider, Hero, PortraitGrid, WideSlideshow, WideImageSlide, ShowcaseCard, AccordionSection, Accordion, ContentSelector, ContentSection, QuickLinks, UpcomingEvents, ListingsGrid, BeachesMap, HeroShowcase, WaterFerryMap, BradensotaMap, SocialButton, LogoCTA, Slider, SingleSlide, ContentCard, ExampleACF, ExampleDynamic, ExampleStatic ];
+const blocks = [ CtaBubble, LightboxCard, InfoChip, ContentSlider, Hero, PortraitGrid, WideSlideshow, WideImageSlide, AccordionSection, Accordion, ContentSelector, ContentSection, QuickLinks, UpcomingEvents, ListingsGrid, BeachesMap, HeroShowcase, WaterFerryMap, BradensotaMap, SocialButton, LogoCTA, Slider, SingleSlide, ContentCard ];
 
 /*** EXPORTS ****************************************************************/
 export default () => {

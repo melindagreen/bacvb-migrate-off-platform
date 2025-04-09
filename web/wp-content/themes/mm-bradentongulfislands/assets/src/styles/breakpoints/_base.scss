@@ -1800,3 +1800,23 @@ Photo Credit
 //         }
 //       }
 // }
+
+
+/*********************
+Trademark
+*********************/
+
+.raf-tm {
+
+    font-size: xx-small;
+}
+
+.wp-block-heading {
+
+    .raf-tm {
+
+        font-size: small;
+        position: relative;
+        bottom: 0.3rem;
+    }
+}
