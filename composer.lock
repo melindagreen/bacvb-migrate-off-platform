@@ -2872,18 +2872,6 @@
         },
         {
             "name": "symfony/process",
-<<<<<<< HEAD
-            "version": "v6.4.19",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/process.git",
-                "reference": "7a1c12e87b08ec9c97abdd188c9b3f5a40e37fc3"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/process/zipball/7a1c12e87b08ec9c97abdd188c9b3f5a40e37fc3",
-                "reference": "7a1c12e87b08ec9c97abdd188c9b3f5a40e37fc3",
-=======
             "version": "v6.4.20",
             "source": {
                 "type": "git",
@@ -2894,7 +2882,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/process/zipball/e2a61c16af36c9a07e5c9906498b73e091949a20",
                 "reference": "e2a61c16af36c9a07e5c9906498b73e091949a20",
->>>>>>> main
                 "shasum": ""
             },
             "require": {
@@ -2926,11 +2913,7 @@
             "description": "Executes commands in sub-processes",
             "homepage": "https://symfony.com",
             "support": {
-<<<<<<< HEAD
-                "source": "https://github.com/symfony/process/tree/v6.4.19"
-=======
                 "source": "https://github.com/symfony/process/tree/v6.4.20"
->>>>>>> main
             },
             "funding": [
                 {
@@ -2946,11 +2929,7 @@
                     "type": "tidelift"
                 }
             ],
-<<<<<<< HEAD
-            "time": "2025-02-04T13:35:48+00:00"
-=======
             "time": "2025-03-10T17:11:00+00:00"
->>>>>>> main
         },
         {
             "name": "symfony/service-contracts",
@@ -5224,12 +5203,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-cli/wp-cli.git",
-                "reference": "aeae8711ad62327b943f2fb9d1ed8770dd01b4d6"
+                "reference": "a9fabc07adf274274ba6bcc0f0e081f1fab1220b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-cli/wp-cli/zipball/aeae8711ad62327b943f2fb9d1ed8770dd01b4d6",
-                "reference": "aeae8711ad62327b943f2fb9d1ed8770dd01b4d6",
+                "url": "https://api.github.com/repos/wp-cli/wp-cli/zipball/a9fabc07adf274274ba6bcc0f0e081f1fab1220b",
+                "reference": "a9fabc07adf274274ba6bcc0f0e081f1fab1220b",
                 "shasum": ""
             },
             "require": {
@@ -5286,7 +5265,7 @@
                 "issues": "https://github.com/wp-cli/wp-cli/issues",
                 "source": "https://github.com/wp-cli/wp-cli"
             },
-            "time": "2025-03-28T12:17:54+00:00"
+            "time": "2025-04-03T09:45:01+00:00"
         },
         {
             "name": "wp-cli/wp-cli-bundle",
@@ -5574,15 +5553,15 @@
         },
         {
             "name": "wpackagist-plugin/post-expirator",
-            "version": "4.4.0",
+            "version": "4.5.0",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/post-expirator/",
-                "reference": "tags/4.4.0"
+                "reference": "tags/4.5.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/post-expirator.4.4.0.zip"
+                "url": "https://downloads.wordpress.org/plugin/post-expirator.4.5.0.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -5664,15 +5643,15 @@
         },
         {
             "name": "wpackagist-plugin/sa11y",
-            "version": "1.2.1",
+            "version": "1.2.2",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/sa11y/",
-                "reference": "tags/1.2.1"
+                "reference": "tags/1.2.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/sa11y.1.2.1.zip"
+                "url": "https://downloads.wordpress.org/plugin/sa11y.1.2.2.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -5826,10 +5805,10 @@
         },
         {
             "name": "wpengine/advanced-custom-fields-pro",
-            "version": "6.3.12",
+            "version": "6.4.0.1",
             "dist": {
                 "type": "zip",
-                "url": "https://connect.advancedcustomfields.com/v2/plugins/composer_download?s=composer&p=pro&t=6.3.12"
+                "url": "https://connect.advancedcustomfields.com/v2/plugins/composer_download?s=composer&p=pro&t=6.4.0.1"
             },
             "require": {
                 "composer/installers": "~1.0 || ~2.0"
