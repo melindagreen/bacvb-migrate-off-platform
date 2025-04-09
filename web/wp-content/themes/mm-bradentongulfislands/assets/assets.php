@@ -212,7 +212,7 @@ class AssetHandler {
         $filename = str_replace(".php", "", basename($template));
 
         $scripts = array(
-            "build/app.js",
+            "build/app.js"
         );
 
         $dependencies = array( "jquery" );
@@ -235,9 +235,11 @@ class AssetHandler {
                 && is_array( $block["scripts"] )
             ) {
                 foreach( $block["scripts"] as $script ) {
-                    //Changing the way these are enqueued so the files go through webpack and we can import packages to them
-                   $path = "build/blocks/" . $block['name'] . '.js';
-                   if ($path) array_push( $scripts, $path );
+                    // Changing the way these are enqueued so the files go through webpack and we can import packages to them
+                    $path = "build/blocks/" . $block['name'] . '.js';
+                    if (file_exists(__DIR__ . '/' . $path)) {
+                        array_push($scripts, $path);
+                    }
                 }
 
                 if( isset( $block["hasAjax"] ) && $block["hasAjax"] ) $has_ajax = true;
