@@ -170,7 +170,7 @@
 		margin: 0 auto;
 	}
 
-	&.videoHero { //hide double scroll bar. default set to overflow-x: cip but that stil shows hero video bars
+	&.videoHero.hero--wave { //hide double scroll bar. default set to overflow-x: cip but that stil shows hero video bars
 		//overflow: hidden;
 		//On 8.24.23 Noticed no double side bars with this commented out unlike before. Will push live. pnh
 		&:after {

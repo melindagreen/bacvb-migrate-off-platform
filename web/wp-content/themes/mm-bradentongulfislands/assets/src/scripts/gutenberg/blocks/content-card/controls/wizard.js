@@ -83,9 +83,7 @@ const Wizard = (props) => {
 			<SelectControl
 				label={__("Card Style")}
 				value={attributes.cardStyle}
-				options={[				
-					{ label: "Portrait", value: "portrait" }
-				]}
+				options={CARD_STYLES}
 				onChange={(val) => {
 					setAttributes({ cardStyle: val });
 				}}
