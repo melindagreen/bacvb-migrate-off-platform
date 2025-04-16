@@ -149,6 +149,10 @@ $colorPalette: "black", "gray", "tan", "white", "red";
 	}
 	.swiper {
 		// padding: 1rem;
+		.swiper-slide{
+			overflow: visible;
+		}
+
 		&.swiper-vertical {
 			.swiper-slide {
 				height: auto !important;
@@ -193,8 +197,7 @@ $colorPalette: "black", "gray", "tan", "white", "red";
 			.swiper-slide {
 
 				article {
-					
-					outline: 20px white solid;
+					border: 20px solid white;
 				}
 			}
 

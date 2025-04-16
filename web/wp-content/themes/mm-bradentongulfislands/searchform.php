@@ -7,6 +7,7 @@
 use \MaddenNino\Library\Constants as C; 
 
 $aria_label = (empty($args['aria_label'])) ? 'search_form' : $args['aria_label'];
+$search_color = empty($args['search_color']) ? '' : '-' . $args['search_color'];
 ?>
 
 <!-- The search overlay-->
@@ -16,5 +17,5 @@ $aria_label = (empty($args['aria_label'])) ? 'search_form' : $args['aria_label']
         <input id="<?php echo $aria_label ?>_input" class='search-form__field' type="search" name="s" placeholder="Search" value="<?php echo get_search_query(); ?>">
     </label>
 
-    <button id="<?php echo $aria_label ?>_submit" class="search-form__submit <?php echo C::THEME_PREFIX ?>-button" type="submit"><img src="<?php echo get_theme_file_uri() ?>/assets/images/icons/search.png" alt="<?php _e( 'Search', 'mmnino' ); ?>" width="18px" height="18px"></button>
+    <button id="<?php echo $aria_label ?>_submit" class="search-form__submit <?php echo C::THEME_PREFIX ?>-button" type="submit"><img src="<?php echo get_theme_file_uri() ?>/assets/images/icons/search<?= $search_color; ?>.png" alt="<?php _e( 'Search', 'mmnino' ); ?>" width="18px" height="18px"></button>
 </form>

@@ -8,6 +8,10 @@
             {
                 "name": "heading-shadow",
                 "label": "Shadow"
+            },
+            {
+                "name": "torn-page",
+                "label": "Torn Page"
             }
         ]
     },

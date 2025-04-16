@@ -9,12 +9,13 @@
             <?php the_custom_logo(); ?>
         </div>
 
-        <div class="footer-col">
+        <div class="footer-col search-login">
             <p class="partner-login"><a href="/account">Partner Login</a></p>
             <div class="search-wrap">
             <?php get_search_form(array(
                 'echo' => true,
-                'aria_label' => 'footer_search'
+                'aria_label' => 'footer_search',
+                'search_color' => 'teal'
             )); ?>
             </div>
         </div>
@@ -56,7 +57,7 @@
         <a href="https://visitflorida.com" target="_blank"><img 
             data-load-type="img"
             data-load-offset="lg" 
-            data-load-all="<?php echo get_theme_file_uri().'/assets/images/VF_Logo2019_Primary_White.png';?>" 
+            data-load-all="<?php echo get_theme_file_uri().'/assets/images/VF_Logo2019_Primary_Teal.png';?>" 
             data-load-alt="visitflorida.com" 
             src="<?php echo get_theme_file_uri() ?>/assets/images/pixel.png" 
         /></a>
@@ -64,14 +65,14 @@
         <a href="https://destinationsinternational.org/" target="_blank"><img 
             data-load-type="img"
             data-load-offset="lg" 
-            data-load-all="<?php echo get_theme_file_uri().'/assets/images/icon-DMO.svg';?>" 
+            data-load-all="<?php echo get_theme_file_uri().'/assets/images/icon-DMO-teal.svg';?>" 
             data-load-alt="Destination International" 
             src="<?php echo get_theme_file_uri() ?>/assets/images/pixel.png" 
         /></a>
         <a href="https://frla.org/" target="_blank"><img 
             data-load-type="img"
             data-load-offset="lg" 
-            data-load-all="<?php echo get_theme_file_uri().'/assets/images/icon-florida.svg';?>" 
+            data-load-all="<?php echo get_theme_file_uri().'/assets/images/icon-florida-teal.svg';?>" 
             data-load-alt="Florida Restaurant & Lodging Association" 
             src="<?php echo get_theme_file_uri() ?>/assets/images/pixel.png" 
         /></a>
