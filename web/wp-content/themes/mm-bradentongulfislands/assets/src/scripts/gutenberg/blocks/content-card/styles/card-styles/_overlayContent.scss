@@ -58,3 +58,34 @@
         display: none;
     }
 }
+
+// Mobile
+@media screen and (max-width: 1000px) {
+    .card-style-content-overlay{
+        flex-direction: column;
+        padding: 0;
+
+        .featured-media{
+            aspect-ratio: unset;
+            height: 400px;
+
+            img{
+                border-radius: 60px;
+            }
+        }
+
+        .content{
+            position: relative;
+            background: unset;
+            box-shadow: unset;
+            backdrop-filter: unset;
+            border-radius: unset;
+            max-width: unset;
+            bottom: unset;
+            left: unset;
+            padding: 0;
+            padding-top: 4rem;
+            padding-bottom: 1.5rem;
+        }
+    }
+}

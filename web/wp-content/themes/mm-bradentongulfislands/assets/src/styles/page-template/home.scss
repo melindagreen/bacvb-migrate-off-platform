@@ -48,6 +48,10 @@
         position: absolute;
         left: calc(50% - 500px);
         top: -100px;
+
+        @media (max-width: 1000px){
+            content: unset;
+        }
     }
 }
 
@@ -60,6 +64,10 @@
         left: 40px;
         bottom: 60px;
         z-index: 99 !important;
+
+        @include screen-sm-max{
+            display: none;
+        }
     }
 
     .wp-block-mm-bradentongulfislands-content-card.card-style-portrait{
@@ -87,6 +95,29 @@
         right: 100px;
         bottom: 0;
         z-index: 99 !important;
+
+        @media screen and (max-width: 1000px) {
+            bottom: unset;
+            top: 200px;
+            right: 2rem;
+        }
+    }
+
+    @include screen-sm-max{
+        .wp-block-mm-bradentongulfislands-slider.slider-arrows-below .swiper-navigation-wrapper .swiper-button-prev, 
+        .wp-block-mm-bradentongulfislands-slider.slider-arrows-below .swiper-navigation-wrapper .swiper-button-next{
+            top: 175px;
+        }
+    }
+}
+
+// Fun For All
+.fun-for-all{
+    @include screen-sm-max{
+        .wp-block-mm-bradentongulfislands-slider.slider-arrows-below .swiper-navigation-wrapper .swiper-button-prev, 
+        .wp-block-mm-bradentongulfislands-slider.slider-arrows-below .swiper-navigation-wrapper .swiper-button-next{
+            top: 210px;
+        }
     }
 }
 
@@ -104,6 +135,12 @@
         top: 0px;
         background-position: right;
     }
+
+    @include screen-sm-max{
+        &::before{
+            content: unset;
+        }
+    }
 }
 .small-circ-down{
     &::before{
@@ -116,6 +153,12 @@
         background-repeat: no-repeat;
         left: -50px;
         top: -50px;
+    }
+
+    @include screen-sm-max{
+        &::before{
+            content: unset;
+        }
     }
 }
 
@@ -130,6 +173,12 @@
         background-repeat: no-repeat;
         bottom: -1000px;
     }
+
+    @include screen-sm-max{
+        &::before{
+            content: unset;
+        }
+    }
 }
 .large-circ-up{
     &::before{
@@ -142,5 +191,11 @@
         background-repeat: no-repeat;
         top: -175px;
         left: 40px;
+    }
+
+    @include screen-sm-max{
+        &::before{
+            content: unset;
+        }
     }
 }

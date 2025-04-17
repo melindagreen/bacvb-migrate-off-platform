@@ -16,6 +16,7 @@ Full portrait - text portrait on image
 	height: auto;
 	max-height: unset !important;
 	margin: 1rem; /* match the box shadow size to avoid overflow issues */
+	margin-bottom: 3rem;
 	box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
 
 	.portrait-link {
