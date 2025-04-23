@@ -1,0 +1,27 @@
+{
+  "name": "responsive-spacer",
+  "settings": {
+    "title": "Responsive Spacer",
+    "description": "A responsive spacer",
+    "icon": "list-view",
+    "category": "madden-media",
+    "attributes": {
+      "heightDesktop": {
+        "type": "number",
+        "default": 4
+      },
+      "heightMobile": {
+        "type": "number",
+        "default": 4
+      },
+      "unit": {
+        "type": "string",
+        "default": "rem"
+      },
+      "spacerId": {
+        "type": "string",
+        "default": ""
+      }
+    }
+  }
+}

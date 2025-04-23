@@ -10,6 +10,12 @@
     position: relative;
     padding: 0 56px;
 
+    @include screen-sm-min {
+
+        min-height: 600px;
+        height: 50vh;
+    }
+
     .featured-media{
         aspect-ratio: 1.7;
         img{
