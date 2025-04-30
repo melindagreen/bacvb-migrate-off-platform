@@ -290,6 +290,9 @@
 	}
 	@media only screen and (max-width: 678px) {
 		.video { 
+			height: 75vh;
+			min-height: 75vh;
+		
 			&.video--mobile {
 				display: block;
 			}
