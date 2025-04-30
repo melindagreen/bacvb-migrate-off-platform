@@ -272,7 +272,7 @@ HEADER
         .mega-menu {
             min-height:800px !important;
             max-height: inherit;
-            height: 80vh !important;
+            height: 95vh !important;
             padding-top: 3rem;
             overflow: auto;
             padding-right: 0 !important;
@@ -283,7 +283,7 @@ HEADER
         &.open {
 
             .mega-menu {
-                padding-top: 10rem;                
+                padding-top: 7rem;                
                 &::after {
                     display: none;
                 }
