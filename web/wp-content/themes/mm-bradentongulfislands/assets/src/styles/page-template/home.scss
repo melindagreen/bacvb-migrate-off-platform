@@ -16,6 +16,14 @@
         background: linear-gradient(180deg, rgba(241, 240, 238, 0) 0%, rgb(241, 240, 238) 45%, rgb(241, 240, 238) 50%, rgba(241, 240, 238, 0) 100%);
         pointer-events: none;
     }
+
+
+    @include screen-sm-max{
+    .is-style-bubble {
+
+        margin-top: -4rem;
+    }
+    }
 }
 
 // Crowdriff torn page background + turtle and manta stickers
