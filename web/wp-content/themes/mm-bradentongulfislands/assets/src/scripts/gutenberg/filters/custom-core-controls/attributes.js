@@ -59,6 +59,16 @@ const addCustomAttrs = (settings) => {
                             },
                         };
 
+                        case "center-on-mobile":
+						settings.attributes = {
+							...settings.attributes,
+							centerOnMobile: {
+								type: "boolean",
+								default: false,
+							},
+						};
+						break;
+
                         case 'lightbox-data':
                             settings.attributes = {
                             ...settings.attributes,

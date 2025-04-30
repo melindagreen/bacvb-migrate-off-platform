@@ -50,6 +50,17 @@ const applyCustomAttrs = (el, block, attributes) => {
                         </a>;
                     }
                 break;
+                case "center-on-mobile":
+					if (attributes?.centerOnMobile) {
+						// Center on mobile
+						if (
+							!newProps.className ||
+							!newProps.className.includes("center-on-mobile")
+						) {
+							newProps.className = `${newProps.className} center-on-mobile`;
+						}
+					}
+					break;
                 case 'lightbox-data':
 
                     function getPhotoCredit(url) {
