@@ -271,7 +271,7 @@ HEADER
         }
         .mega-menu {
             min-height:800px !important;
-            max-height: inherit;
+            max-height: unset !important;
             height: 95vh !important;
             padding-top: 3rem;
             overflow: auto;

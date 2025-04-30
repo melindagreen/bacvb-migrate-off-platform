@@ -13,7 +13,7 @@
     @include screen-sm-min {
 
         min-height: 600px;
-        height: 50vh;
+        height: 40vh;
     }
 
     .featured-media{
@@ -52,7 +52,7 @@
         }
 
         .excerpt{
-            height: 124px;
+            min-height: 124px;
             overflow: scroll;
             font-size: 18px;
         }
