@@ -133,7 +133,7 @@ const Wizard = (props) => {
 					<MediaUploadCheck>
 						<MediaUpload
 							title={__('CTA Image')}
-							allowedTypes={["image"]}
+							allowedTypes={["image","audio"]}
 							onSelect={onImageSelect}
 							value={attributes.customImage}
 							render={({ open }) => (

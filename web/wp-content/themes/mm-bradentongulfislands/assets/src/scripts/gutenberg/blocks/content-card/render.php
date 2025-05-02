@@ -51,7 +51,17 @@ function render_block( $attrs, $content ) {
       $linkTarget = '';
     }
 
-    $image      = wp_get_attachment_image($attrs['customImage'], 'large');
+    $mime_type = get_post_mime_type($attrs['customImage']);
+    $attachment_url = wp_get_attachment_url($attrs['customImage']);
+
+    if (strpos($mime_type, 'video/') === 0) {
+      $image = '<video class="content-card-video" autoplay muted loop playsinline>
+                  <source src="' . esc_url($attachment_url) . '" type="' . esc_attr($mime_type) . '">
+                  Your browser does not support the video tag.
+                </video>';
+    } else {
+      $image = wp_get_attachment_image($attrs['customImage'], 'large');
+    }
   }
 
   ob_start(); 
