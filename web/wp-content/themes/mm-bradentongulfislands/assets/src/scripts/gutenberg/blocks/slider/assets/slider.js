@@ -145,6 +145,8 @@ export const initSwiperSliders = (adminSlider = null, wrapperClass, slideClass) 
         }
         swiperInstances[index] = createSwiper(slider, index);
       });
+      // Reinitialize the info block on resize
+      changeInfoBlock();
     }, 300);
   });
 
