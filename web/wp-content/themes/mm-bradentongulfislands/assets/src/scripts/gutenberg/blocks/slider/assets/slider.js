@@ -156,6 +156,20 @@ export const initSwiperSliders = (adminSlider = null, wrapperClass, slideClass) 
     if (swiperInstances[index]) {
     swiperInstances[index].on('slideChangeTransitionEnd', () => {
       changeInfoBlock();
+
+      const stickers = activeSlide.querySelectorAll('.sticker');
+
+      stickers.forEach(sticker => {
+        // Reset animation if already applied
+        sticker.classList.remove('animate-wiggle');
+        void sticker.offsetWidth; // Force reflow
+        sticker.classList.add('animate-wiggle');
+
+        // Remove class after animation ends to allow retrigger
+        setTimeout(() => {
+          sticker.classList.remove('animate-wiggle');
+        }, 800); 
+      });
     });
     }
   });

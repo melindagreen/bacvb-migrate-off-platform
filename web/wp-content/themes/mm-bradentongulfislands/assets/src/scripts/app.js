@@ -218,7 +218,7 @@ if ('serviceWorker' in navigator) {
 
 		scrollAnimation('.fade-up', 400, 'fade-up--animate', true);
 		scrollAnimation('.small-circ-down', 400, 'small-circ-down--rotate', true);
-		scrollAnimation('.sticker', 400, 'sticker--zoom-in', true);
+		scrollAnimation('.sticker', 300, 'sticker--zoom-in', true);
 
 		// Toggle Top Bar Banner
 		toggleTopBannerClasses();
