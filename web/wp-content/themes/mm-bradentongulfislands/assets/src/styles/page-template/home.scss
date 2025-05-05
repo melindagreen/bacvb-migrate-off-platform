@@ -169,9 +169,8 @@
         transition: all 0.3s ease-in-out;
     }
 
-    .small-circ-down--rotate  {
-
-        .small-circ-down::before {
+    &.small-circ-down--rotate {
+        &::before {
             transform: rotate(0);
             transition: all 0.3s ease-in-out;
         }
