@@ -12,13 +12,11 @@
         overflow: hidden;
     }
     .featured-media{
-        width: 470px;
-        height: 100%;
-        aspect-ratio: 1;
+        height: 23.5rem;
+        width: 22rem;
 
         img{
-            width: calc(100% + 2px);
-            height: calc(100% + 2px);
+            
             object-fit: cover;
         }
     }
