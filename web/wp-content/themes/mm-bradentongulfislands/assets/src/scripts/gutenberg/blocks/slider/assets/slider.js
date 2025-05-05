@@ -199,8 +199,8 @@ export const initSwiperSliders = (adminSlider = null, wrapperClass, slideClass) 
       }
     });
 
-    let buttonurl = $('.wp-block-mm-bradentongulfislands-slider .swiper-wrapper').find('.swiper-slide-active').data('link') || '';
-    let titleText = $('.wp-block-mm-bradentongulfislands-slider .swiper-wrapper').find('.swiper-slide-active').data(infoItems[0]);
+    let buttonurl = $('.wp-block-mm-bradentongulfislands-slider .swiper-wrapper').find('.swiper-slide-active article').data('link') || '';
+    let titleText = $('.wp-block-mm-bradentongulfislands-slider .swiper-wrapper').find('.swiper-slide-active article').data(infoItems[0]);
 
     if(buttonurl == '#' || buttonurl == ' ' || buttonurl.length < 1) {
       $(`.slider-info-box #infoblock-buttonurl`).addClass('infoblock__item--hide');
