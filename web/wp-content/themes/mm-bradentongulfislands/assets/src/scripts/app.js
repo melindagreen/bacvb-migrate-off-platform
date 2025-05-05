@@ -219,6 +219,8 @@ if ('serviceWorker' in navigator) {
 		scrollAnimation('.fade-up', 400, 'fade-up--animate', true);
 		scrollAnimation('.small-circ-down', 400, 'small-circ-down--rotate', true);
 		scrollAnimation('.sticker', 500, 'sticker--zoom-in', true);
+		scrollAnimation('.share-the-love-bg::after', 400, 'share-the-love-bg::after--zoom-in', true);
+		scrollAnimation('.share-the-love-bg::before', 400, 'share-the-love-bg::before--zoom-in', true);
 
 		// Toggle Top Bar Banner
 		toggleTopBannerClasses();
