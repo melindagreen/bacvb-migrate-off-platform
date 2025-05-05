@@ -169,7 +169,7 @@
         transition: all 0.3s ease-in-out;
     }
 
-    &--rotate {
+    .small-circ-down--rotate  {
 
         .small-circ-down::before {
             transform: rotate(0);
