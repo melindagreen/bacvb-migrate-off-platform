@@ -1860,3 +1860,24 @@ Trademark
         transition: opacity 0.4s ease, transform 0.4s ease;
     }
 }
+
+.sticker {
+    transform: scale(0);
+    transition: transform 0.3s ease-in-out;
+
+    &--zoom-in {
+        transform: scale(1);
+    }
+
+    &:hover {
+        animation: wiggle 0.5s ease-in-out;
+    }
+}
+
+@keyframes wiggle {
+    0% { transform: rotate(0deg); }
+   80% { transform: rotate(0deg); }
+   85% { transform: rotate(5deg); }
+   95% { transform: rotate(-5deg); }
+  100% { transform: rotate(0deg); }
+}

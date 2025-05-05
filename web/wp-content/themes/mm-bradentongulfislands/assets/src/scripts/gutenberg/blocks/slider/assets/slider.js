@@ -150,6 +150,7 @@ export const initSwiperSliders = (adminSlider = null, wrapperClass, slideClass) 
   //   }, 300);
   // });
 
+  
   // Update info block on slide change
   sliders.forEach((slider, index) => {
     if (swiperInstances[index]) {
