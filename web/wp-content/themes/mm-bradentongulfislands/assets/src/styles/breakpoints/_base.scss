@@ -1871,14 +1871,13 @@ Trademark
     }
 
     &:hover {
-        animation: wiggle 1.5s ease-in-out;
+        animation: wiggle-scale 1.5s ease-in-out;
     }
 
     &.animate-wiggle {
-        animation: wiggle 1.5s ease-in-out;
-      }
+        animation: wiggle-scale 1.5s ease-in-out;
+    }
 }
-
 
 @keyframes zoom-bounce {
     0% {
@@ -1892,10 +1891,10 @@ Trademark
     }
 }
 
-@keyframes wiggle {
-    0% { transform: rotate(0deg); }
-   80% { transform: rotate(0deg); }
-   85% { transform: rotate(5deg); }
-   95% { transform: rotate(-5deg); }
-  100% { transform: rotate(0deg); }
+@keyframes wiggle-scale {
+    0% { transform: rotate(0deg) scale(1); }
+   80% { transform: rotate(0deg) scale(1); }
+   85% { transform: rotate(5deg) scale(1.05); }
+   95% { transform: rotate(-5deg) scale(1.05); }
+  100% { transform: rotate(0deg) scale(1); }
 }
