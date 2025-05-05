@@ -157,7 +157,7 @@ export const initSwiperSliders = (adminSlider = null, wrapperClass, slideClass) 
     swiperInstances[index].on('slideChangeTransitionEnd', () => {
       changeInfoBlock();
 
-      const stickers = activeSlide.querySelectorAll('.sticker');
+      const stickers = document.querySelectorAll('.sticker');
 
       stickers.forEach(sticker => {
         // Reset animation if already applied
@@ -168,7 +168,7 @@ export const initSwiperSliders = (adminSlider = null, wrapperClass, slideClass) 
         // Remove class after animation ends to allow retrigger
         setTimeout(() => {
           sticker.classList.remove('animate-wiggle');
-        }, 800); 
+        }, 1600); 
       });
     });
     }
