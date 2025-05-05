@@ -216,7 +216,7 @@ if ('serviceWorker' in navigator) {
 		scrollAnimation('.is-style-heading-shadow', 400, 'is-style-heading-shadow--shadow', true);
 		scrollAnimation('.rock-flag', 400, 'rock-flag--rocking');
 
-		scrollAnimation('.fade-up', 400, 'fade-up--animate');
+		scrollAnimation('.fade-up', 400, 'fade-up--animate', true);
 
 		// Toggle Top Bar Banner
 		toggleTopBannerClasses();
