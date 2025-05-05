@@ -136,19 +136,19 @@ export const initSwiperSliders = (adminSlider = null, wrapperClass, slideClass) 
 
   // Reinitialize on resize
   let resizeTimer;
-  window.addEventListener('resize', function () {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(() => {
-      sliders.forEach((slider, index) => {
-        if (swiperInstances[index]) {
-          swiperInstances[index].destroy(true, true);
-        }
-        swiperInstances[index] = createSwiper(slider, index);
-      });
-      // Reinitialize the info block on resize
-      changeInfoBlock();
-    }, 300);
-  });
+  // window.addEventListener('resize', function () {
+  //   clearTimeout(resizeTimer);
+  //   resizeTimer = setTimeout(() => {
+  //     sliders.forEach((slider, index) => {
+  //       if (swiperInstances[index]) {
+  //         swiperInstances[index].destroy(true, true);
+  //       }
+  //       swiperInstances[index] = createSwiper(slider, index);
+  //     });
+  //     // Reinitialize the info block on resize
+  //     changeInfoBlock();
+  //   }, 300);
+  // });
 
   // Update info block on slide change
   sliders.forEach((slider, index) => {
