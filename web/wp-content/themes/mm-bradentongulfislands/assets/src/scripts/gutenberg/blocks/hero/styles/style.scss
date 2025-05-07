@@ -291,7 +291,7 @@
 	@media only screen and (max-width: 678px) {
 		.video { 
 			height: 75vh;
-			min-height: 900px;
+			min-height: 850px;
 		
 			&.video--mobile {
 				display: block;
@@ -565,15 +565,15 @@ SMALL SCREENS
 			line-height: 12vw;
 			text-align: center;
 			left: 50%;
-			top: 55%;
+			top: 60%;
 			transform: translateX(-50%);
 
 			span {
 				margin-top: 1.25rem;
 				font-size: 4vw;
 				line-height: 1em;
-				bottom: 7rem;
-				left: 50%;
+				left: 55%;
+				bottom: 5rem;
 				transform: translateX(-50%);
 			}
 
