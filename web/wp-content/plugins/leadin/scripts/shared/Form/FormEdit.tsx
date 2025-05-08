@@ -77,6 +77,7 @@ function FormEdit({
               portalId={portalId}
               formId={formId}
               fullSiteEditor={fullSiteEditor}
+              embedVersion={embedVersion}
             />
           )}
         </Fragment>

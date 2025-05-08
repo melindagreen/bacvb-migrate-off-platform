@@ -373,6 +373,7 @@ var ProxyMessages = {
   FetchForms: 'FETCH_FORMS',
   FetchForm: 'FETCH_FORM',
   CreateFormFromTemplate: 'CREATE_FORM_FROM_TEMPLATE',
+  GetTemplateAvailability: 'GET_TEMPLATE_AVAILABILITY',
   FetchAuth: 'FETCH_AUTH',
   FetchMeetingsAndUsers: 'FETCH_MEETINGS_AND_USERS',
   FetchContactsCreateSinceActivation: 'FETCH_CONTACTS_CREATED_SINCE_ACTIVATION',

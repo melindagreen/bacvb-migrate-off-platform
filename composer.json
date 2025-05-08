@@ -104,7 +104,7 @@
     "wpackagist-plugin/redis-cache": "^2.5",
     "wpackagist-plugin/sa11y": "^1.2",
     "wpackagist-plugin/safe-svg": "^2.1",
-    "wpackagist-plugin/tiny-compress-images": "3.5.0",
+    "wpackagist-plugin/tiny-compress-images": "3.5.1",
     "wpackagist-plugin/translatepress-multilingual": "^2.8",
     "wpackagist-plugin/wordpress-importer": "^0.8",
     "wpackagist-plugin/wordpress-seo": "^23.3",
@@ -112,7 +112,7 @@
     "wpackagist-plugin/seo-by-rank-math":"*",
     "rankmath/seo-by-rank-math-pro": "^3.0.54",
     "wpackagist-plugin/fareharbor": "^3.6",
-    "wpackagist-plugin/breeze":"2.2.8",
+    "wpackagist-plugin/breeze":"2.2.10",
     "wpackagist-plugin/varnish-http-purge": "5.2.2"
   },
   "minimum-stability": "dev",
