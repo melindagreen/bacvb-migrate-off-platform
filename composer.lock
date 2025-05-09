@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9b03de65246c4b6c9037550cf7e5148f",
+    "content-hash": "8d725ce01b31732c3ac940b727b0a4a0",
     "packages": [
         {
             "name": "composer/ca-bundle",
@@ -1808,7 +1808,7 @@
         },
         {
             "name": "rankmath/seo-by-rank-math-pro",
-            "version": "3.0.54",
+            "version": "3.0.87",
             "dist": {
                 "type": "zip",
                 "url": "https://rankmath.com/download/510590/?username=madden%20media&api_key=8330bc817f11ccc9d602921e293ecd5b"
