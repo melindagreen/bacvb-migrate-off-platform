@@ -64,7 +64,7 @@
       "package": {
         "name": "rankmath/seo-by-rank-math-pro",
         "type": "wordpress-plugin",
-        "version": "3.0.87",
+        "version": "3.0.84",
         "dist": {
           "type": "zip",
           "url": "https://rankmath.com/download/510590/?username=madden%20media&api_key=8330bc817f11ccc9d602921e293ecd5b"
@@ -109,8 +109,8 @@
     "wpackagist-plugin/wordpress-importer": "^0.8",
     "wpackagist-plugin/wordpress-seo": "^23.3",
     "wpackagist-plugin/wp-media-library-categories": "*",
-    "wpackagist-plugin/seo-by-rank-math":"*",
-    "rankmath/seo-by-rank-math-pro": "3.0.87",
+    "wpackagist-plugin/seo-by-rank-math":"1.0.241",
+    "rankmath/seo-by-rank-math-pro": "3.0.84",
     "wpackagist-plugin/fareharbor": "^3.6",
     "wpackagist-plugin/breeze":"2.2.10",
     "wpackagist-plugin/varnish-http-purge": "5.2.2"

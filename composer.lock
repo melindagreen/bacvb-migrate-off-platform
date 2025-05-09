@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8d725ce01b31732c3ac940b727b0a4a0",
+    "content-hash": "138fb20870f05340a93400396cb3ae54",
     "packages": [
         {
             "name": "composer/ca-bundle",
@@ -1808,7 +1808,7 @@
         },
         {
             "name": "rankmath/seo-by-rank-math-pro",
-            "version": "3.0.87",
+            "version": "3.0.84",
             "dist": {
                 "type": "zip",
                 "url": "https://rankmath.com/download/510590/?username=madden%20media&api_key=8330bc817f11ccc9d602921e293ecd5b"
@@ -5675,15 +5675,15 @@
         },
         {
             "name": "wpackagist-plugin/seo-by-rank-math",
-            "version": "1.0.244",
+            "version": "1.0.241",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/seo-by-rank-math/",
-                "reference": "tags/1.0.244"
+                "reference": "tags/1.0.241"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/seo-by-rank-math.1.0.244.zip"
+                "url": "https://downloads.wordpress.org/plugin/seo-by-rank-math.1.0.241.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
