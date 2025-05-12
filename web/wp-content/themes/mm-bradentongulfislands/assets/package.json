@@ -26,6 +26,6 @@
   "dependencies": {
     "dedent": "^1.5.2",
     "leaflet": "^1.9.4",
-    "swiper": "^11.0.5"
+    "swiper": "^11.0.6"
   }
 }

@@ -38,9 +38,11 @@ export const initSwiperSliders = (adminSlider = null, wrapperClass, slideClass) 
     const MIN_SLIDES = 8;
     const slideWrapper = slider.querySelector('.swiper-wrapper');
     const originalSlides = slider.querySelectorAll('.swiper-slide:not(.swiper-slide-duplicate)');
-  
-    if (originalSlides.length > 0 && originalSlides.length < MIN_SLIDES && slider.dataset.loop === 'true') {
-      const neededClones = MIN_SLIDES - originalSlides.length;
+    let neededClones = 0;
+
+    if (originalSlides.length > 0 && originalSlides.length < MIN_SLIDES && slider.dataset.loop && effect === 'cards') {
+     
+      neededClones = MIN_SLIDES - originalSlides.length;
       for (let i = 0; i < neededClones; i++) {
         const clone = originalSlides[i % originalSlides.length].cloneNode(true);
         clone.classList.add('swiper-slide-duplicate');
@@ -56,7 +58,7 @@ export const initSwiperSliders = (adminSlider = null, wrapperClass, slideClass) 
         slideShadows: screenWidth >= 769 ? false : true
       };
       if (screenWidth > 769) {
-        initialSlide = 0;
+        initialSlide = 1;
       }
     }
 
@@ -74,7 +76,7 @@ export const initSwiperSliders = (adminSlider = null, wrapperClass, slideClass) 
       loop: slider.dataset.loop ? true : false,
       loopPreventsSliding: false,
       loopAdditionalSlides: 1,
-      loopAddBlankSlides: false,
+      loopAddBlankSlides: neededClones ? true : false,
       freeMode: {
         enabled: slider.dataset.freemode ? true : false,
       },
@@ -84,10 +86,17 @@ export const initSwiperSliders = (adminSlider = null, wrapperClass, slideClass) 
         prevEl: '.slider-' + index + ' .swiper-button-prev',
       } : false,
 
-      pagination: slider.dataset.enablepagination ? {
+      pagination: neededClones ? {
         el: '.slider-' + index + ' .swiper-pagination',
         type: 'bullets',
-        clickable: true
+        clickable: true,
+        renderBullet: function (index, className) {
+          const slide = slider.querySelectorAll('.swiper-slide:not(.swiper-slide-duplicate)')[index];
+          if (slide) {
+            return `<span class="${className}"></span>`;
+          }
+          return ''; // Exclude cloned slides
+        }
       } : false,
 
       scrollbar: slider.dataset.enablescrollbar ? {
