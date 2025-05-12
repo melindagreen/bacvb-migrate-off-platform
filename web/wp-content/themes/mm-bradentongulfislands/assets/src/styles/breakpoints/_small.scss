@@ -271,8 +271,8 @@ HEADER
         }
         .mega-menu {
             min-height:800px !important;
-            max-height: inherit;
-            height: 80vh !important;
+            max-height: unset !important;
+            height: 95vh !important;
             padding-top: 3rem;
             overflow: auto;
             padding-right: 0 !important;
@@ -283,7 +283,7 @@ HEADER
         &.open {
 
             .mega-menu {
-                padding-top: 10rem;                
+                padding-top: 7rem;                
                 &::after {
                     display: none;
                 }
@@ -482,7 +482,20 @@ FOOTER
 *********************/
 .footer {
     flex-direction: column;
-    padding: 2em 6vw 6rem 6vw;
+    padding: 155px 6vw 6rem 6vw;
+
+    .search-login{
+        width: 100%;
+
+        .partner-login{
+            text-align: center;
+        }
+
+        .search-wrap{
+            display: flex;
+            justify-content: center;
+        }
+    }
 
     .footer-col {
         margin: auto;
@@ -506,12 +519,10 @@ FOOTER
     ul {
 
         .menu-item {
-
-    
             a {
 
                 text-decoration: none;
-                color: white;
+                color: $bradenton-teal;
                 text-transform: uppercase;
                 font-size: 0.9rem;
             }
@@ -585,4 +596,10 @@ Photo Credit
         }   
         
     }
+}
+
+
+.center-on-mobile {
+        justify-content: center;
+        text-align: center !important;
 }

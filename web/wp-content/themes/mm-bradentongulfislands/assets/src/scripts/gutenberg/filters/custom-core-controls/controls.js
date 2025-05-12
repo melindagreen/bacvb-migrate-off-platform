@@ -136,6 +136,20 @@ const withCustomControls = createHigherOrderComponent((BlockEdit) => {
 
                                             break;
 
+                                            case "center-on-mobile":
+                                                return (
+                                                    <PanelRow>
+                                                        <ToggleControl
+                                                            label="Center on mobile"
+                                                            checked={attributes.centerOnMobile}
+                                                            onChange={(centerOnMobile) =>
+                                                                setAttributes({ centerOnMobile })
+                                                            }
+                                                        />
+                                                    </PanelRow>
+                                                );
+                                                break;
+
                                         case 'reverse-mobile':
                                            return <PanelBody><ToggleControl
                                                 label="Reverse on Mobile"

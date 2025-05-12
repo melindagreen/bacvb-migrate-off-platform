@@ -1,0 +1,251 @@
+// Sand Background
+.homepage-bg{
+    background-image: url('images/hp-background.jpg');
+    position: relative;
+    background-repeat: repeat-y;
+    background-size: 100% auto;
+    padding-bottom: 200px;
+
+    .p--20 {
+        font-size: 20px;
+    }
+
+    &::before{
+        content: "";
+        position: absolute;
+        top: -100px;
+        left: 0;
+        width: 100%;
+        height: 200px;
+        background: linear-gradient(180deg, rgba(241, 240, 238, 0) 0%, rgb(241, 240, 238) 45%, rgb(241, 240, 238) 50%, rgba(241, 240, 238, 0) 100%);
+        pointer-events: none;
+    }
+
+
+    @include screen-sm-max{
+    .is-style-bubble {
+
+        margin-top: -4rem;
+    }
+
+    .beach-intro {
+
+        .wp-block-columns {
+
+            padding-left: 0;
+            padding-right: 0;
+
+            .wp-block-mm-bradentongulfislands-responsive-spacer {
+                height: 8vw !important;
+            }
+
+            .wp-block-heading.has-warm-gray-color {
+
+               font-size: 1rem !important;
+            }
+
+            .wp-block-heading.has-rust-color {
+                font-size: 2.5rem !important;
+            }
+            .wp-block-heading.has-bradenton-teal-color {
+                font-size: 2rem !important;
+            }
+        }
+    }
+    }
+}
+
+// Crowdriff torn page background + turtle and manta stickers
+.share-the-love-bg{
+    background-image: url('images/share-the-love-bg.png');
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    margin-top: -100px;
+    padding-top: 100px;
+
+    &::after{
+        content: "";
+        background-image: url('images/turtle.png');
+        width: 323px;
+        height: 187px;
+        display: flex;
+        background-size: 100% 100%;
+        position: absolute;
+        left: calc(50% - 161.5px);
+        top: -55px;
+
+        @include screen-sm-max{
+            top: -90px;
+        }
+    }
+
+    &::before{
+        content: "";
+        background-image: url('images/ray.png');
+        width: 225px;
+        height: 131px;
+        display: flex;
+        background-size: 100% 100%;
+        position: absolute;
+        left: calc(50% - 500px);
+        top: -100px;
+
+        @media (max-width: 1000px){
+            content: unset;
+        }
+    }
+}
+
+// Portrait slider
+.hp-portrait-slider{
+    max-width: 90rem !important;
+
+    .manatee{
+        position: absolute !important;
+        left: 10vw;
+        bottom: 60px;
+        z-index: 99 !important;
+
+        @include screen-sm-max{
+            display: none;
+        }
+    }
+
+    .wp-block-mm-bradentongulfislands-content-card.card-style-portrait{
+        /* Taped edges */
+        &::before, &::after{
+            position: absolute;
+            opacity: 0.9;
+            top: -50px;
+        }
+        &::before{
+            content: url('images/tape-left.png');
+            left: -50px;
+        }
+        &::after{
+            content: url('images/tape-right.png');
+            right: -50px;
+        }
+    }
+}
+
+// See yourself
+.see-yourself-slider{
+    .view-all-beaches{
+        position: absolute !important;
+        right: 100px;
+        bottom: 0;
+        z-index: 99 !important;
+
+        @media screen and (max-width: 1000px) {
+            bottom: unset;
+            top: 200px;
+            right: 2rem;
+        }
+    }
+
+    @include screen-sm-max{
+        .wp-block-mm-bradentongulfislands-slider.slider-arrows-below .swiper-navigation-wrapper .swiper-button-prev, 
+        .wp-block-mm-bradentongulfislands-slider.slider-arrows-below .swiper-navigation-wrapper .swiper-button-next{
+            top: 175px;
+        }
+    }
+}
+
+// Fun For All
+.fun-for-all{
+    @include screen-sm-max{
+        .wp-block-mm-bradentongulfislands-slider.slider-arrows-below .swiper-navigation-wrapper .swiper-button-prev, 
+        .wp-block-mm-bradentongulfislands-slider.slider-arrows-below .swiper-navigation-wrapper .swiper-button-next{
+            top: 210px;
+        }
+    }
+}
+
+// Arrows
+.small-arrow-down{
+    &::before{
+        content: '';
+        background-image: url('images/small-arrow-down.png');
+        position: absolute;
+        width: calc(100% + 0px);
+        height: calc(100% + 150px);
+        background-size: contain;
+        background-repeat: no-repeat;
+        right: -85px;
+        top: 0px;
+        background-position: right;
+    }
+
+    @include screen-sm-max{
+        &::before{
+            content: unset;
+        }
+    }
+}
+.small-circ-down{
+    &::before{
+        content: '';
+        background-image: url('images/small-circ-down.png');
+        position: absolute;
+        width: calc(100% + 30px);
+        height: calc(100% + 100px);
+        background-size: contain;
+        background-repeat: no-repeat;
+        left: -50px;
+        top: -50px;
+        transform: rotate(-45deg);
+        transition: all 0.3s ease-in-out;
+    }
+
+    &.small-circ-down--rotate {
+        &.small-circ-down::before {
+            transform: rotate(0);
+            transition: all 0.3s ease-in-out;
+        }
+    }
+
+    @include screen-sm-max{
+        &::before{
+            content: unset;
+        }
+    }
+}
+
+.large-arrow-down{
+    &::before{
+        content: '';
+        background-image: url('images/large-arrow-down.png');
+        position: absolute;
+        width: 1300px;
+        height: 1100px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        bottom: -1000px;
+    }
+
+    @include screen-sm-max{
+        &::before{
+            content: unset;
+        }
+    }
+}
+.large-circ-up{
+    &::before{
+        content: '';
+        background-image: url('images/large-circ-up.png');
+        position: absolute;
+        width: 800px;
+        height: 850px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        top: -175px;
+        left: 40px;
+    }
+
+    @include screen-sm-max{
+        &::before{
+            content: unset;
+        }
+    }
+}

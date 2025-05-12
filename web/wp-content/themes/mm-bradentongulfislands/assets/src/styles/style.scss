@@ -12,6 +12,7 @@ the whole project.
 @import "utils/variables";
 @import "utils/typography";
 @import "utils/mixins";
+@import "utils/utils";
 
 /*********************
 PAGE TEMPLATES
@@ -19,6 +20,7 @@ PAGE TEMPLATES
 @import "page-template/404";
 @import "page-template/partnerportal-single";
 @import "page-template/bradensota";
+@import "page-template/home";
 
 /*********************
 SIZES

@@ -1,0 +1,21 @@
+@import "styles/utils/variables";
+
+.#{$block-prefix}-responsive-spacer {
+  margin:0 auto;
+}
+
+/*********************
+MEDIUM AND LARGE SCREENS
+*********************/
+@media only screen and (max-width: 1024px) {
+  .#{$block-prefix}-responsive-spacer {
+  }
+}
+
+/*********************
+  SMALL SCREENS
+  *********************/
+@media only screen and (max-width: 768px) {
+  .#{$block-prefix}-responsive-spacer {
+  }
+}

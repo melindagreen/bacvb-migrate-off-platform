@@ -35,6 +35,21 @@ export const initSwiperSliders = (adminSlider = null, wrapperClass, slideClass) 
     const screenWidth = window.innerWidth;
     let initialSlide = 0;
 
+    const MIN_SLIDES = 8;
+    const slideWrapper = slider.querySelector('.swiper-wrapper');
+    const originalSlides = slider.querySelectorAll('.swiper-slide:not(.swiper-slide-duplicate)');
+    let neededClones = 0;
+
+    if (originalSlides.length > 0 && originalSlides.length < MIN_SLIDES && slider.dataset.loop && effect === 'cards') {
+     
+      neededClones = MIN_SLIDES - originalSlides.length;
+      for (let i = 0; i < neededClones; i++) {
+        const clone = originalSlides[i % originalSlides.length].cloneNode(true);
+        clone.classList.add('swiper-slide-duplicate');
+        slideWrapper.appendChild(clone);
+      }
+    }
+
     let cardsEffect;
     if (effect === 'cards') {
       cardsEffect = {
@@ -46,6 +61,23 @@ export const initSwiperSliders = (adminSlider = null, wrapperClass, slideClass) 
         initialSlide = 1;
       }
     }
+
+    let paginationType = neededClones ? {
+      el: '.slider-' + index + ' .swiper-pagination',
+      type: 'bullets',
+      clickable: true,
+      renderBullet: function (index, className) {
+        const slide = slider.querySelectorAll('.swiper-slide:not(.swiper-slide-duplicate)')[index];
+        if (slide) {
+          return `<span class="${className}"></span>`;
+        }
+        return ''; // Exclude cloned slides
+      }
+    } : {
+      el: '.slider-' + index + ' .swiper-pagination',
+      type: 'bullets',
+      clickable: true
+    };
 
     return new Swiper(slider, {
       effect: effect,
@@ -61,7 +93,7 @@ export const initSwiperSliders = (adminSlider = null, wrapperClass, slideClass) 
       loop: slider.dataset.loop ? true : false,
       loopPreventsSliding: false,
       loopAdditionalSlides: 1,
-      loopAddBlankSlides: true,
+      loopAddBlankSlides: neededClones ? true : false,
       freeMode: {
         enabled: slider.dataset.freemode ? true : false,
       },
@@ -71,11 +103,7 @@ export const initSwiperSliders = (adminSlider = null, wrapperClass, slideClass) 
         prevEl: '.slider-' + index + ' .swiper-button-prev',
       } : false,
 
-      pagination: slider.dataset.enablepagination ? {
-        el: '.slider-' + index + ' .swiper-pagination',
-        type: 'bullets',
-        clickable: true
-      } : false,
+      pagination: slider.dataset.enablepagination ? paginationType : false,
 
       scrollbar: slider.dataset.enablescrollbar ? {
         el: '.slider-' + index + ' .swiper-scrollbar',
@@ -136,23 +164,40 @@ export const initSwiperSliders = (adminSlider = null, wrapperClass, slideClass) 
 
   // Reinitialize on resize
   let resizeTimer;
-  window.addEventListener('resize', function () {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(() => {
-      sliders.forEach((slider, index) => {
-        if (swiperInstances[index]) {
-          swiperInstances[index].destroy(true, true);
-        }
-        swiperInstances[index] = createSwiper(slider, index);
-      });
-    }, 300);
-  });
+  // window.addEventListener('resize', function () {
+  //   clearTimeout(resizeTimer);
+  //   resizeTimer = setTimeout(() => {
+  //     sliders.forEach((slider, index) => {
+  //       if (swiperInstances[index]) {
+  //         swiperInstances[index].destroy(true, true);
+  //       }
+  //       swiperInstances[index] = createSwiper(slider, index);
+  //     });
+  //     // Reinitialize the info block on resize
+  //     changeInfoBlock();
+  //   }, 300);
+  // });
 
+  
   // Update info block on slide change
   sliders.forEach((slider, index) => {
     if (swiperInstances[index]) {
     swiperInstances[index].on('slideChangeTransitionEnd', () => {
       changeInfoBlock();
+
+      const stickers = document.querySelectorAll('.sticker');
+
+      stickers.forEach(sticker => {
+        // Reset animation if already applied
+        sticker.classList.remove('animate-wiggle');
+        void sticker.offsetWidth; // Force reflow
+        sticker.classList.add('animate-wiggle');
+
+        // Remove class after animation ends to allow retrigger
+        setTimeout(() => {
+          sticker.classList.remove('animate-wiggle');
+        }, 1600); 
+      });
     });
     }
   });
@@ -182,8 +227,8 @@ export const initSwiperSliders = (adminSlider = null, wrapperClass, slideClass) 
       }
     });
 
-    let buttonurl = $('.wp-block-mm-bradentongulfislands-slider .swiper-wrapper').find('.swiper-slide-active').data('link') || '';
-    let titleText = $('.wp-block-mm-bradentongulfislands-slider .swiper-wrapper').find('.swiper-slide-active').data(infoItems[0]);
+    let buttonurl = $('.wp-block-mm-bradentongulfislands-slider .swiper-wrapper').find('.swiper-slide-active article').data('link') || '';
+    let titleText = $('.wp-block-mm-bradentongulfislands-slider .swiper-wrapper').find('.swiper-slide-active article').data(infoItems[0]);
 
     if(buttonurl == '#' || buttonurl == ' ' || buttonurl.length < 1) {
       $(`.slider-info-box #infoblock-buttonurl`).addClass('infoblock__item--hide');

@@ -49,10 +49,8 @@ $colorPalette: "black", "gray", "tan", "white", "red";
 			align-items: center;
 			justify-content: center;
 			margin: -0.5rem 0 0;
-			padding-top: 3.5rem;
-			@include screen-sm-max {
-				padding-top: 7rem;
-			}
+			margin-top: 0;
+			padding-top: 0rem;
 			.swiper-pagination {
 				display: flex;
 				align-items: center;
@@ -108,6 +106,38 @@ $colorPalette: "black", "gray", "tan", "white", "red";
 					}
 				}
 			}
+			@include screen-sm-max{
+				.swiper-button-prev,
+				.swiper-button-next{
+					position: absolute;
+					top: calc(50% - 40px);
+					width: 70px;
+					height: 68px;
+
+					&::after{
+						border: unset;
+						width: 100%;
+						height: 100%;
+						transform: unset;
+					}
+
+					&:hover::after{
+						opacity: unset;
+					}
+				}
+				.swiper-button-prev{
+					left: -25px;
+					&::after{
+						background-image: url('images/icons/mobile-arrow-left.png');
+					}
+				}
+				.swiper-button-next{
+					right: -25px;
+					&::after{
+						background-image: url('images/icons/mobile-arrow-right.png');
+					}
+				}
+			}
 		}
 	}
 	.swiper-pagination {
@@ -148,7 +178,11 @@ $colorPalette: "black", "gray", "tan", "white", "red";
 		}
 	}
 	.swiper {
-		padding: 1rem;
+		// padding: 1rem;
+		.swiper-slide{
+			overflow: visible;
+		}
+
 		&.swiper-vertical {
 			.swiper-slide {
 				height: auto !important;
@@ -193,8 +227,11 @@ $colorPalette: "black", "gray", "tan", "white", "red";
 			.swiper-slide {
 
 				article {
-					
-					outline: 20px white solid;
+					border: 20px solid white;
+				}
+
+				.swiper-slide-shadow-cards{
+					display: none;
 				}
 			}
 
@@ -258,7 +295,7 @@ $colorPalette: "black", "gray", "tan", "white", "red";
 		height: fit-content;
 		padding: 5% 3%;
 		color: $white;
-		bottom: 2.5rem;
+		bottom: 3.5rem;
 		z-index: 1;
 		right: -15vw;
 

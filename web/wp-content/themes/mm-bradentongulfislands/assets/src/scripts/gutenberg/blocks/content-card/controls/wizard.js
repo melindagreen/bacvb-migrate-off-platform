@@ -83,9 +83,7 @@ const Wizard = (props) => {
 			<SelectControl
 				label={__("Card Style")}
 				value={attributes.cardStyle}
-				options={[				
-					{ label: "Portrait", value: "portrait" }
-				]}
+				options={CARD_STYLES}
 				onChange={(val) => {
 					setAttributes({ cardStyle: val });
 				}}
@@ -135,7 +133,7 @@ const Wizard = (props) => {
 					<MediaUploadCheck>
 						<MediaUpload
 							title={__('CTA Image')}
-							allowedTypes={["image"]}
+							allowedTypes={["image","audio","video"]}
 							onSelect={onImageSelect}
 							value={attributes.customImage}
 							render={({ open }) => (

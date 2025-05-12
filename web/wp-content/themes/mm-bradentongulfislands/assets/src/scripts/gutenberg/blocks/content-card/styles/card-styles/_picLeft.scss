@@ -1,0 +1,126 @@
+.card-style-pic-left, .card-style-pic-left > .inner{
+    width: 100%;
+}
+
+.card-style-pic-left{
+    padding: 36px;
+
+    .inner{
+        display: flex;
+        box-shadow: 6px 6px 20px rgba(0, 0, 0, 0.16);
+        border-radius: 60px;
+        overflow: hidden;
+    }
+    .featured-media{
+        height: 23.5rem;
+        width: 22rem;
+
+        img{
+            
+            height: inherit;
+            width: inherit;        
+            object-fit: cover;
+        }
+    }
+
+    .content{
+        flex-grow: 1;
+        background: #F5F1EA;
+        padding: 2rem;
+        padding-right: 4rem;
+        display: flex;
+        flex-direction: column;
+
+        .post-title{
+            font-family: var(--wp--preset--font-family--title) !important;
+            font-size: 50px;
+            margin-top: 0;
+            margin-bottom: 0;
+            color: #C96A39;
+        }
+
+        .excerpt{
+            font-size: 20px;
+        }
+
+        .read-more{
+            margin-top: auto;
+            margin-bottom: 2rem;
+            font-family: var(--wp--preset--font-family--header);
+            font-size: 21px;
+            text-decoration: none;
+            color: #2B7B7C;
+            display: flex;
+            align-items: center;
+
+            svg{
+                margin-left: 10px;
+                transition: margin 0.5s ease-out;
+            }
+
+            &:hover{
+                svg{
+                    margin-left: 25px;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .card-style-pic-left{
+        padding: 36px 0;
+
+        .inner{
+            box-shadow: unset;
+            border-radius: unset;
+            flex-direction: column;
+
+            .featured-media{
+                width: 100%;
+                border-radius: 60px;
+                overflow: hidden;
+                height: 400px;
+            }
+
+            .content{
+                width: 95%;
+                margin: auto;
+                margin-top: -4rem;
+                background: #4DBBBB;
+                min-height: 230px;
+
+                .post-title, .excerpt, .read-more{
+                    color: #fff;
+                }
+
+                .post-title{
+                    font-family: var(--wp--preset--font-family--header) !important;
+                    font-size: 18px;
+                    margin-bottom: 1rem;
+                    text-align: center;
+                }
+
+                .excerpt{
+                    margin-bottom: 2rem;
+                    text-align: left;
+                }
+
+                .read-more{
+                    margin-bottom: 0;
+                    font-size: 1.1rem;
+
+                    svg{
+                        #Path_21{
+                            fill: #fff;
+                        }
+                        #Path_22{
+                            fill: #4DBBBB;
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+}
