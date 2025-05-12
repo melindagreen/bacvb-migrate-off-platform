@@ -111,7 +111,7 @@
       "gradients": []
     },
     "typography": {
-      "customFontSize": false,
+      "customFontSize": true,
       "letterSpacing": false,
       "textDecoration": false,
       "fontSizes": [
