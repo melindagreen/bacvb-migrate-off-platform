@@ -62,7 +62,7 @@ export const initSwiperSliders = (adminSlider = null, wrapperClass, slideClass) 
       }
     }
 
-    let paginationType = clonedSlides ? {
+    let paginationType = neededClones ? {
       el: '.slider-' + index + ' .swiper-pagination',
       type: 'bullets',
       clickable: true,
