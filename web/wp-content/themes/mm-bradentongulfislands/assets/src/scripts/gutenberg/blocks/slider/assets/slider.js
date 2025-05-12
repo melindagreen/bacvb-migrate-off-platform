@@ -62,6 +62,23 @@ export const initSwiperSliders = (adminSlider = null, wrapperClass, slideClass) 
       }
     }
 
+    let paginationType = clonedSlides ? {
+      el: '.slider-' + index + ' .swiper-pagination',
+      type: 'bullets',
+      clickable: true,
+      renderBullet: function (index, className) {
+        const slide = slider.querySelectorAll('.swiper-slide:not(.swiper-slide-duplicate)')[index];
+        if (slide) {
+          return `<span class="${className}"></span>`;
+        }
+        return ''; // Exclude cloned slides
+      }
+    } : {
+      el: '.slider-' + index + ' .swiper-pagination',
+      type: 'bullets',
+      clickable: true
+    };
+
     return new Swiper(slider, {
       effect: effect,
       cardsEffect: cardsEffect,
@@ -86,18 +103,7 @@ export const initSwiperSliders = (adminSlider = null, wrapperClass, slideClass) 
         prevEl: '.slider-' + index + ' .swiper-button-prev',
       } : false,
 
-      pagination: neededClones ? {
-        el: '.slider-' + index + ' .swiper-pagination',
-        type: 'bullets',
-        clickable: true,
-        renderBullet: function (index, className) {
-          const slide = slider.querySelectorAll('.swiper-slide:not(.swiper-slide-duplicate)')[index];
-          if (slide) {
-            return `<span class="${className}"></span>`;
-          }
-          return ''; // Exclude cloned slides
-        }
-      } : false,
+      pagination: slider.dataset.enablepagination ? paginationType : false,
 
       scrollbar: slider.dataset.enablescrollbar ? {
         el: '.slider-' + index + ' .swiper-scrollbar',
