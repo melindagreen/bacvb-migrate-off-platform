@@ -35,6 +35,19 @@ export const initSwiperSliders = (adminSlider = null, wrapperClass, slideClass) 
     const screenWidth = window.innerWidth;
     let initialSlide = 0;
 
+    const MIN_SLIDES = 8;
+    const slideWrapper = slider.querySelector('.swiper-wrapper');
+    const originalSlides = slider.querySelectorAll('.swiper-slide:not(.swiper-slide-duplicate)');
+  
+    if (originalSlides.length > 0 && originalSlides.length < MIN_SLIDES && slider.dataset.loop === 'true') {
+      const neededClones = MIN_SLIDES - originalSlides.length;
+      for (let i = 0; i < neededClones; i++) {
+        const clone = originalSlides[i % originalSlides.length].cloneNode(true);
+        clone.classList.add('swiper-slide-duplicate');
+        slideWrapper.appendChild(clone);
+      }
+    }
+
     let cardsEffect;
     if (effect === 'cards') {
       cardsEffect = {
@@ -43,7 +56,7 @@ export const initSwiperSliders = (adminSlider = null, wrapperClass, slideClass) 
         slideShadows: screenWidth >= 769 ? false : true
       };
       if (screenWidth > 769) {
-        initialSlide = 1;
+        initialSlide = 0;
       }
     }
 
@@ -61,7 +74,7 @@ export const initSwiperSliders = (adminSlider = null, wrapperClass, slideClass) 
       loop: slider.dataset.loop ? true : false,
       loopPreventsSliding: false,
       loopAdditionalSlides: 1,
-      loopAddBlankSlides: true,
+      loopAddBlankSlides: false,
       freeMode: {
         enabled: slider.dataset.freemode ? true : false,
       },
