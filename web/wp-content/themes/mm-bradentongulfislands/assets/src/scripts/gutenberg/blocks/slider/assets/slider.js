@@ -87,8 +87,7 @@ export const initSwiperSliders = (adminSlider = null, wrapperClass, slideClass) 
         stretch: 0,
         modifier: 1,
         slideShadows: false,
-      },
-      
+      },     
       cardsEffect: cardsEffect,
       initialSlide: initialSlide,
 
