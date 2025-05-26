@@ -81,6 +81,14 @@ export const initSwiperSliders = (adminSlider = null, wrapperClass, slideClass) 
 
     return new Swiper(slider, {
       effect: effect,
+
+      coverflowEffect: {
+        rotate: 0,
+        stretch: 0,
+        modifier: 1,
+        slideShadows: false,
+      },
+      
       cardsEffect: cardsEffect,
       initialSlide: initialSlide,
 

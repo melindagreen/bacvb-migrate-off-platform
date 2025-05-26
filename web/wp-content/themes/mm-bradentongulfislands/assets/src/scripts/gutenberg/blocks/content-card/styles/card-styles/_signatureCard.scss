@@ -1,0 +1,29 @@
+@import "styles/utils/variables";
+@import "styles/utils/mixins";
+@import "styles/utils/typography";
+
+/*
+Signature card 
+*/
+.#{$block-prefix}-content-card.card-style-signature-card {
+	
+	border-radius: 6px;
+	border: solid 2px $bradenton-teal;
+	background-color: white;
+	min-height: 13rem;
+	width: 36.625rem;
+	margin: auto;
+
+	.post-title {
+
+		font-size: 1.5rem;
+		font-family: $font-body;
+		color: $bradenton-teal;
+		padding: 0.90625rem 1.5rem;
+	}
+
+	.featured-media {
+
+		display: none;
+	}
+}

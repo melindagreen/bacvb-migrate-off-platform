@@ -44,6 +44,13 @@
 
       return new Swiper(slider, {
         effect: effect,
+        coverflowEffect: {
+          rotate: 0,
+          stretch: 0,
+          depth: 800,
+          modifier: 1,
+          slideShadows: false,
+        },
         cardsEffect: cardsEffect,
         initialSlide: initialSlide,
 
