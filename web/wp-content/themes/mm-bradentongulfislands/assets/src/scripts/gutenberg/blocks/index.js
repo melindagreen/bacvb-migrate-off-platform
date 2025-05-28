@@ -31,13 +31,14 @@ import Slider from './slider';
 import ContentCard from './content-card';
 import SingleSlide from './slider/single-slide';
 import ResponsiveSpacer from './responsive-spacer';
+import BradentonMap from './bradenton-map';
 
 /*** CONSTANTS **************************************************************/
 
 // Collect blocks
 // NOTE: ACF blocks should not be registered here, only imported, or they will
 // appear twice in the editor!
-const blocks = [ ResponsiveSpacer, CtaBubble, LightboxCard, InfoChip, ContentSlider, Hero, PortraitGrid, WideSlideshow, WideImageSlide, AccordionSection, Accordion, ContentSelector, ContentSection, QuickLinks, UpcomingEvents, ListingsGrid, BeachesMap, HeroShowcase, WaterFerryMap, BradensotaMap, SocialButton, LogoCTA, Slider, SingleSlide, ContentCard ];
+const blocks = [ BradentonMap, ResponsiveSpacer, CtaBubble, LightboxCard, InfoChip, ContentSlider, Hero, PortraitGrid, WideSlideshow, WideImageSlide, AccordionSection, Accordion, ContentSelector, ContentSection, QuickLinks, UpcomingEvents, ListingsGrid, BeachesMap, HeroShowcase, WaterFerryMap, BradensotaMap, SocialButton, LogoCTA, Slider, SingleSlide, ContentCard ];
 
 /*** EXPORTS ****************************************************************/
 export default () => {

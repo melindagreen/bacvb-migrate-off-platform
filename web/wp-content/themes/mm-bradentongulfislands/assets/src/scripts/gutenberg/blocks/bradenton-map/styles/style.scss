@@ -1,0 +1,308 @@
+@import 'styles/utils/variables';
+@import 'styles/utils/typography';
+
+.#{$block-prefix}-bradenton-map {
+  position: relative;
+  display: flex;
+  align-items: end;
+  margin: auto;
+  justify-content: center;
+  gap: 4rem 8rem;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  max-width: unset !important;
+  height: 48vw;
+  overflow: scroll;
+
+  @media only screen and (max-width: $screen-lg) {
+    gap: 4rem 4vw;
+  }
+
+  .mapContainer {
+    height: fit-content;
+    width: 100%;
+    z-index: 1;
+
+    .map-logo {
+
+      position: absolute;
+      top: 57%;
+    }
+
+    .county {
+      cursor: pointer;
+      transition: all 0.3s;
+
+      &:hover, &.active {
+        fill: rgba($bradenton-teal,1) !important;
+      }
+    }
+
+    svg {
+
+      // position: absolute;
+      // left: 0;
+      // top: -7rem;
+      width: 100%;
+      height: 100%;
+
+      .bradenton-stop {
+
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        transform-box: fill-box;
+        transform-origin: center;  
+        
+        .st24 {
+
+          transition: all 0.3s ease-in;
+        }
+
+        &:hover {
+
+
+          .st24 {
+
+            fill: $bradenton-teal;
+            transition: all 0.2s ease-in-out;
+          }
+        }
+      }
+    }
+
+  }
+}
+
+.ferry-map-help {
+
+  text-align: center;
+  width: fit-content;
+  background-color: $bradenton-teal;
+  font-family: $font-title;
+  font-size: 4rem;
+  padding: 0 2%;
+  position: absolute;
+  bottom: 4rem;
+  right: 0;
+  margin: auto;
+  z-index: 2;
+  max-width: 16rem;
+  border-top-left-radius: 100px;
+  border-bottom-left-radius: 100px;
+  padding: 0 2rem 0 3rem;
+
+  h4 {
+
+    font-family: $font-header;
+    font-size: 0.9rem;
+    color: $yellow-tan;
+    margin: 1rem auto;
+  }
+
+  p {
+
+    color: white;
+    font-weight: 600;
+    font-size: 1.85rem;
+    line-height: 1.2em;
+    margin: 1rem auto;
+  }
+}
+
+.ferry-stop-lightbox {
+
+  display: none;
+  overflow-y: scroll;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(144, 144, 144, 0.95);
+
+  .close {
+
+    font-size: 1.6rem;
+    position: absolute;
+    top: 2%;
+    right: 2%;
+    color: white;
+    cursor: pointer;
+  }
+
+  &--on {
+
+    display: block;
+  }
+
+  .ferry-stop-card {
+    visibility: hidden;
+    transform: scale(0);
+    transition: transform 0.3s ease, opacity 0.3s ease, visibility 0s 0.3s; 
+    opacity: 0;
+    background-color: $white;
+    width: 1000px;
+    max-width: 90%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) !important;
+    display: flex;
+    width: fit-content;
+    padding: 2rem;
+    gap: 3rem;
+    align-items: center;
+
+    &.pop-in {
+        visibility: visible;
+        transform: scale(1);
+        opacity: 1;
+        transition: transform 0.3s ease, opacity 0.3s ease; 
+    }
+
+    &.pop-out {
+        transform: scale(0);
+        opacity: 0;
+        visibility: hidden;
+        display: none;
+        transition: transform 0.3s ease, opacity 0.3s ease, visibility 0s 0.3s;
+    }
+
+    &__content {
+
+      width: 30rem;
+      padding: 2rem 0;
+
+        h3 {
+            margin: 0 auto;
+            color: $bradenton-teal;
+            font-size: 1.3rem;
+        }
+
+        p {
+            color: $soft-black;
+            font-size: 1rem;
+            min-height: 5.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .ferry-card-cta {
+
+          background-color: $bradenton-teal;
+          color: white;
+          padding: 1rem 2rem;
+          border-radius: 20px;
+          transition: all 0.3s ease-in-out;
+          width: fit-content;
+          text-align: center;
+
+          a {
+
+            color: white;
+            text-decoration: none;
+          }
+
+          &:hover {
+
+            background-color: darken($bradenton-teal,1.4);
+            transform: scale(1.1);
+            transition: all 0.2s ease-in-out;
+          }
+        }
+    }
+
+    img {
+        width: 280px;
+        height: 300px;
+        object-fit: cover;
+    }
+}
+}
+
+/*********************
+SMALL SCREENS
+*********************/
+@media only screen and (max-width: $screen-md) {
+  .#{$block-prefix}-bradenton-map {
+
+    height: max-content;
+    overflow: hidden;
+
+    #bradentonRiverwalk {
+      transform: translate(-8831px, 3277.174px) scale(1.7); 
+    }
+    #bridgeStreet {
+      transform: translate(-8861px, 3277.174px) scale(1.7); 
+    }
+    #ami {
+      transform: translate(-8861px, 3277.174px) scale(1.7); 
+    }
+
+    .ferry-map-help  {
+
+
+      bottom: unset;
+      top: 1rem;
+      max-width: 13rem;
+      padding: 0 1rem 0 2rem;
+
+      h4 {
+
+        font-size: 0.6rem;
+        margin-bottom: 0.5rem;
+      }
+    
+      p {
+        
+        font-size: 0.9rem;
+        margin-top: 0.5rem;
+      }
+    }
+  }
+
+  .ferry-stop-lightbox {
+
+    height: 100%;
+
+    .close {
+
+      top: 1%;
+    }
+    .ferry-stop-card {
+
+      transform: scale(0) !important; /* Center by default, but scale down */
+      flex-direction: column-reverse;
+      top: 60%;
+      gap: 1.5rem;
+      margin-top: 5rem !important;
+      transform: none !important;
+      position: unset;
+      width: 95% !important;
+      margin: auto;
+  
+    
+      &__content {
+    
+        width: inherit !important;
+        padding: 0;
+  
+        .ferry-card-cta {
+  
+          a {
+  
+            
+          }
+        }
+      }
+    
+      img {
+    
+        width: 100% !important;
+      }
+    }
+  }
+
+}
+

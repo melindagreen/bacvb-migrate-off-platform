@@ -1,0 +1,56 @@
+{
+  "name": "bradenton-map",
+  "dynamic": true,
+  "scripts": [
+    "front.js"
+  ],
+  "render_callback": "MaddenNino\\Blocks\\BradentonMap\\render_block",
+  "settings": {
+    "title": "Bradenton Map",
+    "description": "Interactive map for Bradenton",
+    "icon": "admin-site-alt2",
+    "category": "layout",
+    "attributes": {
+      "mode": {
+				"type": "string",
+				"default": "view"
+      },
+      "amiMediaId" : {
+        "type": "number",
+        "default": 0
+      },
+      "amiDescription" : {
+        "type": "string",
+        "default": ""
+      },
+      "amiUrl" : {
+        "type": "string",
+        "default": ""
+      },
+      "bridgeStreetMediaId" : {
+        "type": "number",
+        "default": 0
+      },
+      "bridgeStreetDescription" : {
+        "type": "string",
+        "default": ""
+      },
+      "bridgeStreetUrl" : {
+        "type": "string",
+        "default": ""
+      },
+      "bradentonRiverwalkMediaId" : {
+        "type": "number",
+        "default": 0
+      },
+      "bradentonRiverwalkDescription" : {
+        "type": "string",
+        "default": ""
+      },
+      "bradentonRiverwalkUrl" : {
+        "type": "string",
+        "default": ""
+      }
+    }
+  }
+}
