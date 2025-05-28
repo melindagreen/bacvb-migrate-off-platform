@@ -15,7 +15,7 @@ Signature card
 	margin: auto;
 	box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
 	
-	@include screen-sm-min {
+	@include screen-sm-max {
 
 		width: 90vw;
 		margin-left: -1rem;
