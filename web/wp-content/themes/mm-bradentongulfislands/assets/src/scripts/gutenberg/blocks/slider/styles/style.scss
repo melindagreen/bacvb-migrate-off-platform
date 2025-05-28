@@ -408,8 +408,9 @@ $colorPalette: "black", "gray", "tan", "white", "red";
 		.swiper-navigation-wrapper {
 
 			position: absolute;
-			right: 0;
-			bottom: 24%;
+			right: 4rem;
+			bottom: 50%;
+			transform: translateY(50%);
 		}
 
 		.swiper-pagination {
