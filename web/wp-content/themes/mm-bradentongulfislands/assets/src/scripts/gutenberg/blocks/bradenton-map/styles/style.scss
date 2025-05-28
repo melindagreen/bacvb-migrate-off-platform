@@ -4,7 +4,7 @@
 .#{$block-prefix}-bradenton-map {
   position: relative;
   display: flex;
-  align-items: end;
+  align-items: center;
   margin: auto;
   justify-content: center;
   gap: 4rem 8rem;
@@ -13,7 +13,7 @@
   background-size: cover;
   max-width: unset !important;
   height: 48vw;
-  overflow: scroll;
+  overflow: hidden;
 
   @media only screen and (max-width: $screen-lg) {
     gap: 4rem 4vw;
@@ -41,11 +41,32 @@
 
     svg {
 
-      // position: absolute;
-      // left: 0;
-      // top: -7rem;
       width: 100%;
       height: 100%;
+
+
+      @media screen and (max-width: $screen-sm) {
+        
+        width: 186vw;
+        height: 650px;
+        position: relative;
+        right: 29vw;
+      }
+
+      #ICONS g {
+
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        transform-box: fill-box;
+        transform-origin: center;  
+
+
+        &:hover {
+
+            transition: all 0.3s ease-in-out;
+            transform: scale(1.05);
+        }
+      }
 
       .bradenton-stop {
 
@@ -110,50 +131,55 @@
   }
 }
 
-.ferry-stop-lightbox {
+.bradenton-lightbox {
 
-  display: none;
+  transform: translateX(-100%);
   overflow-y: scroll;
-  position: fixed;
+  position: absolute;
   z-index: 1000;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(144, 144, 144, 0.95);
+  background-color: #4EBBBB;
+  width: 30rem;
+  transition: all 0.3s ease-in-out;
 
   .close {
 
     font-size: 1.6rem;
     position: absolute;
-    top: 2%;
-    right: 2%;
+    top: 4%;
+    right: 4%;
     color: white;
     cursor: pointer;
   }
 
   &--on {
 
-    display: block;
+    transform: translateX(0);
+    transition: all 0.3s ease-in-out;
   }
 
-  .ferry-stop-card {
+  .bradenton-card {
     visibility: hidden;
     transform: scale(0);
     transition: transform 0.3s ease, opacity 0.3s ease, visibility 0s 0.3s; 
     opacity: 0;
-    background-color: $white;
     width: 1000px;
     max-width: 90%;
     position: absolute;
-    top: 50%;
+    top: 30%;
     left: 50%;
     transform: translate(-50%, -50%) !important;
     display: flex;
     width: fit-content;
-    padding: 2rem;
     gap: 3rem;
     align-items: center;
+
+    padding: 0.25rem;
+    line-height: 1.9em;
+
 
     &.pop-in {
         visibility: visible;
@@ -177,13 +203,14 @@
 
         h3 {
             margin: 0 auto;
-            color: $bradenton-teal;
-            font-size: 1.3rem;
+            color: white;
+            font-size: 1.5rem;
+            font-family: $font-header;
         }
 
         p {
-            color: $soft-black;
-            font-size: 1rem;
+            color: white;
+            font-size: 1.25rem;
             min-height: 5.5rem;
             margin-bottom: 2.5rem;
         }
@@ -262,15 +289,11 @@ SMALL SCREENS
     }
   }
 
-  .ferry-stop-lightbox {
+  .bradenton-lightbox {
 
     height: 100%;
 
-    .close {
-
-      top: 1%;
-    }
-    .ferry-stop-card {
+    .bradenton-card {
 
       transform: scale(0) !important; /* Center by default, but scale down */
       flex-direction: column-reverse;

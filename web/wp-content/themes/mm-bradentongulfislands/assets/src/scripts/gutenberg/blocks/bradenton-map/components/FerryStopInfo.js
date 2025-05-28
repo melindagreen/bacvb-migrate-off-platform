@@ -18,44 +18,51 @@ const FerryStop = ({ attributes, setAttributes }) => {
         setAttributes(updatedAttributes);
     };
 
+    const ferryStops = {
+        BRIDGE_STREET_FERRY_STOP: 'Bridge Street Ferry Stop',
+        LAKEWOOD_RANCH: 'Lakewood Ranch',
+        LAKE_MANATEE_STATE_PARK: 'Lake Manatee State Park',
+        ANNA_MARIE_ISLAND: 'Anna Maria Island',
+        LONGBOAT_KEY: 'Longboat Key',
+        ROBINSON_PRESERVE: 'Robinson Preserve',
+        CORTEZ: 'Cortez',
+        DESOTO: 'DeSoto National Memorial',
+        BISHOP_MUSEUM: 'Bishop Museum',
+        BRADENTON_RIVER_WALK: 'Bradenton Riverwalk',
+        ANNA_MARIE_CITY_PIER: 'Anna Maria City Pier',
+        GULF_ISLANDS_FERRY: 'Gulf Islands Ferry',
+        HRRIG_CENTER: 'HRRIG Center',
+        MANATEE_PERFORMING_ARTS: 'Manatee Performing Arts',
+        VILLAGE_OF_THE_ARTS: 'Village of the Arts',
+      };
+
     return (
         <PanelBody title="City Info" initialOpen={true}>
-            <Media mediaId={localAttributes.amiMediaId} placeholderText={"Ami Image"} setAttributes={setAttributes} mediaAttribute="amiMediaId" />
+        {Object.entries(ferryStops).map(([key, label]) => (
+          <div key={key} style={{ marginBottom: '2rem' }}>
             <TextareaControl
-                label="Ami Description"
-                onChange={(value) => updateAttributes({ amiDescription: value })}
-                value={localAttributes.amiDescription}
+              label={`${label} Description`}
+              value={localAttributes[`${key}Description`] || ''}
+              onChange={(value) =>
+                updateAttributes({ [`${key}Description`]: value })
+              }
             />
             <TextControl
-            label="Ami Url"
-            value={localAttributes.amiUrl}
-            onChange={(value) => updateAttributes({amiUrl : value })}
+              label={`${label} Url`}
+              value={localAttributes[`${key}Url`] || ''}
+              onChange={(value) =>
+                updateAttributes({ [`${key}Url`]: value })
+              }
             />
-
-            <Media mediaId={localAttributes.bridgeStreetMediaId} placeholderText={"Bridge Street Image"} setAttributes={setAttributes} mediaAttribute="bridgeStreetMediaId" />
-            <TextareaControl
-                label="Bridge Street Description"
-                onChange={(value) => updateAttributes({ bridgeStreetDescription: value })}
-                value={localAttributes.bridgeStreetDescription}
+            <Media
+              mediaId={localAttributes[`${key}MediaId`] || 0}
+              placeholderText={`${label} Image`}
+              setAttributes={setAttributes}
+              mediaAttribute={`${key}MediaId`}
             />
-            <TextControl
-            label="Bridge Street Url"
-            value={localAttributes.bridgeStreetUrl}
-            onChange={(value) => updateAttributes({bridgeStreetUrl : value })}
-            />
-
-            <Media mediaId={localAttributes.bradentonRiverwalkMediaId} placeholderText={"Bradenton Riverwalk Image"} setAttributes={setAttributes} mediaAttribute="bradentonRiverwalkMediaId" />
-            <TextareaControl
-                label="Bradenton Riverwalk Description"
-                onChange={(value) => updateAttributes({ bradentonRiverwalkDescription: value })}
-                value={localAttributes.bradentonRiverwalkDescription}
-            />
-            <TextControl
-            label="Bradenton Riverwalk Url"
-            value={localAttributes.bradentonRiverwalkUrl}
-            onChange={(value) => updateAttributes({bradentonRiverwalkUrl : value })}
-            />
-        </PanelBody>
+          </div>
+        ))}
+      </PanelBody>
     );
 };
 

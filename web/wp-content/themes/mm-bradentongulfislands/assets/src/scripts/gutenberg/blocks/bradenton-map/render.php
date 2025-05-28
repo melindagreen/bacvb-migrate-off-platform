@@ -10,7 +10,7 @@ use MaddenNino\Library\Constants as Constants;
  */
 function render_block( $attrs, $content ) {
 
-  $ferryStops = ['ami'=>'Anna Maria City Pier','bridgeStreet'=>'Historic Bridge Street Pier','bradentonRiverwalk'=>'Bradenton Riverwalk Pier'];
+  $ferryStops = ['BRIDGE_STREET_FERRY_STOP' => 'Bridge Street Ferry Stop', 'LAKEWOOD_RANCH' => 'Lakewood Ranch','LAKE_MANATEE_STATE_PARK'=> 'Lake Manatee State Park','ANNA_MARIE_ISLAND'=> 'Anna Maria Island','LONGBOAT_KEY'=> 'Longboat Key','ROBINSON_PRESERVE' => 'Robinson Preserve','CORTEZ'=> 'Cortez', 'DESOTO' => 'DeSoto National Memorial','BISHOP_MUSEUM'=> 'Bishop Museum','BRADENTON_RIVER_WALK' => 'Bradenton Riverwalk','ANNA_MARIE_CITY_PIER'=> 'Anna Maria City Pier','GULF_ISLANDS_FERRY'=> 'Gulf Islands Ferry','HRRIG_CENTER'=> 'HRRIG Center','MANATEE_PERFORMING_ARTS'=> 'Manatee Performing Arts','VILLAGE_OF_THE_ARTS'=> 'Village of the Arts'];
   $stylesheet_directory_uri = get_stylesheet_directory_uri();
 
   $html = "<div class='" . Constants::BLOCK_CLASS . "-bradenton-map is-style-collage-square'>";
@@ -18,42 +18,30 @@ function render_block( $attrs, $content ) {
     $html .= '<div class="mapContainer">';
 
       $html .= file_get_contents(get_stylesheet_directory() . '/assets/images/bradenton-map.svg');
+   $html .= '</div>';
+    $html .= '<div class="bradenton-lightbox"><div class="close"><img height="25px" width="25px" src="/wp-content/themes/mm-bradentongulfislands/assets/images/icons/close-x.png" alt="close"></div>';
 
-    $html .= '</div>';
-    $html .= '<div class="ferry-map-help"><h4>Interactive Map</h4><p>Click Location to Book Your Trip</p></div>'; 
-  $html .= "</div>";
-
-  $html .= '<div class="ferry-stop-lightbox"><div class="close"><img height="25px" width="25px" src="/wp-content/themes/mm-bradentongulfislands/assets/images/icons/close-x.png" alt="close"></div>';
       
         foreach($ferryStops as $stop => $stop_name){
 
-          $cityImage = $attrs[$stop . 'MediaId'] ? wp_get_attachment_image_src($attrs[$stop . 'MediaId'], 'large')[0] : $stylesheet_directory_uri . '/assets/images/placeholder.jpg';
-          $cityImageAlt = $attrs[$stop . 'MediaId'] ? get_post_meta($attrs[$stop . 'MediaId'], '_wp_attachment_image_alt', true) : 'Placeholder';
           $cityTitle = $stop_name;
           $cityDescription = $attrs[$stop.'Description'];
           $cityUrl = $attrs[$stop.'Url'];
-          $ferryCardCta = isset($cityUrl) && $cityUrl !== '' ? '<div class="ferry-card-cta"><a href="'. $cityUrl .'">Book Now at '. $stop_name .'</a></div>' : '';
+          $ferryCardCta = isset($cityUrl) && $cityUrl !== '' ? '<div class="bradenton-card-cta"><a href="'. $cityUrl .'">Book Now at '. $stop_name .'</a></div>' : '';
 
           $html .= <<<HTML
-          <div class="ferry-stop-card is-style-collage-square {$stop}" data-city="{$stop}">
-              <div class="ferry-stop-card__content">
+          <div class="bradenton-card {$stop}" data-city="{$stop}">
+              <div class="bradenton-card__content">
                 <h3>{$cityTitle}</h3>
                 <p>{$cityDescription}</p>
                 $ferryCardCta
               </div>
-              <img 
-                  data-load-type="img" 
-                  data-load-onload="true" 
-                  data-load-alt="{$cityImageAlt}" 
-                  data-load-all="{$cityImage}" 
-                  src="{$stylesheet_directory_uri}/assets/images/pixel.png" 
-                  alt="placeholder pixel" 
-              />
           </div>
           HTML;
         }
-  
-      $html .= '</div>';
+        $html .= '</div>';
+
+      $html .= "</div>";
   return $html;
 
 
