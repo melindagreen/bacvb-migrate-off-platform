@@ -84,6 +84,9 @@ function render_block( $attrs, $content ) {
 
 		<div class="content">
 
+      <?php if($attrs['cardStyle'] === 'signature-card'){ ?>
+        <div class="post-date">FEB 14 - MAR 21</div>
+      <?php } ?>
 
 			<?php if ($attrs['displayAdditionalContent'] && ($attrs['displayCategory'])) { ?>
 			<div class="post-meta">

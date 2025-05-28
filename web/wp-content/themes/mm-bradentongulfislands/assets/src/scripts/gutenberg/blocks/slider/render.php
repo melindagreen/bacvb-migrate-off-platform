@@ -17,6 +17,7 @@ function render_block( $attrs, $content ) {
   $classes = [
     Constants::BLOCK_CLASS.'-slider',
     'slider-type-'.$attrs['contentType'],
+    'card-style-'.$attrs['cardStyle'],
     $className,
     $arrowPosition
   ];
@@ -178,11 +179,14 @@ function render_block( $attrs, $content ) {
     if ($attrs['enableScrollbar']) {
       echo '<div class="swiper-scrollbar" data-color="'.$scrollbar_color.'"></div>';
     }
+    if ($attrs['enableArrowNavigation']) {
+      echo '<div class="swiper-button-prev" data-color="'.$arrow_color.'" data-color-background="'.$arrow_color_bg.'"></div>';
+    }
     if ($attrs['enablePagination']) {
       echo '<div class="swiper-pagination" data-color="'.$dot_color.'" data-color-active="'.$dot_color_active.'"></div>';
     }
     if ($attrs['enableArrowNavigation']) {
-      echo '<div class="swiper-button-prev" data-color="'.$arrow_color.'" data-color-background="'.$arrow_color_bg.'"></div><div class="swiper-button-next" data-color="'.$arrow_color.'" data-color-background="'.$arrow_color_bg.'"></div>';
+      echo '<div class="swiper-button-next" data-color="'.$arrow_color.'" data-color-background="'.$arrow_color_bg.'"></div>';
     }
     echo '</div>';
   }
