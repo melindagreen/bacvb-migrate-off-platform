@@ -153,6 +153,7 @@
     right: 4%;
     color: white;
     cursor: pointer;
+    z-index: 3;
   }
 
   &--on {
@@ -346,6 +347,6 @@ SMALL SCREENS
 }
 
 .bounce-scale {
-  animation: bounce-scale 0.5s ease;
+  animation: bounce-scale 1s ease;
   transform: scale(1.05);
 }

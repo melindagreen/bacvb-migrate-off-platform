@@ -222,8 +222,8 @@ export const initSwiperSliders = (adminSlider = null, wrapperClass, slideClass) 
 
     infoItems.map((item)=>{
 
-      let activeItem = $(".wp-block-mm-bradentongulfislands-slider.post-card .swiper-slide-active");
-      let itemText = $('.wp-block-mm-bradentongulfislands-slider.post-card .swiper-wrapper').find('.swiper-slide-active article').data(item) || '';
+      let activeItem = $(".wp-block-mm-bradentongulfislands-slider.slider-arrows-below .swiper-slide-active");
+      let itemText = $('.wp-block-mm-bradentongulfislands-slider.slider-arrows-below .swiper-wrapper').find('.swiper-slide-active article').data(item) || '';
 
       if(itemText.length > 0) {
         
@@ -235,8 +235,8 @@ export const initSwiperSliders = (adminSlider = null, wrapperClass, slideClass) 
       }
     });
 
-    let buttonurl = $('.wp-block-mm-bradentongulfislands-slider.post-card .swiper-wrapper').find('.swiper-slide-active article').data('link') || '';
-    let titleText = $('.wp-block-mm-bradentongulfislands-slider.post-card .swiper-wrapper').find('.swiper-slide-active article').data(infoItems[0]);
+    let buttonurl = $('.wp-block-mm-bradentongulfislands-slider.slider-arrows-below .swiper-wrapper').find('.swiper-slide-active article').data('link') || '';
+    let titleText = $('.wp-block-mm-bradentongulfislands-slider.slider-arrows-below .swiper-wrapper').find('.swiper-slide-active article').data(infoItems[0]);
 
     if(buttonurl == '#' || buttonurl == ' ' || buttonurl.length < 1) {
       $(`.slider-info-box #infoblock-buttonurl`).addClass('infoblock__item--hide');

@@ -26,7 +26,7 @@ export const initInteractiveMap = () => {
             // Remove the animation class after it finishes to allow retrigger if needed
             setTimeout(() => {
                 $iconsG.removeClass('bounce-scale');
-            }, 500); // match the animation duration
+            }, 1000); // match the animation duration
         }
     });
 
@@ -50,7 +50,12 @@ export const initInteractiveMap = () => {
         $cityCard.removeClass('pop-in').addClass('pop-out');
         $('.bradenton-lightbox').removeClass('bradenton-lightbox--on');
 
-        // Reset scale
-        $iconsG.css('transform', 'scale(1)');
+        // Add bounce animation
+        $iconsG.addClass('bounce-scale');
+
+        // Remove the animation class after it finishes to allow retrigger if needed
+        setTimeout(() => {
+            $iconsG.removeClass('bounce-scale');
+        }, 1000); // match the animation duration
     });
 };
