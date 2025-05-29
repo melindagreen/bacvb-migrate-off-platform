@@ -27,7 +27,7 @@ function render_block( $attrs, $content ) {
           $cityTitle = $stop_name;
           $cityDescription = $attrs[$stop.'Description'];
           $cityUrl = $attrs[$stop.'Url'];
-          $ferryCardCta = isset($cityUrl) && $cityUrl !== '' ? '<div class="bradenton-card-cta"><a href="'. $cityUrl .'">Book Now at '. $stop_name .'</a></div>' : '';
+          $ferryCardCta = isset($cityUrl) && $cityUrl !== '' ? '<div class="bradenton-card-cta"><a href="'. $cityUrl .'">Learn More About '. $stop_name .'</a></div>' : '';
 
           $html .= <<<HTML
           <div class="bradenton-card {$stop}" data-city="{$stop}">
