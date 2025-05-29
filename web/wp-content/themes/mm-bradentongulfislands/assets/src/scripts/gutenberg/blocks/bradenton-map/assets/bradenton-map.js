@@ -11,7 +11,7 @@ export const initInteractiveMap = () => {
 
     // Scroll handler to detect when #ICONS enters the viewport
     $(window).on('scroll', function () {
-        if (hasScrolledToIcons) return; // only do once
+        if (hasScrolledToIcons) return;
 
         const $icons = $('.wp-block-mm-bradentongulfislands-bradenton-map svg #ICONS');
         const windowBottom = $(window).scrollTop() + $(window).height();
@@ -19,9 +19,14 @@ export const initInteractiveMap = () => {
 
         if (windowBottom > iconsTop) {
             hasScrolledToIcons = true;
-            // Scale all #ICONS g elements
-            $iconsG.css('transform', 'scale(1.05)');
-            $iconsG.css('transition', 'transform 0.3s ease');
+
+            // Add bounce animation
+            $iconsG.addClass('bounce-scale');
+
+            // Remove the animation class after it finishes to allow retrigger if needed
+            setTimeout(() => {
+                $iconsG.removeClass('bounce-scale');
+            }, 500); // match the animation duration
         }
     });
 
@@ -30,12 +35,10 @@ export const initInteractiveMap = () => {
         var stopId = $(this).attr('id');
         console.log(stopId);
 
-        // Hide all city cards 
         $('.bradenton-card').each(function () {
             $(this).removeClass('pop-in').addClass('pop-out');
         });
 
-        // Show the city card 
         let stopCard = $('.bradenton-card.' + stopId);
         stopCard.removeClass('pop-out').addClass('pop-in');
         $('.bradenton-lightbox').addClass('bradenton-lightbox--on');

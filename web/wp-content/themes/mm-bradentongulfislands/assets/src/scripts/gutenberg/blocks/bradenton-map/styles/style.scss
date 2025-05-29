@@ -329,3 +329,23 @@ SMALL SCREENS
 
 }
 
+
+@keyframes bounce-scale {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.15);
+  }
+  60% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1.05);
+  }
+}
+
+.bounce-scale {
+  animation: bounce-scale 0.5s ease;
+  transform: scale(1.05);
+}
