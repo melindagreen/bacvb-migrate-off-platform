@@ -188,65 +188,66 @@ export const initSwiperSliders = (adminSlider = null, wrapperClass, slideClass) 
 
   
   // Update info block on slide change
-  sliders.forEach((slider, index) => {
-    if (swiperInstances[index]) {
+sliders.forEach((slider, index) => {
+  if (swiperInstances[index]) {
     swiperInstances[index].on('slideChangeTransitionEnd', () => {
-      changeInfoBlock();
+      // Pass the current slider container to the function
+      changeInfoBlock(slider);
 
-      const stickers = document.querySelectorAll('.sticker');
-
+      const stickers = slider.querySelectorAll('.sticker');
       stickers.forEach(sticker => {
-        // Reset animation if already applied
         sticker.classList.remove('animate-wiggle');
         void sticker.offsetWidth; // Force reflow
         sticker.classList.add('animate-wiggle');
 
-        // Remove class after animation ends to allow retrigger
         setTimeout(() => {
           sticker.classList.remove('animate-wiggle');
-        }, 1600); 
+        }, 1600);
       });
     });
+
+    // Initial call to set the info block for this slider
+    changeInfoBlock(slider);
+  }
+});
+
+/**
+ * Changes content of slideshow
+ * @param {HTMLElement} container - The parent element of the current slider
+ */
+function changeInfoBlock(container) {
+  const infoItems = ['title', 'excerpt', 'buttontext'];
+
+  let activeSlide = container.querySelector('.swiper-slide-active article');
+
+  infoItems.forEach((item) => {
+    let itemText = activeSlide?.dataset[item] || '';
+
+    const target = container.querySelector(`.slider-info-box #infoblock-${item}`);
+    if (itemText.length > 0) {
+      target?.classList.remove('infoblock__item--hide', 'infoblock__item--hide-notransition');
+      target?.textContent = itemText;
+    } else {
+      target?.classList.add('infoblock__item--hide-notransition');
+      target?.textContent = item;
     }
   });
 
-  // Initial call to set the info block
-  changeInfoBlock();
+  let buttonurl = activeSlide?.dataset.link || '';
+  let titleText = activeSlide?.dataset[infoItems[0]];
 
-  /**
-    * Changes content of slideshow 
-    */
-  function changeInfoBlock() {
-
-    const infoItems = ['title', 'excerpt', 'buttontext'];
-
-    infoItems.map((item)=>{
-
-      let activeItem = $(".wp-block-mm-bradentongulfislands-slider .swiper-slide-active");
-      let itemText = $('.wp-block-mm-bradentongulfislands-slider .swiper-wrapper').find('.swiper-slide-active article').data(item) || '';
-
-      if(itemText.length > 0) {
-        
-        $(`.slider-info-box #infoblock-${item}`).removeClass('infoblock__item--hide').removeClass('infoblock__item--hide-notransition').text(itemText);
-      }
-      else {
-
-        $(`.slider-info-box #infoblock-${item}`).addClass('infoblock__item--hide-notransition').text(item);
-      }
-    });
-
-    let buttonurl = $('.wp-block-mm-bradentongulfislands-slider .swiper-wrapper').find('.swiper-slide-active article').data('link') || '';
-    let titleText = $('.wp-block-mm-bradentongulfislands-slider .swiper-wrapper').find('.swiper-slide-active article').data(infoItems[0]);
-
-    if(buttonurl == '#' || buttonurl == ' ' || buttonurl.length < 1) {
-      $(`.slider-info-box #infoblock-buttonurl`).addClass('infoblock__item--hide');
-      $(`.slider-info-box #infoblock-buttonurl`).attr('href', '#');
-      $(`.slider-info-box #infoblock-buttonurl`).attr('aria-label', 'click here to read more');
-    }
-    else if(buttonurl.length > 0) {  
-      $(`.slider-info-box #infoblock-buttonurl`).removeClass('infoblock__item--hide');
-      $(`.slider-info-box #infoblock-buttonurl`).attr('href', buttonurl);
-      $(`.slider-info-box #infoblock-buttonurl`).attr('aria-label', titleText);
+  const button = container.querySelector('.slider-info-box #infoblock-buttonurl');
+  if (button) {
+    if (!buttonurl || buttonurl === '#' || buttonurl.trim() === '') {
+      button.classList.add('infoblock__item--hide');
+      button.setAttribute('href', '#');
+      button.setAttribute('aria-label', 'click here to read more');
+    } else {
+      button.classList.remove('infoblock__item--hide');
+      button.setAttribute('href', buttonurl);
+      button.setAttribute('aria-label', titleText || 'click here to read more');
     }
   }
+}
+
 }
