@@ -217,26 +217,29 @@ sliders.forEach((slider, index) => {
  */
 function changeInfoBlock(container) {
   const infoItems = ['title', 'excerpt', 'buttontext'];
-
   let activeSlide = container.querySelector('.swiper-slide-active article');
 
   infoItems.forEach((item) => {
     let itemText = activeSlide?.dataset[item] || '';
-
     const target = container.querySelector(`.slider-info-box #infoblock-${item}`);
+
     if (itemText.length > 0) {
       target?.classList.remove('infoblock__item--hide', 'infoblock__item--hide-notransition');
-      target?.textContent = itemText;
+      if (target) {
+        target.textContent = itemText;
+      }
     } else {
       target?.classList.add('infoblock__item--hide-notransition');
-      target?.textContent = item;
+      if (target) {
+        target.textContent = item;
+      }
     }
   });
 
   let buttonurl = activeSlide?.dataset.link || '';
   let titleText = activeSlide?.dataset[infoItems[0]];
-
   const button = container.querySelector('.slider-info-box #infoblock-buttonurl');
+
   if (button) {
     if (!buttonurl || buttonurl === '#' || buttonurl.trim() === '') {
       button.classList.add('infoblock__item--hide');
@@ -249,5 +252,6 @@ function changeInfoBlock(container) {
     }
   }
 }
+
 
 }
