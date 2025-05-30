@@ -95,15 +95,10 @@ function render_block( $attrs, $content ) {
 
       // Exclude specific taxonomy terms for post type 'event'
       if ($attrs['postType'] === 'event') {
-        $queryArgs['tax_query'][] = array(
-        'taxonomy'  => 'eventastic_categories',
-        'field'     => 'slug',
-        'terms'     => array('premier-sports-campus-events'),
-        'operator'  => 'NOT IN'
-        );
+   
 
         // Add query argument to sort by start_date
-        $queryArgs['meta_key'] = 'start_date';
+        $queryArgs['meta_key'] = 'eventastic_start_date';
         $queryArgs['orderby'] = 'meta_value';
         $queryArgs['order'] = 'ASC';
 
@@ -111,13 +106,7 @@ function render_block( $attrs, $content ) {
         $queryArgs['meta_query'] = array(
           'relation' => 'AND',
           array(
-            'key'     => 'start_date',
-            'value'   => date('Y-m-d'),
-            'compare' => '>=',
-            'type'    => 'DATE'
-          ),
-          array(
-            'key'     => 'end_date',
+            'key'     => 'eventastic_start_date',
             'value'   => date('Y-m-d'),
             'compare' => '>=',
             'type'    => 'DATE'
