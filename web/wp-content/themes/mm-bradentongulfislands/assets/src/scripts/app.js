@@ -216,7 +216,7 @@ if ('serviceWorker' in navigator) {
 		scrollAnimation('.is-style-heading-shadow', 400, 'is-style-heading-shadow--shadow', true);
 		scrollAnimation('.rock-flag', 400, 'rock-flag--rocking');
 
-		scrollAnimation('.fade-up', 400, 'fade-up--animate', true);
+		scrollAnimation('.fade-up', 300, 'fade-up--animate', true);
 		scrollAnimation('.small-circ-down', 400, 'small-circ-down--rotate', true);
 		scrollAnimation('.sticker', 500, 'sticker--zoom-in', true);
 		scrollAnimation('.share-the-love-bg::after', 400, 'share-the-love-bg::after--zoom-in', true);

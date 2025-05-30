@@ -59,6 +59,7 @@
         transition: all 0.3s ease-in-out;
         transform-box: fill-box;
         transform-origin: center;  
+        transform: scale(1);
 
 
         &:hover {
@@ -348,5 +349,5 @@ SMALL SCREENS
 
 .bounce-scale {
   animation: bounce-scale 1s ease;
-  transform: scale(1.05);
+  transform: scale(1);
 }
