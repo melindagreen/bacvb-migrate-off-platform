@@ -78,20 +78,52 @@ function render_block( $attrs, $content ) {
 			  'order'           => 'desc'
 			);
   
-			if ($attrs['enableTaxFilter']) {
-			  $termIds = array();
-			  foreach ($attrs['taxonomyTerms'] as $term) {
-				$termIds[] = $term['id'];
-			  }
+      if ($attrs['enableTaxFilter']) {
+        $termIds = array();
+        foreach ($attrs['taxonomyTerms'] as $term) {
+        $termIds[] = $term['id'];
+        }
   
-			  $queryArgs['tax_query'] = array(
-				array(
-				  'taxonomy'  => $attrs['taxonomyFilter'],
-				  'field'     => 'id',
-				  'terms'     => $termIds
-				)
-			  );
-			}
+        $queryArgs['tax_query'] = array(
+        array(
+          'taxonomy'  => $attrs['taxonomyFilter'],
+          'field'     => 'id',
+          'terms'     => $termIds
+        )
+        );
+      }
+
+      // Exclude specific taxonomy terms for post type 'event'
+      if ($attrs['postType'] === 'event') {
+        $queryArgs['tax_query'][] = array(
+        'taxonomy'  => 'eventastic_categories',
+        'field'     => 'slug',
+        'terms'     => array('premier-sports-campus-events'),
+        'operator'  => 'NOT IN'
+        );
+
+        // Add query argument to sort by start_date
+        $queryArgs['meta_key'] = 'start_date';
+        $queryArgs['orderby'] = 'meta_value';
+        $queryArgs['order'] = 'ASC';
+
+        // Filter to show only upcoming events
+        $queryArgs['meta_query'] = array(
+          'relation' => 'AND',
+          array(
+            'key'     => 'start_date',
+            'value'   => date('Y-m-d'),
+            'compare' => '>=',
+            'type'    => 'DATE'
+          ),
+          array(
+            'key'     => 'end_date',
+            'value'   => date('Y-m-d'),
+            'compare' => '>=',
+            'type'    => 'DATE'
+          )
+        );
+      }
   
 			$posts = new \WP_Query($queryArgs);
 
