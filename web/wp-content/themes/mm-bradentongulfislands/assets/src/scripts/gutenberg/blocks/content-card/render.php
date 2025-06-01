@@ -134,7 +134,7 @@ function render_block( $attrs, $content ) {
         <?php } ?>
 
         <?php if ($attrs['displayReadMore']) { ?>
-          <div class="read-more"><?php echo $attrs['readMoreText']; ?></div>
+          <a href="<?php echo esc_url(get_the_permalink($id)); ?>" class="read-more"><?php echo $attrs['readMoreText']; ?></a>
         <?php } ?>
 
       <?php } ?>

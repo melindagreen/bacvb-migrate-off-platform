@@ -31,7 +31,7 @@ const FerryStop = ({ attributes, setAttributes }) => {
         BRADENTON_RIVER_WALK: 'Bradenton Riverwalk',
         ANNA_MARIE_CITY_PIER: 'Anna Maria City Pier',
         GULF_ISLANDS_FERRY: 'Gulf Islands Ferry',
-        HRRIG_CENTER: 'HRRIG Center',
+        HERRIG_CENTER: 'HERRIG Center',
         MANATEE_PERFORMING_ARTS: 'Manatee Performing Arts',
         VILLAGE_OF_THE_ARTS: 'Village of the Arts',
       };

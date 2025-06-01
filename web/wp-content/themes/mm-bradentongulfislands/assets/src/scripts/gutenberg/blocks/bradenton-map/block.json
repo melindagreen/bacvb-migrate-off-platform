@@ -179,15 +179,15 @@
     "type": "number",
     "default": 0
   },
-  "HRRIG_CENTERDescription": {
+  "HERRIG_CENTERDescription": {
     "type": "string",
     "default": ""
   },
-  "HRRIG_CENTERUrl": {
+  "HERRIG_CENTERUrl": {
     "type": "string",
     "default": ""
   },
-  "HRRIG_CENTERMediaId": {
+  "HERRIG_CENTERMediaId": {
     "type": "number",
     "default": 0
   },

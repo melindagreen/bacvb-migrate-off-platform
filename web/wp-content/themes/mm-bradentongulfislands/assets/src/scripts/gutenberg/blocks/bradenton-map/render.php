@@ -10,7 +10,7 @@ use MaddenNino\Library\Constants as Constants;
  */
 function render_block( $attrs, $content ) {
 
-  $ferryStops = ['BRIDGE_STREET_FERRY_STOP' => 'Bridge Street Ferry Stop', 'LAKEWOOD_RANCH' => 'Lakewood Ranch','LAKE_MANATEE_STATE_PARK'=> 'Lake Manatee State Park','ANNA_MARIE_ISLAND'=> 'Anna Maria Island','LONGBOAT_KEY'=> 'Longboat Key','ROBINSON_PRESERVE' => 'Robinson Preserve','CORTEZ'=> 'Cortez', 'DESOTO' => 'DeSoto National Memorial','BISHOP_MUSEUM'=> 'Bishop Museum','BRADENTON_RIVER_WALK' => 'Bradenton Riverwalk','ANNA_MARIE_CITY_PIER'=> 'Anna Maria City Pier','GULF_ISLANDS_FERRY'=> 'Gulf Islands Ferry','HRRIG_CENTER'=> 'HRRIG Center','MANATEE_PERFORMING_ARTS'=> 'Manatee Performing Arts','VILLAGE_OF_THE_ARTS'=> 'Village of the Arts'];
+  $ferryStops = ['BRIDGE_STREET_FERRY_STOP' => 'Bridge Street Ferry Stop', 'LAKEWOOD_RANCH' => 'Lakewood Ranch','LAKE_MANATEE_STATE_PARK'=> 'Lake Manatee State Park','ANNA_MARIE_ISLAND'=> 'Anna Maria Island','LONGBOAT_KEY'=> 'Longboat Key','ROBINSON_PRESERVE' => 'Robinson Preserve','CORTEZ'=> 'Cortez', 'DESOTO' => 'DeSoto National Memorial','BISHOP_MUSEUM'=> 'Bishop Museum','BRADENTON_RIVER_WALK' => 'Bradenton Riverwalk','ANNA_MARIE_CITY_PIER'=> 'Anna Maria City Pier','GULF_ISLANDS_FERRY'=> 'Gulf Islands Ferry','HERRIG_CENTER'=> 'Herrig Center','MANATEE_PERFORMING_ARTS'=> 'Manatee Performing Arts','VILLAGE_OF_THE_ARTS'=> 'Village of the Arts'];
   $stylesheet_directory_uri = get_stylesheet_directory_uri();
 
   $html = "<div class='" . Constants::BLOCK_CLASS . "-bradenton-map is-style-collage-square'>";
