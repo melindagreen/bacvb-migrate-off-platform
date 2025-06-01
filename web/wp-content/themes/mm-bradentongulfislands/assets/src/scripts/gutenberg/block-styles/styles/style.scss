@@ -1469,10 +1469,11 @@ BUTTONS
     position: relative;
     max-width: 300px !important;
 
-    &:not(.has-background)::before, &:not(.has-background)::after {
+    &::before, &::after {
 
         content: "";
         display: block;
+        position: absolute;
         position: absolute;
         bottom: 0;
         left: -0.65rem;
@@ -1482,7 +1483,7 @@ BUTTONS
         background-size: cover;
     }
 
-    &:not(.has-background)::after {
+    &::after {
 
         right: -0.65rem;
         transform: rotate(180deg);
@@ -1529,8 +1530,11 @@ BUTTONS
             display: inline-block;
           }
       }
+}
 
-      &.has-background {
+.is-style-arrow-background {
+
+    .wp-block-button__link {
 
         --webkit-mask: url("images/collage-square-long.svg") no-repeat center;
         mask: url("images/collage-square-long.svg") no-repeat center;
@@ -1544,14 +1548,13 @@ BUTTONS
 
         z-index: 3;
 
-        .wp-block-button__link {
+    
 
-            &::after {
+        &::after {
 
-                background: url('images/blue-arrow.png') no-repeat;
-            }
-
+            background: url('images/blue-arrow.png') no-repeat;
         }
+
     }
 }
 
