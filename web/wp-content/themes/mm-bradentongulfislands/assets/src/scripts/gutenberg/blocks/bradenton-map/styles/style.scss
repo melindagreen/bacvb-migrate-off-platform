@@ -1,5 +1,6 @@
 @import 'styles/utils/variables';
 @import 'styles/utils/typography';
+@import 'styles/utils/mixins';
 
 .#{$block-prefix}-bradenton-map {
   position: relative;
@@ -146,6 +147,10 @@
   width: 30rem;
   transition: all 0.3s ease-in-out;
 
+  @include screen-sm-max {
+    width: 100%;
+  }
+
   .close {
 
     font-size: 1.6rem;
@@ -226,6 +231,10 @@
           transition: all 0.3s ease-in-out;
           width: fit-content;
           text-align: center;
+
+          @include  screen-sm-max {
+            padding: 1rem 1rem;
+          }
 
           a {
 
