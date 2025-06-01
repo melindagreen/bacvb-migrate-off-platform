@@ -1469,11 +1469,10 @@ BUTTONS
     position: relative;
     max-width: 300px !important;
 
-    &::before, &::after {
+    &:not(.has-background)::before, &:not(.has-background)::after {
 
         content: "";
         display: block;
-        position: absolute;
         position: absolute;
         bottom: 0;
         left: -0.65rem;
@@ -1483,11 +1482,26 @@ BUTTONS
         background-size: cover;
     }
 
-    &::after {
+    &:not(.has-background)::after {
 
         right: -0.65rem;
         transform: rotate(180deg);
         left: unset;
+    }
+
+    &.has-background {
+
+        --webkit-mask: url("images/collage-square-long.svg") no-repeat center;
+        mask: url("images/collage-square-long.svg") no-repeat center;
+        --webkit-mask-size: 100% 100%;
+        mask-size: 100% 100%;
+    
+        @media only screen and (max-width: $screen-sm) {
+            --webkit-mask-size: 200% 100%;
+            mask-size: 200% 100%;
+        }
+
+        z-index: 3;
     }
 
     .wp-block-button__link {
