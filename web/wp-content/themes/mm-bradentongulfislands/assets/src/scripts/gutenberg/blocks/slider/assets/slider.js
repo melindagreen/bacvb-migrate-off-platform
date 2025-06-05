@@ -40,7 +40,7 @@ export const initSwiperSliders = (adminSlider = null, wrapperClass, slideClass) 
     const originalSlides = slider.querySelectorAll('.swiper-slide:not(.swiper-slide-duplicate)');
     let neededClones = 0;
 
-    if (originalSlides.length > 0 && originalSlides.length < MIN_SLIDES && slider.dataset.loop && effect === 'cards') {
+    if (originalSlides.length > 0 && originalSlides.length < MIN_SLIDES && slider.dataset.loop && (effect === 'cards' || effect === 'slide')) {
      
       neededClones = MIN_SLIDES - originalSlides.length;
       for (let i = 0; i < neededClones; i++) {
