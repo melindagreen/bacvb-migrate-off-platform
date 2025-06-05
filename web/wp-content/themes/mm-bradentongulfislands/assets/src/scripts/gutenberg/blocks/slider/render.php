@@ -94,7 +94,7 @@ function render_block( $attrs, $content ) {
       }
 
       // Exclude specific taxonomy terms for post type 'event'
-      if ($attrs['postType'] === 'event' &&$attrs['contentType'] === 'automatic') {
+      if ($attrs['postType'] === 'event' && $attrs['contentType'] === 'automatic') {
    
 
         // Add query argument to sort by start_date
