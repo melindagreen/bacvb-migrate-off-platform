@@ -360,6 +360,8 @@ $colorPalette: "black", "gray", "tan", "white", "red";
 
 	&.card-style-signature-card {
 
+		overflow-y: hidden;
+
 		.swiper-slide {
 			article {
 
