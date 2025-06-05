@@ -92,9 +92,7 @@ function render_block( $attrs, $content ) {
           $startDate = isset($meta['start_date']) ? strtotime($meta['start_date']) : null;
           $endDate = isset($meta['end_date']) ? strtotime($meta['end_date']) : null;
           $dateFormat = 'M jS';
-          if ($startDate && $endDate && (date('Y') != date('Y', $startDate) || date('Y') != date('Y', $endDate))) {
-        $dateFormat .= ', Y'; // Only show year if it's not the current year
-          }
+ 
 
           $formattedDates = $startDate && $endDate ? date($dateFormat, $startDate) . ' - ' . date($dateFormat, $endDate) : '';
         ?>
