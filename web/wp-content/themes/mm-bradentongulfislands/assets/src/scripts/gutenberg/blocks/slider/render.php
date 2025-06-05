@@ -94,25 +94,25 @@ function render_block( $attrs, $content ) {
       }
 
       // Exclude specific taxonomy terms for post type 'event'
-      if ($attrs['postType'] === 'event' && $attrs['contentType'] === 'automatic') {
+      // if ($attrs['postType'] === 'event' && $attrs['contentType'] === 'automatic') {
    
 
-        // Add query argument to sort by start_date
-        $queryArgs['meta_key'] = 'eventastic_start_date';
-        $queryArgs['orderby'] = 'meta_value';
-        $queryArgs['order'] = 'ASC';
+      //   // Add query argument to sort by start_date
+      //   $queryArgs['meta_key'] = 'eventastic_start_date';
+      //   $queryArgs['orderby'] = 'meta_value';
+      //   $queryArgs['order'] = 'ASC';
 
-        // Filter to show only upcoming events
-        $queryArgs['meta_query'] = array(
-          'relation' => 'AND',
-          array(
-            'key'     => 'eventastic_start_date',
-            'value'   => date('Y-m-d'),
-            'compare' => '>=',
-            'type'    => 'DATE'
-          )
-        );
-      }
+      //   // Filter to show only upcoming events
+      //   $queryArgs['meta_query'] = array(
+      //     'relation' => 'AND',
+      //     array(
+      //       'key'     => 'eventastic_start_date',
+      //       'value'   => date('Y-m-d'),
+      //       'compare' => '>=',
+      //       'type'    => 'DATE'
+      //     )
+      //   );
+      // }
   
 			$posts = new \WP_Query($queryArgs);
 
