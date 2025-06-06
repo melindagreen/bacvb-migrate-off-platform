@@ -15,6 +15,14 @@
     "type": "string",
     "default": "view"
   },
+  "PINE_AVENUEDescription": {
+    "type": "string",
+    "default": ""
+  },
+  "PINE_AVENUEUrl": {
+    "type": "string",
+    "default": ""
+  },
   "BRIDGE_STREET_FERRY_STOPDescription": {
     "type": "string",
     "default": ""

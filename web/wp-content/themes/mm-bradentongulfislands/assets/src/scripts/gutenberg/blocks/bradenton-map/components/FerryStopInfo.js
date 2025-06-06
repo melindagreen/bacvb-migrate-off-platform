@@ -34,6 +34,7 @@ const FerryStop = ({ attributes, setAttributes }) => {
         HERRIG_CENTER: 'HERRIG Center',
         MANATEE_PERFORMING_ARTS: 'Manatee Performing Arts',
         VILLAGE_OF_THE_ARTS: 'Village of the Arts',
+        PINE_AVENUE: 'Pine Avenue'
       };
 
     return (
