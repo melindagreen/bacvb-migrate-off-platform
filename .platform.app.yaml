@@ -88,6 +88,7 @@ dependencies:
     yarn: "^1.22.4"
   php:
     composer/composer: '2.2.12'
+    wp-cli/wp-cli: "^2.5.0"
 
 # The mounts that will be performed when the package is deployed.
 mounts:

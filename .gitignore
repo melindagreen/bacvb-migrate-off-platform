@@ -1,5 +1,7 @@
 # Ignore Composer packages
 /vendor/
+*.lock
+composer.lock
 
 # Ignore Node modules
 *node_modules*

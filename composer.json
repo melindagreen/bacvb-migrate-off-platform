@@ -41,6 +41,10 @@
     },
     {
       "type": "vcs",
+      "url": "git@github.com:maddenmedia/server-status.git"
+    },
+    {
+      "type": "vcs",
       "url": "git@github.com:maddenmedia/wp-plugin-madden-cookie-consent.git"
     },
     {
@@ -85,6 +89,7 @@
     "maddenmedia/kraken-purge": "v1.1",
     "maddenmedia/wp-plugin-eventastic": "*",
     "maddenmedia/wp-plugin-madden-banners": "*",
+    "maddenmedia/server-status": "1.5.2",
     "platformsh/config-reader": "^2.0",
     "psy/psysh": "^0.10.8",
     "tonik/cli": "^3.0",
