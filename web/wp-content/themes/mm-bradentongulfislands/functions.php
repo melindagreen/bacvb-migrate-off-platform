@@ -43,3 +43,13 @@ function init_child_theme() {
     new Library\RestApi;
 }
 add_action( 'after_setup_theme', 'MaddenNino\init_child_theme' );
+
+add_action( 'after_setup_theme', function () {
+    add_theme_support( 'lightbox' );
+} );
+add_action( 'wp_enqueue_scripts', function () {
+    if ( current_theme_supports( 'lightbox' ) ) {
+        wp_enqueue_script( 'wp-lightbox' );
+        wp_enqueue_style( 'wp-lightbox' );
+    }
+} );
