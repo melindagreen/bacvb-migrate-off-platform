@@ -2,6 +2,10 @@
   "$schema": "https://schemas.wp.org/trunk/theme.json",
   "version": 2,
   "settings": {
+    "lightbox": {
+      "allowEditing": false,
+      "enabled": true
+    },
     "custom": {
       "prefix": "mm-bradentongulfislands"
     },
