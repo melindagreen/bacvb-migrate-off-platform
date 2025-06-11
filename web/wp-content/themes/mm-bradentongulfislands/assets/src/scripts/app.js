@@ -98,6 +98,17 @@ if ('serviceWorker' in navigator) {
 	/** Lightbox **/
 	function lightBox() {
 
+		// $('.lightbox-imagecarousel').each(function(index) {
+		// const $carousel = $(this);
+		// const $lbContent = $carousel.next('.lb-content'); 
+		// const $overlay = $('.wp-lightbox-overlay .lightbox-image-container').eq(index);
+
+		// $overlay.append($carousel);
+		// if ($lbContent.length) {
+		// 	$overlay.append($lbContent);
+		// }
+		// });
+
 		$('.lb-content:not(.wp-lightbox-overlay .lightbox-image-container .lb-content), .lightbox-imagecarousel:not(.wp-lightbox-overlay .lightbox-image-container .lightbox-imagecarousel').each(function() {
 			$(this).remove();  
 		});
@@ -216,7 +227,7 @@ if ('serviceWorker' in navigator) {
 		scrollAnimation('.is-style-heading-shadow', 400, 'is-style-heading-shadow--shadow', true);
 		scrollAnimation('.rock-flag', 400, 'rock-flag--rocking');
 
-		scrollAnimation('.fade-up', 400, 'fade-up--animate', true);
+		scrollAnimation('.fade-up', 500, 'fade-up--animate', true);
 		scrollAnimation('.small-circ-down', 400, 'small-circ-down--rotate', true);
 		scrollAnimation('.sticker', 500, 'sticker--zoom-in', true);
 		scrollAnimation('.share-the-love-bg::after', 400, 'share-the-love-bg::after--zoom-in', true);

@@ -84,6 +84,20 @@ function render_block( $attrs, $content ) {
 
 		<div class="content">
 
+      <?php if($attrs['cardStyle'] === 'signature-card'){ ?>
+        <?php 
+          $meta = eventastic_get_event_meta($id);
+
+          // Calculate dates
+          $startDate = isset($meta['start_date']) ? strtotime($meta['start_date']) : null;
+          $endDate = isset($meta['end_date']) ? strtotime($meta['end_date']) : null;
+          $dateFormat = 'M jS';
+ 
+
+          $formattedDates = $startDate && $endDate ? date($dateFormat, $startDate) . ' - ' . date($dateFormat, $endDate) : '';
+        ?>
+        <div class="post-date"><?php echo esc_html($formattedDates); ?></div>
+      <?php } ?>
 
 			<?php if ($attrs['displayAdditionalContent'] && ($attrs['displayCategory'])) { ?>
 			<div class="post-meta">
@@ -118,7 +132,7 @@ function render_block( $attrs, $content ) {
         <?php } ?>
 
         <?php if ($attrs['displayReadMore']) { ?>
-          <div class="read-more"><?php echo $attrs['readMoreText']; ?></div>
+          <a href="<?php echo esc_url(get_the_permalink($id)); ?>" class="read-more"><?php echo $attrs['readMoreText']; ?></a>
         <?php } ?>
 
       <?php } ?>

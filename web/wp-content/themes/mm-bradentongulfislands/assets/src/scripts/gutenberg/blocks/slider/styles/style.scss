@@ -357,4 +357,126 @@ $colorPalette: "black", "gray", "tan", "white", "red";
 		}
 
 	}
+
+	&.card-style-signature-card {
+
+		overflow-y: hidden;
+
+		.swiper-slide {
+			article {
+
+				opacity: 0;
+				@include standard-transition;
+			}
+		}
+
+		.swiper-slide-active {
+			article {
+
+				opacity: 1;
+				transform: scale(1);
+				@include standard-transition;
+			}
+		}
+
+		.swiper-slide-prev, .swiper-slide-next {
+
+
+			article {
+
+				@include standard-transition;
+				opacity: 0.8 !important;
+				transform: scale(0.8);
+				background-color: #F1EADC;
+
+				.post-date {
+
+					background-color: $bradenton-teal;
+				}
+				.post-title {
+
+					color: $rust;
+					text-shadow: 3px 3px 0 white;
+				}
+			}
+		}
+
+		.swiper {
+
+			overflow: visible;
+			height: 45rem;
+		}
+
+		.swiper-navigation-wrapper {
+
+			position: absolute;
+			right: 4rem;
+			bottom: 50%;
+			transform: translateY(50%);
+			z-index: 3;
+
+
+			@include screen-sm-max {
+				bottom: 0;
+				right: 50%;
+				transform: translate(50%, 50%) rotate(90deg);
+			}
+		}
+
+		.swiper-pagination {
+
+			position: static;
+			transform: unset;
+
+			.swiper-pagination-bullet {
+
+				margin-left: auto;
+			}
+		}
+
+		.swiper-button-prev,
+		.swiper-button-next {
+				background-color: transparent;
+				margin: 0;
+				position: absolute;
+				left: 1rem;
+
+				&:after {
+					color: color("bradenton-teal");
+					font-size: 1rem;
+					border: solid transparent;
+					border-width: 0 0.9rem 0.9rem 0.9rem;
+					border-bottom-color: color("bradenton-teal");
+					content: "";
+					display: inline-block;
+					height: 0;
+					width: 0;
+				}
+				&:hover {
+					background-color: transparent;
+					&:after {
+						opacity: 0.8;
+					}
+				}
+				@each $color in $colorPalette {
+					&[data-color="#{$color}"] {
+						&:after {
+							border-bottom-color: color("#{$color}");
+						}
+					}
+					&[data-color-background="#{$color}"] {
+						background-color: color("#{$color}");
+					}
+				}
+		}
+
+		.swiper-button-prev {
+			position: relative;
+			top: 0.5rem;
+		}
+		.swiper-button-next {
+			transform: rotate(180deg);
+			position: relative;
+		}
+	}
 }

@@ -180,6 +180,11 @@
                 "name": "quick-links",
                 "label": "Quick Links",
                 "isDefault": false
+            },
+            {
+                "name": "arrow-background",
+                "label": "Arrow Background",
+                "isDefault": false
             }
         ]
     },

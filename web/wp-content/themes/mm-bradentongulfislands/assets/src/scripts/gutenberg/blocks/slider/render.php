@@ -17,6 +17,7 @@ function render_block( $attrs, $content ) {
   $classes = [
     Constants::BLOCK_CLASS.'-slider',
     'slider-type-'.$attrs['contentType'],
+    'card-style-'.$attrs['cardStyle'],
     $className,
     $arrowPosition
   ];
@@ -77,20 +78,56 @@ function render_block( $attrs, $content ) {
 			  'order'           => 'desc'
 			);
   
-			if ($attrs['enableTaxFilter']) {
-			  $termIds = array();
-			  foreach ($attrs['taxonomyTerms'] as $term) {
-				$termIds[] = $term['id'];
-			  }
+      if ($attrs['enableTaxFilter']) {
+        $termIds = array();
+        foreach ($attrs['taxonomyTerms'] as $term) {
+        $termIds[] = $term['id'];
+        }
   
-			  $queryArgs['tax_query'] = array(
-				array(
-				  'taxonomy'  => $attrs['taxonomyFilter'],
-				  'field'     => 'id',
-				  'terms'     => $termIds
-				)
-			  );
-			}
+        $queryArgs['tax_query'] = array(
+        array(
+          'taxonomy'  => $attrs['taxonomyFilter'],
+          'field'     => 'id',
+          'terms'     => $termIds
+        )
+        );
+      }
+
+      // Exclude specific taxonomy terms for post type 'event'
+      if ($attrs['postType'] === 'event' && $attrs['contentType'] === 'automatic') {
+   
+
+        // // Add query argument to sort by start_date
+        // $queryArgs['meta_key'] = 'eventastic_start_date';
+        // $queryArgs['orderby'] = 'meta_value';
+        // $queryArgs['order'] = 'ASC';
+
+        // Filter to show only upcoming events
+        $queryArgs['meta_query'] = array(
+          array(
+            'relation' => 'OR',
+            array(
+              'key'     => 'eventastic_start_date',
+              'value'   => date('Y-m-d'),
+              'compare' => '>=',
+              'type'    => 'DATE'
+            ),
+            array(
+              'key'     => 'eventastic_end_date',
+              'value'   => date('Y-m-d'),
+              'compare' => '>=',
+              'type'    => 'DATE'
+            )
+          )
+        );
+
+        $queryArgs['tax_query'][] = array(
+            'taxonomy' => 'eventastic_categories',
+            'terms' => array(207),
+            'field' => 'term_id',
+            'operator' => 'NOT IN',
+        );
+      }
   
 			$posts = new \WP_Query($queryArgs);
 
@@ -178,11 +215,14 @@ function render_block( $attrs, $content ) {
     if ($attrs['enableScrollbar']) {
       echo '<div class="swiper-scrollbar" data-color="'.$scrollbar_color.'"></div>';
     }
+    if ($attrs['enableArrowNavigation']) {
+      echo '<div class="swiper-button-prev" data-color="'.$arrow_color.'" data-color-background="'.$arrow_color_bg.'"></div>';
+    }
     if ($attrs['enablePagination']) {
       echo '<div class="swiper-pagination" data-color="'.$dot_color.'" data-color-active="'.$dot_color_active.'"></div>';
     }
     if ($attrs['enableArrowNavigation']) {
-      echo '<div class="swiper-button-prev" data-color="'.$arrow_color.'" data-color-background="'.$arrow_color_bg.'"></div><div class="swiper-button-next" data-color="'.$arrow_color.'" data-color-background="'.$arrow_color_bg.'"></div>';
+      echo '<div class="swiper-button-next" data-color="'.$arrow_color.'" data-color-background="'.$arrow_color_bg.'"></div>';
     }
     echo '</div>';
   }

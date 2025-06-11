@@ -40,7 +40,7 @@ export const initSwiperSliders = (adminSlider = null, wrapperClass, slideClass) 
     const originalSlides = slider.querySelectorAll('.swiper-slide:not(.swiper-slide-duplicate)');
     let neededClones = 0;
 
-    if (originalSlides.length > 0 && originalSlides.length < MIN_SLIDES && slider.dataset.loop && effect === 'cards') {
+    if (originalSlides.length > 0 && originalSlides.length < MIN_SLIDES && slider.dataset.loop && (effect === 'cards' || effect === 'slide')) {
      
       neededClones = MIN_SLIDES - originalSlides.length;
       for (let i = 0; i < neededClones; i++) {
@@ -81,6 +81,14 @@ export const initSwiperSliders = (adminSlider = null, wrapperClass, slideClass) 
 
     return new Swiper(slider, {
       effect: effect,
+
+      coverflowEffect: {
+        rotate: 0,
+        stretch: 0,
+        depth: 0,
+        modifier: 1,
+        slideShadows: false,
+      },
       cardsEffect: cardsEffect,
       initialSlide: initialSlide,
 
@@ -214,8 +222,8 @@ export const initSwiperSliders = (adminSlider = null, wrapperClass, slideClass) 
 
     infoItems.map((item)=>{
 
-      let activeItem = $(".wp-block-mm-bradentongulfislands-slider .swiper-slide-active");
-      let itemText = $('.wp-block-mm-bradentongulfislands-slider .swiper-wrapper').find('.swiper-slide-active article').data(item) || '';
+      let activeItem = $(".wp-block-mm-bradentongulfislands-slider.slider-arrows-below .swiper-slide-active");
+      let itemText = $('.wp-block-mm-bradentongulfislands-slider.slider-arrows-below .swiper-wrapper').find('.swiper-slide-active article').data(item) || '';
 
       if(itemText.length > 0) {
         
@@ -227,8 +235,8 @@ export const initSwiperSliders = (adminSlider = null, wrapperClass, slideClass) 
       }
     });
 
-    let buttonurl = $('.wp-block-mm-bradentongulfislands-slider .swiper-wrapper').find('.swiper-slide-active article').data('link') || '';
-    let titleText = $('.wp-block-mm-bradentongulfislands-slider .swiper-wrapper').find('.swiper-slide-active article').data(infoItems[0]);
+    let buttonurl = $('.wp-block-mm-bradentongulfislands-slider.slider-arrows-below .swiper-wrapper').find('.swiper-slide-active article').data('link') || '';
+    let titleText = $('.wp-block-mm-bradentongulfislands-slider.slider-arrows-below .swiper-wrapper').find('.swiper-slide-active article').data(infoItems[0]);
 
     if(buttonurl == '#' || buttonurl == ' ' || buttonurl.length < 1) {
       $(`.slider-info-box #infoblock-buttonurl`).addClass('infoblock__item--hide');
