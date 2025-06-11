@@ -98,16 +98,16 @@ if ('serviceWorker' in navigator) {
 	/** Lightbox **/
 	function lightBox() {
 
-		$('.lightbox-imagecarousel').each(function(index) {
-		const $carousel = $(this);
-		const $lbContent = $carousel.next('.lb-content'); 
-		const $overlay = $('.wp-lightbox-overlay .lightbox-image-container').eq(index);
+		// $('.lightbox-imagecarousel').each(function(index) {
+		// const $carousel = $(this);
+		// const $lbContent = $carousel.next('.lb-content'); 
+		// const $overlay = $('.wp-lightbox-overlay .lightbox-image-container').eq(index);
 
-		$overlay.append($carousel);
-		if ($lbContent.length) {
-			$overlay.append($lbContent);
-		}
-		});
+		// $overlay.append($carousel);
+		// if ($lbContent.length) {
+		// 	$overlay.append($lbContent);
+		// }
+		// });
 
 		$('.lb-content:not(.wp-lightbox-overlay .lightbox-image-container .lb-content), .lightbox-imagecarousel:not(.wp-lightbox-overlay .lightbox-image-container .lightbox-imagecarousel').each(function() {
 			$(this).remove();  
