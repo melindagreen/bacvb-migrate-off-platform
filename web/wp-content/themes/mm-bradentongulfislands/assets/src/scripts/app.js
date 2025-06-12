@@ -560,25 +560,31 @@ if ('serviceWorker' in navigator) {
 		 * @returns {null}
 		 */
 		function scrollAnimation(selector, scrollThreshold, animationClass, permanent = false) {
-			$(window).scroll(function() {
-				const scrollPosition = $(this).scrollTop();
-			
+			// Animation Logic
+			const runAnimation = () => {
+				const scrollPosition = $(window).scrollTop();
 				$(selector).each(function() {
-				  const itemOffset = $(this).offset().top;
-			
-				  if (scrollPosition > itemOffset - scrollThreshold && !$(this).hasClass(animationClass) && !$(this).hasClass('animationoff')) {
-					$(this).addClass(animationClass);
-					const that = this;
-					if(!permanent) {
-					setTimeout(function() {
-					  $(that).removeClass(animationClass);
-					  $(that).addClass('animationoff');
-					}, 400); 
+					const itemOffset = $(this).offset().top;
+					if (
+						scrollPosition > itemOffset - scrollThreshold &&
+						!$(this).hasClass(animationClass) &&
+						!$(this).hasClass('animationoff')
+					) {
+						$(this).addClass(animationClass);
+						const that = this;
+						if (!permanent) {
+							setTimeout(function() {
+								$(that).removeClass(animationClass);
+								$(that).addClass('animationoff');
+							}, 400);
+						}
 					}
-				  }
 				});
-			  });
-		  }
+			};
+
+			$(window).on('scroll', runAnimation);
+			runAnimation(); // Run on first load
+		}
 
 		  /**
 		 * Query Block Placeholder Image Injection
