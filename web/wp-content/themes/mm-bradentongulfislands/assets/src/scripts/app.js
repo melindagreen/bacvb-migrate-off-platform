@@ -563,10 +563,12 @@ if ('serviceWorker' in navigator) {
 			// Animation Logic
 			const runAnimation = () => {
 				const scrollPosition = $(window).scrollTop();
+				const thresholdPixels = scrollThreshold * window.innerHeight; // Make relative
+
 				$(selector).each(function() {
 					const itemOffset = $(this).offset().top;
 					if (
-						scrollPosition > itemOffset - scrollThreshold &&
+						scrollPosition > itemOffset - thresholdPixels &&
 						!$(this).hasClass(animationClass) &&
 						!$(this).hasClass('animationoff')
 					) {
@@ -583,8 +585,9 @@ if ('serviceWorker' in navigator) {
 			};
 
 			$(window).on('scroll', runAnimation);
-			setTimeout(runAnimation, 1000); // Run on first load after 1s delay
+			setTimeout(runAnimation, 2000); // Run on first load after 1s delay
 		}
+
 
 		  /**
 		 * Query Block Placeholder Image Injection
@@ -669,10 +672,10 @@ if ('serviceWorker' in navigator) {
         
 		toggleTopBarClasses();
 		toggleTopBannerClasses();
-		scrollAnimation('.is-style-arrow-button', 600, 'is-style-arrow-button--rotate');
-		scrollAnimation('.grid-item-body--2 .grid-item-body__arrow', 600, 'grid-item-body__arrow--forward');
-		scrollAnimation('.grid-item-body--3 .grid-item-body__arrow', 600, 'grid-item-body__arrow--rotate');
-		scrollAnimation('.grid-item-body--1 .grid-item-body__arrow', 600, 'grid-item-body__arrow--rotate');
+		scrollAnimation('.is-style-arrow-button', 0.75, 'is-style-arrow-button--rotate');
+		scrollAnimation('.grid-item-body--2 .grid-item-body__arrow', 0.75, 'grid-item-body__arrow--forward');
+		scrollAnimation('.grid-item-body--3 .grid-item-body__arrow', 0.75, 'grid-item-body__arrow--rotate');
+		scrollAnimation('.grid-item-body--1 .grid-item-body__arrow', 0.75, 'grid-item-body__arrow--rotate');
 
     }
 
