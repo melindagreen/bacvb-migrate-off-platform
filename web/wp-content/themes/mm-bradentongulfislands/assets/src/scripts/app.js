@@ -583,7 +583,7 @@ if ('serviceWorker' in navigator) {
 			};
 
 			$(window).on('scroll', runAnimation);
-			runAnimation(); // Run on first load
+			setTimeout(runAnimation, 1000); // Run on first load after 1s delay
 		}
 
 		  /**
