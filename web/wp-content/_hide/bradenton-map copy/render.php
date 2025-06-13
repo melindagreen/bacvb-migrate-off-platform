@@ -17,21 +17,7 @@ function render_block( $attrs, $content ) {
 
     $html .= '<div class="mapContainer">';
 
-      $html .= '<div class="mapViewArea">';
-        $html .= '<div class="controls">';
-          $html .= '<button id="zoom-in">';
-            $html .= '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Pro 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) --><path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"/></svg>';
-          $html .= '</button>';
-          $html .= '<button id="zoom-out">';
-            $html .= '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Pro 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) --><path d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"/></svg>';
-          $html .= '</button>';
-        $html .= '</div>';
-
-        $html .= '<div class="main-svg-wrapper">';
-          $html .= file_get_contents(get_stylesheet_directory() . '/assets/images/bradenton-map.svg');
-        $html .= '</div>';
-      $html .= '</div>';
-
+      $html .= file_get_contents(get_stylesheet_directory() . '/assets/images/bradenton-map.svg');
    $html .= '</div>';
     $html .= '<div class="bradenton-lightbox"><div class="close"><img height="25px" width="25px" src="/wp-content/themes/mm-bradentongulfislands/assets/images/icons/close-x.png" alt="close"></div>';
 

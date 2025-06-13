@@ -1,30 +1,30 @@
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap");
 /*********************
 FONTS
 *********************/
 @font-face {
-    font-family: "Lifehack";
-    src: url("fonts/Lifehack-Regular.otf") format("opentype");
-    font-weight: normal;
-    font-style: normal;
+  font-family: "Lifehack";
+  src: url("fonts/Lifehack-Regular.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
 }
 @font-face {
-    font-family: "Lifehack";
-    src: url("fonts/LifehackSans-Bold.otf") format("opentype");
-    font-weight: bold;
-    font-style: normal;
+  font-family: "Lifehack";
+  src: url("fonts/LifehackSans-Bold.otf") format("opentype");
+  font-weight: bold;
+  font-style: normal;
 }
 @font-face {
-    font-family: "Melburch";
-    src: url("fonts/Melburch-Stamp.otf") format("opentype");
-    font-weight: normal;
-    font-style: normal;
+  font-family: "Melburch";
+  src: url("fonts/Melburch-Stamp.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
 }
 @font-face {
-    font-family: "Melburch";
-    src: url("fonts/Melburch-Slanted.otf") format("opentype");
-    font-weight: normal;
-    font-style: italic;
+  font-family: "Melburch";
+  src: url("fonts/Melburch-Slanted.otf") format("opentype");
+  font-weight: normal;
+  font-style: italic;
 }
 
 // fonts
@@ -33,4 +33,4 @@ $font-header: var(--wp--preset--font-family--header);
 $font-body: var(--wp--preset--font-family--body);
 
 // links
-$link-color: color('red');
+//$link-color: color('red');

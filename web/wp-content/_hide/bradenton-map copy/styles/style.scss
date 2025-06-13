@@ -1,6 +1,6 @@
-@import "styles/utils/variables";
-@import "styles/utils/typography";
-@import "styles/utils/mixins";
+@import 'styles/utils/variables';
+@import 'styles/utils/typography';
+@import 'styles/utils/mixins';
 
 .#{$block-prefix}-bradenton-map {
   position: relative;
@@ -21,11 +21,12 @@
   }
 
   .mapContainer {
-    //height: fit-content;
+    height: fit-content;
     width: 100%;
     z-index: 1;
 
     .map-logo {
+
       position: absolute;
       top: 57%;
     }
@@ -34,58 +35,70 @@
       cursor: pointer;
       transition: all 0.3s;
 
-      &:hover,
-      &.active {
-        fill: rgba($bradenton-teal, 1) !important;
+      &:hover, &.active {
+        fill: rgba($bradenton-teal,1) !important;
       }
     }
 
     svg {
+
       width: 100%;
       height: 100%;
 
-      // @media screen and (max-width: $screen-sm) {
-      //   width: 186vw;
-      //   height: 650px;
-      //   position: relative;
-      //   right: 29vw;
-      // }
+
+      @media screen and (max-width: $screen-sm) {
+        
+        width: 186vw;
+        height: 650px;
+        position: relative;
+        right: 29vw;
+      }
 
       #ICONS g {
+
         cursor: pointer;
         transition: all 0.3s ease-in-out;
         transform-box: fill-box;
-        transform-origin: center;
+        transform-origin: center;  
         transform: scale(1);
 
+
         &:hover {
-          transition: all 0.3s ease-in-out;
-          // transform: scale(1.05);
+
+            transition: all 0.3s ease-in-out;
+            // transform: scale(1.05);
         }
       }
 
       .bradenton-stop {
+
         cursor: pointer;
         transition: all 0.3s ease-in-out;
         transform-box: fill-box;
-        transform-origin: center;
-
+        transform-origin: center;  
+        
         .st24 {
+
           transition: all 0.3s ease-in;
         }
 
         &:hover {
+
+
           .st24 {
+
             fill: $bradenton-teal;
             transition: all 0.2s ease-in-out;
           }
         }
       }
     }
+
   }
 }
 
 .ferry-map-help {
+
   text-align: center;
   width: fit-content;
   background-color: $bradenton-teal;
@@ -103,6 +116,7 @@
   padding: 0 2rem 0 3rem;
 
   h4 {
+
     font-family: $font-header;
     font-size: 0.9rem;
     color: $yellow-tan;
@@ -110,6 +124,7 @@
   }
 
   p {
+
     color: white;
     font-weight: 600;
     font-size: 1.85rem;
@@ -119,6 +134,7 @@
 }
 
 .bradenton-lightbox {
+
   transform: translateX(-100%);
   overflow-y: scroll;
   position: absolute;
@@ -127,7 +143,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #4ebbbb;
+  background-color: #4EBBBB;
   width: 30rem;
   transition: all 0.3s ease-in-out;
 
@@ -136,6 +152,7 @@
   }
 
   .close {
+
     font-size: 1.6rem;
     position: absolute;
     top: 4%;
@@ -146,6 +163,7 @@
   }
 
   &--on {
+
     transform: translateX(0);
     transition: all 0.3s ease-in-out;
   }
@@ -153,10 +171,7 @@
   .bradenton-card {
     visibility: hidden;
     transform: scale(0);
-    transition:
-      transform 0.3s ease,
-      opacity 0.3s ease,
-      visibility 0s 0.3s;
+    transition: transform 0.3s ease, opacity 0.3s ease, visibility 0s 0.3s; 
     opacity: 0;
     width: 1000px;
     max-width: 90%;
@@ -172,76 +187,76 @@
     padding: 0.25rem;
     line-height: 1.9em;
 
+
     &.pop-in {
-      visibility: visible;
-      transform: scale(1);
-      opacity: 1;
-      transition:
-        transform 0.3s ease,
-        opacity 0.3s ease;
+        visibility: visible;
+        transform: scale(1);
+        opacity: 1;
+        transition: transform 0.3s ease, opacity 0.3s ease; 
     }
 
     &.pop-out {
-      transform: scale(0);
-      opacity: 0;
-      visibility: hidden;
-      display: none;
-      transition:
-        transform 0.3s ease,
-        opacity 0.3s ease,
-        visibility 0s 0.3s;
+        transform: scale(0);
+        opacity: 0;
+        visibility: hidden;
+        display: none;
+        transition: transform 0.3s ease, opacity 0.3s ease, visibility 0s 0.3s;
     }
 
     &__content {
+
       width: 30rem;
       padding: 2rem 0;
 
-      h3 {
-        margin: 0 auto;
-        color: white;
-        font-size: 1.5rem;
-        font-family: $font-header;
-      }
-
-      p {
-        color: white;
-        font-size: 1.25rem;
-        min-height: 5.5rem;
-        margin-bottom: 2.5rem;
-      }
-
-      .bradenton-card-cta {
-        background-color: $rust;
-        color: white;
-        padding: 1rem 2rem;
-        border-radius: 20px;
-        transition: all 0.3s ease-in-out;
-        width: fit-content;
-        text-align: center;
-
-        @include screen-sm-max {
-          padding: 1rem 1rem;
+        h3 {
+            margin: 0 auto;
+            color: white;
+            font-size: 1.5rem;
+            font-family: $font-header;
         }
 
-        a {
+        p {
+            color: white;
+            font-size: 1.25rem;
+            min-height: 5.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .bradenton-card-cta {
+
+          background-color: $rust;
           color: white;
-          text-decoration: none;
-        }
+          padding: 1rem 2rem;
+          border-radius: 20px;
+          transition: all 0.3s ease-in-out;
+          width: fit-content;
+          text-align: center;
 
-        &:hover {
-          background-color: darken($bradenton-teal, 1.4);
-          transform: scale(1.1);
-          transition: all 0.2s ease-in-out;
+          @include  screen-sm-max {
+            padding: 1rem 1rem;
+          }
+
+          a {
+
+            color: white;
+            text-decoration: none;
+          }
+
+          &:hover {
+
+            background-color: darken($bradenton-teal,1.4);
+            transform: scale(1.1);
+            transition: all 0.2s ease-in-out;
+          }
         }
-      }
     }
 
     img {
-      width: 280px;
-      height: 300px;
-      object-fit: cover;
+        width: 280px;
+        height: 300px;
+        object-fit: cover;
     }
-  }
+}
 }
 
 /*********************
@@ -249,31 +264,36 @@ SMALL SCREENS
 *********************/
 @media only screen and (max-width: $screen-md) {
   .#{$block-prefix}-bradenton-map {
+
     height: max-content;
     overflow: hidden;
 
     #bradentonRiverwalk {
-      transform: translate(-8831px, 3277.174px) scale(1.7);
+      transform: translate(-8831px, 3277.174px) scale(1.7); 
     }
     #bridgeStreet {
-      transform: translate(-8861px, 3277.174px) scale(1.7);
+      transform: translate(-8861px, 3277.174px) scale(1.7); 
     }
     #ami {
-      transform: translate(-8861px, 3277.174px) scale(1.7);
+      transform: translate(-8861px, 3277.174px) scale(1.7); 
     }
 
-    .ferry-map-help {
+    .ferry-map-help  {
+
+
       bottom: unset;
       top: 1rem;
       max-width: 13rem;
       padding: 0 1rem 0 2rem;
 
       h4 {
+
         font-size: 0.6rem;
         margin-bottom: 0.5rem;
       }
-
+    
       p {
+        
         font-size: 0.9rem;
         margin-top: 0.5rem;
       }
@@ -281,9 +301,11 @@ SMALL SCREENS
   }
 
   .bradenton-lightbox {
+
     height: 100%;
 
     .bradenton-card {
+
       transform: scale(0) !important; /* Center by default, but scale down */
       flex-direction: column-reverse;
       top: 60%;
@@ -293,18 +315,31 @@ SMALL SCREENS
       position: unset;
       width: 95% !important;
       margin: auto;
-
+  
+    
       &__content {
+    
         width: inherit !important;
         padding: 0;
+  
+        .ferry-card-cta {
+  
+          a {
+  
+            
+          }
+        }
       }
-
+    
       img {
+    
         width: 100% !important;
       }
     }
   }
+
 }
+
 
 @keyframes bounce-scale {
   0% {
@@ -324,70 +359,4 @@ SMALL SCREENS
 .bounce-scale {
   animation: bounce-scale 1s ease;
   transform: scale(1.05);
-}
-
-.#{$block-prefix}-bradenton-map {
-  .mapViewArea {
-    position: relative;
-    .controls {
-      position: absolute;
-      top: 50%;
-      right: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      z-index: 2;
-      transform: translateY(-50%);
-      button {
-        background-color: #fff;
-        border-radius: 0.25rem;
-        border-color: color("turquoise");
-        box-shadow: 0 3px 6px #00000027;
-        color: color("turquoise");
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 2.5rem;
-        height: 2.5rem;
-        cursor: pointer;
-        svg {
-          width: 1rem;
-          height: 1rem;
-          fill: color("turquoise");
-        }
-      }
-    }
-    .main-svg-wrapper {
-      img,
-      svg {
-        background-color: transparent;
-        height: inherit;
-        width: 100%;
-      }
-    }
-  }
-
-  .main-svg-wrapper,
-  .mapViewArea,
-  .mapContainer {
-    width: 100%;
-    aspect-ratio: 1224 / 792;
-  }
-  .main-svg-wrapper > svg {
-    display: block;
-    width: 100%;
-    aspect-ratio: 1224 / 792;
-  }
-}
-
-@media screen and (max-width: $screen-sm) {
-  .#{$block-prefix}-bradenton-map {
-    .main-svg-wrapper,
-    .mapViewArea,
-    .mapContainer,
-    .main-svg-wrapper > svg {
-      height: 650px !important;
-      aspect-ratio: unset !important;
-    }
-  }
 }
