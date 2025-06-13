@@ -78,12 +78,14 @@ const initSvgZoom = () => {
 
 	function panZoomInstance(map) {
 		let svgMap = map.querySelector(".main-svg-wrapper > svg");
+		let minZoomLevel = window.innerWidth < 769 ? 2 : 1;
+
 		if (!pzInstance) {
 			pzInstance = svgPanZoom(svgMap, {
 				zoomEnabled: true,
 				fit: true,
 				center: true,
-				minZoom: 0.5,
+				minZoom: minZoomLevel,
 				mouseWheelZoomEnabled: false,
 				controlIconsEnabled: false,
 				customEventsHandler: {
@@ -186,10 +188,10 @@ const initSvgZoom = () => {
 			if (pzInstance) {
 				pzInstance.updateBBox(); // Update the bounding box on resize
 				pzInstance.resize(); // Ensure the view is resized properly
+				let minZoomLevel = window.innerWidth < 769 ? 2 : 1;
+				pzInstance.setMinZoom(minZoomLevel);
 
 				if (window.innerWidth < 769) {
-					// Instantly show zoom visually
-					svgMap.style.transform = "scale(1)";
 					pzInstance.zoom(2); // Set zoom directly to 200%
 					pzInstance.center();
 				} else {
