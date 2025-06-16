@@ -197,10 +197,19 @@ function localGetAttachmentId(string $filename): ?int {
 }
 
 function localDeleteAttachment(int $attachment_id, bool $debugMode): string {
-    return $debugMode 
-        ? "[DEBUG] Delete attachment ID {$attachment_id}" . PHP_EOL 
-        : wp_delete_attachment($attachment_id, true);
+    if ($debugMode) {
+        return "[DEBUG] Delete attachment ID {$attachment_id}";
+    }
+
+    $result = wp_delete_attachment($attachment_id, true);
+
+    if ($result instanceof WP_Post) {
+        return "[OK] Deleted attachment ID {$attachment_id}";
+    }
+
+    return "[ERROR] Failed to delete attachment ID {$attachment_id}";
 }
+
 
 function localIsWordPressThumbnail(string $filename): bool {
     return preg_match('/-\d{2,4}x\d{2,4}\.(jpg|jpeg|png|gif|webp)$/i', $filename);
