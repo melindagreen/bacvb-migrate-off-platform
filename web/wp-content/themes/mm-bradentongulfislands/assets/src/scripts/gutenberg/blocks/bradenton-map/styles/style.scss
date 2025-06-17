@@ -329,17 +329,6 @@ SMALL SCREENS
 }
 
 .#{$block-prefix}-bradenton-map {
-  .mapContainer {
-    display: flex;
-    justify-content: center; /* horizontal */
-    align-items: center;
-    height: 100%;
-    overflow: scroll;
-    -webkit-overflow-scrolling: touch;
-  }
-  .mapContainer::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, and newer Edge */
-  }
   .mapViewArea {
     width: 100%;
     svg {
@@ -349,6 +338,17 @@ SMALL SCREENS
 }
 @media only screen and (max-width: $screen-md) {
   .#{$block-prefix}-bradenton-map {
+    .mapContainer {
+      display: flex;
+      justify-content: center; /* horizontal */
+      align-items: center;
+      height: 100%;
+      overflow: scroll;
+      -webkit-overflow-scrolling: touch;
+    }
+    .mapContainer::-webkit-scrollbar {
+      display: none; /* Chrome, Safari, and newer Edge */
+    }
     .mapViewArea {
       height: 1000px;
       width: auto;
