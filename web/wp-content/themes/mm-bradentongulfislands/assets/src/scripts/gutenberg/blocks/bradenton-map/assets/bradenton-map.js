@@ -1,10 +1,12 @@
 import $ from "jquery";
-import Hammer from "hammerjs";
-import svgPanZoom from "svg-pan-zoom";
+// import Hammer from "hammerjs";
+// import svgPanZoom from "svg-pan-zoom";
+// import { Panzoom } from "@fancyapps/ui/dist/panzoom/";
+// import { Controls } from "@fancyapps/ui/dist/panzoom/panzoom.controls.js";
 
 $(window).on("load", () => {
 	initInteractiveMap();
-	initSvgZoom();
+	//initSvgZoom2();
 });
 
 export const initInteractiveMap = () => {
@@ -67,6 +69,48 @@ export const initInteractiveMap = () => {
 	});
 };
 
+const initSvgZoom2 = () => {
+	let svgMaps = document.querySelectorAll(
+		".wp-block-mm-bradentongulfislands-bradenton-map"
+	);
+	svgMaps.forEach((map) => {
+		fancyZoomInstance(map);
+	});
+
+	function fancyZoomInstance(map) {
+		let container = map.querySelector(".main-svg-wrapper");
+		const options = {
+			clickAction: false,
+			dblClickAction: false,
+			height: "500px",
+			Controls: {
+				display: ["zoomIn", "zoomOut", "reset"],
+			},
+			on: {
+				init: (instance) => {
+					console.log("init:");
+					console.log(instance.getContainer());
+				},
+				action: (e) => {
+					console.log("action", e);
+				},
+				error: (e) => {
+					console.log("error", e);
+				},
+				loaded: (instance) => {
+					console.log("loaded:");
+					console.log(instance.getContainer());
+				},
+			},
+		};
+
+		Panzoom(container, options, { Controls }).init();
+	}
+};
+
+/**
+ * Panzoom OLD
+ */
 var pzInstance;
 const initSvgZoom = () => {
 	let svgMaps = document.querySelectorAll(

@@ -1,6 +1,8 @@
 @import "styles/utils/variables";
 @import "styles/utils/typography";
 @import "styles/utils/mixins";
+// @import url("../../../../../../node_modules/@fancyapps/ui/dist/panzoom/panzoom.css");
+// @import url("../../../../../../node_modules/@fancyapps/ui/dist/panzoom/panzoom.controls.css");
 
 .#{$block-prefix}-bradenton-map {
   position: relative;
@@ -249,7 +251,7 @@ SMALL SCREENS
 *********************/
 @media only screen and (max-width: $screen-md) {
   .#{$block-prefix}-bradenton-map {
-    height: max-content;
+    height: 500px;
     overflow: hidden;
 
     #bradentonRiverwalk {
@@ -327,67 +329,29 @@ SMALL SCREENS
 }
 
 .#{$block-prefix}-bradenton-map {
-  .mapViewArea {
-    position: relative;
-    .controls {
-      position: absolute;
-      top: 50%;
-      right: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      z-index: 2;
-      transform: translateY(-50%);
-      button {
-        background-color: #fff;
-        border-radius: 0.25rem;
-        border-color: color("turquoise");
-        box-shadow: 0 3px 6px #00000027;
-        color: color("turquoise");
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 2.5rem;
-        height: 2.5rem;
-        cursor: pointer;
-        svg {
-          width: 1rem;
-          height: 1rem;
-          fill: color("turquoise");
-        }
-      }
-    }
-    .main-svg-wrapper {
-      img,
-      svg {
-        background-color: transparent;
-        height: inherit;
-        width: 100%;
-      }
-    }
-  }
-
-  .main-svg-wrapper,
-  .mapViewArea,
   .mapContainer {
-    width: 100%;
-    aspect-ratio: 1224 / 792;
+    height: 100%;
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch;
   }
-  .main-svg-wrapper > svg {
-    display: block;
+  .mapContainer::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, and newer Edge */
+  }
+  .mapViewArea {
     width: 100%;
-    aspect-ratio: 1224 / 792;
+    svg {
+      width: 100% !important;
+    }
   }
 }
-
-@media screen and (max-width: $screen-sm) {
+@media only screen and (max-width: $screen-md) {
   .#{$block-prefix}-bradenton-map {
-    .main-svg-wrapper,
-    .mapViewArea,
-    .mapContainer,
-    .main-svg-wrapper > svg {
-      height: 450px !important;
-      aspect-ratio: unset !important;
+    .mapViewArea {
+      height: 1000px;
+      width: auto;
+      svg {
+        width: auto !important;
+      }
     }
   }
 }
