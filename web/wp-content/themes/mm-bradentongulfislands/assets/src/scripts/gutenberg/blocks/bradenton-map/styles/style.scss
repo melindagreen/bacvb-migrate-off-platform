@@ -251,7 +251,7 @@ SMALL SCREENS
 *********************/
 @media only screen and (max-width: $screen-md) {
   .#{$block-prefix}-bradenton-map {
-    height: 500px;
+    height: 400px;
     overflow: hidden;
 
     #bradentonRiverwalk {
@@ -330,6 +330,9 @@ SMALL SCREENS
 
 .#{$block-prefix}-bradenton-map {
   .mapContainer {
+    display: flex;
+    justify-content: center; /* horizontal */
+    align-items: center;
     height: 100%;
     overflow: scroll;
     -webkit-overflow-scrolling: touch;
