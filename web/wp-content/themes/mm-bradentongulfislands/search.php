@@ -16,7 +16,7 @@ use MaddenNino\Library\Utilities as U;
 get_header(); ?>
 
 <section class="wp-block-mm-bradentongulfislands-hero is-style-secondary-header">
-	<div class="hero" data-load-type="bg" data-load-onload="true" data-load-lg="/wp-content/uploads/2023/11/694-3304.jpg" data-load-md="/wp-content/uploads/2023/11/694-3304.jpg" data-load-sm="/wp-content/uploads/2023/11/694-3304.jpg" data-load-lg-bg-position="39% 28%" data-load-md-bg-position="39% 28%" style="background-image: url(&quot;/wp-content/uploads/2023/11/694-3304.jpg&quot;); background-position: 39% 28%;"></div>
+	<div class="hero" data-load-type="bg" data-load-onload="true" data-load-lg="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/694-3304.jpg" data-load-md="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/694-3304.jpg" data-load-sm="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/694-3304.jpg" data-load-lg-bg-position="39% 28%" data-load-md-bg-position="39% 28%" style="background-image: url(&quot;<?php echo get_stylesheet_directory_uri(); ?>/assets/images/694-3304.jpg&quot;); background-position: 39% 28%;"></div>
 	<h1 class="title alt-title">Search</h1>
 </section>
 

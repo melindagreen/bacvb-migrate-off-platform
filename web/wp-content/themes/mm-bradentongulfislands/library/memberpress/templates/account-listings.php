@@ -65,7 +65,7 @@ if ($listings->have_posts() && !empty($group_listings)) : ?>
                     if (has_post_thumbnail()) {
                         the_post_thumbnail('medium');
                     } else {
-                        echo '<img src="https://www.bradentongulfislands.com/wp-content/uploads/placeholder.jpg" alt="Listing Fallback Image" />';
+                        echo '<img src="' . get_stylesheet_directory_uri() . '/assets/images/placeholder.jpg" alt="Listing Fallback Image" />';
                     }
                     ?>
                 </div>
