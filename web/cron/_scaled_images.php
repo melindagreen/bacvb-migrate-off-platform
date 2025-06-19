@@ -1,25 +1,37 @@
 <?php
-/**
- * Walks a WordPress uploads directory for files that match the
- *  pattern. Then attempts to find the file name in post content. If
- *  it's not present, the upload is deleted from the db and system. 
- */
-
 set_time_limit(0);
 ini_set('memory_limit', '-1');
+// Disable output buffering
+while (ob_get_level()) {
+    ob_end_flush();
+}
+ob_implicit_flush(true);
 
 if ($argc < 3) {
-    echo "Usage: php _scaled_images.php <pattern> <directory> [--debug]".PHP_EOL;
+    echo "Usage: php _scaled_images.php <pattern> <directory> [--debug] [--orphaned] [--moveonly]".PHP_EOL;
     exit(1);
 }
 
 $pattern = $argv[1];
 $directory = realpath($argv[2]);
 $debugMode = in_array('--debug', $argv);
+$orphanedOnly = in_array('--orphaned', $argv);
+$moveOnly = in_array('--moveonly', $argv);
+
+if ($debugMode && $moveOnly) {
+    echo "[WARN] --moveonly + --debug = dry run; no files will be moved.\n";
+}
+
+$flaggedDir = $directory . DIRECTORY_SEPARATOR . 'flagged';
+if (!is_dir($flaggedDir)) {
+    mkdir($flaggedDir, 0755, true);
+}
 
 $batchSize = 100;
 $totalFilesFound = 0;
 $totalFilesDeleted = 0;
+$totalFilesMoved = 0;
+$filesFlatList = [];
 
 if (! $directory || !is_dir($directory)) {
     echo "[ERROR] Invalid directory: {$argv[2]}".PHP_EOL;
@@ -40,45 +52,74 @@ if (! isset($wpdb)) {
     exit(1);
 }
 
-// Find files matching the pattern (ignoring WordPress thumbnails)
-$files = localFindFiles($directory, $pattern);
-$logEntries = [];
-
+// Find all files matching the pattern
 $logEntries[] = sprintf("[OK] Searching for %s in %s", $pattern, $directory);
-
-foreach ($files as $batch) {
-    $totalFilesFound += count($batch);
-
+foreach (localFindFiles($directory, $pattern) as $batch) {
     foreach ($batch as $file) {
-        if (localIsWordPressThumbnail($file)) {
-            continue; 
-        }
+        $filesFlatList[] = $file;
+    }
+}
 
-        $inContent = localIsImageInContent($file);
-        $attachmentId = localGetAttachmentId($file);
-        
-        if ($inContent) {
-            $logEntries[] = sprintf("[SKIP] %s - found in content", $file);
+$totalFilesFound = count($filesFlatList);
+$currentIndex = 0;
+
+foreach ($filesFlatList as $file) {
+    $currentIndex++;
+
+    if (localIsWordPressThumbnail($file)) {
+        continue;
+    }
+
+    $inContent = localIsImageInContent($file);
+    $attachmentId = localGetAttachmentId($file);
+
+    if ($inContent) {
+        $logEntries[] = sprintf("[SKIP] %s - found in content", $file);
+    } elseif ($attachmentId) {
+        if ($orphanedOnly) {
+            // Skip if we're only processing orphaned files
+            $logEntries[] = sprintf("[SKIP] %s - registered as attachment (orphaned only mode)", $file);
             continue;
         }
 
-        if ($attachmentId) {
-            $logEntries[] = localDeleteAttachment($attachmentId, $debugMode);
-            $logEntries[] = sprintf("[DELETE] %s from WP", $file);
-        } else {
-            $logEntries[] = sprintf("[404] %s", $file);
-        }
+        $logEntries[] = localDeleteAttachment($attachmentId, $debugMode);
+        $logEntries[] = sprintf("[DELETE] %s from WP", $file);
 
-        if (! $debugMode) {
-            $logEntries[] = sprintf("[DELETE] %s from wp-uploads", $file);
+        if (! $debugMode && !$moveOnly) {
             unlink($file);
             $totalFilesDeleted++;
+        } elseif ($moveOnly && !$debugMode) {
+            $flagPath = $flaggedDir . DIRECTORY_SEPARATOR . uniqid('', true) . '-' . basename($file);
+            if (!@rename($file, $flagPath)) {
+                $logEntries[] = "[ERROR] Failed to move $file to $flagPath";
+            } else {
+                $logEntries[] = sprintf("[MOVED] %s to flagged/", $file);
+                $totalFilesMoved++;
+            }
         } else {
             echo "[DEBUG] Would delete file {$file}".PHP_EOL;
             $totalFilesDeleted++;
         }
+
+    } else {
+        $logEntries[] = sprintf("[404] %s", $file);
+
+        if (!$debugMode) {
+            $flagPath = $flaggedDir . DIRECTORY_SEPARATOR . basename($file);
+            rename($file, $flagPath);
+            $logEntries[] = sprintf("[MOVED] %s to flagged/", $file);
+            $totalFilesDeleted++;
+        } else {
+            echo "[DEBUG] Would move file to flagged: {$file}".PHP_EOL;
+        }
     }
+
+    // Progress bar
+    $progress = floor(($currentIndex / $totalFilesFound) * 100);
+    echo "\rProgress: {$progress}% ({$currentIndex}/{$totalFilesFound})";
+    flush();
 }
+echo PHP_EOL;
 
 // Log output
 echo implode(PHP_EOL, $logEntries).PHP_EOL;
@@ -88,9 +129,11 @@ echo "\nSummary:\n";
 echo "Total files found: $totalFilesFound\n";
 
 if ($debugMode) {
-    echo "Number of files to delete: $totalFilesDeleted\n";
+    echo "Number of files that would be deleted: $totalFilesDeleted\n";
+    echo "Number of files that would be moved: $totalFilesMoved\n";
 } else {
     echo "Number of files deleted: $totalFilesDeleted\n";
+    echo "Number of files moved to flagged/: $totalFilesMoved\n";
 }
 
 /**
@@ -104,7 +147,7 @@ function localFindFiles(string $dir, string $pattern, int $batchSize = 50): iter
         if ($file->isFile() && fnmatch($pattern, $file->getFilename())) {
             if (!localIsWordPressThumbnail($file->getFilename())) {
                 $batch[] = $file->getPathname();
-                
+
                 if (count($batch) >= $batchSize) {
                     yield $batch;
                     $batch = [];
@@ -118,60 +161,56 @@ function localFindFiles(string $dir, string $pattern, int $batchSize = 50): iter
     }
 }
 
-/**
- * Check if an image is referenced in WordPress content or post meta
- */
-function localIsImageInContent (string $filename): bool {
+function localIsImageInContent(string $filename): bool {
     global $wpdb;
     $basename = basename($filename);
-    
+
+    // Check if it's referenced in post_content of non-attachment posts
     $query = $wpdb->prepare("
-        SELECT COUNT(*) FROM {$wpdb->posts} 
-        WHERE post_content LIKE %s 
-        OR post_title LIKE %s
-    ", "%$basename%", "%$basename%");
-    
+        SELECT COUNT(*) FROM {$wpdb->posts}
+        WHERE post_type != 'attachment'
+        AND post_content LIKE %s
+    ", "%$basename%");
     $foundInPosts = ($wpdb->get_var($query) > 0);
 
+    // Check if used in postmeta of non-attachment posts
     $query = $wpdb->prepare("
-        SELECT COUNT(*) FROM {$wpdb->postmeta} 
-        WHERE meta_value LIKE %s
+        SELECT COUNT(*) FROM {$wpdb->postmeta} m
+        INNER JOIN {$wpdb->posts} p ON m.post_id = p.ID
+        WHERE p.post_type != 'attachment'
+        AND m.meta_value LIKE %s
     ", "%$basename%");
-    
     $foundInMeta = ($wpdb->get_var($query) > 0);
 
     return $foundInPosts || $foundInMeta;
 }
 
-/**
- * Check if an image is an attachment in WordPress
- */
-function localGetAttachmentId (string $filename): ?int {
+function localGetAttachmentId(string $filename): ?int {
     global $wpdb;
     $basename = basename($filename);
-    
     $query = $wpdb->prepare("
         SELECT ID FROM {$wpdb->posts} 
         WHERE post_type = 'attachment' 
         AND post_title = %s
     ", $basename);
-    
     return $wpdb->get_var($query) ?: null;
 }
 
-/**
- * Delete an attachment from WordPress
- */
-function localDeleteAttachment (int $attachment_id, bool $debugMode): string {
-    return $debugMode 
-        ? "[DEBUG] Delete attachment ID {$attachment_id}" . PHP_EOL 
-        : wp_delete_attachment($attachment_id, true);
+function localDeleteAttachment(int $attachment_id, bool $debugMode): string {
+    if ($debugMode) {
+        return "[DEBUG] Delete attachment ID {$attachment_id}";
+    }
+
+    $result = wp_delete_attachment($attachment_id, true);
+
+    if ($result instanceof WP_Post) {
+        return "[OK] Deleted attachment ID {$attachment_id}";
+    }
+
+    return "[ERROR] Failed to delete attachment ID {$attachment_id}";
 }
 
-/**
- * Check if a filename matches a WordPress-generated thumbnail
- */
-function localIsWordPressThumbnail (string $filename): bool {
+
+function localIsWordPressThumbnail(string $filename): bool {
     return preg_match('/-\d{2,4}x\d{2,4}\.(jpg|jpeg|png|gif|webp)$/i', $filename);
 }
-?>
