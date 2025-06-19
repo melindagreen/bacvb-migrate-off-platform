@@ -243,21 +243,21 @@
                         <h3><a href="/venues">Signature Venues</a></h3>
                         <div class="local-stories-nav">
                             <a href="/venues/powel-crosley/" class="venue powel-crosley">
-                                <img src="/wp-content/uploads/2023/11/nav-logo-crosleyestate.png" alt="Powel Crosley Estate logo" class="logo">
+                                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/nav-logo-crosleyestate.png" alt="Powel Crosley Estate logo" class="logo">
                                 <div class="featImg">
-                                    <img src="/wp-content/uploads/2023/11/Powel-Crosley_Venues-234x300.jpg" alt="Powel Crosley Estate image">
+                                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/Powel-Crosley_Venues-234x300.jpg" alt="Powel Crosley Estate image">
                                 </div>
                             </a>
                             <a href="/venues/convention-center/" class="venue bacc">
-                                <img src="/wp-content/uploads/BACVB_Convention-Center-Logo_Color_CMYK.png" alt="Bradenton Area Convention Center logo" class="logo">
+                                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/BACVB_Convention-Center-Logo_Color_CMYK.png" alt="Bradenton Area Convention Center logo" class="logo">
                                 <div class="featImg">
-                                    <img src="/wp-content/uploads/2023/11/Bradenton_Area_Convention_Center_SfnOoYA6fwp2lbHiQUepT_t18q0ABlZBh_rgb_l-300x200.jpg" alt="Bradenton Area Convention Center image">
+                                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/Bradenton_Area_Convention_Center_SfnOoYA6fwp2lbHiQUepT_t18q0ABlZBh_rgb_l-300x200.jpg" alt="Bradenton Area Convention Center image">
                                 </div>
                             </a>
                             <a href="/venues/premier-sports-campus/" class="venue premier-sports-campus">
-                                <img src="/wp-content/uploads/Premier-Sports-Campus-Logo_rgb_l.png" alt="Premier Sports Campus logo" class="logo">
+                                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/Premier-Sports-Campus-Logo_rgb_l.png" alt="Premier Sports Campus logo" class="logo">
                                 <div class="featImg">
-                                    <img src="/wp-content/uploads/2023/11/Premie_Venues-400x512.jpg" alt="Premier Sports Campus image">
+                                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/Premie_Venues-400x512.jpg" alt="Premier Sports Campus image">
                                 </div>
                             </a>
                         </div>
