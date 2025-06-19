@@ -85,32 +85,45 @@ foreach ($filesFlatList as $file) {
         $logEntries[] = localDeleteAttachment($attachmentId, $debugMode);
         $logEntries[] = sprintf("[DELETE] %s from WP", $file);
 
-        if (! $debugMode && !$moveOnly) {
-            unlink($file);
-            $totalFilesDeleted++;
-        } elseif ($moveOnly && !$debugMode) {
+        if ($debugMode) {
+            echo "[DEBUG] Would " . ($moveOnly ? "move" : "delete") . " file: {$file}" . PHP_EOL;
+        } elseif ($moveOnly) {
             $flagPath = $flaggedDir . DIRECTORY_SEPARATOR . uniqid('', true) . '-' . basename($file);
             if (!@rename($file, $flagPath)) {
                 $logEntries[] = "[ERROR] Failed to move $file to $flagPath";
             } else {
-                $logEntries[] = sprintf("[MOVED] %s to flagged/", $file);
+                $logEntries[] = "[MOVED] $file to flagged/";
                 $totalFilesMoved++;
             }
         } else {
-            echo "[DEBUG] Would delete file {$file}".PHP_EOL;
-            $totalFilesDeleted++;
+            if (unlink($file)) {
+                $logEntries[] = "[DELETE] Deleted $file";
+                $totalFilesDeleted++;
+            } else {
+                $logEntries[] = "[ERROR] Failed to delete $file";
+            }
         }
 
     } else {
         $logEntries[] = sprintf("[404] %s", $file);
 
-        if (!$debugMode) {
-            $flagPath = $flaggedDir . DIRECTORY_SEPARATOR . basename($file);
-            rename($file, $flagPath);
-            $logEntries[] = sprintf("[MOVED] %s to flagged/", $file);
-            $totalFilesDeleted++;
+        if ($debugMode) {
+            echo "[DEBUG] Would " . ($moveOnly ? "move" : "delete") . " file: {$file}" . PHP_EOL;
+        } elseif ($moveOnly) {
+            $flagPath = $flaggedDir . DIRECTORY_SEPARATOR . uniqid('', true) . '-' . basename($file);
+            if (!@rename($file, $flagPath)) {
+                $logEntries[] = "[ERROR] Failed to move $file to $flagPath";
+            } else {
+                $logEntries[] = "[MOVED] $file to flagged/";
+                $totalFilesMoved++;
+            }
         } else {
-            echo "[DEBUG] Would move file to flagged: {$file}".PHP_EOL;
+            if (unlink($file)) {
+                $logEntries[] = "[DELETE] Deleted $file";
+                $totalFilesDeleted++;
+            } else {
+                $logEntries[] = "[ERROR] Failed to delete $file";
+            }
         }
     }
 
