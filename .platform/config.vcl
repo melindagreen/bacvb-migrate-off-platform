@@ -28,6 +28,11 @@ sub vcl_recv {
     # Setup backend and standard request handling
     set req.backend_hint = application.backend();
 
+    # Never cache the ferry page
+    if (req.url ~ "^/gulf-islands-ferry(/|$)") {
+        return (pass);
+    }
+
     # Ignore search
     if (req.url ~ "\?s=") {
         return (pass);
