@@ -156,13 +156,21 @@ variables:
     PRODUCTION: yes 
 
 crons:
-  # Optimize the database everyday at 8am
-  analyze:
+  # Backup the database everyday at 8am
+  snapshot:
     spec: "0 8 * * *"
+    cmd: |
+      if [ "$PLATFORM_BRANCH" = main ]; then
+          platform snapshot:create --yes --no-wait
+      fi
+  # Optimize the database everyday at 9am
+  analyze:
+    spec: "0 9 * * *"
     cmd: |
         mysqlcheck $DATABASE; 
         mysqloptimize $DATABASE; 
         mysqlanalyze $DATABASE;
+        wp transient delete --all --quiet;
 
   # Force a redeploy at 10am (UTC) on the 1st and 15th of every month.
   redeploy:
@@ -170,14 +178,6 @@ crons:
     cmd: |
       if [ "$PLATFORM_BRANCH" = main ]; then
           platform redeploy --yes --no-wait
-      fi
-
-  # Backup the database everyday at 9am
-  snapshot:
-    spec: "0 9 * * *"
-    cmd: |
-      if [ "$PLATFORM_BRANCH" = main ]; then
-          platform snapshot:create --yes --no-wait
       fi
 
   # Run WordPress cron every 15 minutes
