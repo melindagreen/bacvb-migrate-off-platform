@@ -158,10 +158,12 @@
     "post-install-cmd": [
       "@script:permit",
       "@script move-wp",
-      "@script install-wp-local-config"
+      "@script install-wp-local-config",
+      "@update-packages"
     ],
     "post-update-cmd": [
-      "@script move-wp"
+      "@script move-wp",
+      "@update-packages"
     ],
     "build": "@script build",
     "build:parent": "@build build:parent",
@@ -183,6 +185,9 @@
     "reinstall:child": "@build reinstall:child",
     "require-mm": "@script require-mm",
     "theme:dir": "@script theme-dir",
-    "check-updates": "@script check-updates"
+    "check-updates": "@script check-updates",
+    "update-packages": [
+        "cp -r ./web/plugins/* ./web/wp-content/plugins/"
+    ]
   }
 }

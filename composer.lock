@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "75117fd4bac8ec50f80576becff186c6",
+    "content-hash": "08c8767008e88fa2b2e4ca347c907bad",
     "packages": [
         {
             "name": "composer/ca-bundle",
@@ -1229,16 +1229,16 @@
         },
         {
             "name": "maddenmedia/gravityforms",
-            "version": "v2.9.9",
+            "version": "2.9.10",
             "source": {
                 "type": "git",
                 "url": "git@github.com:maddenmedia/gravityforms.git",
-                "reference": "c4737d0b9bea5f867c4932bcf3ad66309606e6d6"
+                "reference": "253941e51f12f50286561c8241532bacf752914c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/maddenmedia/gravityforms/zipball/c4737d0b9bea5f867c4932bcf3ad66309606e6d6",
-                "reference": "c4737d0b9bea5f867c4932bcf3ad66309606e6d6",
+                "url": "https://api.github.com/repos/maddenmedia/gravityforms/zipball/253941e51f12f50286561c8241532bacf752914c",
+                "reference": "253941e51f12f50286561c8241532bacf752914c",
                 "shasum": ""
             },
             "type": "wordpress-plugin",
@@ -1247,10 +1247,10 @@
             ],
             "description": "gravity forms",
             "support": {
-                "source": "https://github.com/maddenmedia/gravityforms/tree/v2.9.9",
+                "source": "https://github.com/maddenmedia/gravityforms/tree/2.9.10",
                 "issues": "https://github.com/maddenmedia/gravityforms/issues"
             },
-            "time": "2025-06-02T15:51:45+00:00"
+            "time": "2025-06-18T19:07:39+00:00"
         },
         {
             "name": "maddenmedia/kraken-purge",
@@ -5732,15 +5732,15 @@
         },
         {
             "name": "wpackagist-plugin/translatepress-multilingual",
-            "version": "2.9.18",
+            "version": "2.9.19",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/translatepress-multilingual/",
-                "reference": "tags/2.9.18"
+                "reference": "tags/2.9.19"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/translatepress-multilingual.2.9.18.zip"
+                "url": "https://downloads.wordpress.org/plugin/translatepress-multilingual.2.9.19.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
