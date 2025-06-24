@@ -178,6 +178,13 @@
     "reinstall:child": "@build reinstall:child",
     "require-mm": "@script require-mm",
     "theme:dir": "@script theme-dir",
-    "check-updates": "@script check-updates"
+    "check-updates": "@script check-updates",
+    "update-packages": [
+        "cp -r ./web/plugins/* ./web/wp-content/plugins/"
+    ],
+    "post-install-cmd": [
+        "@update-packages"
+    ],
+    "post-update-cmd": "@update-packages"
   }
 }
