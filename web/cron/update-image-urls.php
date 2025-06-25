@@ -12,12 +12,14 @@ if (!file_exists($csv_path)) {
 $input = fopen($csv_path, 'r');
 $output = fopen($output_path, 'w');
 
-$headers = fgetcsv($input);
-$headers[] = 'Updated Image URLs';
-fputcsv($output, $headers);
+$input_headers = fgetcsv($input);
+$output_headers = $input_headers;
+$output_headers[] = 'Updated Image URLs';
+
+fputcsv($output, $output_headers);
 
 while (($row = fgetcsv($input)) !== false) {
-    $row_assoc = array_combine(array_slice($headers, 0, count($row)), $row);
+    $row_assoc = array_combine($input_headers, $row);
 
     $id_field = $row_assoc['partnerportal_gallery_images'] ?? '';
     $urls = [];
@@ -26,7 +28,7 @@ while (($row = fgetcsv($input)) !== false) {
         $ids = json_decode($id_field, true);
 
         if (!is_array($ids)) {
-            // Handle fallback if stored as [123,456] string
+            // Fallback if stored as "[123,456]"
             $ids = eval("return $id_field;");
         }
 
@@ -42,9 +44,9 @@ while (($row = fgetcsv($input)) !== false) {
 
     $row_assoc['Updated Image URLs'] = implode('|', $urls);
 
-    // Maintain original order of columns + the new one
+    // Write output using updated header list
     $output_row = [];
-    foreach ($headers as $header) {
+    foreach ($output_headers as $header) {
         $output_row[] = $row_assoc[$header] ?? '';
     }
 
