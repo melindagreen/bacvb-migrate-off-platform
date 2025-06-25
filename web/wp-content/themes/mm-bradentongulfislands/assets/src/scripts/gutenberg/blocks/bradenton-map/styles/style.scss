@@ -15,7 +15,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   max-width: unset !important;
-  height: 48vw;
+  height: 55vw;
   overflow: hidden;
 
   @media only screen and (max-width: $screen-lg) {
@@ -23,9 +23,14 @@
   }
 
   .mapContainer {
-    //height: fit-content;
+    height: inherit;
     width: 100%;
     z-index: 1;
+
+    .mapViewArea {
+
+      height: inherit;
+    }
 
     .map-logo {
       position: absolute;
@@ -42,9 +47,11 @@
       }
     }
 
-    svg {
+    svg,img {
       width: 100%;
       height: 100%;
+      position: absolute;
+
 
       // @media screen and (max-width: $screen-sm) {
       //   width: 186vw;
@@ -83,6 +90,11 @@
           }
         }
       }
+    }
+
+    img {
+
+      overflow: hidden;
     }
   }
 }
@@ -251,17 +263,11 @@ SMALL SCREENS
 *********************/
 @media only screen and (max-width: $screen-md) {
   .#{$block-prefix}-bradenton-map {
-    height: 400px;
+    height: 700px;
     overflow: hidden;
 
-    #bradentonRiverwalk {
-      transform: translate(-8831px, 3277.174px) scale(1.7);
-    }
-    #bridgeStreet {
-      transform: translate(-8861px, 3277.174px) scale(1.7);
-    }
-    #ami {
-      transform: translate(-8861px, 3277.174px) scale(1.7);
+    #LAKE_MANATEE_STATE_PARK {
+      transform: translate(-79px, -32px) !important;
     }
 
     .ferry-map-help {
@@ -331,7 +337,7 @@ SMALL SCREENS
 .#{$block-prefix}-bradenton-map {
   .mapViewArea {
     width: 100%;
-    svg {
+    svg,img {
       width: 100% !important;
     }
   }
@@ -350,10 +356,20 @@ SMALL SCREENS
       display: none; /* Chrome, Safari, and newer Edge */
     }
     .mapViewArea {
-      height: 1000px;
-      width: auto;
+      height: 100%;
+      width: 100% !important;
+
+      img,svg {
+        left: -1vw;
+      }
+      img {
+        width: 980px !important;
+        object-fit: cover;
+        object-position: 41%;
+      }
       svg {
-        width: auto !important;
+        transform: scale(1.25) translate(15px, -2px);
+        width: 980px !important;
       }
     }
   }

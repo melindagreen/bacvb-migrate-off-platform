@@ -10,6 +10,58 @@ $(window).on("load", () => {
 });
 
 export const initInteractiveMap = () => {
+	const $container = $('.mapViewArea');
+const $img = $container.find('img');
+const $svg = $container.find('svg');
+
+let isDragging = false;
+let startX = 0;
+let startLeft = 0;
+
+const minLeft = -980; // Min pan limit (px)
+const maxLeft = 0;    // Max pan limit (px)
+
+function setLeft(x) {
+  const clampedX = Math.min(maxLeft, Math.max(minLeft, x));
+  $img.css('left', clampedX + 'px');
+  $svg.css('left', clampedX + 'px');
+}
+
+function getLeft() {
+  return parseFloat($img.css('left')) || 0;
+}
+
+// Mouse drag
+$container.on('mousedown', (e) => {
+  isDragging = true;
+  startX = e.pageX;
+  startLeft = getLeft();
+  e.preventDefault();
+});
+
+$(document).on('mouseup', () => {
+  isDragging = false;
+});
+
+$(document).on('mousemove', (e) => {
+  if (!isDragging) return;
+  const deltaX = e.pageX - startX;
+  setLeft(startLeft + deltaX);
+});
+
+// Scroll (wheel) — allow horizontal scroll only
+$container.on('wheel', (e) => {
+  // Use deltaX only, block if vertical scroll
+  const isMostlyHorizontal = Math.abs(e.originalEvent.deltaX) > Math.abs(e.originalEvent.deltaY);
+  if (!isMostlyHorizontal) return;
+
+  const deltaX = e.originalEvent.deltaX;
+  const currentLeft = getLeft();
+  setLeft(currentLeft - deltaX);
+
+  e.preventDefault();
+});
+
 	let hasScrolledToIcons = false;
 
 	const $iconsG = $(
