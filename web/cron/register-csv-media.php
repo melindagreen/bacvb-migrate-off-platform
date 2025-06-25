@@ -1,7 +1,7 @@
 <?php
 require_once dirname(__DIR__) . '/wp-load.php';
 
-$file_path = WP_CONTENT_DIR . '/uploads/listings_with_urls.csv';
+$file_path = WP_CONTENT_DIR . '/uploads/2025/06/listings_with_urls.csv';
 
 if (!file_exists($file_path)) {
     echo "❌ File does not exist: $file_path\n";
