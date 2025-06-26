@@ -85,20 +85,23 @@ $description = (isset($meta['description'])) ? $meta['description'] : "";
 
 //images
 $images = [];
-$image_ids = (isset($meta['gallery_images']) ) ? $meta['gallery_images'] : "";
-if( $image_ids ){
-    $image_ids = preg_replace("#\[#", '', $image_ids);
-    $image_ids = preg_replace("#\]#", '', $image_ids);
-    if( $image_ids ){
-        $image_array = explode(',',$image_ids);
-        foreach( $image_array as $image_id ){
-            $images[] = wp_get_attachment_image_url($image_id, 'full');
+$gallery_ids_raw = isset($meta['gallery_images']) ? $meta['gallery_images'] : (isset($postMeta['partnerportal_gallery_images'][0]) ? $postMeta['partnerportal_gallery_images'][0] : '');
+
+if (!empty($gallery_ids_raw)) {
+    $gallery_ids_raw = trim($gallery_ids_raw, '[]');
+    $image_ids_array = explode(',', $gallery_ids_raw);
+
+    foreach ($image_ids_array as $image_id) {
+        $image_id = trim($image_id);
+        if ($image_url = wp_get_attachment_image_url($image_id, 'full')) {
+            $images[] = $image_url;
         }
     }
 }
-if (!$images) {
-    $fallback_image = get_the_post_thumbnail_url($post->ID, 'full') ? get_the_post_thumbnail_url($post->ID, 'full') : get_stylesheet_directory_uri() . '/assets/images/coming-soon.jpg';
-    $images = array($fallback_image);
+
+if (empty($images)) {
+    $fallback_image = get_the_post_thumbnail_url($post->ID, 'full') ?: get_stylesheet_directory_uri() . '/assets/images/coming-soon.jpg';
+    $images = [$fallback_image];
 }
 
 // accommodations
@@ -186,7 +189,6 @@ $diningAmenities = (isset($meta['dining-amenities'])) ? $meta['dining-amenities'
                     </div>
                     <?php endif; ?>
                 <?php endif; ?>
-
                 <div class="contactInfoWrap">
                     <?php
                     if (!empty($website)):
