@@ -65,8 +65,8 @@ if (($handle = fopen($csv_path, 'r')) !== FALSE) {
             echo "   Gallery: [" . implode(',', array_slice($image_ids, 1)) . "]\n";
 
             // Store both as JSON-style arrays
-            update_post_meta($post->ID, 'partnerportal_gallery_square_featured_image', '[' . $image_ids[0] . ']');
-            update_post_meta($post->ID, 'partnerportal_gallery_images', '[' . implode(',', array_slice($image_ids, 1)) . ']');
+            update_post_meta($post->ID, 'partnerportal_gallery_square_featured_image', wp_json_encode([$image_ids[0]]));
+            update_post_meta($post->ID, 'partnerportal_gallery_images', wp_json_encode(array_slice($image_ids, 1)));
 
             echo "✅ Updated post '{$post_title}' with images: " . implode(',', $image_ids) . "\n";
         } else {
