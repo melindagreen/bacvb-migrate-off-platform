@@ -43,3 +43,23 @@ function init_child_theme() {
     new Library\RestApi;
 }
 add_action( 'after_setup_theme', 'MaddenNino\init_child_theme' );
+
+/**
+ * Exclude specific sizes from srcset when using get_the_post_thumbnail
+ */
+add_filter( 'wp_calculate_image_srcset', __NAMESPACE__ . '\exclude_sizes_in_srcset', 10, 5 );
+
+function exclude_sizes_in_srcset( $sources, $size_array, $image_src, $image_meta, $attachment_id ) {
+    $excluded_sizes = [ '-768x0', '-1536x1536', '-2048x2048' ]; 
+
+    foreach ( $sources as $width => $source ) {
+        foreach ( $excluded_sizes as $size ) {
+            if ( str_contains( $source['url'], $size ) ) {
+                unset( $sources[ $width ] );
+                break; 
+            }
+        }
+    }
+
+    return $sources;
+}
