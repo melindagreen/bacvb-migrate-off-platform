@@ -41,6 +41,10 @@
     },
     {
       "type": "vcs",
+      "url": "git@github.com:maddenmedia/server-status.git"
+    },
+    {
+      "type": "vcs",
       "url": "git@github.com:maddenmedia/wp-plugin-madden-cookie-consent.git"
     },
     {
@@ -64,7 +68,7 @@
       "package": {
         "name": "rankmath/seo-by-rank-math-pro",
         "type": "wordpress-plugin",
-        "version": "3.0.54",
+        "version": "3.0.84",
         "dist": {
           "type": "zip",
           "url": "https://rankmath.com/download/510590/?username=madden%20media&api_key=8330bc817f11ccc9d602921e293ecd5b"
@@ -85,6 +89,7 @@
     "maddenmedia/kraken-purge": "v1.1",
     "maddenmedia/wp-plugin-eventastic": "*",
     "maddenmedia/wp-plugin-madden-banners": "*",
+    "maddenmedia/server-status": "1.5.2",
     "platformsh/config-reader": "^2.0",
     "psy/psysh": "^0.10.8",
     "tonik/cli": "^3.0",
@@ -95,7 +100,7 @@
     "wpackagist-plugin/cache-control": "^2.2",
     "wpackagist-plugin/duplicate-post": "^4.4",
     "wpackagist-plugin/enable-media-replace": "^4.1",
-    "wpackagist-plugin/force-regenerate-thumbnails": "^2.2",
+    "wpackagist-plugin/force-regenerate-thumbnails": "2.2.1",
     "wpackagist-plugin/gravityforms-html5-validation": "^2.4.2",
     "wpackagist-plugin/post-expirator": "^4.0",
     "wpackagist-plugin/post-type-switcher": "^3.2.1",
@@ -104,15 +109,15 @@
     "wpackagist-plugin/redis-cache": "^2.5",
     "wpackagist-plugin/sa11y": "^1.2",
     "wpackagist-plugin/safe-svg": "^2.1",
-    "wpackagist-plugin/tiny-compress-images": "3.5.0",
+    "wpackagist-plugin/tiny-compress-images": "3.5.1",
     "wpackagist-plugin/translatepress-multilingual": "^2.8",
     "wpackagist-plugin/wordpress-importer": "^0.8",
     "wpackagist-plugin/wordpress-seo": "^23.3",
     "wpackagist-plugin/wp-media-library-categories": "*",
-    "wpackagist-plugin/seo-by-rank-math":"*",
-    "rankmath/seo-by-rank-math-pro": "^3.0.54",
+    "wpackagist-plugin/seo-by-rank-math":"1.0.241",
+    "rankmath/seo-by-rank-math-pro": "3.0.84",
+    "wpackagist-plugin/breeze":"2.2.10",
     "wpackagist-plugin/fareharbor": "^3.6",
-    "wpackagist-plugin/breeze":"2.2.8",
     "wpackagist-plugin/varnish-http-purge": "5.2.2"
   },
   "minimum-stability": "dev",

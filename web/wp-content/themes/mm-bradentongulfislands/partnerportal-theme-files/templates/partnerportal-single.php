@@ -96,8 +96,8 @@ if( $image_ids ){
         }
     }
 }
-if (!$images ) {
-    $fallback_image = get_the_post_thumbnail_url() ?  get_the_post_thumbnail_url($post->ID,'full') : '/wp-content/uploads/coming-soon.jpg';
+if (!$images) {
+    $fallback_image = get_the_post_thumbnail_url($post->ID, 'full') ? get_the_post_thumbnail_url($post->ID, 'full') : get_stylesheet_directory_uri() . '/assets/images/coming-soon.jpg';
     $images = array($fallback_image);
 }
 

@@ -37,8 +37,8 @@ function render_block( $attrs, $content ) {
 
         $html .= '<div class="location_pin" id="'.$post->post_name.'" data-id="'.$post->ID.'">';
         $html .= '<div class="beachName">'.$shortenedTitle.'</div>';
-        $html .= '<img src="/wp-content/uploads/map-POI-marker.png" class="marker" alt="Marker icon">
-        </div>';
+        $html .= '<img src="' . get_stylesheet_directory_uri() . '/assets/images/map-POI-marker.png" class="marker" alt="Marker icon">';
+        $html .= '</div>';
       }
     }
 
@@ -68,7 +68,7 @@ function render_block( $attrs, $content ) {
           $html .= '<div class="selectBeach '.$post->post_name.'">';
 
             // featured image
-            $featImg = '/wp-content/uploads/20210520102150-anna-maria-island-beach-access.jpeg';
+            $featImg = get_stylesheet_directory_uri() . '/assets/images/20210520102150-anna-maria-island-beach-access.jpeg';
             if (!empty($attrs[$beachContent.'Image'])) {
               $featImg = $attrs[$beachContent.'Image'];
             }
@@ -94,7 +94,7 @@ function render_block( $attrs, $content ) {
 
               $html .= '<img alt="beach image" class="img" src="'.$featImg.'">';
 
-              $html .= '<div class="beachLogo"><img src="/wp-content/uploads/'.$postSlug.'_logo.png" alt="beach logo"></div>';
+              $html .= '<div class="beachLogo"><img src="' . get_stylesheet_directory_uri() . '/assets/images/' . $postSlug . '_logo.png" alt="beach logo"></div>';
 
             $html .= '</div>'; // .beachImg
 

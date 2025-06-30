@@ -1,7 +1,7 @@
 import $ from "jquery";
 
 $(window).on("load", () => {
-    initInteractiveMap();
+	initInteractiveMap();
 });
 
 export const initInteractiveMap = () => {

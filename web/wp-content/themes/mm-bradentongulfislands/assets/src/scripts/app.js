@@ -227,7 +227,7 @@ if ('serviceWorker' in navigator) {
 		scrollAnimation('.is-style-heading-shadow', 400, 'is-style-heading-shadow--shadow', true);
 		scrollAnimation('.rock-flag', 400, 'rock-flag--rocking');
 
-		scrollAnimation('.fade-up', 500, 'fade-up--animate', true);
+		scrollAnimation('.fade-up', 800, 'fade-up--animate', true);
 		scrollAnimation('.small-circ-down', 400, 'small-circ-down--rotate', true);
 		scrollAnimation('.sticker', 500, 'sticker--zoom-in', true);
 		scrollAnimation('.share-the-love-bg::after', 400, 'share-the-love-bg::after--zoom-in', true);
@@ -560,25 +560,34 @@ if ('serviceWorker' in navigator) {
 		 * @returns {null}
 		 */
 		function scrollAnimation(selector, scrollThreshold, animationClass, permanent = false) {
-			$(window).scroll(function() {
-				const scrollPosition = $(this).scrollTop();
-			
+			// Animation Logic
+			const runAnimation = () => {
+				const scrollPosition = $(window).scrollTop();
+				const thresholdPixels = scrollThreshold * window.innerHeight; // Make relative
+
 				$(selector).each(function() {
-				  const itemOffset = $(this).offset().top;
-			
-				  if (scrollPosition > itemOffset - scrollThreshold && !$(this).hasClass(animationClass) && !$(this).hasClass('animationoff')) {
-					$(this).addClass(animationClass);
-					const that = this;
-					if(!permanent) {
-					setTimeout(function() {
-					  $(that).removeClass(animationClass);
-					  $(that).addClass('animationoff');
-					}, 400); 
+					const itemOffset = $(this).offset().top;
+					if (
+						scrollPosition > itemOffset - thresholdPixels &&
+						!$(this).hasClass(animationClass) &&
+						!$(this).hasClass('animationoff')
+					) {
+						$(this).addClass(animationClass);
+						const that = this;
+						if (!permanent) {
+							setTimeout(function() {
+								$(that).removeClass(animationClass);
+								$(that).addClass('animationoff');
+							}, 400);
+						}
 					}
-				  }
 				});
-			  });
-		  }
+			};
+
+			$(window).on('scroll', runAnimation);
+			setTimeout(runAnimation, 1500); // Run on first load after 1s delay
+		}
+
 
 		  /**
 		 * Query Block Placeholder Image Injection
@@ -663,10 +672,10 @@ if ('serviceWorker' in navigator) {
         
 		toggleTopBarClasses();
 		toggleTopBannerClasses();
-		scrollAnimation('.is-style-arrow-button', 600, 'is-style-arrow-button--rotate');
-		scrollAnimation('.grid-item-body--2 .grid-item-body__arrow', 600, 'grid-item-body__arrow--forward');
-		scrollAnimation('.grid-item-body--3 .grid-item-body__arrow', 600, 'grid-item-body__arrow--rotate');
-		scrollAnimation('.grid-item-body--1 .grid-item-body__arrow', 600, 'grid-item-body__arrow--rotate');
+		scrollAnimation('.is-style-arrow-button', 0.75, 'is-style-arrow-button--rotate');
+		scrollAnimation('.grid-item-body--2 .grid-item-body__arrow', 0.75, 'grid-item-body__arrow--forward');
+		scrollAnimation('.grid-item-body--3 .grid-item-body__arrow', 0.75, 'grid-item-body__arrow--rotate');
+		scrollAnimation('.grid-item-body--1 .grid-item-body__arrow', 0.75, 'grid-item-body__arrow--rotate');
 
     }
 

@@ -1,3 +1,9 @@
+= 11.3.6 (2025-04-22) =
+* Have default embedVersion for elementor
+
+= 11.3.0 (2025-04-07) =
+* Add v4 forms support
+
 = 11.2.8 (2025-03-17) =
 * Move cron schedule action to proxy mapping class
 
@@ -294,10 +300,4 @@
 
 = 8.11.221 (2022-05-24) =
 * Update dependencies
-
-= 8.11.150 (2022-05-13) =
-* Update build steps
-
-= 8.11.0 (2022-04-27) =
-* Add option to disable HS analytics tracking for internal WP users
 

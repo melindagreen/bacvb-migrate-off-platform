@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import { portalId, refreshToken } from '../../constants/leadinConfig';
 import ElementorBanner from '../Common/ElementorBanner';
 import UISpinner from '../../shared/UIComponents/UISpinner';
@@ -42,6 +42,7 @@ function ElementorFormSelect({
             portalId,
             formId: selectedForm.value,
             formName: selectedForm.label,
+            embedVersion: selectedForm.embedVersion,
           });
         }
       }}
