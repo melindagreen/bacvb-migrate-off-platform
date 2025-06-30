@@ -1,0 +1,175 @@
+# Category Mapping: Old Categories to New Categories
+# Format: Old Category Name, Old Slug, Count -> New Category -> New Subcategory
+
+## Arts & Culture
+Arts & Culture, arts-culture, 31 -> Arts & Culture
+Historical Attraction, historic-attractions, 1 -> Arts & Culture -> History
+Museum/Gallery, art-gallery, 0 -> Arts & Culture -> Museum
+Arts & Galleries, arts-galleries, 17 -> Arts & Culture -> Gallery/Artcenter
+Museums, museums, 11 -> Arts & Culture -> Museum
+Galleries, galleries, 3 -> Arts & Culture -> Gallery/Artcenter
+Historical Attractions, historical-attractions, 7 -> Arts & Culture -> History
+History, history, 10 -> Arts & Culture -> History
+Historic District, historic-district, 4 -> Arts & Culture -> History
+Landmarks, landmarks, 7 -> Arts & Culture -> History
+Performing Center, performing-center, 4 -> Arts & Culture
+Theatre, theatre, 4 -> Arts & Culture
+Live Entertainment, live-entertainment, 0 -> Arts & Culture
+Live Music, live-music, 12 -> Arts & Culture
+Events & Shows, events-shows, 30 -> Arts & Culture
+Festival, festival, 2 -> Arts & Culture
+Film, film, 5 -> Arts & Culture
+Film Locations, film-locations, 3 -> Arts & Culture
+Theme Parks, theme-parks, 4 -> Arts & Culture
+Nightlife and Entertainment, nightlife-and-entertainment, 8 -> Arts & Culture
+
+## Eat & Drink
+Food & Drink, eat-drink, 157 -> Eat & Drink
+Bar & Grill, bar-grill, 45 -> Eat & Drink -> Bar/Lounge
+Casual Dining, casual-dining, 60 -> Eat & Drink -> Restaurant
+Cafe, breakfast-cafes, 44 -> Eat & Drink -> Cafe
+Fine Dining, fine-dining, 17 -> Eat & Drink -> Restaurant
+Seafood, seafood, 45 -> Eat & Drink -> Restaurant
+International, international-options, 32 -> Eat & Drink -> Restaurant
+Ice Cream & Desserts, ice-cream-treats, 35 -> Eat & Drink -> Cafe
+Bayfront, bayfront, 1 -> Eat & Drink -> Waterfront
+Beachfront, beachfront, 4 -> Eat & Drink -> Waterfront
+Oceanfront, oceanfront, 2 -> Eat & Drink -> Waterfront
+Riverfront, riverfront, 1 -> Eat & Drink -> Waterfront
+Intracoastal, intracoastal, 2 -> Eat & Drink -> Waterfront
+Marinas & Piers, marinas-piers, 3 -> Eat & Drink -> Boat Dock
+
+## Outdoor Activities
+Outdoors, outdoors, 37 -> Outdoor Activities
+Recreation, outdoor-activities, 25 -> Outdoor Activities
+Outdoor Recreation, outdoor-recreation, 2 -> Outdoor Activities
+Boat Tours/Charters, boat-tours-charters, 4 -> Outdoor Activities -> Boat Tours & Charters
+Parks, parks, 16 -> Outdoor Activities -> Parks & Preserves
+Park/Preserve, park-preserve, 1 -> Outdoor Activities -> Parks & Preserves
+Hiking/Nature Trails, hiking-nature-trails, 1 -> Outdoor Activities -> Nature Tours
+Wildlife Viewing, wildlife-viewing, 2 -> Outdoor Activities -> Nature Tours
+Beaches, beaches, 11 -> Outdoor Activities -> Parks & Preserves
+Canoe/Kayak, canoekayak, 8 -> Outdoor Activities -> Water Sport Rentals
+Water Recreation, water-recreation, 11 -> Outdoor Activities -> Water Sport Rentals
+Water Activities, water-activities, 53 -> Outdoor Activities -> Water Sport Rentals
+Water Sports, water-sports, 5 -> Outdoor Activities -> Water Sport Rentals
+Boating, boating, 17 -> Outdoor Activities -> Water Sport Rentals
+Fishing, fishing, 25 -> Outdoor Activities -> Water Sport Rentals
+Diving, diving, 0 -> Outdoor Activities -> Water Sport Rentals
+Parasailing, parasailing, 1 -> Outdoor Activities -> Water Sport Rentals
+Swimming, swimming, 2 -> Outdoor Activities -> Water Sport Rentals
+Camping, camping, 1 -> Outdoor Activities -> Parks & Preserves
+Sports, sports, 80 -> Outdoor Activities -> Sports Venue
+Baseball, baseball, 8 -> Outdoor Activities -> Sports Venue
+Basketball, basketball, 1 -> Outdoor Activities -> Sports Venue
+Beach Volleyball, beach-volleyball, 1 -> Outdoor Activities -> Sports Venue
+Football, football, 3 -> Outdoor Activities -> Sports Venue
+Golf, golf, 22 -> Outdoor Activities -> Sports Venue
+Golf Course, golf-course, 0 -> Outdoor Activities -> Sports Venue
+Tennis, tennis, 5 -> Outdoor Activities -> Sports Venue
+Volleyball, volleyball, 1 -> Outdoor Activities -> Sports Venue
+Soccer, soccer, 5 -> Outdoor Activities -> Sports Venue
+Softball, softball, 4 -> Outdoor Activities -> Sports Venue
+Baseball, baseball, 8 -> Outdoor Activities -> Sports Venue
+Hockey, hockey, 2 -> Outdoor Activities -> Sports Venue
+Lacrosse, lacrosse, 1 -> Outdoor Activities -> Sports Venue
+Rugby, rugby, 1 -> Outdoor Activities -> Sports Venue
+Motorsports, motorsports, 2 -> Outdoor Activities -> Sports Venue
+Car Racing, car-racing, 2 -> Outdoor Activities -> Sports Venue
+Go Karts, go-karts, 1 -> Outdoor Activities -> Sports Venue
+Mini Golf, mini-golf, 1 -> Outdoor Activities -> Sports Venue
+Skate Park, skate-park, 2 -> Outdoor Activities -> Sports Venue
+Racquetball, racquetball, 1 -> Outdoor Activities -> Sports Venue
+Gymnastics, gymnastics, 0 -> Outdoor Activities -> Sports Venue
+Ice Skating, ice-skating, 1 -> Outdoor Activities -> Sports Venue
+Spectator Sport, spectator-sport, 1 -> Outdoor Activities -> Sports Venue
+Sports courts and fields, sporting-venues, 27 -> Outdoor Activities -> Sports Venue
+Indoor, indoor, 5 -> Outdoor Activities -> Sports Venue
+Indoor activity, indoor-activity, 0 -> Outdoor Activities -> Sports Venue
+Outdoor, outdoor, 79 -> Outdoor Activities -> Sports Venue
+Bicycle Trails, bicycle-trails, 1 -> Outdoor Activities -> Nature Tours
+Equestrian Riding, equestrian-riding, 0 -> Outdoor Activities -> Nature Tours
+Tours, tours, 5 -> Outdoor Activities -> Nature Tours
+Sightseeing, sightseeing, 14 -> Outdoor Activities -> Nature Tours
+Farm Tours, farm-tours, 1 -> Outdoor Activities -> Nature Tours
+Beach and Swimwear, beach-and-swimwear, 3 -> Outdoor Activities -> Beach Rentals
+
+## Shopping
+Shopping, shopping, 34 -> Shopping
+Shopping Mall, shopping-malls-areas, 3 -> Shopping -> Mall/Outlet
+Factory Outlets, factory-outlets, 1 -> Shopping -> Mall/Outlet
+Downtown Shopping, downtown-shopping, 3 -> Shopping -> Mall/Outlet
+Boutique, boutique, 5 -> Shopping -> Boutique
+Clothing, clothing, 3 -> Shopping -> Boutique
+Specialty Shop, specialty-shop, 3 -> Shopping -> Boutique
+Souvenir/Gift Shop, gift-shops-souvenirs, 14 -> Shopping -> Boutique
+Health & Beauty, health-beauty, 1 -> Shopping -> Boutique
+Beach and Swimwear, beach-and-swimwear, 3 -> Shopping -> Beach Outfitter
+
+## Spas & Wellness
+Spa & Wellness, spa-wellness, 13 -> Spas & Wellness
+Day Spa, day-spa, 6 -> Spas & Wellness -> Day Spa
+Health & Beauty, health-beauty, 1 -> Spas & Wellness -> Salon/Nail Bar
+
+## STAY
+Stay, where-to-stay, 117 -> STAY
+Hotels & Resorts, hotels-resorts, 65 -> STAY -> Hotels & Resorts
+Rental Homes & Condos, homes-condos, 39 -> STAY -> Vacation Homes & Condos
+RV Parks, rv-parks, 18 -> STAY -> RV Parks & Campgrounds
+Campgrounds, campgrounds, 10 -> STAY -> RV Parks & Campgrounds
+Lodging, lodging, 3 -> STAY -> Hotels & Resorts
+Green Lodging, green-lodging, 9 -> STAY -> Hotels & Resorts
+Meeting Accommodations, meeting-accommodations, 13 -> STAY -> Hotels & Resorts
+Meeting Facilities, meeting-facilities, 25 -> STAY -> Hotels & Resorts
+Meeting Services, meeting-services, 3 -> STAY -> Hotels & Resorts
+Meetings, meetings, 26 -> STAY -> Hotels & Resorts
+Wedding Facilities, wedding-facilities, 9 -> STAY -> Hotels & Resorts
+Wedding Services, wedding-services, 7 -> STAY -> Hotels & Resorts
+Weddings, weddings, 13 -> STAY -> Hotels & Resorts
+Wedding Planner, wedding-planner, 4 -> STAY -> Hotels & Resorts
+
+## Location/Area Categories (to be consolidated or removed)
+Bradenton, bradenton, 141 -> [ADMIN - REMOVE]
+Bradenton Area, bradenton-area, 5 -> [ADMIN - REMOVE]
+Cortez, cortez, 21 -> [ADMIN - REMOVE]
+Duette, duette, 2 -> [ADMIN - REMOVE]
+Ellenton, ellenton, 7 -> [ADMIN - REMOVE]
+Lakewood Ranch, lakewood-ranch, 16 -> [ADMIN - REMOVE]
+Longboat Key, longboat-key, 27 -> [ADMIN - REMOVE]
+Mainland, mainland, 1 -> [ADMIN - REMOVE]
+Mainlands, mainlands, 1 -> [ADMIN - REMOVE]
+Myakka, myakka, 3 -> [ADMIN - REMOVE]
+Palmetto & Parrish, palmetto-parrish, 39 -> [ADMIN - REMOVE]
+Parrish, parrish, 7 -> [ADMIN - REMOVE]
+Terra Ceia, terra-ceia, 1 -> [ADMIN - REMOVE]
+Downtown, downtown, 4 -> [ADMIN - REMOVE]
+Island, island, 5 -> [ADMIN - REMOVE]
+Islands, islands, 2 -> [ADMIN - REMOVE]
+
+## Administrative/Meta Categories (to be removed)
+Things To Do, things-to-do, 249 -> [ADMIN - REMOVE]
+Location Type, location-type, 2 -> [ADMIN - REMOVE]
+Conference, conference, 1 -> [ADMIN - REMOVE]
+Convention Center, convention-center, 0 -> [ADMIN - REMOVE]
+Contest Partners, contest-partners, 2 -> [ADMIN - REMOVE]
+Craft Your Own Vacation, cultural-center, 2 -> [ADMIN - REMOVE]
+Craft Your Own Vacation, cyov, 40 -> [ADMIN - REMOVE]
+Group Travel, group-travel, 2 -> [ADMIN - REMOVE]
+Meeting Planner, meeting-planner, 1 -> [ADMIN - REMOVE]
+Non Profit, non-profit, 3 -> [ADMIN - REMOVE]
+Voluntourism, voluntourism, 1 -> [ADMIN - REMOVE]
+Family Fun, family-fun, 53 -> [ADMIN - REMOVE]
+Farms, farms, 6 -> [ADMIN - REMOVE]
+More To Explore Tout — Eat & Drink, more-to-explore-tout-eat-drink, 2 -> [ADMIN - REMOVE]
+More To Explore Tout — Where To Stay, more-to-explore-tout-bradenton, 1 -> [ADMIN - REMOVE]
+More to Explore Tout Arts Culture, more-to-explore-tout-arts-culture, 2 -> [ADMIN - REMOVE]
+More to Explore Tout Group Accommodations, more-to-explore-tout-group-accommodations-group-travel, 1 -> [ADMIN - REMOVE]
+More to Explore Tout Group Accommodations, more-to-explore-tout-group-accommodations, 2 -> [ADMIN - REMOVE]
+More to Explore Tout Group Accommodations Group Travel, more-to-explore-tout-group-accommodations-weddings, 1 -> [ADMIN - REMOVE]
+More to Explore Tout Group Accommodations Weddings, more-to-explore-tout-where-to-stay, 1 -> [ADMIN - REMOVE]
+More to Explore Tout Lakewood Ranch, more-to-explore-tout-lakewood-ranch, 1 -> [ADMIN - REMOVE]
+More to Explore Tout Photo Library, more-to-explore-tout-photo-library, 1 -> [ADMIN - REMOVE]
+Supernav Featured Special Event Services, supernav-featured-special-event-services, 1 -> [ADMIN - REMOVE]
+Supernav Featured Things To Do, supernav-featured-things-to-do, 4 -> [ADMIN - REMOVE]
+Supernav Featured TripAdvisor, supernav-featured-tripadvisor, 1 -> [ADMIN - REMOVE]
+Supernav Featured Where To Stay, supernav-featured-where-to-stay, 1 -> [ADMIN - REMOVE] 
