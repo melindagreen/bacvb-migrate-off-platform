@@ -13,15 +13,13 @@ export const initInteractiveMap = () => {
     let startX = 0;
     let startLeft = 0;
 
-    let minLeft; // Declare minLeft here
-    const maxLeft = 0;    // Max pan limit (px)
+    let minLeft;
+    const maxLeft = 0;
 
-    // Function to calculate and set minLeft based on current dimensions
     const setMinLeft = () => {
         const containerWidth = $container.width();
-        const imgWidth = $img.width(); // Assuming img and svg have the same effective width for panning
+        const imgWidth = $img.width();
         minLeft = -(imgWidth - containerWidth);
-        // Ensure minLeft doesn't become positive if imgWidth is less than containerWidth
         if (minLeft > 0) {
             minLeft = 0;
         }
@@ -33,7 +31,6 @@ export const initInteractiveMap = () => {
     // Recalculate minLeft on window resize
     $(window).on('resize', setMinLeft);
 
-
     function setLeft(x) {
         const clampedX = Math.min(maxLeft, Math.max(minLeft, x));
         $img.css('left', clampedX + 'px');
@@ -44,27 +41,44 @@ export const initInteractiveMap = () => {
         return parseFloat($img.css('left')) || 0;
     }
 
-    // Mouse drag
-    $container.on('mousedown', (e) => {
+    // --- Mouse and Touch Event Handlers ---
+
+    // Unified start function for both mouse and touch
+    const handleStart = (e) => {
         isDragging = true;
-        startX = e.pageX;
+        // Use e.pageX for mouse, or e.originalEvent.touches[0].pageX for touch
+        startX = e.pageX || e.originalEvent.touches[0].pageX;
         startLeft = getLeft();
-        e.preventDefault();
-    });
+        e.preventDefault(); // Prevent default touch behavior like scrolling
+    };
 
-    $(document).on('mouseup', () => {
-        isDragging = false;
-    });
-
-    $(document).on('mousemove', (e) => {
+    // Unified move function for both mouse and touch
+    const handleMove = (e) => {
         if (!isDragging) return;
-        const deltaX = e.pageX - startX;
+        const currentX = e.pageX || e.originalEvent.touches[0].pageX;
+        const deltaX = currentX - startX;
         setLeft(startLeft + deltaX);
-    });
+    };
+
+    // Unified end function for both mouse and touch
+    const handleEnd = () => {
+        isDragging = false;
+    };
+
+    // Mouse events
+    $container.on('mousedown', handleStart);
+    $(document).on('mouseup', handleEnd);
+    $(document).on('mousemove', handleMove);
+
+    // Touch events
+    $container.on('touchstart', handleStart);
+    $(document).on('touchend', handleEnd);
+    $(document).on('touchmove', handleMove);
+    $(document).on('touchcancel', handleEnd); // Handle if touch is interrupted
+
 
     // Scroll (wheel) — allow horizontal scroll only
     $container.on('wheel', (e) => {
-        // Use deltaX only, block if vertical scroll
         const isMostlyHorizontal = Math.abs(e.originalEvent.deltaX) > Math.abs(e.originalEvent.deltaY);
         if (!isMostlyHorizontal) return;
 
