@@ -33,6 +33,7 @@ function render_block( $attrs, $content ) {
   $html = "<div class='" . Constants::BLOCK_CLASS . "-bradenton-map is-style-collage-square'>";
 
   $html .= '<div class="mapContainer">';
+  $html .= '<div class="bradenton-map-help"><span class="bradenton-map-help__arrow"><</span> <p>Scroll Left & Right</p> <span class="bradenton-map-help__arrow">></span></div>';
   $html .= '<div class="mapViewArea">';
   $html .= '<img src="' . $stylesheet_directory_uri . '/assets/images/bradenton-map.png" alt="" />';
   $html .= file_get_contents(get_stylesheet_directory() . '/assets/images/bradenton-map.svg');
