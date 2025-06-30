@@ -5,60 +5,178 @@ $(window).on("load", () => {
 });
 
 export const initInteractiveMap = () => {
-	let hasScrolledToIcons = false;
+    const $container = $('.mapViewArea');
+    const $img = $container.find('img');
+    const $svg = $container.find('svg');
 
-	const $iconsG = $(
-		".wp-block-mm-bradentongulfislands-bradenton-map svg #ICONS g"
-	);
+    let isDragging = false;
+    let startX = 0;
+    let startLeft = 0;
+    let touchMoved = false; // Flag to detect if touch has moved beyond a threshold
+    const panThreshold = 5; // Pixels a touch must move to be considered a pan
 
-	// Scroll handler to detect when #ICONS enters the viewport
-	$(window).on("scroll", function () {
-		if (hasScrolledToIcons) return;
+    let minLeft;
+    const maxLeft = 0;
 
-		const $icons = $(
-			".wp-block-mm-bradentongulfislands-bradenton-map svg #ICONS"
-		);
-		const windowBottom = $(window).scrollTop() + $(window).height();
-		const iconsTop = $icons.offset().top;
+    // New flag to track if the initial swipe bounce animation has played
+    let hasSwipedOnce = false;
 
-		if (windowBottom > iconsTop) {
-			hasScrolledToIcons = true;
+    const setMinLeft = () => {
+        const containerWidth = $container.width();
+        const imgWidth = $img.width();
+        minLeft = -(imgWidth - containerWidth);
+        if (minLeft > 0) {
+            minLeft = 0;
+        }
+        // After recalculating, ensure the map stays within bounds
+        setLeft(getLeft());
+    };
 
-			// Add bounce animation
-			$iconsG.addClass("bounce-scale");
+    // Debounce the resize event for setMinLeft
+    let resizeTimer;
+    $(window).on('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(setMinLeft, 100); // Wait 100ms after resize stops
+    });
 
-			// Remove the animation class after it finishes to allow retrigger if needed
-			setTimeout(() => {
-				$iconsG.removeClass("bounce-scale");
-			}, 1000); // match the animation duration
-		}
-	});
+    // Initial calculation of minLeft
+    setMinLeft();
 
-	// Handle click on icon
-	$iconsG.on("click", function (e) {
-		var stopId = $(this).attr("id");
+    function setLeft(x) {
+        const clampedX = Math.min(maxLeft, Math.max(minLeft, x));
+        $img.css('left', clampedX + 'px');
+        $svg.css('left', clampedX + 'px');
+    }
 
-		$(".bradenton-card").each(function () {
-			$(this).removeClass("pop-in").addClass("pop-out");
-		});
+    function getLeft() {
+        return parseFloat($img.css('left')) || 0;
+    }
 
-		let stopCard = $(".bradenton-card." + stopId);
-		stopCard.removeClass("pop-out").addClass("pop-in");
-		$(".bradenton-lightbox").addClass("bradenton-lightbox--on");
-	});
+    // --- Mouse and Touch Event Handlers ---
 
-	// Handle close click
-	$(".bradenton-lightbox .close").on("click", function () {
-		var $cityCard = $(this).closest(".bradenton-card");
-		$cityCard.removeClass("pop-in").addClass("pop-out");
-		$(".bradenton-lightbox").removeClass("bradenton-lightbox--on");
+    // Unified start function for both mouse and touch
+    const handleStart = (e) => {
+        isDragging = true;
+        touchMoved = false; // Reset flag for each new touch/drag
+        startX = e.pageX || e.originalEvent.touches[0].pageX;
+        startLeft = getLeft();
+    };
 
-		// Add bounce animation
-		$iconsG.addClass("bounce-scale");
+    // Unified move function for both mouse and touch
+    const handleMove = (e) => {
+        if (!isDragging) return;
 
-		// Remove the animation class after it finishes to allow retrigger if needed
-		setTimeout(() => {
-			$iconsG.removeClass("bounce-scale");
-		}, 1000); // match the animation duration
-	});
+        const currentX = e.pageX || e.originalEvent.touches[0].pageX;
+        const deltaX = currentX - startX;
+
+        // Check if enough horizontal movement has occurred to be considered a pan
+        if (Math.abs(deltaX) > panThreshold && !touchMoved) {
+            touchMoved = true;
+
+            // Trigger bounce animation only on the first detected swipe/drag
+            if (!hasSwipedOnce) {
+                const $iconsG = $(
+                    ".wp-block-mm-bradentongulfislands-bradenton-map svg #ICONS g"
+                );
+                $iconsG.addClass("bounce-scale");
+
+                // Remove the animation class after it finishes
+                setTimeout(() => {
+                    $iconsG.removeClass("bounce-scale");
+                }, 1000); // match the animation duration
+
+                hasSwipedOnce = true; // Set flag so it doesn't trigger again
+            }
+        }
+
+        if (touchMoved) {
+            setLeft(startLeft + deltaX);
+            // ONLY prevent default if we are actively panning
+            e.preventDefault();
+        }
+    };
+
+    // Unified end function for both mouse and touch
+    const handleEnd = () => {
+        isDragging = false;
+    };
+
+    // Mouse events
+    $container.on('mousedown', handleStart);
+    $(document).on('mouseup', handleEnd);
+    $(document).on('mousemove', handleMove);
+
+    // Touch events
+    $container.on('touchstart', handleStart);
+    // Use the container for touchmove/touchend to ensure they fire even if finger leaves map
+    $container.on('touchend', handleEnd);
+    $container.on('touchmove', handleMove);
+    $container.on('touchcancel', handleEnd); // Handle if touch is interrupted
+
+    // Prevent click on map if it was a drag (for icons specifically)
+    $container.on('click', (e) => {
+        // If touchMoved was true, it means it was a drag, so prevent click propagation
+        if (touchMoved) {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+        }
+    });
+
+
+    // Scroll (wheel) — allow horizontal scroll only
+    $container.on('wheel', (e) => {
+        const isMostlyHorizontal = Math.abs(e.originalEvent.deltaX) > Math.abs(e.originalEvent.deltaY);
+        if (!isMostlyHorizontal) return;
+
+        const deltaX = e.originalEvent.deltaX;
+        const currentLeft = getLeft();
+        setLeft(currentLeft - deltaX);
+
+        e.preventDefault();
+    });
+
+    // Removed the previous scroll handler for #ICONS entering viewport,
+    // as the bounce animation is now tied to the first swipe/drag.
+    // let hasScrolledToIcons = false; // This is no longer needed
+
+    const $iconsG = $(
+        ".wp-block-mm-bradentongulfislands-bradenton-map svg #ICONS g"
+    );
+
+    // No scroll handler for bounce animation anymore.
+
+    // Handle click on icon
+    $iconsG.on("click", function (e) {
+        if (touchMoved) {
+             e.preventDefault();
+             e.stopImmediatePropagation();
+             return;
+        }
+
+        var stopId = $(this).attr("id");
+        console.log(stopId);
+
+        $(".bradenton-card").each(function () {
+            $(this).removeClass("pop-in").addClass("pop-out");
+        });
+
+        let stopCard = $(".bradenton-card." + stopId);
+        stopCard.removeClass("pop-out").addClass("pop-in");
+        $(".bradenton-lightbox").addClass("bradenton-lightbox--on");
+    });
+
+    // Handle close click
+    $(".bradenton-lightbox .close").on("click", function () {
+        var $cityCard = $(this).closest(".bradenton-card");
+        $cityCard.removeClass("pop-in").addClass("pop-out");
+        $(".bradenton-lightbox").removeClass("bradenton-lightbox--on");
+
+        // The bounce animation here is independent of the "first swipe" logic.
+        // It's fine to keep it for closing the card if desired.
+        $iconsG.addClass("bounce-scale");
+
+        setTimeout(() => {
+            $iconsG.removeClass("bounce-scale");
+        }, 1000); // match the animation duration
+    });
 };
