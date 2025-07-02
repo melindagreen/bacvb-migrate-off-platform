@@ -1,0 +1,20 @@
+{
+  "name": "floribbean-quiz",
+  "dynamic": true,
+  "scripts": [
+    "front.js"
+  ],
+  "render_callback": "MaddenNino\\Blocks\\FloribbeanQuiz\\render_block",
+  "settings": {
+    "title": "Floribbean Quiz",
+    "description": "Interactive quiz",
+    "icon": "admin-site-alt2",
+    "category": "layout",
+    "attributes": {
+    "mode": {
+      "type": "string",
+      "default": "view"
+    }
+    }
+  }
+}

@@ -1,0 +1,283 @@
+@import "styles/utils/variables";
+@import "styles/utils/typography";
+@import "styles/utils/mixins";
+
+.#{$block-prefix}-floribbean-quiz {
+
+}
+
+
+// Variables
+$primary-color: #4CAF50; // Example green, adjust to your brand
+$secondary-color: #FFC107; // Example yellow
+$text-color: #333;
+$background-color: #F8F8F8;
+$border-color: #CCC;
+
+.quiz-container {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    max-width: 900px;
+    width: 95%;
+    text-align: center;
+    overflow: hidden; // To handle absolute positioning of elements if any
+    position: relative;
+}
+
+.quiz-header {
+    margin-bottom: 30px;
+
+    img {
+        max-width: 250px;
+        margin-bottom: 20px;
+    }
+}
+
+.progress-dots {
+    margin-top: 20px;
+
+    .dot {
+        height: 12px;
+        width: 12px;
+        background-color: $border-color;
+        border-radius: 50%;
+        display: inline-block;
+        margin: 0 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &.active {
+            background-color: $primary-color;
+        }
+    }
+}
+
+.quiz-page {
+    display: none; // Hidden by default, shown by JS
+    animation: fadeIn 0.5s ease-in-out;
+
+    &.active {
+        display: block;
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Start Screen Styling */
+#start-screen {
+    .intro-visuals {
+        position: relative;
+        height: 250px; // Adjust as needed
+        margin-bottom: 30px;
+
+        .taco-img {
+            position: absolute;
+            left: 50px;
+            top: 50px;
+            width: 200px; // Adjust size
+            animation: floatLeft 3s infinite alternate ease-in-out;
+        }
+
+        .shrimp-salad-img {
+            position: absolute;
+            right: 50px;
+            bottom: 50px;
+            width: 200px; // Adjust size
+            animation: floatRight 3s infinite alternate ease-in-out;
+        }
+    }
+
+    p {
+        font-size: 1.1em;
+        line-height: 1.6;
+        margin-bottom: 30px;
+    }
+}
+
+@keyframes floatLeft {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-15px); }
+}
+
+@keyframes floatRight {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(15px); }
+}
+
+
+/* Question Page Styling */
+.question-page {
+    .question-text {
+        background-color: #A0D8D7; // Your teal color
+        color: white;
+        padding: 15px 20px;
+        border-radius: 8px;
+        margin-bottom: 30px;
+        font-size: 1.4em;
+        font-weight: bold;
+    }
+
+    .question-image {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .option-list {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .option-item {
+        background-color: #F0F0F0;
+        border: 1px solid $border-color;
+        border-radius: 8px;
+        padding: 15px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, border-color 0.3s ease;
+        text-align: left;
+        display: flex;
+        align-items: center;
+        font-size: 1.1em;
+
+        &:hover {
+            background-color: lighten($primary-color, 40%);
+            border-color: $primary-color;
+        }
+
+        &.selected {
+            background-color: $primary-color;
+            color: white;
+            border-color: darken($primary-color, 10%);
+        }
+
+        .option-label {
+            display: inline-block;
+            background-color: #CCC;
+            color: $text-color;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            margin-right: 15px;
+            flex-shrink: 0;
+
+            &.selected {
+                background-color: white;
+                color: $primary-color;
+            }
+        }
+    }
+}
+
+/* Navigation Buttons */
+.quiz-navigation {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+
+    .btn {
+        padding: 12px 25px;
+        font-size: 1.1em;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &.prev-btn {
+            background-color: #BBB;
+            color: white;
+            &:hover {
+                background-color: #999;
+            }
+        }
+
+        &.next-btn, &.submit-btn {
+            background-color: $primary-color;
+            color: white;
+            &:hover {
+                background-color: darken($primary-color, 10%);
+            }
+        }
+
+        &:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+    }
+}
+
+
+/* Results Screen Styling */
+#results-screen {
+    .section-title {
+        color: #A0D8D7;
+        font-size: 2em;
+        margin-bottom: 20px;
+    }
+
+    .result-dish {
+        margin-top: 30px;
+        margin-bottom: 40px;
+
+        img {
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            font-size: 1.8em;
+            color: $primary-color;
+            margin-bottom: 15px;
+        }
+
+        .recipe-btn {
+            background-color: #E27B58; // Your orange button color
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+
+            &:hover {
+                background-color: darken(#E27B58, 10%);
+            }
+        }
+    }
+
+    #explore-dishes-btn {
+        background-color: #A0D8D7;
+        margin-right: 15px;
+        color: white;
+        &:hover {
+            background-color: darken(#A0D8D7, 10%);
+        }
+    }
+
+    #retake-quiz-btn {
+        background-color: #DDD;
+        color: $text-color;
+        &:hover {
+            background-color: #CCC;
+        }
+    }
+}
