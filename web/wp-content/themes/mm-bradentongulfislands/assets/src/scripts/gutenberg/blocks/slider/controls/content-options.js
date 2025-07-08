@@ -28,7 +28,7 @@ import CardContent from "../../content-card/controls/card-content";
 
 /*** CONSTANTS **************************************************************/
 import { CARD_STYLES } from "../../../inc/constants";
-console.log('CARD STYLES: ', CARD_STYLES);
+console.log("CARD STYLES: ", CARD_STYLES);
 
 /*** COMPONENTS **************************************************************/
 const ContentOptions = (props) => {
@@ -123,7 +123,7 @@ const ContentOptions = (props) => {
 							onSelect={onGallerySelect}
 							value={attributes.galleryImages.map((image) => image.id)}
 							render={({ open }) => (
-								<Button onClick={open} isLarge icon="format-gallery">
+								<Button onClick={open} icon="format-gallery">
 									{__("Choose Images")}
 								</Button>
 							)}
@@ -245,7 +245,7 @@ const ContentOptions = (props) => {
 										value={attributes.ctaSlideImage}
 										render={({ open }) => (
 											<div className="image-select">
-												<Button onClick={open} isLarge icon="format-gallery">
+												<Button onClick={open} icon="format-gallery">
 													{__("Select Image")}
 												</Button>
 												{attributes.ctaSlideImageUrl != "" && (

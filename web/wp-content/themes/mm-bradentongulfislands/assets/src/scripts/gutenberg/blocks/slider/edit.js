@@ -28,7 +28,6 @@ const Editor = (props) => {
 	*/
 	let blockProps = useBlockProps({
 		className: "swiper-wrapper",
-		allowedBlocks: ALLOWED_BLOCKS,
 		template: SLIDE_TEMPLATE,
 	});
 
@@ -49,10 +48,7 @@ const Editor = (props) => {
 					order: "desc",
 					orderby: "date",
 				};
-				if (
-					attributes.enableTaxFilter &&
-					attributes.taxonomyTerms.length
-				) {
+				if (attributes.enableTaxFilter && attributes.taxonomyTerms.length) {
 					const termIds = attributes.taxonomyTerms.map((term) => {
 						return term.id;
 					});
@@ -106,7 +102,7 @@ const Editor = (props) => {
 	Object.entries(attributes).forEach((entry) => {
 		const [key, value] = entry;
 		if (value !== false) {
-			sliderDataset["data-" + key] = value;
+			sliderDataset["data-" + key.toLocaleLowerCase()] = value;
 		}
 	});
 
@@ -133,9 +129,7 @@ const Editor = (props) => {
 	return (
 		<section
 			id={`swiper-slider-${props.clientId}`}
-			className={`${props.className} slider-type-${
-				attributes.contentType
-			} ${
+			className={`${props.className} slider-type-${attributes.contentType} ${
 				attributes.enableArrowNavigation && attributes.arrowsBelowSlider
 					? "slider-arrows-below"
 					: ""
@@ -143,13 +137,13 @@ const Editor = (props) => {
 		>
 			<div className={`swiper`} {...sliderDataset}>
 				{attributes.contentType !== "custom" && (
-					<div class="swiper-wrapper">
+					<div className="swiper-wrapper">
 						{(attributes.contentType === "automatic" ||
 							attributes.contentType === "manual") &&
 						displayedPosts &&
 						displayedPosts.length ? (
 							displayedPosts.map((post, index) => (
-								<div class="swiper-slide">
+								<div className="swiper-slide">
 									<ServerSideRender
 										block={THEME_PREFIX + "/content-card"}
 										attributes={{
@@ -158,43 +152,35 @@ const Editor = (props) => {
 											contentType: attributes.postType,
 											displayAdditionalContent:
 												attributes.displayAdditionalContent,
-											displayExcerpt:
-												attributes.displayExcerpt,
-											excerptLength:
-												attributes.excerptLength,
-											displayReadMore:
-												attributes.displayReadMore,
-											readMoreText:
-												attributes.readMoreText,
+											displayExcerpt: attributes.displayExcerpt,
+											excerptLength: attributes.excerptLength,
+											displayReadMore: attributes.displayReadMore,
+											readMoreText: attributes.readMoreText,
 											mode: "preview",
 										}}
 									/>
 								</div>
 							))
 						) : (
-							<div class="swiper-slide">
-								No results found for {attributes.postType} with
-								selected {attributes.taxonomyFilter}
+							<div className="swiper-slide">
+								No results found for {attributes.postType} with selected{" "}
+								{attributes.taxonomyFilter}
 							</div>
 						)}
 
 						{(attributes.contentType === "automatic" ||
 							attributes.contentType === "manual") &&
 							attributes.enableCtaSlide && (
-								<div class="swiper-slide">
+								<div className="swiper-slide">
 									<ServerSideRender
 										block={THEME_PREFIX + "/content-card"}
 										attributes={{
 											cardStyle: attributes.cardStyle,
 											contentType: "custom",
-											contentTitle:
-												attributes.ctaSlideTitle,
-											customImage:
-												attributes.ctaSlideImage,
-											customCtaText:
-												attributes.ctaSlideBtnText,
-											customCtaUrl:
-												attributes.ctaSlideBtnUrl,
+											contentTitle: attributes.ctaSlideTitle,
+											customImage: attributes.ctaSlideImage,
+											customCtaText: attributes.ctaSlideBtnText,
+											customCtaUrl: attributes.ctaSlideBtnUrl,
 											mode: "preview",
 										}}
 									/>
@@ -204,38 +190,32 @@ const Editor = (props) => {
 						{attributes.contentType === "gallery" &&
 							attributes.galleryImages &&
 							attributes.galleryImages.map((image, index) => (
-								<div class="swiper-slide">
-									<figure class="wp-block-image">
+								<div className="swiper-slide">
+									<figure className="wp-block-image">
 										<img src={image.url} alt={image.alt} />
-										{image.caption && (
-											<figcaption>
-												{image.caption}
-											</figcaption>
-										)}
+										{image.caption && <figcaption>{image.caption}</figcaption>}
 									</figure>
 								</div>
 							))}
 					</div>
 				)}
 
-				{attributes.contentType === "custom" && (
-					<div {...innerBlocksProps} />
-				)}
+				{attributes.contentType === "custom" && <div {...innerBlocksProps} />}
 			</div>
 
 			{(attributes.enableScrollbar ||
 				attributes.enablePagination ||
 				attributes.enableArrowNavigation) && (
-				<div class="swiper-navigation-wrapper">
+				<div className="swiper-navigation-wrapper">
 					{attributes.enableScrollbar && (
 						<div
-							class="swiper-scrollbar"
+							className="swiper-scrollbar"
 							data-color={attributes.scrollbarColor.name}
 						></div>
 					)}
 					{attributes.enablePagination && (
 						<div
-							class="swiper-pagination"
+							className="swiper-pagination"
 							data-color={attributes.dotColor.name}
 							data-color-active={attributes.dotColorActive.name}
 						></div>
@@ -243,18 +223,14 @@ const Editor = (props) => {
 					{attributes.enableArrowNavigation && (
 						<>
 							<div
-								class="swiper-button-prev"
+								className="swiper-button-prev"
 								data-color={attributes.arrowColor.name}
-								data-color-background={
-									attributes.arrowBackgroundColor.name
-								}
+								data-color-background={attributes.arrowBackgroundColor.name}
 							></div>
 							<div
-								class="swiper-button-next"
+								className="swiper-button-next"
 								data-color={attributes.arrowColor.name}
-								data-color-background={
-									attributes.arrowBackgroundColor.name
-								}
+								data-color-background={attributes.arrowBackgroundColor.name}
 							></div>
 						</>
 					)}

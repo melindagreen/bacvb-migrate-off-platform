@@ -7,25 +7,20 @@ import { useBlockProps, useInnerBlocksProps } from "@wordpress/block-editor";
 
 /*** FUNCTIONS **************************************************************/
 const edit = () => {
-  const ALLOWED_BLOCKS = [
-    "mm-bradentongulfislands/content-card"
-  ];
+	const ALLOWED_BLOCKS = ["mm-bradentongulfislands/content-card"];
 
 	const SLIDE_TEMPLATE = [["mm-bradentongulfislands/content-card", {}]];
 
-	const blockProps = useBlockProps({
-		allowedBlocks: ALLOWED_BLOCKS,
-		template: SLIDE_TEMPLATE
-	});
+	// Only pass valid DOM attributes here
+	const blockProps = useBlockProps();
 
+	// allowedBlocks/template should go here
 	const innerBlocksProps = useInnerBlocksProps(blockProps, {
 		allowedBlocks: ALLOWED_BLOCKS,
-		template: SLIDE_TEMPLATE
-  });
+		template: SLIDE_TEMPLATE,
+	});
 
-  return (
-    <div {...innerBlocksProps} />
-  );
+	return <div {...innerBlocksProps} />;
 };
 
 /*** EXPORTS ****************************************************************/

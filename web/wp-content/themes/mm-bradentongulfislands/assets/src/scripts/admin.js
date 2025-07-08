@@ -1,6 +1,6 @@
 import $ from "jquery";
 import "../styles/style-admin.scss";
-import "./library/madden-lazy-load-v1.5-min";
+import MMLazyLoad from "./library/madden-lazy-load-v1.5-min";
 
 import domReady from "@wordpress/dom-ready";
 
@@ -18,11 +18,11 @@ function initLazyLoad() {
 	}
 
 	// Reinitialize lazy load
-	// if ($('*[data-load-type]').length) {
-	//     _lazyLoadObject = MMLazyLoad.init({
-	//         loadElements: document.querySelectorAll("[data-load-type]")
-	//     });
-	// }
+	if (MMLazyLoad && $("*[data-load-type]").length) {
+		_lazyLoadObject = MMLazyLoad.init({
+			loadElements: document.querySelectorAll("[data-load-type]"),
+		});
+	}
 }
 
 /**

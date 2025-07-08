@@ -1,3 +1,4 @@
+import Swiper from "swiper/bundle";
 import { initSwiperSliders } from "./assets/slider";
 
 (function ($) {

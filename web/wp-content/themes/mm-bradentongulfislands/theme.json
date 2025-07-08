@@ -12,6 +12,7 @@
       "width": false
     },
     "spacing": {
+      "defaultSpacingSizes": true,
       "padding": true,
       "margin": true,
       "blockGap": true,
