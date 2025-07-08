@@ -2,75 +2,75 @@
 @import "styles/utils/variables";
 
 .repeater {
-    @include clearfix;
-    margin: 1rem 0;
-    padding: 1rem;
-    border: 1px solid color('gray');
-    h3 {
-        margin: 0 0 1rem 0;
-        font-size: 1rem;
+  @include clearfix;
+  margin: 1rem 0;
+  padding: 1rem;
+  border: 1px solid color("gray");
+  h3 {
+    margin: 0 0 1rem 0;
+    font-size: 1rem;
+  }
+  .add-repeater-segment {
+    background-color: color("black");
+    .dashicons {
+      color: white;
     }
-    .add-repeater-segment {
-        background-color: color('black');
-        .dashicons {
-            color: white;
+  }
+  .placeholder-text {
+    color: color("gray");
+    margin: 0 0 1rem 0;
+    font-size: 1rem;
+    line-height: 1;
+  }
+  .repeater-segments {
+    .repeater-segment {
+      position: relative;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border: 1px solid color("gray");
+      .reorder-segments,
+      .delete-repeater-segment {
+        position: absolute;
+        top: 0;
+        opacity: 0;
+      }
+      .reorder-segments {
+        display: flex;
+        flex-direction: column;
+        right: 100%;
+        margin-right: 3px;
+        .reorder-button {
+          margin: 0;
+          opacity: 1;
+          background-color: white;
+          &:disabled,
+          &[disabled] {
+            opacity: 0.5;
+          }
         }
-    }
-    .placeholder-text {
-        color: color('gray');
-        margin: 0 0 1rem 0;
-        font-size: 1rem;
-        line-height: 1;
-    }
-    .repeater-segments {
-        .repeater-segment {
-            position: relative;
-            padding: 1rem;
-            margin-bottom: 1rem;
-            border: 1px solid color('gray');
-            .reorder-segments,
-            .delete-repeater-segment {
-                position: absolute;
-                top: 0;
-                opacity: 0;
-            }
-            .reorder-segments {
-                display: flex;
-                flex-direction: column;
-                right: 100%;
-                margin-right: 3px;
-                .reorder-button {
-                    margin: 0;
-                    opacity: 1;
-                    background-color: white;
-                    &:disabled,
-                    &[disabled] {
-                        opacity: 0.5;
-                    }
-                }
-            }
-            .delete-repeater-segment {
-                left: 100%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                width: 2rem;
-                height: 2rem;
-                background-color: white;
-                @include standard-transition;
-                svg {
-                    height: 1rem;
-                    width: 1rem;
-                    margin-bottom: 7px;
-                }
-            }
-            &:hover,
-            &:focus {
-                .reorder-segments,
-                .delete-repeater-segment {
-                    opacity: 1;
-                }
-            }
+      }
+      .delete-repeater-segment {
+        left: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 2rem;
+        height: 2rem;
+        background-color: white;
+        @include standard-transition;
+        svg {
+          height: 1rem;
+          width: 1rem;
+          margin-bottom: 7px;
         }
+      }
+      &:hover,
+      &:focus {
+        .reorder-segments,
+        .delete-repeater-segment {
+          opacity: 1;
+        }
+      }
     }
+  }
 }

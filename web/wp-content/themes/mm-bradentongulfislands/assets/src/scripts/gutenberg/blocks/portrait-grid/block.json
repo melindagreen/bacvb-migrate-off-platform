@@ -1,45 +1,46 @@
 {
-  "name": "portrait-grid",
-  "dynamic": true,
-  "scripts": [
-    "front.js"
-  ],
-  "render_callback": "MaddenNino\\Blocks\\PortraitGrid\\render_block",
-  "settings": {
-    "title": "Portrait Grid",
-    "description": "A masonry grid for highlighting inspiratoinal content",
-    "icon": "schedule",
-    "category": "layout",
-    "attributes": {
-      "blockTitle": {
-        "type": "string",
-        "default": ""
-      },
-      "queryMode": {
-        "type": "string",
-        "default": "manual"
-      },
-      "posts": {
-        "type": "array",
-        "default": [
-          {
-            "id": 0
-          },
-          {
-            "id": 1
-          },
-          {
-            "id": 2
-          }
-        ],
-        "items": {
-          "type": "object"
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "mm-bradentongulfislands/portrait-grid",
+  "version": "1.0.0",
+  "title": "Portrait Grid",
+  "description": "A masonry grid for highlighting inspirational content",
+  "icon": "schedule",
+  "category": "layout",
+  "attributes": {
+    "blockTitle": {
+      "type": "string",
+      "default": ""
+    },
+    "queryMode": {
+      "type": "string",
+      "default": "manual"
+    },
+    "posts": {
+      "type": "array",
+      "default": [
+        {
+          "id": 0
+        },
+        {
+          "id": 1
+        },
+        {
+          "id": 2
         }
-      },
-      "mode": {
-        "type": "string",
-        "default": "preview"
+      ],
+      "items": {
+        "type": "object"
       }
+    },
+    "mode": {
+      "type": "string",
+      "default": "preview"
     }
-  }
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "viewStyle": "file:./style-index.css",
+  "viewScript": "file:./front.js",
+  "render": "file:./render.php"
 }

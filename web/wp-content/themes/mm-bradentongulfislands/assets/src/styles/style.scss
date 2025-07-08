@@ -29,13 +29,13 @@ SIZES
 @import "breakpoints/base";
 
 @media only screen and (min-width: ($screen-sm + 1)) {
-	@import "breakpoints/large";
+  @import "breakpoints/large";
 }
 
 @media only screen and (min-width: ($screen-sm + 1)) and (max-width: $screen-lg) {
-	@import "breakpoints/medium";
+  @import "breakpoints/medium";
 }
 
 @media only screen and (max-width: $screen-sm) {
-	@import "breakpoints/small";
+  @import "breakpoints/small";
 }

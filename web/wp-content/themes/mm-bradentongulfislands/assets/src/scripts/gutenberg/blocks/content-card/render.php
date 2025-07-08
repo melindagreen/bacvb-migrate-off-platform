@@ -3,69 +3,62 @@
 namespace MaddenNino\Blocks\ContentCard;
 use MaddenNino\Library\Constants as Constants;
   
-/**
- * Render function for the dynamic example block
- * @param array $attrs        all block attributes
- * @param string $content     
- */
-function render_block( $attrs, $content ) {
+$attrs = $attributes;
 
-  $anchor = $attrs['anchor'] ?? '';
+$anchor = $attrs['anchor'] ?? '';
 
-  $classes = [
-    Constants::BLOCK_CLASS.'-content-card',
-    $attrs['contentType'].'-card',
-    'card-style-'.$attrs['cardStyle']
-  ];
+$classes = [
+  Constants::BLOCK_CLASS.'-content-card',
+  $attrs['contentType'].'-card',
+  'card-style-'.$attrs['cardStyle']
+];
 
-  $id         = $attrs['contentId'];
-  $title      = '';
-  $link       = '';
-  $linkTitle  = '';
-  $linkTarget = '';
-  $image      = '';
+$id         = $attrs['contentId'];
+$title      = '';
+$link       = '';
+$linkTitle  = '';
+$linkTarget = '';
+$image      = '';
 
-  if ($attrs['contentType'] !== 'custom') {
-    $title      = get_the_title($id);
-    $link       = get_the_permalink($id);
-    $excerpt = wp_trim_words(get_the_excerpt($id), 20, '…');
-    $linkTitle  = get_the_title($id);
-    $image      = get_the_post_thumbnail($id, 'large');
+if ($attrs['contentType'] !== 'custom') {
+  $title      = get_the_title($id);
+  $link       = get_the_permalink($id);
+  $excerpt = wp_trim_words(get_the_excerpt($id), 20, '…');
+  $linkTitle  = get_the_title($id);
+  $image      = get_the_post_thumbnail($id, 'large');
+} else {
+  $attrs['displayAdditionalContent'] = false;
+
+  $title = $attrs['contentTitle'];
+  $excerpt = $attrs['contentExcerpt'];
+
+  if ($attrs['customCtaUrl'] !== '') {
+    $link       = $attrs['customCtaUrl']['url'];
+    $linkTitle  = $attrs['customCtaUrl']['title'] ? $attrs['customCtaUrl']['title'] : $attrs['contentTitle'];
+
+    $linkTarget = '';
+    if (isset($attrs['customCtaUrl']['opensInNewTab']) && $attrs['customCtaUrl']['opensInNewTab']) {
+      $linkTarget = 'target="_blank"';
+    }
   } else {
-    $attrs['displayAdditionalContent'] = false;
-
-    $title = $attrs['contentTitle'];
-    $excerpt = $attrs['contentExcerpt'];
-
-    if ($attrs['customCtaUrl'] !== '') {
-      $link       = $attrs['customCtaUrl']['url'];
-      $linkTitle  = $attrs['customCtaUrl']['title'] ? $attrs['customCtaUrl']['title'] : $attrs['contentTitle'];
-
-      $linkTarget = '';
-      if (isset($attrs['customCtaUrl']['opensInNewTab']) && $attrs['customCtaUrl']['opensInNewTab']) {
-        $linkTarget = 'target="_blank"';
-      }
-    } else {
-      $link = '';
-      $linkTitle = $attrs['contentTitle'];
-      $linkTarget = '';
-    }
-
-    $mime_type = get_post_mime_type($attrs['customImage']);
-    $attachment_url = wp_get_attachment_url($attrs['customImage']);
-
-    if (strpos($mime_type, 'video/') === 0) {
-      $image = '<video class="content-card-video" autoplay muted loop playsinline>
-                  <source src="' . esc_url($attachment_url) . '" type="' . esc_attr($mime_type) . '">
-                  Your browser does not support the video tag.
-                </video>';
-    } else {
-      $image = wp_get_attachment_image($attrs['customImage'], 'large');
-    }
+    $link = '';
+    $linkTitle = $attrs['contentTitle'];
+    $linkTarget = '';
   }
 
-  ob_start(); 
-  ?>
+  $mime_type = get_post_mime_type($attrs['customImage']);
+  $attachment_url = wp_get_attachment_url($attrs['customImage']);
+
+  if (strpos($mime_type, 'video/') === 0) {
+    $image = '<video class="content-card-video" autoplay muted loop playsinline>
+                <source src="' . esc_url($attachment_url) . '" type="' . esc_attr($mime_type) . '">
+                Your browser does not support the video tag.
+              </video>';
+  } else {
+    $image = wp_get_attachment_image($attrs['customImage'], 'large');
+  }
+}
+?>
 
 <article id="<?php echo $anchor; ?>" class="<?php echo implode(' ', $classes); ?>" data-title="<?php echo esc_attr($title); ?>" data-excerpt="<?php echo esc_attr($excerpt); ?>" data-link="<?php echo esc_attr($link); ?>">
 
@@ -169,9 +162,3 @@ function render_block( $attrs, $content ) {
       </div>
     <?php } ?>
 </article>
-
-<?php
-  $output = ob_get_contents();
-  ob_end_clean();
-  return $output;
-}

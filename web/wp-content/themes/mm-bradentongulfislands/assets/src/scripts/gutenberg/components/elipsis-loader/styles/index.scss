@@ -1,28 +1,28 @@
-@import 'styles/utils/variables';
+@import "styles/utils/variables";
 
 .#{$theme-prefix}-elipsis-loader {
-    color: black;
-    display: inline-flex;
-    .dot {
-        animation: bounce 0.5s infinite alternate forwards;
-        &:not(:last-child) {
-            margin-right: 3px;
-        }
-        @for $i from 1 through 3 {
-            &:nth-child(#{$i}) {
-                animation-delay: $i * 0.1s;
-            }
-        }
+  color: black;
+  display: inline-flex;
+  .dot {
+    animation: bounce 0.5s infinite alternate forwards;
+    &:not(:last-child) {
+      margin-right: 3px;
     }
+    @for $i from 1 through 3 {
+      &:nth-child(#{$i}) {
+        animation-delay: $i * 0.1s;
+      }
+    }
+  }
 }
 
 @keyframes bounce {
-    from {
-        transform: translateY(2px);
-        opacity: 0.2;
-    }
-    to {
-        transform: translateY(-2px);
-        opacity: 0.5;
-    }
+  from {
+    transform: translateY(2px);
+    opacity: 0.2;
+  }
+  to {
+    transform: translateY(-2px);
+    opacity: 0.5;
+  }
 }

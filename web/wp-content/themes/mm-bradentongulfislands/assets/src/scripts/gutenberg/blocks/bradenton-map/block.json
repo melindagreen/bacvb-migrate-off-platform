@@ -1,229 +1,229 @@
 {
-  "name": "bradenton-map",
-  "dynamic": true,
-  "scripts": [
-    "front.js"
-  ],
-  "render_callback": "MaddenNino\\Blocks\\BradentonMap\\render_block",
-  "settings": {
-    "title": "Bradenton Map",
-    "description": "Interactive map for Bradenton",
-    "icon": "admin-site-alt2",
-    "category": "layout",
-    "attributes": {
-  "mode": {
-    "type": "string",
-    "default": "view"
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "mm-bradentongulfislands/bradenton-map",
+  "version": "1.0.0",
+  "title": "Bradenton Map",
+  "description": "Interactive map for Bradenton",
+  "icon": "admin-site-alt2",
+  "category": "layout",
+  "attributes": {
+    "mode": {
+      "type": "string",
+      "default": "view"
+    },
+    "PINE_AVENUEDescription": {
+      "type": "string",
+      "default": ""
+    },
+    "PINE_AVENUEUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "BRIDGE_STREET_FERRY_STOPDescription": {
+      "type": "string",
+      "default": ""
+    },
+    "BRIDGE_STREET_FERRY_STOPUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "bridgeStreetMediaId": {
+      "type": "number",
+      "default": 0
+    },
+    "bridgeStreetDescription": {
+      "type": "string",
+      "default": ""
+    },
+    "bridgeStreetUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "bradentonRiverwalkMediaId": {
+      "type": "number",
+      "default": 0
+    },
+    "bradentonRiverwalkDescription": {
+      "type": "string",
+      "default": ""
+    },
+    "bradentonRiverwalkUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "LAKEWOOD_RANCHDescription": {
+      "type": "string",
+      "default": ""
+    },
+    "LAKEWOOD_RANCHUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "LAKEWOOD_RANCHMediaId": {
+      "type": "number",
+      "default": 0
+    },
+    "LAKE_MANATEE_STATE_PARKDescription": {
+      "type": "string",
+      "default": ""
+    },
+    "LAKE_MANATEE_STATE_PARKUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "LAKE_MANATEE_STATE_PARKMediaId": {
+      "type": "number",
+      "default": 0
+    },
+    "ANNA_MARIE_ISLANDDescription": {
+      "type": "string",
+      "default": ""
+    },
+    "ANNA_MARIE_ISLANDUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "ANNA_MARIE_ISLANDMediaId": {
+      "type": "number",
+      "default": 0
+    },
+    "LONGBOAT_KEYDescription": {
+      "type": "string",
+      "default": ""
+    },
+    "LONGBOAT_KEYUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "LONGBOAT_KEYMediaId": {
+      "type": "number",
+      "default": 0
+    },
+    "ROBINSON_PRESERVEDescription": {
+      "type": "string",
+      "default": ""
+    },
+    "ROBINSON_PRESERVEUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "ROBINSON_PRESERVEMediaId": {
+      "type": "number",
+      "default": 0
+    },
+    "CORTEZDescription": {
+      "type": "string",
+      "default": ""
+    },
+    "CORTEZUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "CORTEZMediaId": {
+      "type": "number",
+      "default": 0
+    },
+    "DESOTODescription": {
+      "type": "string",
+      "default": ""
+    },
+    "DESOTOUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "DESOTOMediaId": {
+      "type": "number",
+      "default": 0
+    },
+    "BISHOP_MUSEUMDescription": {
+      "type": "string",
+      "default": ""
+    },
+    "BISHOP_MUSEUMUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "BISHOP_MUSEUMMediaId": {
+      "type": "number",
+      "default": 0
+    },
+    "BRADENTON_RIVER_WALKDescription": {
+      "type": "string",
+      "default": ""
+    },
+    "BRADENTON_RIVER_WALKUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "BRADENTON_RIVER_WALKMediaId": {
+      "type": "number",
+      "default": 0
+    },
+    "ANNA_MARIE_CITY_PIERDescription": {
+      "type": "string",
+      "default": ""
+    },
+    "ANNA_MARIE_CITY_PIERUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "ANNA_MARIE_CITY_PIERMediaId": {
+      "type": "number",
+      "default": 0
+    },
+    "GULF_ISLANDS_FERRYDescription": {
+      "type": "string",
+      "default": ""
+    },
+    "GULF_ISLANDS_FERRYUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "GULF_ISLANDS_FERRYMediaId": {
+      "type": "number",
+      "default": 0
+    },
+    "HERRIG_CENTERDescription": {
+      "type": "string",
+      "default": ""
+    },
+    "HERRIG_CENTERUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "HERRIG_CENTERMediaId": {
+      "type": "number",
+      "default": 0
+    },
+    "MANATEE_PERFORMING_ARTSDescription": {
+      "type": "string",
+      "default": ""
+    },
+    "MANATEE_PERFORMING_ARTSUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "MANATEE_PERFORMING_ARTSMediaId": {
+      "type": "number",
+      "default": 0
+    },
+    "VILLAGE_OF_THE_ARTSDescription": {
+      "type": "string",
+      "default": ""
+    },
+    "VILLAGE_OF_THE_ARTSUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "VILLAGE_OF_THE_ARTSMediaId": {
+      "type": "number",
+      "default": 0
+    }
   },
-  "PINE_AVENUEDescription": {
-    "type": "string",
-    "default": ""
-  },
-  "PINE_AVENUEUrl": {
-    "type": "string",
-    "default": ""
-  },
-  "BRIDGE_STREET_FERRY_STOPDescription": {
-    "type": "string",
-    "default": ""
-  },
-  "BRIDGE_STREET_FERRY_STOPUrl": {
-    "type": "string",
-    "default": ""
-  },
-  "bridgeStreetMediaId": {
-    "type": "number",
-    "default": 0
-  },
-  "bridgeStreetDescription": {
-    "type": "string",
-    "default": ""
-  },
-  "bridgeStreetUrl": {
-    "type": "string",
-    "default": ""
-  },
-  "bradentonRiverwalkMediaId": {
-    "type": "number",
-    "default": 0
-  },
-  "bradentonRiverwalkDescription": {
-    "type": "string",
-    "default": ""
-  },
-  "bradentonRiverwalkUrl": {
-    "type": "string",
-    "default": ""
-  },
-  "LAKEWOOD_RANCHDescription": {
-    "type": "string",
-    "default": ""
-  },
-  "LAKEWOOD_RANCHUrl": {
-    "type": "string",
-    "default": ""
-  },
-  "LAKEWOOD_RANCHMediaId": {
-    "type": "number",
-    "default": 0
-  },
-  "LAKE_MANATEE_STATE_PARKDescription": {
-    "type": "string",
-    "default": ""
-  },
-  "LAKE_MANATEE_STATE_PARKUrl": {
-    "type": "string",
-    "default": ""
-  },
-  "LAKE_MANATEE_STATE_PARKMediaId": {
-    "type": "number",
-    "default": 0
-  },
-  "ANNA_MARIE_ISLANDDescription": {
-    "type": "string",
-    "default": ""
-  },
-  "ANNA_MARIE_ISLANDUrl": {
-    "type": "string",
-    "default": ""
-  },
-  "ANNA_MARIE_ISLANDMediaId": {
-    "type": "number",
-    "default": 0
-  },
-  "LONGBOAT_KEYDescription": {
-    "type": "string",
-    "default": ""
-  },
-  "LONGBOAT_KEYUrl": {
-    "type": "string",
-    "default": ""
-  },
-  "LONGBOAT_KEYMediaId": {
-    "type": "number",
-    "default": 0
-  },
-  "ROBINSON_PRESERVEDescription": {
-    "type": "string",
-    "default": ""
-  },
-  "ROBINSON_PRESERVEUrl": {
-    "type": "string",
-    "default": ""
-  },
-  "ROBINSON_PRESERVEMediaId": {
-    "type": "number",
-    "default": 0
-  },
-  "CORTEZDescription": {
-    "type": "string",
-    "default": ""
-  },
-  "CORTEZUrl": {
-    "type": "string",
-    "default": ""
-  },
-  "CORTEZMediaId": {
-    "type": "number",
-    "default": 0
-  },
-  "DESOTODescription": {
-    "type": "string",
-    "default": ""
-  },
-  "DESOTOUrl": {
-    "type": "string",
-    "default": ""
-  },
-  "DESOTOMediaId": {
-    "type": "number",
-    "default": 0
-  },
-  "BISHOP_MUSEUMDescription": {
-    "type": "string",
-    "default": ""
-  },
-  "BISHOP_MUSEUMUrl": {
-    "type": "string",
-    "default": ""
-  },
-  "BISHOP_MUSEUMMediaId": {
-    "type": "number",
-    "default": 0
-  },
-  "BRADENTON_RIVER_WALKDescription": {
-    "type": "string",
-    "default": ""
-  },
-  "BRADENTON_RIVER_WALKUrl": {
-    "type": "string",
-    "default": ""
-  },
-  "BRADENTON_RIVER_WALKMediaId": {
-    "type": "number",
-    "default": 0
-  },
-  "ANNA_MARIE_CITY_PIERDescription": {
-    "type": "string",
-    "default": ""
-  },
-  "ANNA_MARIE_CITY_PIERUrl": {
-    "type": "string",
-    "default": ""
-  },
-  "ANNA_MARIE_CITY_PIERMediaId": {
-    "type": "number",
-    "default": 0
-  },
-  "GULF_ISLANDS_FERRYDescription": {
-    "type": "string",
-    "default": ""
-  },
-  "GULF_ISLANDS_FERRYUrl": {
-    "type": "string",
-    "default": ""
-  },
-  "GULF_ISLANDS_FERRYMediaId": {
-    "type": "number",
-    "default": 0
-  },
-  "HERRIG_CENTERDescription": {
-    "type": "string",
-    "default": ""
-  },
-  "HERRIG_CENTERUrl": {
-    "type": "string",
-    "default": ""
-  },
-  "HERRIG_CENTERMediaId": {
-    "type": "number",
-    "default": 0
-  },
-  "MANATEE_PERFORMING_ARTSDescription": {
-    "type": "string",
-    "default": ""
-  },
-  "MANATEE_PERFORMING_ARTSUrl": {
-    "type": "string",
-    "default": ""
-  },
-  "MANATEE_PERFORMING_ARTSMediaId": {
-    "type": "number",
-    "default": 0
-  },
-  "VILLAGE_OF_THE_ARTSDescription": {
-    "type": "string",
-    "default": ""
-  },
-  "VILLAGE_OF_THE_ARTSUrl": {
-    "type": "string",
-    "default": ""
-  },
-  "VILLAGE_OF_THE_ARTSMediaId": {
-    "type": "number",
-    "default": 0
-  }
-}
-
-  }
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "viewStyle": "file:./style-index.css",
+  "viewScript": "file:./front.js",
+  "render": "file:./render.php"
 }

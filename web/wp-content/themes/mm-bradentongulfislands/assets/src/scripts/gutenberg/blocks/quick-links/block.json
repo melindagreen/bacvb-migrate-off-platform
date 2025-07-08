@@ -1,49 +1,50 @@
 {
-  "name": "quick-links",
-  "dynamic": true,
-  "scripts": [
-    "front.js"
-  ],
-  "render_callback": "MaddenNino\\Blocks\\QuickLinks\\render_block",
-  "settings": {
-    "title": "Quick Links",
-    "description": "Quick Links",
-    "icon": "schedule",
-    "category": "layout",
-    "attributes": {
-      "blockTitle": {
-        "type": "string",
-        "default": "Quick Links"
-      },
-      "color": {
-        "type": "string",
-        "default": ""
-      },
-      "quickLinks": {
-        "type": "array",
-        "default": [
-          {
-            "id": 0
-          },
-          {
-            "id": 1
-          },
-          {
-            "id": 2
-          }
-        ],
-        "items": {
-          "type": "object"
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "mm-bradentongulfislands/quick-links",
+  "version": "1.0.0",
+  "title": "Quick Links",
+  "description": "Quick Links",
+  "icon": "schedule",
+  "category": "layout",
+  "attributes": {
+    "blockTitle": {
+      "type": "string",
+      "default": "Quick Links"
+    },
+    "color": {
+      "type": "string",
+      "default": ""
+    },
+    "quickLinks": {
+      "type": "array",
+      "default": [
+        {
+          "id": 0
+        },
+        {
+          "id": 1
+        },
+        {
+          "id": 2
         }
-      },
-      "mode": {
-        "type": "string",
-        "default": "preview"
-      },
-      "hideOnMobile": {
-        "type": "boolean",
-        "default": false
+      ],
+      "items": {
+        "type": "object"
       }
+    },
+    "mode": {
+      "type": "string",
+      "default": "preview"
+    },
+    "hideOnMobile": {
+      "type": "boolean",
+      "default": false
     }
-  }
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "viewStyle": "file:./style-index.css",
+  "viewScript": "file:./front.js",
+  "render": "file:./render.php"
 }

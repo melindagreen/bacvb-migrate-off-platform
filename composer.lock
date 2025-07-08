@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d5ec862d70641b73f52626f6fe5995f8",
+    "content-hash": "1e33a173260c6de3938f57699f2b6b34",
     "packages": [
         {
             "name": "composer/ca-bundle",
@@ -950,20 +950,20 @@
         },
         {
             "name": "johnpbloch/wordpress",
-            "version": "6.4.0",
+            "version": "6.8.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/johnpbloch/wordpress.git",
-                "reference": "84161516e8208d2a4a53754108f5b9f0428021e3"
+                "reference": "1932f5ab26a420151c689a9c00505c70c4f91ab3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johnpbloch/wordpress/zipball/84161516e8208d2a4a53754108f5b9f0428021e3",
-                "reference": "84161516e8208d2a4a53754108f5b9f0428021e3",
+                "url": "https://api.github.com/repos/johnpbloch/wordpress/zipball/1932f5ab26a420151c689a9c00505c70c4f91ab3",
+                "reference": "1932f5ab26a420151c689a9c00505c70c4f91ab3",
                 "shasum": ""
             },
             "require": {
-                "johnpbloch/wordpress-core": "6.4.0",
+                "johnpbloch/wordpress-core": "6.8.1",
                 "johnpbloch/wordpress-core-installer": "^1.0 || ^2.0",
                 "php": ">=7.0.0"
             },
@@ -992,28 +992,28 @@
                 "issues": "https://core.trac.wordpress.org/",
                 "source": "https://core.trac.wordpress.org/browser"
             },
-            "time": "2023-11-07T19:31:22+00:00"
+            "time": "2025-04-30T16:52:55+00:00"
         },
         {
             "name": "johnpbloch/wordpress-core",
-            "version": "6.4.0",
+            "version": "6.8.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/johnpbloch/wordpress-core.git",
-                "reference": "9affce6bea176c5449353603f888cc6b8b066778"
+                "reference": "702c3bda87abb47ae43f90c7b8868cf0b7dff1e2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johnpbloch/wordpress-core/zipball/9affce6bea176c5449353603f888cc6b8b066778",
-                "reference": "9affce6bea176c5449353603f888cc6b8b066778",
+                "url": "https://api.github.com/repos/johnpbloch/wordpress-core/zipball/702c3bda87abb47ae43f90c7b8868cf0b7dff1e2",
+                "reference": "702c3bda87abb47ae43f90c7b8868cf0b7dff1e2",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
-                "php": ">=7.0.0"
+                "php": ">=7.2.24"
             },
             "provide": {
-                "wordpress/core-implementation": "6.4.0"
+                "wordpress/core-implementation": "6.8.1"
             },
             "type": "wordpress-core",
             "notification-url": "https://packagist.org/downloads/",
@@ -1040,7 +1040,7 @@
                 "source": "https://core.trac.wordpress.org/browser",
                 "wiki": "https://codex.wordpress.org/"
             },
-            "time": "2023-11-07T19:31:18+00:00"
+            "time": "2025-04-30T16:52:49+00:00"
         },
         {
             "name": "johnpbloch/wordpress-core-installer",
@@ -1229,16 +1229,16 @@
         },
         {
             "name": "maddenmedia/gravityforms",
-            "version": "2.9.10",
+            "version": "2.9.11.1",
             "source": {
                 "type": "git",
                 "url": "git@github.com:maddenmedia/gravityforms.git",
-                "reference": "253941e51f12f50286561c8241532bacf752914c"
+                "reference": "f0f18e7616719c8a21e94b8597357290ab3abf11"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/maddenmedia/gravityforms/zipball/253941e51f12f50286561c8241532bacf752914c",
-                "reference": "253941e51f12f50286561c8241532bacf752914c",
+                "url": "https://api.github.com/repos/maddenmedia/gravityforms/zipball/f0f18e7616719c8a21e94b8597357290ab3abf11",
+                "reference": "f0f18e7616719c8a21e94b8597357290ab3abf11",
                 "shasum": ""
             },
             "type": "wordpress-plugin",
@@ -1247,10 +1247,10 @@
             ],
             "description": "gravity forms",
             "support": {
-                "source": "https://github.com/maddenmedia/gravityforms/tree/2.9.10",
+                "source": "https://github.com/maddenmedia/gravityforms/tree/2.9.11.1",
                 "issues": "https://github.com/maddenmedia/gravityforms/issues"
             },
-            "time": "2025-06-18T19:07:39+00:00"
+            "time": "2025-06-30T15:29:41+00:00"
         },
         {
             "name": "maddenmedia/kraken-purge",
@@ -1454,16 +1454,16 @@
         },
         {
             "name": "mck89/peast",
-            "version": "v1.17.0",
+            "version": "v1.17.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mck89/peast.git",
-                "reference": "3a752d39bd7d8dc1e19bcf424f3d5ac1a1ca6ad5"
+                "reference": "465810689c477fbba17f4f949b75e4d0bdab13ea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mck89/peast/zipball/3a752d39bd7d8dc1e19bcf424f3d5ac1a1ca6ad5",
-                "reference": "3a752d39bd7d8dc1e19bcf424f3d5ac1a1ca6ad5",
+                "url": "https://api.github.com/repos/mck89/peast/zipball/465810689c477fbba17f4f949b75e4d0bdab13ea",
+                "reference": "465810689c477fbba17f4f949b75e4d0bdab13ea",
                 "shasum": ""
             },
             "require": {
@@ -1476,7 +1476,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.17.0-dev"
+                    "dev-master": "1.17.2-dev"
                 }
             },
             "autoload": {
@@ -1497,9 +1497,9 @@
             "description": "Peast is PHP library that generates AST for JavaScript code",
             "support": {
                 "issues": "https://github.com/mck89/peast/issues",
-                "source": "https://github.com/mck89/peast/tree/v1.17.0"
+                "source": "https://github.com/mck89/peast/tree/v1.17.2"
             },
-            "time": "2025-03-07T19:44:14+00:00"
+            "time": "2025-07-01T09:30:45+00:00"
         },
         {
             "name": "nb/oxymel",
@@ -5426,15 +5426,15 @@
         },
         {
             "name": "wpackagist-plugin/breeze",
-            "version": "2.2.10",
+            "version": "2.2.15",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/breeze/",
-                "reference": "tags/2.2.10"
+                "reference": "tags/2.2.15"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/breeze.2.2.10.zip"
+                "url": "https://downloads.wordpress.org/plugin/breeze.2.2.15.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -5534,15 +5534,15 @@
         },
         {
             "name": "wpackagist-plugin/force-regenerate-thumbnails",
-            "version": "2.2.1",
+            "version": "2.2.2",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/force-regenerate-thumbnails/",
-                "reference": "tags/2.2.1"
+                "reference": "tags/2.2.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/force-regenerate-thumbnails.2.2.1.zip"
+                "url": "https://downloads.wordpress.org/plugin/force-regenerate-thumbnails.2.2.2.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -5696,15 +5696,15 @@
         },
         {
             "name": "wpackagist-plugin/seo-by-rank-math",
-            "version": "1.0.241",
+            "version": "1.0.248",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/seo-by-rank-math/",
-                "reference": "tags/1.0.241"
+                "reference": "tags/1.0.248"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/seo-by-rank-math.1.0.241.zip"
+                "url": "https://downloads.wordpress.org/plugin/seo-by-rank-math.1.0.248.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -5714,15 +5714,15 @@
         },
         {
             "name": "wpackagist-plugin/tiny-compress-images",
-            "version": "3.5.1",
+            "version": "3.5.2",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/tiny-compress-images/",
-                "reference": "tags/3.5.1"
+                "reference": "tags/3.5.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/tiny-compress-images.3.5.1.zip"
+                "url": "https://downloads.wordpress.org/plugin/tiny-compress-images.3.5.2.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -5786,15 +5786,15 @@
         },
         {
             "name": "wpackagist-plugin/wordpress-seo",
-            "version": "23.9",
+            "version": "25.4",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wordpress-seo/",
-                "reference": "tags/23.9"
+                "reference": "tags/25.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.23.9.zip"
+                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.25.4.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"

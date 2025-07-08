@@ -8,48 +8,48 @@ Stylesheet: Admin Stylesheet
 GLOBAL STYLES
 *********************/
 .editor-post-title {
-    padding: 0 1rem;
+  padding: 0 1rem;
 }
 .is-root-container {
-    & > p,
-    & > h1,
-    & > h2,
-    & > h3,
-    & > h4,
-    & > h5,
-    & >  h6,
-    & > ul,
-    & > li {
-        @include main-column;
-        margin-left: auto;
-        margin-right: auto;
-    }
+  & > p,
+  & > h1,
+  & > h2,
+  & > h3,
+  & > h4,
+  & > h5,
+  & > h6,
+  & > ul,
+  & > li {
+    @include main-column;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 /*********************
 CUSTOM STYLE OVERRIDES
 *********************/
 .custom-style-wrapper {
-    &.justify-inner-center {
-        .wp-block-columns {
-            justify-content: center;
-        }
+  &.justify-inner-center {
+    .wp-block-columns {
+      justify-content: center;
     }
-    &.justify-inner-left {
-        .wp-block-columns {
-            justify-content: flex-start;
-        }
+  }
+  &.justify-inner-left {
+    .wp-block-columns {
+      justify-content: flex-start;
     }
-    &.justify-inner-right {
-        .wp-block-columns {
-            justify-content: flex-end;
-        }
+  }
+  &.justify-inner-right {
+    .wp-block-columns {
+      justify-content: flex-end;
     }
-    &.justify-inner-space-betwee {
-        .wp-block-columns {
-            justify-content: space-between;
-        }
+  }
+  &.justify-inner-space-betwee {
+    .wp-block-columns {
+      justify-content: space-between;
     }
+  }
 }
 
 /*****************************
@@ -57,11 +57,9 @@ CUSTOM PARTNER PORTAL STYLES
 *****************************/
 
 .partnerPortalLabel {
-
-    font-weight: 400;
+  font-weight: 400;
 }
 
 .partner-portal-heading {
-
-    font-weight: 600 !important;
+  font-weight: 600 !important;
 }

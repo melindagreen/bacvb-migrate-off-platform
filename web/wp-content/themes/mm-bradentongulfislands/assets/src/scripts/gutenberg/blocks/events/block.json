@@ -1,25 +1,25 @@
 {
-    "name": "events",
-    "dynamic": true,
-    "render_callback": "MaddenNino\\Blocks\\Events\\render_block",
-    "scripts": [
-        "front.js"
-    ],
-    "settings": {
-        "title": "Upcoming Events [Old]",
-        "description": "Displaying upcoming events in the block",
-        "category": "formatting",
-        "icon": "calendar-alt",
-        "attributes": {
-
-            "exampleText": {
-              "type": "string",
-              "default": "Hello, Madden!"
-            },  
-            "mode": {
-              "type": "string",
-              "default": "preview"
-            }
-          }
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "mm-bradentongulfislands/events",
+  "version": "1.0.0",
+  "title": "Upcoming Events [Old]",
+  "description": "Displaying upcoming events in the block",
+  "icon": "calendar-alt",
+  "category": "formatting",
+  "attributes": {
+    "exampleText": {
+      "type": "string",
+      "default": "Hello, Madden!"
+    },
+    "mode": {
+      "type": "string",
+      "default": "preview"
     }
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "viewStyle": "file:./style-index.css",
+  "viewScript": "file:./front.js",
+  "render": "file:./render.php"
 }

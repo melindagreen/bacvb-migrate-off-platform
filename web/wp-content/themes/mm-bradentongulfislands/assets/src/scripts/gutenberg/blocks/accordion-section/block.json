@@ -1,24 +1,26 @@
 {
-  "name": "accordion-section",
-  "scripts": [
-    "front.js"
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "mm-bradentongulfislands/accordion-section",
+  "version": "1.0.0",
+  "title": "Accordion Section",
+  "description": "A section of an accordion",
+  "icon": "list-view",
+  "category": "layout",
+  "parent": [
+    "mm-bradentongulfislands/accordion"
   ],
-  "settings": {
-    "title": "Accordion Section",
-    "description": "A section of an accordion",
-    "icon": "list-view",
-    "category": "layout",
-    "parent": [
-      "mm-bradentongulfislands/accordion"
-    ],
-    "attributes": {
-      "title": {
-        "type": "string",
-        "default": ""
-      },
-      "titleColor": {
-        "type": "string"
-      }
+  "attributes": {
+    "title": {
+      "type": "string",
+      "default": ""
+    },
+    "titleColor": {
+      "type": "string"
     }
-  }
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "viewStyle": "file:./style-index.css",
+  "viewScript": "file:./front.js"
 }

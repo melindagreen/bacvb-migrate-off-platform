@@ -1,32 +1,34 @@
 {
-  "name": "logo-cta",
-  "scripts": [
-    "front.js"
-  ],
-  "settings": {
-    "title": "Logo CTA",
-    "description": "cta with logo",
-    "icon": "share-alt",
-    "category": "layout",
-    "attributes": {
-      "imageUrl": {
-        "type": "string",
-        "default": ""
-      },
-      "imageAlt": {
-        "type": "string",
-        "default": ""
-      },
-      "title": {
-        "type": "string",
-        "default": "",
-        "source": "html",
-        "selector": "button.contents-title"
-      },
-      "mode": {
-        "type": "string",
-        "default": "preview"
-      }
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "mm-bradentongulfislands/logo-cta",
+  "version": "1.0.0",
+  "title": "Logo CTA",
+  "description": "cta with logo",
+  "icon": "share-alt",
+  "category": "layout",
+  "attributes": {
+    "imageUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "imageAlt": {
+      "type": "string",
+      "default": ""
+    },
+    "title": {
+      "type": "string",
+      "default": "",
+      "source": "html",
+      "selector": "button.contents-title"
+    },
+    "mode": {
+      "type": "string",
+      "default": "preview"
     }
-  }
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "viewStyle": "file:./style-index.css",
+  "viewScript": "file:./front.js"
 }

@@ -1,17 +1,15 @@
 /*** IMPORTS ****************************************************************/
 
-// Local dependencies
-import block from './block.json';
-import edit from './edit';
-import save from './save';
+import { registerBlockType } from "@wordpress/blocks";
+import edit from "./edit";
+import save from "./save";
+import metadata from "./block.json";
 
-// Styles 
-import './styles/style.scss';
-import './styles/index.scss'; 
+// Styles
+import "./styles/style.scss";
+import "./styles/index.scss";
 
-// Add edit and save to settings
-block.settings.edit = edit;
-block.settings.save = save;
-
-/*** EXPORTS ****************************************************************/
-export default block;
+registerBlockType(metadata, {
+	edit,
+	save,
+});

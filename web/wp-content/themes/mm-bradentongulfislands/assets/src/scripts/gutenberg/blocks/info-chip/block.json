@@ -1,40 +1,42 @@
 {
-  "name": "info-chip",
-  "scripts": [
-    "front.js"
-  ],
-  "settings": {
-    "title": "Info Chip",
-    "description": "Chip that flips with info on the back",
-    "icon": "share-alt",
-    "category": "layout",
-    "attributes": {
-      "imageId": {
-        "type": "string",
-        "default": "" 
-      },
-      "imageUrl": {
-        "type": "string",
-        "default": ""
-      },
-      "imageAlt": {
-        "type": "string",
-        "default": ""
-      },
-      "title": {
-        "type": "string",
-        "default": "",
-        "source": "html",
-        "selector": "h3"
-      },
-      "info": {
-        "type": "string",
-        "default": ""
-      },
-      "mode": {
-        "type": "string",
-        "default": "preview"
-      }
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "mm-bradentongulfislands/info-chip",
+  "version": "1.0.0",
+  "title": "Info Chip",
+  "description": "Chip that flips with info on the back",
+  "icon": "share-alt",
+  "category": "layout",
+  "attributes": {
+    "imageId": {
+      "type": "string",
+      "default": ""
+    },
+    "imageUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "imageAlt": {
+      "type": "string",
+      "default": ""
+    },
+    "title": {
+      "type": "string",
+      "default": "",
+      "source": "html",
+      "selector": "h3"
+    },
+    "info": {
+      "type": "string",
+      "default": ""
+    },
+    "mode": {
+      "type": "string",
+      "default": "preview"
     }
-  }
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "viewStyle": "file:./style-index.css",
+  "viewScript": "file:./front.js"
 }
