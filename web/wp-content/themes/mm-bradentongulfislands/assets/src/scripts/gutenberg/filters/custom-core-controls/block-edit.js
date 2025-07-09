@@ -21,10 +21,10 @@ import {
 	PanelBody,
 	PanelRow,
 	Popover,
-	RangeControl,
 	ToggleControl,
 	ToolbarButton,
 	SelectControl,
+	__experimentalNumberControl as NumberControl,
 	__experimentalUnitControl as UnitControl,
 } from "@wordpress/components";
 import { Fragment, useState } from "@wordpress/element";
