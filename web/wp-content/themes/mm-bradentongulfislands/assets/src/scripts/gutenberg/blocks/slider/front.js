@@ -1,4 +1,3 @@
-import Swiper from "swiper/bundle";
 import { initSwiperSliders } from "./assets/slider";
 
 (function ($) {
@@ -167,27 +166,27 @@ import { initSwiperSliders } from "./assets/slider";
 			});
 		};
 
-		sliders.forEach((slider, index) => {
-			if (!slider) return;
+		// sliders.forEach((slider, index) => {
+		// 	if (!slider) return;
 
-			slider.parentElement.classList.add("slider-" + index);
+		// 	slider.parentElement.classList.add("slider-" + index);
 
-			swiperInstances[index] = createSwiper(slider, index);
-		});
+		// 	swiperInstances[index] = createSwiper(slider, index);
+		// });
 
 		// Reinitialize on resize
-		let resizeTimer;
-		window.addEventListener("resize", function () {
-			clearTimeout(resizeTimer);
-			resizeTimer = setTimeout(() => {
-				sliders.forEach((slider, index) => {
-					if (swiperInstances[index]) {
-						swiperInstances[index].destroy(true, true);
-					}
-					swiperInstances[index] = createSwiper(slider, index);
-				});
-			}, 300);
-		});
+		// let resizeTimer;
+		// window.addEventListener("resize", function () {
+		// 	clearTimeout(resizeTimer);
+		// 	resizeTimer = setTimeout(() => {
+		// 		sliders.forEach((slider, index) => {
+		// 			if (swiperInstances[index]) {
+		// 				swiperInstances[index].destroy(true, true);
+		// 			}
+		// 			swiperInstances[index] = createSwiper(slider, index);
+		// 		});
+		// 	}, 300);
+		// });
 
 		// Update info block on slide change
 		sliders.forEach((slider, index) => {

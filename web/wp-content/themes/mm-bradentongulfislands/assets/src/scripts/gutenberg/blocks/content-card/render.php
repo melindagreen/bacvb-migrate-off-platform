@@ -33,8 +33,8 @@ if ($attrs['contentType'] !== 'custom') {
   $excerpt = $attrs['contentExcerpt'];
 
   if ($attrs['customCtaUrl'] !== '') {
-    $link       = $attrs['customCtaUrl']['url'];
-    $linkTitle  = $attrs['customCtaUrl']['title'] ? $attrs['customCtaUrl']['title'] : $attrs['contentTitle'];
+    $link       = $attrs['customCtaUrl']['url'] ?? false;
+    $linkTitle  = $attrs['customCtaUrl']['title'] ?? $attrs['contentTitle'];
 
     $linkTarget = '';
     if (isset($attrs['customCtaUrl']['opensInNewTab']) && $attrs['customCtaUrl']['opensInNewTab']) {
