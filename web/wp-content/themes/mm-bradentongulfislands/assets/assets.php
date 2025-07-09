@@ -46,7 +46,7 @@ class AssetHandler {
           C::THEME_PREFIX . "-admin-css", // handle
           get_stylesheet_directory_uri()."/assets/build/admin.css", // src
           [], // dependencies
-          $assets_file["version"] // version
+          $assets_file["version"] . '1' // version
       );
 
       // Admin block styles
@@ -54,7 +54,7 @@ class AssetHandler {
           C::THEME_PREFIX . "-blocks-admin-css", // hanlde
           get_stylesheet_directory_uri()."/assets/build/gutenberg.css", // src
           [], // dependencies
-          $assets_file["version"] // version
+          $assets_file["version"] . '1' // version
       );
       
       // Admin script
@@ -62,7 +62,7 @@ class AssetHandler {
           C::THEME_PREFIX . "-admin-js", // handle
           get_stylesheet_directory_uri()."/assets/build/admin.js", // src
           $assets_file["dependencies"], // dependencies
-          $assets_file["version"], // version
+          $assets_file["version"] . '1', // version
           true // in footer?
       );
   }
@@ -221,7 +221,7 @@ class AssetHandler {
               C::THEME_PREFIX . "-blocks-admin-js", // handle
               get_stylesheet_directory_uri()."/assets/build/gutenberg.js", // src
               $assets_file["dependencies"], // dependencies
-              $assets_file["version"], // version
+              $assets_file["version"] . '1', // version
               false // in footer?
           );
       }
