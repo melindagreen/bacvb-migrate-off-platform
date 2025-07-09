@@ -21,54 +21,50 @@ use Mustache_Loader_FilesystemLoader;
 class AssetHandler {
   function __construct () {
     // Admin enqueues
-    add_action( "enqueue_block_assets", array( \get_called_class(), "enqueue_admin_scripts_and_styles" ) );
+    add_action( "admin_enqueue_scripts", array( \get_called_class(), "enqueue_admin_scripts_and_styles" ) );
 
     // Front-end enqueues
-    add_action( "wp_enqueue_scripts", array( \get_called_class(), "enqueue_front_scripts" ) );
-    add_action( "wp_enqueue_scripts", array( \get_called_class(), "enqueue_front_styles" ) );    
+    add_action( "wp_footer", array( \get_called_class(), "enqueue_front_scripts" ) );
+    add_action( "wp_enqueue_scripts", array( \get_called_class(), "enqueue_front_styles" ) );
+
+    // Block types
+    add_action( "init", array( \get_called_class(), "register_block_types" ) );
+
+    // Make sure blocks only load on pages they are added on
+    add_filter( 'should_load_separate_core_block_assets', '__return_true' ); 
   }
 
   /**
    * Enqueue admin-only scripts and styles, including block styles
    */
   public static function enqueue_admin_scripts_and_styles() {
-    if (is_admin()) {
-
-      $assets_file = include( get_stylesheet_directory() . "/assets/build/admin.asset.php" );
+      $assets_file = include( __DIR__ . "/build/admin.asset.php" );
       array_push( $assets_file["dependencies"], "jquery" );
 
+      // Admin styles
       wp_enqueue_style(
-        C::THEME_PREFIX . "-admin-css", // handle
-        get_stylesheet_directory_uri()."/assets/build/admin.css", // src
-        [], // dependencies
-        $assets_file["version"] // version
+          C::THEME_PREFIX . "-admin-css", // handle
+          get_stylesheet_directory_uri()."/assets/build/admin.css", // src
+          [], // dependencies
+          $assets_file["version"] // version
       );
 
-      wp_enqueue_script(
-        C::THEME_PREFIX . "-admin-js", // handle
-        get_stylesheet_directory_uri()."/assets/build/admin.js", // src
-        $assets_file["dependencies"], // dependencies
-        $assets_file["version"], // version
-        true // in footer?
-      );
-
-      $assets_file = include( get_stylesheet_directory() . "/assets/build/gutenberg.asset.php" );
+      // Admin block styles
       wp_enqueue_style( 
-        C::THEME_PREFIX . "-blocks-admin-css", // hanlde
-        get_stylesheet_directory_uri()."/assets/build/gutenberg.css", // src
-        [], // dependencies
-        $assets_file["version"] // version
-      );
-
-      wp_enqueue_script(
-        C::THEME_PREFIX . "-blocks-admin-js", // handle
-        get_stylesheet_directory_uri() . "/assets/build/gutenberg.js", // src
-        $assets_file["dependencies"], // dependencies
-        $assets_file["version"], // version
-        false // in footer?
+          C::THEME_PREFIX . "-blocks-admin-css", // hanlde
+          get_stylesheet_directory_uri()."/assets/build/gutenberg.css", // src
+          [], // dependencies
+          $assets_file["version"] // version
       );
       
-    }
+      // Admin script
+      wp_enqueue_script(
+          C::THEME_PREFIX . "-admin-js", // handle
+          get_stylesheet_directory_uri()."/assets/build/admin.js", // src
+          $assets_file["dependencies"], // dependencies
+          $assets_file["version"], // version
+          true // in footer?
+      );
   }
 
   /**
@@ -190,6 +186,44 @@ class AssetHandler {
           [], // dependencies
           $assets_file_front["version"] // version
         );
+      }
+  }
+
+  /**
+   * Register all custom block types
+   */
+  public static function register_block_types() {
+
+      // Grab all existing block folders
+      $directory = __DIR__ . "/build/scripts/gutenberg/blocks/*";
+      $blocks = glob($directory, GLOB_ONLYDIR);
+      
+      foreach ($blocks as $block) {
+          $directoryName = basename($block);
+          \register_block_type(__DIR__ . "/build/scripts/gutenberg/blocks/{$directoryName}");
+
+          //check for possible child blocks
+          $subdirectories = __DIR__ . "/build/scripts/gutenberg/blocks/{$directoryName}/*";
+          $childBlocks = glob($subdirectories, GLOB_ONLYDIR);
+
+          foreach ($childBlocks as $child) {
+              $subdirectoryName = basename($child);
+              if (file_exists(__DIR__ . "/build/scripts/gutenberg/blocks/{$directoryName}/{$subdirectoryName}/block.json")) {
+                  \register_block_type(__DIR__ . "/build/scripts/gutenberg/blocks/{$directoryName}/{$subdirectoryName}");
+              }
+          }
+      }
+
+      // Enqueue block editor script
+      if (is_admin()) {
+          $assets_file = include( __DIR__ . "/build/gutenberg.asset.php" );
+          wp_enqueue_script(
+              C::THEME_PREFIX . "-blocks-admin-js", // handle
+              get_stylesheet_directory_uri()."/assets/build/gutenberg.js", // src
+              $assets_file["dependencies"], // dependencies
+              $assets_file["version"], // version
+              false // in footer?
+          );
       }
   }
 }

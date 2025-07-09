@@ -28,7 +28,6 @@ import CardContent from "../../content-card/controls/card-content";
 
 /*** CONSTANTS **************************************************************/
 import { CARD_STYLES } from "../../../inc/constants";
-console.log("CARD STYLES: ", CARD_STYLES);
 
 /*** COMPONENTS **************************************************************/
 const ContentOptions = (props) => {

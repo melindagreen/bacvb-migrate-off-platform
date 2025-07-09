@@ -30,6 +30,7 @@
     "not op_mini all"
   ],
   "dependencies": {
+    "@wordpress/icons": "9.46.0",
     "dedent": "^1.5.2",
     "leaflet": "^1.9.4",
     "swiper": "^11.2.10",

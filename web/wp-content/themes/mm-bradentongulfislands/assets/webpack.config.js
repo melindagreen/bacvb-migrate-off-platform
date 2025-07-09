@@ -91,7 +91,7 @@ module.exports = {
 		admin: "./src/scripts/admin.js",
 		gutenberg: "./src/scripts/gutenberg/gutenberg.js",
 		app: "./src/scripts/app.js",
-		memberpress: "./src/scripts/memberpress-account.js",
+		"memberpress-account": "./src/scripts/memberpress-account.js",
 		...pageTemplates,
 	},
 	output: {

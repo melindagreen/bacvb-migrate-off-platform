@@ -79,7 +79,6 @@ const applyCustomAttrs = (el, block, attributes) => {
 							const photoCredit = decodeURIComponent(
 								results[1].replace(/\+/g, " ")
 							);
-							console.log(photoCredit);
 							const photoIcon = (
 								<img
 									src="/wp-content/themes/mm-bradentongulfislands/assets/images/icons/camera-icon.svg"
