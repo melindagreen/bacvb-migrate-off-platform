@@ -96,7 +96,9 @@ const Wizard = (props) => {
 	};
 
 	return (
-		<div className={`content-selector ${props.className}`}>
+		<div
+			className={`content-selector wp-block-mm-bradentongulfislands-content-card`}
+		>
 			<SelectControl
 				label={__("Card Style")}
 				value={attributes.cardStyle}
