@@ -184,7 +184,7 @@ class AssetHandler {
           C::THEME_PREFIX . "-" .$k, // handle
           get_stylesheet_directory_uri() . $v, // src
           [], // dependencies
-          $assets_file_front["version"] . '2' // version
+          $assets_file_front["version"] . '2a' // version
         );
       }
   }

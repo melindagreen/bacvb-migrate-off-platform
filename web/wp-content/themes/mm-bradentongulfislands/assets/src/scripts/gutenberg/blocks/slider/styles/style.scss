@@ -7,477 +7,454 @@
 $colorPalette: "black", "gray", "tan", "white", "red";
 
 .#{$block-prefix}-slider {
-	margin: 0;
-	padding: 0;
-	position: relative;
-	.swiper-button-prev,
-	.swiper-button-next {
-		background-color: rgba(255, 255, 255, 0.75);
-		border-radius: 3rem;
-		width: 3rem;
-		height: 3rem;
-		@include standard-transition;
-		&:after {
-			color: #333;
-			font-size: 1.5rem;
-			font-weight: 700;
-		}
-		&:hover {
-			background-color: #fff;
-		}
+  margin: 0 !important;
+  padding: 0;
+  position: relative;
+  .swiper-button-prev,
+  .swiper-button-next {
+    background-color: rgba(255, 255, 255, 0.75);
+    border-radius: 3rem;
+    width: 3rem;
+    height: 3rem;
+    @include standard-transition;
+    &:after {
+      color: #333;
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+    &:hover {
+      background-color: #fff;
+    }
 
-		@each $color in $colorPalette {
-			&[data-color="#{$color}"] {
-				&:after {
-					border-bottom-color: color("#{$color}");
-				}
-			}
-			&[data-color-background="#{$color}"] {
-				background-color: color("#{$color}");
-			}
-		}
-	}
-	.swiper-button-prev {
-		padding-right: 3px;
-	}
-	.swiper-button-next {
-		padding-left: 3px;
-	}
-	&.slider-arrows-below {
-		.swiper-navigation-wrapper {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			margin: -0.5rem 0 0;
-			margin-top: 0;
-			padding-top: 0rem;
-			.swiper-pagination {
-				display: flex;
-				align-items: center;
-				height: 3rem;
-				margin: 0;
-				order: 1;
-				width: auto;
-			}
-			.swiper-button-prev {
-				order: 0;
+    @each $color in $colorPalette {
+      &[data-color="#{$color}"] {
+        &:after {
+          border-bottom-color: color("#{$color}");
+        }
+      }
+      &[data-color-background="#{$color}"] {
+        background-color: color("#{$color}");
+      }
+    }
+  }
+  .swiper-button-prev {
+    padding-right: 3px;
+  }
+  .swiper-button-next {
+    padding-left: 3px;
+  }
+  &.slider-arrows-below {
+    .swiper-navigation-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: -0.5rem 0 0;
+      margin-top: 0;
+      padding-top: 0rem;
+      .swiper-pagination {
+        display: flex;
+        align-items: center;
+        height: 3rem;
+        margin: 0;
+        order: 1;
+        width: auto;
+      }
+      .swiper-button-prev {
+        order: 0;
 
-				&:after {
-					transform: rotate(270deg);
-				}
-			}
-			.swiper-button-next {
-				order: 2;
+        &:after {
+          transform: rotate(270deg);
+        }
+      }
+      .swiper-button-next {
+        order: 2;
 
-				&:after {
-					transform: rotate(90deg);
-				}
-			}
-			.swiper-button-prev,
-			.swiper-button-next {
-				background-color: transparent;
-				margin: 0;
-				position: unset;
-				&:after {
-					color: color("bradenton-teal");
-					font-size: 1rem;
-					border: solid transparent;
-					border-width: 0 0.9rem 0.9rem 0.9rem;
-					border-bottom-color: color("bradenton-teal");
-					content: "";
-					display: inline-block;
-					height: 0;
-					width: 0;
-				}
-				&:hover {
-					background-color: transparent;
-					&:after {
-						opacity: 0.8;
-					}
-				}
-				@each $color in $colorPalette {
-					&[data-color="#{$color}"] {
-						&:after {
-							border-bottom-color: color("#{$color}");
-						}
-					}
-					&[data-color-background="#{$color}"] {
-						background-color: color("#{$color}");
-					}
-				}
-			}
-			@include screen-sm-max{
-				.swiper-button-prev,
-				.swiper-button-next{
-					position: absolute;
-					top: calc(50% - 40px);
-					width: 70px;
-					height: 68px;
+        &:after {
+          transform: rotate(90deg);
+        }
+      }
+      .swiper-button-prev,
+      .swiper-button-next {
+        background-color: transparent;
+        margin: 0;
+        position: unset;
+        &:after {
+          color: color("bradenton-teal");
+          font-size: 1rem;
+          border: solid transparent;
+          border-width: 0 0.9rem 0.9rem 0.9rem;
+          border-bottom-color: color("bradenton-teal");
+          content: "";
+          display: inline-block;
+          height: 0;
+          width: 0;
+        }
+        &:hover {
+          background-color: transparent;
+          &:after {
+            opacity: 0.8;
+          }
+        }
+        @each $color in $colorPalette {
+          &[data-color="#{$color}"] {
+            &:after {
+              border-bottom-color: color("#{$color}");
+            }
+          }
+          &[data-color-background="#{$color}"] {
+            background-color: color("#{$color}");
+          }
+        }
+      }
+      @include screen-sm-max {
+        .swiper-button-prev,
+        .swiper-button-next {
+          position: absolute;
+          top: calc(50% - 40px);
+          width: 70px;
+          height: 68px;
 
-					&::after{
-						border: unset;
-						width: 100%;
-						height: 100%;
-						transform: unset;
-					}
+          &::after {
+            border: unset;
+            width: 100%;
+            height: 100%;
+            transform: unset;
+          }
 
-					&:hover::after{
-						opacity: unset;
-					}
-				}
-				.swiper-button-prev{
-					left: -25px;
-					&::after{
-						background-image: url('images/icons/mobile-arrow-left.png');
-					}
-				}
-				.swiper-button-next{
-					right: -25px;
-					&::after{
-						background-image: url('images/icons/mobile-arrow-right.png');
-					}
-				}
-			}
-		}
-	}
-	.swiper-pagination {
-		margin: 0.75rem auto 0;
-		position: unset;
-		.swiper-pagination-bullet {
-			background-color: color("bradenton-teal");
-			width: 1.125rem;
-			height: 1.125rem;
-			opacity: 1;
-			&.swiper-pagination-bullet-active {
-				background-color: color("rust") !important;
-			}
-		}
+          &:hover::after {
+            opacity: unset;
+          }
+        }
+        .swiper-button-prev {
+          left: -25px;
+          &::after {
+            background-image: url("images/icons/mobile-arrow-left.png");
+          }
+        }
+        .swiper-button-next {
+          right: -25px;
+          &::after {
+            background-image: url("images/icons/mobile-arrow-right.png");
+          }
+        }
+      }
+    }
+  }
+  .swiper-pagination {
+    margin: 0.75rem auto 0;
+    position: unset;
+    .swiper-pagination-bullet {
+      background-color: color("bradenton-teal");
+      width: 1.125rem;
+      height: 1.125rem;
+      opacity: 1;
+      &.swiper-pagination-bullet-active {
+        background-color: color("rust") !important;
+      }
+    }
 
-		@each $color in $colorPalette {
-			&[data-color="#{$color}"] {
-				.swiper-pagination-bullet {
-					background-color: color("#{$color}");
-					opacity: 1;
-				}
-			}
-			&[data-color-active="#{$color}"] {
-				.swiper-pagination-bullet.swiper-pagination-bullet-active {
-					background-color: color("#{$color}");
-					opacity: 1;
-				}
-			}
-		}
-	}
-	.swiper-scrollbar {
-		@each $color in $colorPalette {
-			&[data-color="#{$color}"] {
-				.swiper-scrollbar-drag {
-					background-color: color("#{$color}");
-				}
-			}
-		}
-	}
-	.swiper {
-		// padding: 1rem;
-		.swiper-slide{
-			overflow: visible;
-		}
+    @each $color in $colorPalette {
+      &[data-color="#{$color}"] {
+        .swiper-pagination-bullet {
+          background-color: color("#{$color}");
+          opacity: 1;
+        }
+      }
+      &[data-color-active="#{$color}"] {
+        .swiper-pagination-bullet.swiper-pagination-bullet-active {
+          background-color: color("#{$color}");
+          opacity: 1;
+        }
+      }
+    }
+  }
+  .swiper-scrollbar {
+    @each $color in $colorPalette {
+      &[data-color="#{$color}"] {
+        .swiper-scrollbar-drag {
+          background-color: color("#{$color}");
+        }
+      }
+    }
+  }
+  .swiper {
+    // padding: 1rem;
+    .swiper-slide {
+      overflow: visible;
+    }
 
-		&.swiper-vertical {
-			.swiper-slide {
-				height: auto !important;
-			}
-			& ~ .swiper-pagination {
-				margin: 0;
-				position: absolute;
-				&.swiper-pagination-horizontal {
-					width: auto;
-					height: auto;
-					bottom: auto;
-					.swiper-pagination-bullet {
-						display: block;
-						margin: 0.375rem 0;
-					}
-				}
-			}
-		}
-		&.swiper-horizontal {
-			& ~ .swiper-pagination.swiper-pagination-vertical {
-				transform: none;
-				.swiper-pagination-bullet {
-					display: inline-block;
-				}
-			}
-		}
-		&.swiper-fade {
-			.swiper-slide {
-				opacity: 0 !important;
-				&.swiper-slide-active {
-					opacity: 1 !important;
-				}
-			}
-		}
-		&.swiper-cards {
+    &.swiper-vertical {
+      .swiper-slide {
+        height: auto !important;
+      }
+      & ~ .swiper-pagination {
+        margin: 0;
+        position: absolute;
+        &.swiper-pagination-horizontal {
+          width: auto;
+          height: auto;
+          bottom: auto;
+          .swiper-pagination-bullet {
+            display: block;
+            margin: 0.375rem 0;
+          }
+        }
+      }
+    }
+    &.swiper-horizontal {
+      & ~ .swiper-pagination.swiper-pagination-vertical {
+        transform: none;
+        .swiper-pagination-bullet {
+          display: inline-block;
+        }
+      }
+    }
+    &.swiper-fade {
+      .swiper-slide {
+        opacity: 0 !important;
+        &.swiper-slide-active {
+          opacity: 1 !important;
+        }
+      }
+    }
+    &.swiper-cards {
+      .content {
+        display: none;
+      }
 
-			.content {
-				
-				display: none;
-			}
+      .swiper-slide {
+        article {
+          border: 20px solid white;
+        }
 
-			.swiper-slide {
+        .swiper-slide-shadow-cards {
+          display: none;
+        }
+      }
 
-				article {
-					border: 20px solid white;
-				}
+      @include screen-sm-max {
+        .swiper-slide {
+          article {
+            aspect-ratio: 7/9;
+          }
+        }
+      }
 
-				.swiper-slide-shadow-cards{
-					display: none;
-				}
-			}
+      @include screen-sm-min {
+        .swiper-slide {
+          opacity: 0;
+          transition: all 0.1s ease-in-out;
+          article {
+            transition: all 0.2s ease-in-out;
+            transform: scale(0.8) translateY(10%);
+          }
+        }
+        .swiper-slide-active {
+          article {
+            transform: scale(1) translateY(0);
+            transition: all 0.2s ease-in-out;
+          }
+        }
+        .swiper-slide-next,
+        .swiper-slide-prev,
+        .swiper-slide-active {
+          opacity: 1;
+          transition: all 0.2s ease-in-out;
+        }
+      }
+    }
+  }
+  &.slider-type-gallery {
+    .swiper {
+      padding: 0;
+      .swiper-wrapper {
+        .swiper-slide {
+          .wp-block-image {
+            margin: 0;
+            img {
+              height: 100%;
+              object-fit: cover;
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
 
-			@include screen-sm-max {
-				
-				.swiper-slide {
-					article {
-						aspect-ratio: 7/9;
-					}
-				}
-			}
+  .slider-info-box {
+    background-color: color("turquoise");
+    width: 23rem;
+    position: absolute;
+    min-height: 10rem;
+    height: fit-content;
+    padding: 5% 3%;
+    color: $white;
+    bottom: 3.5rem;
+    z-index: 1;
+    right: -15vw;
 
-			@include screen-sm-min {
+    @include screen-sm-max {
+      bottom: 3rem;
+      right: -4vw;
+      width: 22rem;
+    }
 
-				.swiper-slide {
-					opacity: 0;
-					transition: all 0.1s ease-in-out;	
-					article {
-						transition: all 0.2s ease-in-out;
-						transform: scale(0.8) translateY(10%);
-					}
-				}
-				.swiper-slide-active {
-					article{
-						transform: scale(1) translateY(0);
-						transition: all 0.2s ease-in-out;
-						
-					}
-				}
-				.swiper-slide-next,.swiper-slide-prev,.swiper-slide-active {
-					opacity: 1;
-					transition: all 0.2s ease-in-out;				
-				}
-			}
-		}
-	}
-	&.slider-type-gallery {
-		.swiper {
-			padding: 0;
-			.swiper-wrapper {
-				.swiper-slide {
-					.wp-block-image {
-						margin: 0;
-						img {
-							height: 100%;
-							object-fit: cover;
-							width: 100%;
-						}
-					}
-				}
-			}
-		}
-	}
+    #infoblock-buttonurl {
+      text-transform: uppercase;
+      text-decoration: none;
+      font-family: $font-header;
+      color: $white;
+      position: relative;
+      transition: all 0.3s ease-in-out;
+      min-width: 7rem;
+      max-width: 15rem;
+      font-size: 0.95rem;
+      display: inline-block;
 
-	.slider-info-box {
+      &::after {
+        content: " ";
+        transition: all 0.3s ease-in-out;
+        position: absolute;
+        right: -2rem;
+        bottom: -35%;
+        height: 25px;
+        width: 25px;
+        background-size: contain !important;
+        background: url("images/ui-next-on.png");
+      }
+      &:hover {
+        text-decoration: none;
 
-		background-color: color("turquoise");
-		width: 23rem;
-		position: absolute;
-		min-height: 10rem;
-		height: fit-content;
-		padding: 5% 3%;
-		color: $white;
-		bottom: 3.5rem;
-		z-index: 1;
-		right: -15vw;
+        &::after {
+          transition: all 0.2s ease-in-out;
+          transform: translateX(8%);
+        }
+      }
+    }
+    #infoblock-title {
+      margin-top: 0;
+      margin-bottom: 1rem;
+      font-family: $font-header;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      line-height: 1;
+      color: color("white");
+    }
 
-		@include screen-sm-max {
-			bottom: 3rem;
-			right: -4vw;	
-			width: 22rem;	
-		}
+    p {
+      line-height: 1.2em;
+      color: white;
+    }
+  }
 
-		#infoblock-buttonurl  {
+  &.card-style-signature-card {
+    overflow-y: hidden;
 
-			text-transform: uppercase;
-			text-decoration: none;
-			font-family: $font-header;
-			color: $white;
-			position: relative;
-			transition: all 0.3s ease-in-out;
-			min-width: 7rem;
-			max-width: 15rem;
-			font-size: 0.95rem;
-			display: inline-block;
-	  
-			&::after {
-			  content: ' ';
-			  transition: all 0.3s ease-in-out;
-			  position: absolute;
-			  right: -2rem;
-			  bottom: -35%;
-			  height: 25px;
-			  width: 25px;
-			  background-size: contain !important;
-			  background: url('images/ui-next-on.png');
-			}
-				&:hover {
-	  
-				  text-decoration: none;
-				  
-				  &::after {
-	  
-					transition: all 0.2s ease-in-out;
-					transform: translateX(8%);
-				  }
-				}
-		}
-		#infoblock-title {
+    .swiper-slide {
+      article {
+        opacity: 0;
+        @include standard-transition;
+      }
+    }
 
-			margin-top: 0;
-			margin-bottom: 1rem;
-			font-family: $font-header;
-			font-size: 1.1rem;
-			text-transform: uppercase;
-			line-height: 1;
-			color: color("white");
-		}
+    .swiper-slide-active {
+      article {
+        opacity: 1;
+        transform: scale(1);
+        @include standard-transition;
+      }
+    }
 
-		p {
+    .swiper-slide-prev,
+    .swiper-slide-next {
+      article {
+        @include standard-transition;
+        opacity: 0.8 !important;
+        transform: scale(0.8);
+        background-color: #f1eadc;
 
-			line-height: 1.2em;
-			color: white;
-		}
+        .post-date {
+          background-color: $bradenton-teal;
+        }
+        .post-title {
+          color: $rust;
+          text-shadow: 3px 3px 0 white;
+        }
+      }
+    }
 
-	}
+    .swiper {
+      overflow: visible;
+      height: 45rem;
+    }
 
-	&.card-style-signature-card {
+    .swiper-navigation-wrapper {
+      position: absolute;
+      right: 4rem;
+      bottom: 50%;
+      transform: translateY(50%);
+      z-index: 3;
 
-		overflow-y: hidden;
+      @include screen-sm-max {
+        bottom: 0;
+        right: 50%;
+        transform: translate(50%, 50%) rotate(90deg);
+      }
+    }
 
-		.swiper-slide {
-			article {
+    .swiper-pagination {
+      position: static;
+      transform: unset;
 
-				opacity: 0;
-				@include standard-transition;
-			}
-		}
+      .swiper-pagination-bullet {
+        margin-left: auto;
+      }
+    }
 
-		.swiper-slide-active {
-			article {
+    .swiper-button-prev,
+    .swiper-button-next {
+      background-color: transparent;
+      margin: 0;
+      position: absolute;
+      left: 1rem;
 
-				opacity: 1;
-				transform: scale(1);
-				@include standard-transition;
-			}
-		}
+      &:after {
+        color: color("bradenton-teal");
+        font-size: 1rem;
+        border: solid transparent;
+        border-width: 0 0.9rem 0.9rem 0.9rem;
+        border-bottom-color: color("bradenton-teal");
+        content: "";
+        display: inline-block;
+        height: 0;
+        width: 0;
+      }
+      &:hover {
+        background-color: transparent;
+        &:after {
+          opacity: 0.8;
+        }
+      }
+      @each $color in $colorPalette {
+        &[data-color="#{$color}"] {
+          &:after {
+            border-bottom-color: color("#{$color}");
+          }
+        }
+        &[data-color-background="#{$color}"] {
+          background-color: color("#{$color}");
+        }
+      }
+    }
 
-		.swiper-slide-prev, .swiper-slide-next {
-
-
-			article {
-
-				@include standard-transition;
-				opacity: 0.8 !important;
-				transform: scale(0.8);
-				background-color: #F1EADC;
-
-				.post-date {
-
-					background-color: $bradenton-teal;
-				}
-				.post-title {
-
-					color: $rust;
-					text-shadow: 3px 3px 0 white;
-				}
-			}
-		}
-
-		.swiper {
-
-			overflow: visible;
-			height: 45rem;
-		}
-
-		.swiper-navigation-wrapper {
-
-			position: absolute;
-			right: 4rem;
-			bottom: 50%;
-			transform: translateY(50%);
-			z-index: 3;
-
-
-			@include screen-sm-max {
-				bottom: 0;
-				right: 50%;
-				transform: translate(50%, 50%) rotate(90deg);
-			}
-		}
-
-		.swiper-pagination {
-
-			position: static;
-			transform: unset;
-
-			.swiper-pagination-bullet {
-
-				margin-left: auto;
-			}
-		}
-
-		.swiper-button-prev,
-		.swiper-button-next {
-				background-color: transparent;
-				margin: 0;
-				position: absolute;
-				left: 1rem;
-
-				&:after {
-					color: color("bradenton-teal");
-					font-size: 1rem;
-					border: solid transparent;
-					border-width: 0 0.9rem 0.9rem 0.9rem;
-					border-bottom-color: color("bradenton-teal");
-					content: "";
-					display: inline-block;
-					height: 0;
-					width: 0;
-				}
-				&:hover {
-					background-color: transparent;
-					&:after {
-						opacity: 0.8;
-					}
-				}
-				@each $color in $colorPalette {
-					&[data-color="#{$color}"] {
-						&:after {
-							border-bottom-color: color("#{$color}");
-						}
-					}
-					&[data-color-background="#{$color}"] {
-						background-color: color("#{$color}");
-					}
-				}
-		}
-
-		.swiper-button-prev {
-			position: relative;
-			top: 0.5rem;
-		}
-		.swiper-button-next {
-			transform: rotate(180deg);
-			position: relative;
-		}
-	}
+    .swiper-button-prev {
+      position: relative;
+      top: 0.5rem;
+    }
+    .swiper-button-next {
+      transform: rotate(180deg);
+      position: relative;
+    }
+  }
 }
