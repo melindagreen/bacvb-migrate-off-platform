@@ -1,7 +1,7 @@
 @import "styles/utils/variables";
 
 .#{$block-prefix}-responsive-spacer {
-  margin:0 auto;
+  margin: 0 auto !important;
 }
 
 /*********************
