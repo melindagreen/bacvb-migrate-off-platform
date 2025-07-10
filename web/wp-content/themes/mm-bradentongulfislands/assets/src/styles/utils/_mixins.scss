@@ -49,8 +49,8 @@
 }
 
 @mixin main-column($maxWidth: $main-column-max-width) {
-  // width: $main-column-width;
-  // max-width: $maxWidth;
+  width: $main-column-width;
+  //max-width: $maxWidth;
 }
 
 @mixin main-column-auto($maxWidth: $main-column-max-width) {
