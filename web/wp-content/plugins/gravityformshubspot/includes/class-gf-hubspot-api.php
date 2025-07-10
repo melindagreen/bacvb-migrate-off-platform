@@ -136,7 +136,6 @@ class GF_HubSpot_API {
 		}
 
 		return $response;
-
 	}
 
 	/**
@@ -185,7 +184,6 @@ class GF_HubSpot_API {
 			} elseif ( isset( $auth_payload['status'] ) ) {
 				$message = $auth_payload['status'];
 			}
-
 		}
 
 		return new WP_Error( 'hubspot_refresh_token_error', $message, array( 'status' => $response_code ) );
@@ -209,13 +207,13 @@ class GF_HubSpot_API {
 		}
 
 		return $this->make_request( 'token/revoke', array( 'token' => $auth_data['refresh_token'] ), 'DELETE', null, 204 );
-
 	}
 
 	/**
 	 * Get available users.
 	 *
 	 * @since  1.0
+	 * @since  2.3 Updated to use the v3 endpoint.
 	 *
 	 * @return array|WP_Error
 	 */
@@ -223,7 +221,7 @@ class GF_HubSpot_API {
 		static $contacts;
 
 		if ( ! isset( $contacts ) ) {
-			$contacts = $this->make_request( 'contacts/v1/lists/all/contacts/all', array(), 'GET', 'users' );
+			$contacts = $this->make_request( 'crm/v3/objects/contacts', array(), 'GET', 'results' );
 		}
 
 		return $contacts;
@@ -233,14 +231,38 @@ class GF_HubSpot_API {
 	 * Get contact properties.
 	 *
 	 * @since 1.0
+	 * @depecated 2.3 No longer used as the add-on starts migrating to HubSpot API V3
 	 *
-	 * @return array|WP_Error
+	 * @return array|WP_Error Array of grouped property information or WP_Error on failure.
 	 */
 	public function get_contact_properties() {
+		return $this->make_request( 'properties/v1/contacts/groups/?includeProperties=true' );
+	}
 
-		$properties = $this->make_request( 'properties/v1/contacts/groups/?includeProperties=true', array(), 'GET' );
+	/**
+	 * Get contact property definitions from HubSpot API v3.
+	 *
+	 * Fetches a flat list of all contact property definitions.
+	 *
+	 * @since 2.3
+	 *
+	 * @return array|WP_Error Array of property definitions or WP_Error on failure.
+	 */
+	public function get_properties() {
+		return $this->make_request( 'crm/v3/properties/contacts', array(), 'GET', 'results' );
+	}
 
-		return $properties;
+	/**
+	 * Get contact property groups from HubSpot API v3.
+	 *
+	 * Fetches a list of all contact property groups.
+	 *
+	 * @since 2.3
+	 *
+	 * @return array|WP_Error Array of property groups or WP_Error on failure.
+	 */
+	public function get_property_groups() {
+		return $this->make_request( 'crm/v3/properties/contacts/groups', array(), 'GET', 'results' );
 	}
 
 	/**
@@ -358,5 +380,4 @@ class GF_HubSpot_API {
 
 		return $this->make_request( $url, $submission, 'POST' );
 	}
-
 }

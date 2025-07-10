@@ -138,6 +138,16 @@ class GF_HubSpot extends GFFeedAddOn {
 	protected $api = null;
 
 	/**
+	 * An instance of the refresh lock handler
+	 *
+	 * @since 2.2.0
+	 *
+	 * @var GF_HubSpot_Refresh_Lock_Handler
+	 */
+	protected $refresh_lock_handler = null;
+
+
+	/**
 	 * The key used to cache the custom contact properties.
 	 *
 	 * @since 1.6
@@ -928,22 +938,23 @@ class GF_HubSpot extends GFFeedAddOn {
 			return true;
 		}
 
-		// From 2021-11-08 HubSpot reduced the token lifespan from 6 hours to 30 minutes.
-		if ( time() > ( $auth_token['date_created'] + rgar( $auth_token, 'expires_in', 1800 ) ) ) {
+		if ( ! class_exists( 'GF_HubSpot_Refresh_Lock_Handler' ) ) {
+			require_once 'includes/class-gf-hubspot-refresh-lock-handler.php';
+		}
+
+		$refresh_lock_handler = new GF_HubSpot_Refresh_Lock_Handler( $this );
+
+		if ( $this->is_token_expired( $auth_token ) ) {
 			// Log that authentication test failed.
 			$this->log_debug( __METHOD__ . '(): API tokens expired, start refreshing.' );
 
-			$lock_cache_key = $this->get_slug() . '_refresh_lock';
-
-			$locked = GFCache::get( $lock_cache_key, $found );
-			if ( $found && $locked ) {
+			if ( $refresh_lock_handler->can_refresh_token() === false ) {
+				$this->log_debug( __METHOD__ . '():  Aborting; ' . $refresh_lock_handler->refresh_lock_reason );
 				$this->api = false;
-				$this->log_debug( __METHOD__ . '(): Aborting; refresh already in progress.' );
-
 				return false;
 			}
 
-			GFCache::set( $lock_cache_key, true, true, MINUTE_IN_SECONDS );
+			$refresh_lock_handler->lock();
 
 			// refresh token.
 			$auth_token = $this->api->refresh_token();
@@ -958,14 +969,15 @@ class GF_HubSpot extends GFFeedAddOn {
 				// Save plugin settings.
 				$this->update_plugin_settings( $settings );
 				$this->log_debug( __METHOD__ . '(): API access token has been refreshed.' );
-				GFCache::delete( $lock_cache_key );
+				$refresh_lock_handler->release_lock();
+				$refresh_lock_handler->reset_rate_limit();
 
 			} else {
 				$message   = $auth_token->get_error_message();
 				$this->api = false;
 				$this->log_debug( __METHOD__ . '(): API access token failed to be refreshed; ' . $message );
-				GFCache::delete( $lock_cache_key );
-
+				$refresh_lock_handler->release_lock();
+				$refresh_lock_handler->increment_rate_limit();
 				if ( $message === 'BAD_REFRESH_TOKEN' ) {
 					delete_option( 'gravityformsaddon_' . $this->_slug . '_settings' );
 					$this->log_debug( __METHOD__ . '(): This website has been disconnected from HubSpot.' );
@@ -979,6 +991,21 @@ class GF_HubSpot extends GFFeedAddOn {
 		return true;
 
 	}
+
+	/**
+	 * Checks if the token has been expired.
+	 *
+	 * @since 2.2.0
+	 *
+	 * @param array $auth_token The authentication token array.
+	 *
+	 * @return bool
+	 */
+	protected function is_token_expired( $auth_token ) {
+		// From 2021-11-08 HubSpot reduced the token lifespan from 6 hours to 30 minutes.
+		return time() > ( $auth_token['date_created'] + rgar( $auth_token, 'expires_in', 1800 ) );
+	}
+
 
 	/**
 	 * Revoke token and remove them from Settings.
@@ -1004,9 +1031,6 @@ class GF_HubSpot extends GFFeedAddOn {
 			wp_send_json_error();
 		}
 
-		// Delete all HubSpot forms associated with existing HubSpot feeds.
-		$this->delete_hubspot_forms();
-
 		if ( $scope === 'account' ) {
 			$result = $this->api->revoke_token();
 
@@ -1028,24 +1052,6 @@ class GF_HubSpot extends GFFeedAddOn {
 		// Return success response.
 		wp_send_json_success();
 	}
-
-	/**
-	 * Deletes all HubSpot forms associated with feeds. This function is called during the process of de-authorizing a HubSpot account
-	 * and serves as a clean up routine so that Gravity Forms created forms aren't lingering around on a disconnected HubSpot account.
-	 *
-	 * @since 1.0
-	 */
-	public function delete_hubspot_forms() {
-
-		//Getting all HubSpot feeds across all forms
-		$feeds = $this->get_feeds_by_slug( $this->_slug );
-
-		//Deleting all associated HubSpot forms
-		foreach ( $feeds as $feed ) {
-			$this->delete_hubspot_form( $feed );
-		}
-	}
-
 
 	/**
 	 * Deletes the HubSpot form associated with the specified feed
@@ -2071,14 +2077,25 @@ class GF_HubSpot extends GFFeedAddOn {
 
 		$labels = array();
 
-		$property_groups   = $this->api->get_contact_properties();
-		$is_props_wp_error = is_wp_error( $property_groups );
+		$api_groups        = $this->api->get_property_groups();
+		$properties        = $this->api->get_properties();
+		$is_props_wp_error = false;
+		foreach ( array( $api_groups, $properties ) as $result ) {
+			if ( is_wp_error( $result ) ) {
+				$this->log_debug( __METHOD__ . '(): Unable to get contact properties: ' . implode( '; ', $result->get_error_messages() ) );
+				$is_props_wp_error = true;
+			}
+		}
 
-		if ( $is_props_wp_error ) {
-			$this->log_debug( __METHOD__ . '(): Unable to get contact properties; ' . $property_groups->get_error_message() );
-		} else {
+		if ( $is_props_wp_error === false ) {
+
+			$property_groups = $this->get_property_groups( $api_groups, $properties );
+
 			foreach ( $property_groups as $property_group ) {
-				$group = array( 'label' => $property_group['displayName'], 'choices' => array() );
+				$group = array(
+					'label'   => rgar( $property_group, 'label' ),
+					'choices' => array(),
+				);
 
 				foreach ( $property_group['properties'] as $property ) {
 
@@ -2090,7 +2107,7 @@ class GF_HubSpot extends GFFeedAddOn {
 						'value'          => '_hs_customer_' . $property['name'],
 						'_hs_type'       => $property['type'],
 						'_hs_field_type' => $property['fieldType'],
-						'required'       => $property['name'] == 'email',
+						'required'       => $property['name'] === 'email',
 					);
 
 					$labels[ $property['label'] ][] = $property;
@@ -2110,13 +2127,14 @@ class GF_HubSpot extends GFFeedAddOn {
 								'value' => '',
 								'label' => esc_html__( 'Select an Option', 'gravityformshubspot' ),
 							),
-							array( 'value' => ' ', 'label' => '' ),
+							array(
+								'value' => ' ',
+								'label' => '',
+							),
 						) : array();
-						$field['choices']       = array_merge( $field['choices'], $property['options'] );
-
-						$selection_fields[] = $field;
-					} elseif ( $supported_in_additional_fields && $property['readOnlyValue'] === false ) {
-
+						$field['choices']       = array_merge( $field['choices'], rgar( $property, 'options', array() ) );
+						$selection_fields[]     = $field;
+					} elseif ( $supported_in_additional_fields && rgars( $property, 'modificationMetadata/readOnlyValue' ) === false ) {
 						$additional_fields[] = $field;
 						$group['choices'][]  = $field;
 
@@ -2138,14 +2156,48 @@ class GF_HubSpot extends GFFeedAddOn {
 			'basic'      => $basic_fields,
 			'additional' => $additional_fields,
 			'selection'  => $selection_fields,
-			'grouped'    => $groups
+			'grouped'    => $groups,
 		);
 
 		if ( ! $is_props_wp_error ) {
-			GFCache::set( self::CUSTOM_PROPERTIES_CACHE_KEY , $contact_properties, true, HOUR_IN_SECONDS );
+			GFCache::set( self::CUSTOM_PROPERTIES_CACHE_KEY, $contact_properties, true, HOUR_IN_SECONDS );
 		}
 
 		return $contact_properties;
+	}
+
+	/**
+	 * Organizes properties into their corresponding property groups.
+	 *
+	 * @since 2.3
+	 *
+	 * @param array $groups     Array of property groups.
+	 * @param array $properties Array of properties to be grouped.
+	 *
+	 * @return array Organized array of property groups with their properties.
+	 */
+	public function get_property_groups( $groups, $properties ) {
+		$property_groups = array();
+
+		foreach ( $properties as $property ) {
+			$group_name = rgar( $property, 'groupName' );
+
+			if ( ! isset( $property_groups[ $group_name ] ) ) {
+				$property_groups[ $group_name ]               = rgar( $groups, $group_name, array() );
+				$property_groups[ $group_name ]['properties'] = array();
+			}
+
+			$property_groups[ $group_name ]['properties'][] = $property;
+		}
+
+		foreach ( $groups as $group ) {
+			$group_name = rgar( $group, 'name' );
+			if ( isset( $property_groups[ $group_name ] ) ) {
+				$property_groups[ $group_name ]['label'] = rgar( $group, 'label' );
+			}
+		}
+
+		return $property_groups;
 	}
 
 	/**
@@ -2228,10 +2280,13 @@ class GF_HubSpot extends GFFeedAddOn {
 	 * Process the HubSpot feed.
 	 *
 	 * @since  1.0
+	 * @since  2.2 Updated return value for consistency with other add-ons, so the framework can save the feed status to the entry meta.
 	 *
-	 * @param  array $feed  Feed object.
-	 * @param  array $entry Entry object.
-	 * @param  array $form  Form object.
+	 * @param array $feed  Feed object.
+	 * @param array $entry Entry object.
+	 * @param array $form  Form object.
+	 *
+	 * @return WP_Error|array
 	 */
 	public function process_feed( $feed, $entry, $form ) {
 
@@ -2257,7 +2312,14 @@ class GF_HubSpot extends GFFeedAddOn {
 		if ( is_wp_error( $response ) ) {
 			$this->add_feed_error( sprintf( esc_html__( 'There was an error when creating the contact in HubSpot. %s', 'gravityformshubspot' ), $response->get_error_message() ), $feed, $entry, $form );
 			$this->log_error( __METHOD__ . '(): Unable to create the contact; error data: ' . print_r( $response->get_error_data(), true ) );
+
+			return $response;
 		}
+
+		$this->log_debug( __METHOD__ . '(): The HubSpot form accepted the submission. ' . json_encode( $response ) );
+		$this->add_note( rgar( $entry, 'id' ), sprintf( esc_html__( 'Submission accepted by Form ID %s.', 'gravityformshubspot' ), $feed['meta']['_hs_form_guid'] ), 'success' );
+
+		return $entry;
 	}
 
 	/**
