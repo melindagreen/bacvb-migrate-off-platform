@@ -1,5 +1,5 @@
 @import "styles/utils/mixins";
-@import 'styles/utils/variables';
+@import "styles/utils/variables";
 @import "styles/utils/typography";
 
 $media-height: 355px;
@@ -8,10 +8,9 @@ $media-height: 355px;
 EDIT MODE
 *********************/
 .is-edit {
-
   &.#{$block-prefix}-hero {
     background: $warm-gray;
-    color: $soft-black; 
+    color: $soft-black;
     margin: 0;
     padding: 0.75rem;
     display: flex;
@@ -20,17 +19,21 @@ EDIT MODE
     align-items: center;
     justify-content: center;
 
-    .components-panel__row, 
+    .components-panel__row,
     .block-editor-media-placeholder {
       background: $warm-gray;
-      color: $soft-black; 
+      color: $soft-black;
       position: relative;
       display: flex;
       margin-top: 0 !important;
       width: calc(50% - 0.5rem);
 
-      &:first-of-type { margin-right: 0.5rem; }
-      &:last-of-type { margin-top: 0.5rem !important; }
+      &:first-of-type {
+        margin-right: 0.5rem;
+      }
+      &:last-of-type {
+        margin-top: 0.5rem !important;
+      }
     }
 
     .block-image,
@@ -43,7 +46,7 @@ EDIT MODE
       background-repeat: no-repeat;
       background-position: left top;
     }
-    
+
     .block-video {
       display: block;
       width: calc(50% - 10px);
@@ -62,7 +65,8 @@ EDIT MODE
       }
       &.block-video--portrait {
         max-height: 300px !important;
-        figure, video {
+        figure,
+        video {
           max-height: 300px !important;
         }
       }
@@ -101,7 +105,7 @@ EDIT MODE
     }
     h3 {
       width: 100%;
-      margin: 0.5rem 0 1.0rem 0;
+      margin: 0.5rem 0 1rem 0;
       text-align: center;
       font-size: 1.5rem;
     }
@@ -137,7 +141,6 @@ EDIT MODE
 PREVIEW MODE
 *********************/
 .is-preview {
-
   .#{$block-prefix}-hero {
     width: 100%;
     justify-content: center;
@@ -147,34 +150,28 @@ PREVIEW MODE
     z-index: 0;
 
     .sr-only {
-
       display: none;
     }
 
     sup {
-
       font-size: medium;
-        font-family: 'Melburch';
+      font-family: "Melburch";
       left: -1.9375rem;
       bottom: 0.3125rem;
       position: relative;
     }
 
     &--banner {
-
       .title {
-
         top: 65% !important;
       }
     }
 
     .no-title {
-
       margin: 0;
     }
 
     .hero-banner {
-
       position: absolute;
       right: 0;
       bottom: 0;
@@ -186,36 +183,30 @@ PREVIEW MODE
       border-radius: 0;
 
       &__title {
-
         background: $rust;
         margin-top: 0px;
         color: white;
-          padding: 0.8rem 2rem;
+        padding: 0.8rem 2rem;
         font-family: $font-header;
         border: 2px $rust solid;
         font-size: 1.3rem;
         border-radius: 0;
       }
 
-
       &__description {
-
         padding: 0.5rem 2rem;
       }
 
       &__crab {
-
         position: absolute;
         bottom: -7rem;
         width: 10rem;
         height: auto;
         right: 0;
       }
-
     }
 
     .cta-hero-banner {
-
       position: absolute;
       left: 0;
       top: 25%;
@@ -232,38 +223,30 @@ PREVIEW MODE
       border-left: 0;
 
       &__title {
-
         color: white;
-          padding: 0.8rem 2rem;
+        padding: 0.8rem 2rem;
         font-family: $font-header;
-        font-size: 1.2vw;	
+        font-size: 1.2vw;
         border-color: $bradenton-teal;
         text-align: right;
         margin: 0 1vw;
         margin-bottom: -0.5vw;
-      
       }
 
-
       &__description {
-
         padding: 0.5rem 2rem;
       }
 
-
       &__cta {
-
         display: flex;
 
         .cta-hero-banner__logo {
-
           width: 9vw;
           min-width: 100px;
           height: auto;
         }
 
         .wp-block-button__link {
-
           background: white;
           padding: 1.5vw;
           font-size: 2vw;
@@ -275,14 +258,12 @@ PREVIEW MODE
           transition: all 0.3s ease-in-out;
 
           &:hover {
-
             background-color: $rust;
             color: white !important;
             transition: all 0.2s ease-in-out;
           }
         }
       }
-
     }
 
     .fade {
@@ -312,12 +293,13 @@ PREVIEW MODE
       margin: 0 auto;
     }
 
-    &.videoHero { //hide double scroll bar. default set to overflow-x: cip but that stil shows hero video bars
+    &.videoHero {
+      //hide double scroll bar. default set to overflow-x: cip but that stil shows hero video bars
       //overflow: hidden;
       //On 8.24.23 Noticed no double side bars with this commented out unlike before. Will push live. pnh
       &:after {
         content: " ";
-        background: transparent url("images/hero-bottom.png") no-repeat;
+        background: transparent url("~images/hero-bottom.png") no-repeat;
         background-size: 100% auto;
         height: 12em;
         left: 0;
@@ -335,7 +317,7 @@ PREVIEW MODE
       max-height: 70rem;
       position: relative;
       z-index: 1;
-      background: transparent url("images/pixel.png") no-repeat bottom center;
+      background: transparent url("~images/pixel.png") no-repeat bottom center;
       background-size: cover;
 
       &.has-parallax {
@@ -347,18 +329,18 @@ PREVIEW MODE
         transform: none;
 
         &::after {
-            background: url('images/slideshow-bottom.png') repeat-x center;
-            position: absolute;
-            width: 100%;
-            height: 3.5rem;
-            bottom: 0;
-            z-index: 2;
-          }
+          background: url("images/slideshow-bottom.png") repeat-x center;
+          position: absolute;
+          width: 100%;
+          height: 3.5rem;
+          bottom: 0;
+          z-index: 2;
+        }
       }
 
       &:after {
         content: " ";
-        background: transparent url("images/hero-bottom.png") no-repeat;
+        background: transparent url("~images/hero-bottom.png") no-repeat;
         background-size: 100% auto;
         height: 12rem;
         left: 0;
@@ -368,7 +350,6 @@ PREVIEW MODE
         bottom: 0;
         background-size: cover;
       }
-
     }
     .hero-video-play {
       position: absolute;
@@ -431,16 +412,16 @@ PREVIEW MODE
       }
     }
     @media only screen and (max-width: 678px) {
-      .video { 
+      .video {
         &.video--mobile {
           display: block;
         }
         &.video--desktop {
           display: none;
-        } 
+        }
       }
     }
-    
+
     .title {
       color: $white;
       font-family: $font-title;
@@ -472,27 +453,28 @@ PREVIEW MODE
       }
 
       &::before {
-        content: '';
+        content: "";
         display: block;
-        width: 200px; 
+        width: 200px;
         height: 200px;
         background-image: var(--logo-url);
         background-size: contain;
         background-repeat: no-repeat;
         position: absolute;
-        top: -15rem; 
+        top: -15rem;
         left: 0;
       }
     }
   }
 
-  .hero--wave + .wp-block-heading, .hero--wave + p, .hero--wave + .wp-block-group, .hero--wave + .wp-block-image {
+  .hero--wave + .wp-block-heading,
+  .hero--wave + p,
+  .hero--wave + .wp-block-group,
+  .hero--wave + .wp-block-image {
     margin-top: -2rem;
     position: relative;
     z-index: 1 !important;
   }
-    
-
 
   .#{$block-prefix}-hero {
     &.wave-alter {
@@ -506,128 +488,109 @@ PREVIEW MODE
     }
   }
 
-
   // Custom Styles
   .#{$block-prefix}-hero.is-style-secondary-header {
-
-      .title {
-
-          span {
-
-              font-family: $font-title;
-              font-weight: 600;
-              line-height: 1.5em;
-              max-width: 80rem;
-          }
-      }
-
-      @media only screen and (max-width: 768px) {
-      .title {
-
-          line-height: 9rem;
-          top: 35%;
-
-          span {
-
-              bottom: -15vw;
-              left: 50%;
-              font-size: 5vw;
-              width: 100%;
-          }
-      }
-      }
-
-      @media only screen and (min-width: 769px) {
-      .title {
-      
-          top: 40%;
-          font-size: 18vw;
-          top: 35%;
-          line-height: 15rem;
-
+    .title {
       span {
-
-              font-size: 4.5vw;
-              bottom: -2.5rem;
-              left: 11%;
+        font-family: $font-title;
+        font-weight: 600;
+        line-height: 1.5em;
+        max-width: 80rem;
       }
     }
+
+    @media only screen and (max-width: 768px) {
+      .title {
+        line-height: 9rem;
+        top: 35%;
+
+        span {
+          bottom: -15vw;
+          left: 50%;
+          font-size: 5vw;
+          width: 100%;
+        }
       }
+    }
 
-      @media only screen and (min-width: 1100px) {
-          .title {
-              
-              font-size: 13rem;
+    @media only screen and (min-width: 769px) {
+      .title {
+        top: 40%;
+        font-size: 18vw;
+        top: 35%;
+        line-height: 15rem;
 
-              span {
-
-                  font-size: 3rem;
-              }
-          }
+        span {
+          font-size: 4.5vw;
+          bottom: -2.5rem;
+          left: 11%;
+        }
       }
+    }
+
+    @media only screen and (min-width: 1100px) {
+      .title {
+        font-size: 13rem;
+
+        span {
+          font-size: 3rem;
+        }
+      }
+    }
   }
 
   .#{$block-prefix}-hero.is-style-small-font-header {
-
-
-      .title {
-
-          font-family: $font-header;
-          max-width: 55rem;
-          line-height: 1.1em;
-          padding-bottom: 1rem;
-
-          span {
-
-              font-family: $font-body;
-              font-weight: 600;
-              line-height: 1.5em;
-              max-width: 55rem;
-              bottom: 1rem;
-          }
-      }
-
-      @media only screen and (max-width: 768px) {
-      .title {
-          width: 90%;
-          font-size: 6vw;
-          line-height: 9.0vw;
-          max-width: inherit;
-
-          span {
-
-              display: none;
-          }
-      }
-      }
-
-      @media only screen and (min-width: 769px) {
-      .title {
-      
-          top: 60%;
-          margin-left: 0;
-          font-size: 5vw;
+    .title {
+      font-family: $font-header;
+      max-width: 55rem;
+      line-height: 1.1em;
+      padding-bottom: 1rem;
 
       span {
-
-              font-size: 2.5vw;
-              bottom: -1.5rem;
-              left: 0;
+        font-family: $font-body;
+        font-weight: 600;
+        line-height: 1.5em;
+        max-width: 55rem;
+        bottom: 1rem;
       }
     }
+
+    @media only screen and (max-width: 768px) {
+      .title {
+        width: 90%;
+        font-size: 6vw;
+        line-height: 9vw;
+        max-width: inherit;
+
+        span {
+          display: none;
+        }
       }
+    }
 
-      @media only screen and (min-width: 1100px) {
-          .title {
-              
-              font-size: 3rem;
+    @media only screen and (min-width: 769px) {
+      .title {
+        top: 60%;
+        margin-left: 0;
+        font-size: 5vw;
 
-              span {
-
-                  font-size: 1.5rem;
-              }
-          }
+        span {
+          font-size: 2.5vw;
+          bottom: -1.5rem;
+          left: 0;
+        }
       }
+    }
+
+    @media only screen and (min-width: 1100px) {
+      .title {
+        font-size: 3rem;
+
+        span {
+          font-size: 1.5rem;
+        }
+      }
+    }
   }
 
   /*********************
@@ -635,35 +598,21 @@ PREVIEW MODE
   *********************/
 
   @media only screen and (min-width: ($screen-sm + 1)) and (max-width: $screen-lg) {
-
     .#{$block-prefix}-hero {
-
       .cta-hero-banner {
-
-    
-    
         &__title {
-    
           margin-bottom: 0;
           text-align: center;
           font-size: 1.2rem;
         }
-    
 
         &__cta {
-
-
-    
           .cta-hero-banner__logo {
-    
-      
           }
-    
+
           .wp-block-button__link {
-            
             padding: 1rem;
             font-size: 1.5rem;
-          
           }
         }
       }
@@ -683,15 +632,12 @@ PREVIEW MODE
       // }
 
       &--banner {
-
         .title {
-    
           top: 40% !important;
         }
       }
 
       .hero-banner {
-
         border-radius: 0;
         position: relative;
         right: 0;
@@ -702,47 +648,37 @@ PREVIEW MODE
         width: 100%;
 
         margin-bottom: 1rem;
-    
+
         &__title {
-    
           padding: 0.8rem 1.5rem;
         }
-    
-    
+
         &__description {
-    
           padding: 0.5rem 1.5rem;
         }
 
         &__crab {
-
           display: none;
         }
 
         &--cta {
-
-    
           .hero-banner__title {
-            
             font-size: 1.5rem;
             text-align: center;
           }
-    
+
           .hero-banner__description {
-    
             width: 100%;
             padding: 0.5rem 2rem;
             text-align: center;
             display: inline-block;
           }
-    
-          .hero-banner__cta {
 
+          .hero-banner__cta {
             width: 100%;
             text-align: center;
             padding: 0.5rem 1rem;
             a {
-              
               font-size: 1.5rem;
             }
           }
@@ -750,8 +686,6 @@ PREVIEW MODE
       }
 
       .cta-hero-banner {
-
-
         border-radius: 0;
         position: relative;
         right: 0;
@@ -763,59 +697,47 @@ PREVIEW MODE
         margin-bottom: 1rem;
         border: none;
         max-width: 32rem;
-    
-    
+
         &__title {
-    
           margin-bottom: 0;
           text-align: center;
           font-size: 1.2rem;
         }
-    
-    
+
         &__description {
-    
           padding: 0.5rem 1.5rem;
         }
 
         &__cta {
-
           display: flex;
           justify-content: center;
           gap: 2rem;
 
-    
           .cta-hero-banner__logo {
-    
             width: 95px;
-                height: auto;
+            height: auto;
           }
-    
-          .wp-block-button__link {
 
+          .wp-block-button__link {
             padding: 1rem 2rem;
             font-size: 1.5rem;
-            margin: 0;			
+            margin: 0;
           }
         }
       }
 
       &.videoHero {
-
         &::after {
-
           bottom: -6rem;
         }
       }
 
       .hero {
-
         min-height: 35rem;
-          max-height: 630px;
+        max-height: 630px;
 
         &::after {
-
-          bottom: -3rem
+          bottom: -3rem;
         }
       }
 
@@ -838,11 +760,10 @@ PREVIEW MODE
         }
 
         &::before {
-
-          width: 180px; 
+          width: 180px;
           height: 180px;
           position: absolute;
-          top: -13rem; 
+          top: -13rem;
           left: 50%;
           transform: translateX(-50%);
         }
@@ -855,5 +776,4 @@ PREVIEW MODE
       }
     }
   }
-
 }

@@ -1,5 +1,5 @@
-@import 'styles/utils/variables';
-@import 'styles/utils/typography';
+@import "styles/utils/variables";
+@import "styles/utils/typography";
 
 .#{$block-prefix}-logo-cta {
   display: flex;
@@ -13,38 +13,31 @@
   border-radius: 15px;
 
   &__image {
-
     padding: 0 3vw;
     margin-bottom: 1rem;
 
     img {
-
       height: 100%;
       width: 100%;
     }
   }
 
   &__contents {
-
     width: 100%;
 
     .contents-title {
-
       border: none;
       width: 100%;
-      background: none;  
+      background: none;
       padding: 0;
 
       &:hover {
-
         transition: all 0.2s ease-in-out;
 
         a {
-
           background-color: #b96030;
 
           &::after {
-
             transform: translateX(5px);
             transition: all 0.2s ease-in-out;
           }
@@ -52,7 +45,6 @@
       }
 
       a {
-
         width: 100%;
         display: block;
         color: white;
@@ -66,12 +58,11 @@
         font-size: 1.4rem;
         text-transform: uppercase;
         font-family: $font-body;
-        transition: all 0.3s ease-in-out;   
+        transition: all 0.3s ease-in-out;
 
         &::after {
-
           content: " ";
-          background: url("images/icons/rt-arrow.svg");
+          background: url("~images/icons/rt-arrow.svg");
           background-size: contain;
           background-repeat: no-repeat;
           height: 20px;
@@ -79,12 +70,11 @@
           position: absolute;
           transition: all 0.2s ease-in-out;
           background-position: center;
-          margin-left: 0.8rem; 
+          margin-left: 0.8rem;
           margin-top: 0.35rem;
         }
 
         &:hover {
-
           color: white;
         }
       }
@@ -97,7 +87,6 @@ MEDIUM AND LARGE SCREENS
 *********************/
 @media only screen and (min-width: 769px) {
   .#{$block-prefix}-logo-cta {
-
   }
 }
 
@@ -106,27 +95,19 @@ SMALL SCREENS
 *********************/
 @media only screen and (max-width: 469px) {
   .#{$block-prefix}-logo-cta {
-
     margin: 0 6vw;
-  
-    &__image {
 
+    &__image {
     }
-  
+
     &__contents {
-  
       .contents-title {
-  
       }
     }
-  
+
     .wp-block-social-links {
-
       .wp-social-link {
-
         svg {
-
-
         }
       }
     }

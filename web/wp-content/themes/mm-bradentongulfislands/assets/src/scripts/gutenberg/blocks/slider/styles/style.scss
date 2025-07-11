@@ -128,13 +128,13 @@ $colorPalette: "black", "gray", "tan", "white", "red";
         .swiper-button-prev {
           left: -25px;
           &::after {
-            background-image: url("images/icons/mobile-arrow-left.png");
+            background-image: url("~images/icons/mobile-arrow-left.png");
           }
         }
         .swiper-button-next {
           right: -25px;
           &::after {
-            background-image: url("images/icons/mobile-arrow-right.png");
+            background-image: url("~images/icons/mobile-arrow-right.png");
           }
         }
       }
@@ -321,7 +321,7 @@ $colorPalette: "black", "gray", "tan", "white", "red";
         height: 25px;
         width: 25px;
         background-size: contain !important;
-        background: url("images/ui-next-on.png");
+        background: url("~images/ui-next-on.png");
       }
       &:hover {
         text-decoration: none;

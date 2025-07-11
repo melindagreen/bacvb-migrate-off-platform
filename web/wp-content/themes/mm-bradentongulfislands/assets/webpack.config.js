@@ -78,7 +78,10 @@ module.exports = {
 							//additionalData: `@use "styles/utils" as *;`,
 							implementation: require("sass-embedded"),
 							sassOptions: {
-								includePaths: [path.resolve(__dirname, "src")],
+								includePaths: [
+									path.resolve(__dirname, "src"),
+									path.resolve(__dirname, "images"),
+								],
 							},
 						},
 					},
