@@ -19,6 +19,7 @@ use Mustache_Engine;
 use Mustache_Loader_FilesystemLoader;
 
 class AssetHandler {
+  
   function __construct () {
     // Admin enqueues
     add_action( "admin_enqueue_scripts", array( \get_called_class(), "enqueue_admin_scripts_and_styles" ) );
@@ -184,7 +185,7 @@ class AssetHandler {
           C::THEME_PREFIX . "-" .$k, // handle
           get_stylesheet_directory_uri() . $v, // src
           [], // dependencies
-          $assets_file_front["version"] . '3' // version
+          $assets_file_front["version"] . '3a' // version
         );
       }
   }
@@ -221,7 +222,7 @@ class AssetHandler {
               C::THEME_PREFIX . "-blocks-admin-js", // handle
               get_stylesheet_directory_uri()."/assets/build/gutenberg.js", // src
               $assets_file["dependencies"], // dependencies
-              $assets_file["version"] . '3', // version
+              $assets_file["version"] . '3a', // version
               false // in footer?
           );
       }
