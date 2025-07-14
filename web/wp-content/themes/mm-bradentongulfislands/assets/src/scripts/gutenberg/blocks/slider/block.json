@@ -2,7 +2,7 @@
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
   "name": "mm-bradentongulfislands/slider",
-  "version": "1.0.1",
+  "version": "1.0.1b",
   "title": "Slider",
   "description": "Slider using InnerBlocks & Swiper",
   "icon": "format-gallery",

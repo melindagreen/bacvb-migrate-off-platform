@@ -173,7 +173,10 @@ var markersObject = {};
 						month: "short",
 					}).format(startdateObject);
 
-					startDate = `${startMonth} ${startDay}`;
+					const startFullYear = startdateObject.getFullYear();
+					const startShortYear = `'${String(startFullYear).slice(-2)}`; // "'25"
+
+					startDate = `${startMonth} ${startDay} ${startShortYear}`;
 
 					// End day Format
 					let enddateObject = new Date(endDate);
@@ -191,7 +194,10 @@ var markersObject = {};
 						month: "short",
 					}).format(enddateObject);
 
-					endDate = `${endMonth} ${endDay}`;
+					const endFullYear = enddateObject.getFullYear();
+					const endShortYear = `'${String(endFullYear).slice(-2)}`; // "'25"
+
+					endDate = `${endMonth} ${endDay} ${endShortYear}`;
 
 					date = `<div class='date is-style-collage-square'>
 						<span class='date__start'>${startDate}</span>`;
@@ -290,6 +296,7 @@ var markersObject = {};
 		var prev = page > 1 && !isNaN(page) ? page - 1 : 1;
 		var lastPage = parseInt($(".pagination__button--last").attr("data-page"));
 		var next = page < lastPage && !isNaN(page) ? page + 1 : lastPage;
+		const perPage = parseInt($("#listings-grid").attr("data-perpage"));
 		$(".pagination__button--prev").attr("data-page", prev);
 		$(".pagination__button--next").attr("data-page", next);
 
@@ -565,6 +572,7 @@ var markersObject = {};
 
 		var viewType = $(".view.active").data("view-type");
 		var listingsContainer = $(".listings-container.listings-container--grid");
+		const perPage = parseInt($("#listings-grid").attr("data-perpage"));
 
 		// if(postType == 'event'){
 		// 	// get the page back up where it needs to be for viewing (it's slightly less jarring to do this pre-ajax call)
@@ -794,7 +802,7 @@ var markersObject = {};
 			STARTING_COORDS = [27.4590324, -82.6521034];
 		}
 
-		perPage = parseInt($("#listings-grid").attr("data-perpage"));
+		const perPage = parseInt($("#listings-grid").attr("data-perpage"));
 
 		if ($(".view--map")) {
 			$(".view--map").addClass("active");

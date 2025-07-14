@@ -349,7 +349,11 @@ $colorPalette: "black", "gray", "tan", "white", "red";
   }
 
   &.card-style-signature-card {
-    overflow-y: hidden;
+    //overflow-y: hidden;
+
+    @include screen-sm-max {
+      overflow-y: visible;
+    }
 
     .swiper-slide {
       article {
@@ -387,6 +391,11 @@ $colorPalette: "black", "gray", "tan", "white", "red";
     .swiper {
       overflow: visible;
       height: 45rem;
+
+      @include screen-sm-max {
+        transform: scale(0.8);
+        margin: -5rem 0px -5rem -2.5rem;
+      }
     }
 
     .swiper-navigation-wrapper {
@@ -397,9 +406,9 @@ $colorPalette: "black", "gray", "tan", "white", "red";
       z-index: 3;
 
       @include screen-sm-max {
-        bottom: 0;
-        right: 50%;
-        transform: translate(50%, 50%) rotate(90deg);
+        bottom: 50%;
+        right: -1.25rem;
+        transform: translate(50%, 50%) rotate(180deg);
       }
     }
 

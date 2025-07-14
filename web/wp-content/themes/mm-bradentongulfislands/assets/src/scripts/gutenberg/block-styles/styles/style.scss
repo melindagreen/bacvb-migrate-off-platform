@@ -636,7 +636,7 @@ IMAGES
   margin: auto;
   margin-bottom: 7rem !important;
   max-width: 40rem;
-  overflow: unset;
+  overflow: unset !important;
   .wp-block-cover__image-background,
   .wp-block-cover__background {
     --webkit-mask: url("images/collage-square-long.svg") no-repeat center;
@@ -1509,8 +1509,8 @@ CUSTOM BLOCKS
 
 .is-style-small-font-header {
   .title {
-    font-family: $font-header;
-    max-width: 55rem;
+    font-family: $font-header !important;
+    max-width: 55rem !important;
     line-height: 1.1em;
     padding-bottom: 1rem;
 
@@ -1525,10 +1525,10 @@ CUSTOM BLOCKS
 
   @media only screen and (max-width: 768px) {
     .title {
-      width: 90%;
-      font-size: 6vw;
-      line-height: 9vw;
-      max-width: inherit;
+      width: 90% !important;
+      font-size: 6vw !important;
+      line-height: 9vw !important;
+      max-width: inherit !important;
 
       span {
         display: none;
@@ -1538,9 +1538,9 @@ CUSTOM BLOCKS
 
   @media only screen and (min-width: 769px) {
     .title {
-      top: 60%;
-      margin-left: 0;
-      font-size: 5vw;
+      top: 60% !important;
+      margin-left: 0 !important;
+      font-size: 5vw !important;
 
       span {
         font-size: 2.5vw;
@@ -1552,7 +1552,7 @@ CUSTOM BLOCKS
 
   @media only screen and (min-width: 1100px) {
     .title {
-      font-size: 3rem;
+      font-size: 3rem !important;
 
       span {
         font-size: 1.5rem;

@@ -35,5 +35,10 @@ function add_global_css_vars() {
     --img-section-top-turquoise: url('{$images_path}section-top-turquoise.png');
     --img-mobile-arrow-left: url('{$images_path}mobile-arrow-left.png');
     --img-mobile-arrow-right: url('{$images_path}mobile-arrow-right.png');
+    --img-section-top-light-blue: url('{$images_path}section-top-light-blue.png');
+    --img-beach-map: url('{$images_path}beach-map.png');
+    --img-oedmap: url('{$images_path}oedmap.svg');
+    --img-blue-arrow: url('{$images_path}blue-arrow.png');
+    --img-arrow-teal: url('{$images_path}arrow-teal.png');
   }</style>";
 }

@@ -2,7 +2,7 @@
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
   "name": "mm-bradentongulfislands/content-card",
-  "version": "1.0.1",
+  "version": "1.0.1b",
   "title": "Content Card",
   "description": "Display selected post or custom content in card format",
   "icon": "embed-photo",

@@ -1,11 +1,11 @@
-@import 'styles/utils/variables';
-@import 'styles/utils/typography';
+@import "styles/utils/variables";
+@import "styles/utils/typography";
 
 .#{$block-prefix}-water-ferry-map {
   width: 80%;
   margin: 0 auto;
   .mapContainer {
-    // background: url('~/images/oedmap.svg') top center no-repeat;
+    // background: var(--img-oedmap) top center no-repeat;
   }
 
   .county_content_overlay {

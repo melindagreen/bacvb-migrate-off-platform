@@ -5,14 +5,14 @@
 .#{$block-prefix}-accordion-section {
   width: calc(100% - 2rem);
   margin: 0 auto;
-  max-width: $main-column-max-width; 
-  border-bottom: 0.5px solid #CCCCCC;
-  border-left: 0.5px solid #CCCCCC;
-  border-right: 0.5px solid #CCCCCC;
+  max-width: $main-column-max-width;
+  border-bottom: 0.5px solid #cccccc;
+  border-left: 0.5px solid #cccccc;
+  border-right: 0.5px solid #cccccc;
   background-color: white;
 
   .accordion__header {
-    width:100%;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -25,11 +25,11 @@
       align-items: center;
       width: 2.5rem;
       height: 2.5rem;
-      .arrow{
+      .arrow {
         position: relative;
-        width: 30px; 
-        height: 30px; 
-        background: url('images/ui-next-on.png') no-repeat center;
+        width: 30px;
+        height: 30px;
+        background: var(--img-ui-next-on) no-repeat center;
         background-size: contain;
         opacity: 1;
         transition: all 0.4s;
@@ -37,26 +37,26 @@
       }
     }
     &.open {
-      margin-bottom:0;
+      margin-bottom: 0;
       background-color: #eeeeee;
       .fusion-toggle-icon-wrapper {
         .arrow {
           transform: rotate(-90deg);
-          background: url('images/ui-next-off.png') no-repeat center;
+          background: var(--img-ui-next-off) no-repeat center;
           background-size: contain;
         }
       }
-  }
+    }
     h3 {
       margin: 0 0 0 0.5rem;
       padding: 10px 0;
       color: $bradenton-teal;
       cursor: pointer;
       text-transform: inherit;
-      width:100%;
+      width: 100%;
       font-size: 1rem;
       font-family: $font-body;
-      // font-weight: 700;    
+      // font-weight: 700;
       @include standard-transition;
     }
     &:hover {
@@ -75,33 +75,32 @@
     padding: 0 1rem;
     background-color: #eeeeee;
     padding-left: 26px;
-    h2{
-      margin-left:1rem;
-      font-size:2rem;
-      font-weight:900;
-      font-family: $font-header;      
-      text-transform:uppercase;
+    h2 {
+      margin-left: 1rem;
+      font-size: 2rem;
+      font-weight: 900;
+      font-family: $font-header;
+      text-transform: uppercase;
     }
-    p{
+    p {
       margin-top: 0;
       color: $soft-black;
     }
-    &.open{
-
+    &.open {
       padding-bottom: 10px;
     }
-    blockquote.wp-block-quote{
-      border-left:solid 3px $turquoise;
-      padding-left:2rem;
-      line-height:2rem;
-      p:last-of-type{
-        padding-bottom:2rem;
+    blockquote.wp-block-quote {
+      border-left: solid 3px $turquoise;
+      padding-left: 2rem;
+      line-height: 2rem;
+      p:last-of-type {
+        padding-bottom: 2rem;
       }
     }
-    figure.wp-block-image{
-      width:calc( 100% - 5rem - 40px);
-      margin-left:5rem;
-      margin-right:40px;
+    figure.wp-block-image {
+      width: calc(100% - 5rem - 40px);
+      margin-left: 5rem;
+      margin-right: 40px;
     }
     .wp-block-buttons {
       margin-bottom: 1rem;
@@ -109,18 +108,16 @@
   }
 }
 
-
 /*********************
   SMALL SCREENS
   *********************/
 @media only screen and (max-width: 768px) {
   .#{$block-prefix}-accordion-section {
-
     .accordion__header {
-      padding:0.5rem 1rem;
+      padding: 0.5rem 1rem;
       h3 {
         line-height: 1.5;
-        font-size:1.2rem;
+        font-size: 1.2rem;
       }
       .fusion-toggle-icon-wrapper {
         margin-left: 0;
@@ -128,19 +125,18 @@
     }
 
     .accordion__body {
-      padding:0 1rem;
+      padding: 0 1rem;
 
-      &.open{
-        padding-top:1rem;
-        padding-bottom:1rem;
+      &.open {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
       }
 
       figure.wp-block-image {
-        width: calc( 100% - 6%);
+        width: calc(100% - 6%);
         margin-left: 3%;
         margin-right: 3%;
       }
-  
     }
   }
 }

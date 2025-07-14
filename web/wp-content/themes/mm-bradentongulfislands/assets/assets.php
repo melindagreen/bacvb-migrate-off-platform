@@ -185,7 +185,7 @@ class AssetHandler {
           C::THEME_PREFIX . "-" .$k, // handle
           get_stylesheet_directory_uri() . $v, // src
           [], // dependencies
-          $assets_file_front["version"] . '3a' // version
+          $assets_file_front["version"] . '3b' // version
         );
       }
   }
@@ -222,7 +222,7 @@ class AssetHandler {
               C::THEME_PREFIX . "-blocks-admin-js", // handle
               get_stylesheet_directory_uri()."/assets/build/gutenberg.js", // src
               $assets_file["dependencies"], // dependencies
-              $assets_file["version"] . '3a', // version
+              $assets_file["version"] . '3b', // version
               false // in footer?
           );
       }
