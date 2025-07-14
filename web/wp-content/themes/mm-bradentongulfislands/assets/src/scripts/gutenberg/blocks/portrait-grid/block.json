@@ -2,7 +2,7 @@
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
   "name": "mm-bradentongulfislands/portrait-grid",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "title": "Portrait Grid",
   "description": "A masonry grid for highlighting inspirational content",
   "icon": "schedule",

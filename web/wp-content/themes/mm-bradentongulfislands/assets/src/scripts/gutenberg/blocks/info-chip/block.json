@@ -2,7 +2,7 @@
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
   "name": "mm-bradentongulfislands/info-chip",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "title": "Info Chip",
   "description": "Chip that flips with info on the back",
   "icon": "share-alt",

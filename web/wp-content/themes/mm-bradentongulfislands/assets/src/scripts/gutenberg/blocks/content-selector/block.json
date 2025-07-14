@@ -2,7 +2,7 @@
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
   "name": "mm-bradentongulfislands/content-selector",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "title": "Content Selector",
   "description": "Use an option select to choose different content",
   "icon": "feedback",
