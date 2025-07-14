@@ -62,7 +62,7 @@
 
         &::after {
           content: " ";
-          background: url("~images/icons/rt-arrow.svg");
+          background: var(--img-rt-arrow);
           background-size: contain;
           background-repeat: no-repeat;
           height: 20px;

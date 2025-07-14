@@ -17,8 +17,8 @@ $nav-dist: 4%;
     text-align: center;
     padding: 1em 10px;
     box-sizing: border-box;
-    --webkit-mask: url("~images/large-image-mask.svg") no-repeat center;
-    mask: url("~images/large-image-mask.svg") no-repeat center;
+    --webkit-mask: var(--img-large-image-mask) no-repeat center;
+    mask: var(--img-large-image-mask) no-repeat center;
     --webkit-mask-size: 100% 100%;
     mask-size: 100% 100%;
     margin-bottom: -10px;
@@ -71,12 +71,12 @@ $nav-dist: 4%;
   .ue-swiper-button-prev {
     right: calc(4% + 45px);
     left: auto;
-    background: url("~/images/ui-prev-off.png");
+    background: var(--img-ui-prev-off);
     background-size: contain;
   }
   .ue-swiper-button-next {
     right: 4%;
-    background: url("~/images/ui-next-off.png");
+    background: var(--img-ui-next-off);
     background-size: contain;
   }
 
@@ -165,11 +165,11 @@ $nav-dist: 4%;
 
         .swiper-button-next {
           right: $nav-dist;
-          background: url("images/ui-next-off.png");
+          background: var(--img-ui-next-off);
           background-size: contain;
 
           &:hover {
-            background: url("images/ui-next-on.png");
+            background: var(--img-ui-next-on);
             background-size: contain;
           }
         }
@@ -177,11 +177,11 @@ $nav-dist: 4%;
         .swiper-button-prev {
           right: calc($nav-dist + 45px);
           left: auto;
-          background: url("images/ui-prev-off.png");
+          background: var(--img-ui-prev-off);
           background-size: contain;
 
           &:hover {
-            background: url("images/ui-prev-on.png");
+            background: var(--img-ui-prev-on);
             background-size: contain;
           }
         }
@@ -246,7 +246,7 @@ $nav-dist: 4%;
       left: 0;
       width: 100%;
       height: 25px;
-      background: url("~/images/section-top-turquoise.png") center top repeat-x;
+      background: var(--img-section-top-turquoise) center top repeat-x;
     }
     &:after {
       content: "";
@@ -256,7 +256,7 @@ $nav-dist: 4%;
       left: 0;
       width: 100%;
       height: 25px;
-      background: url("~/images/section-top-turquoise.png") center top repeat-x;
+      background: var(--img-section-top-turquoise) center top repeat-x;
       transform: scaleY(-1);
     }
   }

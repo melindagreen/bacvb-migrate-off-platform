@@ -33,8 +33,8 @@ class ThemeSetup {
 		add_action('pre_get_posts', array( get_called_class(), 'filter_posts_by_author'));
 
 		// global override for from emails
-        add_filter( 'wp_mail_from', array( get_called_class(), 'custom_wp_mail_from' ) );
-        add_filter( 'wp_mail_from_name', array( get_called_class(), 'custom_wp_mail_from_name' ) );
+    add_filter( 'wp_mail_from', array( get_called_class(), 'custom_wp_mail_from' ) );
+    add_filter( 'wp_mail_from_name', array( get_called_class(), 'custom_wp_mail_from_name' ) );
 
 		// Bypass Nonce
 		add_filter('acf/form_data', array(get_called_class(), 'modify_acf_form_data'), 10, 1);

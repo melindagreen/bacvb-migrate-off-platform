@@ -16,8 +16,8 @@
     width: 22rem;
     z-index: 2;
     position: relative;
-    --webkit-mask: url("~images/irregular-mask.svg") no-repeat center;
-    mask: url("~images/irregular-mask.svg") no-repeat center;
+    --webkit-mask: var(--img-irregular-mask) no-repeat center;
+    mask: var(--img-irregular-mask) no-repeat center;
     --webkit-mask-size: contain;
     mask-size: contain;
 

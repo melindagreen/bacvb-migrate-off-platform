@@ -299,7 +299,7 @@ PREVIEW MODE
       //On 8.24.23 Noticed no double side bars with this commented out unlike before. Will push live. pnh
       &:after {
         content: " ";
-        background: transparent url("~images/hero-bottom.png") no-repeat;
+        background: transparent var(--img-hero-bottom) no-repeat;
         background-size: 100% auto;
         height: 12em;
         left: 0;
@@ -317,7 +317,7 @@ PREVIEW MODE
       max-height: 70rem;
       position: relative;
       z-index: 1;
-      background: transparent url("~images/pixel.png") no-repeat bottom center;
+      background: transparent var(--img-pixel) no-repeat bottom center;
       background-size: cover;
 
       &.has-parallax {
@@ -329,7 +329,7 @@ PREVIEW MODE
         transform: none;
 
         &::after {
-          background: url("images/slideshow-bottom.png") repeat-x center;
+          background: var(--img-slideshow-bottom) repeat-x center;
           position: absolute;
           width: 100%;
           height: 3.5rem;
@@ -340,7 +340,7 @@ PREVIEW MODE
 
       &:after {
         content: " ";
-        background: transparent url("~images/hero-bottom.png") no-repeat;
+        background: transparent var(--img-hero-bottom) no-repeat;
         background-size: 100% auto;
         height: 12rem;
         left: 0;

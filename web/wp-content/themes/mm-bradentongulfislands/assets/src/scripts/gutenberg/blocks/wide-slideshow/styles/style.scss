@@ -19,8 +19,8 @@ Wide Slideshow
     text-align: center;
     padding: 1em 10px;
     box-sizing: border-box;
-    --webkit-mask: url("~images/large-image-mask.svg") no-repeat center;
-    mask: url("~images/large-image-mask.svg") no-repeat center;
+    --webkit-mask: var(--img-large-image-mask) no-repeat center;
+    mask: var(--img-large-image-mask) no-repeat center;
     --webkit-mask-size: 100% 100%;
     mask-size: 100% 100%;
     margin-bottom: -3rem;
@@ -138,7 +138,7 @@ Wide Slideshow
 
     &::before {
       content: " ";
-      background: url("images/slideshow-bottom.png") repeat-x center;
+      background: var(--img-slideshow-bottom) repeat-x center;
       position: absolute;
       width: 100%;
       height: 3.5rem;
@@ -149,7 +149,7 @@ Wide Slideshow
 
     &::after {
       content: " ";
-      background: url("images/slideshow-bottom.png") repeat-x center;
+      background: var(--img-slideshow-bottom) repeat-x center;
       position: absolute;
       width: 100%;
       height: 3.5rem;
@@ -332,11 +332,11 @@ Wide Slideshow
 
         .swiper-button-next {
           right: $nav-dist;
-          background: url("images/ui-next-off.png");
+          background: var(--img-ui-next-off);
           background-size: contain;
 
           &:hover {
-            background: url("images/ui-next-on.png");
+            background: var(--img-ui-next-on);
             background-size: contain;
           }
         }
@@ -344,11 +344,11 @@ Wide Slideshow
         .swiper-button-prev {
           right: calc($nav-dist + 45px);
           left: auto;
-          background: url("images/ui-prev-off.png");
+          background: var(--img-ui-prev-off);
           background-size: contain;
 
           &:hover {
-            background: url("images/ui-prev-on.png");
+            background: var(--img-ui-prev-on);
             background-size: contain;
           }
         }
@@ -453,7 +453,7 @@ Wide Slideshow
 
     &:after {
       content: " ";
-      background: transparent url("~images/hero-bottom.png") no-repeat;
+      background: transparent var(--img-hero-bottom) no-repeat;
       background-size: 100% auto;
       height: 12em;
       left: 0;

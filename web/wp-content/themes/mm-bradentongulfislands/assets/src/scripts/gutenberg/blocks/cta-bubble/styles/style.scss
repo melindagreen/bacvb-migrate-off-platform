@@ -2,8 +2,8 @@
 @import "styles/utils/typography";
 
 .#{$block-prefix}-cta-bubble {
-  --webkit-mask: url("~images/weatherbug-background.svg") no-repeat center;
-  mask: url("~images/weatherbug-background.svg") no-repeat center;
+  --webkit-mask: var(--img-weatherbug-background) no-repeat center;
+  mask: var(--img-weatherbug-background) no-repeat center;
   --webkit-mask-size: 100% 100%;
   mask-size: 100% 100%;
   background-size: cover;
@@ -58,7 +58,7 @@
 
     &::after {
       content: " ";
-      background: url("images/UI-white-right-arrow-default.svg") no-repeat;
+      background: var(--img-ui-white-right-arrow-default) no-repeat;
       transition: all 0.3s ease-in-out;
       position: relative;
       right: -1rem;
