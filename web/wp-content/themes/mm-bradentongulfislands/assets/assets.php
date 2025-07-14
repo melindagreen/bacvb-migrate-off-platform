@@ -221,7 +221,7 @@ class AssetHandler {
               C::THEME_PREFIX . "-blocks-admin-js", // handle
               get_stylesheet_directory_uri()."/assets/build/gutenberg.js", // src
               $assets_file["dependencies"], // dependencies
-              $assets_file["version"] . '2', // version
+              $assets_file["version"] . '3', // version
               false // in footer?
           );
       }

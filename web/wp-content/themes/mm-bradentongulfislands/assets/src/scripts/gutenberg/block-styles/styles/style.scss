@@ -647,8 +647,8 @@ IMAGES
 
   .wp-block-cover__inner-container {
     background-color: white;
-    width: 85%;
-    position: absolute;
+    width: 85% !important;
+    position: absolute !important;
     bottom: -7rem;
     padding: 2rem 3rem 1rem 3rem;
 
