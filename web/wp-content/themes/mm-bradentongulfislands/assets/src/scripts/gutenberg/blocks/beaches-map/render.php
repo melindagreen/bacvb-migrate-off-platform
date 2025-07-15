@@ -23,6 +23,19 @@ function render_block( $attrs, $content ) {
   );
   $posts = get_posts($args);
 
+  // Filter posts: only keep those where $attrs is set
+  if (!empty($posts)) {
+    $filtered_posts = [];
+    foreach ($posts as $post) {
+      $shortenedTitle = preg_replace('/\s?\([^)]+\)/', '', $post->post_title);
+      $beachContent = strtolower(str_replace(' ', '', $shortenedTitle));
+      if (isset($attrs[$beachContent])) {
+        $filtered_posts[] = $post;
+      }
+    }
+    $posts = $filtered_posts;
+  }
+
 
   $html = "<div class='" . Constants::BLOCK_CLASS . "-beaches-map'>";
 
