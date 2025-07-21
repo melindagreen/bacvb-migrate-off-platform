@@ -1,29 +1,51 @@
 {
-  "$schema": "https://schemas.wp.org/trunk/theme.json",
-  "version": 2,
+  "$schema": "https://schemas.wp.org/wp/6.8/theme.json",
+  "version": 3,
   "settings": {
-    "custom": {
-      "prefix": "mm-bradentongulfislands"
-    },
+    "appearanceTools": false,
     "border": {
-      "radius": true,
       "color": false,
       "style": false,
       "width": false
+    },
+    "color": {
+      "custom": true,
+      "customGradient": true,
+      "defaultDuotone": false,
+      "defaultGradients": false,
+      "defaultPalette": false,
+      "gradients": [],
+      "palette": [
+        { "name": "Bradenton Teal", "slug": "bradenton-teal", "color": "#2B7B7C" },
+        { "name": "White", "slug": "white", "color": "#FFFFFF" },
+        { "name": "Soft Black", "slug": "soft-black", "color": "#414141" },
+        { "name": "Warm Gray", "slug": "warm-gray", "color": "#AFA8A0" },
+        { "name": "Light Gray", "slug": "light-gray", "color": "#eeeeee" },
+        { "name": "Sky Blue", "slug": "sky-blue", "color": "#B0D9E6" },
+        { "name": "Sea Blue", "slug": "sea-blue", "color": "#82CAE2" },
+        { "name": "Turquoise", "slug": "turquoise", "color": "#77C3C6" },
+        { "name": "Bright Blue", "slug": "bright-blue", "color": "#037BBF" },
+        { "name": "Purple", "slug": "purple", "color": "#4A6BAE" },
+        { "name": "Dark Purple", "slug": "dk-purple", "color": "#5F769B" },
+        { "name": "Dark Blue", "slug": "dk-blue", "color": "#014067" },
+        { "name": "Rust", "slug": "rust", "color": "#C96A39" },
+        { "name": "Yellow Tan", "slug": "yellow-tan", "color": "#F4EEE1" }
+      ]
+    },
+    "custom": {
+			"themePrefix": "mm-bradentongulfislands",
+			"blockPrefix": "wp-block-mm-bradentongulfislands"
+    },
+    "layout": {
+      "contentSize": "100%",
+      "wideSize": "100rem"
     },
     "spacing": {
       "defaultSpacingSizes": true,
       "padding": true,
       "margin": true,
       "blockGap": true,
-      "units": [
-        "em",
-        "rem",
-        "vh",
-        "vw",
-        "%",
-        "px"
-      ]
+      "units": ["em", "rem", "vh", "vw", "%", "px"]
     },
     "blocks": {
       "core/image": {
@@ -32,134 +54,40 @@
         }
       }
     },
-    "color": {
-      "custom": true,
-      "defaultPalette": false,
-      "palette": [
-        {
-          "name": "Bradenton Teal",
-          "slug": "bradenton-teal",
-          "color": "#2B7B7C"
-        },
-        {
-          "name": "White",
-          "slug": "white",
-          "color": "#FFFFFF"
-        },
-        {
-          "name": "Soft Black",
-          "slug": "soft-black",
-          "color": "#414141"
-        },
-        {
-          "name": "Warm Gray",
-          "slug": "warm-gray",
-          "color": "#AFA8A0"
-        },
-        {
-          "name": "Light Gray",
-          "slug": "light-gray",
-          "color": "#eeeeee"
-        },
-        {
-          "name": "Sky Blue",
-          "slug": "sky-blue",
-          "color": "#B0D9E6"
-        },
-        {
-          "name": "Sea Blue",
-          "slug": "sea-blue",
-          "color": "#82CAE2"
-        },
-        {
-          "name": "Turquoise",
-          "slug": "turquoise",
-          "color": "#77C3C6"
-        },
-        {
-          "name": "Bright Blue",
-          "slug": "bright-blue",
-          "color": "#037BBF"
-        },
-        {
-          "name": "Purple",
-          "slug": "purple",
-          "color": "#4A6BAE"
-        },
-        {
-          "name": "Dark Purple",
-          "slug": "dk-purple",
-          "color": "#5F769B"
-        },
-        {
-          "name": "Dark Blue",
-          "slug": "dk-blue",
-          "color": "#014067"
-        },
-        {
-          "name": "Rust",
-          "slug": "rust",
-          "color": "#C96A39"
-        },
-        {
-          "name": "Yellow Tan",
-          "slug": "yellow-tan",
-          "color": "#F4EEE1"
-        }
-      ],
-      "customGradient": true,
-      "defaultGradients": false,
-      "gradients": []
-    },
     "typography": {
       "customFontSize": true,
-      "letterSpacing": false,
-      "textDecoration": false,
-      "fontSizes": [
+      "defaultFontSizes": false,
+      "fluid": true,
+      "fontFamilies": [
         {
-          "slug": "small",
-          "size": "1rem",
-          "name": "Small"
+          "fontFamily": "'Lifehack', sans-serif",
+          "slug": "title",
+          "name": "Title Font"
         },
         {
-          "slug": "normal",
-          "size": "1.5rem",
-          "name": "Normal"
+          "fontFamily": "'Melburch', sans-serif",
+          "slug": "header",
+          "name": "Header Font"
         },
         {
-          "slug": "medium",
-          "size": "2rem",
-          "name": "Medium"
-        },
-        {
-          "slug": "large",
-          "size": "clamp(2.15rem, 3vw, 3rem)",
-          "name": "Large"
-        },
-        {
-          "slug": "xlarge",
-          "size": "clamp(2.35rem, 5vw, 5rem)",
-          "name": "X Large"
+          "fontFamily": "'Open Sans', sans-serif",
+          "slug": "body",
+          "name": "Body Font"
         }
       ],
-        "fontFamilies": [
-          {
-            "fontFamily": "'Lifehack', sans-serif",
-            "slug": "title",
-            "name": "Title Font"
-          },
-          {
-            "fontFamily": "'Melburch', sans-serif",
-            "slug": "header",
-            "name": "Header Font"
-          },
-          {
-            "fontFamily": "'Open Sans', sans-serif",
-            "slug": "body",
-            "name": "Body Font"
-          }
-        ]
-    }
+      "fontSizes": [
+        { "slug": "small", "size": "1rem", "name": "Small" },
+        { "slug": "normal", "size": "1.5rem", "name": "Normal" },
+        { "slug": "medium", "size": "2rem", "name": "Medium" },
+        { "slug": "large", "size": "clamp(2.15rem, 3vw, 3rem)", "name": "Large" },
+        { "slug": "xlarge", "size": "clamp(2.35rem, 5vw, 5rem)", "name": "X Large" }
+      ],
+      "fontWeight": true,
+      "letterSpacing": false,
+      "textDecoration": false,
+      "textTransform": false
+    },
+    "useRootPaddingAwareAlignments": true
   },
   "styles": {
     "typography": {

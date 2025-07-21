@@ -1,6 +1,4 @@
-@import "styles/utils/mixins";
-@import "styles/utils/variables";
-@import "styles/utils/typography";
+
 
 .#{$block-prefix}-accordion-section {
   width: calc(100% - 2rem);

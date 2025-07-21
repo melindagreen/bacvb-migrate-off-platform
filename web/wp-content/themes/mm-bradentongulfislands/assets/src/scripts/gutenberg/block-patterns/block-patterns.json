@@ -1,0 +1,12 @@
+[
+    {
+        "title": "example",
+        "properties": {
+            "title": "Example Pattern",
+            "description": "An example of a block pattern within the Madden Nino theme",
+            "categories": [ "mmnino/example-cat" ],
+            "keywords": [],
+            "content": "<!-- wp:heading --><h2>This is a heading</h2><!-- /wp:heading --><!-- wp:paragraph {\"className\":\"is-style-example\"} --><p class=\"is-style-example\">And this is a BIG paragraph in red!</p><!-- /wp:paragraph --><!-- wp:paragraph --><p>And this is a normal paragraph with some <span class=\"all-caps\">all-caps text</span>.</p><!-- /wp:paragraph -->"
+        }
+    }
+]

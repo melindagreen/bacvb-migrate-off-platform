@@ -71,6 +71,7 @@
 	padding-right: var(--wp--style--root--padding-right);
 	width: 100%;
 }
+
 @mixin main-column($maxWidth: $main-column-max-width) {
     width: $main-column-width;
     max-width: $maxWidth;

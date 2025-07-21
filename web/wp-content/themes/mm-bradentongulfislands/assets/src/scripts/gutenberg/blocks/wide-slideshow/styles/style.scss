@@ -1,5 +1,4 @@
-@import "styles/utils/variables";
-@import "styles/utils/typography";
+
 
 $swiperNavigationSize: 30px;
 $nav-dist: 4%;
@@ -8,137 +7,148 @@ $nav-dist: 4%;
 Wide Slideshow
 *********************/
 
-.#{$block-prefix}-wideslideshow {
-  position: relative;
+  .#{$block-prefix}-wideslideshow { 
 
-  &__banner-title {
     position: relative;
-    z-index: 5;
-    background: $bradenton-teal;
-    width: 100%;
-    text-align: center;
-    padding: 1em 10px;
-    box-sizing: border-box;
-    --webkit-mask: var(--img-large-image-mask) no-repeat center;
-    mask: var(--img-large-image-mask) no-repeat center;
-    --webkit-mask-size: 100% 100%;
-    mask-size: 100% 100%;
-    margin-bottom: -3rem;
 
-    h2 {
+    &__banner-title {
       position: relative;
-      z-index: 1;
-      color: #fff;
-      font-family: $font-header;
-      font-weight: 400;
-      text-transform: uppercase;
-      font-size: 2em;
-      max-width: 50rem;
-      margin: 0 auto;
-    }
-
-    p {
-      color: #fff;
-      font-weight: 500;
-      margin: auto;
-      max-width: 50rem;
-      padding: 0.5rem 1rem 0rem;
-      text-align: center;
-    }
-  }
-
-  .wideslideshow-ligthbox-overlay {
-    display: block;
-    position: fixed;
-    height: 100%;
-    width: 100%;
-    background-color: $bradenton-teal;
-    top: 0;
-    z-index: 100000;
-    opacity: 0.98;
-
-    &--hide {
-      display: none;
-    }
-
-    #lightbox-iframe {
-      height: 50vh;
-      min-height: 400px;
-      max-height: 800px;
+      z-index: 5;
+      background: $bradenton-teal;
       width: 100%;
-    }
+      text-align: center;
+      padding: 1em 10px;
+      box-sizing: border-box;
+      --webkit-mask: url("images/large-image-mask.svg") no-repeat center;
+      mask: url("images/large-image-mask.svg") no-repeat center;
+      --webkit-mask-size: 100% 100%;
+      mask-size: 100% 100%;
+      margin-bottom: -3rem;
+  
+      h2 {
+        position: relative;
+        z-index: 1;
+        color: #fff;
+        font-family: $font-header;
+        font-weight: 400;
+        text-transform: uppercase;
+        font-size: 2em;
+        max-width: 50rem;
+        margin: 0 auto;
+      }
 
-    #lightbox-title {
-      color: #fff;
-      font-family: $font-title;
-      font-size: 2.5rem;
-      margin-top: 0.2rem;
-      margin-bottom: 0.2rem;
-    }
+      p {
 
-    #lightbox-subtitle {
-      font-size: 1.25rem;
-      font-family: $font-body;
-      margin-top: 0;
-      color: white;
-    }
-
-    #lightbox-buttontext {
-      border-radius: 200px;
-      text-transform: uppercase;
-      font-size: 0.8rem;
-      font-weight: 600;
-      transition: all 0.3s ease-in-out;
-      color: $bradenton-teal;
-      background-color: $sky-blue;
-      text-decoration: none;
-      height: fit-content;
-      margin-top: 1rem;
-      padding: 0.3rem 0.7rem;
-    }
-
-    &__content {
-      left: 50%;
-      max-width: 95%;
-      position: relative;
-      padding-top: 8rem;
-      -webkit-transform: translateX(-50%);
-      transform: translateX(-50%);
-      width: 800px;
-
-      .lightbox-info {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-
-        span {
-          max-width: 22rem;
-        }
+        color: #fff;
+        font-weight: 500;
+        margin: auto;
+        max-width: 50rem;
+        padding: 0.5rem 1rem 0rem;
+        text-align: center;
       }
     }
 
-    &__close {
-      color: #fff;
-      cursor: pointer;
-      font-size: 4em;
-      opacity: 0.8;
-      position: absolute;
-      right: 2%;
-      top: -1%;
-      transition: opacity 0.3s;
-      z-index: 10;
-    }
-  }
+    .wideslideshow-ligthbox-overlay {
 
-  .swiper-wideslideshow {
+      display: block;
+      position: fixed;
+      height: 100%;
+      width: 100%;
+      background-color: $bradenton-teal;
+      top: 0;
+      z-index: 100000;
+      opacity: 0.98;
+
+      &--hide {
+
+        display: none;
+      }
+
+      #lightbox-iframe {
+
+        height: 50vh;
+        min-height: 400px;
+        max-height: 800px;
+        width: 100%;
+      }
+
+      #lightbox-title {
+          
+        color: #fff;
+        font-family: $font-title;
+        font-size: 2.5rem;
+        margin-top: 0.2rem;
+        margin-bottom: 0.2rem;
+      }
+
+      #lightbox-subtitle {
+
+        font-size: 1.25rem;
+        font-family: $font-body;
+        margin-top: 0;
+        color: white;
+      }
+
+      #lightbox-buttontext {
+
+        border-radius: 200px;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        font-weight: 600;
+        transition: all 0.3s ease-in-out;
+        color: $bradenton-teal;
+        background-color: $sky-blue;
+        text-decoration: none;
+        height: fit-content;
+        margin-top: 1rem;
+        padding: 0.3rem 0.7rem;
+      }
+
+      &__content {
+
+        left: 50%;
+        max-width: 95%;
+        position: relative;
+        padding-top: 8rem;
+        -webkit-transform: translateX(-50%);
+        transform: translateX(-50%);
+        width: 800px;
+
+        .lightbox-info {
+
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
+
+          span {
+
+            max-width: 22rem;
+          }
+        }
+      }
+
+      &__close {
+        color: #fff;
+        cursor: pointer;
+        font-size: 4em;
+        opacity: .8;
+        position: absolute;
+        right: 2%;
+        top: -1%;
+        transition: opacity .3s;
+        z-index: 10;
+    }
+    }
+
+    .swiper-wideslideshow {
     width: 100%;
     height: 600px;
     z-index: 0;
     position: relative;
 
     &::before {
-      content: " ";
-      background: var(--img-slideshow-bottom) repeat-x center;
+      content: ' ';
+      background: url('images/slideshow-bottom.png') repeat-x center;
       position: absolute;
       width: 100%;
       height: 3.5rem;
@@ -148,8 +158,8 @@ Wide Slideshow
     }
 
     &::after {
-      content: " ";
-      background: var(--img-slideshow-bottom) repeat-x center;
+      content: ' ';
+      background: url('images/slideshow-bottom.png') repeat-x center;
       position: absolute;
       width: 100%;
       height: 3.5rem;
@@ -158,7 +168,9 @@ Wide Slideshow
     }
 
     .bc-wrapper {
+
       &__items {
+
         text-align: center;
         font-size: 18px;
         background: $turquoise;
@@ -178,8 +190,7 @@ Wide Slideshow
         -webkit-align-items: center;
         align-items: center;
 
-        img,
-        iframe {
+        img, iframe {
           display: block;
           width: 100%;
           height: 100%;
@@ -188,56 +199,66 @@ Wide Slideshow
         }
 
         .#{$block-prefix}-wideslideshow__logo {
+
           position: absolute;
           top: 0.5rem;
           left: 0rem;
           z-index: 2;
           height: auto;
           width: 270px;
-          object-fit: cover;
+          object-fit: cover;  
         }
 
         iframe {
+
           pointer-events: none;
         }
       }
     }
 
+
     .hidden {
+      
       visibility: hidden;
     }
   }
 
   .swiper-thumbnail-preview-slider--thumbnails {
+
     top: -5rem;
     display: none;
     margin-left: calc(100% - 45vw);
     padding-right: 2rem;
 
     .swiper-wrapper {
+
       row-gap: 1rem;
       margin-left: auto;
       width: fit-content;
-      margin-right: 6vw;
+      margin-right: 6vw;  
 
       .swiper-slide-thumb-active {
-        img {
-          border: 4px solid $rust;
+
+        img{
+        border: 4px solid $rust;
         }
       }
 
       .swiper-slide {
+
         width: 140px !important;
         height: 90px !important;
         cursor: pointer;
         transition: all 0.3s ease-in-out;
 
         &:hover {
+
           filter: brightness(0.6);
           transition: all 0.2s ease-in-out;
         }
 
         img {
+          
           height: inherit;
           width: inherit;
           border-radius: 22px;
@@ -248,10 +269,12 @@ Wide Slideshow
   }
 
   .swiper-pagination {
+
     position: unset;
     text-align: left;
 
     .swiper-pagination-bullet {
+
       background-color: transparent;
       border: 2px solid $white;
       width: 12px;
@@ -260,6 +283,7 @@ Wide Slideshow
     }
 
     .swiper-pagination-bullet-active {
+
       background-color: $white;
       border-color: $sky-blue;
     }
@@ -270,6 +294,7 @@ Wide Slideshow
     height: 0;
 
     &__items {
+
       text-align: center;
       font-size: 18px;
       background: $turquoise;
@@ -290,7 +315,8 @@ Wide Slideshow
     }
 
     .bc-infoblock {
-      background: rgba(24, 93, 100, 0.85) 0% 0% no-repeat padding-box;
+
+      background: rgba(24,93,100, 0.85)  0% 0% no-repeat padding-box;
       min-height: 300px;
       max-width: 500px;
       width: 88%;
@@ -303,13 +329,16 @@ Wide Slideshow
       transition: all 0.1s ease-in-out;
 
       &--purple {
-        background: rgba(74, 107, 174, 0.85) 0% 0% no-repeat padding-box;
+
+        background: rgba(74,107,174,.85)  0% 0% no-repeat padding-box;
         transition: all 0.1s ease-in-out;
       }
+      
 
       &__navigation {
-        .swiper-button-next,
-        .swiper-button-prev {
+
+        .swiper-button-next, .swiper-button-prev {
+     
           width: 35px;
           font-size: $swiperNavigationSize;
           font-weight: 600;
@@ -319,41 +348,50 @@ Wide Slideshow
           bottom: 12px;
           color: transparent;
           transition: all 0.2s ease-in-out;
-
+  
           &::after {
+  
             font-size: $swiperNavigationSize;
           }
 
           &:hover {
+
             transform: scale(1.1);
             transition: all 0.2s ease-in-out;
           }
         }
-
+  
         .swiper-button-next {
+          
           right: $nav-dist;
-          background: var(--img-ui-next-off);
+          background: url('images/ui-next-off.png');
           background-size: contain;
 
           &:hover {
-            background: var(--img-ui-next-on);
+
+            background: url('images/ui-next-on.png');
             background-size: contain;
           }
+        
         }
-
+  
         .swiper-button-prev {
+          
           right: calc($nav-dist + 45px);
           left: auto;
-          background: var(--img-ui-prev-off);
+          background: url('images/ui-prev-off.png');
           background-size: contain;
 
           &:hover {
-            background: var(--img-ui-prev-on);
+
+            background: url('images/ui-prev-on.png');
             background-size: contain;
           }
         }
+  
       }
       &__content {
+
         padding: 1rem 1.5rem;
 
         .infoblock__link {
@@ -366,8 +404,10 @@ Wide Slideshow
           transition: all 0.2s ease-in-out;
           text-transform: uppercase;
           font-weight: 700;
+          
 
           &:hover {
+
             background-color: $rust;
             color: $white;
             text-decoration: none;
@@ -377,6 +417,7 @@ Wide Slideshow
         }
 
         .infoblock__item {
+
           color: $white;
           font-family: $font-body;
           margin: 12px auto;
@@ -391,23 +432,29 @@ Wide Slideshow
           line-height: 1.7em;
 
           &--hide {
+
             opacity: 0;
             transition: all 0.2s ease-out;
           }
 
           &--hide-notransition {
+
             opacity: 0;
             transition: all 0s ease-out;
           }
+
         }
       }
     }
 
     &--single {
+
       .bc-infoblock {
+           
         &__navigation {
-          .swiper-button-next,
-          .swiper-button-prev {
+
+          .swiper-button-next, .swiper-button-prev {
+       
             display: none;
           }
         }
@@ -416,6 +463,7 @@ Wide Slideshow
   }
 
   #infoblock-title {
+
     font-family: $font-title;
     font-weight: 700;
     font-size: 3rem;
@@ -423,103 +471,102 @@ Wide Slideshow
     overflow-wrap: unset;
     line-height: 0.8em;
   }
+  
+    &.is-style-hero-slider {
+      position: relative;
+      z-index: 0;
+      height: 100vh;
+      max-height: 700px;
+      overflow: hidden;
 
-  &.is-style-hero-slider {
-    position: relative;
-    z-index: 0;
-    height: 100vh;
-    max-height: 700px;
-    overflow: hidden;
-
-    .swiper-thumbnail-preview-slider--thumbnails,
-    .bc-infoblock__navigation,
-    #infoblock-title,
-    .swiper-wideslideshow::after {
-      display: none;
-    }
-
-    &:before {
-      content: "";
-      display: block;
-      position: absolute;
-      z-index: 1;
-      pointer-events: none;
-      bottom: 50px;
-      left: 0;
-      width: 100%;
-      height: 40%;
-      background: linear-gradient(to bottom, rgba(#000, 0), $dk-blue);
-    }
-
-    &:after {
-      content: " ";
-      background: transparent var(--img-hero-bottom) no-repeat;
-      background-size: 100% auto;
-      height: 12em;
-      left: 0;
-      position: absolute;
-      pointer-events: none;
-      width: 105%;
-      z-index: 1;
-      bottom: -20px;
-      background-size: cover;
-    }
-
-    .hc-wrapper {
-      position: absolute;
-      bottom: 210px;
-      left: 0;
-      width: 100%;
-      height: auto;
-      .bc-infoblock {
-        background: none;
-        height: 30px;
-        bottom: auto;
-        left: 50%;
-        transform: translateX(-50%);
+      .swiper-thumbnail-preview-slider--thumbnails, .bc-infoblock__navigation, #infoblock-title, .swiper-wideslideshow::after {
+        display: none;
       }
-      .bc-infoblock__content {
-        padding: 0;
-        text-align: center;
-        width: 100%;
 
-        .infoblock__item--hide-notransition,
-        #infoblock-buttonurl {
-          display: none;
+      &:before {
+        content: "";
+        display: block;
+        position: absolute;
+        z-index: 1;
+        pointer-events: none;
+        bottom: 50px;
+        left: 0;
+        width: 100%;
+        height: 40%;
+        background: linear-gradient(to bottom, rgba(#000,0), $dk-blue);
+      }
+
+      &:after {
+        content: " ";
+        background: transparent url("images/hero-bottom.png") no-repeat;
+        background-size: 100% auto;
+        height: 12em;
+        left: 0;
+        position: absolute;
+        pointer-events: none;
+        width: 105%;
+        z-index: 1;
+        bottom: -20px;
+        background-size: cover;
+      }
+
+      .hc-wrapper {
+        position: absolute;
+        bottom: 210px;
+        left: 0;
+        width: 100%;
+        height: auto;
+        .bc-infoblock {
+          background: none;
+          height: 30px;
+          bottom: auto;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+        .bc-infoblock__content {
+          padding: 0;
+          text-align: center;
+          width: 100%;
+
+          .infoblock__item--hide-notransition, #infoblock-buttonurl {
+            display: none;
+          }
+        }
+      } 
+
+      .swiper-wideslideshow .bc-wrapper__items {
+
+        // .item-slide-img {
+        //   position: fixed;
+        //   top: 0;
+        //   left: 0;
+        // }
+
+        .#{$block-prefix}-wideslideshow__logo {
+          top: 25%;
+          left: 10%;
         }
       }
-    }
 
-    .swiper-wideslideshow .bc-wrapper__items {
-      // .item-slide-img {
-      //   position: fixed;
-      //   top: 0;
-      //   left: 0;
-      // }
-
-      .#{$block-prefix}-wideslideshow__logo {
-        top: 25%;
-        left: 10%;
+      .swiper-pagination {
+        position: relative;
+        bottom: auto;
+        text-align: center;
       }
     }
 
-    .swiper-pagination {
-      position: relative;
-      bottom: auto;
-      text-align: center;
-    }
   }
-}
 
 /*********************
   LARGE SCREENS
 *********************/
 @media only screen and (min-width: $screen-lg) {
   .#{$block-prefix}-wideslideshow {
-    .swiper-thumbnail-preview-slider--thumbnails {
-      display: block;
-      width: 45vw;
-    }
+  .swiper-thumbnail-preview-slider--thumbnails {
+
+    display: block;
+    width: 45vw;
+  }
   }
 }
 
@@ -528,61 +575,71 @@ SMALL SCREENS
 *********************/
 @media only screen and (max-width: $screen-sm) {
   .#{$block-prefix}-wideslideshow {
+
     &__banner-title {
       h2 {
         font-size: 1.5em;
       }
     }
 
-    .swiper-wideslideshow {
-      height: 550px;
+  .swiper-wideslideshow {
 
-      .bc-wrapper {
-        &__items {
-          .#{$block-prefix}-wideslideshow__logo {
-            top: 0.5rem;
-            left: 0rem;
-            width: 150px;
-          }
+    height: 550px;
+
+    .bc-wrapper {
+
+      &__items {
+  
+        .#{$block-prefix}-wideslideshow__logo {
+          top: 0.5rem;
+          left: 0rem;
+          width: 150px;
         }
       }
     }
+  }
 
-    .hc-wrapper {
-      position: relative;
-      height: 8rem;
+  .hc-wrapper {
 
-      .bc-infoblock {
-        bottom: 2rem;
-        left: 50%;
-        transform: translateX(-50%);
-        overflow: hidden;
+    position: relative;
+    height: 8rem;
 
-        &__navigation {
-          .swiper-button-next {
-            right: calc($nav-dist - 10px);
-          }
-          .swiper-button-prev {
-            right: calc($nav-dist + 30px);
-          }
+    .bc-infoblock {
+      
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      overflow: hidden;
+
+      &__navigation {
+  
+        .swiper-button-next {
+          
+          right: calc($nav-dist - 10px);
         }
+        .swiper-button-prev {
 
-        &__content {
-          padding-left: 3vw;
-
-          .infoblock__item {
-            width: 100%;
-            margin-top: 5px;
-          }
-        }
-
-        #infoblock-title {
-          font-size: 2rem !important;
-          line-height: 1;
-          margin-bottom: 0;
+          right: calc($nav-dist + 30px);
         }
       }
-    }
+
+      &__content {
+
+        padding-left: 3vw;
+
+        .infoblock__item { 
+          width: 100%;
+          margin-top: 5px;
+        }
+      }
+
+      #infoblock-title {
+        font-size: 2.0rem !important;
+        line-height: 1;
+        margin-bottom: 0;
+      }
+    }   
+  }
 
     &.is-style-hero-slider {
       height: 60vh;
@@ -596,14 +653,18 @@ SMALL SCREENS
         height: 45vh;
 
         .bc-wrapper__items {
+
           .#{$block-prefix}-wideslideshow__logo {
             top: 15%;
           }
-        }
+        } 
       }
 
+
       .hc-wrapper {
+
       }
     }
+
   }
 }
