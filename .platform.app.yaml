@@ -33,6 +33,13 @@ web:
       expires: 600
       scripts: true
       allow: true
+      headers:
+        strict-transport-security: "max-age=63072000; includeSubDomains; preload"
+        x-content-type-options: "nosniff"
+        x-frame-options: "SAMEORIGIN"
+        x-xss-protection: "1; mode=block"
+        referrer-policy: "strict-origin-when-cross-origin"
+        content-security-policy: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline';"
       rules:
         ^/composer\.json:
           allow: false
@@ -42,11 +49,17 @@ web:
           allow: false
         # expiry time for static content
         '\.(mp4|jpe?g|png|gif|svgz?|map|ico|bmp|eot|woff2?|otf|ttf)$':
-          expires: 1w
+          expires: 1y
+          headers:
+            cache-control: "public, max-age=31536000, immutable"
         '\.(css|js)$':
-          expires: 1w
+          expires: 1y
+          headers:
+            cache-control: "public, max-age=31536000, immutable"
         '\.(html|php)$':
             expires: 600s
+            headers:
+              cache-control: "private, max-age=600"
     "/wp-content/cache":
       root: "web/wp-content/cache"
       scripts: false
@@ -67,7 +80,9 @@ web:
           # Allow access to common static files.
           '(?<!\-lock)\.(?i:jpe?g|gif|png|svg|bmp|ico|css|js(?:on)?|eot|ttf|woff|woff2|pdf|docx?|xlsx?|pp[st]x?|psd|odt|key|mp[2-5g]|m4[av]|og[gv]|wav|mov|wm[av]|avi|3g[p2])$':
               allow: true
-              expires: 1w
+              expires: 1y
+              headers:
+                cache-control: "public, max-age=31536000, immutable"
     "/xmlrpc.php":
       root: "web"
       allow: false
@@ -191,11 +206,6 @@ crons:
 
 # Runtime Operations
 operations:
-
-  Purge Varnish:
-    role: admin
-    commands:
-      start: curl -X PURGE https://www.dev-54ta5gq-bxdsevwcta6ce.us-4.platformsh.site
 
   Trigger Rebuild:
     role: admin
