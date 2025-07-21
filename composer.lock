@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1e33a173260c6de3938f57699f2b6b34",
+    "content-hash": "1daf9902371ca85a7f5af01cecb8f16a",
     "packages": [
         {
             "name": "composer/ca-bundle",
@@ -1246,10 +1246,6 @@
                 "proprietary"
             ],
             "description": "gravity forms",
-            "support": {
-                "source": "https://github.com/maddenmedia/gravityforms/tree/2.9.11.1",
-                "issues": "https://github.com/maddenmedia/gravityforms/issues"
-            },
             "time": "2025-06-30T15:29:41+00:00"
         },
         {
@@ -1277,10 +1273,6 @@
                 }
             ],
             "description": "Purges breeze + varnish cache via middleware on post save and via admin bar links to purge either the current page or the entire site.",
-            "support": {
-                "source": "https://github.com/maddenmedia/kraken-purge/tree/v1.1",
-                "issues": "https://github.com/maddenmedia/kraken-purge/issues"
-            },
             "time": "2025-03-13T04:15:17+00:00"
         },
         {
@@ -1302,10 +1294,6 @@
                 "proprietary"
             ],
             "description": "Plugin for GDPR-type cookie consent acquisition.",
-            "support": {
-                "source": "https://github.com/maddenmedia/wp-plugin-madden-cookie-consent/tree/v1.0.5",
-                "issues": "https://github.com/maddenmedia/wp-plugin-madden-cookie-consent/issues"
-            },
             "time": "2023-07-13T13:17:59+00:00"
         },
         {
@@ -1347,10 +1335,6 @@
                 "wordpress-parent-theme",
                 "wordpress-starter-theme"
             ],
-            "support": {
-                "source": "https://github.com/maddenmedia/mm-madre-theme/tree/v1.4.6",
-                "issues": "https://github.com/maddenmedia/mm-madre-theme/issues"
-            },
             "time": "2025-01-02T19:46:01+00:00"
         },
         {
@@ -1372,10 +1356,6 @@
                 "proprietary"
             ],
             "description": "Wordpress Listings Plugin for Madden Media",
-            "support": {
-                "source": "https://github.com/maddenmedia/partner-portal/tree/v1.2.3",
-                "issues": "https://github.com/maddenmedia/partner-portal/issues"
-            },
             "time": "2024-10-03T17:55:11+00:00"
         },
         {
@@ -1396,10 +1376,6 @@
                 "composer/installers": "v2.0.0"
             },
             "type": "wordpress-plugin",
-            "support": {
-                "source": "https://github.com/maddenmedia/server-status/tree/1.5.2",
-                "issues": "https://github.com/maddenmedia/server-status/issues"
-            },
             "time": "2025-01-31T19:06:29+00:00"
         },
         {
@@ -1421,10 +1397,6 @@
                 "proprietary"
             ],
             "description": "Wordpress Events Plugin for Madden Media",
-            "support": {
-                "source": "https://github.com/maddenmedia/wp-plugin-eventastic/tree/v2.0.3",
-                "issues": "https://github.com/maddenmedia/wp-plugin-eventastic/issues"
-            },
             "time": "2024-12-19T17:45:04+00:00"
         },
         {
@@ -1446,10 +1418,6 @@
                 "proprietary"
             ],
             "description": "WordPress plugin for adding conditional banners and flyins",
-            "support": {
-                "source": "https://github.com/maddenmedia/wp-plugin-madden-banners/tree/v1.1.6",
-                "issues": "https://github.com/maddenmedia/wp-plugin-madden-banners/issues"
-            },
             "time": "2023-09-29T21:30:52+00:00"
         },
         {
@@ -3370,16 +3338,16 @@
         },
         {
             "name": "wp-cli/core-command",
-            "version": "v2.1.20",
+            "version": "v2.1.21",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-cli/core-command.git",
-                "reference": "83e4692784a815bb7f5df10b72204f237b5224b9"
+                "reference": "f157fb37dae1d13fe7318452f932917161e83e53"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-cli/core-command/zipball/83e4692784a815bb7f5df10b72204f237b5224b9",
-                "reference": "83e4692784a815bb7f5df10b72204f237b5224b9",
+                "url": "https://api.github.com/repos/wp-cli/core-command/zipball/f157fb37dae1d13fe7318452f932917161e83e53",
+                "reference": "f157fb37dae1d13fe7318452f932917161e83e53",
                 "shasum": ""
             },
             "require": {
@@ -3391,7 +3359,7 @@
                 "wp-cli/db-command": "^1.3 || ^2",
                 "wp-cli/entity-command": "^1.3 || ^2",
                 "wp-cli/extension-command": "^1.2 || ^2",
-                "wp-cli/wp-cli-tests": "^4"
+                "wp-cli/wp-cli-tests": "^5"
             },
             "type": "wp-cli-package",
             "extra": {
@@ -3435,9 +3403,9 @@
             "homepage": "https://github.com/wp-cli/core-command",
             "support": {
                 "issues": "https://github.com/wp-cli/core-command/issues",
-                "source": "https://github.com/wp-cli/core-command/tree/v2.1.20"
+                "source": "https://github.com/wp-cli/core-command/tree/v2.1.21"
             },
-            "time": "2025-04-16T11:23:00+00:00"
+            "time": "2025-07-08T17:31:39+00:00"
         },
         {
             "name": "wp-cli/cron-command",
@@ -4236,16 +4204,16 @@
         },
         {
             "name": "wp-cli/language-command",
-            "version": "v2.0.23",
+            "version": "v2.0.24",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-cli/language-command.git",
-                "reference": "7221cc39d2b14fd39e55aa7884889f26eec2f822"
+                "reference": "1f1ca0ce3ee6cc46edfe06ee093cf3a57a131a18"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-cli/language-command/zipball/7221cc39d2b14fd39e55aa7884889f26eec2f822",
-                "reference": "7221cc39d2b14fd39e55aa7884889f26eec2f822",
+                "url": "https://api.github.com/repos/wp-cli/language-command/zipball/1f1ca0ce3ee6cc46edfe06ee093cf3a57a131a18",
+                "reference": "1f1ca0ce3ee6cc46edfe06ee093cf3a57a131a18",
                 "shasum": ""
             },
             "require": {
@@ -4255,7 +4223,7 @@
                 "wp-cli/db-command": "^1.3 || ^2",
                 "wp-cli/entity-command": "^1.3 || ^2",
                 "wp-cli/extension-command": "^1.2 || ^2",
-                "wp-cli/wp-cli-tests": "^4"
+                "wp-cli/wp-cli-tests": "^5"
             },
             "type": "wp-cli-package",
             "extra": {
@@ -4310,9 +4278,9 @@
             "homepage": "https://github.com/wp-cli/language-command",
             "support": {
                 "issues": "https://github.com/wp-cli/language-command/issues",
-                "source": "https://github.com/wp-cli/language-command/tree/v2.0.23"
+                "source": "https://github.com/wp-cli/language-command/tree/v2.0.24"
             },
-            "time": "2025-04-10T11:09:04+00:00"
+            "time": "2025-07-08T17:50:14+00:00"
         },
         {
             "name": "wp-cli/maintenance-mode-command",
@@ -5408,15 +5376,15 @@
         },
         {
             "name": "wpackagist-plugin/akismet",
-            "version": "5.4",
+            "version": "5.5",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/akismet/",
-                "reference": "tags/5.4"
+                "reference": "tags/5.5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/akismet.5.4.zip"
+                "url": "https://downloads.wordpress.org/plugin/akismet.5.5.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -5570,15 +5538,15 @@
         },
         {
             "name": "wpackagist-plugin/post-expirator",
-            "version": "4.7.1",
+            "version": "4.8.1",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/post-expirator/",
-                "reference": "tags/4.7.1"
+                "reference": "tags/4.8.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/post-expirator.4.7.1.zip"
+                "url": "https://downloads.wordpress.org/plugin/post-expirator.4.8.1.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -5588,15 +5556,15 @@
         },
         {
             "name": "wpackagist-plugin/post-type-switcher",
-            "version": "3.3.1",
+            "version": "3.3.0",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/post-type-switcher/",
-                "reference": "trunk"
+                "reference": "tags/3.3.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/post-type-switcher.zip?timestamp=1709217383"
+                "url": "https://downloads.wordpress.org/plugin/post-type-switcher.3.3.0.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -5678,15 +5646,15 @@
         },
         {
             "name": "wpackagist-plugin/safe-svg",
-            "version": "2.3.1",
+            "version": "2.3.2",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/safe-svg/",
-                "reference": "tags/2.3.1"
+                "reference": "tags/2.3.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/safe-svg.2.3.1.zip"
+                "url": "https://downloads.wordpress.org/plugin/safe-svg.2.3.2.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"

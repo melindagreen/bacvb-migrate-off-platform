@@ -116,8 +116,8 @@
     "wpackagist-plugin/wp-media-library-categories": "*",
     "wpackagist-plugin/seo-by-rank-math":"1.0.248",
     "rankmath/seo-by-rank-math-pro": "3.0.84",
-    "wpackagist-plugin/fareharbor": "^3.6",
     "wpackagist-plugin/breeze":"2.2.15",
+    "wpackagist-plugin/fareharbor": "^3.6",
     "wpackagist-plugin/varnish-http-purge": "5.2.2"
   },
   "minimum-stability": "dev",
