@@ -1,3 +1,6 @@
+@use "../utils" as *;
+
+@media only screen and (max-width: $screen-sm) {
 $formWidthSm: 125px;
 
 /*********************
@@ -602,4 +605,5 @@ Photo Credit
 .center-on-mobile {
         justify-content: center;
         text-align: center !important;
+}
 }

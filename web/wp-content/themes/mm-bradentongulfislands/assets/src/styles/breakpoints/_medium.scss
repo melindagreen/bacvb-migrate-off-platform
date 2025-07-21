@@ -1,3 +1,6 @@
+@use "../utils" as *;
+
+@media only screen and (min-width: ($screen-sm + 1)) and (max-width: $screen-lg) {
 /*********************
 TEST ELEMENTS
 *********************/
@@ -396,4 +399,5 @@ Photo Credit
             }
         }
     }
+}
 }

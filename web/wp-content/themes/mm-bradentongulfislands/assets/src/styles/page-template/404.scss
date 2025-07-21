@@ -1,5 +1,6 @@
-@use '../utils/variables' as vars;
-@use '../utils/typography' as type;
+@use "../utils" as *;
+
+
 #content-404 {
 	position: relative;
 	width: 100%;
@@ -22,8 +23,8 @@
 		h1 {
 			position: relative;
 			top: -25px;
-			font-family: type.$font-title;
-			color: vars.$dk-blue;
+			font-family: $font-title;
+			color: $dk-blue;
 			font-size: 15rem;
 			margin: 0 0 1rem;
 			line-height: 10rem;
@@ -51,8 +52,8 @@
 	  .button {
 		display: block;
 		align-self: center;
-		font-family: type.$font-header;
-		background: vars.$bradenton-teal;
+		font-family: $font-header;
+		background: $bradenton-teal;
 		color: white !important;
 		position: relative;
 		font-size: 14px;

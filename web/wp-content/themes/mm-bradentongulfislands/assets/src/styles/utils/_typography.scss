@@ -1,7 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap");
-
-@import "./variables";
-
 /*********************
 FONTS
 *********************/
@@ -29,11 +26,3 @@ FONTS
   font-weight: normal;
   font-style: italic;
 }
-
-// fonts
-$font-title: var(--wp--preset--font-family--title);
-$font-header: var(--wp--preset--font-family--header);
-$font-body: var(--wp--preset--font-family--body);
-
-// links
-$link-color: color("red");
