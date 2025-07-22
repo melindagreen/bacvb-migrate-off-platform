@@ -57,7 +57,7 @@
     "typography": {
       "customFontSize": true,
       "defaultFontSizes": false,
-      "fluid": true,
+      "fluid": false,
       "fontFamilies": [
         {
           "fontFamily": "'Lifehack', sans-serif",
@@ -76,9 +76,9 @@
         }
       ],
       "fontSizes": [
-        { "slug": "small", "size": "1rem", "name": "Small" },
-        { "slug": "normal", "size": "1.5rem", "name": "Normal" },
-        { "slug": "medium", "size": "2rem", "name": "Medium" },
+        { "slug": "small", "size": "1rem", "name": "Small", "fluid": false },
+        { "slug": "normal", "size": "1.5rem", "name": "Normal", "fluid": false },
+        { "slug": "medium", "size": "2rem", "name": "Medium", "fluid": false },
         { "slug": "large", "size": "clamp(2.15rem, 3vw, 3rem)", "name": "Large" },
         { "slug": "xlarge", "size": "clamp(2.35rem, 5vw, 5rem)", "name": "X Large" }
       ],

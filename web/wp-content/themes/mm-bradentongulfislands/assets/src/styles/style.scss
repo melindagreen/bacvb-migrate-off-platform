@@ -8,7 +8,6 @@ IMPORTING UTILITY FILES
 
 @use "utils/typography";
 
-
 /*********************
 PAGE TEMPLATES
 *********************/
@@ -16,7 +15,6 @@ PAGE TEMPLATES
 @use "page-template/partnerportal-single" as *;
 @use "page-template/bradensota" as *;
 @use "page-template/home" as *;
-
 
 /*********************
 SIZES
@@ -26,7 +24,5 @@ SIZES
 @use "breakpoints/medium" as medium;
 @use "breakpoints/small" as small;
 
-
-
-@use "utils/memberpress";
+@use "memberpress";
 @use "memberpress-account";
