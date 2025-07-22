@@ -22,8 +22,8 @@ import {
 	extraProps
 } from './custom-core-controls';
 
-// AOS
-//import './aos';
+//AOS
+import './aos';
 
 /*** CONSTANTS **************************************************************/
 

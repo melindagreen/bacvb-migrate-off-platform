@@ -2,7 +2,6 @@
  * Block-specific styles to show within the Gutenberg editor
  */
 
-
 /*********************
 TEXT
 *********************/
@@ -430,34 +429,36 @@ BUTTONS
 /*********************
 IMAGES
 *********************/
-.wp-block-cover {
-  overflow: unset !important;
-}
+body {
+  .wp-block-cover {
+    overflow: unset !important;
+  }
 
-.is-style-cta-card {
-  bottom: 1rem;
-  margin: auto;
-  margin-bottom: 7rem !important;
-  max-width: 35rem;
-  overflow: unset !important;
+  .is-style-cta-card {
+    bottom: 1rem;
+    margin: auto;
+    margin-bottom: 7rem !important;
+    max-width: 35rem;
+    overflow: unset !important;
 
-  .wp-block-cover__inner-container {
-    background-color: white;
-    width: 85%;
-    padding: 1rem 4rem;
-    bottom: -13rem;
-    position: relative;
+    .wp-block-cover__inner-container {
+      background-color: white;
+      width: 85%;
+      padding: 1rem 4rem;
+      bottom: -13rem;
+      position: relative;
 
-    &::before {
-      content: " ";
-      width: 100%;
-      height: 2rem;
-      background: url("images/tile-text-top-white.png");
-      background-size: contain;
-      position: absolute;
-      left: 0;
-      top: -0.5rem;
-      z-index: -1;
+      &::before {
+        content: " ";
+        width: 100%;
+        height: 2rem;
+        background: url("images/tile-text-top-white.png");
+        background-size: contain;
+        position: absolute;
+        left: 0;
+        top: -0.5rem;
+        z-index: -1;
+      }
     }
   }
 }

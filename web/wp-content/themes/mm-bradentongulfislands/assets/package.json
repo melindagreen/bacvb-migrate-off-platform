@@ -15,7 +15,6 @@
   "license": "ISC",
   "devDependencies": {
     "@wordpress/scripts": "30.11.0",
-    "backstopjs": "^6.3.25",
     "import-glob": "^1.5.0",
     "prettier": "2.6.2",
     "path": "0.12.7",

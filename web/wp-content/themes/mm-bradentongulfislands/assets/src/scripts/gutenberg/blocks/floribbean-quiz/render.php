@@ -19,13 +19,13 @@ function render_block( $attrs, $content ) {
     ?>
     <div class="quiz-container">
         <div class="quiz-header">
-            <img src="images/floribbean-feast-logo.png" alt="Pick Your Floribbean Feast!">
+            <img src="images/floribbean-feast-logo.png" alt="Pick Your Floribbean Feast!" loading="lazy" width="400" height="120">
 
         <div class="quiz-content">
             <div id="start-screen" class="quiz-page active">
                 <div class="intro-visuals">
-                    <img src="images/tacos.png" alt="Tacos" class="taco-img">
-                    <img src="images/shrimp-salad.png" alt="Shrimp Salad" class="shrimp-salad-img">
+                    <img src="images/tacos.png" alt="Tacos" class="taco-img" loading="lazy" width="120" height="120">
+                    <img src="images/shrimp-salad.png" alt="Shrimp Salad" class="shrimp-salad-img" loading="lazy" width="120" height="120">
                 </div>
                 <p>With so many amazing flavors to savor, we know that your Floribbean spread will be nothing short of delicious. If you're ready to dig in, let us help you find the perfect dish that will leave you wanting seconds (and thirds)!</p>
                 <button id="start-quiz-btn" class="btn">Take the Quiz!</button>
@@ -37,7 +37,7 @@ function render_block( $attrs, $content ) {
             <div id="results-screen" class="quiz-page">
                 <h2 class="section-title">Your Floribbean Feast!</h2>
                 <div class="result-dish">
-                    <img id="result-image" src="" alt="Result Dish">
+                    <img id="result-image" src="" alt="Result Dish" loading="lazy" width="300" height="200">
                     <h3 id="result-name"></h3>
                     <a id="result-recipe-link" href="#" target="_blank" class="btn recipe-btn">Here's the Recipe!</a>
                 </div>

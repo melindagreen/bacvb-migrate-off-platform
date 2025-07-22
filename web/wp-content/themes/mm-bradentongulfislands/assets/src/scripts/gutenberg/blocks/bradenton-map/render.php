@@ -12,9 +12,12 @@ $html = "<div class='" . Constants::BLOCK_CLASS . "-bradenton-map is-style-colla
 
   $html .= '<div class="mapContainer">';
 
-    $html .= file_get_contents(get_stylesheet_directory() . '/assets/images/bradenton-map.svg');
+    ob_start();
+    include get_stylesheet_directory() . '/assets/images/bradenton-map.svg';
+    $svg_content = ob_get_clean();
+    $html .= $svg_content;
   $html .= '</div>';
-  $html .= '<div class="bradenton-lightbox"><div class="close"><img height="25px" width="25px" src="/wp-content/themes/mm-bradentongulfislands/assets/images/icons/close-x.png" alt="close"></div>';
+  $html .= '<div class="bradenton-lightbox"><div class="close"><img height="25px" width="25px" src="/wp-content/themes/mm-bradentongulfislands/assets/images/icons/close-x.png" alt="close" loading="lazy"></div>';
 
     
       foreach($ferryStops as $stop => $stop_name){

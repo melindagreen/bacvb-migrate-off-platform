@@ -26,7 +26,7 @@ class AssetHandler {
 
     // Front-end enqueues
     add_action( "wp_footer", array( \get_called_class(), "enqueue_front_scripts" ) );
-    add_action( "wp_enqueue_scripts", array( \get_called_class(), "enqueue_front_styles" ) );
+    add_action( "wp_enqueue_scripts", array( \get_called_class(), "enqueue_front_styles" ), 1001 );
 
     // Block types
     add_action( "init", array( \get_called_class(), "register_block_types" ) );
@@ -47,7 +47,7 @@ class AssetHandler {
           C::THEME_PREFIX . "-admin-css", // handle
           get_stylesheet_directory_uri()."/assets/build/admin.css", // src
           [], // dependencies
-          $assets_file["version"] . '2' // version
+          filemtime( get_stylesheet_directory()."/assets/build/admin.css" )
       );
 
       // Admin block styles
@@ -55,7 +55,7 @@ class AssetHandler {
           C::THEME_PREFIX . "-blocks-admin-css", // hanlde
           get_stylesheet_directory_uri()."/assets/build/gutenberg.css", // src
           [], // dependencies
-          $assets_file["version"] . '2' // version
+          filemtime( get_stylesheet_directory()."/assets/build/gutenberg.css" )
       );
       
       // Admin script
@@ -63,15 +63,9 @@ class AssetHandler {
           C::THEME_PREFIX . "-admin-js", // handle
           get_stylesheet_directory_uri()."/assets/build/admin.js", // src
           $assets_file["dependencies"], // dependencies
-          $assets_file["version"] . '2', // version
+          filemtime( get_stylesheet_directory()."/assets/build/admin.js" ),
           true // in footer?
       );
-      
-      wp_enqueue_script('crowdriff-js', 'https://starling.crowdriff.com/js/crowdriff.js', [], null, true);
-        
-      // Enqueue jQuery UI Datepicker (script and style)
-      wp_enqueue_script('jquery-ui-datepicker');
-      wp_enqueue_style('jquery-ui-datepicker-style', 'https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css');
   }
 
   /**
@@ -145,7 +139,7 @@ class AssetHandler {
         C::THEME_PREFIX . "-" .$k, // handle
         get_stylesheet_directory_uri() . $v, // src
         $dependencies, // dependencies
-        $assets_file_front["version"], // version
+        filemtime( get_stylesheet_directory() . $v ),
         array(
             'strategy'  => 'defer',
             'footer'    => true
@@ -164,6 +158,10 @@ class AssetHandler {
       wp_localize_script( C::THEME_PREFIX . "front-js", "ajaxData", $ajax_data );
     }
 
+    //font awesome
+    wp_enqueue_style('font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css');
+      
+    wp_enqueue_script('crowdriff-js', 'https://starling.crowdriff.com/js/crowdriff.js', [], null, true);
     // Enqueue jQuery UI Datepicker (script and style)
     wp_enqueue_script('jquery-ui-datepicker');
     wp_enqueue_style('jquery-ui-datepicker-style', 'https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css');
@@ -195,7 +193,7 @@ class AssetHandler {
           C::THEME_PREFIX . "-" .$k, // handle
           get_stylesheet_directory_uri() . $v, // src
           [], // dependencies
-          $assets_file_front["version"] . '3b' // version
+          filemtime( get_stylesheet_directory() . $v ),
         );
       }
   }
@@ -232,7 +230,7 @@ class AssetHandler {
               C::THEME_PREFIX . "-blocks-admin-js", // handle
               get_stylesheet_directory_uri()."/assets/build/gutenberg.js", // src
               $assets_file["dependencies"], // dependencies
-              $assets_file["version"] . '3b', // version
+              filemtime( get_stylesheet_directory()."/assets/build/gutenberg.js" ),
               false // in footer?
           );
       }
