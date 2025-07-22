@@ -2,7 +2,6 @@
  * Block-specific styles to show to front-end users
  */
 
-
 /*********************
 TEXT
 *********************/
@@ -51,13 +50,15 @@ TEXT
   }
 }
 
-.is-style-brushstroke {
-  word-break: break-all;
-  padding: 3rem;
+body {
+  .is-style-brushstroke {
+    word-break: break-all;
+    padding: 3rem;
 
-  @media only screen and (max-width: $screen-sm) {
-    padding: 2rem 0;
-    font-size: 1.5rem !important;
+    @media only screen and (max-width: $screen-sm) {
+      padding: 2rem 0;
+      font-size: 1.5rem !important;
+    }
   }
 }
 
@@ -508,184 +509,186 @@ TEMPLATES
 /*********************
 IMAGES
 *********************/
-.wp-block-cover {
-  overflow: unset;
+body {
+  .wp-block-cover {
+    overflow: unset;
 
-  .wp-block-cover__background.wp-block-cover__gradient-background {
-    mix-blend-mode: multiply;
-  }
-}
-
-.is-style-rounded img {
-  border-radius: 25px !important;
-}
-
-.wp-block-image {
-  position: relative;
-  &.is-style-pill-shape {
-    border-radius: 999px;
-    padding: 1.5rem 3rem;
-    background: #fff;
-    overflow: hidden;
-    img {
-      border-radius: 0;
+    .wp-block-cover__background.wp-block-cover__gradient-background {
+      mix-blend-mode: multiply;
     }
   }
-  &.is-style-circle {
-    img {
-      border-radius: 100%;
-      border: 20px solid white;
-      box-shadow: 0px 3px 6px #00000029;
-    }
-  }
-}
-.wp-block-cover.is-style-torn-bottom {
-  z-index: 0;
-}
-.is-style-torn-bottom {
-  position: relative;
 
-  &::after {
-    content: " ";
-    background: url("images/slideshow-bottom.png") repeat-x center;
-    position: absolute;
-    width: 100%;
-    height: 3.5rem;
-    bottom: -50%;
-    left: 0;
-    z-index: 1;
-  }
-}
-
-.is-style-portrait {
-  img,
-  video,
-  .wp-block-cover__background:not(.has-background-dim-0) {
-    --webkit-mask: url("images/portraitmask1.svg") no-repeat center;
-    mask: url("images/portraitmask1.svg") no-repeat center;
-    --webkit-mask-size: 100% 100%;
-    mask-size: 100% 100%;
+  .is-style-rounded img {
+    border-radius: 25px !important;
   }
 
-  .wp-block-cover__background {
-    transition: all 0.3s ease-in-out;
-  }
-
-  .wp-block-cover__inner-container {
-    max-width: 30rem;
-
-    .wp-block-group {
-      & > *:not(.wp-block-heading) {
-        transition: all 0.3s ease-in-out;
-        opacity: 0;
-        transform: translateY(6px);
-        margin: 0;
-        height: 0;
+  .wp-block-image {
+    position: relative;
+    &.is-style-pill-shape {
+      border-radius: 999px;
+      padding: 1.5rem 3rem;
+      background: #fff;
+      overflow: hidden;
+      img {
+        border-radius: 0;
       }
     }
+    &.is-style-circle {
+      img {
+        border-radius: 100%;
+        border: 20px solid white;
+        box-shadow: 0px 3px 6px #00000029;
+      }
+    }
+  }
+  .wp-block-cover.is-style-torn-bottom {
+    z-index: 0;
+  }
+  .is-style-torn-bottom {
+    position: relative;
 
-    .wp-block-button__link {
-      text-decoration: none;
+    &::after {
+      content: " ";
+      background: url("images/slideshow-bottom.png") repeat-x center;
+      position: absolute;
+      width: 100%;
+      height: 3.5rem;
+      bottom: -50%;
+      left: 0;
+      z-index: 1;
     }
   }
 
-  &:hover,
-  &.mobile {
+  .is-style-portrait {
+    img,
+    video,
+    .wp-block-cover__background:not(.has-background-dim-0) {
+      --webkit-mask: url("images/portraitmask1.svg") no-repeat center;
+      mask: url("images/portraitmask1.svg") no-repeat center;
+      --webkit-mask-size: 100% 100%;
+      mask-size: 100% 100%;
+    }
+
     .wp-block-cover__background {
-      background: linear-gradient(0deg, rgba(0, 0, 0, 0.82) 60%, rgba(255, 255, 255, 0) 100%) !important;
       transition: all 0.3s ease-in-out;
     }
 
     .wp-block-cover__inner-container {
+      max-width: 30rem;
+
       .wp-block-group {
         & > *:not(.wp-block-heading) {
-          transition: all 0.2s ease-in-out;
-          opacity: 1;
-          transform: translateY(0);
-          height: initial;
-          margin: revert;
+          transition: all 0.3s ease-in-out;
+          opacity: 0;
+          transform: translateY(6px);
+          margin: 0;
+          height: 0;
+        }
+      }
+
+      .wp-block-button__link {
+        text-decoration: none;
+      }
+    }
+
+    &:hover,
+    &.mobile {
+      .wp-block-cover__background {
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.82) 60%, rgba(255, 255, 255, 0) 100%) !important;
+        transition: all 0.3s ease-in-out;
+      }
+
+      .wp-block-cover__inner-container {
+        .wp-block-group {
+          & > *:not(.wp-block-heading) {
+            transition: all 0.2s ease-in-out;
+            opacity: 1;
+            transform: translateY(0);
+            height: initial;
+            margin: revert;
+          }
         }
       }
     }
   }
-}
 
-.is-style-bubble {
-  --webkit-mask: url("images/bubble-mask.svg") no-repeat center;
-  mask: url("images/bubble-mask.svg") no-repeat center;
-  --webkit-mask-size: contain;
-  mask-size: contain;
-}
-
-.is-style-irregular-shape {
-  --webkit-mask: url("images/irregular-mask.svg") no-repeat center;
-  mask: url("images/irregular-mask.svg") no-repeat center;
-  --webkit-mask-size: contain;
-  mask-size: contain;
-
-  @media only screen and (max-width: 768px) {
-    min-height: 70vw !important;
-  }
-}
-
-.is-style-cta-card {
-  bottom: 1rem;
-  margin: auto;
-  margin-bottom: 7rem !important;
-  max-width: 40rem;
-  overflow: unset !important;
-  .wp-block-cover__image-background,
-  .wp-block-cover__background {
-    --webkit-mask: url("images/collage-square-long.svg") no-repeat center;
-    mask: url("images/collage-square-long.svg") no-repeat center;
-    --webkit-mask-size: 100% 100%;
-    mask-size: 100% 100%;
+  .is-style-bubble {
+    --webkit-mask: url("images/bubble-mask.svg") no-repeat center;
+    mask: url("images/bubble-mask.svg") no-repeat center;
+    --webkit-mask-size: contain;
+    mask-size: contain;
   }
 
-  .wp-block-cover__inner-container {
-    background-color: white;
-    width: 85% !important;
-    position: absolute !important;
-    bottom: -7rem;
-    padding: 2rem 3rem 1rem 3rem;
+  .is-style-irregular-shape {
+    --webkit-mask: url("images/irregular-mask.svg") no-repeat center;
+    mask: url("images/irregular-mask.svg") no-repeat center;
+    --webkit-mask-size: contain;
+    mask-size: contain;
 
-    &::before {
-      content: " ";
-      width: 100%;
-      height: 2rem;
-      background: url("images/tile-text-top-white.png");
-      background-size: contain;
-      position: absolute;
-      left: 0;
-      top: -0.5rem;
-      z-index: -1;
+    @media only screen and (max-width: 768px) {
+      min-height: 70vw !important;
     }
   }
-}
 
-.is-style-collage-cover {
-  .wp-block-cover__background,
-  .wp-block-cover__image-background {
-    --webkit-mask: url("images/large-image-mask.svg") no-repeat center;
-    mask: url("images/large-image-mask.svg") no-repeat center;
-    --webkit-mask-size: 100% 100%;
-    mask-size: 100% 100%;
+  .is-style-cta-card {
+    bottom: 1rem;
+    margin: auto;
+    margin-bottom: 7rem !important;
+    max-width: 40rem;
+    overflow: unset !important;
+    .wp-block-cover__image-background,
+    .wp-block-cover__background {
+      --webkit-mask: url("images/collage-square-long.svg") no-repeat center;
+      mask: url("images/collage-square-long.svg") no-repeat center;
+      --webkit-mask-size: 100% 100%;
+      mask-size: 100% 100%;
+    }
 
-    @media only screen and (max-width: $screen-sm) {
-      --webkit-mask-size: 200% 100%;
-      mask-size: 200% 100%;
+    .wp-block-cover__inner-container {
+      background-color: white;
+      width: 85% !important;
+      position: absolute !important;
+      bottom: -7rem;
+      padding: 2rem 3rem 1rem 3rem;
+
+      &::before {
+        content: " ";
+        width: 100%;
+        height: 2rem;
+        background: url("images/tile-text-top-white.png");
+        background-size: contain;
+        position: absolute;
+        left: 0;
+        top: -0.5rem;
+        z-index: -1;
+      }
     }
   }
-}
 
-.is-style-polaroid {
-  transform: matrix(1, -0.09, 0.09, 1, 0, 0);
-  height: fit-content;
-  width: fit-content;
+  .is-style-collage-cover {
+    .wp-block-cover__background,
+    .wp-block-cover__image-background {
+      --webkit-mask: url("images/large-image-mask.svg") no-repeat center;
+      mask: url("images/large-image-mask.svg") no-repeat center;
+      --webkit-mask-size: 100% 100%;
+      mask-size: 100% 100%;
 
-  img {
-    box-shadow: 0px 3px 6px #00000029;
-    border: 12px solid #ffffff;
+      @media only screen and (max-width: $screen-sm) {
+        --webkit-mask-size: 200% 100%;
+        mask-size: 200% 100%;
+      }
+    }
+  }
+
+  .is-style-polaroid {
+    transform: matrix(1, -0.09, 0.09, 1, 0, 0);
+    height: fit-content;
+    width: fit-content;
+
+    img {
+      box-shadow: 0px 3px 6px #00000029;
+      border: 12px solid #ffffff;
+    }
   }
 }
 

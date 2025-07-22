@@ -47,7 +47,7 @@ class AssetHandler {
           C::THEME_PREFIX . "-admin-css", // handle
           get_stylesheet_directory_uri()."/assets/build/admin.css", // src
           [], // dependencies
-          $assets_file["version"] . '2' // version
+          filemtime( get_stylesheet_directory()."/assets/build/admin.css" )
       );
 
       // Admin block styles
@@ -55,7 +55,7 @@ class AssetHandler {
           C::THEME_PREFIX . "-blocks-admin-css", // hanlde
           get_stylesheet_directory_uri()."/assets/build/gutenberg.css", // src
           [], // dependencies
-          $assets_file["version"] . '2' // version
+          filemtime( get_stylesheet_directory()."/assets/build/gutenberg.css" )
       );
       
       // Admin script
@@ -63,7 +63,7 @@ class AssetHandler {
           C::THEME_PREFIX . "-admin-js", // handle
           get_stylesheet_directory_uri()."/assets/build/admin.js", // src
           $assets_file["dependencies"], // dependencies
-          $assets_file["version"] . '2', // version
+          filemtime( get_stylesheet_directory()."/assets/build/admin.js" ),
           true // in footer?
       );
   }
@@ -139,7 +139,7 @@ class AssetHandler {
         C::THEME_PREFIX . "-" .$k, // handle
         get_stylesheet_directory_uri() . $v, // src
         $dependencies, // dependencies
-        $assets_file_front["version"], // version
+        filemtime( get_stylesheet_directory() . $v ),
         array(
             'strategy'  => 'defer',
             'footer'    => true
@@ -185,7 +185,7 @@ class AssetHandler {
           C::THEME_PREFIX . "-" .$k, // handle
           get_stylesheet_directory_uri() . $v, // src
           [], // dependencies
-          $assets_file_front["version"] . '3b' // version
+          filemtime( get_stylesheet_directory() . $v ),
         );
       }
   }
@@ -222,7 +222,7 @@ class AssetHandler {
               C::THEME_PREFIX . "-blocks-admin-js", // handle
               get_stylesheet_directory_uri()."/assets/build/gutenberg.js", // src
               $assets_file["dependencies"], // dependencies
-              $assets_file["version"] . '3b', // version
+              filemtime( get_stylesheet_directory()."/assets/build/gutenberg.js" ),
               false // in footer?
           );
       }
