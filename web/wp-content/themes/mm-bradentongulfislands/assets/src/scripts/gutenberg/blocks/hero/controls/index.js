@@ -11,14 +11,16 @@ import Toolbar from './toolbar'
 
 /*** CONSTANTS **************************************************************/
 
-const Controls = props => {
-  return (<Fragment>
-    <BlockControls>
-      <Toolbar {...props}/>
-    </BlockControls>
-    <Inspector {...props}/>
-  </Fragment>)
-}
+const Controls = (props) => {
+  return (
+    <Fragment>
+      <BlockControls>
+        <Toolbar />
+      </BlockControls>
+      <Inspector {...props} />
+    </Fragment>
+  );
+};
 
 /*** EXPORTS ****************************************************************/
 

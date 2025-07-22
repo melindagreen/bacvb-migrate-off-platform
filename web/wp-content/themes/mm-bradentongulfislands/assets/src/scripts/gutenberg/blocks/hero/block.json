@@ -7,6 +7,11 @@
   "description": "An hero block for the top of the page",
   "icon": "format-image",
   "category": "layout",
+  "supports": {
+    "anchor": true,
+    "color": true,
+    "editMode": true
+  },
   "attributes": {
     "title": {
       "type": "string"
@@ -16,6 +21,10 @@
     },
     "image": {
       "type": "object"
+    },
+    "isPreview": {
+      "type": "boolean",
+      "default": true
     },
     "focalPoint": {
       "type": "object",

@@ -13,22 +13,16 @@ import {
 	InspectorControls,
 	BlockControls,
 	JustifyContentControl,
-	__experimentalSpacingSizesControl as SpacingSizesControl,
-	__experimentalLinkControl as LinkControl,
+	__experimentalSpacingSizesControl as SpacingSizesControl
 } from "@wordpress/block-editor";
 import {
 	Panel,
 	PanelBody,
 	PanelRow,
-	Popover,
+	RangeControl,
 	ToggleControl,
-	ToolbarButton,
-	SelectControl,
-	__experimentalNumberControl as NumberControl,
-	__experimentalUnitControl as UnitControl,
+	__experimentalUnitControl as UnitControl
 } from "@wordpress/components";
-import { Fragment, useState } from "@wordpress/element";
-import { link, linkOff } from "@wordpress/icons";
 
 // Local Dependencies
 import { CUSTOMIZE_BLOCKS } from "./constants";
@@ -40,7 +34,6 @@ import { CUSTOMIZE_BLOCKS } from "./constants";
 const withCustomControls = createHigherOrderComponent((BlockEdit) => {
 	return (props) => {
 		const { name, attributes, setAttributes } = props;
-		const [popoverOpen, setPopoverOpen] = useState(false);
 
 		// check for matching customizations
 		if (
@@ -57,155 +50,121 @@ const withCustomControls = createHigherOrderComponent((BlockEdit) => {
 							<BlockControls group="block">
 								{
 									// parse through matching customizations and add new toolbar controls
-									CUSTOMIZE_BLOCKS[name].map((customization, index) => {
+									CUSTOMIZE_BLOCKS[name].map((customization) => {
 										switch (customization) {
 											case "justify-content":
 												return (
 													<JustifyContentControl
-														key="justifyContent"
 														value={attributes.justifyContent}
 														onChange={(justifyContent) =>
 															setAttributes({ justifyContent })
 														}
 													/>
 												);
-											case "wraparound-link":
-												return (
-													<Fragment key={index}>
-														<ToolbarButton
-															icon={
-																attributes.wraparoundLink &&
-																Object.keys(attributes.wraparoundLink).length >
-																	0
-																	? linkOff
-																	: link
-															}
-															label="Wraparound Link"
-															onClick={() => setPopoverOpen(!popoverOpen)}
-														/>
-														{popoverOpen && (
-															<Popover>
-																{CUSTOMIZE_BLOCKS[name].map(
-																	(customization, subIndex) => {
-																		switch (customization) {
-																			case "wraparound-link":
-																				return (
-																					<LinkControl
-																						key={subIndex}
-																						value={attributes.wraparoundLink}
-																						onChange={(wraparoundLink) => {
-																							setAttributes({
-																								wraparoundLink,
-																							});
-																						}}
-																						onRemove={() => {
-																							setAttributes({
-																								wraparoundLink: false,
-																							});
-																						}}
-																					/>
-																				);
-																		}
-																	}
-																)}
-															</Popover>
-														)}
-													</Fragment>
-												);
 										}
 									})
 								}
 							</BlockControls>
 							<InspectorControls>
-								<Panel key="mmOptions">
+								<Panel>
 									<PanelBody title="[MM] Options">
 										{
 											// parse through matching customizations and add new inspector controls
-											CUSTOMIZE_BLOCKS[name].map((customization, index) => {
+											CUSTOMIZE_BLOCKS[name].map((customization) => {
 												switch (customization) {
-													case "lightbox-data":
+													case "content-width-settings":
 														return (
-															<PanelBody key="lightboxData">
-																<TextControl
-																	key="lbTitle"
-																	label="Lightbox Title"
-																	onChange={(lbTitle) =>
-																		setAttributes({ lbTitle })
-																	}
-																	value={attributes.lbTitle}
-																/>
-																<TextControl
-																	key="lbDescription"
-																	label="Lightbox Description"
-																	onChange={(lbDescription) =>
-																		setAttributes({ lbDescription })
-																	}
-																	value={attributes.lbDescription}
-																/>
-																<MediaUploadCheck>
-																	<MediaUpload
-																		title={"Choose Images"}
-																		allowedTypes={"image"}
-																		gallery
-																		multiple="add"
-																		onSelect={(images) =>
+															<>
+																<PanelRow>
+																	<ToggleControl
+																		label={__("Restrict Width?")}
+																		help={
+																			attributes.enableMaxWidth
+																				? __("Yes")
+																				: __("No")
+																		}
+																		checked={!!attributes.enableMaxWidth}
+																		onChange={(enableMaxWidth) =>
 																			setAttributes({
-																				lbImageIds: images.map(
-																					(image) => image.id
-																				),
-																				lbImageUrls: images.map(
-																					(image) => image.url
-																				),
-																				lbImageAlts: images.map(
-																					(image) => image.alt
-																				),
+																				enableMaxWidth: !!enableMaxWidth,
 																			})
 																		}
-																		value={attributes.lbImageIds}
-																		render={({ open }) => (
-																			<Button
-																				onClick={open}
-																				icon="format-gallery"
-																			>
-																				{"Choose Images"}
-																			</Button>
+																		onLabel={__("Yes")}
+																		offLabel={__("No")}
+																	/>
+																</PanelRow>
+																{attributes.enableMaxWidth && (
+																	<>
+																		<PanelRow>
+																			<ToggleControl
+																				label={__("Use Default Max Width?")}
+																				help={__(
+																					"Enable this to use the default max width for the website (80rem)"
+																				)}
+																				checked={!!attributes.defaultMaxWidth}
+																				onChange={(defaultMaxWidth) =>
+																					setAttributes({
+																						defaultMaxWidth: !!defaultMaxWidth,
+																					})
+																				}
+																				onLabel={__("Yes")}
+																				offLabel={__("No")}
+																			/>
+																		</PanelRow>
+																		{!attributes.defaultMaxWidth && (
+																			<PanelRow>
+																				<RangeControl
+																					help={__("Value set uses rem units")}
+																					label="Custom Max Width"
+																					value={attributes.customMaxWidth}
+																					onChange={(customMaxWidth) => {
+																						setAttributes({ customMaxWidth });
+																					}}
+																					min={0}
+																					max={200}
+																				/>
+																			</PanelRow>
 																		)}
-																	/>
-																</MediaUploadCheck>
-															</PanelBody>
+																	</>
+																)}
+															</>
 														);
-													case "hide-on-breakpoints":
-														return (
-															<PanelBody
-																key="hideOnBreakpoints"
-																title="Hide on breakpoints"
-																initialOpen={false}
-															>
-																<PanelRow key="hideOnMobile">
-																	<ToggleControl
-																		label={__("Hide on mobile?")}
-																		checked={attributes.hideOnMobile}
-																		onChange={(hideOnMobile) =>
-																			setAttributes({ hideOnMobile })
-																		}
-																	/>
-																</PanelRow>
+														break;
 
-																<PanelRow key="hideOnDesktop">
-																	<ToggleControl
-																		label={__("Hide on desktop?")}
-																		checked={attributes.hideOnDesktop}
-																		onChange={(hideOnDesktop) =>
-																			setAttributes({ hideOnDesktop })
-																		}
-																	/>
-																</PanelRow>
-															</PanelBody>
+													case "reverse-order":
+														return (
+															<PanelRow>
+																<ToggleControl
+																	label="Reverse order on mobile"
+																	checked={attributes.reverseOrder}
+																	onChange={(reverseOrder) =>
+																		setAttributes({ reverseOrder })
+																	}
+																/>
+															</PanelRow>
 														);
+														break;
+
+													case "z-index":
+														return (
+															<PanelRow>
+																<RangeControl
+																	help={__(
+																		"Controls the visibility level of this element"
+																	)}
+																	label="Z Index"
+																	value={attributes.zIndex}
+																	onChange={(zIndex) => {
+																		setAttributes({ zIndex });
+																	}}
+																/>
+															</PanelRow>
+														);
+														break;
 
 													case "center-on-mobile":
 														return (
-															<PanelRow key="centerOnMobile">
+															<PanelRow>
 																<ToggleControl
 																	label="Center on mobile"
 																	checked={attributes.centerOnMobile}
@@ -215,78 +174,81 @@ const withCustomControls = createHigherOrderComponent((BlockEdit) => {
 																/>
 															</PanelRow>
 														);
+														break;
 
-													case "reverse-mobile":
+													case "hide-on-mobile":
 														return (
-															<PanelBody key="reverseMobile">
+															<PanelRow>
 																<ToggleControl
-																	label="Reverse on Mobile"
-																	help={
-																		attributes.reverseMobile
-																			? "Columns are reversed on mobile"
-																			: "Columns are not reversed on mobile"
+																	label="Hide on mobile"
+																	checked={attributes.hideOnMobile}
+																	onChange={(hideOnMobile) =>
+																		setAttributes({ hideOnMobile })
 																	}
-																	checked={attributes.reverseMobile}
-																	onChange={(reverseMobile) => {
-																		setAttributes({ reverseMobile });
-																	}}
 																/>
-															</PanelBody>
+															</PanelRow>
 														);
+														break;
 
-													case "overlap":
+													case "responsive-sizes":
 														return (
-															<PanelBody key="overlap">
-																<NumberControl
-																	onChange={(overlap) => {
-																		overlap = parseInt(overlap);
-																		setAttributes({ overlap });
-																	}}
-																	isDragEnabled
-																	isShiftStepEnabled
-																	label={"Overlap"}
-																	max={100}
-																	min={-100}
-																	shiftStep={1}
-																	step={1}
-																	value={attributes.overlap}
-																/>
-															</PanelBody>
+															<>
+																<PanelRow>
+																	<ToggleControl
+																		label="Enable responsive sizes"
+																		help={__("Leave values blank for auto")}
+																		checked={attributes.enableResponsiveSizes}
+																		onChange={(enableResponsiveSizes) =>
+																			setAttributes({enableResponsiveSizes})
+																		}
+																	/>
+																</PanelRow>
+																{attributes?.enableResponsiveSizes && (
+																	<>
+																		<PanelRow>
+																			<UnitControl
+																				label={__("Tablet")}
+																				value={attributes.tabletWidth}
+																				onChange={(tabletWidth) => {
+																					setAttributes({tabletWidth});
+																				}}
+																			/>
+																			<UnitControl
+																				label={__("Mobile")}
+																				value={attributes.mobileWidth}
+																				onChange={(mobileWidth) => {
+																					setAttributes({mobileWidth});
+																				}}
+																			/>
+																		</PanelRow>
+																	</>
+																)}
+															</>
 														);
-													case "layer":
+														break;
+												
+													case "mobile-padding":
 														return (
-															<PanelBody key="layer">
-																<SelectControl
-																	label="Layer"
-																	value={attributes.layer}
-																	options={[
-																		{ label: "Middle", value: "middle" },
-																		{ label: "Top", value: "top" },
-																		{ label: "Bottom", value: "bottom" },
-																	]}
-																	onChange={(layer) => {
-																		setAttributes({ layer });
-																	}}
-																/>
-															</PanelBody>
-														);
-													case "photo-credit":
-														return (
-															<PanelBody key="photoCredit">
+															<>
 																<ToggleControl
-																	label="Photo Credit"
-																	help={
-																		attributes.photoCredit
-																			? "Photo Credit is enabled"
-																			: "Photo Credit is disabled"
+																	label="Add Mobile Padding"
+																	checked={attributes.enableMobilePadding}
+																	onChange={(enableMobilePadding) =>
+																		setAttributes({ enableMobilePadding,
+																			...(enableMobilePadding ? {} : { mobilePadding: {} }) // clear mobilePadding when toggled off
+																		})
 																	}
-																	checked={attributes.photoCredit}
-																	onChange={(photoCredit) => {
-																		setAttributes({ photoCredit });
-																	}}
 																/>
-															</PanelBody>
+																{attributes.enableMobilePadding && (
+																	<SpacingSizesControl
+																		label={ "Mobile Padding" }
+																		onChange={ mobilePadding => setAttributes({ mobilePadding }) }
+																		values={ attributes.mobilePadding }
+																	/>
+																)}
+															</>
 														);
+														break;
 												}
 											})
 										}

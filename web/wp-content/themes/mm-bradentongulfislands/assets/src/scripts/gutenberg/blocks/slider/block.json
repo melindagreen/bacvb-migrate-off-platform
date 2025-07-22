@@ -9,7 +9,8 @@
   "category": "madden-media",
   "supports": {
     "anchor": true,
-    "color": true
+    "color": true,
+    "editMode": true
   },
   "attributes": {
     "contentType": {

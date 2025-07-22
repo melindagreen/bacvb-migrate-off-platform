@@ -1,0 +1,16 @@
+{
+  "apiVersion": 2,
+  "name": "mm-bradentongulfislands/crowdriff",
+  "title": "Crowdriff Embed",
+  "category": "embed",
+  "icon": "format-image",
+  "description": "Embed a Crowdriff gallery by script or ID.",
+  "attributes": {
+    "crowdriffInput": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "editorScript": "file:./index.js",
+  "render": "file:./render.php"
+} 

@@ -41,7 +41,7 @@ define( 'WP_CACHE_KEY_SALT', '^j~3?O!+[E{W3>z`t4W/u?|L(rE0gHwS4nuP$^Yd|_YLwT24LE
 /** FORCE DEBUGGING!!! **/
 define( 'IS_PRODUCTION', false );
 define( 'WP_DEVELOPMENT_MODE', 'plugin' );
-define('WP_DEBUG', true);
+define('WP_DEBUG', false);
 define('WP_DEBUG_DISPLAY', false);
 define('WP_DEBUG_LOG', true);
 @ini_set('display_errors', 0);

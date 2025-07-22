@@ -3,6 +3,7 @@
 // WordPress Dependencies
 import { __ } from "@wordpress/i18n";
 import { cloneElement } from "@wordpress/element";
+import { getCSSRules } from '@wordpress/style-engine';
 
 // Local Dependencies
 import { CUSTOMIZE_BLOCKS } from "./constants";
@@ -34,29 +35,56 @@ const applyCustomAttrs = (el, block, attributes) => {
 		// issues, refactor later? also why isn't this using children? -ashw
 		let ElWrap = ({ content }) => <>{content}</>;
 
+		// Constructs CSS objects for WP Style Engine
+		function cssObject(outerKey, innerKey, attValue) {
+			this.cssObj = {
+				[outerKey]: {
+					[innerKey]: attValue
+				}
+			};
+		}
+
 		// parse through matching customizations
 		CUSTOMIZE_BLOCKS[name].forEach((customization) => {
 			switch (customization) {
-				case "wraparound-link":
-					if (
-						attributes.wraparoundLink &&
-						typeof attributes.wraparoundLink.url !== "undefined"
-					) {
-						// overwrite wrap func with anchor tag
-						ElWrap = ({ content }) => (
-							<a
-								href={attributes.wraparoundLink.url}
-								target={
-									attributes?.wraparoundLink?.opensInNewTab ? "_blank" : "_self"
-								}
-								className="wp-block-cover-link"
-								rel="noopener"
-							>
-								{content}
-							</a>
-						);
+				case "content-width-settings":
+					if (attributes?.enableMaxWidth) {
+						if (newProps.className) {
+							newProps.className += ` main-column-auto`;
+						} else {							
+							newProps.className = `main-column-auto`;
+						}
+						if (!attributes.defaultMaxWidth) {
+							newProps.style = {
+								...newProps.style,
+								maxWidth: `${attributes.customMaxWidth}rem`,
+							};
+						}
 					}
 					break;
+
+				case "z-index":
+					if (attributes.zIndex && attributes.zIndex !== 0) {
+						newProps.style = {
+							...newProps.style,
+							position: `relative`,
+							zIndex: `${attributes.zIndex}`,
+						};
+					}
+					break;
+
+				case "reverse-order":
+					if (attributes?.reverseOrder) {
+						// Reverse the order of the children
+						if (
+							!newProps.className ||
+							!newProps.className.includes("reversed-on-mobile")
+						) {
+							newProps.className = `${newProps.className} reversed-on-mobile`;
+						}
+					}
+					break;
+
 				case "center-on-mobile":
 					if (attributes?.centerOnMobile) {
 						// Center on mobile
@@ -68,110 +96,64 @@ const applyCustomAttrs = (el, block, attributes) => {
 						}
 					}
 					break;
-				case "lightbox-data":
-					function getPhotoCredit(url) {
-						let name = "photocredit";
-						name = name.replace(/[[]/, "\\[").replace(/[\]]/, "\\]");
-						const regex = new RegExp("[?&]" + name + "=([^&#]*)");
-						const results = regex.exec(url);
 
-						if (results !== null) {
-							const photoCredit = decodeURIComponent(
-								results[1].replace(/\+/g, " ")
-							);
-							const photoIcon = (
-								<img
-									src="/wp-content/themes/mm-bradentongulfislands/assets/images/icons/camera-icon.svg"
-									alt="Camera Icon"
-								/>
-							);
-							const photoCreditContent = (
-								<div class="photocredit" data-photocredit={photoCredit}>
-									{photoIcon}
-								</div>
-							);
-							return photoCreditContent;
-						} else {
-							return "";
-						}
-					}
-
-					if (typeof attributes.lbTitle !== "undefined") {
-						ElWrap = ({ content }) => (
-							<>
-								{content}
-
-								{attributes.lbImageIds.length > 0 ? (
-									<div
-										className={`lightbox-imagecarousel swiper-slide-imagecarousel swiper`}
-									>
-										<div className={`swiper-wrapper`}>
-											{attributes.lbImageIds !== undefined
-												? attributes.lbImageIds.map((id, index) => {
-														return (
-															<div className="wp-block-image swiper-slide">
-																{getPhotoCredit(attributes.lbImageUrls[index])}
-																<img
-																	src="/wp-content/themes/mm-bradentongulfislands/assets/images/pixel.png"
-																	alt={
-																		attributes.lbImageAlts[index] !== ""
-																			? attributes.lbImageAlts[index]
-																			: "Carousel Image"
-																	}
-																	data-load-type="img"
-																	data-load-all={attributes.lbImageUrls[index]}
-																/>
-															</div>
-														);
-												  })
-												: null}
-										</div>
-										<div className="swiper-pagination-imagecarousel"></div>
-										<div className="swiper-button-prev-imagecarousel"></div>
-										<div className="swiper-button-next-imagecarousel"></div>
-									</div>
-								) : (
-									""
-								)}
-
-								<div className="lightbox-data lb-content">
-									<h1>{attributes.lbTitle}</h1>
-									<p>{attributes.lbDescription}</p>
-								</div>
-							</>
-						);
-					}
-					break;
-				case "overlap":
-					if (attributes.overlap !== 0) {
-						let margin = "-" + Math.abs(attributes.overlap) + "rem";
-						if (attributes.overlap > 0) {
-							newProps.style = { ...newProps.style, marginTop: margin };
-						} else {
-							newProps.style = { ...newProps.style, marginBottom: margin };
+				case "hide-on-mobile":
+					if (attributes?.hideOnMobile) {
+						// Hide on mobile
+						if (
+							!newProps.className ||
+							!newProps.className.includes("hide-on-mobile")
+						) {
+							newProps.className = `${newProps.className} hide-on-mobile`;
 						}
 					}
 					break;
-				case "layer":
-					if (attributes.layer !== 0) {
-						const layerIndex = {
-							top: 1,
-							middle: 0,
-							bottom: -1,
-						};
-						newProps.style = {
-							...newProps.style,
-							zIndex: layerIndex[attributes.layer],
-							position: "relative",
-						};
+
+				case "responsive-sizes":
+					if (attributes?.enableResponsiveSizes) {
+					newProps.className = `${newProps.className} responsive-sizes`;
+					newProps.style = {
+						...newProps.style,
+									"--tablet-width": `${attributes.tabletWidth}`,
+									"--mobile-width": `${attributes.mobileWidth}`,
+					};
 					}
 					break;
-				case "reverse-mobile":
-					if (attributes.reverseMobile) {
-						newProps.style = {
-							...newProps.style,
-							flexDirection: "column-reverse",
-						};
+
+				case "mobile-padding":
+					if (attributes?.enableMobilePadding) {
+						if (attributes?.mobilePadding && Object.keys(attributes.mobilePadding).length) {
+
+							let newClassName = newProps.className || "";
+
+							if (!newClassName.includes("has-mobile-padding")) {
+								newClassName += " has-mobile-padding";
+							}
+
+							const prefix = "--mobile";
+							const padding = new cssObject("spacing", "padding", attributes.mobilePadding);
+							const mobilePaddingCssRules = getCSSRules(padding.cssObj); // array of { key, value }
+
+							const paddingObj = mobilePaddingCssRules.reduce((acc, { key, value }) => {
+								const varName = `${prefix}-${key.replace(/([A-Z])/g, "-$1").toLowerCase()}`;
+								acc[varName] = value;
+
+								// Add class like has-mobile-padding-top
+								const classNamePart = `has-mobile-${key.replace(/([A-Z])/g, "-$1").toLowerCase()}`;
+								if (!newClassName.includes(classNamePart)) {
+									newClassName += ` ${classNamePart}`;
+								}
+
+								return acc;
+							}, {});
+
+							// Assign new className and styles
+							newProps.className = newClassName.trim();
+							newProps.style = {
+								...newProps.style,
+								...paddingObj
+							};
+						}
 					}
 					break;
 			}

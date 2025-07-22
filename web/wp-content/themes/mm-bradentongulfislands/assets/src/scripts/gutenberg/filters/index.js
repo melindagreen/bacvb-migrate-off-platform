@@ -1,26 +1,29 @@
 /**
  * This directory contains filters that hook into core Gutenberg functionality
  * and modify the output
- *
- * Read about Gutenberg hooks on the Madden Wiki!
+ * 
+ * Read about Gutenberg hooks on the Madden Wiki! 
  * https://wiki.maddenmedia.com/Working_With_Gutenberg_Hooks
  */
 
 /*** IMPORTS ***************************************************************/
 
 // WordPress Dependencies
-import { addFilter } from "@wordpress/hooks";
-import { __ } from "@wordpress/i18n";
+import { addFilter } from '@wordpress/hooks';
+import { __ } from '@wordpress/i18n';
 
 // Local Dependencies
-import { THEME_PREFIX } from "../../inc/constants";
+import { THEME_PREFIX } from '../../inc/constants';
 import {
 	applyCustomizations,
 	customAttributes,
 	customBlockEdit,
 	customBlockList,
-	extraProps,
-} from "./custom-core-controls";
+	extraProps
+} from './custom-core-controls';
+
+// AOS
+//import './aos';
 
 /*** CONSTANTS **************************************************************/
 
@@ -34,10 +37,7 @@ const ALL_FILTERS = [
 
 /*** FUNCTIONS **************************************************************/
 
-const addAllFilters = () =>
-	ALL_FILTERS.forEach((filter) => {
-		addFilter(filter.hook, THEME_PREFIX + "/" + filter.name, filter.action);
-	});
+const addAllFilters = () => ALL_FILTERS.forEach((filter) => addFilter(filter.hook, THEME_PREFIX + '/' + filter.name, filter.action));
 
 /*** EXPORTS ****************************************************************/
 export default addAllFilters;

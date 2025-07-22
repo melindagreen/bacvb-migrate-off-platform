@@ -66,6 +66,12 @@ class AssetHandler {
           $assets_file["version"] . '2', // version
           true // in footer?
       );
+      
+      wp_enqueue_script('crowdriff-js', 'https://starling.crowdriff.com/js/crowdriff.js', [], null, true);
+        
+      // Enqueue jQuery UI Datepicker (script and style)
+      wp_enqueue_script('jquery-ui-datepicker');
+      wp_enqueue_style('jquery-ui-datepicker-style', 'https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css');
   }
 
   /**
@@ -157,6 +163,10 @@ class AssetHandler {
       
       wp_localize_script( C::THEME_PREFIX . "front-js", "ajaxData", $ajax_data );
     }
+
+    // Enqueue jQuery UI Datepicker (script and style)
+    wp_enqueue_script('jquery-ui-datepicker');
+    wp_enqueue_style('jquery-ui-datepicker-style', 'https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css');
   }
 
   /**

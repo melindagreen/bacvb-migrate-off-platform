@@ -28,5 +28,5 @@ SIZES
 
 
 
-@use "utils/memberpress";
-@use "memberpress-account";
+@use "memberpress" as *;
+@use "memberpress-account" as *;
