@@ -82,8 +82,8 @@
   "require": {
     "wpengine/advanced-custom-fields-pro": "^6.4.2",
     "davidbarratt/custom-installer": "^1.1",
-    "johnpbloch/wordpress": "6.8.4",
-    "maddenmedia/gravityforms": "v2.9.13",
+    "johnpbloch/wordpress": "6.8.2",
+    "maddenmedia/gravityforms": "2.9.13.1",
     "maddenmedia/madden-cookie-consent": "*",
     "maddenmedia/mm-madre-theme": "v1.4.6",
     "maddenmedia/kraken-purge": "v1.1",
@@ -108,7 +108,7 @@
     "wpackagist-plugin/wordpress-importer": "^0.8",
     "wpackagist-plugin/wp-media-library-categories": "*",
     "wpackagist-plugin/seo-by-rank-math":"1.0.249",
-    "rankmath/seo-by-rank-math-pro": "3.0.92",
+    "rankmath/seo-by-rank-math-pro": "3.0.84",
     "wpackagist-plugin/breeze":"2.2.16",
     "wpackagist-plugin/fareharbor": "^3.6"
   },
