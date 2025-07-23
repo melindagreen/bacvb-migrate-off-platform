@@ -42,5 +42,6 @@ function add_global_css_vars() {
     --img-arrow-teal: url('{$images_path}arrow-teal.png');
     --img-small-circ-down: url('{$images_path}small-circ-down.png');
     --img-small-arrow-down: url('{$images_path}small-arrow-down.png');
+    --img-rigged-bottom: url('{$images_path}rigged-bottom.svg');
   }</style>";
 }
