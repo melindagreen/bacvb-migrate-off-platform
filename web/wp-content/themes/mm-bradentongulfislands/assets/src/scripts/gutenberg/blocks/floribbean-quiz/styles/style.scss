@@ -1,283 +1,554 @@
+@import "styles/utils/variables";
+@import "styles/utils/typography";
+@import "styles/utils/mixins";
 
-
-
+$image-path: "/wp-content/themes/mm-bradentongulfislands/assets/src/scripts/gutenberg/blocks/floribbean-quiz/assets/images/";
 
 .#{$block-prefix}-floribbean-quiz {
-
-}
-
-
-// Variables
-$primary-color: #4CAF50; // Example green, adjust to your brand
-$secondary-color: #FFC107; // Example yellow
-$text-color: #333;
-$background-color: #F8F8F8;
-$border-color: #CCC;
-
-.quiz-container {
-    background-color: rgba(255, 255, 255, 0.9);
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 30px;
-    max-width: 900px;
-    width: 95%;
+  &.quiz-container {
+    padding: 30px 0;
+    max-width: 1000px;
+    width: 100%;
     text-align: center;
-    overflow: hidden; // To handle absolute positioning of elements if any
     position: relative;
-}
+  }
 
-.quiz-header {
+  .quiz-header {
     margin-bottom: 30px;
+    position: relative;
 
     img {
-        max-width: 250px;
-        margin-bottom: 20px;
+      width: 250px;
+      margin-bottom: 30px;
     }
-}
 
-.progress-dots {
+    &--start {
+      img {
+        margin-bottom: 20px;
+        width: 500px;
+
+        @include screen-sm-max {
+          width: 250px;
+        }
+      }
+      @include screen-sm-min {
+        &::before {
+          content: "";
+          background-image: var(--img-small-circ-down);
+          position: absolute;
+          width: 430px;
+          height: 430px;
+          background-size: contain;
+          background-repeat: no-repeat;
+          left: 2rem;
+          top: 8rem;
+          z-index: -1;
+          transform: rotate(0deg);
+        }
+      }
+    }
+  }
+
+  .progress-dots {
     margin-top: 20px;
 
     .dot {
-        height: 12px;
-        width: 12px;
-        background-color: $border-color;
-        border-radius: 50%;
-        display: inline-block;
-        margin: 0 5px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
+      height: 32px;
+      width: 32px;
+      background-color: #d1bea1;
+      border-radius: 50%;
+      border: 4px solid $bradenton-teal;
+      display: inline-block;
+      margin: 0 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
 
-        &.active {
-            background-color: $primary-color;
-        }
+      &.active {
+        background-color: $rust;
+      }
     }
-}
+  }
 
-.quiz-page {
+  .quiz-page {
     display: none; // Hidden by default, shown by JS
     animation: fadeIn 0.5s ease-in-out;
 
     &.active {
-        display: block;
+      display: block;
     }
-}
+  }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* Start Screen Styling */
-#start-screen {
-    .intro-visuals {
-        position: relative;
-        height: 250px; // Adjust as needed
-        margin-bottom: 30px;
-
-        .taco-img {
-            position: absolute;
-            left: 50px;
-            top: 50px;
-            width: 200px; // Adjust size
-            animation: floatLeft 3s infinite alternate ease-in-out;
-        }
-
-        .shrimp-salad-img {
-            position: absolute;
-            right: 50px;
-            bottom: 50px;
-            width: 200px; // Adjust size
-            animation: floatRight 3s infinite alternate ease-in-out;
-        }
-    }
-
-    p {
-        font-size: 1.1em;
-        line-height: 1.6;
-        margin-bottom: 30px;
-    }
-}
-
-@keyframes floatLeft {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-15px); }
-}
-
-@keyframes floatRight {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(15px); }
-}
-
-
-/* Question Page Styling */
-.question-page {
+  /* Question Page Styling */
+  .question-page {
     .question-text {
-        background-color: #A0D8D7; // Your teal color
-        color: white;
-        padding: 15px 20px;
-        border-radius: 8px;
-        margin-bottom: 30px;
-        font-size: 1.4em;
-        font-weight: bold;
+      background-color: #4dbbbb; // Your teal color
+      color: white;
+      padding: 30px 20px;
+      font-size: 1.4em;
+      font-weight: bold;
+      position: relative;
+      max-width: 900px;
+      margin: 10px auto 30px auto;
+      font-size: 32px;
+      font-family: $font-header;
+
+      @include screen-sm-max {
+        font-size: 20px;
+        padding: 15px 12px;
+      }
+
+      &::before,
+      &::after {
+        content: "";
+        background-image: var(--img-rigged-bottom);
+        position: absolute;
+        height: 2rem;
+        background-size: cover;
+        background-repeat: no-repeat;
+        transform: rotate(180deg);
+        top: -1rem;
+        left: 0;
+        z-index: -1;
+        width: 100%;
+      }
+
+      &::after {
+        top: unset;
+        bottom: -1rem;
+        transform: rotate(0deg);
+      }
+    }
+
+    position: relative;
+    @include screen-sm-min {
+      &::after {
+        content: "";
+        background: var(--img-small-arrow-down);
+        background-position: 100%;
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 500px;
+        position: absolute;
+        right: -9rem;
+        top: -5rem;
+        width: 100%;
+      }
+    }
+
+    .question-row {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .question-image-container {
+      @include screen-sm-max {
+        display: none;
+      }
     }
 
     .question-image {
-        max-width: 100%;
-        height: auto;
-        border-radius: 8px;
-        margin-bottom: 20px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 20px;
+      width: 400px;
+    }
+
+    .image-caption {
+      color: $dk-blue;
+      font-family: $font-title;
+      font-weight: 600;
     }
 
     .option-list {
-        list-style: none;
-        padding: 0;
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+
+      @include screen-sm-max {
+        margin-left: 1.5rem;
+      }
+
+      @include screen-sm-min {
+        .option-item:nth-child(2) {
+          margin-left: 2.5rem;
+        }
+        .option-item:nth-child(4) {
+          margin-left: -2.5rem;
+        }
+      }
     }
 
     .option-item {
-        background-color: #F0F0F0;
-        border: 1px solid $border-color;
-        border-radius: 8px;
-        padding: 15px;
-        cursor: pointer;
-        transition: background-color 0.3s ease, border-color 0.3s ease;
-        text-align: left;
+      background-color: white;
+      border: 4px solid white;
+      border-radius: 100px;
+      padding: 15px;
+      padding-left: 0;
+      cursor: pointer;
+      transition:
+        background-color 0.3s ease,
+        border-color 0.3s ease;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      font-size: 2rem;
+      gap: 1.5rem;
+      color: $dk-blue;
+      font-family: $font-title;
+      font-weight: 600;
+      z-index: 2;
+
+      @include screen-sm-max {
+        font-size: 1.75rem;
+      }
+
+      &:hover,
+      &.hover {
+        background-color: $dk-blue;
+        color: white;
+      }
+
+      &.selected {
+        background-color: $dk-blue;
+        color: white;
+      }
+
+      .option-label {
+        display: inline-block;
+        color: $soft-black;
+        width: 30px;
+        height: 30px;
         display: flex;
+        justify-content: center;
         align-items: center;
-        font-size: 1.1em;
-
-        &:hover {
-            background-color: lighten($primary-color, 40%);
-            border-color: $primary-color;
+        margin-right: 15px;
+        flex-shrink: 0;
+        img {
+          margin-bottom: 0;
         }
-
-        &.selected {
-            background-color: $primary-color;
-            color: white;
-            border-color: darken($primary-color, 10%);
-        }
-
-        .option-label {
-            display: inline-block;
-            background-color: #CCC;
-            color: $text-color;
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-weight: bold;
-            margin-right: 15px;
-            flex-shrink: 0;
-
-            &.selected {
-                background-color: white;
-                color: $primary-color;
-            }
-        }
+      }
     }
-}
+  }
 
-/* Navigation Buttons */
-.quiz-navigation {
+  /* Navigation Buttons */
+  .quiz-navigation {
     margin-top: 30px;
     display: flex;
     justify-content: space-between;
 
     .btn {
-        padding: 12px 25px;
-        font-size: 1.1em;
-        border: none;
-        border-radius: 25px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
+      padding: 12px 25px;
+      font-size: 1.1em;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
 
-        &.prev-btn {
-            background-color: #BBB;
-            color: white;
-            &:hover {
-                background-color: #999;
-            }
+      &.prev-btn {
+        background-color: #bbb;
+        color: white;
+        &:hover {
+          background-color: #999;
         }
+      }
 
-        &.next-btn, &.submit-btn {
-            background-color: $primary-color;
-            color: white;
-            &:hover {
-                background-color: darken($primary-color, 10%);
-            }
+      &.next-btn,
+      &.submit-btn {
+        background-color: $dk-blue;
+        color: white;
+        &:hover {
+          background-color: darken($dk-blue, 10%);
         }
+      }
 
-        &:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-        }
+      &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
     }
-}
+  }
 
-
-/* Results Screen Styling */
-#results-screen {
+  /* Results Screen Styling */
+  #results-screen {
     .section-title {
-        color: #A0D8D7;
-        font-size: 2em;
-        margin-bottom: 20px;
+      background-color: #4dbbbb; // Your teal color
+      color: white;
+      padding: 30px 20px;
+      font-size: 1.4em;
+      font-weight: bold;
+      position: relative;
+      max-width: 900px;
+      margin: 10px auto 30px auto;
+      font-size: 32px;
+      font-family: $font-header;
+
+      @include screen-sm-max {
+        font-size: 18px;
+        padding: 3px 10px;
+      }
+
+      &::before,
+      &::after {
+        content: "";
+        background-image: var(--img-rigged-bottom);
+        position: absolute;
+        height: 2rem;
+        background-size: cover;
+        background-repeat: no-repeat;
+        transform: rotate(180deg);
+        top: -1rem;
+        left: 0;
+        z-index: -1;
+        width: 100%;
+      }
+
+      &::after {
+        top: unset;
+        bottom: -1rem;
+        transform: rotate(0deg);
+      }
     }
 
     .result-dish {
-        margin-top: 30px;
-        margin-bottom: 40px;
+      margin-top: 30px;
+      position: relative;
+      z-index: 2;
+
+      @include screen-sm-min {
+        margin-bottom: -5rem;
+      }
+
+      img {
+        max-width: 550px;
+        width: 100%;
+        height: auto;
+        margin-bottom: 20px;
+        margin-top: -2.5rem;
+        z-index: 1;
+        position: relative;
+
+        @include screen-sm-max {
+          margin-top: -1rem;
+        }
+
+        &.inactive {
+          visibility: hidden;
+        }
+      }
+
+      h3 {
+        font-size: 1.8em;
+        color: $dk-blue;
+        margin-bottom: 15px;
+      }
+
+      .recipe-btn {
+        position: absolute;
+        bottom: 50%;
+        transform: translateY(50%);
+        right: 3rem;
+        z-index: 2;
+
+        @include screen-sm-max {
+          bottom: 2rem;
+          right: 0;
+        }
 
         img {
-            max-width: 400px;
-            width: 100%;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-        }
+          height: 150px;
+          width: 150px;
 
-        h3 {
-            font-size: 1.8em;
-            color: $primary-color;
-            margin-bottom: 15px;
+          @include screen-sm-max {
+            height: 125px;
+            width: 125px;
+          }
         }
-
-        .recipe-btn {
-            background-color: #E27B58; // Your orange button color
-            color: white;
-            padding: 12px 25px;
-            border-radius: 25px;
-            text-decoration: none;
-            display: inline-block;
-            font-weight: bold;
-            transition: background-color 0.3s ease;
-
-            &:hover {
-                background-color: darken(#E27B58, 10%);
-            }
-        }
+      }
     }
 
     #explore-dishes-btn {
-        background-color: #A0D8D7;
-        margin-right: 15px;
-        color: white;
-        &:hover {
-            background-color: darken(#A0D8D7, 10%);
+      text-transform: uppercase;
+      text-decoration: none;
+      font-family: $font-title;
+      font-weight: 600;
+      color: $white;
+      position: relative;
+      transition: all 0.3s ease-in-out;
+      font-size: 2rem;
+      display: inline-block;
+      background-color: white;
+      box-shadow: 0px 4px 4px 0px #00000040;
+      border: 4px solid white;
+      border-radius: 100px;
+      padding: 1rem 5rem 1rem 1.5rem;
+      z-index: 3;
+
+      a {
+        text-decoration: none;
+      }
+
+      &::after {
+        content: " ";
+        transition: all 0.3s ease-in-out;
+        position: absolute;
+        right: 0.5rem;
+        bottom: 50%;
+        transform: translate(0%, 50%);
+        height: 40px;
+        width: 40px;
+        background-size: contain !important;
+        background: var(--img-blue-arrow);
+      }
+      &:hover {
+        text-decoration: none;
+        a {
+          color: $rust;
         }
+
+        &::after {
+          transition: all 0.2s ease-in-out;
+          transform: translate(8%, 50%);
+        }
+      }
     }
 
     #retake-quiz-btn {
-        background-color: #DDD;
-        color: $text-color;
-        &:hover {
-            background-color: #CCC;
-        }
+      margin: 3rem auto;
+      background-color: transparent;
+      border: 2px solid $bradenton-teal;
+      border-radius: 12px;
+      font-family: $font-title;
+      font-weight: 800;
+      font-size: 32px;
+      line-height: 150%;
+      letter-spacing: -1.1%;
+      text-transform: uppercase;
+      padding: 1.5rem 1rem;
+      color: $bradenton-teal;
+      width: 150px;
+      padding: 0rem 1rem;
+      width: 180px;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+
+      &:hover {
+        background-color: $bradenton-teal;
+        color: white;
+        transition: all 0.2s ease-in-out;
+      }
     }
+
+    .btn {
+      display: block;
+    }
+  }
+
+  /* Start Screen Styling */
+  #start-screen {
+    .intro-visuals {
+      position: relative;
+      margin-bottom: 30px;
+
+      .taco-img {
+        position: absolute;
+        left: 0px;
+        bottom: 35px;
+        width: 175px;
+        animation: floatLeft 3s infinite alternate ease-in-out;
+
+        @include screen-sm-max {
+          bottom: -10rem;
+          width: 120px;
+        }
+      }
+
+      .shrimp-salad-img {
+        position: absolute;
+        right: 2rem;
+        top: 50px;
+        width: 175px;
+        animation: floatRight 3s infinite alternate ease-in-out;
+
+        @include screen-sm-max {
+          top: 12rem;
+          width: 120px;
+        }
+      }
+    }
+
+    #start-quiz-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      position: relative;
+
+      @include screen-sm-max {
+        z-index: 2;
+      }
+
+      @include screen-sm-min {
+        &::before {
+          content: "";
+          background-image: var(--img-small-arrow-down);
+          position: absolute;
+          width: 430px;
+          height: 430px;
+          background-size: contain;
+          background-repeat: no-repeat;
+          right: -18rem;
+          top: -19rem;
+          z-index: -1;
+          transform: rotate(191deg);
+        }
+      }
+
+      img {
+        width: 185px;
+        height: 185px;
+        cursor: pointer;
+      }
+    }
+
+    p {
+      font-size: 1.35rem;
+      max-width: 30rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin: auto;
+      margin-bottom: 30px;
+      color: $bradenton-teal;
+      font-family: $font-title;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes floatLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-15px);
+  }
+}
+
+@keyframes floatRight {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(15px);
+  }
 }

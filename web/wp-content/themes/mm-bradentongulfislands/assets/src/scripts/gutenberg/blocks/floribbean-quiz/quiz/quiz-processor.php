@@ -1,6 +1,10 @@
 <?php
 header('Content-Type: application/json');
 
+// Define the base URL for images
+$image_base_url = '/wp-content/themes/mm-bradentongulfislands/assets/src/scripts/gutenberg/blocks/floribbean-quiz/assets/images/dishes/';
+
+// Define the questions and their options (no change needed here)
 $questions = [
     'q1' => [
         'A' => 'Seafood and fish',
@@ -34,12 +38,14 @@ $questions = [
     ]
 ];
 
+// Define the results matrix
+// The image paths here are still relative to the base, e.g., 'fish_tacos.png'
 $results_matrix = [
     // 1. Fish Tacos
     'fish_tacos' => [
         'name' => 'Fish Tacos',
-        'image' => 'images/fish_tacos.png',
-        'recipe_link' => 'https://example.com/fish-tacos-recipe', // Replace with actual link
+        'image' => 'fish_tacos.png', // Just the filename
+        'recipe_link' => '', // Replace with actual link
         'conditions' => [
             'q1' => ['A', 'D'],
             'q2' => ['A', 'B'],
@@ -51,8 +57,8 @@ $results_matrix = [
     // 2. Grouper Sandwich
     'grouper_sandwich' => [
         'name' => 'Grouper Sandwich',
-        'image' => 'images/grouper_sandwich.png',
-        'recipe_link' => 'https://example.com/grouper-sandwich-recipe',
+        'image' => '', // Just the filename
+        'recipe_link' => '',
         'conditions' => [
             'q1' => ['A', 'D'],
             'q2' => ['A', 'C'],
@@ -64,8 +70,8 @@ $results_matrix = [
     // 3. Peel & Eat Shrimp
     'peel_eat_shrimp' => [
         'name' => 'Peel & Eat Shrimp',
-        'image' => 'images/peel_eat_shrimp.png',
-        'recipe_link' => 'https://example.com/peel-eat-shrimp-recipe',
+        'image' => '', // Just the filename
+        'recipe_link' => '',
         'conditions' => [
             'q1' => ['A', 'D'],
             'q2' => ['B'],
@@ -77,8 +83,8 @@ $results_matrix = [
     // 4. Oysters on the half shell
     'oysters_half_shell' => [
         'name' => 'Oysters on the Half Shell',
-        'image' => 'images/oysters_half_shell.png',
-        'recipe_link' => 'https://example.com/oysters-half-shell-recipe',
+        'image' => 'oysters.png', // Just the filename
+        'recipe_link' => '',
         'conditions' => [
             'q1' => ['A', 'D'],
             'q2' => ['A', 'B'],
@@ -90,8 +96,8 @@ $results_matrix = [
     // 5. Key Lime Pie
     'key_lime_pie' => [
         'name' => 'Key Lime Pie',
-        'image' => 'images/key_lime_pie.png',
-        'recipe_link' => 'https://example.com/key-lime-pie-recipe',
+        'image' => 'key_lime_pie.png', // Just the filename
+        'recipe_link' => '',
         'conditions' => [
             'q1' => ['B', 'D'],
             'q2' => ['A', 'B'],
@@ -103,8 +109,8 @@ $results_matrix = [
     // 6. Smoked Fish Dip
     'smoked_fish_dip' => [
         'name' => 'Smoked Fish Dip',
-        'image' => 'images/smoked_fish_dip.png',
-        'recipe_link' => 'https://example.com/smoked-fish-dip-recipe',
+        'image' => 'fish_dip.png', // Just the filename
+        'recipe_link' => '',
         'conditions' => [
             'q1' => ['A', 'D'],
             'q2' => ['C', 'D'],
@@ -116,8 +122,8 @@ $results_matrix = [
     // 7. Stone Crab Claws
     'stone_crab_claws' => [
         'name' => 'Stone Crab Claws',
-        'image' => 'images/stone_crab_claws.png',
-        'recipe_link' => 'https://example.com/stone-crab-claws-recipe',
+        'image' => '', // Just the filename
+        'recipe_link' => '',
         'conditions' => [
             'q1' => ['A', 'D'],
             'q2' => ['B', 'C'],
@@ -129,12 +135,12 @@ $results_matrix = [
     // 8. Conch Fritters
     'conch_fritters' => [
         'name' => 'Conch Fritters',
-        'image' => 'images/conch_fritters.png',
-        'recipe_link' => 'https://example.com/conch-fritters-recipe',
+        'image' => '', // Just the filename
+        'recipe_link' => '',
         'conditions' => [
-            'q1' => ['A', 'D'], // Assuming "Protein" from your notes maps to "Mains" (q1)
+            'q1' => ['A', 'D'],
             'q2' => ['C'],
-            'q3' => ['C'], // Assuming "Sidekick" maps to "Sides" (q3)
+            'q3' => ['C'],
             'q4' => ['B', 'C'],
             'q5' => ['B', 'C']
         ]
@@ -142,8 +148,8 @@ $results_matrix = [
     // 9. Seafood Gumbo
     'seafood_gumbo' => [
         'name' => 'Seafood Gumbo',
-        'image' => 'images/seafood_gumbo.png',
-        'recipe_link' => 'https://example.com/seafood-gumbo-recipe',
+        'image' => '', // Just the filename
+        'recipe_link' => '',
         'conditions' => [
             'q1' => ['A', 'D'],
             'q2' => ['C'],
@@ -155,10 +161,10 @@ $results_matrix = [
     // 10. Cuban Sandwich
     'cuban_sandwich' => [
         'name' => 'Cuban Sandwich',
-        'image' => 'images/cuban_sandwich.png',
-        'recipe_link' => 'https://example.com/cuban-sandwich-recipe',
+        'image' => '', // Just the filename
+        'recipe_link' => '',
         'conditions' => [
-            'q1' => ['C', 'D'], // Assuming "Main" maps to "Mains" (q1)
+            'q1' => ['C', 'D'],
             'q2' => ['D'],
             'q3' => ['B', 'D'],
             'q4' => ['A', 'B'],
@@ -168,8 +174,8 @@ $results_matrix = [
     // 11. Coconut Shrimp
     'coconut_shrimp' => [
         'name' => 'Coconut Shrimp',
-        'image' => 'images/coconut_shrimp.png',
-        'recipe_link' => 'https://example.com/coconut-shrimp-recipe',
+        'image' => 'coconut_shrimp.png', // Just the filename
+        'recipe_link' => '/',
         'conditions' => [
             'q1' => ['A'],
             'q2' => ['C'],
@@ -182,37 +188,62 @@ $results_matrix = [
 
 $user_answers = $_POST['answers'] ?? []; // Get answers from POST request
 
-$matched_dishes = [];
+$dish_scores = [];
 
-// Loop through each dish and check if user answers match the conditions
+// Calculate scores for each dish
 foreach ($results_matrix as $dish_key => $dish_info) {
-    $matches = true;
+    $score = 0;
     foreach ($dish_info['conditions'] as $question_key => $allowed_options) {
         // Extract the question number from the key (e.g., 'q1' -> '1')
         $q_num = substr($question_key, 1);
-        if (!isset($user_answers[$q_num]) || !in_array($user_answers[$q_num], $allowed_options)) {
-            $matches = false;
-            break;
+        if (isset($user_answers[$q_num]) && in_array($user_answers[$q_num], $allowed_options)) {
+            $score++; // Increment score if user's answer matches an allowed option
         }
     }
-    if ($matches) {
-        $matched_dishes[] = $dish_info;
+    $dish_scores[$dish_key] = $score;
+}
+
+// Find the dish(es) with the maximum score
+$max_score = 0;
+if (!empty($dish_scores)) {
+    $max_score = max($dish_scores);
+}
+
+$best_match_dishes = [];
+foreach ($dish_scores as $dish_key => $score) {
+    if ($score === $max_score) {
+        // Prepend the base URL to the image path right here
+        $temp_dish_info = $results_matrix[$dish_key];
+        $temp_dish_info['image'] = !empty($temp_dish_info['image']) ? $image_base_url . $temp_dish_info['image'] : '';
+        $best_match_dishes[] = $temp_dish_info;
     }
 }
 
-// Simple logic: if multiple dishes match, pick the first one.
-// For a more sophisticated quiz, you might implement a scoring system.
-if (!empty($matched_dishes)) {
+// If multiple dishes have the same highest score, pick one (e.g., the first one found)
+$final_result = null;
+if (!empty($best_match_dishes)) {
+    // Optionally, you could add more logic here to pick a "tie-breaker" if needed
+    // For now, we just take the first one that scored highest.
+    $final_result = $best_match_dishes[0];
+}
+
+if ($final_result) {
     echo json_encode([
         'success' => true,
-        'result' => $matched_dishes[0] // Return the first matched dish
+        'message' => ($max_score === count($user_answers)) ? 'Perfect match found!' : 'Closest match found!',
+        'result' => $final_result
     ]);
 } else {
-    // Fallback: If no perfect match, you might have a default or suggest a popular item
+    // This case should ideally not be reached if there's at least one dish in the matrix,
+    // as max_score would be at least 0. But as a safeguard:
+    // Ensure the fallback also uses the image_base_url
+    $fallback_dish = $results_matrix['fish_tacos'];
+    $fallback_dish['image'] = !empty($fallback_dish['image']) ? $image_base_url . $fallback_dish['image'] : '';
+
     echo json_encode([
         'success' => false,
-        'message' => 'No perfect match found, but here\'s a popular Floribbean dish!',
-        'result' => $results_matrix['fish_tacos'] // Example fallback
+        'message' => 'Could not determine a suitable dish.',
+        'result' => $fallback_dish
     ]);
 }
 ?>

@@ -1,18 +1,20 @@
 import $ from "jquery"; // Keep this if you're using a module bundler like Webpack
 
+const imageBaseUrl = '/wp-content/themes/mm-bradentongulfislands/assets/src/scripts/gutenberg/blocks/floribbean-quiz/assets/images/';
+
 $(window).on("load", () => {
     initFloribbeanQuiz();
 });
 
 export const initFloribbeanQuiz = () => {
-    console.log("Floribbean Quiz initialized");
+
     let currentQuestion = 0; // 0 for start screen, 1-5 for questions, 6 for results
     let userAnswers = {}; // Store user's selected options: { '1': 'A', '2': 'B', ... }
 
     const questionsData = [
         { // Question 1
             question: "What are your mains?",
-            image: "images/mains-question.png", // Image for this question
+            image: `${imageBaseUrl}q1.png`, // Image for this question
             imageCaption: "Sausage, Seafood & Spuds", // Caption for the image
             options: {
                 A: "Seafood and fish",
@@ -23,7 +25,7 @@ export const initFloribbeanQuiz = () => {
         },
         { // Question 2
             question: "Pick your spices",
-            image: "images/spices-question.png",
+            image: `${imageBaseUrl}q2.png`, // Image for this question",
             imageCaption: "A variety of spices",
             options: {
                 A: "Citrus-y and Bright",
@@ -34,7 +36,7 @@ export const initFloribbeanQuiz = () => {
         },
         { // Question 3
             question: "What are your sides?",
-            image: "images/sides-question.png",
+            image: `${imageBaseUrl}q3.png`,
             imageCaption: "Delicious side dishes",
             options: {
                 A: "Fresh tropical fruits",
@@ -45,7 +47,7 @@ export const initFloribbeanQuiz = () => {
         },
         { // Question 4
             question: "Find your digs",
-            image: "images/digs-question.png",
+            image: `${imageBaseUrl}q4.png`,
             imageCaption: "A beautiful setting",
             options: {
                 A: "Toes in the sand",
@@ -56,7 +58,7 @@ export const initFloribbeanQuiz = () => {
         },
         { // Question 5
             question: "Drink of choice?",
-            image: "images/drink-question.png",
+            image: `${imageBaseUrl}q5.png`,
             imageCaption: "Refreshing drinks",
             options: {
                 A: "A fruity daiquiri or piña colada",
@@ -73,6 +75,7 @@ export const initFloribbeanQuiz = () => {
 
         if (pageNumber === 0) { // Start screen
             $('#start-screen').addClass('active');
+            $('.quiz-header').addClass('quiz-header--start');
             $('.dot[data-page="0"]').addClass('active');
             currentQuestion = 0;
             userAnswers = {}; // Reset answers on retake
@@ -80,10 +83,12 @@ export const initFloribbeanQuiz = () => {
             currentQuestion = pageNumber;
             loadQuestion(currentQuestion);
             $('.dot[data-page="' + currentQuestion + '"]').addClass('active');
+            $('.quiz-header').removeClass('quiz-header--start');
         } else if (pageNumber === 6) { // Results screen
             currentQuestion = 6;
             submitQuiz(); // Process answers and show results
             $('.dot[data-page="6"]').addClass('active');
+            $('.quiz-header').removeClass('quiz-header--start');
         }
 
         // The updateNavigationButtons() call is less critical here as auto-advance is happening.
@@ -97,23 +102,26 @@ export const initFloribbeanQuiz = () => {
         let questionHtml = `
             <div id="question-${qNum}" class="quiz-page question-page active">
                 <div class="question-text">${qData.question}</div>
-                <img src="${qData.image}" alt="Question Image" class="question-image">
-                <p class="image-caption">${qData.imageCaption}</p>
-                <ul class="option-list">`;
+                <div class="question-row">
+                    <figure class="question-image-container">
+                        <img src="${qData.image}" alt="Question Image" class="question-image">
+                        <figcaption class="image-caption">${qData.imageCaption}</figcaption>
+                    </figure>
+                    <ul class="option-list">`;
 
-        for (const [key, value] of Object.entries(qData.options)) {
-            const isSelected = userAnswers[qNum] === key ? 'selected' : '';
-            questionHtml += `
-                <li class="option-item ${isSelected}" data-question="${qNum}" data-option="${key}">
-                    <span class="option-label ${isSelected}">${key}</span>
-                    <span>${value}</span>
-                </li>`;
-        }
-        questionHtml += `
-                </ul>
-                <div class="quiz-navigation">
-                    <button class="btn prev-btn" ${qNum === 1 ? 'disabled' : ''}>Previous</button>
-                    </div>
+                    for (const [key, value] of Object.entries(qData.options)) {
+                        const isSelected = userAnswers[qNum] === key ? 'selected' : '';
+                        questionHtml += `
+                        <li class="option-item ${isSelected}" data-question="${qNum}" data-option="${key}">
+                            <span class="option-label ${isSelected}"><img src="${imageBaseUrl}${key.toLowerCase()}.svg" alt="Option ${key}" class="${key.toLowerCase()} letter" /></span>
+                            <span>${value}</span>
+                        </li>`;
+                    }
+                    questionHtml += `
+                    </ul>
+                </div>
+            <div class="quiz-navigation">
+            </div>
             </div>`;
 
         $('#question-pages-container').html(questionHtml);
@@ -164,15 +172,18 @@ export const initFloribbeanQuiz = () => {
             dataType: 'json',
             success: function(response) {
                 if (response.success) {
-                    $('#result-image').attr('src', response.result.image);
-                    $('#result-name').text(response.result.name);
+                    if (response.result.image && response.result.image !== '') {
+                        $('#result-image').attr('src', response.result.image);
+                        $('#result-image').removeClass('inactive'); 
+                    } 
+                    else {
+                        $('#result-image').attr('src', `${imageBaseUrl}pixel.png`); // Fallback image
+                        $('#result-image').addClass('inactive'); 
+                    }
+
+                    $('#result-name').text(`${response.result.name}!`);
                     $('#result-recipe-link').attr('href', response.result.recipe_link);
-                } else {
-                    // Handle fallback or error message if no match
-                    $('#result-image').attr('src', response.result.image); // Fallback image
-                    $('#result-name').text(response.result.name + " (No perfect match, here's a suggestion!)");
-                    $('#result-recipe-link').attr('href', response.result.recipe_link);
-                }
+                } 
                 $('#results-screen').addClass('active');
             },
             error: function(xhr, status, error) {

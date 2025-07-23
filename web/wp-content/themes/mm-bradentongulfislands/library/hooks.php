@@ -40,5 +40,7 @@ function add_global_css_vars() {
     --img-oedmap: url('{$images_path}oedmap.svg');
     --img-blue-arrow: url('{$images_path}blue-arrow.png');
     --img-arrow-teal: url('{$images_path}arrow-teal.png');
+    --img-small-circ-down: url('{$images_path}small-circ-down.png');
+    --img-small-arrow-down: url('{$images_path}small-arrow-down.png');
   }</style>";
 }
