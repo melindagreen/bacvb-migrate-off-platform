@@ -22,42 +22,41 @@ const addCustomAttrs = (settings) => {
 			// parse through matching customizations and add new attrs
 			CUSTOMIZE_BLOCKS[settings.name].forEach((customization) => {
 				switch (customization) {
-					case "justify-content":
+
+					case "content-width-settings":
 						settings.attributes = {
 							...settings.attributes,
-							justifyContent: {
-								type: "string",
-								default: "center",
+							enableMaxWidth: {
+								type: "boolean",
+								default: false,
+							},
+							defaultMaxWidth: {
+								type: "boolean",
+								default: true,
+							},
+							customMaxWidth: {
+								type: "number",
+								default: 80,
 							},
 						};
 						break;
 
-					case "reverse-mobile":
+					case "reverse-order":
 						settings.attributes = {
 							...settings.attributes,
-							reverseMobile: {
+							reverseOrder: {
 								type: "boolean",
 								default: false,
 							},
 						};
 						break;
 
-					case "photo-credit":
+					case "z-index":
 						settings.attributes = {
 							...settings.attributes,
-							photoCredit: {
-								type: "boolean",
-								default: false,
-							},
-						};
-						break;
-
-					case "layer":
-						settings.attributes = {
-							...settings.attributes,
-							layer: {
-								type: "string",
-								default: "middle",
+							zIndex: {
+								type: "number",
+								default: 0,
 							},
 						};
 						break;
@@ -72,48 +71,44 @@ const addCustomAttrs = (settings) => {
 						};
 						break;
 
-					case "lightbox-data":
+					case "hide-on-mobile":
 						settings.attributes = {
 							...settings.attributes,
-							lbTitle: {
-								type: "string",
-								default: "",
-							},
-							lbDescription: {
-								type: "string",
-								default: "",
-							},
-							lbImageIds: {
-								type: "array",
-								default: [],
-							},
-							lbImageUrls: {
-								type: "array",
-								default: [],
-							},
-							lbImageAlts: {
-								type: "array",
-								default: [],
+							hideOnMobile: {
+								type: "boolean",
+								default: false,
 							},
 						};
 						break;
 
-					case "overlap":
+					case "responsive-sizes":
 						settings.attributes = {
 							...settings.attributes,
-							overlap: {
-								type: "number",
-								default: 0,
+							enableResponsiveSizes: {
+							type: "boolean",
+							default: false,
 							},
+							tabletWidth: {
+							type: "string",
+							default: "auto",
+							},
+							mobileWidth: {
+							type: "string",
+							default: "auto",
+							}
 						};
 						break;
 
-					case "wraparound-link":
+					case "mobile-padding":
 						settings.attributes = {
 							...settings.attributes,
-							wraparoundLink: {
-								type: "object",
-								default: {},
+							enableMobilePadding: {
+								type: "boolean",
+								default: false,
+							},
+							mobilePadding: {
+								"type": "object",
+								"default": {}
 							},
 						};
 						break;

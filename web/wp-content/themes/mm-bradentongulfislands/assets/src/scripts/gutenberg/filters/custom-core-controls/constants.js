@@ -2,18 +2,13 @@
 
 // Controls available customizations
 export const CUSTOMIZE_BLOCKS = {
-  "core/columns": [
-    "content-width-settings",
-    "hide-on-mobile",
-    "reverse-order",
-    "mobile-padding",
-    "z-index",
-  ],
-  "core/column": ["mobile-padding"],
-  "core/group": ["content-width-settings", "z-index"],
-  "core/heading": ["content-width-settings", "center-on-mobile"],
-  "core/paragraph": ["content-width-settings", "center-on-mobile"],
-  "core/image": ["center-on-mobile", "responsive-sizes"],
-  "core/buttons": ["center-on-mobile"],
-  "core/separator": ["content-width-settings", "hide-on-mobile"],
+	'core/columns': [ 'justify-content', 'overlap', 'layer', 'reverse-mobile', 'hide-on-breakpoints' ],
+	'core/column': [ 'hide-on-breakpoints' ],
+	'core/group': [ 'overlap', 'layer', 'hide-on-breakpoints' ],
+	'core/cover': [ 'wraparound-link', 'photo-credit' ],
+	'core/image': [ 'lightbox-data', 'photo-credit', "center-on-mobile" ],
+	'core/video': [ 'photo-credit' ],
+	"core/heading": ["center-on-mobile"],
+	"core/paragraph": ["center-on-mobile"],
+	"core/buttons": ["center-on-mobile"],
 };
