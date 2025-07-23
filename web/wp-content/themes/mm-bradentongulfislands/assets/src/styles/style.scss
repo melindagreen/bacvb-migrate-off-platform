@@ -19,10 +19,11 @@ PAGE TEMPLATES
 /*********************
 SIZES
 *********************/
-@use "breakpoints/small" as small;
-@use "breakpoints/medium" as medium;
-@use "breakpoints/large" as large;
+
 @use "breakpoints/base" as *;
+@use "breakpoints/large" as large;
+@use "breakpoints/medium" as medium;
+@use "breakpoints/small" as small;
 
 @use "memberpress";
 @use "memberpress-account";
