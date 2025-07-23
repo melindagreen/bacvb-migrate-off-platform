@@ -1,26 +1,11 @@
 /*** IMPORTS ****************************************************************/
-
-// WordPress dependencies
-import {
-  MediaPlaceholder,
-  RichText,
-} from "@wordpress/block-editor";
-import {
-	Disabled,
-	IconButton,
-	PanelRow,
-} from "@wordpress/components";
 import { __ } from '@wordpress/i18n';
-
 import { useEffect } from '@wordpress/element';
-
 import ServerSideRender from '@wordpress/server-side-render';
-
+import { useBlockProps } from '@wordpress/block-editor';
 
 // Local dependencies
 import { initHero } from "./assets/hero.js";
-// Removed usePreview import
-// import { usePreview } from '../../inc/hooks.js';
 
 // Controls - add block/inspector controls here
 import Controls from './controls'
@@ -38,16 +23,18 @@ import Controls from './controls'
  * @param {*} props
  * @returns {WPElement}
  */
-const Editor = props => {
-  const { className } = props;
+const Editor = (props) => {
+
+	const blockProps = useBlockProps();
+
   useEffect(() => {
     initHero();
   }, [props.attributes]);
 
-  return (
-    <section className={`${className} is-preview`}>
-      <ServerSideRender block={props.name} httpMethod={'POST'} {...props} />
-    </section>
+  return (    
+		<div {...blockProps} className={`${blockProps.className} is-preview`} >
+      <ServerSideRender httpMethod={'POST'} block={props.name} {...props} />
+    </div>
   )
 }
 
