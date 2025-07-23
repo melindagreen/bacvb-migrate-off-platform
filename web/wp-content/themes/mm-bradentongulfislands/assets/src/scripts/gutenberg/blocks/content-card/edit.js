@@ -2,24 +2,22 @@
 // WordPress dependencies
 import { __ } from "@wordpress/i18n";
 import ServerSideRender from '@wordpress/server-side-render';
+import { useBlockProps } from "@wordpress/block-editor";
 
 // Local Dependencies
 // Controls - add block/inspector controls here
 import Controls from "./controls";
-import Wizard from "./controls/wizard";
 
 /*** CONSTANTS **************************************************************/
 
 /*** FUNCTIONS **************************************************************/
 const Editor = (props) => {
-	const {
-		attributes: { mode },
-	} = props;
+	const blockProps = useBlockProps();
 
-	return mode === "edit" ? (
-		<Wizard {...props} />
-	) : (
-		<ServerSideRender block={props.name} {...props} />
+	return (
+		<div {...blockProps}>
+			<ServerSideRender block={props.name} {...props} />
+		</div>
 	);
 };
 

@@ -13,6 +13,8 @@ import {
 	InspectorControls,
 	BlockControls,
 	JustifyContentControl,
+	MediaUpload,
+	MediaUploadCheck,
 	__experimentalSpacingSizesControl as SpacingSizesControl,
 	__experimentalLinkControl as LinkControl,
 } from "@wordpress/block-editor";
@@ -21,6 +23,7 @@ import {
 	PanelBody,
 	PanelRow,
 	Popover,
+	TextControl,
 	ToggleControl,
 	ToolbarButton,
 	SelectControl,
