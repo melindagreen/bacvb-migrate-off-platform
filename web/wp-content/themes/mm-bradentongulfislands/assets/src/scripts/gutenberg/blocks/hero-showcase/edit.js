@@ -17,7 +17,7 @@ import {
 	MediaUploadCheck,
 } from "@wordpress/block-editor";
 import ServerSideRender from "@wordpress/server-side-render";
-import { useSelect } from "@wordpress/data";
+import { useBlockProps } from '@wordpress/block-editor';
 
 // Local Dependencies
 // Controls - add block/inspector controls here
@@ -188,13 +188,15 @@ const Wizard = (props) => {
  * @returns {WPElement}
  */
 const Editor = (props) => {
+	const blockProps = useBlockProps();
+
 	const {
 		attributes: { mode },
 		className,
 	} = props;
 
 	return (
-		<section className={className}>
+		<section {...blockProps}>
 			{mode === "edit" ? (
 				<Wizard {...props} />
 			) : (
