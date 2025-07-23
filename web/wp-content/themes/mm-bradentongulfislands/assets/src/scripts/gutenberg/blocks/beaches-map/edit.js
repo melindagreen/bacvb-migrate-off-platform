@@ -4,6 +4,7 @@
 import { TextControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import ServerSideRender from '@wordpress/server-side-render';
+import { useBlockProps } from '@wordpress/block-editor';
 
 // Local Dependencies
 // Controls - add block/inspector controls here 
@@ -36,6 +37,7 @@ import Controls from './controls'
  * @returns {WPElement}
  */
 const Editor = props => {
+  const blockProps = useBlockProps();
   const { attributes: { exampleColor, mode }, className } = props;
 
   const exampleStyle = {
@@ -43,7 +45,7 @@ const Editor = props => {
   };
 
   return (
-    <section className={className} style={exampleStyle}>
+    <section {...blockProps}>
       {mode === 'edit'
         ? <Wizard {...props} />
         : <ServerSideRender block={props.name} {...props} />}

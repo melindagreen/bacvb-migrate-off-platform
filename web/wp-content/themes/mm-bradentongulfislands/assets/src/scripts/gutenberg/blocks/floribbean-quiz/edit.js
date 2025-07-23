@@ -3,6 +3,7 @@
 // WordPress dependencies
 import { __ } from '@wordpress/i18n';
 import ServerSideRender from '@wordpress/server-side-render';
+import { useBlockProps } from '@wordpress/block-editor';
 import { TextControl } from '@wordpress/components';
 import { useEffect } from '@wordpress/element';
 
@@ -46,6 +47,8 @@ const FerryMapView = props => {
  * @returns {WPElement}
  */
 const Editor = props => {
+
+	const blockProps = useBlockProps();
   const { attributes, className } = props;
 
 
@@ -57,7 +60,7 @@ const Editor = props => {
   const safeAttributes = typeof attributes === 'object' ? attributes : {};
 
   return (
-    <section className={className}>
+    <section {...blockProps}>
       {/* ServerSideRender not working */}
       {attributes.mode === 'edit'
         ? <Wizard {...props} />

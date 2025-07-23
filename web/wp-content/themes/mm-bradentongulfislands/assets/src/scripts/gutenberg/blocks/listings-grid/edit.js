@@ -3,6 +3,7 @@
 // WordPress dependencies
 import { SelectControl, TextControl, QueryControls } from '@wordpress/components';
 import ServerSideRender from '@wordpress/server-side-render';
+import { useBlockProps } from '@wordpress/block-editor';
 import { withSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
@@ -82,10 +83,12 @@ const Wizard = props => {
  * @returns {WPElement}
  */
 const Editor = props => {
+
+  const blockProps = useBlockProps();
   const { attributes: { mode }, className } = props;
 
   return (
-    <section className={className} >
+    <section {...blockProps} >
       {mode === 'edit'
         ? <Wizard {...props} />
         : <ServerSideRender block={props.name} {...props} />}

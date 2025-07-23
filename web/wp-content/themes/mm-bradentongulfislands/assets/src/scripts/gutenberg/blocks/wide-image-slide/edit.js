@@ -1,5 +1,6 @@
 /*** IMPORTS ****************************************************************/
 import { Placeholder } from '@wordpress/components';
+import { useBlockProps } from '@wordpress/block-editor';
 
 // WordPress dependencies
 import { __ } from '@wordpress/i18n';
@@ -19,6 +20,8 @@ import Controls from './controls'
 
 const Editor = (props) => {
 
+	const blockProps = useBlockProps();
+
   const { attributes } = props;
   const { mediaUrl } = attributes;
 
@@ -27,7 +30,9 @@ const Editor = (props) => {
   };
 
   return (
-    <div className="block-slider-img" style={blockStyle}>{mediaUrl[0] != '' ? null : <Placeholder className="components-placeholder--large" withIllustration={true} />}</div>
+    <div {...blockProps}>
+      <div className="block-slider-img" style={blockStyle}>{mediaUrl[0] != '' ? null : <Placeholder className="components-placeholder--large" withIllustration={true} />}</div>
+    </div>
   );
 }
 

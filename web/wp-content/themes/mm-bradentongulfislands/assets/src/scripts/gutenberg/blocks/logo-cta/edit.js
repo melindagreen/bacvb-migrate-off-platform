@@ -22,7 +22,7 @@ const Editor = props => {
   const blockProps = useBlockProps();
 
   return (
-    <section className={className}>
+    <section {...blockProps}>
       {imageUrl !== "" && 
       <div className={`${className}__image`}>
         <img src={imageUrl} data-load-alt={imageAlt !== "" ? imageAlt : "Showcase Card Image"} data-load-type="img" data-load-offset="lg" data-load-all={imageUrl} />
@@ -30,7 +30,6 @@ const Editor = props => {
       }
       <div className={`${className}__contents`}>
       <RichText
-        { ...blockProps }
         tagName="button" 
         className="contents-title"
         allowedFormats={ [ "core/bold", "core/italic", "core/link" ] } 

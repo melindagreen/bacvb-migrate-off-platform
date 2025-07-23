@@ -17,6 +17,7 @@ import {
 	MediaUploadCheck,
 } from "@wordpress/block-editor";
 import ServerSideRender from "@wordpress/server-side-render";
+import { useBlockProps } from '@wordpress/block-editor';
 import { useSelect } from "@wordpress/data";
 
 // Local Dependencies
@@ -139,6 +140,9 @@ const Wizard = (props) => {
  * @returns {WPElement}
  */
 const Editor = (props) => {
+
+	const blockProps = useBlockProps();
+
 	const {
 		attributes: { mode },
 		className,
@@ -149,7 +153,7 @@ const Editor = (props) => {
 	);
 
 	return (
-		<section className={className}>
+		<section {...blockProps}>
 			{isPreview ? (
 				<ServerSideRender httpMethod={"POST"} block={props.name} {...props} />
 			) : (

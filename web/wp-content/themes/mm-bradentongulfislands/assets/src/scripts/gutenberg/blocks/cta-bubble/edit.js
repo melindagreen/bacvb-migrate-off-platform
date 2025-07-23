@@ -22,10 +22,9 @@ const Editor = props => {
   const blockProps = useBlockProps();
 
   return (
-    <section className={className}>
+    <section {...blockProps}>
       <RichText
-        { ...blockProps }
-        tagName="h2" 
+       tagName="h2" 
         className="contents-title"
         allowedFormats={ [ "core/bold", "core/italic", "core/link" ] } 
         value={ title }
@@ -35,7 +34,6 @@ const Editor = props => {
         placeholder={ __( "Add title..." ) } 
       />
       <RichText
-        { ...blockProps }
         tagName="p" 
         className="contents-description"
         allowedFormats={ [ "core/bold", "core/italic", "core/link" ] } 
@@ -46,7 +44,6 @@ const Editor = props => {
         placeholder={ __( "Add Description..." ) } 
       />
       <RichText
-        { ...blockProps }
         tagName="button" 
         className="contents-ctaText"
         allowedFormats={ [ "core/bold", "core/italic", "core/link" ] } 

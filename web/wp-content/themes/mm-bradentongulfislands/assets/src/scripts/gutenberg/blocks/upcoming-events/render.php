@@ -27,7 +27,7 @@ $html = "<div class='" . Constants::BLOCK_CLASS . "-upcomingevents'>";
       $endDate = strtotime($upcomingMeta['end_date']);
 
       if (date('Ymd', $startDate) < date('Ymd')) {
-          if ($upcomingMeta['occurrences']) {
+          if (isset($upcomingMeta['occurrences']) && is_array($upcomingMeta['occurrences'])) {
               foreach($upcomingMeta['occurrences'] as $occurence) {
                   if (date('Ymd', strtotime($occurence['start_date_time'])) >= date('Ymd')) {
                       $startDate = strtotime($occurence['start_date_time']);

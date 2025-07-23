@@ -25,7 +25,7 @@ const Editor = (props) => {
 
   const blockProps = useBlockProps();
   return (
-    <section className={`wp-block-mm-bradentongulfislands-content-selector`}>
+    <section {...blockProps}>
       <Scrollable  scrollDirection="x" style={ { maxWidth: "100vw", marginBottom: "5px"} }>
       <div className="contents" {...blockProps }>
         <InnerBlocks className="item"

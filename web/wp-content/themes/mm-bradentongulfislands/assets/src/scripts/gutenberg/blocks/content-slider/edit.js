@@ -33,8 +33,7 @@ const edit = ({ clientId }) => {
   };
 
   return (
-    <section className={`wp-block-mm-content-slider`}>
-      <div className="contents" {...blockProps}>
+    <section {...blockProps}>
         <InnerBlocks
           allowedBlocks={ALLOWED_BLOCKS}
           template={BLOCK_TEMPLATE}
@@ -43,7 +42,6 @@ const edit = ({ clientId }) => {
           templateLock={false}
           renderAppender={InnerBlocks.ButtonBlockAppender}
         />
-      </div>
       <Button isPrimary onClick={onCreateSection}>Add Slide</Button>
     </section>
   );

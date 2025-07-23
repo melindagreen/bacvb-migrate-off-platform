@@ -5,6 +5,7 @@ import { } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import { RichText, InnerBlocks, withColors } from '@wordpress/block-editor';
 import React, { useState } from 'react';
+import { useBlockProps } from '@wordpress/block-editor';
 
 // Local Dependencies
 // Controls - add block/inspector controls here 
@@ -24,6 +25,9 @@ const BLOCK_TEMPLATE = [
  * @returns {WPElement}
  */
 const Editor = props => {
+
+	const blockProps = useBlockProps();
+
   const { attributes: { title }, setAttributes, textColor, className } = props;
 
   const [open, setOpen] = useState(false);
@@ -37,7 +41,7 @@ const Editor = props => {
   }
 
   return (
-    <section className={className}>
+    <section {...blockProps}>
       <div className='accordion__header'>
         <span
           class="fusion-toggle-icon-wrapper"

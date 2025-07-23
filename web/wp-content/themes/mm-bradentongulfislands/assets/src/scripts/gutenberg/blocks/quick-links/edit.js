@@ -5,6 +5,7 @@ import { Button, Flex, PanelBody, PanelRow, SelectControl, TextControl, Textarea
 import { __ } from '@wordpress/i18n';
 import { __experimentalLinkControl as LinkControl, MediaUpload, MediaUploadCheck, URLInput } from '@wordpress/block-editor';
 import ServerSideRender from '@wordpress/server-side-render';
+import { useBlockProps } from '@wordpress/block-editor';
 import { useSelect, } from '@wordpress/data';
 
 // Local Dependencies
@@ -74,10 +75,12 @@ const Wizard = props => {
  * @returns {WPElement}
  */
 const Editor = props => {
+
+	const blockProps = useBlockProps();
   const { attributes: { mode, }, className } = props;
 
   return (
-    <section className={className} >
+    <section {...blockProps}>
       {mode === 'edit'
         ? <Wizard {...props} />
         : <ServerSideRender block={props.name} {...props} />}
