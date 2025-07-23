@@ -5,6 +5,7 @@ import ServerSideRender from "@wordpress/server-side-render";
 import { useBlockProps, useInnerBlocksProps } from "@wordpress/block-editor";
 import { useSelect } from "@wordpress/data";
 import { useEffect } from "@wordpress/element";
+import { useRefEffect } from "@wordpress/compose";
 
 // Local dependencies
 import { initSwiperSliders } from "./assets/slider";
@@ -18,22 +19,47 @@ import { THEME_PREFIX } from "scripts/inc/constants";
 /*** FUNCTIONS **************************************************************/
 
 const Editor = (props) => {
-	const { attributes } = props;
+	const { attributes, setAttributes } = props;
+
+	const sliderRef = useRefEffect((element) => {
+		const options = {
+			adminSlider: true,
+		};
+
+		if (attributes.contentType === "custom") {
+			options.slideClass = "wp-block-" + THEME_PREFIX + "-single-slide";
+			options.wrapperClass = "swiper-wrapper";
+		}
+
+		let slider = initSwiperSliders(element, options);
+
+		return () => {
+			//destroy will reset the slider and active slide on ever re-render
+			//slider.destroy();
+		};
+	});
 
 	const ALLOWED_BLOCKS = [THEME_PREFIX + "/single-slide"];
 	const SLIDE_TEMPLATE = [[THEME_PREFIX + "/single-slide", {}]];
+
+	/*
+	Block props for section wrapper
+	*/
+	let wrapperProps = useBlockProps();
 
 	/*
 	By combining using blockProps & innerBlocksProps, we can remove extra wrapping <divs> and have access to the direct child blocks with our slides.
 	*/
 	let blockProps = useBlockProps({
 		className: "swiper-wrapper",
+		allowedblocks: ALLOWED_BLOCKS,
 		template: SLIDE_TEMPLATE,
 	});
 
 	let innerBlocksProps = useInnerBlocksProps(blockProps, {
-		allowedBlocks: ALLOWED_BLOCKS,
+		allowedblocks: ALLOWED_BLOCKS,
 		template: SLIDE_TEMPLATE,
+		orientation: "horizontal",
 	});
 
 	/*
@@ -106,36 +132,26 @@ const Editor = (props) => {
 		}
 	});
 
-	/*
-	Watch attribute updates
-	*/
-	const countInnerBlocks = useSelect((select) =>
-		select("core/block-editor").getBlock(props.clientId)
-	).innerBlocks;
-
 	useEffect(() => {
-		if (attributes.contentType === "custom") {
-			//when using inner blocks we have to adjust the swiper classes.
-			initSwiperSliders(
-				"#swiper-slider-" + props.clientId + " .swiper",
-				"swiper-wrapper",
-				"block-editor-block-list__block"
-			);
-		} else {
-			initSwiperSliders("#swiper-slider-" + props.clientId + " .swiper");
-		}
-	}, [attributes, countInnerBlocks.length]);
+		setAttributes({ sliderId: props.clientId });
+	}, []);
 
 	return (
 		<section
+			{...wrapperProps}
 			id={`swiper-slider-${props.clientId}`}
-			className={`${props.className} slider-type-${attributes.contentType} ${
-				attributes.enableArrowNavigation && attributes.arrowsBelowSlider
-					? "slider-arrows-below"
-					: ""
-			}`}
+			data-uid={props.clientId}
+			className={`
+				${wrapperProps.className}
+				slider-type-${attributes.contentType} 
+				${
+					attributes.enableArrowNavigation && attributes.arrowsBelowSlider
+						? "slider-arrows-below"
+						: ""
+				}
+			`}
 		>
-			<div className={`swiper`} {...sliderDataset}>
+			<div className={`swiper`} {...sliderDataset} ref={sliderRef}>
 				{attributes.contentType !== "custom" && (
 					<div className="swiper-wrapper">
 						{(attributes.contentType === "automatic" ||
@@ -148,15 +164,7 @@ const Editor = (props) => {
 										block={THEME_PREFIX + "/content-card"}
 										attributes={{
 											contentId: post.id,
-											cardStyle: attributes.cardStyle,
-											contentType: attributes.postType,
-											displayAdditionalContent:
-												attributes.displayAdditionalContent,
-											displayExcerpt: attributes.displayExcerpt,
-											excerptLength: attributes.excerptLength,
-											displayReadMore: attributes.displayReadMore,
-											readMoreText: attributes.readMoreText,
-											mode: "preview",
+											...attributes,
 										}}
 									/>
 								</div>
@@ -175,13 +183,8 @@ const Editor = (props) => {
 									<ServerSideRender
 										block={THEME_PREFIX + "/content-card"}
 										attributes={{
-											cardStyle: attributes.cardStyle,
-											contentType: "custom",
-											contentTitle: attributes.ctaSlideTitle,
-											customImage: attributes.ctaSlideImage,
-											customCtaText: attributes.ctaSlideBtnText,
-											customCtaUrl: attributes.ctaSlideBtnUrl,
-											mode: "preview",
+											contentId: post.id,
+											...attributes,
 										}}
 									/>
 								</div>

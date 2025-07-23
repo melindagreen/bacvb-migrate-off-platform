@@ -1,7 +1,6 @@
 @import "swiper/css/bundle";
 @import "./style.scss";
 
-
 /* Editor & Inspector styles */
 .block-editor-block-inspector .#{$block-prefix}-slider {
 	padding: 0;
@@ -56,6 +55,10 @@
 			transform: translateZ(0);
 		}
 
+		.swiper-wrapper.large-circ-up {
+			height: fit-content !important;
+		}
+
 		.swiper-wrapper > div {
 			display: block;
 			flex-shrink: 0;
@@ -63,6 +66,19 @@
 			position: relative;
 			transition-property: transform;
 			width: 100%;
+		}
+
+		.swiper {
+			&[data-effect="fade"] {
+				.swiper-wrapper {
+					.#{$block-prefix}-single-slide {
+						height: fit-content;
+						.#{$block-prefix}-content-card {
+							height: fit-content;
+						}
+					}
+				}
+			}
 		}
 	}
 }

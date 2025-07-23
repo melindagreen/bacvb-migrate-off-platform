@@ -2,35 +2,26 @@ import $ from 'jquery';
 //Import Swiper assets
 import Swiper from 'swiper/bundle';
 
-window.addEventListener('DOMContentLoaded', () => {
-  if ($('#editor').length === 0) {
-	  initSwiperSliders();
-  }
-});
+export function initSwiperSliders(slider = null, options = {}) {
 
-const sliderBlockSelector = ".wp-block-mm-bradentongulfislands-slider .swiper";
-const swiperInstances = [];
-const adminSlider = null;
+	let adminSlider = options?.adminSlider ?? false;
 
-const wrapperClass = null;
-const slideClass = null;
+	//pagination & nav elements
+	let navWrapper = slider.nextElementSibling;
 
-let sliders;
+	let paginationEl;
+	let navPrevEl;
+	let navNextEl;
+	let scrollbarEl;
 
-export const initSwiperSliders = (adminSlider = null, wrapperClass, slideClass) => {
+	if (navWrapper) {
+		paginationEl = navWrapper.querySelector(".swiper-pagination");
+		navPrevEl = navWrapper.querySelector(".swiper-button-prev");
+		navNextEl = navWrapper.querySelector(".swiper-button-next");
+		scrollbarEl = navWrapper.querySelector(".swiper-scrollbar");
+	}
 
-
-  if (!adminSlider) {
-    sliders = document.querySelectorAll(sliderBlockSelector);
-  } else {
-    let currentSlider = document.querySelector(adminSlider);
-    if (currentSlider.swiper) {
-      currentSlider.swiper.destroy();
-    }
-    sliders = document.querySelectorAll(adminSlider);
-  }
-
-  const createSwiper = (slider, index) => {
+  const createSwiper = (slider) => {
     const effect = slider.dataset.effect ?? 'slide';
     const screenWidth = window.innerWidth;
     let initialSlide = 0;
@@ -63,7 +54,7 @@ export const initSwiperSliders = (adminSlider = null, wrapperClass, slideClass) 
     }
 
     let paginationType = neededClones ? {
-      el: '.slider-' + index + ' .swiper-pagination',
+      el: paginationEl,
       type: 'bullets',
       clickable: true,
       renderBullet: function (index, className) {
@@ -74,7 +65,7 @@ export const initSwiperSliders = (adminSlider = null, wrapperClass, slideClass) 
         return ''; // Exclude cloned slides
       }
     } : {
-      el: '.slider-' + index + ' .swiper-pagination',
+      el: paginationEl,
       type: 'bullets',
       clickable: true
     };
@@ -107,14 +98,14 @@ export const initSwiperSliders = (adminSlider = null, wrapperClass, slideClass) 
       },
 
       navigation: slider.dataset.enablearrownavigation ? {
-        nextEl: '.slider-' + index + ' .swiper-button-next',
-        prevEl: '.slider-' + index + ' .swiper-button-prev',
+        nextEl: navNextEl,
+        prevEl: navPrevEl,
       } : false,
 
       pagination: slider.dataset.enablepagination ? paginationType : false,
 
       scrollbar: slider.dataset.enablescrollbar ? {
-        el: '.slider-' + index + ' .swiper-scrollbar',
+        el: scrollbarEl,
         draggable: true,
         dragSize: 70
       } : false,
@@ -157,57 +148,30 @@ export const initSwiperSliders = (adminSlider = null, wrapperClass, slideClass) 
         }
       },
 
-      slideClass: slideClass ?? 'swiper-slide',
-      wrapperClass: wrapperClass ?? 'swiper-wrapper',
+      slideClass: options?.slideClass ?? "swiper-slide",
+      wrapperClass: options?.wrapperClass ?? "swiper-wrapper",
     });
   };
 
-  sliders.forEach((slider, index) => {
-    if (!slider) return;
-
-    slider.parentElement.classList.add('slider-' + index);
-
-    swiperInstances[index] = createSwiper(slider, index);
-  });
-
-  // Reinitialize on resize
-  let resizeTimer;
-  // window.addEventListener('resize', function () {
-  //   clearTimeout(resizeTimer);
-  //   resizeTimer = setTimeout(() => {
-  //     sliders.forEach((slider, index) => {
-  //       if (swiperInstances[index]) {
-  //         swiperInstances[index].destroy(true, true);
-  //       }
-  //       swiperInstances[index] = createSwiper(slider, index);
-  //     });
-  //     // Reinitialize the info block on resize
-  //     changeInfoBlock();
-  //   }, 300);
-  // });
-
+  let swiperslider = createSwiper(slider);
   
   // Update info block on slide change
-  sliders.forEach((slider, index) => {
-    if (swiperInstances[index]) {
-    swiperInstances[index].on('slideChangeTransitionEnd', () => {
-      changeInfoBlock();
+  swiperslider.on('slideChangeTransitionEnd', () => {
+    changeInfoBlock();
 
-      const stickers = document.querySelectorAll('.sticker');
+    const stickers = document.querySelectorAll('.sticker');
 
-      stickers.forEach(sticker => {
-        // Reset animation if already applied
+    stickers.forEach(sticker => {
+      // Reset animation if already applied
+      sticker.classList.remove('animate-wiggle');
+      void sticker.offsetWidth; // Force reflow
+      sticker.classList.add('animate-wiggle');
+
+      // Remove class after animation ends to allow retrigger
+      setTimeout(() => {
         sticker.classList.remove('animate-wiggle');
-        void sticker.offsetWidth; // Force reflow
-        sticker.classList.add('animate-wiggle');
-
-        // Remove class after animation ends to allow retrigger
-        setTimeout(() => {
-          sticker.classList.remove('animate-wiggle');
-        }, 1600); 
-      });
+      }, 1600); 
     });
-    }
   });
 
   // Initial call to set the info block
@@ -249,4 +213,6 @@ export const initSwiperSliders = (adminSlider = null, wrapperClass, slideClass) 
       $(`.slider-info-box #infoblock-buttonurl`).attr('aria-label', titleText);
     }
   }
+
+  return swiperslider;
 }

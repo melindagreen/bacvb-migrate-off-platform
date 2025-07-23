@@ -263,9 +263,9 @@
       "default": "edit"
     }
   },
-  "editorScript": "file:./index.js",
-  "editorStyle": "file:./index.css",
-  "viewStyle": "file:./style-index.css",
-  "viewScript": "file:./front.js",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"viewScript": "file:./view.js",
+	"style": "file:./style-view.css",
   "render": "file:./render.php"
 }
