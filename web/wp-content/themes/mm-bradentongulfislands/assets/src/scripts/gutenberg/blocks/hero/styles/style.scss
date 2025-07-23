@@ -1,5 +1,3 @@
-
-
 .#{$block-prefix}-hero {
   width: 100%;
   justify-content: center;
@@ -485,6 +483,9 @@ SMALL SCREENS
     &.videoHero {
       &::after {
         bottom: -6rem;
+      }
+      &.hero--wave:after {
+        bottom: -4rem;
       }
     }
 
