@@ -19,6 +19,7 @@ import {
 	__experimentalLinkControl as LinkControl,
 } from "@wordpress/block-editor";
 import {
+	Button,
 	Panel,
 	PanelBody,
 	PanelRow,

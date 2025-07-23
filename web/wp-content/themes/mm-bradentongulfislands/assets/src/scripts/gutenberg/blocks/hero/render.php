@@ -4,6 +4,7 @@ namespace MaddenNino\Blocks\Hero;
 use MaddenNino\Library\Constants as Constants;
 
 $attrs = $attributes;
+$id = get_the_ID();
 
 if (!isset($attrs['videoHero']) || !$attrs['videoHero']) {
     $mobileImage = isset($attrs['mobileImage']) ? $attrs['mobileImage'] : $attrs['image'];
@@ -25,7 +26,7 @@ $classes = isset($attrs['className']) ? $attrs['className'] : '';
 <?php } ?>
 
     <?php if (!isset($attrs['videoHero']) || !$attrs['videoHero']) { ?>
-        <div <?php if (!$attrs['title']) { ?> title="<?php echo get_the_title($post->ID); ?>" <?php } ?>  class="hero<?php if (isset($attrs["doParallax"]) && $attrs["doParallax"]) echo " has-parallax" ?><?php if (!isset($attrs['showBottomWave']) || !$attrs['showBottomWave']) echo " full" ?>"
+        <div <?php if (!$attrs['title']) { ?> title="<?php echo get_the_title($id); ?>" <?php } ?>  class="hero<?php if (isset($attrs["doParallax"]) && $attrs["doParallax"]) echo " has-parallax" ?><?php if (!isset($attrs['showBottomWave']) || !$attrs['showBottomWave']) echo " full" ?>"
             data-load-type="bg"    
             data-load-onload="true"
             data-load-lg="<?php echo wp_get_attachment_image_src($attrs['image']['id'], 'full')[0]; ?>"
