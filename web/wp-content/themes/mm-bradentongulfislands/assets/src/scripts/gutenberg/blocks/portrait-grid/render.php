@@ -6,6 +6,9 @@ use MaddenNino\Library\Utilities as Utilities;
   
 $attrs = $attributes;
 
+// Detect if rendering in the block editor (Gutenberg)
+$is_editor = ( defined('REST_REQUEST') && REST_REQUEST );
+
 $posts = array();
 
 // clean up posts attr
@@ -64,7 +67,13 @@ if( $attrs['queryMode'] === 'manual' ) {
   <div class="grid-items">
     <?php foreach( $posts as $i => $post ) { ?>
       <article class="grid-item grid-item--<?php echo $i + 1 ?>">
-        <?php if( $post['link'] ) { ?><a href="<?php echo $post['link'] ?>"><?php } ?>
+        <?php if( $post['link'] ) {
+          if ($is_editor) { ?>
+            <span class="grid-item__link-fake">
+          <?php } else { ?>
+            <a href="<?php echo $post['link'] ?>">
+          <?php }
+        } ?>
           <div class="grid-item__background">
             <?php if( $post['thumb'] ) { ?>
               <img class="grid-item__image" src="<?php echo $post['thumb'] ?>" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/pixel.png"
@@ -73,12 +82,24 @@ if( $attrs['queryMode'] === 'manual' ) {
               data-load-lg="<?php echo $post['thumb'] ?>" alt="">
             <?php } ?>
           </div>
-        <?php if( $post['link'] ) { ?></a><?php } ?>
+        <?php if( $post['link'] ) {
+          if ($is_editor) { ?>
+            </span>
+          <?php } else { ?>
+            </a>
+          <?php }
+        } ?>
       </article>
       <div class="grid-item-body grid-item-body--<?php echo $i + 1 ?>">
           <h3 class="grid-item-body__title"><?php echo $post['title']; ?></h3>
           <p class="grid-item-body__excerpt"><?php echo $post['excerpt']; ?></p>
-          <?php if( $post['link'] ) { ?><a class="grid-item-body__link" href="<?php echo $post['link'] ?>"><?php echo $post['ctaText'] ?></a> <?php } ?>
+          <?php if( $post['link'] ) {
+            if ($is_editor) { ?>
+              <span class="grid-item-body__link grid-item-body__link--fake"><?php echo $post['ctaText'] ?></span>
+            <?php } else { ?>
+              <a class="grid-item-body__link" href="<?php echo $post['link'] ?>"><?php echo $post['ctaText'] ?></a>
+            <?php }
+          } ?>
           <div class="grid-item-body__arrow"></div>
       </div>
     <?php } ?>
