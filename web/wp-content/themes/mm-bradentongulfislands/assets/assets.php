@@ -25,7 +25,7 @@ class AssetHandler {
     add_action( "admin_enqueue_scripts", array( \get_called_class(), "enqueue_admin_scripts_and_styles" ) );
 
     // Front-end enqueues
-    add_action( "wp_footer", array( \get_called_class(), "enqueue_front_scripts" ) );
+    add_action( "wp_enqueue_scripts", array( \get_called_class(), "enqueue_front_scripts" ) );
     add_action( "wp_enqueue_scripts", array( \get_called_class(), "enqueue_front_styles" ), 1001 );
 
     // Block types
@@ -110,29 +110,26 @@ class AssetHandler {
    * Enqueue front-end scripts. Include template- and block-specific files if available.
    */
   public static function enqueue_front_scripts() {
+
+    //font awesome
+    wp_enqueue_style('font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css');
+      
+    wp_enqueue_script('crowdriff-js', 'https://starling.crowdriff.com/js/crowdriff.js', [], null, true);
+    // Enqueue jQuery UI Datepicker (script and style)
+    wp_enqueue_script('jquery-ui-datepicker');
+    wp_enqueue_style('jquery-ui-datepicker-style', 'https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css');
     
     // Enqueue front global styles & scripts
-    $assets_file_front = include(get_stylesheet_directory() . "/assets/build/app.asset.php");
+    $assets_file_front = include( get_stylesheet_directory() . "/assets/build/app.asset.php" );
 
     $scripts = array(
       "app" => "/assets/build/app.js",
+      "memberpress-account" => "/assets/build/memberpress-account.js",
     );
 
     $dependencies = array("jquery");
     
     $has_ajax = false;
-
-    $loadJS = self::_find_assets();
-
-    foreach ($loadJS as $jsFile) {
-      $js_path =  __DIR__ .  "/build/" . $jsFile . ".js";
-      if (file_exists($js_path)) {
-          $scripts[$jsFile] = "/assets/build/" . $jsFile .".js";
-      }
-    }
-
-    // Dedupe scripts
-    $scripts = array_unique($scripts);
 
     foreach ($scripts as $k => $v) {
       wp_enqueue_script(
@@ -141,8 +138,8 @@ class AssetHandler {
         $dependencies, // dependencies
         filemtime( get_stylesheet_directory() . $v ),
         array(
-            'strategy'  => 'defer',
-            'footer'    => true
+          'strategy'  => 'defer',
+          'footer'    => true
         )
       );
     }
@@ -157,14 +154,6 @@ class AssetHandler {
       
       wp_localize_script( C::THEME_PREFIX . "front-js", "ajaxData", $ajax_data );
     }
-
-    //font awesome
-    wp_enqueue_style('font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css');
-      
-    wp_enqueue_script('crowdriff-js', 'https://starling.crowdriff.com/js/crowdriff.js', [], null, true);
-    // Enqueue jQuery UI Datepicker (script and style)
-    wp_enqueue_script('jquery-ui-datepicker');
-    wp_enqueue_style('jquery-ui-datepicker-style', 'https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css');
   }
 
   /**

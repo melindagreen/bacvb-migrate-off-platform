@@ -3,6 +3,12 @@
 namespace MaddenNino\Library\Hooks;
 
 add_action( 'wp_head', __NAMESPACE__ . '\add_global_css_vars' );
+//add_action( 'wp', __NAMESPACE__ . '\testing' );
+
+function testing() {
+  $custom = get_post_custom( get_the_id() );
+  //echo '<pre>';print_r( $custom );echo '</pre>';
+}
 
 /**
  * Add global css vars

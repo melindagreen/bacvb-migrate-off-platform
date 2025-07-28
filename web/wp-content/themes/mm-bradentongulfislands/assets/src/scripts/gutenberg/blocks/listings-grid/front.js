@@ -868,7 +868,7 @@ var markersObject = {};
 		});
 
 		// Resizing
-		$(window).resize(() => {
+		$(window).on("resize", () => {
 			STARTING_COORDS = getIsLarge()
 				? [27.4190314, -82.3921034]
 				: [27.4590324, -82.6521034];

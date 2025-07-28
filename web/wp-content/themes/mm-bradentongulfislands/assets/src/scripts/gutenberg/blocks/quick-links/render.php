@@ -4,10 +4,10 @@ namespace MaddenNino\Blocks\QuickLinks;
 use MaddenNino\Library\Constants as Constants;
 use MaddenNino\Library\Utilities as Utilities;
   
-$attrs = $attributes;
+$attrs = $attributes ?? [];
 ?>
 <section class="<?php echo Constants::BLOCK_CLASS ?>-quick-links <?php if($attrs['className']) { echo $attrs['className']; } ?> <?php if($attrs['hideOnMobile']) { echo Constants::BLOCK_CLASS . '-quick-links--hideonmobile'; } ?>">
-<?php if($attr['blockTitle'] !== '') { ?>
+<?php if($attrs['blockTitle'] !== '') { ?>
 <h2 class="wp-block-heading has-text-align-center quick-links-heading"><?php echo $attrs['blockTitle']; ?></h2>
 <?php } ?>
   <div class="quick-link-items">

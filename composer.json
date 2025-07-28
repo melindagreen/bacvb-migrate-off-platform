@@ -77,6 +77,10 @@
           "composer/installers": "*"
         }
       }
+    },
+    {
+      "type": "composer",
+      "url": "https://composer.admincolumns.com"
     }
   ],
   "require": {
@@ -110,7 +114,8 @@
     "wpackagist-plugin/seo-by-rank-math":"1.0.249",
     "rankmath/seo-by-rank-math-pro": "3.0.84",
     "wpackagist-plugin/breeze":"2.2.16",
-    "wpackagist-plugin/fareharbor": "^3.6"
+    "wpackagist-plugin/fareharbor": "^3.6",
+    "admin-columns/admin-columns-pro": "6.4.20"
   },
   "minimum-stability": "dev",
   "prefer-stable": true,

@@ -58,7 +58,7 @@ if ("serviceWorker" in navigator) {
 	 */
 	function toggleStayConnected() {
 		// toggle stay connected
-		$(".stay-connected__toggle").click(function () {
+		$(".stay-connected__toggle").on("click", function () {
 			$(".stay-connected").toggleClass("stay-connected--open");
 		});
 	}
@@ -246,21 +246,21 @@ if ("serviceWorker" in navigator) {
 		toggleTopBannerClasses();
 
 		// Toggle menu
-		$(`.${THEME_PREFIX}-header .toggle`).click(function () {
+		$(`.${THEME_PREFIX}-header .toggle`).on("click", function () {
 			toggleMenu();
 		});
 
-		$(".header-mobile-toggle").click(toggleMobileMenu);
+		$(".header-mobile-toggle").on("click", toggleMobileMenu);
 
 		// Toggle submenu
 		if (getIsLarge())
 			$(".mega-menu__menu > .menu-item-has-children:first").addClass("open");
-		$(".mega-menu__menu > .menu-item-has-children").click(function () {
+		$(".mega-menu__menu > .menu-item-has-children").on("click", function () {
 			var isOpen = $(this).hasClass("open");
 			$(".mega-menu__menu > .menu-item-has-children").removeClass("open");
 			if (!isOpen) $(this).addClass("open");
 		});
-		$(".sub-menu > .menu-item-has-children").click(function (e) {
+		$(".sub-menu > .menu-item-has-children").on("click", function (e) {
 			e.stopPropagation();
 			var isOpen = $(this).hasClass("open");
 			$(".sub-menu > .menu-item-has-children").removeClass("open");
@@ -335,7 +335,7 @@ if ("serviceWorker" in navigator) {
 		}, 1000);
 
 		//Toggle on click.
-		$(".search-form__toggle").click(function () {
+		$(".search-form__toggle").on("click", function () {
 			searchToggle(this);
 		});
 
@@ -345,7 +345,7 @@ if ("serviceWorker" in navigator) {
 		}, 1000);
 
 		// Submit international redirect on select change
-		$("#bradenton-international-redirect").change(function () {
+		$("#bradenton-international-redirect").on("change", function () {
 			$(this).submit();
 		});
 
@@ -473,7 +473,7 @@ if ("serviceWorker" in navigator) {
 		var bounceBall = $("#bounceBall"); // Get the bounceBall element
 		var isImageLoaded = false; // Flag to track if image is already loaded
 
-		$(window).scroll(function () {
+		$(window).on("scroll", function () {
 			if (!isImageLoaded && isElementInViewport(bounceBall[0])) {
 				// Check if bounceBall is in viewport and image is not already loaded
 				var img = bounceBall.find("img"); // Find the img inside bounceBall
@@ -489,7 +489,7 @@ if ("serviceWorker" in navigator) {
 			$(".mega-menu__nav-wrap").css("padding-top", "5.5rem");
 		}
 		// Add click event listener to .top-banner__close
-		$(".top-banner__close").click(function () {
+		$(".top-banner__close").on("click", function () {
 			// Hide the .top-banner
 			$(".top-banner").hide();
 
@@ -723,7 +723,7 @@ if ("serviceWorker" in navigator) {
 
 		if (getIsSmall()) {
 			// Toggle mobile sub-meu
-			$("#menu-main-menu .menu-item-has-children").click(function () {
+			$("#menu-main-menu .menu-item-has-children").on("click", function () {
 				$(this).toggleClass("menu-item--open");
 			});
 		}
@@ -784,9 +784,9 @@ if ("serviceWorker" in navigator) {
 		themeOnLoad();
 
 		themeOnScroll();
-		$(window).scroll(themeOnScroll);
+		$(window).on("scroll", themeOnScroll);
 
 		themeOnResize();
-		$(window).resize(themeOnResize);
+		$(window).on("resize", themeOnResize);
 	});
 })(jQuery);

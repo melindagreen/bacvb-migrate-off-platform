@@ -96,6 +96,11 @@ $classes = [
 
       // Filter to show only upcoming events
       $queryArgs['meta_query'] = array(
+        'relation' => 'AND',
+        'orderby_date_clause' => [
+          'key' => 'eventastic_start_date',
+          'type' => 'DATE',
+        ],
         array(
           'relation' => 'OR',
           array(
@@ -112,6 +117,11 @@ $classes = [
           )
         )
       );
+
+      $queryArgs['orderby']  = [
+        'orderby_date_clause' => 'ASC',
+        'orderby_time_clause' => 'ASC',
+      ];
 
       $queryArgs['tax_query'][] = array(
           'taxonomy' => 'eventastic_categories',
