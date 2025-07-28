@@ -1,46 +1,44 @@
+@import "swiper/css/bundle";
 
 /*********************
 Content Slider
 *********************/
 
-  .mm-content-slider { 
-    overflow: hidden;
+.mm-content-slider {
+  overflow: hidden;
 
-    .content-sliderswiper-pagination {
-      display: none;
-    }
-
-    .content-slider-swiper-button-prev {
-      left: -10px;
-    }
-    .content-slider-swiper-button-next {
-      right: -10px;
-    }
-    .content-slider-swiper-button-next,
-    .content-slider-swiper-button-prev {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      z-index: 10;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      &:before,
-      &:after {
-        display: none;
-      }
-    }
+  .content-sliderswiper-pagination {
+    display: none;
   }
 
+  .content-slider-swiper-button-prev {
+    left: -10px;
+  }
+  .content-slider-swiper-button-next {
+    right: -10px;
+  }
+  .content-slider-swiper-button-next,
+  .content-slider-swiper-button-prev {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &:before,
+    &:after {
+      display: none;
+    }
+  }
+}
 
 /*********************
 SMALL & MEDIUM SCREENS
 *********************/
 @media only screen and (max-width: $screen-lg) {
-
-	.mm-content-slider { 
-    
+  .mm-content-slider {
     .content-slider-swiper-button-prev {
       left: -78px;
     }
@@ -52,10 +50,9 @@ SMALL & MEDIUM SCREENS
       opacity: 0.9;
 
       img {
-
         width: 65%;
         height: auto;
       }
     }
-	}
+  }
 }
