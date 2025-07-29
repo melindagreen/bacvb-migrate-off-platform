@@ -454,17 +454,16 @@ if ("serviceWorker" in navigator) {
 		}
 
 		// media/text mobile slidedown
-		if ($(window).width() < 600) {
-			if ($(".wp-block-media-text").hasClass("is-style-icon")) {
-				$(".wp-block-media-text.is-style-icon .wp-block-heading").on(
-					"click",
-					function () {
-						$(this).toggleClass("open");
-						$(this).siblings("p").slideToggle();
-					}
-				);
+		$(".wp-block-media-text.is-style-icon .wp-block-heading").on(
+			"click",
+			function (e) {
+				if ($(window).width() < 600) {
+					e.preventDefault();
+					$(this).toggleClass("open");
+					$(this).siblings("p").slideToggle();
+				}
 			}
-		}
+		);
 
 		//toggle stay connected
 		toggleStayConnected();

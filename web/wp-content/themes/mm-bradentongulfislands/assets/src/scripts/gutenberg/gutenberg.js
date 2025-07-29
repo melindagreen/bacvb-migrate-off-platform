@@ -6,13 +6,13 @@ import registerAllBlockStyles from "./block-styles";
 import addAllFilters from "./filters";
 import addAllFormats from "./formats";
 import addAllVariations from "./variations";
-import addAllDispatches from './dispatches';
+import addAllDispatches from "./dispatches";
 
 // Fire all core funcs
 domReady(() => {
-  addAllDispatches();
-  addAllFilters();
-  addAllFormats();
-  registerAllBlockStyles();
-  addAllVariations();
+	addAllDispatches();
+	addAllFilters();
+	addAllFormats();
+	registerAllBlockStyles();
+	addAllVariations();
 });
