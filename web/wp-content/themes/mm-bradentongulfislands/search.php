@@ -15,10 +15,21 @@ use MaddenNino\Library\Utilities as U;
 
 get_header(); ?>
 
-<section class="wp-block-mm-bradentongulfislands-hero is-style-secondary-header">
-	<div class="hero" data-load-type="bg" data-load-onload="true" data-load-lg="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/694-3304.jpg" data-load-md="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/694-3304.jpg" data-load-sm="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/694-3304.jpg" data-load-lg-bg-position="39% 28%" data-load-md-bg-position="39% 28%" style="background-image: url(&quot;<?php echo get_stylesheet_directory_uri(); ?>/assets/images/694-3304.jpg&quot;); background-position: 39% 28%;"></div>
-	<h1 class="title alt-title">Search</h1>
-</section>
+<?php
+$block = '<!-- wp:mm-bradentongulfislands/hero ' . wp_json_encode([
+    'title' => 'Search',
+    'image' => [
+        'id' => 4907, // replace with a real image ID
+    ],
+    'focalPoint' => [
+        'x' => 0.39,
+        'y' => 0.28
+    ],
+    'className' => 'is-style-secondary-header',
+    'isPreview' => false,
+]) . ' /-->';
+echo do_blocks( $block );
+?>
 
 <div id="searchContainer">
 

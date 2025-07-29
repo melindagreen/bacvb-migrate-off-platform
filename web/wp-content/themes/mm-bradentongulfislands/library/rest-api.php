@@ -225,6 +225,11 @@ class RestApi {
 
         global $wpdb;
 
+        $params = $request['params'] ?? [];
+        $get = $params['GET'] ?? [];
+        $start_date_parsed = $get['eventastic_start_date'] ?? false;
+        $end_date_parsed = $get['eventastic_end_date'] ?? false;
+
         // set our time zone to get the right time
         date_default_timezone_set(Constants::TIME_ZONE);
 
@@ -361,6 +366,8 @@ class RestApi {
             'field' => 'term_id',
             'operator' => 'NOT IN',
         );
+
+        error_log( print_r( $args, true ) );
                 
         return $args;
     }

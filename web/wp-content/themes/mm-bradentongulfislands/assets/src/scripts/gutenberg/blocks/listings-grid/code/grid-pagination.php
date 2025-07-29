@@ -32,7 +32,6 @@ function render_grid_pagination( $listings_query ) {
 
             <p class="pagination__loading">
                 <span class="sr-only"><?php _e( 'loading' ); ?></span>
-                <i class="fas fa-spinner fa-pulse"></i>
             </p>
             
             <button type="button" class="pagination__button pagination__button--next" data-page="2" <?php disabled( $listings_query->max_num_pages < 2 ); ?>>

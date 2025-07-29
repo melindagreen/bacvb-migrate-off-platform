@@ -621,11 +621,15 @@ var markersObject = {};
 				return prev;
 			}, {});
 
+		console.log("filters", filters);
+
 		url += Object.keys(filters)
 			.map(function (key) {
 				return `${key}=${filters[key].join(",")}`;
 			})
 			.join("&");
+
+		console.log("url", url);
 
 		// get the page back up where it needs to be for viewing (it's slightly less jarring to do this pre-ajax call)
 		// if (adjustScroll) {
@@ -646,7 +650,7 @@ var markersObject = {};
 		}
 
 		$(".listings-container--grid").append(
-			`<div class="loading show"><span class="sr-only"><?php _e( 'loading' ); ?></span><i class="fas fa-spinner fa-pulse"></i></div>`
+			`<div class="loading show"><span class="sr-only"><?php _e( 'loading' ); ?></span></div>`
 		);
 
 		$.get(url).done(function (listings, status, xhr) {

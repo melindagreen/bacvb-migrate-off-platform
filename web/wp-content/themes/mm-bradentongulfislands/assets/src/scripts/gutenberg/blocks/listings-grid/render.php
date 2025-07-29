@@ -43,6 +43,7 @@ if(
   );
 }
 
+echo '<pre>';print_r( $query_args );echo '</pre>';
 
 $listings_query = new \WP_Query( $query_args );
 ?>
@@ -75,7 +76,6 @@ $listings_query = new \WP_Query( $query_args );
       <!-- loaded in js -->
       <div class="loading show">
         <span class="sr-only"><?php _e( 'loading' ); ?></span>
-        <i class="fas fa-spinner fa-pulse"></i>
       </div>
     </div>
   <?php } ?>
@@ -88,7 +88,6 @@ $listings_query = new \WP_Query( $query_args );
       <div id="listings-container--map" class="listings-container listings-container--map swiper">
         <div class="loading show">
           <span class="sr-only"><?php _e( 'loading' ); ?></span>
-          <i class="fas fa-spinner fa-pulse"></i>
         </div>
         
         <div class="swiper-wrapper"></div>

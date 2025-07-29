@@ -3,6 +3,7 @@
 namespace MaddenNino\Library\Hooks;
 
 add_action( 'wp_head', __NAMESPACE__ . '\add_global_css_vars' );
+add_action( 'template_redirect', __NAMESPACE__ . '\redirect_search_results' );
 //add_action( 'wp', __NAMESPACE__ . '\testing' );
 
 function testing() {
@@ -50,4 +51,14 @@ function add_global_css_vars() {
     --img-small-arrow-down: url('{$images_path}small-arrow-down.png');
     --img-rigged-bottom: url('{$images_path}rigged-bottom.svg');
   }</style>";
+}
+
+/**
+ * Force WP to use search.php for search results
+ */
+function redirect_search_results() {
+  if ( is_search() ) {
+    include( get_stylesheet_directory() . '/search.php' );
+    exit;
+  }
 }
