@@ -5,9 +5,8 @@ import { THEME_PREFIX } from "./inc/constants";
 import "./library/madden-parallax-layout-v1.3-min";
 import MMLazyLoad from "./library/madden-lazy-load-v1.5-min";
 import "../styles/style.scss";
-import Swiper from 'swiper';
-import 'swiper/swiper-bundle.css';
-
+import Swiper from 'swiper/bundle';
+import 'swiper/css/bundle';
 
 /*** SERVICE WORKER ************************************************************/
 
@@ -95,58 +94,38 @@ if ("serviceWorker" in navigator) {
 	});
 
 	/** Lightbox **/
-	function lightBox() {
-		// $('.lightbox-imagecarousel').each(function(index) {
-		// const $carousel = $(this);
-		// const $lbContent = $carousel.next('.lb-content');
-		// const $overlay = $('.wp-lightbox-overlay .lightbox-image-container').eq(index);
-
-		// $overlay.append($carousel);
-		// if ($lbContent.length) {
-		// 	$overlay.append($lbContent);
-		// }
-		// });
-
-		// $(
-		// 	".lb-content:not(.wp-lightbox-overlay .lightbox-image-container .lb-content), .lightbox-imagecarousel:not(.wp-lightbox-overlay .lightbox-image-container .lightbox-imagecarousel"
-		// ).each(function () {
-		// 	$(this).remove();
-		// });
-
-
-		const firstLightboxContainer = $('.lightbox-image-container').first();
+function initLightBox() {
+    const firstLightboxContainer = $('.lightbox-image-container').first();
+    firstLightboxContainer.empty();
   
-  if (firstLightboxContainer.length === 0) {
-    console.warn('The first .lightbox-image-container was not found.');
-    return;
-  }
-  // Hide all carousels and content initially and move them to the first container
-  $('.lightbox-imagecarousel, .lb-content').each(function() {
-    $(this).hide().prependTo(firstLightboxContainer); 
-    console.log('First lightbox container:', firstLightboxContainer);
-  });
-
-  // Attach a click event listener to each image in the galleries
-  $('.wp-block-gallery').each(function(galleryIndex) {
-    // Find all images within the current gallery and attach the click handler
-    $(this).find('img').on('click', function() {
-      // Hide all carousels and content first to ensure only one is visible
-      $('.lightbox-imagecarousel, .lb-content').hide();
-
-      // Get the index of the clicked image within its gallery
-      const imageIndex = $(this).parent().index();
-
-      // Calculate the global index of the corresponding carousel and content
-      // Note: This assumes a consistent, flat structure where all carousels and lb-content are siblings
-      const correspondingCarousel = $('.lightbox-imagecarousel').eq(imageIndex);
-      const correspondingLbContent = $('.lb-content').eq(imageIndex);
-
-      // Show the corresponding carousel and content
-      correspondingCarousel.show();
-      correspondingLbContent.show();
+    if (firstLightboxContainer.length === 0) {
+        console.warn('The first .lightbox-image-container was not found.');
+        return;
+    }
+    
+    // Hide all carousels and content initially and move them to the first container
+    $('.lightbox-imagecarousel').each(function() {
+        $(this).hide().appendTo(firstLightboxContainer); 
     });
-  });
-	}
+    $('.lb-content').each(function() {
+        $(this).hide().appendTo(firstLightboxContainer); 
+    });
+    
+    $('.lb-content').each(function() {
+        const h1 = $(this).find('h1');
+        if (h1.length && $.trim(h1.text()) === '') {
+            $(this).remove();
+        }
+    });
+
+
+    const cameraIconPath = '/wp-content/themes/mm-bradentongulfislands/assets/images/icons/camera-icon.svg';
+    firstLightboxContainer.find('.photocredit img').each(function() {
+        $(this).attr('src', cameraIconPath);
+        $(this).attr('srcset', cameraIconPath);
+    });
+
+}
 
 	/**Toggle Search Functions ***/
 	function searchOpen(element) {
@@ -305,7 +284,7 @@ if ("serviceWorker" in navigator) {
 		});
 
 		//LightBox
-		lightBox();
+		initLightBox();
 
 		var lightboxCarousels = $(".lightbox-imagecarousel");
 
@@ -328,19 +307,20 @@ if ("serviceWorker" in navigator) {
 			$(element).addClass(uniqueContainer);
 
 			// Initialize Swiper for each element with different options
-			// var swiper = new Swiper("." + uniqueContainer, {
-			// 	loop: false,
-			// 	direction: 'horizontal',
-			// 	autoplay: {
-			// 		delay: 5500,
-			// 		disableOnInteraction: false,
-			// 	},
-			// 	clickable: true,
-			// 	navigation: {
-			// 		nextEl: "." + uniqueClass + "-next", // Use unique class for next button
-			// 		prevEl: "." + uniqueClass + "-prev", // Use unique class for prev button
-			// 	},
-			// });
+			var swiper = new Swiper("." + uniqueContainer, {
+				loop: false,
+				direction: 'horizontal',
+				autoplay: {
+					delay: 5500,
+					disableOnInteraction: false,
+				},
+				clickable: true,
+				navigation: {
+					nextEl: "." + uniqueClass + "-next", // Use unique class for next button
+					prevEl: "." + uniqueClass + "-prev", // Use unique class for prev button
+				},
+			});
+			console.log(swiper);
 		});
 
 		$(
@@ -349,6 +329,25 @@ if ("serviceWorker" in navigator) {
 			// Prevent the event from reaching parent elements
 			event.stopPropagation();
 		});
+
+		$('.wp-block-gallery').each(function(galleryIndex) {
+        // Find all images within the current gallery and attach the click handler
+        $(this).find('img').on('click', function() {
+            // Hide all carousels and content first to ensure only one is visible
+            $('.lightbox-imagecarousel, .lb-content').hide();
+
+            // Get the index of the clicked image within its gallery
+            const imageIndex = $(this).parent().index();
+
+            // Calculate the global index of the corresponding carousel and content
+            const correspondingCarousel = $('.lightbox-imagecarousel').eq(imageIndex);
+            const correspondingLbContent = $('.lb-content').eq(imageIndex);
+
+            // Show the corresponding carousel and content
+            correspondingCarousel.show();
+            correspondingLbContent.show();
+        });
+	});
 
 
 		// Query Block Placeholder Image
