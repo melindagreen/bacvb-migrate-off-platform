@@ -1,56 +1,57 @@
 {
-  "name": "bradensota-map",
-  "dynamic": true,
-  "scripts": [
-    "front.js"
-  ],
-  "render_callback": "MaddenNino\\Blocks\\BradensotaMap\\render_block",
-  "settings": {
-    "title": "Florida's West Coast Map",
-    "description": "Interactive map for Florida's West Coast",
-    "icon": "admin-site-alt2",
-    "category": "layout",
-    "attributes": {
-      "mode": {
-				"type": "string",
-				"default": "view"
-      },
-      "amiMediaId" : {
-        "type": "number",
-        "default": 0
-      },
-      "amiDescription" : {
-        "type": "string",
-        "default": ""
-      },
-      "amiUrl" : {
-        "type": "string",
-        "default": ""
-      },
-      "bridgeStreetMediaId" : {
-        "type": "number",
-        "default": 0
-      },
-      "bridgeStreetDescription" : {
-        "type": "string",
-        "default": ""
-      },
-      "bridgeStreetUrl" : {
-        "type": "string",
-        "default": ""
-      },
-      "bradentonRiverwalkMediaId" : {
-        "type": "number",
-        "default": 0
-      },
-      "bradentonRiverwalkDescription" : {
-        "type": "string",
-        "default": ""
-      },
-      "bradentonRiverwalkUrl" : {
-        "type": "string",
-        "default": ""
-      }
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "mm-bradentongulfislands/bradensota-map",
+  "version": "1.0.0",
+  "title": "Florida's West Coast Map",
+  "description": "Interactive map for Florida's West Coast",
+  "icon": "admin-site-alt2",
+  "category": "layout",
+  "attributes": {
+    "mode": {
+      "type": "string",
+      "default": "view"
+    },
+    "amiMediaId" : {
+      "type": "number",
+      "default": 0
+    },
+    "amiDescription" : {
+      "type": "string",
+      "default": ""
+    },
+    "amiUrl" : {
+      "type": "string",
+      "default": ""
+    },
+    "bridgeStreetMediaId" : {
+      "type": "number",
+      "default": 0
+    },
+    "bridgeStreetDescription" : {
+      "type": "string",
+      "default": ""
+    },
+    "bridgeStreetUrl" : {
+      "type": "string",
+      "default": ""
+    },
+    "bradentonRiverwalkMediaId" : {
+      "type": "number",
+      "default": 0
+    },
+    "bradentonRiverwalkDescription" : {
+      "type": "string",
+      "default": ""
+    },
+    "bradentonRiverwalkUrl" : {
+      "type": "string",
+      "default": ""
     }
-  }
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "viewStyle": "file:./style-index.css",
+  "viewScript": "file:./front.js",
+  "render": "file:./render.php"
 }

@@ -1,8 +1,0 @@
-{
-  "name": "maddenmedia/mm-wordpress-block-water-ferry-map",
-  "description": "Example dynamic block",
-  "keywords": ["example-wordpress-block", "wordpress-starter-block"],
-  "license": "MIT",
-  "type": "mm-wordpress-block",
-  "version": "v1.2021.05.0"
-}
