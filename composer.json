@@ -99,6 +99,7 @@
     "wp-cli/wp-cli-bundle": "^2.5",
     "wpackagist-plugin/broken-link-checker": "^2.4",
     "wpackagist-plugin/cache-control": "^2.2",
+    "wpackagist-plugin/cloudflare":"4.12.8",
     "wpackagist-plugin/duplicate-post": "^4.4",
     "wpackagist-plugin/enable-media-replace": "^4.1.6",
     "wpackagist-plugin/force-regenerate-thumbnails": "2.2.2",
