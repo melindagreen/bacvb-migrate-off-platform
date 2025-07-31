@@ -43,8 +43,6 @@ if(
   );
 }
 
-echo '<pre>';print_r( $query_args );echo '</pre>';
-
 $listings_query = new \WP_Query( $query_args );
 ?>
 
