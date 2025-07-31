@@ -104,10 +104,27 @@ if ("serviceWorker" in navigator) {
 		// }
 		// });
 
-		$(
-			".lb-content:not(.wp-lightbox-overlay .lightbox-image-container .lb-content), .lightbox-imagecarousel:not(.wp-lightbox-overlay .lightbox-image-container .lightbox-imagecarousel"
-		).each(function () {
-			$(this).remove();
+		// $(
+		// 	".lb-content:not(.wp-lightbox-overlay .lightbox-image-container .lb-content), .lightbox-imagecarousel:not(.wp-lightbox-overlay .lightbox-image-container .lightbox-imagecarousel"
+		// ).each(function () {
+		// 	$(this).remove();
+		// });
+
+
+		const galleries = $('.wp-block-gallery');
+
+		galleries.each(function(index) {
+			const gallery = $(this);
+			const lightboxContainer = $('.lightbox-image-container').eq(index);
+			const imageCarousel = $('.lightbox-imagearousel').eq(index);
+			const lbContent = $('.lb-content').eq(index);
+
+			if (lightboxContainer.length && imageCarousel.length && lbContent.length) {
+			lightboxContainer.append(imageCarousel);
+			lightboxContainer.append(lbContent);
+
+			gallery.remove();
+			}
 		});
 	}
 
