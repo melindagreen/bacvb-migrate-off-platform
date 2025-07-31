@@ -5,6 +5,9 @@ import { THEME_PREFIX } from "./inc/constants";
 import "./library/madden-parallax-layout-v1.3-min";
 import MMLazyLoad from "./library/madden-lazy-load-v1.5-min";
 import "../styles/style.scss";
+import Swiper from 'swiper';
+import 'swiper/swiper-bundle.css';
+
 
 /*** SERVICE WORKER ************************************************************/
 
@@ -111,21 +114,38 @@ if ("serviceWorker" in navigator) {
 		// });
 
 
-		const galleries = $('.wp-block-gallery');
+		const firstLightboxContainer = $('.lightbox-image-container').first();
+  
+  if (firstLightboxContainer.length === 0) {
+    console.warn('The first .lightbox-image-container was not found.');
+    return;
+  }
+  // Hide all carousels and content initially and move them to the first container
+  $('.lightbox-imagecarousel, .lb-content').each(function() {
+    $(this).hide().appendTo(firstLightboxContainer);
+	console.log('First lightbox container:', firstLightboxContainer);
+  });
 
-		galleries.each(function(index) {
-			const gallery = $(this);
-			const lightboxContainer = $('.lightbox-image-container').eq(index);
-			const imageCarousel = $('.lightbox-imagearousel').eq(index);
-			const lbContent = $('.lb-content').eq(index);
+  // Attach a click event listener to each image in the galleries
+  $('.wp-block-gallery').each(function(galleryIndex) {
+    // Find all images within the current gallery and attach the click handler
+    $(this).find('img').on('click', function() {
+      // Hide all carousels and content first to ensure only one is visible
+      $('.lightbox-imagecarousel, .lb-content').hide();
 
-			if (lightboxContainer.length && imageCarousel.length && lbContent.length) {
-			lightboxContainer.append(imageCarousel);
-			lightboxContainer.append(lbContent);
+      // Get the index of the clicked image within its gallery
+      const imageIndex = $(this).parent().index();
 
-			gallery.remove();
-			}
-		});
+      // Calculate the global index of the corresponding carousel and content
+      // Note: This assumes a consistent, flat structure where all carousels and lb-content are siblings
+      const correspondingCarousel = $('.lightbox-imagecarousel').eq(imageIndex);
+      const correspondingLbContent = $('.lb-content').eq(imageIndex);
+
+      // Show the corresponding carousel and content
+      correspondingCarousel.show();
+      correspondingLbContent.show();
+    });
+  });
 	}
 
 	/**Toggle Search Functions ***/

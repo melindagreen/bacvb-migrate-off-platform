@@ -1781,6 +1781,11 @@ body {
       cursor: pointer;
       z-index: 2;
 
+      .lightbox-trigger {
+
+        display: none;
+      }
+
       .swiper-slide {
         text-align: center;
 
