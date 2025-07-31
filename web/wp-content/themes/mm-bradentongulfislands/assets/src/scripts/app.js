@@ -94,38 +94,141 @@ if ("serviceWorker" in navigator) {
 	});
 
 	/** Lightbox **/
-function initLightBox() {
-    const firstLightboxContainer = $('.lightbox-image-container').first();
-    firstLightboxContainer.empty();
-  
-    if (firstLightboxContainer.length === 0) {
-        console.warn('The first .lightbox-image-container was not found.');
-        return;
-    }
-    
-    // Hide all carousels and content initially and move them to the first container
-    $('.lightbox-imagecarousel').each(function() {
-        $(this).hide().appendTo(firstLightboxContainer); 
-    });
-    $('.lb-content').each(function() {
-        $(this).hide().appendTo(firstLightboxContainer); 
-    });
-    
-    $('.lb-content').each(function() {
-        const h1 = $(this).find('h1');
-        if (h1.length && $.trim(h1.text()) === '') {
-            $(this).remove();
+    function initLightBox() {
+        // Dynamically create the global lightbox overlay if it doesn't exist
+        if ($('#global-lightbox-overlay').length === 0) {
+            const lightboxHtml = `
+                <div id="global-lightbox-overlay" class="global-lightbox-overlay wp-lightbox-overlay">
+                    <div class="global-lightbox-content-wrapper">
+                        <div id="global-lightbox-content-area" class="global-lightbox-content-area lightbox-image-container">
+                            <!-- Dynamic content will be appended here -->
+                        </div>
+                    </div>
+                    <button type="button" aria-label="Close" style="fill: var(--wp--preset--color--soft-black)" class="close-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="m13.06 12 6.47-6.47-1.06-1.06L12 10.94 5.53 4.47 4.47 5.53 10.94 12l-6.47 6.47 1.06 1.06L12 13.06l6.47 6.47 1.06-1.06L13.06 12Z"></path></svg>
+                    </button>
+                </div>
+            `;
+            $('body').append(lightboxHtml);
         }
-    });
 
+        const globalLightboxOverlay = $('#global-lightbox-overlay');
+        const globalLightboxContentArea = $('#global-lightbox-content-area');
+        // Correctly target the close button by its class within the overlay
+        const globalLightboxCloseBtn = globalLightboxOverlay.find('.close-button'); 
 
-    const cameraIconPath = '/wp-content/themes/mm-bradentongulfislands/assets/images/icons/camera-icon.svg';
-    firstLightboxContainer.find('.photocredit img').each(function() {
-        $(this).attr('src', cameraIconPath);
-        $(this).attr('srcset', cameraIconPath);
-    });
+        // Hide all carousels and content initially and move them to the global content area.
+        // They will remain hidden until triggered.
+        $('.lightbox-imagecarousel').each(function() {
+            $(this).hide().appendTo(globalLightboxContentArea); 
+        });
+        
+        $('.lb-content').each(function() {
+            $(this).hide().appendTo(globalLightboxContentArea);
+        });
+        
+        // Remove any lb-content with an empty H1
+        $('.lb-content').each(function() {
+            const h1 = $(this).find('h1');
+            if (h1.length && $.trim(h1.text()) === '') {
+                $(this).remove();
+            }
+        });
 
-}
+        // Add the camera icon to photocredit images within the global content area
+        const cameraIconPath = '/wp-content/themes/mm-bradentongulfislands/assets/images/icons/camera-icon.svg';
+        globalLightboxContentArea.find('.photocredit img').each(function() {
+            $(this).attr('src', cameraIconPath);
+            $(this).attr('srcset', cameraIconPath);
+        });
+
+        // Initialize Swiper for each carousel after they have been moved
+        // This runs once on load for all carousels, regardless of visibility
+        const lightboxCarousels = globalLightboxContentArea.find(".lightbox-imagecarousel");
+
+        lightboxCarousels.each(function (index, element) {
+            const uniqueClass = "swiper-buttons-" + index;
+            const uniqueContainer = "swiper-container-" + index;
+
+            $(element).addClass(uniqueContainer);
+            $(element).find(".swiper-button-next-imagecarousel").addClass(uniqueClass + "-next");
+            $(element).find(".swiper-button-prev-imagecarousel").addClass(uniqueClass + "-prev");
+
+            new Swiper("." + uniqueContainer, {
+                loop: true,
+                direction: 'horizontal',
+                autoplay: {
+                    delay: 5500,
+                    disableOnInteraction: false,
+                },
+                clickable: true,
+                navigation: {
+                    nextEl: "." + uniqueClass + "-next",
+                    prevEl: "." + uniqueClass + "-prev",
+                },
+            });
+        });
+
+        // Attach a click event listener to each image in the galleries
+        $('.wp-block-gallery').each(function(galleryIndex) {
+            // Find all images within the current gallery and attach the click handler
+            $(this).find('img').on('click', function() {
+                // Get the index of the clicked image within its gallery
+                // This assumes a 1:1 correspondence between gallery images and carousels/lb-content
+                const imageIndex = $(this).parent().index(); 
+                console.log('Gallery image clicked. Index:', imageIndex);
+
+                // Hide all carousels and content within the global content area first
+                globalLightboxContentArea.find('.lightbox-imagecarousel, .lb-content').hide();
+
+                // Select the corresponding carousel and content using the index
+                const correspondingCarousel = globalLightboxContentArea.find('.lightbox-imagecarousel').eq(imageIndex);
+                const correspondingLbContent = globalLightboxContentArea.find('.lb-content').eq(imageIndex);
+
+                // Show the corresponding carousel and content
+                correspondingCarousel.show();
+                correspondingLbContent.show();
+
+                // Update images for the now visible carousel (lazy loading)
+                correspondingCarousel.find('img[data-gallery-src]').each(function() {
+                    const imageUrl = $(this).attr('data-gallery-src');
+                    $(this).attr('src', imageUrl);
+                });
+
+                // Show the global lightbox overlay using the 'active' class
+                globalLightboxOverlay.addClass('active');
+                $('body').css('overflow', 'hidden'); // Prevent body scrolling
+            });
+        });
+
+        // Close lightbox functionality when clicking the overlay background
+        globalLightboxOverlay.on('click', function(e) {
+            // Only close if the direct target of the click is the overlay itself
+            if ($(e.target).is(globalLightboxOverlay)) {
+                globalLightboxOverlay.removeClass('active'); // Remove 'active' class
+                $('body').css('overflow', ''); // Restore body scrolling
+            }
+        });
+
+        // Close lightbox functionality when clicking the dedicated close button
+        globalLightboxCloseBtn.on('click', function() {
+            globalLightboxOverlay.removeClass('active'); // Remove 'active' class
+            $('body').css('overflow', ''); // Restore body scrolling
+        });
+
+        // Prevent clicks inside the content area from closing the lightbox
+        globalLightboxContentArea.on('click', function(e) {
+            e.stopPropagation();
+        });
+
+        // Keyboard Escape key to close
+        $(document).on('keydown', function(e) {
+            if (e.key === 'Escape' && globalLightboxOverlay.hasClass('active')) { // Check for 'active' class
+                globalLightboxOverlay.removeClass('active');
+                $('body').css('overflow', '');
+            }
+        });
+    }
 
 	/**Toggle Search Functions ***/
 	function searchOpen(element) {
@@ -284,70 +387,14 @@ function initLightBox() {
 		});
 
 		//LightBox
-		initLightBox();
+        initLightBox();
 
-		var lightboxCarousels = $(".lightbox-imagecarousel");
-
-		// Loop through each element
-		lightboxCarousels.each(function (index, element) {
-			// Unique class based on index
-			var uniqueClass = "swiper-buttons-" + index;
-
-			// Add unique classes to next and prev buttons
-			$(element)
-				.find(".swiper-button-next-imagecarousel")
-				.addClass(uniqueClass + "-next");
-			$(element)
-				.find(".swiper-button-prev-imagecarousel")
-				.addClass(uniqueClass + "-prev");
-
-			var uniqueContainer = "swiper-container-" + index;
-
-			// Add unique class to the Swiper container element
-			$(element).addClass(uniqueContainer);
-
-			// Initialize Swiper for each element with different options
-			var swiper = new Swiper("." + uniqueContainer, {
-				loop: false,
-				direction: 'horizontal',
-				autoplay: {
-					delay: 5500,
-					disableOnInteraction: false,
-				},
-				clickable: true,
-				navigation: {
-					nextEl: "." + uniqueClass + "-next", // Use unique class for next button
-					prevEl: "." + uniqueClass + "-prev", // Use unique class for prev button
-				},
-			});
-			console.log(swiper);
-		});
-
-		$(
-			".swiper-button-next-imagecarousel, .swiper-button-prev-imagecarousel, .swiper-slide, .scrim, .swiper-slide-next, .swiper-slide-duplicate"
-		).on("click", function (event) {
-			// Prevent the event from reaching parent elements
-			event.stopPropagation();
-		});
-
-		$('.wp-block-gallery').each(function(galleryIndex) {
-        // Find all images within the current gallery and attach the click handler
-        $(this).find('img').on('click', function() {
-            // Hide all carousels and content first to ensure only one is visible
-            $('.lightbox-imagecarousel, .lb-content').hide();
-
-            // Get the index of the clicked image within its gallery
-            const imageIndex = $(this).parent().index();
-
-            // Calculate the global index of the corresponding carousel and content
-            const correspondingCarousel = $('.lightbox-imagecarousel').eq(imageIndex);
-            const correspondingLbContent = $('.lb-content').eq(imageIndex);
-
-            // Show the corresponding carousel and content
-            correspondingCarousel.show();
-            correspondingLbContent.show();
+        $(
+            ".swiper-button-next-imagecarousel, .swiper-button-prev-imagecarousel, .swiper-slide, .scrim, .swiper-slide-next, .swiper-slide-duplicate"
+        ).on("click", function (event) {
+            // Prevent the event from reaching parent elements
+            event.stopPropagation();
         });
-	});
 
 
 		// Query Block Placeholder Image

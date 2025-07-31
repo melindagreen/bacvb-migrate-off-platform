@@ -1725,8 +1725,8 @@ body {
 
     .lightbox-image-container {
       overflow: unset;
-      width: 60%;
-      min-width: 300px;
+      width: 95vw;
+      max-width: 850px;
       height: auto;
 
       .wp-block-image:first-child {

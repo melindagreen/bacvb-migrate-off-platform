@@ -69,80 +69,83 @@ const applyCustomAttrs = (el, block, attributes) => {
 					}
 					break;
 				case "lightbox-data":
-					function getPhotoCredit(url) {
-						let name = "photocredit";
-						name = name.replace(/[[]/, "\\[").replace(/[\]]/, "\\]");
-						const regex = new RegExp("[?&]" + name + "=([^&#]*)");
-						const results = regex.exec(url);
+    function getPhotoCredit(url) {
+        let name = "photocredit";
+        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+        const regex = new RegExp("[?&]" + name + "=([^&#]*)");
+        const results = regex.exec(url);
 
-						if (results !== null) {
-							const photoCredit = decodeURIComponent(
-								results[1].replace(/\+/g, " ")
-							);
-							const photoIcon = (
-								<img
-									src="/wp-content/themes/mm-bradentongulfislands/assets/images/icons/camera-icon.svg"
-									alt="Camera Icon"
-								/>
-							);
-							const photoCreditContent = (
-								<div class="photocredit" data-photocredit={photoCredit}>
-									{photoIcon}
-								</div>
-							);
-							return photoCreditContent;
-						} else {
-							return "";
-						}
-					}
+        if (results !== null) {
+            const photoCredit = decodeURIComponent(
+                results[1].replace(/\+/g, " ")
+            );
+            const photoIcon = (
+                <img
+                    src="/wp-content/themes/mm-bradentongulfislands/assets/images/icons/camera-icon.svg"
+                    alt="Camera Icon"
+                />
+            );
+            const photoCreditContent = (
+                <div class="photocredit" data-photocredit={photoCredit}>
+                    {photoIcon}
+                </div>
+            );
+            return photoCreditContent;
+        } else {
+            return "";
+        }
+    }
 
-					if (typeof attributes.lbTitle !== "undefined") {
-						ElWrap = ({ content }) => (
-							<>
-								{content}
+    if (typeof attributes.lbTitle !== "undefined") {
+        ElWrap = ({ content }) => (
+            <>
+                {content}
 
-								{attributes.lbImageIds.length > 0 ? (
-									<div
-										className={`lightbox-imagecarousel swiper-slide-imagecarousel swiper`}
-									>
-										<div className={`swiper-wrapper`}>
-											{attributes.lbImageIds !== undefined
-												? attributes.lbImageIds.map((id, index) => {
-														return (
-															<div className="wp-block-image swiper-slide">
-																{getPhotoCredit(attributes.lbImageUrls[index])}
-																<img
-																	src="/wp-content/themes/mm-bradentongulfislands/assets/images/pixel.png"
-																	alt={
-																		attributes.lbImageAlts[index] !== ""
-																			? attributes.lbImageAlts[index]
-																			: "Carousel Image"
-																	}
-																	data-load-type="img"
-																	data-load-all={attributes.lbImageUrls[index]}
-																/>
-															</div>
-														);
-												  })
-												: null}
-										</div>
-										<div className="swiper-pagination-imagecarousel"></div>
-										<div className="swiper-button-prev-imagecarousel"></div>
-										<div className="swiper-button-next-imagecarousel"></div>
-									</div>
-								) : (
-									""
-								)}
+                {attributes.lbImageIds.length > 0 ? (
+                    <div
+                        className={`lightbox-imagecarousel swiper-slide-imagecarousel swiper`}
+                    >
+                        <div className={`swiper-wrapper`}>
+                            {attributes.lbImageIds !== undefined
+                                ? attributes.lbImageIds.map((id, index) => {
+                                        return (
+                                            <div className="wp-block-image swiper-slide">
+                                                {getPhotoCredit(attributes.lbImageUrls[index])}
+                                                <img
+                                                    src="/wp-content/themes/mm-bradentongulfislands/assets/images/pixel.png"
+                                                    alt={
+                                                        attributes.lbImageAlts[index] !== ""
+                                                            ? attributes.lbImageAlts[index]
+                                                            : "Carousel Image"
+                                                    }
+                                                    data-load-type="img"
+                                                    data-load-all={attributes.lbImageUrls[index]}
+                                                    // This is the new attribute you'll use
+                                                    data-gallery-src={attributes.lbImageUrls[index]} 
+                                                />
+                                            </div>
+                                        );
+                                  })
+                                : null}
+                        </div>
+                        <div className="swiper-pagination-imagecarousel"></div>
+                        <div className="swiper-button-prev-imagecarousel"></div>
+                        <div className="swiper-button-next-imagecarousel"></div>
+                    </div>
+                ) : (
+                    ""
+                )}
 
-								<div className="lightbox-data lb-content">
-									<h1>{attributes.lbTitle}</h1>
-									<p>{attributes.lbDescription}</p>
-								</div>
-							</>
-						);
-					}
-					break;
-				case "overlap":
+                <div className="lightbox-data lb-content">
+                    <h1>{attributes.lbTitle}</h1>
+                    <p>{attributes.lbDescription}</p>
+                </div>
+            </>
+        );
+    }
+    break;
+	
+	case "overlap":
 					if (attributes.overlap !== 0) {
 						let margin = "-" + Math.abs(attributes.overlap) + "rem";
 						if (attributes.overlap > 0) {
