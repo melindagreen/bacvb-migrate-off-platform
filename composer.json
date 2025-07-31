@@ -64,7 +64,7 @@
       "package": {
         "name": "rankmath/seo-by-rank-math-pro",
         "type": "wordpress-plugin",
-        "version": "3.0.84",
+        "version": "3.0.93",
         "dist": {
           "type": "zip",
           "url": "https://rankmath.com/download/510590/?username=madden%20media&api_key=8330bc817f11ccc9d602921e293ecd5b"
