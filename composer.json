@@ -56,10 +56,6 @@
       "url": "git@github.com:maddenmedia/gravityforms.git"
     },
     {
-      "type": "vcs",
-      "url": "git@github.com:maddenmedia/kraken-purge.git"
-    },
-    {
       "type":"composer",
       "url":"https://connect.advancedcustomfields.com"
     },
@@ -90,7 +86,6 @@
     "maddenmedia/gravityforms": "2.9.13.1",
     "maddenmedia/madden-cookie-consent": "*",
     "maddenmedia/mm-madre-theme": "v1.4.6",
-    "maddenmedia/kraken-purge": "v1.1",
     "maddenmedia/wp-plugin-eventastic": "*",
     "maddenmedia/wp-plugin-madden-banners": "*",
     "maddenmedia/server-status": "1.5.2",
@@ -98,7 +93,6 @@
     "maddenmedia/partner-portal": "*",
     "wp-cli/wp-cli-bundle": "^2.5",
     "wpackagist-plugin/broken-link-checker": "^2.4",
-    "wpackagist-plugin/cache-control": "^2.2",
     "wpackagist-plugin/cloudflare":"4.12.8",
     "wpackagist-plugin/duplicate-post": "^4.4",
     "wpackagist-plugin/enable-media-replace": "^4.1.6",
@@ -112,9 +106,8 @@
     "wpackagist-plugin/tiny-compress-images": "3.5.2",
     "wpackagist-plugin/wordpress-importer": "^0.8",
     "wpackagist-plugin/wp-media-library-categories": "*",
-    "wpackagist-plugin/seo-by-rank-math":"1.0.249",
-    "rankmath/seo-by-rank-math-pro": "3.0.84",
-    "wpackagist-plugin/breeze":"2.2.16",
+    "wpackagist-plugin/seo-by-rank-math":"1.0.250",
+    "rankmath/seo-by-rank-math-pro": "3.0.93",
     "wpackagist-plugin/fareharbor": "^3.6",
     "admin-columns/admin-columns-pro": "6.4.20"
   },
