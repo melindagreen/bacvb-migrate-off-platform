@@ -8,8 +8,7 @@ No one likes a mess.
 
 ******************************************************************/
 
-$theme-prefix: 'mm-bradentongulfislands';
-$block-prefix: 'wp-block-' + $theme-prefix;
+
 
 $theme-assets-path: "/wp-content/themes/mm-bradentongulfislands/assets/";
 $theme-img-path: $theme-assets-path + "images/";
@@ -46,3 +45,15 @@ $dk-blue: #014067;
 $rust: #C96A39;
 $light-blue: #e8f9ff;
 $yellow-tan: #F4EEE1;
+
+
+// fonts
+$font-title: var(--wp--preset--font-family--title);
+$font-header: var(--wp--preset--font-family--header);
+$font-body: var(--wp--preset--font-family--body);
+
+$font-bradensota: "Josefin Sans", sans-serif;
+
+
+// links
+//$link-color: color('red');

@@ -1,8 +1,5 @@
-@import 'styles/utils/variables';
-@import 'styles/utils/typography';
 
 .#{$block-prefix}-showcase-card {
-
   width: 45rem;
   position: relative;
   margin-top: 2.5rem !important;
@@ -11,20 +8,18 @@
   align-items: center;
 
   &__image {
-
     height: 22rem;
     border-radius: 100%;
     overflow: hidden;
     width: 22rem;
     z-index: 2;
     position: relative;
-    --webkit-mask: url("images/irregular-mask.svg") no-repeat center;
-    mask: url("images/irregular-mask.svg") no-repeat center;
+    --webkit-mask: var(--img-irregular-mask) no-repeat center;
+    mask: var(--img-irregular-mask) no-repeat center;
     --webkit-mask-size: contain;
     mask-size: contain;
 
     .showcase-card-caption {
-
       position: absolute;
       top: 50%;
       left: 50%;
@@ -37,13 +32,12 @@
 
     &:hover {
       img {
-      transition: all ease-in-out 0.2s;
-      transform: scale(1.1);
+        transition: all ease-in-out 0.2s;
+        transform: scale(1.1);
       }
     }
 
     img {
-
       object-fit: cover;
       object-position: center;
       height: 100%;
@@ -52,9 +46,8 @@
       transition: all ease-in-out 0.3s;
     }
   }
-  
-  &__contents {
 
+  &__contents {
     color: $white;
     background-color: $bradenton-teal;
     min-height: 32rem;
@@ -65,9 +58,7 @@
     padding-right: 3rem;
     margin-left: -14rem;
 
-
     hr {
-
       margin-left: -7rem;
       z-index: 2;
       position: relative;
@@ -75,14 +66,12 @@
   }
 
   .contents-quote-img {
-
     display: block;
     margin: auto;
     margin-bottom: 0.3rem;
   }
 
   .contents-body {
-
     min-height: 7rem;
     line-height: 1.3em;
     margin-top: 0;
@@ -90,7 +79,6 @@
   }
 
   .contents-title {
-
     font-size: 5rem;
     font-size: 6rem;
     margin-bottom: 0;
@@ -98,25 +86,22 @@
   }
 
   .contents-button {
+    color: $dk-blue;
+    border: 1.5px solid $rust;
+    background-color: white;
+    border-radius: 31px;
+    padding: 0.3rem 0.85rem;
+    transition: all 0.2s ease-in-out;
+    text-transform: uppercase;
+    font-weight: 700;
 
-          color: $dk-blue;
-          border: 1.5px solid $rust;
-          background-color: white;
-          border-radius: 31px;
-          padding: 0.3rem 0.85rem;
-          transition: all 0.2s ease-in-out;
-          text-transform: uppercase;
-          font-weight: 700;
-          
-
-          &:hover {
-
-            background-color: $rust;
-            color: $white;
-            text-decoration: none;
-            cursor: pointer;
-            transition: all 0.3s ease-in-out;
-          }
+    &:hover {
+      background-color: $rust;
+      color: $white;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+    }
   }
 }
 
@@ -133,13 +118,11 @@ SMALL SCREENS
 *********************/
 @media only screen and (max-width: 768px) {
   .#{$block-prefix}-showcase-card {
-
     width: 100vw;
     justify-content: center;
     flex-wrap: wrap;
 
     &__contents {
-
       padding-left: 2rem;
       padding-right: 2rem;
       padding-top: 8rem;
@@ -148,7 +131,7 @@ SMALL SCREENS
       margin-top: -14rem;
       min-height: 40rem;
       mask-size: cover !important;
-    -webkit-mask-size: cover !important;
+      -webkit-mask-size: cover !important;
     }
   }
 }

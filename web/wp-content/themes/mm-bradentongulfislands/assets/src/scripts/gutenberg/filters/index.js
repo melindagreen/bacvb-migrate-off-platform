@@ -17,16 +17,21 @@ import { THEME_PREFIX } from '../../inc/constants';
 import {
 	applyCustomizations,
 	customAttributes,
-	customControls,
+	customBlockEdit,
+	customBlockList,
 	extraProps
 } from './custom-core-controls';
+
+//AOS
+import './aos';
 
 /*** CONSTANTS **************************************************************/
 
 const ALL_FILTERS = [
 	applyCustomizations,
 	customAttributes,
-	customControls,
+	customBlockEdit,
+	customBlockList,
 	extraProps,
 ];
 

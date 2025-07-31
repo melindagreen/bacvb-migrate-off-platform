@@ -1,409 +1,372 @@
-@import "styles/utils/variables";
-@import "styles/utils/typography";
-
 .#{$block-prefix}-hero {
-	width: 100%;
-	justify-content: center;
-	align-items: center;
-	position: relative;
-	overflow-x: clip;
-	z-index: 0;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow-x: clip;
+  z-index: 0;
 
-	sup {
+  sup {
+    font-size: medium;
+    font-family: "Melburch";
+    left: -1.9375rem;
+    bottom: 0.3125rem;
+    position: relative;
+  }
 
-		font-size: medium;
-    	font-family: 'Melburch';
-		left: -1.9375rem;
-		bottom: 0.3125rem;
-		position: relative;
-	}
+  &--banner {
+    .title {
+      top: 65% !important;
+    }
+  }
 
-	&--banner {
+  .no-title {
+    margin: 0;
+  }
 
-		.title {
+  .hero-banner {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: 3;
+    border: 3px $rust solid;
+    border-right: none;
+    background-color: white;
+    max-width: 32rem;
+    border-radius: 0;
 
-			top: 65% !important;
-		}
-	}
+    &__title {
+      background: $rust;
+      margin-top: 0px;
+      color: white;
+      padding: 0.8rem 2rem;
+      font-family: $font-header;
+      border: 2px $rust solid;
+      font-size: 1.3rem;
+      border-radius: 0;
+    }
 
-	.no-title {
+    &__description {
+      padding: 0.5rem 2rem;
+    }
 
-		margin: 0;
-	}
+    &__crab {
+      position: absolute;
+      bottom: -7rem;
+      width: 10rem;
+      height: auto;
+      right: 0;
+    }
+  }
 
-	.hero-banner {
+  .cta-hero-banner {
+    position: absolute;
+    left: 0;
+    top: 25%;
+    z-index: 3;
+    border: 3px $bradenton-teal solid;
+    border-radius: 25px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-right: none;
+    background-color: $bradenton-teal;
+    max-width: 40rem;
+    padding: 2rem;
+    border: 2px solid white;
+    border-left: 0;
 
-		position: absolute;
-		right: 0;
-		bottom: 0;
-		z-index: 3;
-		border: 3px $rust solid;
-		border-right: none;
-		background-color: white;
-		max-width: 32rem;
-		border-radius: 0;
+    &__title {
+      color: white;
+      padding: 0.8rem 2rem;
+      font-family: $font-header;
+      font-size: 1.2vw;
+      border-color: $bradenton-teal;
+      text-align: right;
+      margin: 0 1vw;
+      margin-bottom: -0.5vw;
+    }
 
-		&__title {
+    &__description {
+      padding: 0.5rem 2rem;
+    }
 
-			background: $rust;
-			margin-top: 0px;
-			color: white;
-    		padding: 0.8rem 2rem;
-			font-family: $font-header;
-			border: 2px $rust solid;
-			font-size: 1.3rem;
-			border-radius: 0;
-		}
+    &__cta {
+      display: flex;
 
+      .cta-hero-banner__logo {
+        width: 9vw;
+        min-width: 100px;
+        height: auto;
+      }
 
-		&__description {
+      .wp-block-button__link {
+        background: white;
+        padding: 1.5vw;
+        font-size: 2vw;
+        margin: 0 2rem;
+        color: $bradenton-teal !important;
+        border-radius: 22px;
+        align-self: end;
+        text-decoration: none;
+        transition: all 0.3s ease-in-out;
 
-			padding: 0.5rem 2rem;
-		}
+        &:hover {
+          background-color: $rust;
+          color: white !important;
+          transition: all 0.2s ease-in-out;
+        }
+      }
+    }
+  }
 
-		&__crab {
+  .fade {
+    background: linear-gradient(to top, rgba($dk-blue, 70%), rgba($dk-blue, 0) 100%);
+    width: 100%;
+    height: 50vh;
+    margin-top: 50vh;
+    z-index: 1;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
 
-			position: absolute;
-			bottom: -7rem;
-			width: 10rem;
-			height: auto;
-			right: 0;
-		}
+  .wave {
+    display: none;
+  }
 
-	}
+  .badge {
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 35%;
+    z-index: 100000000;
+    margin: 0 auto;
+  }
 
-	.cta-hero-banner {
+  &.videoHero.hero--wave {
+    //hide double scroll bar. default set to overflow-x: cip but that stil shows hero video bars
+    //overflow: hidden;
+    //On 8.24.23 Noticed no double side bars with this commented out unlike before. Will push live. pnh
+    &:after {
+      content: " ";
+      background: transparent var(--img-hero-bottom) no-repeat;
+      background-size: 100% auto;
+      height: 12em;
+      left: 0;
+      position: absolute;
+      width: 105%;
+      z-index: 1;
+      bottom: 0;
+      background-size: cover;
+    }
+  }
+  .hero {
+    width: 100%;
+    height: 100vh;
+    min-height: 50rem;
+    max-height: 70rem;
+    position: relative;
+    z-index: 1;
+    background: transparent var(--img-pixel) no-repeat bottom center;
+    background-size: cover;
 
-		position: absolute;
-		left: 0;
-		top: 25%;
-		z-index: 3;
-		border: 3px $bradenton-teal solid;
-		border-radius: 25px;
-		border-top-left-radius: 0;
-		border-bottom-left-radius: 0;
-		border-right: none;
-		background-color: $bradenton-teal;
-		max-width: 40rem;
-		padding: 2rem;
-		border: 2px solid white;
-		border-left: 0;
+    &.has-parallax {
+      background-position: top center;
+    }
 
-		&__title {
+    &.full {
+      height: 90vh;
+      transform: none;
 
-			color: white;
-    		padding: 0.8rem 2rem;
-			font-family: $font-header;
-			font-size: 1.2vw;	
-			border-color: $bradenton-teal;
-			text-align: right;
-			margin: 0 1vw;
-			margin-bottom: -0.5vw;
-		
-		}
+      &::after {
+        background: var(--img-slideshow-bottom) repeat-x center;
+        position: absolute;
+        width: 100%;
+        height: 3.5rem;
+        bottom: 0;
+        z-index: 2;
+      }
+    }
 
+    &:after {
+      content: " ";
+      background: transparent var(--img-hero-bottom) no-repeat;
+      background-size: 100% auto;
+      height: 12rem;
+      left: 0;
+      position: absolute;
+      width: 105%;
+      z-index: 2;
+      bottom: 0;
+      background-size: cover;
+    }
+  }
+  .hero-video-play {
+    position: absolute;
+    top: #{$header-height-desktop + 2rem};
+    left: 2rem;
+    z-index: 10;
+    width: 2.5rem;
+    height: 2.5rem;
+    border: none;
+    background-color: color("dark-blue");
+    cursor: pointer;
+    &.pause {
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        height: 50%;
+        transform: translateY(-50%);
+        width: 0.25rem;
+        background-color: white;
+      }
+      &::before {
+        left: 35%;
+      }
+      &::after {
+        right: 35%;
+      }
+    }
+    &.play {
+      &::before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 8px 0 8px 13.9px;
+        border-color: transparent transparent transparent white;
+      }
+    }
+  }
+  .video {
+    width: 100%;
+    height: 100vh;
+    min-height: 900px;
+    position: relative;
+    z-index: 1;
+    video {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+    &.video--mobile {
+      display: none;
+    }
+  }
+  @media only screen and (max-width: 678px) {
+    .video {
+      height: 75vh;
+      min-height: 850px;
 
-		&__description {
+      &.video--mobile {
+        display: block;
+      }
+      &.video--desktop {
+        display: none;
+      }
+    }
+  }
 
-			padding: 0.5rem 2rem;
-		}
+  .title {
+    color: $white;
+    font-family: $font-title;
+    width: 95%;
+    max-width: 100%;
+    margin: 0 auto;
+    font-weight: 700;
+    text-align: left;
+    position: absolute;
+    left: 4%;
+    right: 0;
+    top: 40%;
+    transform: translateY(-10%);
+    text-shadow: 0 5px 20px #000000a3;
+    z-index: 1000000;
+    font-size: 12rem;
+    font-weight: 100;
 
+    span {
+      display: block;
+      font-size: 2rem;
+      color: $white;
+      font-family: $font-header;
+      position: absolute;
+      max-width: 23rem;
+      text-align: center;
+      left: 10.5rem;
+      margin: auto;
+    }
 
-		&__cta {
-
-			display: flex;
-
-			.cta-hero-banner__logo {
-
-				width: 9vw;
-				min-width: 100px;
-				height: auto;
-			}
-
-			.wp-block-button__link {
-
-				background: white;
-				padding: 1.5vw;
-				font-size: 2vw;
-				margin: 0 2rem;
-				color: $bradenton-teal !important;
-				border-radius: 22px;
-				align-self: end;
-				text-decoration: none;
-				transition: all 0.3s ease-in-out;
-
-				&:hover {
-
-					background-color: $rust;
-					color: white !important;
-					transition: all 0.2s ease-in-out;
-				}
-			}
-		}
-
-	}
-
-	.fade {
-		background: linear-gradient(to top, rgba($dk-blue, 70%), rgba($dk-blue, 0) 100%);
-		width: 100%;
-		height: 50vh;
-		margin-top: 50vh;
-		z-index: 1;
-		position: absolute;
-		bottom: 0;
-		left: 0;
-		right: 0;
-	}
-
-	.wave {
-		display: none;
-	}
-
-	.badge {
-		width: 200px;
-		height: 200px;
-		position: absolute;
-		left: 0;
-		right: 0;
-		top: 35%;
-		z-index: 100000000;
-		margin: 0 auto;
-	}
-
-	&.videoHero.hero--wave { //hide double scroll bar. default set to overflow-x: cip but that stil shows hero video bars
-		//overflow: hidden;
-		//On 8.24.23 Noticed no double side bars with this commented out unlike before. Will push live. pnh
-		&:after {
-			content: " ";
-			background: transparent url("images/hero-bottom.png") no-repeat;
-			background-size: 100% auto;
-			height: 12em;
-			left: 0;
-			position: absolute;
-			width: 105%;
-			z-index: 1;
-			bottom: 0;
-			background-size: cover;
-		}
-	}
-	.hero {
-		width: 100%;
-		height: 100vh;
-		min-height: 50rem;
-		max-height: 70rem;
-		position: relative;
-		z-index: 1;
-		background: transparent url("images/pixel.png") no-repeat bottom center;
-		background-size: cover;
-
-		&.has-parallax {
-			background-position: top center;
-		}
-
-		&.full {
-			height: 90vh;
-			transform: none;
-
-			&::after {
-		      background: url('images/slideshow-bottom.png') repeat-x center;
-		      position: absolute;
-		      width: 100%;
-		      height: 3.5rem;
-		      bottom: 0;
-		      z-index: 2;
-		    }
-		}
-
-		&:after {
-			content: " ";
-			background: transparent url("images/hero-bottom.png") no-repeat;
-			background-size: 100% auto;
-			height: 12rem;
-			left: 0;
-			position: absolute;
-			width: 105%;
-			z-index: 2;
-			bottom: 0;
-			background-size: cover;
-		}
-
-	}
-	.hero-video-play {
-		position: absolute;
-		top: #{$header-height-desktop + 2rem};
-		left: 2rem;
-		z-index: 10;
-		width: 2.5rem;
-		height: 2.5rem;
-		border: none;
-		background-color: color("dark-blue");
-		cursor: pointer;
-		&.pause {
-			&::before,
-			&::after {
-				content: "";
-				position: absolute;
-				top: 50%;
-				height: 50%;
-				transform: translateY(-50%);
-				width: 0.25rem;
-				background-color: white;
-			}
-			&::before {
-				left: 35%;
-			}
-			&::after {
-				right: 35%;
-			}
-		}
-		&.play {
-			&::before {
-				content: "";
-				display: block;
-				position: absolute;
-				top: 50%;
-				left: 50%;
-				transform: translate(-50%, -50%);
-				width: 0;
-				height: 0;
-				border-style: solid;
-				border-width: 8px 0 8px 13.9px;
-				border-color: transparent transparent transparent white;
-			}
-		}
-	}
-	.video {
-		width: 100%;
-		height: 100vh;
-		min-height: 900px;
-		position: relative;
-		z-index: 1;
-		video {
-			width: 100%;
-			height: 100%;
-			display: block;
-			object-fit: cover;
-		}
-		&.video--mobile {
-			display: none;
-		}
-	}
-	@media only screen and (max-width: 678px) {
-		.video { 
-			height: 75vh;
-			min-height: 850px;
-		
-			&.video--mobile {
-				display: block;
-			}
-			&.video--desktop {
-				display: none;
-			} 
-		}
-	}
-	
-	.title {
-		color: $white;
-		font-family: $font-title;
-		width: 95%;
-		max-width: 100%;
-		margin: 0 auto;
-		font-weight: 700;
-		text-align: left;
-		position: absolute;
-		left: 4%;
-		right: 0;
-		top: 40%;
-		transform: translateY(-10%);
-		text-shadow: 0 5px 20px #000000a3;
-		z-index: 1000000;
-		font-size: 12rem;
-		font-weight: 100;
-
-		span {
-			display: block;
-			font-size: 2rem;
-			color: $white;
-			font-family: $font-header;
-			position: absolute;
-			max-width: 23rem;
-			text-align: center;
-			left: 10.5rem;
-			margin: auto;
-		}
-
-		&::before {
-			content: '';
-			display: block;
-			width: 200px; 
-			height: 200px;
-			background-image: var(--logo-url);
-			background-size: contain;
-			background-repeat: no-repeat;
-			position: absolute;
-			top: -15rem; 
-			left: 0;
-		}
-	}
+    &::before {
+      content: "";
+      display: block;
+      width: 200px;
+      height: 200px;
+      background-image: var(--logo-url);
+      background-size: contain;
+      background-repeat: no-repeat;
+      position: absolute;
+      top: -15rem;
+      left: 0;
+    }
+  }
 }
 
-.hero--wave + .wp-block-heading, .hero--wave + p, .hero--wave + .wp-block-group, .hero--wave + .wp-block-image {
-	margin-top: -2rem;
-	position: relative;
-	z-index: 1 !important;
+.hero--wave + .wp-block-heading,
+.hero--wave + p,
+.hero--wave + .wp-block-group,
+.hero--wave + .wp-block-image {
+  margin-top: -2rem;
+  position: relative;
+  z-index: 1 !important;
 }
-  
-
 
 .#{$block-prefix}-hero {
-	&.wave-alter {
-		height: 50vh;
-		.wave {
-			position: relative;
-			top: 50px;
-			height: 15vw;
-			background-position: initial !important;
-		}
-	}
+  &.wave-alter {
+    height: 50vh;
+    .wave {
+      position: relative;
+      top: 50px;
+      height: 15vw;
+      background-position: initial !important;
+    }
+  }
 }
 
 /*********************
 MEDIUM SCREENS
 *********************/
 @media only screen and (min-width: ($screen-sm + 1)) and (max-width: $screen-lg) {
+  .#{$block-prefix}-hero {
+    .cta-hero-banner {
+      &__title {
+        margin-bottom: 0;
+        text-align: center;
+        font-size: 1.2rem;
+      }
 
-	.#{$block-prefix}-hero {
+      &__cta {
+        .cta-hero-banner__logo {
+        }
 
-		.cta-hero-banner {
-
-	
-	
-			&__title {
-	
-				margin-bottom: 0;
-				text-align: center;
-				font-size: 1.2rem;
-			}
-	
-
-			&__cta {
-
-
-	
-				.cta-hero-banner__logo {
-	
-		
-				}
-	
-				.wp-block-button__link {
-					
-					padding: 1rem;
-					font-size: 1.5rem;
-				
-				}
-			}
-		}
-	}
+        .wp-block-button__link {
+          padding: 1rem;
+          font-size: 1.5rem;
+        }
+      }
+    }
+  }
 }
 
 /*********************
@@ -415,183 +378,158 @@ SMALL SCREENS
 //
 
 @media only screen and (max-width: 768px) {
-	.#{$block-prefix}-hero {
-		// &:not(.videoHero) {
-		// 	&:after {
-		// 		padding-bottom: 137%;
-		// 	}
-		// }
+  .#{$block-prefix}-hero {
+    // &:not(.videoHero) {
+    // 	&:after {
+    // 		padding-bottom: 137%;
+    // 	}
+    // }
 
-		&--banner {
+    &--banner {
+      .title {
+        top: 40% !important;
+      }
+    }
 
-			.title {
-	
-				top: 40% !important;
-			}
-		}
+    .hero-banner {
+      border-radius: 0;
+      position: relative;
+      right: 0;
+      bottom: -2%;
+      margin: 0 auto;
+      margin-top: -5rem;
+      border-right: 3px $rust solid;
+      width: 100%;
 
-		.hero-banner {
+      margin-bottom: 1rem;
 
-			border-radius: 0;
-			position: relative;
-			right: 0;
-			bottom: -2%;
-			margin: 0 auto;
-			margin-top: -5rem;
-			border-right: 3px $rust solid;
-			width: 100%;
+      &__title {
+        padding: 0.8rem 1.5rem;
+      }
 
-			margin-bottom: 1rem;
-	
-			&__title {
-	
-				padding: 0.8rem 1.5rem;
-			}
-	
-	
-			&__description {
-	
-				padding: 0.5rem 1.5rem;
-			}
+      &__description {
+        padding: 0.5rem 1.5rem;
+      }
 
-			&__crab {
+      &__crab {
+        display: none;
+      }
 
-				display: none;
-			}
+      &--cta {
+        .hero-banner__title {
+          font-size: 1.5rem;
+          text-align: center;
+        }
 
-			&--cta {
+        .hero-banner__description {
+          width: 100%;
+          padding: 0.5rem 2rem;
+          text-align: center;
+          display: inline-block;
+        }
 
-	
-				.hero-banner__title {
-					
-					font-size: 1.5rem;
-					text-align: center;
-				}
-	
-				.hero-banner__description {
-	
-					width: 100%;
-					padding: 0.5rem 2rem;
-					text-align: center;
-					display: inline-block;
-				}
-	
-				.hero-banner__cta {
+        .hero-banner__cta {
+          width: 100%;
+          text-align: center;
+          padding: 0.5rem 1rem;
+          a {
+            font-size: 1.5rem;
+          }
+        }
+      }
+    }
 
-					width: 100%;
-					text-align: center;
-					padding: 0.5rem 1rem;
-					a {
-						
-						font-size: 1.5rem;
-					}
-				}
-			}
-		}
+    .cta-hero-banner {
+      border-radius: 0;
+      position: relative;
+      right: 0;
+      margin: 0 auto;
+      border-right: 3px $rust solid;
+      width: 90%;
+      border-radius: 25px;
+      padding: 2rem 0.5rem;
+      margin-bottom: 1rem;
+      border: none;
+      max-width: 32rem;
 
-		.cta-hero-banner {
+      &__title {
+        margin-bottom: 0;
+        text-align: center;
+        font-size: 1.2rem;
+      }
 
+      &__description {
+        padding: 0.5rem 1.5rem;
+      }
 
-			border-radius: 0;
-			position: relative;
-			right: 0;
-			margin: 0 auto;
-			border-right: 3px $rust solid;
-			width: 90%;
-			border-radius: 25px;
-			padding: 2rem 0.5rem;
-			margin-bottom: 1rem;
-			border: none;
-			max-width: 32rem;
-	
-	
-			&__title {
-	
-				margin-bottom: 0;
-				text-align: center;
-				font-size: 1.2rem;
-			}
-	
-	
-			&__description {
-	
-				padding: 0.5rem 1.5rem;
-			}
+      &__cta {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
 
-			&__cta {
+        .cta-hero-banner__logo {
+          width: 95px;
+          height: auto;
+        }
 
-				display: flex;
-				justify-content: center;
-				gap: 2rem;
+        .wp-block-button__link {
+          padding: 1rem 2rem;
+          font-size: 1.5rem;
+          margin: 0;
+        }
+      }
+    }
 
-	
-				.cta-hero-banner__logo {
-	
-					width: 95px;
-        			height: auto;
-				}
-	
-				.wp-block-button__link {
+    &.videoHero {
+      &::after {
+        bottom: -6rem;
+      }
+      &.hero--wave:after {
+        bottom: -4rem;
+      }
+    }
 
-					padding: 1rem 2rem;
-					font-size: 1.5rem;
-					margin: 0;			
-				}
-			}
-		}
+    .hero {
+      min-height: 35rem;
+      max-height: 630px;
 
-		&.videoHero {
+      &::after {
+        bottom: -3rem;
+      }
+    }
 
-			&::after {
+    .title {
+      width: 70%;
+      font-size: 20vw;
+      line-height: 12vw;
+      text-align: center;
+      left: 50%;
+      top: 60%;
+      transform: translateX(-50%);
 
-				bottom: -6rem;
-			}
-		}
+      span {
+        margin-top: 1.25rem;
+        font-size: 4vw;
+        line-height: 1em;
+        left: 55%;
+        bottom: 5rem;
+        transform: translateX(-50%);
+      }
 
-		.hero {
-
-			min-height: 35rem;
-    		max-height: 630px;
-
-			&::after {
-
-				bottom: -3rem
-			}
-		}
-
-		.title {
-			width: 70%;
-			font-size: 20vw;
-			line-height: 12vw;
-			text-align: center;
-			left: 50%;
-			top: 60%;
-			transform: translateX(-50%);
-
-			span {
-				margin-top: 1.25rem;
-				font-size: 4vw;
-				line-height: 1em;
-				left: 55%;
-				bottom: 5rem;
-				transform: translateX(-50%);
-			}
-
-			&::before {
-
-				width: 180px; 
-				height: 180px;
-				position: absolute;
-				top: -13rem; 
-				left: 50%;
-				transform: translateX(-50%);
-			}
-		}
-		.hero-video-play {
-			top: 5rem;
-		}
-		&::after {
-			height: 12vh;
-		}
-	}
+      &::before {
+        width: 180px;
+        height: 180px;
+        position: absolute;
+        top: -13rem;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+    .hero-video-play {
+      top: 5rem;
+    }
+    &::after {
+      height: 12vh;
+    }
+  }
 }

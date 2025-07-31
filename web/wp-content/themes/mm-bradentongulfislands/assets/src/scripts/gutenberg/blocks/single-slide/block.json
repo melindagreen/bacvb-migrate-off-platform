@@ -1,0 +1,17 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "mm-bradentongulfislands/single-slide",
+  "version": "1.0.1",
+  "title": "Single Slide",
+  "description": "Single slide child component",
+  "icon": "format-gallery",
+  "category": "madden-media",
+  "parent": [
+    "mm-bradentongulfislands/slider"
+  ],
+  "attributes": {},
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "viewStyle": "file:./style-index.css"
+}

@@ -1,0 +1,78 @@
+@use "../variables" as *;
+
+@mixin standard-transition($duration: 0.3s) {
+	transition: all $duration ease;
+}
+
+@mixin eq-dimensions($size) {
+	width: $size;
+	height: $size;
+}
+
+@mixin all-headers {
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		@content;
+	}
+}
+
+@mixin all-text {
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6,
+	p,
+	li {
+		@content;
+	}
+}
+
+@mixin all-link-states {
+	&:link,
+	&:visited,
+	&:hover,
+	&:active {
+		@content;
+	}
+}
+
+@mixin clearfix {
+	&:after {
+		content: "";
+		display: table;
+		clear: both;
+	}
+}
+
+@mixin sr-only {
+	position: absolute;
+	left: -10000px;
+	top: auto;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+}
+
+@mixin main-column-auto {
+	margin-left: auto;
+	margin-right: auto;
+	max-width: calc(
+		var(--wp--style--global--content-size) +
+			var(--wp--style--root--padding-left) +
+			var(--wp--style--root--padding-right)
+	);
+	padding-left: var(--wp--style--root--padding-left);
+	padding-right: var(--wp--style--root--padding-right);
+	width: 100%;
+}
+
+@mixin main-column($maxWidth: $main-column-max-width) {
+    width: $main-column-width;
+    max-width: $maxWidth;
+}

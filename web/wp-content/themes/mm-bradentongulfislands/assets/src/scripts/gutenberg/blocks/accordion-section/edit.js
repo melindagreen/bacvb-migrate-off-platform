@@ -4,7 +4,8 @@
 import { } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import { RichText, InnerBlocks, withColors } from '@wordpress/block-editor';
-import { withState } from '@wordpress/compose';
+import React, { useState } from 'react';
+import { useBlockProps } from '@wordpress/block-editor';
 
 // Local Dependencies
 // Controls - add block/inspector controls here 
@@ -24,7 +25,12 @@ const BLOCK_TEMPLATE = [
  * @returns {WPElement}
  */
 const Editor = props => {
-  const { attributes: { title }, setAttributes, textColor, className, open, setState } = props;
+
+	const blockProps = useBlockProps();
+
+  const { attributes: { title }, setAttributes, textColor, className } = props;
+
+  const [open, setOpen] = useState(false);
 
   let titleClass = 'accordion-section__title ';
   const titleStyle = {};
@@ -35,12 +41,12 @@ const Editor = props => {
   }
 
   return (
-    <section className={className}>
+    <section {...blockProps}>
       <div className='accordion__header'>
         <span
           class="fusion-toggle-icon-wrapper"
           aria-hidden="true"
-          onClick={() => setState({open: !open})}
+          onClick={() => setOpen(!open)}
         >
           <i class="fa-solid fa-plus"></i>
         </span>
@@ -75,6 +81,4 @@ const edit = (props) => {
 /*** EXPORTS ****************************************************************/
 
 // export default withColors({ textColor: 'color' })(edit);
-export default withState({
-  open: false,
-})(edit);
+export default edit;

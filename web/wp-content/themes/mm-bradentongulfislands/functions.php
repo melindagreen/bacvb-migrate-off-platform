@@ -24,6 +24,7 @@ include_once('library/theme-setup.php');
 include_once('library/admin/admin-menus.php');
 include_once('assets/assets.php');
 include_once('library/constants.php');
+include_once('library/hooks.php');
 include_once('library/utilities.php');
 include_once('library/memberpress/memberpress-portal.php');
 include_once('library/memberpress/utilities.php');

@@ -1,23 +1,24 @@
 {
-  "apiVersion": 2,
-  "name": "wide-slideshow",
-  "scripts": [
-    "front.js"
-  ],
-  "settings": {
-    "title": "Wide Slideshow",
-    "description": "wide slideshow",
-    "icon": "leftright",
-    "category": "layout",
-    "attributes": {
-      "bannerTitle": {
-        "type": "string",
-        "default": ""
-      },
-      "bannerDescription": {
-        "type": "string",
-        "default": ""
-      }
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "mm-bradentongulfislands/wide-slideshow",
+  "version": "1.0.1a",
+  "title": "Wide Slideshow",
+  "description": "wide slideshow",
+  "icon": "leftright",
+  "category": "layout",
+  "attributes": {
+    "bannerTitle": {
+      "type": "string",
+      "default": ""
+    },
+    "bannerDescription": {
+      "type": "string",
+      "default": ""
     }
-  }
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "viewStyle": "file:./style-index.css",
+  "viewScript": "file:./front.js"
 }

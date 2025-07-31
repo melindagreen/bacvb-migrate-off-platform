@@ -30,7 +30,7 @@ const Editor = props => {
   }, []);
 
   return (
-    <section className={className}>
+    <section {...blockProps}>
       {imageUrl !== "" && 
       <div className={`${className}__image`}>
         <img src={imageUrl} data-load-alt={imageAlt !== "" ? imageAlt : "Showcase Card Image"} data-load-type="img" data-load-offset="lg" data-load-all={imageUrl} />
@@ -38,7 +38,6 @@ const Editor = props => {
       }
       <div className={`${className}__contents`}>
       <RichText
-        { ...blockProps }
         tagName="h3" 
         className="contents-title"
         allowedFormats={ [ "core/bold", "core/italic", "core/link" ] } 
@@ -49,7 +48,6 @@ const Editor = props => {
         placeholder={ __( "Add title..." ) } 
       />
       <RichText
-        { ...blockProps }
         tagName="p" 
         className="contents-title"
         allowedFormats={ [ "core/bold", "core/italic", "core/link" ] } 

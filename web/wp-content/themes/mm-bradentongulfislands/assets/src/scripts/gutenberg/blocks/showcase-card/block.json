@@ -1,42 +1,44 @@
 {
-  "name": "showcase-card",
-  "scripts": [
-    "front.js"
-  ],
-  "settings": {
-    "title": "Showcase Card",
-    "description": "showcase block",
-    "icon": "excerpt-view",
-    "category": "layout",
-    "attributes": {
-      "imageUrl": {
-        "type": "string",
-        "default": ""
-      },
-      "imageAlt": {
-        "type": "string",
-        "default": ""
-      },
-      "buttonUrl": {
-        "type": "string",
-        "default": ""
-      },
-      "buttonText": {
-        "type": "string",
-        "default": ""
-      },
-      "bodyText": {
-        "type": "string",
-        "default": "",
-        "source": "html",
-        "selector": "p.contents-body"
-      },
-      "title": {
-        "type": "string",
-        "default": "",
-        "source": "html",
-        "selector": "h3.contents-title"
-      }
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "mm-bradentongulfislands/showcase-card",
+  "version": "1.0.1",
+  "title": "Showcase Card",
+  "description": "showcase block",
+  "icon": "excerpt-view",
+  "category": "layout",
+  "attributes": {
+    "imageUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "imageAlt": {
+      "type": "string",
+      "default": ""
+    },
+    "buttonUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "buttonText": {
+      "type": "string",
+      "default": ""
+    },
+    "bodyText": {
+      "type": "string",
+      "default": "",
+      "source": "html",
+      "selector": "p.contents-body"
+    },
+    "title": {
+      "type": "string",
+      "default": "",
+      "source": "html",
+      "selector": "h3.contents-title"
     }
-  }
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "viewStyle": "file:./style-index.css",
+  "viewScript": "file:./front.js"
 }

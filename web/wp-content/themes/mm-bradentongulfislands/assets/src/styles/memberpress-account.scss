@@ -1,15 +1,11 @@
 /******************************************************************
 Stylesheet: MemberPress Account Stylesheet
 ******************************************************************/
-@import "utils/mixins";
-@import "utils/variables";
-@import "utils/typography";
+@use "./utils" as *;
 
 /*********************
 GLOBAL STYLES
 *********************/
-
-
 
 .mepr-account-container a:visited {
     color: white;

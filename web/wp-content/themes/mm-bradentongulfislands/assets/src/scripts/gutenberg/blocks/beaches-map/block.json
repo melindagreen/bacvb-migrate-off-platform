@@ -1,76 +1,77 @@
 {
-  "name": "beaches-map",
-  "dynamic": true,
-  "scripts": [
-    "front.js"
-  ],
-  "render_callback": "MaddenNino\\Blocks\\BeachesMap\\render_block",
-  "settings": {
-    "title": "Interactive Beaches Map",
-    "description": "Displays the beach map with overlay interactivity",
-    "icon": "location-alt",
-    "category": "layout",
-    "attributes": {
-      "annamariabeach": {
-        "type": "string",
-        "default": ""
-      },
-      "annamariabeachImage": {
-        "type": "string"
-      },
-      "beanpoint": {
-        "type": "string",
-        "default": ""
-      },
-      "beanpointImage": {
-        "type": "string"
-      },
-      "manateebeach": {
-        "type": "string",
-        "default": ""
-      },
-      "manateebeachImage": {
-        "type": "string"
-      },
-      "holmesbeach": {
-        "type": "string",
-        "default": ""
-      },
-      "holmesbeachImage": {
-        "type": "string"
-      },
-      "cortezbeach": {
-        "type": "string",
-        "default": ""
-      },
-      "cortezbeachImage": {
-        "type": "string"
-      },
-      "coquinabeach": {
-        "type": "string",
-        "default": ""
-      },
-      "coquinabeachImage": {
-        "type": "string"
-      },
-      "beercanisland": {
-        "type": "string",
-        "default": ""
-      },
-      "beercanislandImage": {
-        "type": "string"
-      },
-      "whitneybeach": {
-        "type": "string",
-        "default": ""
-      },
-      "whitneybeachImage": {
-        "type": "string"
-      },
-      "mode": {
-        "type": "string",
-        "default": "preview"
-      }
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "mm-bradentongulfislands/beaches-map",
+  "version": "1.0.1b",
+  "title": "Interactive Beaches Map",
+  "description": "Displays the beach map with overlay interactivity",
+  "icon": "location-alt",
+  "category": "layout",
+  "attributes": {
+    "annamariabeach": {
+      "type": "string",
+      "default": ""
+    },
+    "annamariabeachImage": {
+      "type": "string"
+    },
+    "beanpoint": {
+      "type": "string",
+      "default": ""
+    },
+    "beanpointImage": {
+      "type": "string"
+    },
+    "manateebeach": {
+      "type": "string",
+      "default": ""
+    },
+    "manateebeachImage": {
+      "type": "string"
+    },
+    "holmesbeach": {
+      "type": "string",
+      "default": ""
+    },
+    "holmesbeachImage": {
+      "type": "string"
+    },
+    "cortezbeach": {
+      "type": "string",
+      "default": ""
+    },
+    "cortezbeachImage": {
+      "type": "string"
+    },
+    "coquinabeach": {
+      "type": "string",
+      "default": ""
+    },
+    "coquinabeachImage": {
+      "type": "string"
+    },
+    "beercanisland": {
+      "type": "string",
+      "default": ""
+    },
+    "beercanislandImage": {
+      "type": "string"
+    },
+    "whitneybeach": {
+      "type": "string",
+      "default": ""
+    },
+    "whitneybeachImage": {
+      "type": "string"
+    },
+    "mode": {
+      "type": "string",
+      "default": "preview"
     }
-  }
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "viewStyle": "file:./style-index.css",
+  "viewScript": "file:./front.js",
+  "render": "file:./render.php"
 }

@@ -1,6 +1,4 @@
-
-$font-bradensota: "Josefin Sans", sans-serif;
-
+@use "../utils" as *;
 .page-template-bradensota {
 
     p,h1,h2,h2,h4,h5,h6 {

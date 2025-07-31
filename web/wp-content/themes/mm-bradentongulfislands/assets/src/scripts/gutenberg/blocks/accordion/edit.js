@@ -3,7 +3,7 @@
 // WordPress dependencies
 import { } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
-import { RichText, InnerBlocks } from '@wordpress/block-editor';
+import { RichText, InnerBlocks, useBlockProps } from '@wordpress/block-editor';
 
 // Local Dependencies
 // Controls - add block/inspector controls here 
@@ -24,10 +24,11 @@ const BLOCK_TEMPLATE = [
  * @returns {WPElement}
  */
 const Editor = props => {
+	const blockProps = useBlockProps();
   const { attributes: { }, setAttributes, className } = props;
 
   return (
-    <section className={className}>
+    <section {...blockProps}>
       <div className='contents'>
         <InnerBlocks
           allowedBlocks={ALLOWED_BLOCKS}

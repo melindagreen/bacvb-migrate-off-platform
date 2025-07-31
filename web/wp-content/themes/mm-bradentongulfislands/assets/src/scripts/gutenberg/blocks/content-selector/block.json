@@ -1,14 +1,15 @@
 {
-  "apiVersion": 2,
-  "name": "content-selector",
-  "scripts": [
-    "front.js"
-  ],
-  "settings": {
-    "title": "Content Selector",
-    "description": "Use an option select to choose different content",
-    "icon": "feedback",
-    "category": "layout",
-    "attributes": {}
-  }
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "mm-bradentongulfislands/content-selector",
+  "version": "1.0.1",
+  "title": "Content Selector",
+  "description": "Use an option select to choose different content",
+  "icon": "feedback",
+  "category": "layout",
+  "attributes": {},
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "viewStyle": "file:./style-index.css",
+  "viewScript": "file:./front.js"
 }

@@ -1,13 +1,13 @@
 import $ from "jquery";
 
 $(window).on("load", () => {
-	initInteractiveMap();
+    initInteractiveMap();
 });
 
 export const initInteractiveMap = () => {
-    const $container = $('.mapViewArea');
-    const $img = $container.find('img');
-    const $svg = $container.find('svg');
+    const $container = $(".mapViewArea");
+    const $img = $container.find("img");
+    const $svg = $container.find("svg");
 
     let isDragging = false;
     let startX = 0;
@@ -20,6 +20,8 @@ export const initInteractiveMap = () => {
 
     // New flag to track if the initial swipe bounce animation has played
     let hasSwipedOnce = false;
+    // New flag for viewport animation
+    let hasViewedOnce = false;
 
     const setMinLeft = () => {
         const containerWidth = $container.width();
@@ -34,7 +36,7 @@ export const initInteractiveMap = () => {
 
     // Debounce the resize event for setMinLeft
     let resizeTimer;
-    $(window).on('resize', () => {
+    $(window).on("resize", () => {
         clearTimeout(resizeTimer);
         resizeTimer = setTimeout(setMinLeft, 100); // Wait 100ms after resize stops
     });
@@ -44,12 +46,12 @@ export const initInteractiveMap = () => {
 
     function setLeft(x) {
         const clampedX = Math.min(maxLeft, Math.max(minLeft, x));
-        $img.css('left', clampedX + 'px');
-        $svg.css('left', clampedX + 'px');
+        $img.css("left", clampedX + "px");
+        $svg.css("left", clampedX + "px");
     }
 
     function getLeft() {
-        return parseFloat($img.css('left')) || 0;
+        return parseFloat($img.css("left")) || 0;
     }
 
     // --- Mouse and Touch Event Handlers ---
@@ -74,7 +76,7 @@ export const initInteractiveMap = () => {
             touchMoved = true;
 
             // Trigger bounce animation only on the first detected swipe/drag
-            if (!hasSwipedOnce) {
+            if (!hasSwipedOnce && !hasViewedOnce) { // Only animate if neither initial load nor viewport animation played
                 const $iconsG = $(
                     ".wp-block-mm-bradentongulfislands-bradenton-map svg #ICONS g"
                 );
@@ -102,19 +104,19 @@ export const initInteractiveMap = () => {
     };
 
     // Mouse events
-    $container.on('mousedown', handleStart);
-    $(document).on('mouseup', handleEnd);
-    $(document).on('mousemove', handleMove);
+    $container.on("mousedown", handleStart);
+    $(document).on("mouseup", handleEnd);
+    $(document).on("mousemove", handleMove);
 
     // Touch events
-    $container.on('touchstart', handleStart);
+    $container.on("touchstart", handleStart);
     // Use the container for touchmove/touchend to ensure they fire even if finger leaves map
-    $container.on('touchend', handleEnd);
-    $container.on('touchmove', handleMove);
-    $container.on('touchcancel', handleEnd); // Handle if touch is interrupted
+    $container.on("touchend", handleEnd);
+    $container.on("touchmove", handleMove);
+    $container.on("touchcancel", handleEnd); // Handle if touch is interrupted
 
     // Prevent click on map if it was a drag (for icons specifically)
-    $container.on('click', (e) => {
+    $container.on("click", (e) => {
         // If touchMoved was true, it means it was a drag, so prevent click propagation
         if (touchMoved) {
             e.preventDefault();
@@ -122,10 +124,10 @@ export const initInteractiveMap = () => {
         }
     });
 
-
     // Scroll (wheel) — allow horizontal scroll only
-    $container.on('wheel', (e) => {
-        const isMostlyHorizontal = Math.abs(e.originalEvent.deltaX) > Math.abs(e.originalEvent.deltaY);
+    $container.on("wheel", (e) => {
+        const isMostlyHorizontal =
+            Math.abs(e.originalEvent.deltaX) > Math.abs(e.originalEvent.deltaY);
         if (!isMostlyHorizontal) return;
 
         const deltaX = e.originalEvent.deltaX;
@@ -135,22 +137,43 @@ export const initInteractiveMap = () => {
         e.preventDefault();
     });
 
-    // Removed the previous scroll handler for #ICONS entering viewport,
-    // as the bounce animation is now tied to the first swipe/drag.
-    // let hasScrolledToIcons = false; // This is no longer needed
-
     const $iconsG = $(
         ".wp-block-mm-bradentongulfislands-bradenton-map svg #ICONS g"
     );
+    const $mapContainer = $(".wp-block-mm-bradentongulfislands-bradenton-map"); // Assuming this is the main container you want to observe for viewport
 
-    // No scroll handler for bounce animation anymore.
+    if ($mapContainer.length) {
+        const observerOptions = {
+            root: null, // Use the viewport as the root
+            rootMargin: '0px', // No extra margin around the root
+            threshold: 0.8 // Trigger when 80% of the target element is visible
+        };
+
+        const observerCallback = (entries, observer) => {
+            entries.forEach(entry => {
+                // Check if the target is intersecting and the animation hasn't played yet
+                if (entry.isIntersecting && entry.intersectionRatio >= 0.8 && !hasViewedOnce && !hasSwipedOnce) {
+                    $iconsG.addClass("bounce-scale");
+                    setTimeout(() => {
+                        $iconsG.removeClass("bounce-scale");
+                    }, 1000); // match the animation duration
+
+                    hasViewedOnce = true; // Set flag so it doesn't trigger again
+                    observer.unobserve(entry.target); // Stop observing once the animation has played
+                }
+            });
+        };
+
+        const observer = new IntersectionObserver(observerCallback, observerOptions);
+        observer.observe($mapContainer[0]); // Observe the native DOM element
+    }
 
     // Handle click on icon
     $iconsG.on("click", function (e) {
         if (touchMoved) {
-             e.preventDefault();
-             e.stopImmediatePropagation();
-             return;
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            return;
         }
 
         var stopId = $(this).attr("id");

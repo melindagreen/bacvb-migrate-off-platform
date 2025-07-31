@@ -36,7 +36,7 @@ const Editor = (props) => {
 
   const blockProps = useBlockProps();
   return (
-    <section className={`wp-block-mm-bradentongulfislands-content-section`}>
+    <section {...blockProps}>
         <InnerBlocks className="item"
           template={BLOCK_TEMPLATE}
           templateInsertUpdatesSelection={true}

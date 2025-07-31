@@ -2,17 +2,17 @@
 import domReady from "@wordpress/dom-ready";
 
 // Local dependencies
-import registerAllBlocks from "./blocks";
 import registerAllBlockStyles from "./block-styles";
-import registerAllBlockVariations from "./block-variations";
 import addAllFilters from "./filters";
 import addAllFormats from "./formats";
+import addAllVariations from "./variations";
+import addAllDispatches from "./dispatches";
 
 // Fire all core funcs
 domReady(() => {
-	registerAllBlockStyles();
-	registerAllBlockVariations();
+	addAllDispatches();
 	addAllFilters();
-	registerAllBlocks();
 	addAllFormats();
+	registerAllBlockStyles();
+	addAllVariations();
 });

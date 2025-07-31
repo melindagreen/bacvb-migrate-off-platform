@@ -1,10 +1,8 @@
-@import 'styles/utils/variables';
-@import 'styles/utils/typography';
+
 
 .#{$block-prefix}-cta-bubble {
-  
-  --webkit-mask: url("images/weatherbug-background.svg") no-repeat center;
-  mask: url("images/weatherbug-background.svg") no-repeat center;
+  --webkit-mask: var(--img-weatherbug-background) no-repeat center;
+  mask: var(--img-weatherbug-background) no-repeat center;
   --webkit-mask-size: 100% 100%;
   mask-size: 100% 100%;
   background-size: cover;
@@ -23,20 +21,18 @@
   opacity: 0;
   transform: translateX(-100%) rotate(-360deg);
   transition: all 0.7s ease-out;
-  
+
   &.visible {
     opacity: 1;
     transform: translateX(0) rotate(0);
   }
-  
+
   &.hidden {
     opacity: 0;
     transform: translateX(-100%) rotate(-360deg);
   }
 
-
   .close {
-
     font-family: $font-title;
     font-weight: bold;
     margin-bottom: 2rem;
@@ -46,7 +42,6 @@
   }
 
   .contents-ctatext {
-
     text-transform: uppercase;
     font-family: $font-title;
     font-weight: bold;
@@ -56,14 +51,13 @@
     font-size: 2rem;
 
     a {
-
       color: white;
       text-decoration: none;
     }
 
     &::after {
-      content: ' ';
-      background: url('images/UI-white-right-arrow-default.svg') no-repeat;
+      content: " ";
+      background: var(--img-ui-white-right-arrow-default) no-repeat;
       transition: all 0.3s ease-in-out;
       position: relative;
       right: -1rem;
@@ -75,15 +69,13 @@
     }
   }
   .contents-title {
-
     text-shadow: 3px 3px 0px #00000066;
     font-size: 5rem;
     font-family: $font-title;
     line-height: 0.9em;
-     margin: 0;
+    margin: 0;
   }
   .contents-description {
-
     color: white;
   }
 }
@@ -99,13 +91,11 @@
   }
 }
 
-
 /*********************
 MEDIUM AND LARGE SCREENS
 *********************/
 @media only screen and (min-width: 769px) {
   .#{$block-prefix}-logo-cta {
-
   }
 }
 

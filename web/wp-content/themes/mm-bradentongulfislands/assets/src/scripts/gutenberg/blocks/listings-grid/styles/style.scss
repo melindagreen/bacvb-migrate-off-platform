@@ -1,5 +1,4 @@
-@import "styles/utils/typography";
-@import "styles/utils/variables";
+
 
 $filter-width: 340px;
 $bar-height: 70px;
@@ -625,7 +624,7 @@ $bar-height: 70px;
         left: 0;
         width: 100%;
         height: 25px;
-        background: url("~/images/section-top-light-blue.png");
+        background: var(--img-section-top-light-blue);
       }
     }
 

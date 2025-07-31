@@ -3,6 +3,7 @@
 // WordPress dependencies
 import { TextControl } from '@wordpress/components';
 import ServerSideRender from '@wordpress/server-side-render';
+import { useBlockProps } from '@wordpress/block-editor';
 import { __ } from '@wordpress/i18n';
 
 // Local Dependencies
@@ -36,12 +37,12 @@ import Controls from './controls'
  * @returns {WPElement}
  */
 const Editor = props => {
+
+  const blockProps = useBlockProps();
   const { attributes: { mode }, className } = props;
 
-
-
   return (
-    <section className={className} >
+    <section {...blockProps}>
       {mode === 'edit'
         ? <Wizard {...props} />
         : <ServerSideRender block={props.name} {...props} />}

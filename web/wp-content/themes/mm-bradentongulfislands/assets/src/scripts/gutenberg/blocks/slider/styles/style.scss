@@ -1,13 +1,10 @@
 @import "swiper/css/bundle";
-@import "styles/utils/variables";
-@import "styles/utils/typography";
-@import "styles/utils/mixins";
 
 /* Add your color variables here from theme.json for proper styling */
 $colorPalette: "black", "gray", "tan", "white", "red";
 
 .#{$block-prefix}-slider {
-  margin: 0;
+  margin: 0 !important;
   padding: 0;
   position: relative;
   .swiper-button-prev,
@@ -128,13 +125,13 @@ $colorPalette: "black", "gray", "tan", "white", "red";
         .swiper-button-prev {
           left: -25px;
           &::after {
-            background-image: url("images/icons/mobile-arrow-left.png");
+            background-image: var(--img-mobile-arrow-left);
           }
         }
         .swiper-button-next {
           right: -25px;
           &::after {
-            background-image: url("images/icons/mobile-arrow-right.png");
+            background-image: var(--img-mobile-arrow-right);
           }
         }
       }
@@ -321,7 +318,7 @@ $colorPalette: "black", "gray", "tan", "white", "red";
         height: 25px;
         width: 25px;
         background-size: contain !important;
-        background: url("images/ui-next-on.png");
+        background: var(--img-ui-next-on);
       }
       &:hover {
         text-decoration: none;
@@ -349,12 +346,7 @@ $colorPalette: "black", "gray", "tan", "white", "red";
   }
 
   &.card-style-signature-card {
-    overflow-y: hidden;
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE 10+ */
-    &::-webkit-scrollbar {
-      display: none; /* Chrome, Safari, Edge */
-    }
+    //overflow-y: hidden;
 
     @include screen-sm-max {
       overflow-y: visible;

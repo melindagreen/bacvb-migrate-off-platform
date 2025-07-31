@@ -1,5 +1,4 @@
-@import "styles/utils/typography";
-@import "styles/utils/variables";
+
 
 .#{$block-prefix}-portrait-grid {
   margin: 11rem auto 20rem auto;
@@ -14,14 +13,11 @@
   }
 
   .nautical-illustration {
-
     position: absolute;
     display: none;
     z-index: 3;
 
-
     &--oyster {
-
       right: 82%;
       top: 28%;
       width: 8vw;
@@ -29,7 +25,6 @@
     }
 
     &--crab {
-
       right: 11%;
       top: 27%;
       width: 20vw;
@@ -37,9 +32,8 @@
     }
 
     &--starfish {
-
       right: 29%;
-      top: 90%;  
+      top: 90%;
       width: 270px;
       height: auto;
     }
@@ -53,7 +47,7 @@
       left: 50%;
       transform: translateX(-50%);
       grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: repeat(4,13vw);
+      grid-template-rows: repeat(4, 13vw);
       grid-template-areas:
         ".     item2 item2"
         "item1 item2 item2"
@@ -61,24 +55,25 @@
         "item1 item3 ."
         ".     item3 .";
       .grid-item {
-
         &--1 {
           grid-area: item1;
-          --webkit-mask: url("images/portraitmask1.svg") no-repeat center;
-          mask: url("images/portraitmask1.svg") no-repeat center;
+          --webkit-mask: var(--img-portraitmask1) no-repeat center;
+          mask: var(--img-portraitmask1) no-repeat center;
         }
         &--2 {
           grid-area: item2;
-          --webkit-mask: url("images/portraitmask2.svg") no-repeat center;
-          mask: url("images/portraitmask2.svg") no-repeat left;
+          --webkit-mask: var(--img-portraitmask2) no-repeat center;
+          mask: var(--img-portraitmask2) no-repeat left;
         }
         &--3 {
           grid-area: item3;
-          --webkit-mask: url("images/portraitmask3.svg") no-repeat left;
-          mask: url("images/portraitmask3.svg") no-repeat left;
+          --webkit-mask: var(--img-portraitmask3) no-repeat left;
+          mask: var(--img-portraitmask3) no-repeat left;
         }
 
-        &--1,&--2,&--3 {
+        &--1,
+        &--2,
+        &--3 {
           --webkit-mask-size: contain;
           mask-size: contain;
         }
@@ -121,7 +116,6 @@
   }
 
   .grid-item-body {
-
     width: 20rem;
     position: absolute;
     min-height: 13rem;
@@ -129,8 +123,8 @@
     padding: 1% 2%;
     color: $white;
 
-    &::before, &::after {
-
+    &::before,
+    &::after {
       content: " ";
       width: 100%;
       height: 1rem;
@@ -140,30 +134,25 @@
     }
 
     &::after {
-
       bottom: -0.5rem;
       transform: rotate(180deg);
     }
 
     &::before {
-
       top: -0.5rem;
     }
 
     &__title {
-
       font-family: $font-header;
     }
 
     &__excerpt {
-
       color: $white;
       min-height: 7rem;
       line-height: 1.5em;
     }
 
     &__link {
-
       text-transform: uppercase;
       font-family: $font-header;
       color: $white;
@@ -175,7 +164,7 @@
       display: inline-block;
 
       &::after {
-        content: ' ';
+        content: " ";
         transition: all 0.3s ease-in-out;
         position: absolute;
         right: -2rem;
@@ -184,21 +173,18 @@
         width: 25px;
         background-size: contain !important;
       }
-          &:hover {
+      &:hover {
+        text-decoration: none;
+        color: $dk-blue !important;
 
-            text-decoration: none;
-            color: $dk-blue !important;
-            
-            &::after {
-
-              transition: all 0.2s ease-in-out;
-              transform: translateX(8%);
-            }
-          }
+        &::after {
+          transition: all 0.2s ease-in-out;
+          transform: translateX(8%);
+        }
+      }
     }
 
     &__arrow {
-
       position: absolute;
     }
 
@@ -209,14 +195,13 @@
       right: 68%;
       top: -4rem;
 
-      &::before, &::after {
-
-        background: url('images/section-top-rust.png');
+      &::before,
+      &::after {
+        background: var(--img-section-top-rust);
       }
 
       .grid-item-body__arrow {
-
-        background: url('images/double-arrow.png');
+        background: var(--img-double-arrow);
         background-repeat: no-repeat;
         background-size: contain;
         z-index: 2;
@@ -227,41 +212,34 @@
         transition: all 0.3s ease-in-out;
 
         &--forward {
-
-  
-              transition: all 0.3s ease-in-out;
-              transform: translateX(0.5rem);
-
-      }
+          transition: all 0.3s ease-in-out;
+          transform: translateX(0.5rem);
+        }
       }
 
       .grid-item-body__link {
-
         &::after {
-
-          background: url('images/ui-link-arrow.png');
-          background-size: contain!important;
+          background: var(--img-ui-link-arrow);
+          background-size: contain !important;
           bottom: -35%;
           content: " ";
           height: 25px;
           position: absolute;
           right: -2rem;
-          transition: all .3s ease-in-out;
+          transition: all 0.3s ease-in-out;
           width: 25px;
         }
       }
     }
 
     &--1 {
-
       background-color: $sky-blue;
       bottom: -11rem;
       right: 68%;
       width: 25rem;
 
       .grid-item-body__arrow {
-
-        background: url('images/curve-arrow-big.png');
+        background: var(--img-curve-arrow-big);
         background-repeat: no-repeat;
         background-size: contain;
         z-index: 2;
@@ -272,46 +250,39 @@
         transition: all 0.3s ease-in-out;
 
         &--rotate {
-
-
-              transition: all 0.3s ease-in-out;
-              transform: rotate(20deg);
-      }
+          transition: all 0.3s ease-in-out;
+          transform: rotate(20deg);
+        }
       }
 
-      .grid-item-body__title, .grid-item-body__link {
-
+      .grid-item-body__title,
+      .grid-item-body__link {
         color: $bradenton-teal;
       }
 
       .grid-item-body__excerpt {
-
         color: $soft-black;
       }
 
       .grid-item-body__link {
-
         &::after {
-  
-          background: url('images/ui-next-on.png');
+          background: var(--img-ui-next-on);
         }
       }
 
-      &::before, &::after {
-
-        background: url('images/section-top-lt-blue.png');
+      &::before,
+      &::after {
+        background: var(--img-section-top-lt-blue);
       }
     }
 
     &--3 {
-
       background-color: $bradenton-teal;
       bottom: 5rem;
       left: 60%;
 
       .grid-item-body__arrow {
-
-        background: url('images/curve-arrow-lt-blue.png');
+        background: var(--img-curve-arrow-lt-blue);
         background-repeat: no-repeat;
         background-size: contain;
         z-index: 2;
@@ -321,28 +292,22 @@
         left: -5rem;
         min-width: 180px;
         width: 11vw;
-    
 
         &--rotate {
-
-  
-              transition: all 0.3s ease-in-out;
-              transform: rotate(-20deg);
-    
-      }
-      }
-
-      .grid-item-body__link {
-
-        &::after {
-  
-          background: url('images/ui-next-off.png');
+          transition: all 0.3s ease-in-out;
+          transform: rotate(-20deg);
         }
       }
 
-      &::before, &::after {
+      .grid-item-body__link {
+        &::after {
+          background: var(--img-ui-next-off);
+        }
+      }
 
-        background: url('images/section-top-turquoise.png');
+      &::before,
+      &::after {
+        background: var(--img-section-top-turquoise);
       }
     }
   }
@@ -351,11 +316,8 @@
     position: relative;
 
     &--1 {
-
       .grid-item__background {
-
         .grid-item__image {
-
           min-width: 500px;
           width: 30vw;
         }
@@ -363,11 +325,8 @@
     }
 
     &--2 {
-
       .grid-item__background {
-
         .grid-item__image {
-
           min-width: 500px;
           width: 37vw;
         }
@@ -375,11 +334,8 @@
     }
 
     &--3 {
-
       .grid-item__background {
-
         .grid-item__image {
-
           min-width: 400px;
           width: 21vw;
         }
@@ -437,7 +393,6 @@ LARGE SCREENS
 *********************/
 @media only screen and (min-width: #{$screen-lg + 1}) {
   .#{$block-prefix}-portrait-grid {
-  
   }
 }
 
@@ -445,199 +400,183 @@ LARGE SCREENS
 MEDIUM SCREENS
 *********************/
 @media only screen and (min-width: #{$screen-sm + 1}) and (max-width: $screen-lg) {
-//   .#{$block-prefix}-portrait-grid {
-    
-//    .grid-item-body {
+  //   .#{$block-prefix}-portrait-grid {
 
-//     transform: scale(0.75);
-//    }
+  //    .grid-item-body {
 
-//    .grid-item {
-//     position: relative;
+  //     transform: scale(0.75);
+  //    }
 
-//     &--1 {
+  //    .grid-item {
+  //     position: relative;
 
-//       .grid-item__background {
+  //     &--1 {
 
-//         .grid-item__image {
+  //       .grid-item__background {
 
-//           min-width: 235px;
-//           width: 29vw;
-//         }
-//       }
-//     }
+  //         .grid-item__image {
 
-//     &--2 {
+  //           min-width: 235px;
+  //           width: 29vw;
+  //         }
+  //       }
+  //     }
 
-//       .grid-item__background {
+  //     &--2 {
 
-//         .grid-item__image {
-      
-//           min-width: 235px;
-//           width: 41vw;
-//         }
-//       }
-//     }
+  //       .grid-item__background {
 
-//     &--3 {
+  //         .grid-item__image {
 
-//       .grid-item__background {
+  //           min-width: 235px;
+  //           width: 41vw;
+  //         }
+  //       }
+  //     }
 
-//         .grid-item__image {
+  //     &--3 {
 
-//           min-width: 245px;
-//           width: 10vw;
-//         }
-//       }
-//     }
-//   }
+  //       .grid-item__background {
 
-//    .grid-items {
+  //         .grid-item__image {
 
-//     margin: auto 0;
-//    }
+  //           min-width: 245px;
+  //           width: 10vw;
+  //         }
+  //       }
+  //     }
+  //   }
 
-//    &.is-length-3 {
-//     .grid-items {
+  //    .grid-items {
 
-//       left: 8%;
-//       transform: unset;
-//       grid-template-rows: repeat(4,14vw);
-//     }
-//   }
-//   .grid-item-body {
+  //     margin: auto 0;
+  //    }
 
-//     z-index: 2;
+  //    &.is-length-3 {
+  //     .grid-items {
 
-//     &--2 {
+  //       left: 8%;
+  //       transform: unset;
+  //       grid-template-rows: repeat(4,14vw);
+  //     }
+  //   }
+  //   .grid-item-body {
 
-//       right: 64%;
-//       top: -4rem;
-//     }
+  //     z-index: 2;
 
-//     &--1 {
+  //     &--2 {
 
-//       bottom: -8rem;
-//       right: 63%;
-//     }
+  //       right: 64%;
+  //       top: -4rem;
+  //     }
 
-//     &--3 {
+  //     &--1 {
 
-//       bottom: 2rem;
-//       left: 58%;
-//     }
-//   }
-//   }
-// }
+  //       bottom: -8rem;
+  //       right: 63%;
+  //     }
 
-.#{$block-prefix}-portrait-grid {
-  margin: 6rem auto;
-  width: 90%;
-  .container {
-    max-width: 100%;
-  }
+  //     &--3 {
 
-  .grid-item {
-    position: relative;
+  //       bottom: 2rem;
+  //       left: 58%;
+  //     }
+  //   }
+  //   }
+  // }
 
-    &--2 {
-
-      .grid-item__background {
-
-        .grid-item__image {
-
-          min-width: 250px;
-          width: 100%;
-        }
-      }
+  .#{$block-prefix}-portrait-grid {
+    margin: 6rem auto;
+    width: 90%;
+    .container {
+      max-width: 100%;
     }
 
-    &--1 {
+    .grid-item {
+      position: relative;
 
-      .grid-item__background {
-
-        .grid-item__image {
-      
-          width: 100%;
+      &--2 {
+        .grid-item__background {
+          .grid-item__image {
+            min-width: 250px;
+            width: 100%;
+          }
         }
       }
-    }
 
-    &--3 {
-
-      .grid-item__background {
-
-        .grid-item__image {
-
-          
-          min-width: 260px;
-          width: 100%;
+      &--1 {
+        .grid-item__background {
+          .grid-item__image {
+            width: 100%;
+          }
         }
       }
-    }
 
-    --webkit-mask: url("images/portraitmask1.svg") no-repeat center !important;
-      mask: url("images/portraitmask1.svg") no-repeat center !important;
+      &--3 {
+        .grid-item__background {
+          .grid-item__image {
+            min-width: 260px;
+            width: 100%;
+          }
+        }
+      }
+
+      --webkit-mask: var(--img-portraitmask1) no-repeat center !important;
+      mask: var(--img-portraitmask1) no-repeat center !important;
 
       mask-size: 100% 100% !important;
       -webkit-size: 100% 100% !important;
-  }
-
-  .grid-items {
-
-    display: block;
-    margin: auto 0;
-  }
-
-  .grid-item {
-    width: 100%;
-    height: 80vw;
-    margin: 2rem auto;
-    & + * {
-      margin-top: 2rem;
     }
 
+    .grid-items {
+      display: block;
+      margin: auto 0;
+    }
 
-    .grid-item__body {
+    .grid-item {
       width: 100%;
-    }
-  }
+      height: 80vw;
+      margin: 2rem auto;
+      & + * {
+        margin-top: 2rem;
+      }
 
-  .grid-item-body {
-
-    position: relative;
-    padding: 4% 5%;
-    width: 99%;
-    margin-left: 0.3rem;
-    top: -4rem;
-    z-index: 2;
-
-    &--2 {
-
-      right: unset;
+      .grid-item__body {
+        width: 100%;
+      }
     }
 
-    &--1 {
+    .grid-item-body {
+      position: relative;
+      padding: 4% 5%;
+      width: 99%;
+      margin-left: 0.3rem;
+      top: -4rem;
+      z-index: 2;
 
-      bottom: unset;
-      right: unset;
-    }
+      &--2 {
+        right: unset;
+      }
 
-    &--3 {
+      &--1 {
+        bottom: unset;
+        right: unset;
+      }
 
-      bottom: unset;
-      left: unset;
-    }
+      &--3 {
+        bottom: unset;
+        left: unset;
+      }
 
-    &--1,&--2,&--3 {
-
-      .grid-item-body__arrow {
-
-        display: none;
+      &--1,
+      &--2,
+      &--3 {
+        .grid-item-body__arrow {
+          display: none;
+        }
       }
     }
   }
-}
 }
 
 /*********************
@@ -653,52 +592,41 @@ SMALL SCREENS
 
     .grid-item {
       position: relative;
-  
+
       &--2 {
-  
         .grid-item__background {
-  
           .grid-item__image {
-  
             min-width: 250px;
             width: 100%;
           }
         }
       }
-  
+
       &--1 {
-  
         .grid-item__background {
-  
           .grid-item__image {
-        
             width: 100%;
           }
         }
       }
-  
+
       &--3 {
-  
         .grid-item__background {
-  
           .grid-item__image {
-  
-            
             min-width: 260px;
             width: 100%;
           }
         }
       }
 
-      --webkit-mask: url("images/portraitmask1.svg") no-repeat center !important;
-        mask: url("images/portraitmask1.svg") no-repeat center !important;
+      --webkit-mask: var(--img-portraitmask1) no-repeat center !important;
+      mask: var(--img-portraitmask1) no-repeat center !important;
 
-        mask-size: 100% 100% !important;
-        -webkit-size: 100% 100% !important;
+      mask-size: 100% 100% !important;
+      -webkit-size: 100% 100% !important;
     }
 
     .grid-items {
-
       display: block;
       margin: auto 0;
     }
@@ -710,7 +638,6 @@ SMALL SCREENS
       & + * {
         margin-top: 2rem;
       }
- 
 
       .grid-item__body {
         width: 100%;
@@ -718,35 +645,31 @@ SMALL SCREENS
     }
 
     .grid-item-body {
-
       position: relative;
       padding: 4% 5%;
       width: 99%;
       margin-left: 0.3rem;
       top: -4rem;
       z-index: 2;
-  
-      &--2 {
 
+      &--2 {
         right: unset;
       }
-  
+
       &--1 {
-  
         bottom: unset;
         right: unset;
       }
-  
+
       &--3 {
-  
         bottom: unset;
         left: unset;
       }
 
-      &--1,&--2,&--3 {
-
+      &--1,
+      &--2,
+      &--3 {
         .grid-item-body__arrow {
-
           display: none;
         }
       }

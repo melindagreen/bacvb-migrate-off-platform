@@ -2,10 +2,9 @@
 
 // WordPress dependencies
 import { __ } from '@wordpress/i18n';
-import { InspectorControls, MediaUpload, MediaUploadCheck } from '@wordpress/block-editor'
-import { FocalPointPicker, PanelBody, PanelRow, ToggleControl, Button, ResponsiveWrapper, Spinner, TextControl} from '@wordpress/components'
+import { InspectorControls, MediaUpload, MediaUploadCheck, MediaPlaceholder, RichText } from '@wordpress/block-editor'
+import { FocalPointPicker, PanelBody, PanelRow, ToggleControl, Button, ResponsiveWrapper, Spinner, TextControl, IconButton, Disabled } from '@wordpress/components'
 
-import { } from '@wordpress/block-editor'
 // Local dependencies
 import { THEME_PREFIX } from 'scripts/inc/constants';
 
@@ -17,7 +16,7 @@ const Inspector = props => {
     const { attributes: { 
 		videoHero, 
 		showBottomWave, 
-		doParallax,	
+		doParallax,
 		image,
 		focalPoint,
 		mobileImage,
@@ -28,7 +27,12 @@ const Inspector = props => {
 		ctaBannerText,
 		ctaBannerTitle,
 		logoId, 
-		logoUrl
+		logoUrl,
+        title,
+        subtitle,
+        video,
+        videoForMobile,
+        videoPoster
 	}, setAttributes } = props;
 
 	const removeLogo = () => {
@@ -39,20 +43,196 @@ const Inspector = props => {
 		});
 	}
  
-	 const onSelectLogo= (logo) => {
+	const onSelectLogo= (logo) => {
 		let logoLG = typeof logo?.sizes?.full?.url !== 'undefined' ? logo.sizes.full.url : logo.url;
 		let logoMD = logoLG;
 		let logoSM = typeof logo?.sizes?.madden_hero_md?.url !== 'undefined' ? logo.sizes.madden_hero_md.url : logoMD;
-		console.log(logo);
 		setAttributes({
 			logoId: logo.id,
 			logoUrl: [logoLG, logoMD, logoSM],
 			logoAlt: logo.alt
 		});
-	 }
+	}
+
+    // --- WIZARD CONTROLS MOVED HERE ---
+    const ALLOWED_MEDIA_TYPES = ["image", "video"];
 
     return (
         <InspectorControls>
+            <PanelBody title="Hero Content" initialOpen={true}>
+                <PanelRow>
+                    <RichText
+                        value={title}
+                        onChange={(title) => setAttributes({ title })}
+                        placeholder="Hero Header"
+                        formattingControls={[]}
+                        tagName="h2"
+                    />
+                </PanelRow>
+                <PanelRow>
+                    <RichText
+                        value={subtitle}
+                        onChange={(subtitle) => setAttributes({ subtitle })}
+                        placeholder="Hero Subheader"
+                        formattingControls={[]}
+                        tagName="h3"
+                    />
+                </PanelRow>
+                <PanelRow>
+                {videoHero ? (
+                    video ? (
+                        <div className="block-video">
+                            <IconButton
+                                className="remove-media"
+                                label={__("Remove Video")}
+                                onClick={() => setAttributes({ video: "" })}
+                                icon="no-alt"
+                            />
+                            <figure>
+                                <Disabled isDisabled={true}>
+                                    <video controls>
+                                        <source src={video.url} />
+                                    </video>
+                                </Disabled>
+                            </figure>
+                        </div>
+                    ) : (
+                        <MediaPlaceholder
+                            icon="format-video"
+                            onSelect={(video) => setAttributes({ video })}
+                            allowedTypes={ALLOWED_MEDIA_TYPES}
+                            multiple={false}
+                            labels={{
+                                title: "Hero Video",
+                                instructions:
+                                    "Upload a video file, or pick one from your media library.",
+                            }}
+                            value={video}
+                        />
+                    )
+                ) : image ? (
+                    <div style={{width: '100%'}}>
+                        <IconButton
+                            className="remove-media"
+                            label={__("Remove Image")}
+                            onClick={() => setAttributes({ image: "" })}
+                            icon="no-alt"
+                        />
+                        <div
+                            className="block-image"
+                            style={{
+                                backgroundImage: `url(${image.url})`,
+                                minHeight: 120,
+                                backgroundSize: 'cover',
+                                backgroundPosition: 'center',
+                            }}
+                        />
+                    </div>
+                ) : (
+                    <MediaPlaceholder
+                        icon="images-alt2"
+                        onSelect={(image) => setAttributes({ image })}
+                        allowedTypes={ALLOWED_MEDIA_TYPES}
+                        multiple={false}
+                        labels={{
+                            title: "Hero Image",
+                            instructions:
+                                "Upload an image, or pick one from your media library",
+                        }}
+                    />
+                )}
+                </PanelRow>
+                {/* Mobile Video/Image */}
+                <PanelRow>
+                {videoHero ? (
+                    videoForMobile ? (
+                        <div className="block-video block-video--portrait">
+                            <IconButton
+                                className="remove-media"
+                                label={__("Remove Mobile Video")}
+                                onClick={() => setAttributes({ videoForMobile: "" })}
+                                icon="no-alt"
+                            />
+                            <figure className="portrait-video">
+                                <Disabled isDisabled={true}>
+                                    <video controls>
+                                        <source src={videoForMobile.url} />
+                                    </video>
+                                </Disabled>
+                            </figure>
+                        </div>
+                    ) : (
+                        <MediaPlaceholder
+                            icon="format-video"
+                            onSelect={videoForMobile => setAttributes({ videoForMobile })}
+                            allowedTypes={ALLOWED_MEDIA_TYPES}
+                            multiple={false}
+                            labels={{
+                                title: "Mobile Hero Video",
+                                instructions: "Upload a video file for mobile, or pick one from your media library.",
+                            }}
+                            value={videoForMobile}
+                        />
+                    )
+                ) : mobileImage ? (
+                    <div style={{width: '100%'}}>
+                        <IconButton
+                            className="remove-media"
+                            label={__("Remove Image")}
+                            onClick={() => setAttributes({ mobileImage: "" })}
+                            icon="no-alt"
+                        />
+                        <div
+                            className="block-image"
+                            style={{
+                                backgroundImage: `url(${mobileImage.url})`,
+                                minHeight: 120,
+                                backgroundSize: 'cover',
+                                backgroundPosition: 'center',
+                            }}
+                        />
+                    </div>
+                ) : (
+                    <MediaPlaceholder
+                        icon="images-alt2"
+                        onSelect={mobileImage => setAttributes({ mobileImage })}
+                        allowedTypes={ALLOWED_MEDIA_TYPES}
+                        multiple={false}
+                        labels={{
+                            title: "Mobile Hero Image",
+                            instructions: "Upload an image for mobile, or pick one from your media library",
+                        }}
+                    />
+                )}
+                </PanelRow>
+                {/* Video Poster */}
+                {videoHero && (
+                    <PanelRow>
+                        {videoPoster ? (
+                            <div className="block-image-poster" style={{backgroundImage: `url(${videoPoster.url})`, minHeight: 80, backgroundSize: 'cover', backgroundPosition: 'center'}}>
+                                <IconButton
+                                    className="remove-media"
+                                    label={__("Remove Image")}
+                                    onClick={() => setAttributes({ videoPoster: "" })}
+                                    icon="no-alt"
+                                />
+                            </div>
+                        ) : (
+                            <MediaPlaceholder
+                                icon="images-alt2"
+                                onSelect={(videoPoster) => setAttributes({ videoPoster })}
+                                allowedTypes={ALLOWED_MEDIA_TYPES}
+                                multiple={false}
+                                labels={{
+                                    title: "Hero Video Poster",
+                                    instructions:
+                                        "Upload an image for a video placeholder",
+                                }}
+                            />
+                        )}
+                    </PanelRow>
+                )}
+            </PanelBody>
 			<PanelBody title="Hero Options">
 				<PanelRow>
 					<ToggleControl

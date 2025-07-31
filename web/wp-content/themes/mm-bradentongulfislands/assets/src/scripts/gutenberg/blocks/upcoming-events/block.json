@@ -1,24 +1,25 @@
 {
-  "name": "upcomingevents",
-  "dynamic": true,
-  "scripts": [
-    "front.js"
-  ],
-  "render_callback": "MaddenNino\\Blocks\\UpcomingEvents\\render_block",
-  "settings": {
-    "title": "Upcoming Events",
-    "description": "Displaying a few upcoming events.",
-    "icon": "calendar-alt",
-    "category": "layout",
-    "attributes": {
-      "title": {
-        "type": "string",
-        "default": ""
-      },
-      "mode": {
-        "type": "string",
-        "default": "edit"
-      }
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "mm-bradentongulfislands/upcomingevents",
+  "version": "1.0.1",
+  "title": "Upcoming Events",
+  "description": "Displaying a few upcoming events.",
+  "icon": "calendar-alt",
+  "category": "layout",
+  "attributes": {
+    "title": {
+      "type": "string",
+      "default": ""
+    },
+    "mode": {
+      "type": "string",
+      "default": "edit"
     }
-  }
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "viewStyle": "file:./style-index.css",
+  "viewScript": "file:./front.js",
+  "render": "file:./render.php"
 }

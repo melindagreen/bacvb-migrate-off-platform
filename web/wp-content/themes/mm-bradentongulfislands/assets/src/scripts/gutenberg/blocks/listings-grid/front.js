@@ -1,3 +1,6 @@
+import Swiper from "swiper/bundle";
+import datepicker from "js-datepicker";
+
 const PAGE_LENGTH = 12;
 var STARTING_ZOOM = 11;
 var STARTING_COORDS = [27.4190314, -82.3921034];
@@ -293,6 +296,7 @@ var markersObject = {};
 		var prev = page > 1 && !isNaN(page) ? page - 1 : 1;
 		var lastPage = parseInt($(".pagination__button--last").attr("data-page"));
 		var next = page < lastPage && !isNaN(page) ? page + 1 : lastPage;
+		const perPage = parseInt($("#listings-grid").attr("data-perpage"));
 		$(".pagination__button--prev").attr("data-page", prev);
 		$(".pagination__button--next").attr("data-page", next);
 
@@ -568,6 +572,7 @@ var markersObject = {};
 
 		var viewType = $(".view.active").data("view-type");
 		var listingsContainer = $(".listings-container.listings-container--grid");
+		const perPage = parseInt($("#listings-grid").attr("data-perpage"));
 
 		// if(postType == 'event'){
 		// 	// get the page back up where it needs to be for viewing (it's slightly less jarring to do this pre-ajax call)
@@ -616,11 +621,15 @@ var markersObject = {};
 				return prev;
 			}, {});
 
+		console.log("filters", filters);
+
 		url += Object.keys(filters)
 			.map(function (key) {
 				return `${key}=${filters[key].join(",")}`;
 			})
 			.join("&");
+
+		console.log("url", url);
 
 		// get the page back up where it needs to be for viewing (it's slightly less jarring to do this pre-ajax call)
 		// if (adjustScroll) {
@@ -641,7 +650,7 @@ var markersObject = {};
 		}
 
 		$(".listings-container--grid").append(
-			`<div class="loading show"><span class="sr-only"><?php _e( 'loading' ); ?></span><i class="fas fa-spinner fa-pulse"></i></div>`
+			`<div class="loading show"><span class="sr-only"><?php _e( 'loading' ); ?></span></div>`
 		);
 
 		$.get(url).done(function (listings, status, xhr) {
@@ -797,7 +806,7 @@ var markersObject = {};
 			STARTING_COORDS = [27.4590324, -82.6521034];
 		}
 
-		perPage = parseInt($("#listings-grid").attr("data-perpage"));
+		const perPage = parseInt($("#listings-grid").attr("data-perpage"));
 
 		if ($(".view--map")) {
 			$(".view--map").addClass("active");
@@ -863,7 +872,7 @@ var markersObject = {};
 		});
 
 		// Resizing
-		$(window).resize(() => {
+		$(window).on("resize", () => {
 			STARTING_COORDS = getIsLarge()
 				? [27.4190314, -82.3921034]
 				: [27.4590324, -82.6521034];

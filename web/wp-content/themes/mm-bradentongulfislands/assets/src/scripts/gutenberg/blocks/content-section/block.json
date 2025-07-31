@@ -1,20 +1,23 @@
 {
-  "apiVersion": 2,
-  "name": "content-section",
-  "parent": [ "mm-bradentongulfislands-content-selector" ],
-  "scripts": [
-    "front.js"
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "mm-bradentongulfislands/content-section",
+  "version": "1.0.1",
+  "title": "Content Section",
+  "description": "Use an option select to choose different content",
+  "icon": "feedback",
+  "category": "layout",
+  "parent": [
+    "mm-bradentongulfislands/content-selector"
   ],
-  "settings": {
-    "title": "Content Section",
-    "description": "Use an option select to choose different content",
-    "icon": "feedback",
-    "category": "layout",
-    "attributes": {
-      "sectionTitle": {
-        "type": "string",
-        "default": ""
-      }
+  "attributes": {
+    "sectionTitle": {
+      "type": "string",
+      "default": ""
     }
-  }
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "viewStyle": "file:./style-index.css",
+  "viewScript": "file:./front.js"
 }

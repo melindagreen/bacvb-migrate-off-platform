@@ -48,9 +48,8 @@ const BLOCK_TEMPLATE = [
 const Editor = props => {
   const blockProps = useBlockProps();
   return (
-    <section className={`wp-block-mm-bradentongulfislands-wideslideshow`}>
+    <section {...blockProps}>
       <Scrollable  scrollDirection="x" style={ { maxHeight: 500, maxWidth: "100vw", marginBottom: "5px"} }>
-      <div className="contents" {...blockProps }>
         <InnerBlocks className="item"
           allowedBlocks={ALLOWED_BLOCKS}
           template={BLOCK_TEMPLATE}
@@ -59,8 +58,7 @@ const Editor = props => {
           templateLock={false}
           renderAppender={ InnerBlocks.ButtonBlockAppender }
         />
-      </div>
-        </Scrollable>
+      </Scrollable>
     </section>
   )
 }

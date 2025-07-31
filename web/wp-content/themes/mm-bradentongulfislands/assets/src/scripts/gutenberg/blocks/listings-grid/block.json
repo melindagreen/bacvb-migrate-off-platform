@@ -1,60 +1,57 @@
 {
-    "name": "listings-grid",
-    "dynamic": true,
-    "scripts": [
-      "swiper.js",
-      "front.js"
-    ],
-    "script_extra_dependencies": [
-      "jquery-ui-datepicker"
-    ],
-    "render_callback": "MaddenNino\\Blocks\\ListingsGrid\\render_block",
-    "settings": {
-      "title": "Listings Grid",
-      "description": "A grid/map view of blog posts, events or listings",
-      "icon": "store",
-      "category": "widgets",
-      "attributes": {
-        "listingsTitle": {
-          "type": "string",
-          "default": "Listings"
-        },
-        "catFilterSelections": {
-          "type": "string",
-          "default": ""
-        },
-        "postType": {
-          "type": "string",
-          "default": "listing"
-        },
-        "map": {
-          "type": "boolean",
-          "default": false
-        },
-        "listingsPerPage": {
-          "type": "number",
-          "default": 12
-        },
-        "defaultThumb": {
-          "type": "string",
-          "default": "/wp-content/themes/mm-bradentongulfislands/assets/images/pexels-miriam-fischer-2645245-scaled.jpg"
-        },
-        "preFilterCat": {
-          "type": "string",
-          "default": "none"
-        },
-        "excludeCat": {
-          "type": "string",
-          "default": "none"
-        },
-        "filterType": {
-          "type": "string",
-          "default": "categories"
-        },
-        "mode": {
-          "type": "string",
-          "default": "preview"
-        }
-      }
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "mm-bradentongulfislands/listings-grid",
+  "version": "1.0.1c",
+  "title": "Listings Grid",
+  "description": "A grid/map view of blog posts, events or listings",
+  "icon": "store",
+  "category": "widgets",
+  "attributes": {
+    "listingsTitle": {
+      "type": "string",
+      "default": "Listings"
+    },
+    "catFilterSelections": {
+      "type": "string",
+      "default": ""
+    },
+    "postType": {
+      "type": "string",
+      "default": "listing"
+    },
+    "map": {
+      "type": "boolean",
+      "default": false
+    },
+    "listingsPerPage": {
+      "type": "number",
+      "default": 12
+    },
+    "defaultThumb": {
+      "type": "string",
+      "default": "/wp-content/themes/mm-bradentongulfislands/assets/images/pexels-miriam-fischer-2645245-scaled.jpg"
+    },
+    "preFilterCat": {
+      "type": "string",
+      "default": "none"
+    },
+    "excludeCat": {
+      "type": "string",
+      "default": "none"
+    },
+    "filterType": {
+      "type": "string",
+      "default": "categories"
+    },
+    "mode": {
+      "type": "string",
+      "default": "preview"
     }
-  }
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "viewStyle": "file:./style-index.css",
+  "viewScript": "file:./front.js",
+  "render": "file:./render.php"
+}
