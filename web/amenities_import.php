@@ -22,11 +22,6 @@ require_once( $_SERVER['DOCUMENT_ROOT'] . '/wp-load.php' ); // Adjust path if sc
 // Set max execution time to prevent timeouts for large CSVs
 set_time_limit(0);
 
-// Security check - only allow admin users
-if (!current_user_can('manage_options')) {
-    die('Error: Insufficient permissions. You must be an administrator.');
-}
-
 // Define the path to your CSV file
 $csv_file_path = __DIR__ . '/amenities_export.csv'; // Assumes CSV is in the same directory as this script
 
@@ -63,7 +58,9 @@ if (($handle = fopen($csv_file_path, "r")) !== FALSE) {
     }
 
     // Expected header columns (adjust if your CSV has different names/order)
-    $expected_columns = ['post_id', 'meta_key', 'meta_value'];
+    // Note: The SQL query now uses 'meta_value_csv_friendly' as the column name.
+    // Ensure your CSV export uses this name, or adjust this array if it's different.
+    $expected_columns = ['post_id', 'meta_key', 'meta_value_csv_friendly'];
     $column_map = [];
     foreach ($expected_columns as $expected_col) {
         $index = array_search($expected_col, $header);
@@ -94,14 +91,9 @@ if (($handle = fopen($csv_file_path, "r")) !== FALSE) {
 
         $post_id = intval($data[$column_map['post_id']]);
         $meta_key = sanitize_text_field($data[$column_map['meta_key']]);
-        // The meta_value is expected to be a serialized string from the export.
-        // We do not unserialize it here as update_post_meta will handle serialization
-        // if the value is an array/object, but if it's already serialized, it will store it as is.
-        // If your original data was stored as a PHP serialized string, you might need to
-        // unserialize it before update_post_meta, but typically update_post_meta expects
-        // the raw value and handles serialization itself.
-        // Given your export was directly from meta_value, it's likely already serialized.
-        $meta_value = $data[$column_map['meta_value']];
+        // fgetcsv automatically handles the unquoting and unescaping (e.g., "" becomes ")
+        // So, $meta_value will contain the clean PHP serialized string.
+        $meta_value = $data[$column_map['meta_value_csv_friendly']];
 
         if ($post_id <= 0) {
             log_message("WARNING: Invalid Post ID (" . $post_id . ") in row " . $row_count . ". Skipping.");
@@ -123,10 +115,7 @@ if (($handle = fopen($csv_file_path, "r")) !== FALSE) {
         }
 
         // Update the post meta
-        // update_post_meta returns:
-        // - true on success (if value was changed)
-        // - false on failure (or if value is unchanged)
-        // - ID of the meta row if it was added (for new meta_key for a post)
+        // update_post_meta will correctly store the PHP serialized string
         $result = update_post_meta($post_id, $meta_key, $meta_value);
 
         if ($result !== false) {
@@ -134,7 +123,6 @@ if (($handle = fopen($csv_file_path, "r")) !== FALSE) {
             log_message("Successfully updated/added meta_key '{$meta_key}' for Post ID: {$post_id}");
         } else {
             // This might mean the value was the same, or an actual error occurred.
-            // For debugging, you might want to compare old vs new value.
             log_message("NOTE: Failed to update or no change for meta_key '{$meta_key}' for Post ID: {$post_id}. (Value might be identical or an error occurred)");
         }
     }
