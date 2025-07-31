@@ -120,7 +120,6 @@ const applyCustomAttrs = (el, block, attributes) => {
                                                     }
                                                     data-load-type="img"
                                                     data-load-all={attributes.lbImageUrls[index]}
-                                                    // This is the new attribute you'll use
                                                     data-gallery-src={attributes.lbImageUrls[index]} 
                                                 />
                                             </div>
