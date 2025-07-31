@@ -7,7 +7,7 @@ set_time_limit(0);
 ini_set('memory_limit', '512M');
 
 // CSV file path (adjust as needed)
-$csv_path = ABSPATH . 'wp-content/uploads/amenities_export.csv';
+$csv_path = ABSPATH . 'amenities_export.csv';
 
 if (!file_exists($csv_path)) {
     exit("❌ CSV file not found at: $csv_path");
