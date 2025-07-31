@@ -122,8 +122,8 @@ if ("serviceWorker" in navigator) {
   }
   // Hide all carousels and content initially and move them to the first container
   $('.lightbox-imagecarousel, .lb-content').each(function() {
-    $(this).hide().appendTo(firstLightboxContainer);
-	console.log('First lightbox container:', firstLightboxContainer);
+    $(this).hide().prependTo(firstLightboxContainer); 
+    console.log('First lightbox container:', firstLightboxContainer);
   });
 
   // Attach a click event listener to each image in the galleries
@@ -305,6 +305,7 @@ if ("serviceWorker" in navigator) {
 		});
 
 		//LightBox
+		lightBox();
 
 		var lightboxCarousels = $(".lightbox-imagecarousel");
 
@@ -327,18 +328,19 @@ if ("serviceWorker" in navigator) {
 			$(element).addClass(uniqueContainer);
 
 			// Initialize Swiper for each element with different options
-			var swiper = new Swiper("." + uniqueContainer, {
-				loop: false,
-				autoplay: {
-					delay: 5500,
-					disableOnInteraction: false,
-				},
-				clickable: true,
-				navigation: {
-					nextEl: "." + uniqueClass + "-next", // Use unique class for next button
-					prevEl: "." + uniqueClass + "-prev", // Use unique class for prev button
-				},
-			});
+			// var swiper = new Swiper("." + uniqueContainer, {
+			// 	loop: false,
+			// 	direction: 'horizontal',
+			// 	autoplay: {
+			// 		delay: 5500,
+			// 		disableOnInteraction: false,
+			// 	},
+			// 	clickable: true,
+			// 	navigation: {
+			// 		nextEl: "." + uniqueClass + "-next", // Use unique class for next button
+			// 		prevEl: "." + uniqueClass + "-prev", // Use unique class for prev button
+			// 	},
+			// });
 		});
 
 		$(
@@ -348,7 +350,6 @@ if ("serviceWorker" in navigator) {
 			event.stopPropagation();
 		});
 
-		lightBox();
 
 		// Query Block Placeholder Image
 		insertPlaceholderImage();
