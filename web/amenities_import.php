@@ -60,7 +60,7 @@ if (($handle = fopen($csv_file_path, "r")) !== FALSE) {
     // Expected header columns (adjust if your CSV has different names/order)
     // Note: The SQL query now uses 'meta_value_csv_friendly' as the column name.
     // Ensure your CSV export uses this name, or adjust this array if it's different.
-    $expected_columns = ['post_id', 'meta_key', 'meta_value_csv_friendly'];
+    $expected_columns = ['post_id', 'meta_key', 'meta_value'];
     $column_map = [];
     foreach ($expected_columns as $expected_col) {
         $index = array_search($expected_col, $header);
