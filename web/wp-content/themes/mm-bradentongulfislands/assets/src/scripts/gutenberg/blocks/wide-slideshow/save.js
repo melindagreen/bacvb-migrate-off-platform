@@ -16,7 +16,7 @@ const save = (props) => {
 				</div>
 			)}
 			<div className="wideslideshow-ligthbox-overlay wideslideshow-ligthbox-overlay--hide">
-				<div class="wideslideshow-ligthbox-overlay__close">x</div>
+				<div className="wideslideshow-ligthbox-overlay__close">x</div>
 				<div className="wideslideshow-ligthbox-overlay__content">
 					<iframe frameborder="0" id="lightbox-iframe" src=""></iframe>
 					<div className="lightbox-info">
@@ -60,7 +60,7 @@ const save = (props) => {
 							>
 								<a
 									id="infoblock-buttontext"
-									class="infoblock__link"
+									className="infoblock__link"
 									aria-label="more info button"
 									href="#"
 								>
