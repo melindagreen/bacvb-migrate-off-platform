@@ -59,6 +59,11 @@ $html = "<div class='" . Constants::BLOCK_CLASS . "-beaches-map'>";
         
         // modifying slug to match the variable in inspector.js to pull beach content
         $beachContent = strtolower(str_replace(' ', '', $shortenedTitle));
+        
+        // Check if the beach content exists in the attributes
+        if (!isset($attrs[$beachContent])) {
+          continue;
+        }
 
         $html .= '<div class="selectBeach '.$post->post_name.'">';
 
