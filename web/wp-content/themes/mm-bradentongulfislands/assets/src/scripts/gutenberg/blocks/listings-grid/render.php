@@ -95,7 +95,7 @@ $listings_query = new \WP_Query( $query_args );
 
   <?php
     include_once( 'code/grid-pagination.php' );
-    render_grid_pagination( $listings_query );
+    render_grid_pagination( $listings_query, $attrs );
   ?>
 
 </div>

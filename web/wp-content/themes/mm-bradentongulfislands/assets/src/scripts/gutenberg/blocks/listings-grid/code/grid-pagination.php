@@ -10,7 +10,9 @@ namespace MaddenNino\Blocks\ListingsGrid;
  * @param array $listings_query		The query args for all listings
  * @return string               	HTML string representing the pagination buttons
  */
-function render_grid_pagination( $listings_query ) {
+function render_grid_pagination( $listings_query, $attrs ) {
+  $page_size = $attrs['listingsPerPage'] ?? 12;
+
     ?>
         <!-- mobile pagination -->
         <div class="pagination pagination__footer" data-current-page="1">

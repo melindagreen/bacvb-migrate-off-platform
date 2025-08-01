@@ -49,8 +49,10 @@ function render_grid_filter( $attrs, $filter_tax ) {
     ) );
 
     $allCats = '';
-    foreach ($filter_terms as $cat_slug) {
+    if ( is_array( $filter_terms ) && count( $filter_terms ) > 0 ) {
+      foreach ( $filter_terms as $cat_slug ) {
         $allCats .= $cat_slug->term_id.',';
+      }
     }
 
     // categories to exclude
@@ -194,7 +196,7 @@ function render_grid_filter( $attrs, $filter_tax ) {
                     <?php if( $filter_tax ) { ?>
                     <div class="control control--categories">
 
-                        <?php if(count($filter_terms) > 0 || $attrs['filterType'] != 'categories') { ?>
+                        <?php if( ( $filter_terms && is_array( $filter_terms ) && count($filter_terms) > 0 ) || $attrs['filterType'] != 'categories') { ?>
                         <h4 class="control__title"><?php _e( 'Filters', 'mmnino' ); ?></h4>
                         <?php } ?>
 
@@ -304,29 +306,33 @@ function render_grid_filter( $attrs, $filter_tax ) {
                             <?php } ?>
                             
                             <?php if ($attrs['filterType'] == 'categories') { ?>
-                            <?php foreach($filter_terms as $term) {  
-
-                                if(!empty($attrs['catFilterSelections'])){
-                                    
-                                    // Split the string into an array using commas as the delimiter
-                                    $catFiltersSelections = explode(",", $attrs['catFilterSelections']);
-                                    
-                                    // Check if the search term is in the array
-                                    if (!in_array($term->slug, $catFiltersSelections)) {
-                                        continue;
-                                    }
-                                }
-                                ?>
-                            <label class="control__label control__label--categories">
-                                    <input
+                            <?php 
+                            if ( is_array( $filter_terms ) && count( $filter_terms ) > 0 ) {
+                              foreach($filter_terms as $term) {  
+                                  if(!empty($attrs['catFilterSelections'])){
+                                      
+                                      // Split the string into an array using commas as the delimiter
+                                      $catFiltersSelections = explode(",", $attrs['catFilterSelections']);
+                                      
+                                      // Check if the search term is in the array
+                                      if (!in_array($term->slug, $catFiltersSelections)) {
+                                          continue;
+                                      }
+                                  }
+                                  ?>
+                                  <label class="control__label control__label--categories">
+                                      <input
                                         type="checkbox"
                                         class="control__input control__input--categories control__input--checkbox" 
                                         name="<?php echo $filter_tax === 'category' ? 'categories' : $filter_tax; ?>"
                                         value="<?php echo $term->term_id  ?>"
-                                    />
-                                    <span class="control__text"><?php echo $term->name  ?></span>
-                            </label>
-                            <?php } }?>
+                                      />
+                                      <span class="control__text"><?php echo $term->name  ?></span>
+                                  </label>
+                              <?php
+                              }
+                           }
+                          }?>
                         </div>
                     </div>
                 <?php } ?>

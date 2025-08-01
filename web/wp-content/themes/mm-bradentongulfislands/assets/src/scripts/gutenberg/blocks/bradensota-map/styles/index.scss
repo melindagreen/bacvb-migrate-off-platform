@@ -1,0 +1,35 @@
+.#{$block-prefix}-water-ferry-map {
+  width: 80%;
+  margin: 0 auto;
+  .mapContainer {
+    // background: url('~/images/oedmap.svg') top center no-repeat;
+  }
+
+  .county_content_overlay {
+    display: none;
+  }
+
+  .countyList {
+    margin: 1em auto;
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    flex-wrap: wrap;
+    padding: 0;
+    li {
+      display: block;
+      padding: 0 10px;
+      text-transform: uppercase;
+      color: $bradenton-teal;
+      font-weight: 700;
+      cursor: pointer;
+      transition: color 0.3s;
+      &:not(:last-child) {
+        border-right: 1px solid $bradenton-teal;
+      }
+      &:hover {
+        color: $bradenton-teal;
+      }
+    }
+  }
+}

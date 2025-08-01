@@ -4,6 +4,7 @@ namespace MaddenNino\Library\Hooks;
 
 add_action( 'wp_head', __NAMESPACE__ . '\add_global_css_vars' );
 add_action( 'template_redirect', __NAMESPACE__ . '\redirect_search_results' );
+add_filter( 'fareharbor/disabled', __NAMESPACE__ . '\disable_fareharbor' );
 //add_action( 'wp', __NAMESPACE__ . '\testing' );
 
 function testing() {
@@ -61,4 +62,17 @@ function redirect_search_results() {
     include( get_stylesheet_directory() . '/search.php' );
     exit;
   }
+}
+
+/**
+ * Disable Fareharbor from loading on all pages except necessary pages
+ */
+function disable_fareharbor( $disable ) {
+  if ( ! is_admin() && isset( $_SERVER['REQUEST_URI'] ) ) {
+		$post_id = url_to_postid( esc_url_raw( home_url( $_SERVER['REQUEST_URI'] ) ) );
+    if ( 7157 == $post_id ) {
+      return false;
+    }
+	}
+  return true;
 }
