@@ -30,6 +30,14 @@ $html = "<div class='" . Constants::BLOCK_CLASS . "-beaches-map'>";
       // Remove content inside parentheses from the post title
       $shortenedTitle = preg_replace('/\s?\([^)]+\)/', '', $post->post_title);
 
+      // modifying slug to match the variable in inspector.js to pull beach content
+      $beachContent = strtolower(str_replace(' ', '', $shortenedTitle));
+
+      // Check if the beach content exists in the attributes
+      if (!isset($attrs[$beachContent])) {
+          continue;
+      }
+
       $html .= '<div class="location_pin" id="'.$post->post_name.'" data-id="'.$post->ID.'">';
       $html .= '<div class="beachName">'.$shortenedTitle.'</div>';
       $html .= '<img src="' . get_stylesheet_directory_uri() . '/assets/images/map-POI-marker.png" class="marker" alt="Marker icon">';
@@ -59,7 +67,6 @@ $html = "<div class='" . Constants::BLOCK_CLASS . "-beaches-map'>";
         
         // modifying slug to match the variable in inspector.js to pull beach content
         $beachContent = strtolower(str_replace(' ', '', $shortenedTitle));
-        
         // Check if the beach content exists in the attributes
         if (!isset($attrs[$beachContent])) {
           continue;
