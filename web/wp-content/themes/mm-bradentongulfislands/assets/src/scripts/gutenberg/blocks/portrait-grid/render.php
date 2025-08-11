@@ -60,7 +60,7 @@ if( $attrs['queryMode'] === 'manual' ) {
   }, $attrs['posts'] );
 } 
 ?>
-<section class="<?php echo Constants::BLOCK_CLASS ?>-portrait-grid is-length-<?php echo count( $posts ); ?> <?php if($attrs['className']) { echo $attrs['className']; } ?>">
+<section class="<?php echo Constants::BLOCK_CLASS ?>-portrait-grid is-length-<?php echo count( $posts ); ?> <?php if(isset($attrs['className'])) { echo $attrs['className']; } ?>">
     <img class="nautical-illustration nautical-illustration--oyster" src="<?php echo get_theme_file_uri()?>/assets/images/oyster.png" alt="Oyster Illustration">
     <img class="nautical-illustration nautical-illustration--crab" src="<?php echo get_theme_file_uri()?>/assets/images/crab.png" alt="Crab Illustration">
     <img class="nautical-illustration nautical-illustration--starfish" src="<?php echo get_theme_file_uri()?>/assets/images/starfish.png" alt="Star Fish Illustration">

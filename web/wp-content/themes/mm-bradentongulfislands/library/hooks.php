@@ -5,6 +5,8 @@ namespace MaddenNino\Library\Hooks;
 add_action( 'wp_head', __NAMESPACE__ . '\add_global_css_vars' );
 add_action( 'template_redirect', __NAMESPACE__ . '\redirect_search_results' );
 add_filter( 'fareharbor/disabled', __NAMESPACE__ . '\disable_fareharbor' );
+// add_action( 'init', __NAMESPACE__ . '\remove_fareharbor_script', 11 );
+// add_action( 'wp_footer', __NAMESPACE__ . '\add_fareharbor_script' );
 //add_action( 'wp', __NAMESPACE__ . '\testing' );
 
 function testing() {
@@ -75,4 +77,20 @@ function disable_fareharbor( $disable ) {
     }
 	}
   return true;
+}
+
+function remove_fareharbor_script() {
+  remove_action( 'wp_footer', array( 'fareharbor', 'lightframe_api_footer' ) );
+}
+
+function add_fareharbor_script() {
+  $fareharbor = \fareharbor::get_instance();
+  $test = $fareharbor::get_option( 'fh_auto_lightframe_enabled' );
+  echo '<pre>';print_r( $test );echo '</pre>';
+  // $src = 'https://' . self::url() . '/embeds/api/v1/';
+
+  // if ( fareharbor::get_option( 'fh_auto_lightframe_enabled' ) )
+  //   $src .= '?autolightframe=yes';
+
+  // echo "<!-- FareHarbor plugin activated --><script src=\"$src\" defer></script>";
 }

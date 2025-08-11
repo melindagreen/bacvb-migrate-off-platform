@@ -6,7 +6,7 @@ use MaddenNino\Library\Utilities as Utilities;
   
 $attrs = $attributes ?? [];
 ?>
-<section class="<?php echo Constants::BLOCK_CLASS ?>-quick-links <?php if($attrs['className']) { echo $attrs['className']; } ?> <?php if($attrs['hideOnMobile']) { echo Constants::BLOCK_CLASS . '-quick-links--hideonmobile'; } ?>">
+<section class="<?php echo Constants::BLOCK_CLASS ?>-quick-links <?php if(isset($attrs['className'])) { echo $attrs['className']; } ?> <?php if($attrs['hideOnMobile']) { echo Constants::BLOCK_CLASS . '-quick-links--hideonmobile'; } ?>">
 <?php if($attrs['blockTitle'] !== '') { ?>
 <h2 class="wp-block-heading has-text-align-center quick-links-heading"><?php echo $attrs['blockTitle']; ?></h2>
 <?php } ?>

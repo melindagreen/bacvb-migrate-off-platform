@@ -64,7 +64,6 @@ composer.lock
 # Allow some plugins that we can't get from github or wpackagist
 !/web/wp-content/plugins/gravityformsauthorizenet/
 !/web/wp-content/plugins/gravityformshubspot/
-!/web/wp-content/plugins/leadin/
 
 # WordPress dynamic folders
 /web/wp-content/cache/
