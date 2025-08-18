@@ -58,15 +58,15 @@ if( $attrs['queryMode'] === 'manual' ) {
     if( isset( $post['postObj']['url'] ) ) $clean_post['link'] = $post['postObj']['url'];
 
     // Factoid
-    $clean_post['factThumb'] = $post['factThumb']['url'];
-    $clean_post['factTitle'] = $post['factTitle'];
-    $clean_post['factDescription'] = $post['factDescription'];
+    $clean_post['factThumb'] = isset( $post['factThumb'] ) ? $post['factThumb']['url'] : false;
+    $clean_post['factTitle'] = $post['factTitle'] ?? '';
+    $clean_post['factDescription'] = $post['factDescription'] ?? '';
 
     return $clean_post;
   }, $attrs['posts'] );
 } 
 ?>
-<section class="<?php echo Constants::BLOCK_CLASS ?>-hero-showcase is-length-<?php echo count( $posts ); ?> <?php if($attrs['className']) { echo $attrs['className']; } ?>">
+<section class="<?php echo Constants::BLOCK_CLASS ?>-hero-showcase is-length-<?php echo count( $posts ); ?> <?php if( isset( $attrs['className'] ) && $attrs['className'] ) { echo $attrs['className']; } ?>">
 <div class="hero-showcase-legend">
   <h2 class="legendTitle">Beach Amenities Legend</h2>
 <div class="check-controls">

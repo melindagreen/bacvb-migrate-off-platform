@@ -366,8 +366,6 @@ class RestApi {
             'field' => 'term_id',
             'operator' => 'NOT IN',
         );
-
-        error_log( print_r( $args, true ) );
                 
         return $args;
     }
