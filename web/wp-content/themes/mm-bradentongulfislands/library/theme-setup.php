@@ -18,7 +18,7 @@ class ThemeSetup {
 		add_action( 'template_redirect', array(get_called_class(), 'disable_team_archives'));
 		//add_action( 'template_redirect', array(get_called_class(), 'redirect_non_logged_in_users'));
 
-			
+
 		// tell yoast to not show some sitemaps
 		add_filter( 'wpseo_sitemap_exclude_taxonomy', array( get_called_class(), 'sitemap_exclude_taxonomy' ), 10, 2 );
 
@@ -42,7 +42,7 @@ class ThemeSetup {
 
 	public static function modify_acf_form_data($form_data) {
 		// Log the form submission
-		error_log('Form Submitted: ' . print_r($form_data, true));
+		//error_log('Form Submitted: ' . print_r($form_data, true));
 
 		// Check if the current user is the user with the email 'info@gulfislandsferry.com'.
 		$user = get_user_by('email', 'info@gulfislandsferry.com');
@@ -53,7 +53,7 @@ class ThemeSetup {
 
 		// If the user is valid and the correct ACF group is detected
 		if ($isValidUser) {
-			error_log('ACF validation: Valid user and Ferry Banner group detected.');
+			//error_log('ACF validation: Valid user and Ferry Banner group detected.');
 
 			// Optionally, modify the form data or add custom nonce handling here
 			$custom_nonce = wp_create_nonce('custom_acf_form_action');
@@ -64,7 +64,7 @@ class ThemeSetup {
 			];
 		} else {
 			// If validation fails, log and return false to prevent form submission
-			error_log('ACF validation: Invalid user or Ferry Banner group not detected.');
+			//error_log('ACF validation: Invalid user or Ferry Banner group not detected.');
 			return false;
 		}
 
@@ -92,10 +92,10 @@ class ThemeSetup {
 	public static function add_raf_trademark($content) {
 		$raf_phrase = 'Real. Authentic. Florida.';
 		$tm_markup = $raf_phrase . '<sup class="raf-tm">TM</sup> ';
-	
+
 		// Replace occurrences of the phrase with the trademarked version
 		$content = str_replace($raf_phrase, $tm_markup, $content);
-	
+
 		return $content;
 	}
 
@@ -104,7 +104,7 @@ class ThemeSetup {
 		// Register default menus
 		register_nav_menus(
 			array(
-				'shortcuts' => __( 'Shortcuts', 'mmnino' ), // top nav 
+				'shortcuts' => __( 'Shortcuts', 'mmnino' ), // top nav
 				'main-nav' => __( 'Main Menu', 'mmnino' ),   // main nav in header
 				'secondary-nav' => __( 'Secondary Menu', 'mmnino' ),   // secondary nav in header
 				'footer-one' => __( 'Footer One', 'mmnino' ), // footer nav
@@ -130,7 +130,7 @@ class ThemeSetup {
 		remove_role('water_ferry');
 		   // Get the editor role
 		   $editor = get_role('editor');
-    
+
 		   // Define the custom capabilities
 		//    $custom_capabilities = array(
 		// 	   'read' => true,
@@ -145,10 +145,10 @@ class ThemeSetup {
 		// 	   'delete_private_posts' => false,
 		// 	   'delete_published_posts' => false,
 		// //    );
-		   
+
 		   // Merge editor capabilities with custom capabilities
 		   $editor_capabilities = $editor->capabilities;
-	   
+
 		   // Add a new role with the merged capabilities
 		   add_role('water_ferry', 'Water Ferry', $editor_capabilities);
 
@@ -169,7 +169,7 @@ class ThemeSetup {
 				$role->add_cap('upload_files', true);
 				$role->add_cap('edit_published_posts', true);
 				$role->add_cap('read_private_posts', true);
-				
+
 				// Remove specific capabilities
 				// $role->remove_cap('delete_posts');
 				// $role->remove_cap('edit_others_posts');
@@ -177,52 +177,52 @@ class ThemeSetup {
 				// $role->remove_cap('delete_private_posts');
 				// $role->remove_cap('delete_published_posts');
 			}
-	 
+
 	}
 
 
 	 public static function restrict_admin_menu() {
 		// Get the current user
 		$current_user = wp_get_current_user();
-	
+
 		// Water Ferry
 		if (in_array('water_ferry', $current_user->roles)) {
-	
-			remove_menu_page('index.php');                  
-			remove_menu_page('upload.php');                 
-			remove_menu_page('edit-comments.php');       
-			remove_menu_page('themes.php');               
-			remove_menu_page('plugins.php');             
-			remove_menu_page('users.php');             
-			remove_menu_page('tools.php');              
-			remove_menu_page('options-general.php');    
-			remove_menu_page('admin.php');    
-			remove_menu_page('edit.php?post_type=listing');       
-			remove_menu_page('edit.php?post_type=event'); 
-			remove_menu_page('edit.php?post_type=page'); 
-			remove_menu_page('edit.php'); 
+
+			remove_menu_page('index.php');
+			remove_menu_page('upload.php');
+			remove_menu_page('edit-comments.php');
+			remove_menu_page('themes.php');
+			remove_menu_page('plugins.php');
+			remove_menu_page('users.php');
+			remove_menu_page('tools.php');
+			remove_menu_page('options-general.php');
+			remove_menu_page('admin.php');
+			remove_menu_page('edit.php?post_type=listing');
+			remove_menu_page('edit.php?post_type=event');
+			remove_menu_page('edit.php?post_type=page');
+			remove_menu_page('edit.php');
 
 			// Remove Rank Math menu items
-			remove_menu_page('rank-math'); 
+			remove_menu_page('rank-math');
 			remove_submenu_page('rank-math', 'rank-math-dashboard');
 			remove_submenu_page('rank-math', 'rank-math-general');
-			remove_submenu_page('rank-math', 'rank-math-titles'); 
-			remove_submenu_page('rank-math', 'rank-math-sitemap'); 
-			remove_submenu_page('rank-math', 'rank-math-status'); 
-			remove_submenu_page('rank-math', 'rank-math-help'); 
+			remove_submenu_page('rank-math', 'rank-math-titles');
+			remove_submenu_page('rank-math', 'rank-math-sitemap');
+			remove_submenu_page('rank-math', 'rank-math-status');
+			remove_submenu_page('rank-math', 'rank-math-help');
 
 			// Remove MemberPress menu items
-			remove_menu_page('memberpress'); 
-			remove_submenu_page('memberpress', 'admin.php?page=memberpress-options'); 
-			remove_submenu_page('memberpress', 'admin.php?page=memberpress-reports'); 
-			remove_submenu_page('memberpress', 'admin.php?page=memberpress-trans'); 
+			remove_menu_page('memberpress');
+			remove_submenu_page('memberpress', 'admin.php?page=memberpress-options');
+			remove_submenu_page('memberpress', 'admin.php?page=memberpress-reports');
+			remove_submenu_page('memberpress', 'admin.php?page=memberpress-trans');
 			remove_submenu_page('memberpress', 'admin.php?page=memberpress-members');
-	
+
 			// Remove HubSpot menu items
 			remove_menu_page('leadin');
-        	remove_submenu_page('leadin', 'admin.php?page=leadin_user_guide'); 
+        	remove_submenu_page('leadin', 'admin.php?page=leadin_user_guide');
 		}
-	}	
+	}
 
 	public static function filter_posts_by_author($query) {
 		// Check if the user has the 'water_ferry' role and if we're in the admin area
@@ -238,9 +238,9 @@ class ThemeSetup {
 	/**
 	 * Photo Credit for Core Block
 	 */
-	// Causing issues with certain elements like grid blocks - Aaron F. 
+	// Causing issues with certain elements like grid blocks - Aaron F.
 	// public static function add_photo_credit($block_content, $block) {
-		
+
 	// 	if (($block['blockName'] === 'core/image' || $block['blockName'] === 'core/cover' || $block['blockName'] === 'core/video') && isset($block['attrs']['photoCredit']) && $block['attrs']['photoCredit'] ) {
 	// 		$imageId = $block['attrs']['id'];
 	// 		$photoCredit = get_field('photo_credit', $imageId);
@@ -257,8 +257,8 @@ class ThemeSetup {
 	// 			: '<div class="photocreditWrap"><div class="photocredit" data-photocredit="'. $photoCredit .'">'. $photoIcon . '</div>';
 
 	// 		// add the svg and credit (either version)
-	// 		$modifiedContent = $block['blockName'] === 'core/video' 
-	// 			? substr_replace($block_content, $photoCreditContent . '<video ', $position, 0) 
+	// 		$modifiedContent = $block['blockName'] === 'core/video'
+	// 			? substr_replace($block_content, $photoCreditContent . '<video ', $position, 0)
 	// 			: substr_replace($block_content, $photoCreditContent . '<img ', $position, 0);
 
 	// 		// our non-cover version has other logic to close later
@@ -272,9 +272,9 @@ class ThemeSetup {
 	// 				if ($pos !== false) {
 	// 					$modifiedContent = substr_replace($modifiedContent, '</div></div>', $pos, strlen('</div>'));
 	// 				}
-	// 			} 
+	// 			}
 	// 		}
-			
+
 	// 		$block_content = $position !== false ? $modifiedContent : $block_content;
 	// 	}
 
@@ -306,8 +306,8 @@ class ThemeSetup {
 		}
 		return substr($string, -$len) === $ending;
 	}
-	
-	
+
+
 	public static function photo_credit_url_param($url, $attachment_id) {
 
 		$photoCredit = get_field('photo_credit', $attachment_id);
@@ -319,7 +319,7 @@ class ThemeSetup {
 
 		return $url;
 	}
-	
+
 
 	/**
 	 * Custom rewrite rules for the site
@@ -331,7 +331,7 @@ class ThemeSetup {
         add_rewrite_rule('blogs/([^/]+)/?$', 'index.php?post_type=post&name=$matches[1]', 'top');
 
 		// kick it in
-		flush_rewrite_rules();	
+		flush_rewrite_rules();
 	}
 
 	/**
@@ -352,7 +352,7 @@ class ThemeSetup {
 			global $post;
 			$url = get_permalink( $post );
 			wp_safe_redirect( $url, 301 );
-			exit(); 
+			exit();
 		  }
 		}
 	  }
@@ -363,11 +363,11 @@ class ThemeSetup {
 		$source_form_id = 1; // Replace '1' with the ID of your primary form
 		$checkbox_field_id = 2; // Replace '2' with the ID of your checkbox field
 		$target_form_id = 2; // Replace '3' with the ID of your target form
-	
+
 		// Check if the submitted entry is from the primary form and if the checkbox is checked
 		if ($form['id'] == $source_form_id) {
 			$checkbox_value = rgar($entry, $checkbox_field_id);
-			
+
 			// Check if the checkbox is selected
 			if ($checkbox_value == '1') {
 				$data_to_transfer = array(
@@ -375,10 +375,10 @@ class ThemeSetup {
 					'input_2' => $entry['2'], // Replace '2' with another field ID you want to transfer
 					// Add more fields as needed
 				);
-				
+
 				// Submit data to the target form programmatically
 				$result = GFAPI::submit_form($target_form_id, $data_to_transfer);
-				
+
 				// Check if submission to the target form was successful
 				if (is_wp_error($result)) {
 					// Handle error if needed
@@ -407,7 +407,7 @@ class ThemeSetup {
 
 
 	/**
-	 * Remove unwanted category taxonomies from the Yoast sitemap 
+	 * Remove unwanted category taxonomies from the Yoast sitemap
 	 * @param array $value				A value? I'm honestly not sure - but we don't need it here
 	 * @param string $taxonomy			The taxonomy to evaluate
 	 * @return boolean					Exclude the sitemap?
@@ -422,7 +422,7 @@ class ThemeSetup {
 		);
 
 		if ( in_array( $taxonomy, $skipTaxonomies ) ) return true;
-	}		
+	}
 
 
 		// Disable author archives

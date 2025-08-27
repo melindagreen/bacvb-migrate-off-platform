@@ -60,7 +60,7 @@ class MemberPressFormHandler {
 	}
 
     public function addEvent() {
-        
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_post_nonce']) && wp_verify_nonce($_POST['update_post_nonce'], 'update_post_meta')) {
 
             if(!$_SESSION['post_creation_attempted'] || !isset($_SESSION['post_creation_attempted'])) {
@@ -69,7 +69,7 @@ class MemberPressFormHandler {
                 // Sanitize post title
                 $post_title = sanitize_text_field($_POST['post_title'] ?? '');
                 $post_content = sanitize_text_field($_POST['eventastic_description'] ?? '');
-              
+
                 // Insert the post
                 // error_log($_POST['eventastic_website_link']);
                 $post_id = wp_insert_post(array(
@@ -81,21 +81,21 @@ class MemberPressFormHandler {
                 $_SESSION['post_creation_attempted'] = $post_id;
                 // error_log('Post Insert');
         }
-        
+
         $post_id = $_SESSION['post_creation_attempted'];
         var_dump('Test:'. $post_id);
-        
+
             if (!is_wp_error($post_id)) {
                 // Update post meta fields
                 $fields = $this->event_fields;
-        
+
                 // Loop through each field and update post meta
                 foreach ($fields as $field) {
                     if (isset($_POST[$field])) {
                         update_post_meta($post_id, $field, sanitize_text_field($_POST[$field]));
                     }
                 }
-        
+
                 // Handle image upload and update eventastic_gallery_square_featured_image
                 if (!empty($_FILES['eventastic_gallery_square_featured_image']['name'])) {
                     $upload = wp_upload_bits($_FILES['eventastic_gallery_square_featured_image']['name'], null, file_get_contents($_FILES['eventastic_gallery_square_featured_image']['tmp_name']));
@@ -131,7 +131,7 @@ class MemberPressFormHandler {
                 }
 
                 $updated_group_events = array_merge($group_events_ID, array($post_id)); // Merge the arrays
-                update_field('group_events', $updated_group_events, $current_user_group[0]->ID);            
+                update_field('group_events', $updated_group_events, $current_user_group[0]->ID);
             }
             $_SESSION['post_creation_attempted'] = false;
              // Redirect to the same page with action=events
@@ -152,7 +152,7 @@ class MemberPressFormHandler {
                 // Sanitize post title
                 $post_title = sanitize_text_field($_POST['post_title'] ?? '');
                 $post_content = sanitize_text_field($_POST['eventastic_description'] ?? '');
-        
+
                 // Clone the post
                 $cloned_post_id = wp_insert_post(array(
                     'post_title'   => $post_title,
@@ -162,20 +162,20 @@ class MemberPressFormHandler {
                 ));
                 $_SESSION['post_creation_attempted'] = $cloned_post_id;
             }
-        
+
             $cloned_post_id = $_SESSION['post_creation_attempted'];
 
-            //Replace Cloned Post ID with the original 
+            //Replace Cloned Post ID with the original
             if(MeprU::is_cloned_post($post_id) || get_post_status($post_id) === 'pending') {
 
                 $old_post_id = $post_id;
                 $post_id = MeprU::get_original_post_id($post_id);
 
-                error_log('Event Test');
-                error_log($old_post_id);
-                error_log($post_id);
-                error_log(get_post_status($old_post_id));
-                error_log(MeprU::is_cloned_post($old_post_id));
+                // error_log('Event Test');
+                // error_log($old_post_id);
+                // error_log($post_id);
+                // error_log(get_post_status($old_post_id));
+                // error_log(MeprU::is_cloned_post($old_post_id));
 
                 // Remove cloned_post_id meta data
                 delete_post_meta($post_id, 'cloned_post_id');
@@ -198,11 +198,11 @@ class MemberPressFormHandler {
                     }
                 }
             }
-        
+
                 // Store the original post ID as meta data in the cloned post
                 add_post_meta($cloned_post_id, 'original_post_id', $original_post_id);
                 add_post_meta($original_post_id, 'cloned_post_id', $cloned_post_id);
-        
+
                 // Handle image upload and set as post thumbnail for cloned post
                 if (!empty($_FILES['eventastic_gallery_square_featured_image']['name'])) {
                     $upload = wp_upload_bits($_FILES['eventastic_gallery_square_featured_image']['name'], null, file_get_contents($_FILES['eventastic_gallery_square_featured_image']['tmp_name']));
@@ -237,7 +237,7 @@ class MemberPressFormHandler {
                     }
                 }
                 $updated_group_events = array_merge($group_events_ID, array($cloned_post_id)); // Merge the arrays
-                update_field('group_events', $updated_group_events, $current_user_group[0]->ID); 
+                update_field('group_events', $updated_group_events, $current_user_group[0]->ID);
 
                 $_SESSION['post_creation_attempted'] = false;
                 // Redirect to the same page with action=events
@@ -247,15 +247,15 @@ class MemberPressFormHandler {
     }
 
     public function addListing() {
-        error_log('Test');
+        //error_log('Test');
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_post_nonce']) && wp_verify_nonce($_POST['update_post_nonce'], 'update_post_meta')) {
-            error_log('Running');
+            //error_log('Running');
             if(!$_SESSION['post_creation_attempted'] || empty($_SESSION['post_creation_attempted'])) {
                 $_SESSION['post_creation_attempted'] = true;
             // Sanitize post title
             $post_title = sanitize_text_field($_POST['post_title'] ?? '');
             $post_content = sanitize_text_field($_POST['partnerportal_description'] ?? '');
-        
+
             // Prepare post data
             $post_data = array(
                 'post_title'    => $post_title,
@@ -264,25 +264,25 @@ class MemberPressFormHandler {
                 'post_type'     => 'listing' // Adjust post type as needed
 
             );
-        
+
             // Insert the post
             $post_id = wp_insert_post($post_data);
             $_SESSION['post_creation_attempted'] = $post_id;
         }
-        
+
         $post_id = $_SESSION['post_creation_attempted'];
 
             if (!is_wp_error($post_id)) {
                 // Update post meta fields
                 $fields = $this->listing_fields;
-        
+
                 // Loop through each field and update post meta
                 foreach ($fields as $field) {
                     if (isset($_POST[$field])) {
                         update_post_meta($post_id, $field, sanitize_text_field($_POST[$field]));
                     }
                 }
-        
+
                 // Handle image upload and update partnerportal_gallery_square_featured_image
                 if (!empty($_FILES['partnerportal_gallery_square_featured_image']['name'])) {
                     $upload = wp_upload_bits($_FILES['partnerportal_gallery_square_featured_image']['name'], null, file_get_contents($_FILES['partnerportal_gallery_square_featured_image']['tmp_name']));
@@ -305,11 +305,11 @@ class MemberPressFormHandler {
                 }
 
                 // Assign Categories if selected
-                error_log($_POST['listing_categories']);
+                //error_log($_POST['listing_categories']);
                 if (isset($_POST['listing_categories'])) {
                     // Sanitize the category slugs
                     $category_slugs = array_map('sanitize_text_field', $_POST['listing_categories']);
-                    
+
                     // Get term IDs for the slugs
                     $term_ids = [];
                     foreach ($category_slugs as $slug) {
@@ -339,7 +339,7 @@ class MemberPressFormHandler {
                     }
                 }
                 $updated_group_listing = array_merge($group_listing_ID, array($post_id)); // Merge the arrays
-                update_field('group_listing', $updated_group_listing, $current_user_group[0]->ID); 
+                update_field('group_listing', $updated_group_listing, $current_user_group[0]->ID);
             }
 
             $_SESSION['post_creation_attempted'] = false;
@@ -352,14 +352,14 @@ class MemberPressFormHandler {
     public function updateListing($post_id) {
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_post_nonce']) && wp_verify_nonce($_POST['update_post_nonce'], 'update_post_meta')) {
-            
+
             if(!$_SESSION['post_creation_attempted'] || empty($_SESSION['post_creation_attempted'])) {
 
                 $_SESSION['post_creation_attempted'] = true;
                 // Sanitize post title
                 $post_title = sanitize_text_field($_POST['post_title'] ?? '');
                 $post_content = sanitize_text_field($_POST['partnerportal_description'] ?? '');
-        
+
                 // Clone the post
                 $cloned_post_id = wp_insert_post(array(
                     'post_title'   => $post_title,
@@ -369,20 +369,20 @@ class MemberPressFormHandler {
                 ));
                 $_SESSION['post_creation_attempted'] = $cloned_post_id;
             }
-        
+
             $cloned_post_id = $_SESSION['post_creation_attempted'];
 
-            error_log(MeprU::get_original_post_id($post_id));
-             //Replace Cloned Post ID with the original 
+            //error_log(MeprU::get_original_post_id($post_id));
+             //Replace Cloned Post ID with the original
              if(MeprU::is_cloned_post($post_id) || get_post_status($post_id) === 'pending') {
-                error_log(MeprU::is_cloned_post($post_id));
+                //error_log(MeprU::is_cloned_post($post_id));
                 $old_post_id = $post_id;
                 $post_id = MeprU::get_original_post_id($post_id);
 
-                error_log('Listing Test');
-                error_log($old_post_id);
-                error_log($post_id);
-                error_log(get_post_status($old_post_id));
+                // error_log('Listing Test');
+                // error_log($old_post_id);
+                // error_log($post_id);
+                // error_log(get_post_status($old_post_id));
                 // Remove cloned_post_id meta data
                 delete_post_meta($post_id, 'cloned_post_id');
                 // Remove original_post_id post meta from the original post
@@ -405,11 +405,11 @@ class MemberPressFormHandler {
                     }
                 }
             }
-        
+
                 // Store the original post ID as meta data in the cloned post
                 add_post_meta($cloned_post_id, 'original_post_id', $original_post_id);
                 add_post_meta($original_post_id, 'cloned_post_id', $cloned_post_id);
-        
+
                 // Handle image upload and set as post thumbnail for cloned post
                 if (!empty($_FILES['partnerportal_gallery_square_featured_image']['name'])) {
                     $upload = wp_upload_bits($_FILES['partnerportal_gallery_square_featured_image']['name'], null, file_get_contents($_FILES['partnerportal_gallery_square_featured_image']['tmp_name']));
@@ -432,11 +432,11 @@ class MemberPressFormHandler {
                 }
 
                 // Assign Categories if selected
-                error_log($_POST['listing_categories']);
+                //($_POST['listing_categories']);
                 if (isset($_POST['listing_categories'])) {
                     // Sanitize the category slugs
                     $category_slugs = array_map('sanitize_text_field', $_POST['listing_categories']);
-                    
+
                     // Get term IDs for the slugs
                     $term_ids = [];
                     foreach ($category_slugs as $slug) {
@@ -466,7 +466,7 @@ class MemberPressFormHandler {
                     }
                 }
                 $updated_group_listing = array_merge($group_listing_ID, array($cloned_post_id)); // Merge the arrays
-                update_field('group_listing', $updated_group_listing, $current_user_group[0]->ID); 
+                update_field('group_listing', $updated_group_listing, $current_user_group[0]->ID);
 
                 $_SESSION['post_creation_attempted'] = false;
                 // Redirect to the same page with action=listings

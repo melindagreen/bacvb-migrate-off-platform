@@ -55,7 +55,7 @@ class RestApi {
             ) );
         }
 
-        // category name 
+        // category name
         $cat_types = array( 'listing', 'event' );
         foreach( $cat_types as $type ) {
             register_rest_field( $type, 'cat_name', array(
@@ -66,7 +66,7 @@ class RestApi {
             ) );
         }
 
-        // category name 
+        // category name
         $venue_types = array( 'event' );
         foreach( $venue_types as $type ) {
             register_rest_field( $type, 'venue_name', array(
@@ -82,7 +82,7 @@ class RestApi {
         foreach( $thumb_types as $type ) {
             register_rest_field( $type, 'thumb_url', array(
                 'get_callback' => function( $object ) {
-                    return get_the_post_thumbnail_url( $object['id'], 'large' );   
+                    return get_the_post_thumbnail_url( $object['id'], 'large' );
                 }
             ) );
         }
@@ -100,7 +100,7 @@ class RestApi {
             foreach( $args['tax_query'] as &$tax_query ) {
                 $tax_query['include_children'] = true;
             }
-            error_log(print_r($args['tax_query'], true));
+            //error_log(print_r($args['tax_query'], true));
         }
         return $args;
     }
@@ -118,10 +118,10 @@ class RestApi {
         foreach($meta_queries as $key) {
             if (isset($request[$key]) && !empty($request[$key])) {
                 $amenities_array = explode(',', $request[$key]);
-            
+
                 if (count($amenities_array) > 1) {
                     $meta_queries = [];
-                    
+
                     foreach ($amenities_array as $amenity) {
                         $meta_queries[] = array(
                             'key'     => 'partnerportal_'.$key,
@@ -129,16 +129,16 @@ class RestApi {
                             'compare' => 'LIKE',
                         );
                     }
-                    
+
                     $args['meta_query'][] = array(
                         'relation' => 'AND',
-                        $meta_queries 
+                        $meta_queries
                     );
                 } else {
                     $args['meta_query'][] = array(
                         'key'     => 'partnerportal_'.$key,
                         'value'   => $request[$key],
-                        'compare' => 'LIKE', 
+                        'compare' => 'LIKE',
                     );
                 }
 
@@ -158,10 +158,10 @@ class RestApi {
 
             if (isset($request['rooms']) && !empty($request['rooms'])) {
                 $roomRange = explode('-', $request['rooms']);
-            
+
                 if (count($roomRange) == 2) {
                     $meta_queries = [];
-                    
+
                         $meta_queries[] = array(
                             'key'     => 'partnerportal_room-count',
                             'value'   => (int)$roomRange[0],
@@ -175,26 +175,26 @@ class RestApi {
                             'compare' => '<=',
                             'type'    => 'NUMERIC'
                         );
-                    
+
                     $args['meta_query'][] = array(
                         'relation' => 'AND',
-                        $meta_queries 
+                        $meta_queries
                     );
-                } 
+                }
 
                 else {
                     $args['meta_query'][] = array(
                         'key'     => 'partnerportal_room-count',
                         'value'   => (int)$request['rooms'],
-                        'compare' => '>=', 
+                        'compare' => '>=',
                         'type'    => 'NUMERIC'
                     );
                 }
 
             }
-        
+
         return $args;
-    
+
     }
 
      /**
@@ -206,14 +206,14 @@ class RestApi {
     public static function filter_by_activity($args, $request) {
 
         if (isset($request['activity'])) {
-      
+
                 $args['meta_query'][] = array(
                     'key'     => 'partnerportal_activity',
                     'value'   => $request['activity'],
-                    'compare' => '=', 
+                    'compare' => '=',
                 );
         }
-    
+
 
         return $args;
     }
@@ -244,7 +244,7 @@ class RestApi {
 
         // start our meta query
         $args['meta_query'] = isset( $args['meta_query'] ) ? $args['meta_query'] : array();
-    
+
         // order by start date (newest first)
         $args['meta_key'] = 'eventastic_start_date';
         $args['orderby'] = array(
@@ -254,10 +254,10 @@ class RestApi {
 
         // add start and end date filters
         if (isset($request['eventastic_start_date'])) {
-            error_log('eventastic_start_date received: ' . print_r($request['eventastic_start_date'], true));
+            //error_log('eventastic_start_date received: ' . print_r($request['eventastic_start_date'], true));
         }
         if (isset($request['eventastic_end_date'])) {
-            error_log('eventastic_end_date received: ' . print_r($request['eventastic_end_date'], true));
+            //error_log('eventastic_end_date received: ' . print_r($request['eventastic_end_date'], true));
         }
 
         // update dates to reflect today
@@ -352,7 +352,7 @@ class RestApi {
         } else {
             // Default to hiding past events
             array_push( $args['meta_query'], array(
-                'key' => 'eventastic_end_date', 
+                'key' => 'eventastic_end_date',
                 'value' => date( 'Y-m-d' ),
                 'compare' => '>=',
                 'type' => 'DATE',
@@ -366,7 +366,7 @@ class RestApi {
             'field' => 'term_id',
             'operator' => 'NOT IN',
         );
-                
+
         return $args;
     }
 

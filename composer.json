@@ -106,11 +106,11 @@
     "wpackagist-plugin/tiny-compress-images": "3.6.0",
     "wpackagist-plugin/wordpress-importer": "^0.8",
     "wpackagist-plugin/wp-media-library-categories": "*",
-    "wpackagist-plugin/seo-by-rank-math":"1.0.250",
-    "rankmath/seo-by-rank-math-pro": "3.0.93",
+    "wpackagist-plugin/seo-by-rank-math":"1.0.251.1",
+    "rankmath/seo-by-rank-math-pro": "*",
     "wpackagist-plugin/fareharbor": "^3.6",
     "wpackagist-plugin/leadin": "11.3.16",
-    "admin-columns/admin-columns-pro": "6.4.21"
+    "admin-columns/admin-columns-pro": "6.4.22"
   },
   "minimum-stability": "dev",
   "prefer-stable": true,

@@ -57,9 +57,9 @@ web:
           headers:
             cache-control: "public, max-age=31536000, immutable"
         '\.(html|php)$':
-            expires: 600s
-            headers:
-              cache-control: "private, max-age=600"
+          expires: 600s
+          headers:
+            cache-control: "private, max-age=600"
     "/wp-content/cache":
       root: "web/wp-content/cache"
       scripts: false
@@ -77,12 +77,12 @@ web:
       scripts: false
       allow: false
       rules:
-          # Allow access to common static files.
-          '(?<!\-lock)\.(?i:jpe?g|gif|png|svg|bmp|ico|css|js(?:on)?|eot|ttf|woff|woff2|pdf|docx?|xlsx?|pp[st]x?|psd|odt|key|mp[2-5g]|m4[av]|og[gv]|wav|mov|wm[av]|avi|3g[p2])$':
-              allow: true
-              expires: 1y
-              headers:
-                cache-control: "public, max-age=31536000, immutable"
+        # Allow access to common static files.
+        '(?<!\-lock)\.(?i:jpe?g|gif|png|svg|bmp|ico|css|js(?:on)?|eot|ttf|woff|woff2|pdf|docx?|xlsx?|pp[st]x?|psd|odt|key|mp[2-5g]|m4[av]|og[gv]|wav|mov|wm[av]|avi|3g[p2])$':
+          allow: true
+          expires: 1y
+          headers:
+            cache-control: "public, max-age=31536000, immutable"
     "/xmlrpc.php":
       root: "web"
       allow: false
@@ -97,13 +97,12 @@ web:
 # The size of the persistent disk of the application (in MB).
 disk: 14200
 
-
 # Dependencies needed for build - yarn, bower, gulp, ruby etc.
 dependencies:
   nodejs:
     yarn: "^1.22.4"
   php:
-    composer/composer: '2.2.12'
+    composer/composer: "2.2.12"
     wp-cli/wp-cli: "^2.5.0"
 
 # The mounts that will be performed when the package is deployed.
@@ -168,25 +167,26 @@ variables:
     NODE_VERSION: 22.14.0
     # Set NVM version
     NVM_VERSION: 0.35.2
-    # Flip this switch to use in your build cmds to enable development build on platform. 
-    PRODUCTION: yes 
+    # Flip this switch to use in your build cmds to enable development build on platform.
+    PRODUCTION: yes
 
 crons:
   # Backup the database everyday at 8am
-  snapshot:
-    spec: "0 8 * * *"
-    cmd: |
-      if [ "$PLATFORM_BRANCH" = main ]; then
-          platform snapshot:create --yes --no-wait
-      fi
+  # snapshot:
+  #   spec: "0 8 * * *"
+  #   cmd: |
+  #     if [ "$PLATFORM_BRANCH" = main ]; then
+  #         platform snapshot:create --yes --no-wait
+  #     fi
+
   # Optimize the database everyday at 9am
   analyze:
     spec: "0 9 * * *"
     cmd: |
-        mysqlcheck $DATABASE; 
-        mysqloptimize $DATABASE; 
-        mysqlanalyze $DATABASE;
-        wp transient delete --all --quiet;
+      mysqlcheck $DATABASE;
+      mysqloptimize $DATABASE;
+      mysqlanalyze $DATABASE;
+      wp transient delete --all --quiet;
 
   # Force a redeploy at 10am (UTC) on the 1st and 15th of every month.
   redeploy:
@@ -197,8 +197,8 @@ crons:
       fi
 
   # Run WordPress cron every 15 minutes
-  # NOTE: DISABLE_WP_CRON has been turned on wp-config-platform.php 
-  # uncomment lines below to enable 
+  # NOTE: DISABLE_WP_CRON has been turned on wp-config-platform.php
+  # uncomment lines below to enable
   # wordpress:
   #   spec: "*/15 * * * *"
   #   cmd: |
@@ -206,9 +206,7 @@ crons:
 
 # Runtime Operations
 operations:
-
   Trigger Rebuild:
     role: admin
     commands:
       start: git commit --allow-empty -m "Trigger rebuild or redeployment" && platform push
-
