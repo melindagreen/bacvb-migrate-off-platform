@@ -93,7 +93,7 @@
     "maddenmedia/wp-plugin-eventastic": "*",
     "maddenmedia/wp-plugin-madden-banners": "*",
     "maddenmedia/server-status": "1.5.2",
-		"maddenmedia/wp-plugin-madden-nlp": "v3.6.1",
+		"maddenmedia/wp-plugin-madden-nlp": "dev-tools-search",
     "platformsh/config-reader": "^2.0",
     "maddenmedia/partner-portal": "*",
     "wp-cli/wp-cli-bundle": "^2.5",
