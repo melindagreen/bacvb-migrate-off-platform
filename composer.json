@@ -111,7 +111,7 @@
     "wpackagist-plugin/tiny-compress-images": "3.6.0",
     "wpackagist-plugin/wordpress-importer": "^0.8",
     "wpackagist-plugin/wp-media-library-categories": "*",
-    "wpackagist-plugin/seo-by-rank-math":"1.0.251.1",
+    "wpackagist-plugin/seo-by-rank-math":"*",
     "rankmath/seo-by-rank-math-pro": "*",
     "wpackagist-plugin/fareharbor": "^3.6",
     "wpackagist-plugin/leadin": "11.3.16",
