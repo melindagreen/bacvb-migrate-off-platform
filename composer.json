@@ -43,6 +43,10 @@
       "type": "vcs",
       "url": "git@github.com:maddenmedia/server-status.git"
     },
+		{
+      "type": "vcs",
+      "url": "git@github.com:maddenmedia/wp-plugin-madden-nlp.git"
+    },
     {
       "type": "vcs",
       "url": "git@github.com:maddenmedia/wp-plugin-madden-cookie-consent.git"
@@ -89,6 +93,7 @@
     "maddenmedia/wp-plugin-eventastic": "*",
     "maddenmedia/wp-plugin-madden-banners": "*",
     "maddenmedia/server-status": "1.5.2",
+		"maddenmedia/wp-plugin-madden-nlp": "v3.6.1",
     "platformsh/config-reader": "^2.0",
     "maddenmedia/partner-portal": "*",
     "wp-cli/wp-cli-bundle": "^2.5",
@@ -179,7 +184,9 @@
     "theme:dir": "@script theme-dir",
     "check-updates": "@script check-updates",
     "update-packages": [
-        "cp -r ./web/plugins/* ./web/wp-content/plugins/"
+			"cp -r ./web/plugins/* ./web/wp-content/plugins/",
+			"composer install -d web/wp-content/plugins/wp-plugin-madden-nlp",
+      "rm -rf web/wp-content/plugins/madden-nlp && mv web/wp-content/plugins/wp-plugin-madden-nlp web/wp-content/plugins/madden-nlp"
     ]
   }
 }

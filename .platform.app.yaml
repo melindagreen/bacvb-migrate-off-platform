@@ -196,6 +196,11 @@ crons:
           platform redeploy --yes --no-wait
       fi
 
+  # Run NLP processor at 3AM every day
+  process_nlp:
+    spec: "0 3 * * *"
+    cmd: "php web/wp-content/plugins/madden-nlp/tools/process_last_updated.php"
+
   # Run WordPress cron every 15 minutes
   # NOTE: DISABLE_WP_CRON has been turned on wp-config-platform.php
   # uncomment lines below to enable
