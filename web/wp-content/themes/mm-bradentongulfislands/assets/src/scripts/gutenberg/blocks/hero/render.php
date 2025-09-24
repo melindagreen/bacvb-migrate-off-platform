@@ -16,8 +16,8 @@ $classes = isset($attrs['className']) ? $attrs['className'] : '';
 
 <?php if (!isset($attrs['smallHero']) || !$attrs['smallHero']) { ?>
 
-<section class="<?php echo Constants::BLOCK_CLASS; ?>-hero<?php if (isset($attrs['videoHero']) && $attrs['videoHero']) echo ' videoHero'; ?> <?php echo $classes; ?><?php echo $attrs['className'] !== 'is-style-small-font-header' && ($attrs['logoId'] || $attrs['ctaBannerTitle'] !== "") ? ' is-style-small-font-header' : ''; ?> <?php echo $attrs['ctaBannerTitle'] !== "" ? ' '. Constants::BLOCK_CLASS . '-hero--banner' : ''; ?> <?php echo isset($attrs['showBottomWave']) && $attrs['showBottomWave'] ? "hero--wave" : ""; ?>">
-<?php if (!$attrs['title']) { ?> <h1 class="no-title"> <?php } ?>
+<section class="<?php echo Constants::BLOCK_CLASS; ?>-hero<?php if (isset($attrs['videoHero']) && $attrs['videoHero']) echo ' videoHero'; ?> <?php echo $classes; ?><?php echo isset( $attrs['className'] ) && $attrs['className'] !== 'is-style-small-font-header' && ($attrs['logoId'] || $attrs['ctaBannerTitle'] !== "") ? ' is-style-small-font-header' : ''; ?> <?php echo $attrs['ctaBannerTitle'] !== "" ? ' '. Constants::BLOCK_CLASS . '-hero--banner' : ''; ?> <?php echo isset($attrs['showBottomWave']) && $attrs['showBottomWave'] ? "hero--wave" : ""; ?>">
+<?php if (!isset($attrs['title']) || !$attrs['title']) { ?> <h1 class="no-title"> <?php } ?>
 
 <?php if (is_front_page()) { ?>
     <!-- <div class="badge">
@@ -26,8 +26,8 @@ $classes = isset($attrs['className']) ? $attrs['className'] : '';
 <?php } ?>
 
     <?php if (!isset($attrs['videoHero']) || !$attrs['videoHero']) { ?>
-        <div <?php if (!$attrs['title']) { ?> title="<?php echo get_the_title($id); ?>" <?php } ?>  class="hero<?php if (isset($attrs["doParallax"]) && $attrs["doParallax"]) echo " has-parallax" ?><?php if (!isset($attrs['showBottomWave']) || !$attrs['showBottomWave']) echo " full" ?>"
-            data-load-type="bg"    
+        <div <?php if (!isset($attrs['title']) || !$attrs['title']) { ?> title="<?php echo get_the_title($id); ?>" <?php } ?>  class="hero<?php if (isset($attrs["doParallax"]) && $attrs["doParallax"]) echo " has-parallax" ?><?php if (!isset($attrs['showBottomWave']) || !$attrs['showBottomWave']) echo " full" ?>"
+            data-load-type="bg"
             data-load-onload="true"
             data-load-lg="<?php echo wp_get_attachment_image_src($attrs['image']['id'], 'full')[0]; ?>"
             data-load-md="<?php echo wp_get_attachment_image_src($attrs['image']['id'], 'full')[0]; ?>"
@@ -39,7 +39,7 @@ $classes = isset($attrs['className']) ? $attrs['className'] : '';
                 $focal_point_y = floatval($attrs["focalPoint"]["y"]) * 100;
                 if (($focal_point_x != 50) || ($focal_point_y != 50)) {
                     echo 'data-load-lg-bg-position="' . $focal_point_x . '% ' . $focal_point_y . '%" '.PHP_EOL;
-                    echo 'data-load-md-bg-position="' . $focal_point_x . '% ' . $focal_point_y . '%" '.PHP_EOL;    
+                    echo 'data-load-md-bg-position="' . $focal_point_x . '% ' . $focal_point_y . '%" '.PHP_EOL;
                 }
             }
             if ((!isset($attrs["doParallax"]) || !$attrs["doParallax"]) && isset($attrs["focalPointMobile"])) {
@@ -62,10 +62,10 @@ $classes = isset($attrs['className']) ? $attrs['className'] : '';
         <!-- Display video for desktop only when there's no mobile video -->
         <div class="video no--mobile">
             <video poster="<?php if (isset($attrs['videoPoster'])) echo wp_get_attachment_image_src($attrs['videoPoster']['id'], 'full')[0]; ?>" playsinline autoplay muted loop>
-                <source data-load-type="img"    
+                <source data-load-type="img"
                 data-load-onload="true"
-                src="<?php echo wp_get_attachment_url($attrs['video']['id']); ?>" 
-      
+                src="<?php echo wp_get_attachment_url($attrs['video']['id']); ?>"
+
                 type="video/mp4">
             </video>
             <div class="fade"></div>
@@ -85,7 +85,7 @@ $classes = isset($attrs['className']) ? $attrs['className'] : '';
                 <source data-video-url="<?php echo wp_get_attachment_url($attrs['videoForMobile']['id']); ?>" type="video/mp4">
             </video>
             <div class="fade"></div>
-        </div>    
+        </div>
             <?php endif; ?>
         <!--if no video--mobile keep showing main--->
         <?php }  ?>
@@ -108,7 +108,7 @@ $classes = isset($attrs['className']) ? $attrs['className'] : '';
                     <?php echo get_field('herobanner_description', 'option'); ?>
                 </p>
                 <img class="hero-banner__crab" src="<?php echo get_theme_file_uri()?>/assets/images/crab.png" alt="Crab Illustration">
-                
+
             </div>
         <?php } ?>
         <?php if($attrs['ctaBannerTitle'] !== "") { ?>
@@ -123,7 +123,7 @@ $classes = isset($attrs['className']) ? $attrs['className'] : '';
             </div>
         <?php } ?>
 
-        <?php if (!$attrs['title']) { ?> </h1> <?php } ?>
+        <?php if (!isset($attrs['title']) || !$attrs['title']) { ?> </h1> <?php } ?>
     </section>
 
 <?php } ?>

@@ -15,7 +15,7 @@ global $post;
                 <input type="text" id="Keyword" name="keyword" value="" maxlength="50" class="keywords">
             </div>
         </div>
-        <?php if ($categories): ?>
+        <?php if ( isset( $categories ) && $categories ): ?>
         <div class="categoryFilters">
             <div class="filterToggle">Categories:</div>
             <div class="categories">
