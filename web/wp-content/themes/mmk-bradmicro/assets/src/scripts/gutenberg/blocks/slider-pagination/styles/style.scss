@@ -1,0 +1,89 @@
+.wp-block-madden-theme-slider-pagination {
+  display: flex;
+  justify-content: center;
+
+  // Alignment support
+  &.alignleft .external-swiper-controls {
+    justify-content: flex-start;
+  }
+
+  &.alignright .external-swiper-controls {
+    justify-content: flex-end;
+  }
+
+  &.aligncenter .external-swiper-controls {
+    justify-content: center;
+  }
+
+  .external-swiper-controls {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+    height: 48px;
+    background: #e9e5d5;
+    padding: 0 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 7px rgba(0, 0, 0, 0.12);
+    .external-swiper-pagination {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      position: relative; // Needed for Swiper to position bullets
+      width: auto;
+      height: auto;
+
+      .swiper-pagination-bullet {
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background-color: var(--swiper-pagination-bullet-inactive-color, color("green"));
+        border: 2px solid #fff;
+        opacity: var(--swiper-pagination-bullet-inactive-opacity, 0.2);
+        cursor: pointer;
+
+        &-active {
+          opacity: var(--swiper-pagination-bullet-opacity, 1);
+          background-color: var(--swiper-pagination-color, var(--swiper-theme-color));
+        }
+      }
+    }
+
+    .swiper-button-prev,
+    .swiper-button-next {
+      all: unset;
+      font-size: 10px;
+      line-height: 0;
+      &:after {
+        content: unset;
+      }
+      svg {
+        width: 7px;
+        fill: color("green");
+      }
+    }
+  }
+
+  // Different layouts based on which elements are enabled
+  &:has(.external-swiper-pagination:not(.external-swiper-nav-wrapper)) {
+    .external-swiper-pagination {
+      padding: 0;
+    }
+  }
+}
+
+@include screen-tablet-max {
+  .wp-block-madden-theme-slider-pagination {
+    .external-swiper-controls {
+      max-width: 100%;
+      .external-swiper-pagination {
+        max-width: 100%;
+        justify-content: space-between;
+        gap: 10px;
+      }
+      .swiper-button-prev,
+      .swiper-button-next {
+        display: none;
+      }
+    }
+  }
+}

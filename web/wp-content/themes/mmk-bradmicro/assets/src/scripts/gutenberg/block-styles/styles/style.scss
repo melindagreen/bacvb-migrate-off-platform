@@ -1,0 +1,18 @@
+/*********************
+ * Block-specific styles to show to front-end users
+ ********************
+
+/*
+ Add block-specific styles to a separate stylesheet and import them here
+ */
+@use "./core-blocks/wp-block-buttons";
+@use "./core-blocks/wp-block-columns";
+@use "./core-blocks/wp-block-cover";
+@use "./core-blocks/wp-block-group";
+@use "./core-blocks/wp-block-image";
+@use "./core-blocks/wp-block-separator";
+@use "./core-blocks/wp-block-heading";
+@use "./core-blocks/wp-block-paragraph";
+@use "./core-blocks/wp-block-preformatted";
+@use "./core-blocks/wp-block-search";
+@use "./core-blocks/wp-block-list";

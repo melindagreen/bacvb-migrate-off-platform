@@ -1,0 +1,117 @@
+@use "styles/utils" as *;
+
+/*
+Partial overlay - partial text overlay on image
+*/
+.#{$block-prefix}-content-card.card-style-overlay-partial {
+  background-size: cover;
+
+  display: block;
+  max-width: 100%;
+  overflow: hidden;
+  position: relative;
+
+  @include standard-transition;
+  aspect-ratio: 460 / 535;
+  max-height: unset !important;
+  padding: 10px; /* match the box shadow size to avoid overflow issues */
+
+  a {
+    position: relative;
+    display: block;
+    height: 100%;
+    pointer-events: auto;
+    border: 20px solid #fff;
+    border-radius: 16px;
+    box-shadow: 0 5px 7px rgba(0, 0, 0, 0.12);
+  }
+
+  .featured-media {
+    background-color: color("blue");
+    display: block;
+    height: 100%;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  a:link,
+  a:visited,
+  a:hover {
+    color: white;
+    text-decoration: none;
+  }
+
+  .content {
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 1rem;
+    cursor: pointer;
+    padding: 20px 15px 15px;
+    position: absolute;
+    top: initial;
+    bottom: 0;
+    width: 100%;
+    min-height: 170px;
+    @include standard-transition;
+
+    @include screen-sm-max {
+      padding: 1rem;
+      bottom: 0;
+      top: auto;
+      width: 100%;
+    }
+
+    .post-title {
+      color: color("white");
+      font-size: var(--wp--preset--font-size--normal);
+      letter-spacing: 2px;
+      line-height: 1.5;
+      margin: 0 !important;
+      padding: 0;
+      text-align: left;
+    }
+
+    .excerpt {
+      color: color("white");
+      display: none;
+      font-size: 1rem;
+      letter-spacing: 0;
+      line-height: 1.2em;
+      margin: 0 !important;
+      text-align: center;
+    }
+
+    .read-more {
+      display: block;
+      color: color("white");
+      font-size: var(--wp--preset--font-size--normal);
+      font-weight: 300;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 6px 13px;
+      border: 1px solid #fff;
+      margin-top: auto;
+      margin-left: auto;
+    }
+  }
+
+  // .swiper-slide-active &,
+  // &:focus,
+  // &:focus-within,
+  // &:hover {
+  //   transform: scale(1.025);
+  //   .content {
+  //     min-height: 100%;
+  //     .excerpt,
+  //     .read-more {
+  //       display: block;
+  //     }
+  //   }
+  // }
+}

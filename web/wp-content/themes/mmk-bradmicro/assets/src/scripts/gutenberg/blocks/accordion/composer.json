@@ -1,0 +1,11 @@
+{
+  "name": "maddenmedia/mm-wordpress-block-example-static",
+  "description": "Example static block",
+  "keywords": ["example-wordpress-block", "wordpress-starter-block"],
+  "license": "MIT",
+  "type": "mm-wordpress-block",
+  "version": "v1.2021.06.04",
+  "require" : {
+    "maddenmedia/mm-parent-tonik-theme": "^1.2021"
+  }
+}

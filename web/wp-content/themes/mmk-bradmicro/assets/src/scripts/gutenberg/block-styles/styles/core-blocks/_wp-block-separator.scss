@@ -1,0 +1,9 @@
+@use "styles/utils" as *;
+
+body .wp-block-separator {
+  @include screen-sm-max {
+    &.hide-on-mobile {
+      display: none;
+    }
+  }
+}

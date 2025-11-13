@@ -1,0 +1,43 @@
+@use "styles/utils" as *;
+
+/*
+* Core block button styles
+*/
+body .wp-block-search {
+	&.is-style-big-search {
+		&.is-style-big-search {
+			.wp-block-search__input {
+				height: 80px;
+				color: var(--wp--preset--color--green);
+				border-color: var(--wp--preset--color--green);
+				border-radius: 6px;
+				padding: 13px;
+			}
+			.wp-block-search__button {
+				font-size: 24px !important;
+				font-weight: 400 !important;
+				letter-spacing: 1px;
+				text-transform: uppercase;
+				border: 2px solid var(--wp--preset--color--green);
+				padding: 18px 40px;
+				margin-left: 20px;
+				@include standard-transition;
+				&:hover {
+					color: #fff !important;
+					background: var(--wp--preset--color--green);
+				}
+			}
+		}
+	}
+}
+@include screen-phone-max {
+	body .wp-block-search__text-button.is-style-big-search {
+		.wp-block-search__inside-wrapper {
+			flex-direction: column;
+			gap: 15px;
+		}
+		.wp-block-search__button {
+			margin: 0;
+		}
+	}
+}

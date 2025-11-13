@@ -1,0 +1,11 @@
+.#{$block-prefix}-svg-element {
+  line-height: 0;
+  a {
+    display: inline-block;
+    line-height: 0;
+  }
+  svg {
+    display: block;
+    line-height: 0;
+  }
+}

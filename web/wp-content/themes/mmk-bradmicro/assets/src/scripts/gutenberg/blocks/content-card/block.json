@@ -1,0 +1,114 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"version": "1.1.2",
+	"name": "madden-theme/content-card",
+	"title": "[MM] Content Card",
+	"description": "Display selected post or custom content in card format",
+	"icon": "embed-photo",
+	"category": "madden-media",
+	"render": "file:./render.php",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-view.css",
+	"viewScript": "file:./view.js",
+	"supports": {
+		"background": {
+			"backgroundImage": true,
+			"backgroundSize": true
+		},
+		"color": {
+			"background": true,
+			"text": true,
+			"enableContrastChecker": false
+		}
+	},
+	"attributes": {
+		"contentId": {
+			"type": "number",
+			"default": 0
+		},
+		"cardStyle": {
+			"type": "string",
+			"default": "default"
+		},
+		"postType": {
+			"type": "string",
+			"default": "post"
+		},
+		"contentTitle": {
+			"type": "string",
+			"default": ""
+		},
+		"contentExcerpt": {
+			"type": "string",
+			"default": ""
+		},
+		"backgroundColor": {
+			"type": "string",
+			"default": ""
+		},
+		"textColor": {
+			"type": "string",
+			"default": ""
+		},
+		"displayAdditionalContent": {
+			"type": "boolean",
+			"default": false
+		},
+		"displayEventDate": {
+			"type": "boolean",
+			"default": false
+		},
+		"displayEventTime": {
+			"type": "boolean",
+			"default": false
+		},
+		"displayExcerpt": {
+			"type": "boolean",
+			"default": false
+		},
+		"excerptLength": {
+			"type": "number",
+			"default": 12
+		},
+		"displayCustomExcerpt": {
+			"type": "boolean",
+			"default": false
+		},
+		"customExcerpt": {
+			"type": "string",
+			"default": ""
+		},
+		"displayReadMore": {
+			"type": "boolean",
+			"default": false
+		},
+		"readMoreText": {
+			"type": "string",
+			"default": "Read More"
+		},
+		"customImage": {
+			"type": "number",
+			"default": 0
+		},
+		"customImageUrl": {
+			"type": "string",
+			"default": ""
+		},
+		"customCtaText": {
+			"type": "string",
+			"default": ""
+		},
+		"customCtaUrl": {
+			"type": "object",
+			"default": {}
+		}
+	},
+	"example": {
+		"attributes": {
+			"contentId": 17953,
+			"contentTitle": "Round Lake State Park"
+		}
+	}
+}

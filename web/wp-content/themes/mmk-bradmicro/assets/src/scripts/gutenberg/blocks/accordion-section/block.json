@@ -1,0 +1,59 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "madden-theme/accordion-section",
+	"title": "[MM] Accordion Section",
+	"description": "A section of an accordion",
+	"icon": "sort",
+	"category": "madden-media",
+	"version": "1.0.0d",
+	"parent": ["madden-theme/accordion"],
+	"attributes": {
+		"title": {
+			"type": "string",
+			"default": ""
+		},
+		"titleColor": {
+			"type": "string"
+		},
+		"customTitleColor": {
+			"type": "string"
+		},
+		"titleBackgroundColor": {
+			"type": "string"
+		},
+		"customTitleBackgroundColor": {
+			"type": "string"
+		}
+	},
+	"supports": {
+		"color": {
+			"gradients": false,
+			"link": true,
+			"__experimentalDefaultControls": {
+				"background": true,
+				"text": true
+			}
+		},
+		"typography": {
+			"fontSize": true,
+			"lineHeight": true,
+			"__experimentalFontFamily": true,
+			"__experimentalTextDecoration": true,
+			"__experimentalFontStyle": true,
+			"__experimentalFontWeight": true,
+			"__experimentalLetterSpacing": true,
+			"__experimentalTextTransform": true,
+			"__experimentalWritingMode": true,
+			"__experimentalDefaultControls": {
+				"fontSize": true
+			}
+		},
+		"__unstablePasteTextInline": true,
+		"__experimentalSlashInserter": true
+	},
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"viewScript": "file:./front.js",
+	"style": "file:./style-index.css"
+}

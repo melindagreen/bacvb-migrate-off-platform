@@ -34,5 +34,22 @@ if (!defined('ABSPATH')) {
   define('ABSPATH', dirname(__FILE__) . '/');
 }
 
+define( 'WPINC', 'wp-includes' );
+
+// **MOVE ALL MULTISITE DEFINITIONS HERE**
+define( 'WP_ALLOW_MULTISITE', true );
+define( 'MULTISITE', true );
+define( 'SUBDOMAIN_INSTALL', false );
+if (isset($site_host)) {
+  define( 'DOMAIN_CURRENT_SITE', $site_host );
+} else {
+  // Fallback for CLI/non-browser requests
+  //define( 'DOMAIN_CURRENT_SITE', 'multisite-test-ofxilii-bxdsevwcta6ce.us-4.platformsh.site' );
+}
+define( 'PATH_CURRENT_SITE', '/' );
+define( 'SITE_ID_CURRENT_SITE', 1 );
+define( 'BLOG_ID_CURRENT_SITE', 1 );
+
 /** SETS UP WORDPRESS VARS AND INCLUDED FILES. */
+define( 'DUPLICATOR_AUTH_KEY', '{q@P]LzQl?YEJP&ajwjxVtPTt:&5LRr4$MChq_~,ne#DJ/z,P3WK5*XZhuEk,)Y[' );
 require_once(ABSPATH . 'wp-settings.php');

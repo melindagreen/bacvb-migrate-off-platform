@@ -41,12 +41,52 @@ web:
         referrer-policy: "strict-origin-when-cross-origin"
         content-security-policy: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline';"
       rules:
+        ################################
+        ### CORE ###
+        ###############################
         ^/composer\.json:
           allow: false
         ^/license\.txt$:
           allow: false
         ^/readme\.html$:
           allow: false
+        '^/robots\.txt$':
+          allow: true
+        '^/sitemap\.xml$':
+          allow: true
+        ################################
+        ### WORDPRESS MULTISITE ###
+        ###############################
+        # We need to allow requests to wp-login.php to pass through
+        # Multisites do not respect the WP_SITEURL constant in wp-config.
+        # In addition, directory-based multisites include the virtual directory before the wp-login.php
+        '^/([\_0-9a-zA-Z-]+/)?wp-(?<wproot>[a-z\\-]+).php$':
+          allow: true
+          scripts: true
+          passthru: "/wp-$wproot.php"
+        # Handle static files (CSS, JS, images) in wp-includes and wp-admin for subdirectory multisites
+        # These should be served directly without PHP processing
+        '^/([\_0-9a-zA-Z-]+/)?(?<corepath>wp-(admin|includes)/.*\.(css|js|png|jpg|jpeg|gif|svg|ico|woff|woff2|ttf|eot))$':
+          allow: true
+          scripts: false
+          passthru: "/$corepath"
+          expires: 1y
+          headers:
+            cache-control: "public, max-age=31536000, immutable"
+        # Allows directory-based multisites to still access the wp-admin and wp-includes locations (PHP files)
+        '^/([\_0-9a-zA-Z-]+/)?(?<adminrewrite>wp-(admin|includes).*)':
+          allow: true
+          scripts: true
+          passthru: "/$adminrewrite"
+        # Handle wp-content for subdirectory multisites
+        '^/([\_0-9a-zA-Z-]+)/wp-content/(?<content>.*)':
+          allow: true
+          scripts: false
+          passthru: "/wp-content/$content"
+          expires: 1w
+        ################################
+        ### STATIC CONTENT ###
+        ###############################
         # expiry time for static content
         '\.(mp4|jpe?g|png|gif|svgz?|map|ico|bmp|eot|woff2?|otf|ttf)$':
           expires: 1y
@@ -72,6 +112,13 @@ web:
       root: "web/wp-content/cache-config"
       scripts: false
       allow: false
+    "/wp-content/themes":
+      root: "web/wp-content/themes"
+      scripts: false
+      allow: true
+      expires: 1y
+      headers:
+        cache-control: "public, max-age=31536000, immutable"
     "/wp-content/uploads":
       root: "web/wp-content/uploads"
       scripts: false
@@ -127,6 +174,15 @@ hooks:
     set -e
     composer build
     composer check-updates
+    # Build mmk-bradmicro child theme assets
+    if [ -d "web/wp-content/themes/mmk-bradmicro/assets" ]; then
+      cd web/wp-content/themes/mmk-bradmicro/assets
+      if [ -f "package.json" ]; then
+        yarn install
+        yarn build
+      fi
+      cd /app
+    fi
     curl -fsSL https://raw.githubusercontent.com/platformsh/cli/main/installer.sh | bash
     ln -sf /app/web/wp-content/cache-config/advanced-cache.php /app/web/wp-content/advanced-cache.php
   deploy: |

@@ -1,0 +1,45 @@
+.#{$block-prefix}-menu-toggle {
+  $hamburger-padding-x: 0;
+  $hamburger-padding-y: 0;
+  $hamburger-layer-width: 41px;
+  $hamburger-layer-height: 4px;
+  $hamburger-layer-spacing: 7px;
+  $hamburger-layer-color: #000;
+  $hamburger-layer-border-radius: 0;
+  $hamburger-hover-opacity: 1;
+  $hamburger-active-layer-color: $hamburger-layer-color;
+  $hamburger-active-hover-opacity: $hamburger-hover-opacity;
+  @import "../../../../../../node_modules/hamburgers/_sass/hamburgers/hamburgers";
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: inherit;
+    text-transform: inherit !important;
+    text-decoration: none;
+    @include standard-transition;
+    .hamburger-box,
+    .hamburger-label {
+      display: block;
+    }
+    .hamburger-inner {
+      background-color: currentColor;
+      &:before {
+        background-color: currentColor;
+      }
+      &:after {
+        background-color: currentColor;
+      }
+    }
+    &.is-active {
+      .hamburger-inner {
+        background-color: currentColor;
+        &:before {
+          background-color: currentColor;
+        }
+        &:after {
+          background-color: currentColor;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,333 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "mm-bradentongulfislands/bradenton-meetings-map",
+	"version": "1.0.0b",
+	"title": "Bradenton Meetings Map",
+	"description": "Interactive meetings map for Bradenton",
+	"icon": "admin-site-alt2",
+	"category": "layout",
+	"attributes": {
+		"mode": {
+			"type": "string",
+			"default": "view"
+		},
+		"annaMariaPierDescription": {
+			"type": "string",
+			"default": ""
+		},
+		"annaMariaPierTitle": {
+			"type": "string",
+			"default": ""
+		},
+		"annaMariaPierUrl": {
+			"type": "string",
+			"default": ""
+		},
+		"bishopMuseumDescription": {
+			"type": "string",
+			"default": ""
+		},
+		"bishopMuseumTitle": {
+			"type": "string",
+			"default": ""
+		},
+		"bishopMuseumUrl": {
+			"type": "string",
+			"default": ""
+		},
+		"bradentonConventionCenterDescription": {
+			"type": "string",
+			"default": ""
+		},
+		"bradentonConventionCenterTitle": {
+			"type": "string",
+			"default": ""
+		},
+		"bradentonConventionCenterUrl": {
+			"type": "string",
+			"default": ""
+		},
+		"bradentonRiverwalkDescription": {
+			"type": "string",
+			"default": ""
+		},
+		"bradentonRiverwalkTitle": {
+			"type": "string",
+			"default": ""
+		},
+		"bradentonRiverwalkUrl": {
+			"type": "string",
+			"default": ""
+		},
+		"bridgeStFerryStopDescription": {
+			"type": "string",
+			"default": ""
+		},
+		"bridgeStFerryStopTitle": {
+			"type": "string",
+			"default": ""
+		},
+		"bridgeStFerryStopUrl": {
+			"type": "string",
+			"default": ""
+		},
+		"coquinaBeachDescription": {
+			"type": "string",
+			"default": ""
+		},
+		"coquinaBeachTitle": {
+			"type": "string",
+			"default": ""
+		},
+		"coquinaBeachUrl": {
+			"type": "string",
+			"default": ""
+		},
+		"cortezDescription": {
+			"type": "string",
+			"default": ""
+		},
+		"cortezTitle": {
+			"type": "string",
+			"default": ""
+		},
+		"cortezUrl": {
+			"type": "string",
+			"default": ""
+		},
+		"deSotoMemorialDescription": {
+			"type": "string",
+			"default": ""
+		},
+		"deSotoMemorialTitle": {
+			"type": "string",
+			"default": ""
+		},
+		"deSotoMemorialUrl": {
+			"type": "string",
+			"default": ""
+		},
+		"egmontKeyDescription": {
+			"type": "string",
+			"default": ""
+		},
+		"egmontKeyTitle": {
+			"type": "string",
+			"default": ""
+		},
+		"egmontKeyUrl": {
+			"type": "string",
+			"default": ""
+		},
+		"ellentonOutletsDescription": {
+			"type": "string",
+			"default": ""
+		},
+		"ellentonOutletsTitle": {
+			"type": "string",
+			"default": ""
+		},
+		"ellentonOutletsUrl": {
+			"type": "string",
+			"default": ""
+		},
+		"gulfIslandsFerryDescription": {
+			"type": "string",
+			"default": ""
+		},
+		"gulfIslandsFerryTitle": {
+			"type": "string",
+			"default": ""
+		},
+		"gulfIslandsFerryUrl": {
+			"type": "string",
+			"default": ""
+		},
+		"herrigCenterArtsDescription": {
+			"type": "string",
+			"default": ""
+		},
+		"herrigCenterArtsTitle": {
+			"type": "string",
+			"default": ""
+		},
+		"herrigCenterArtsUrl": {
+			"type": "string",
+			"default": ""
+		},
+		"imgAcademyDescription": {
+			"type": "string",
+			"default": ""
+		},
+		"imgAcademyTitle": {
+			"type": "string",
+			"default": ""
+		},
+		"imgAcademyUrl": {
+			"type": "string",
+			"default": ""
+		},
+		"lakeManateeStateParkDescription": {
+			"type": "string",
+			"default": ""
+		},
+		"lakeManateeStateParkTitle": {
+			"type": "string",
+			"default": ""
+		},
+		"lakeManateeStateParkUrl": {
+			"type": "string",
+			"default": ""
+		},
+		"lakewoodRanchMainStDescription": {
+			"type": "string",
+			"default": ""
+		},
+		"lakewoodRanchMainStTitle": {
+			"type": "string",
+			"default": ""
+		},
+		"lakewoodRanchMainStUrl": {
+			"type": "string",
+			"default": ""
+		},
+		"lecomParkDescription": {
+			"type": "string",
+			"default": ""
+		},
+		"lecomParkTitle": {
+			"type": "string",
+			"default": ""
+		},
+		"lecomParkUrl": {
+			"type": "string",
+			"default": ""
+		},
+		"manateeBeachDescription": {
+			"type": "string",
+			"default": ""
+		},
+		"manateeBeachTitle": {
+			"type": "string",
+			"default": ""
+		},
+		"manateeBeachUrl": {
+			"type": "string",
+			"default": ""
+		},
+		"manateePerformingArtsCenterDescription": {
+			"type": "string",
+			"default": ""
+		},
+		"manateePerformingArtsCenterTitle": {
+			"type": "string",
+			"default": ""
+		},
+		"manateePerformingArtsCenterUrl": {
+			"type": "string",
+			"default": ""
+		},
+		"pineAvenueDescription": {
+			"type": "string",
+			"default": ""
+		},
+		"pineAvenueTitle": {
+			"type": "string",
+			"default": ""
+		},
+		"pineAvenueUrl": {
+			"type": "string",
+			"default": ""
+		},
+		"powelCrosleyEstateDescription": {
+			"type": "string",
+			"default": ""
+		},
+		"powelCrosleyEstateTitle": {
+			"type": "string",
+			"default": ""
+		},
+		"powelCrosleyEstateUrl": {
+			"type": "string",
+			"default": ""
+		},
+		"robinsonPreserveDescription": {
+			"type": "string",
+			"default": ""
+		},
+		"robinsonPreserveTitle": {
+			"type": "string",
+			"default": ""
+		},
+		"robinsonPreserveUrl": {
+			"type": "string",
+			"default": ""
+		},
+		"shoppesUniversityCenterDescription": {
+			"type": "string",
+			"default": ""
+		},
+		"shoppesUniversityCenterTitle": {
+			"type": "string",
+			"default": ""
+		},
+		"shoppesUniversityCenterUrl": {
+			"type": "string",
+			"default": ""
+		},
+		"srqAirportDescription": {
+			"type": "string",
+			"default": ""
+		},
+		"srqAirportTitle": {
+			"type": "string",
+			"default": ""
+		},
+		"srqAirportUrl": {
+			"type": "string",
+			"default": ""
+		},
+		"sunshineSkywayBridgeDescription": {
+			"type": "string",
+			"default": ""
+		},
+		"sunshineSkywayBridgeTitle": {
+			"type": "string",
+			"default": ""
+		},
+		"sunshineSkywayBridgeUrl": {
+			"type": "string",
+			"default": ""
+		},
+		"tampaInternationalAirportDescription": {
+			"type": "string",
+			"default": ""
+		},
+		"tampaInternationalAirportTitle": {
+			"type": "string",
+			"default": ""
+		},
+		"tampaInternationalAirportUrl": {
+			"type": "string",
+			"default": ""
+		},
+		"villageOfArtsDescription": {
+			"type": "string",
+			"default": ""
+		},
+		"villageOfArtsTitle": {
+			"type": "string",
+			"default": ""
+		},
+		"villageOfArtsUrl": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"viewStyle": "file:./style-index.css",
+	"viewScript": "file:./front.js",
+	"render": "file:./render.php"
+}

@@ -1,0 +1,12 @@
+@use "styles/utils" as *;
+
+body .wp-block-list {
+	padding-left: 24px;
+
+	li {
+		list-style-type: square;
+		&::marker {
+			color: color("green");
+		}
+	}
+}

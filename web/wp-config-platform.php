@@ -4,18 +4,27 @@
  *    ╦ ╦╔═╗   ╔═╗┌─┐┌┐┌┌─┐┬┌─┐  ┌─┐┌─┐┬─┐
  *    ║║║╠═╝───║  │ ││││├┤ ││ ┬  ├┤ │ │├┬┘
  *    ╚╩╝╩     ╚═╝└─┘┘└┘└  ┴└─┘  └  └─┘┴└─
- *    ╔═╗┬  ┌─┐┌┬┐┌─┐┌─┐┬─┐┌┬┐ ┌─┐┬ ┬     
- *    ╠═╝│  ├─┤ │ ├┤ │ │├┬┘│││ └─┐├─┤     
- *    ╩  ┴─┘┴ ┴ ┴ └  └─┘┴└─┴ ┴o└─┘┴ ┴     
+ *    ╔═╗┬  ┌─┐┌┬┐┌─┐┌─┐┬─┐┌┬┐ ┌─┐┬ ┬
+ *    ╠═╝│  ├─┤ │ ├┤ │ │├┬┘│││ └─┐├─┤
+ *    ╩  ┴─┘┴ ┴ ┴ └  └─┘┴└─┴ ┴o└─┘┴ ┴
  */
 
-// -- PLATFORM.SH CONFIG READER -- 
+// -- PLATFORM.SH CONFIG READER --
 // Create a new config object to ease reading the Platform.sh environment variables.
 // You can alternatively use getenv() yourself.
 use Platformsh\ConfigReader\Config;
 
 $platform_config = new Config();
 $site_scheme = 'http';
+
+if (
+	!empty($_SERVER['HTTP_X_FORWARDED_PROTO']) &&
+	$_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https'
+) {
+	// If HTTPS was used externally, force WP to recognize it.
+	$_SERVER['HTTPS'] = 'on';
+	$site_scheme = 'https';
+}
 
 // Update scheme and hostname for the requested page.
 if (isset($_SERVER['HTTP_HOST'])) {

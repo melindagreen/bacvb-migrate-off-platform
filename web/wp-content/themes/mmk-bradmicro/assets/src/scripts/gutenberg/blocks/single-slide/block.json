@@ -1,0 +1,16 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+  "name": "madden-theme/single-slide",
+	"version": "1.0.0",
+  "parent": [
+    "madden-theme/slider"
+  ],
+  "title": "[MM] Single Slide",
+  "description": "Single slide child component",
+  "icon": "format-gallery",
+  "category": "madden-media",
+  "editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+  "attributes": {}
+}

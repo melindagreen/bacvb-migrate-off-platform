@@ -1,0 +1,33 @@
+/******************************************************************
+Stylesheet: Variables
+
+Here is where we declare all our variables like colors, fonts,
+base values, and defaults. We want to make sure this file ONLY
+contains variables that way our files don't get all messy.
+No one likes a mess.
+
+******************************************************************/
+
+// LAYOUT
+$admin-bar-height: var(--wp-admin--admin-bar--height);
+$header-height-desktop: 5rem;
+$header-height-mobile: 5rem;
+
+// DEFAULT BREAKPOINT SIZES
+$screen-sm: 782px;
+$screen-md: 980px;
+$screen-lg: 1100px;
+$screen-xl: 1400px;
+
+/// Fonts / typography
+// =================================================
+$font-body: var(--wp--preset--font-family--body);
+$font-header: var(--wp--preset--font-family--header);
+
+// COLORS
+// =================================================
+@function color($name) {
+	@return var(--wp--preset--color--#{$name});
+}
+
+$drop-shadow: #00000029;

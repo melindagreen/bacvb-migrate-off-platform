@@ -1,0 +1,14 @@
+.#{$block-prefix}-classic-menu {
+  &.block-editor-block-list__block {
+    all: unset !important;
+  }
+  a {
+    pointer-events: none;
+  }
+}
+.components-panel__body {
+  .block-editor-panel-color-gradient-settings {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}

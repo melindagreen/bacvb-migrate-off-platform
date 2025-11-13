@@ -1,0 +1,39 @@
+@use "styles/utils" as *;
+
+body .wp-block-columns {
+	/*
+	Temporary fix because WordPress is removing the padding for seemingly no reason. This should apply padding to a group block placed directly in a column when the columns are set to full width
+	*/
+	&.alignfull {
+		.wp-block-column {
+			& > .wp-block-group.is-layout-constrained {
+				padding-right: var(--wp--style--root--padding-right);
+				padding-left: var(--wp--style--root--padding-left);
+			}
+		}
+	}
+	@include screen-sm-max {
+		&.reversed-on-mobile {
+			flex-direction: column-reverse;
+		}
+		&.hide-on-mobile {
+			display: none !important;
+		}
+		// For Columns and single Column
+		&.has-mobile-padding,
+		.has-mobile-padding {
+			&.has-mobile-padding-top {
+				padding-top: var(--mobile-padding-top) !important;
+			}
+			&.has-mobile-padding-right {
+				padding-right: var(--mobile-padding-right) !important;
+			}
+			&.has-mobile-padding-bottom {
+				padding-bottom: var(--mobile-padding-bottom) !important;
+			}
+			&.has-mobile-padding-left {
+				padding-left: var(--mobile-padding-left) !important;
+			}
+		}
+	}
+}

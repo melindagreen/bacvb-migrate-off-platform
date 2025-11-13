@@ -1,0 +1,27 @@
+@use "styles/utils" as *;
+
+body .wp-block-heading {
+  &.center-on-mobile {
+    @include screen-sm-max {
+      justify-content: center;
+      text-align: center !important;
+    }
+  }
+  &:is(:empty) + .#{$block-prefix}-responsive-spacer {
+    display: none;
+  }
+}
+
+@include screen-phone-max {
+  body .wp-block-heading {
+    &.has-mobile-font-size {
+      font-size: var(--mobile-font-size, inherit) !important;
+    }
+    &.has-mobile-line-height {
+      line-height: var(--mobile-line-height, inherit) !important;
+    }
+    &.has-mobile-letter-spacing {
+      letter-spacing: var(--mobile-letter-spacing, inherit) !important;
+    }
+  }
+}

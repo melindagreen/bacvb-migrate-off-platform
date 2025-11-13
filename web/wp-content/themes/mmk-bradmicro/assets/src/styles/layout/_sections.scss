@@ -1,0 +1,240 @@
+@use "../utils" as *;
+
+/*********************
+Hero
+*********************/
+.hero {
+	color: color("white");
+	h1 {
+		text-shadow: 2px 4px 15px rgba(0, 0, 0, 0.3);
+		@include screen-sm-max {
+			font-size: 42px !important;
+			letter-spacing: 0.3rem !important;
+			line-height: 1.5em !important;
+			padding: 0;
+			text-align: center;
+		}
+	}
+	p {
+		text-shadow: 2px 4px 15px rgba(0, 0, 0, 0.3);
+		@include screen-sm-max {
+			font-size: 1.25rem !important;
+			letter-spacing: 0.15rem !important;
+		}
+	}
+
+	& > .wp-block-group {
+		@include screen-sm-max {
+			min-height: 500px !important;
+		}
+	}
+}
+
+.home {
+	.hero {
+		color: color("white");
+		h1 {
+			@include screen-sm-max {
+				font-size: 6.188rem !important;
+				letter-spacing: 1rem !important;
+				line-height: 1 !important;
+			}
+		}
+	}
+}
+
+/*********************
+Get Exhibitor Guide
+*********************/
+
+.get-exhibitor-guide-big {
+	.wp-block-image {
+		flex: 0 0 500px;
+	}
+}
+@include screen-phone-max {
+	.get-exhibitor-guide,
+	.get-catering-guide {
+		background-position: left 50% bottom 75px !important;
+		> .wp-block-group {
+			flex-direction: column;
+		}
+		.wp-block-buttons {
+			order: 2;
+		}
+		.wp-block-image {
+			margin-bottom: 0 !important;
+			margin-left: -50px !important;
+			margin-right: -50px !important;
+		}
+	}
+	.get-catering-guide {
+		padding: 30px !important;
+		> .wp-block-group {
+			gap: 5px !important;
+		}
+
+		.wp-block-image {
+			margin-right: -40px !important;
+			margin-top: -250px !important;
+		}
+		.wp-block-buttons {
+			width: 100%;
+		}
+	}
+	.get-exhibitor-guide-big {
+		.wp-block-group-is-layout-flex {
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			gap: 10px !important;
+		}
+		&__content {
+			order: 2;
+			text-align: center;
+			justify-content: center;
+			* {
+				max-width: none;
+			}
+		}
+		.wp-block-image {
+			flex: 1;
+			margin-top: -150px !important;
+			margin-bottom: 0 !important;
+		}
+		.wp-block-buttons {
+			justify-content: center;
+		}
+	}
+}
+
+body {
+	&:not(.wp-admin) {
+		.floorplan-slide {
+			margin-top: 0 !important;
+			&:not(:first-child) {
+				display: none;
+			}
+		}
+	}
+	.floorplan-triggers-wrapper {
+		display: flex;
+		width: 100%;
+		overflow: scroll;
+		scroll-behavior: smooth;
+		/* Hide default scrollbar */
+		scrollbar-width: none;
+		-ms-overflow-style: none;
+		&::-webkit-scrollbar {
+			display: none;
+		}
+		/* Custom scrollbar styling */
+		position: relative;
+		padding-bottom: 40px;
+	}
+	.floorplan-triggers-wrapper::-webkit-scrollbar {
+		display: none;
+	}
+
+	/* Custom scrollbar track */
+	.floorplan-scrollbar-track {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		height: 8px;
+		background-color: color("blue");
+		border-radius: 4px;
+	}
+
+	/* Custom scrollbar handle */
+	.floorplan-scrollbar-handle {
+		position: absolute;
+		height: 30px;
+		width: 70px;
+		background-color: color("green");
+		border-radius: 15px;
+		cursor: grab;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 3px;
+		top: -11px;
+		transform: translateY(-50%);
+		transition: background-color 0.2s ease;
+
+		/* Middle line using a span or additional pseudo element workaround */
+		.floorplan-scrollbar-line {
+			width: 2px;
+			height: 18px;
+			background-color: color("white");
+			border-radius: 2px;
+		}
+
+		&::after {
+			position: absolute;
+			right: 16px;
+		}
+
+		&:hover {
+			background-color: #1f5a5b;
+		}
+
+		&:active {
+			cursor: grabbing;
+		}
+	}
+	.floorplan-triggers {
+		display: flex;
+		width: 100%;
+	}
+	.floorplan-trigger {
+		flex-shrink: 0;
+		width: 120px !important;
+		cursor: pointer;
+	}
+	.floorplan-slides {
+		.wp-block-madden-theme-slider {
+			.swiper-slide .wp-block-image img {
+				height: calc(100% - 30px) !important;
+			}
+			.swiper-pagination .swiper-pagination-bullet {
+				height: 1.125rem;
+				opacity: 1;
+				width: 1.125rem;
+			}
+		}
+	}
+}
+@include screen-tablet-min {
+	body {
+		.floorplan-slides {
+			.wp-block-madden-theme-slider {
+				figcaption {
+					margin-top: 7px !important;
+					padding: 0 !important;
+				}
+			}
+		}
+	}
+}
+@include screen-phone-max {
+	body {
+		.floorplan-slides {
+			.wp-block-madden-theme-slider {
+				margin-left: calc(var(--wp--style--root--padding-right) * -1);
+				margin-right: calc(var(--wp--style--root--padding-right) * -1);
+			}
+		}
+	}
+	.floorplan-slide {
+		.swiper {
+			.swiper-wrapper {
+				height: 300px !important;
+			}
+			.wp-block-image {
+				height: 300px !important;
+			}
+		}
+	}
+}

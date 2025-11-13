@@ -1,0 +1,22 @@
+body .#{$block-prefix}-svg-border:not(.block-editor-block-list__block) {
+  --svg-border--min_width: none;
+  position: relative;
+  overflow: hidden;
+  svg {
+    // left: 50%;
+    // position: relative;
+    // transform: translateX(-50%);
+    display: block;
+    width: 100%;
+    min-width: var(--svg-border--min_width);
+  }
+  .color-secondary {
+    fill: var(--svg-border--color_secondary) !important;
+  }
+  &.flip-svg {
+    transform: scaleX(-100%);
+  }
+  &.flip-vertical-svg {
+    transform: scaleY(-100%);
+  }
+}

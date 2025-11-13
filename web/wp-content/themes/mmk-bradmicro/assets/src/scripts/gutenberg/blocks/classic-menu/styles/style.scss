@@ -1,0 +1,189 @@
+.#{$block-prefix}-classic-menu {
+  justify-content: var(--classic-menu--justify);
+  > ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--classic-menu--gap);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  &.is-nowrap {
+    > ul {
+      flex-wrap: nowrap;
+    }
+  }
+  &.is-horizontal {
+    &.is-content-justification-left {
+      > ul {
+        justify-content: flex-start;
+      }
+    }
+    &.is-content-justification-center {
+      > ul {
+        justify-content: center;
+      }
+    }
+    &.is-content-justification-right {
+      > ul {
+        justify-content: flex-end;
+      }
+    }
+    &.is-content-justification-space-between {
+      > ul {
+        justify-content: space-between;
+      }
+    }
+    &.vertical-align-center,
+    &.vertical-align-stretch {
+      > ul {
+        align-items: center;
+      }
+    }
+    &.vertical-align-top {
+      > ul {
+        align-items: flex-start;
+      }
+    }
+    &.vertical-align-bottom {
+      > ul {
+        align-items: flex-end;
+      }
+    }
+    &.link-equal-height {
+      > ul {
+        align-items: stretch;
+        > li > a {
+          display: flex;
+          height: 100%;
+        }
+      }
+      &.vertical-align-center,
+      &.vertical-align-stretch {
+        > ul {
+          > li > a {
+            align-items: center;
+          }
+        }
+      }
+      &.vertical-align-top {
+        > ul {
+          > li > a {
+            align-items: flex-start;
+          }
+        }
+      }
+      &.vertical-align-bottom {
+        > ul {
+          > li > a {
+            align-items: flex-end;
+          }
+        }
+      }
+    }
+    .sub-menu {
+      position: absolute;
+      z-index: 88;
+    }
+  }
+  &.is-vertical {
+    > ul {
+      flex-direction: column;
+      align-items: stretch;
+      width: 100%;
+    }
+  }
+  p {
+    margin: 0;
+  }
+  li {
+    position: relative;
+    &.is-toggled {
+      .menu-item-toggle {
+        &__show {
+          display: none;
+        }
+        &__hide {
+          display: block;
+        }
+      }
+    }
+  }
+  .menu-item-link {
+    flex: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    text-decoration: none;
+    box-sizing: border-box;
+    padding-top: var(--classic-menu--link_padding_top);
+    padding-right: var(--classic-menu--link_padding_right);
+    padding-bottom: var(--classic-menu--link_padding_bottom);
+    padding-left: var(--classic-menu--link_padding_left);
+    transition: color 0.25s ease;
+  }
+  .menu-item-label {
+    display: block;
+  }
+  .menu-item-toggle {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 100%;
+    cursor: pointer;
+    svg {
+      fill: currentColor;
+      width: 22px;
+    }
+    &__show,
+    &__hide {
+      line-height: 0;
+    }
+    &__hide {
+      display: none;
+    }
+  }
+  .sub-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: var(--classic-menu--subnav_text_align);
+    background-color: var(--classic-menu--subnav_background_color);
+    padding-top: var(--classic-menu--subnav_padding_top);
+    padding-right: var(--classic-menu--subnav_padding_right);
+    padding-bottom: var(--classic-menu--subnav_padding_bottom);
+    padding-left: var(--classic-menu--subnav_padding_left);
+    a {
+      flex: 1;
+      color: var(--classic-menu--subnav_text_color);
+      padding-top: var(--classic-menu--subnav_link_padding_top);
+      padding-right: var(--classic-menu--subnav_link_padding_right);
+      padding-bottom: var(--classic-menu--subnav_link_padding_bottom);
+      padding-left: var(--classic-menu--subnav_link_padding_left);
+    }
+  }
+  &:not(.subnav-display-visible) {
+    .sub-menu {
+      display: none;
+    }
+  }
+  &.subnav-display-hover {
+    li:hover {
+      > .sub-menu {
+        display: block;
+      }
+    }
+  }
+  &.subnav-display-click,
+  &.subnav-display-toggle-click {
+    li.is-toggled {
+      > .sub-menu {
+        display: block;
+      }
+    }
+  }
+}

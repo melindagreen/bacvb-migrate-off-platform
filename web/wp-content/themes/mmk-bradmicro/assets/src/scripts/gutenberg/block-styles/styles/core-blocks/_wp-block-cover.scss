@@ -1,0 +1,16 @@
+@use "styles/utils" as *;
+
+body .wp-block-cover {
+	background-size: cover;
+	margin: 0;
+	padding: 0;
+	/*
+	Temporary fix because WordPress is removing the padding for seemingly no reason. This should apply padding to the inner container when the cover is set to full width & to use content width on the inner content
+	*/
+	&.alignfull {
+		.wp-block-cover__inner-container.is-layout-constrained {
+			padding-right: var(--wp--style--root--padding-right);
+			padding-left: var(--wp--style--root--padding-left);
+		}
+	}
+}

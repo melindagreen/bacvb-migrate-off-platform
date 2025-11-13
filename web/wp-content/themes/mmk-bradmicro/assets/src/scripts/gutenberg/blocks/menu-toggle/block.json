@@ -1,0 +1,71 @@
+{
+  "apiVersion": 3,
+  "name": "madden-theme/menu-toggle",
+  "title": "[MM] Menu Toggle",
+  "description": "Button that toggles a menu",
+  "icon": "menu",
+  "category": "text",
+  "textdomain": "madden-theme",
+  "version": "1.0.0",
+  "attributes": {
+    "hamburgerType": {
+      "type": "string",
+      "default": "hamburger--collapse"
+    },
+    "label": {
+      "type": "string",
+      "default": "Menu"
+    },
+    "target": {
+      "type": "string"
+    }
+  },
+  "supports": {
+    "layout": {
+      "allowEditing": true,
+      "allowOrientation": false,
+      "default": {
+        "type": "flex",
+        "orientation": "horizontal"
+      }
+    },
+    "spacing": {
+      "margin": true,
+			"padding": true,
+      "blockGap":["horizontal"],
+			"__experimentalDefaultControls": {
+        "margin": false,
+        "padding": false,
+        "blockGap": true
+			}
+		},
+    "typography": {
+			"fontSize": true,
+			"lineHeight": true,
+			"__experimentalFontFamily": true,
+			"__experimentalTextDecoration": true,
+			"__experimentalFontStyle": true,
+			"__experimentalFontWeight": true,
+			"__experimentalLetterSpacing": true,
+			"__experimentalTextTransform": true,
+			"__experimentalWritingMode": true,
+			"__experimentalDefaultControls": {
+				"fontSize": true
+			}
+		},
+		"color": {
+			"gradients": false,
+      "text": true,
+			"link": true,
+      "heading": false,
+			"__experimentalDefaultControls": {
+        "text": true,
+				"link": true
+			}
+		}
+	},
+  "editorScript": "file:./index.js",
+	"viewScript": "file:./view.js",
+	"style": "file:./style-index.css",
+  "render": "file:./render.php"
+}

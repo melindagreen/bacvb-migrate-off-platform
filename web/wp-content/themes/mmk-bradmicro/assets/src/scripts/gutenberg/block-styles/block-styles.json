@@ -1,0 +1,80 @@
+{
+	"core/group": {
+		"add": [
+			{
+				"name": "pinned-right",
+				"label": "Pinned Right"
+			},
+			{
+				"name": "pinned-left",
+				"label": "Pinned Left"
+			}
+		]
+	},
+	"core/image": {
+		"add": [
+			{
+				"name": "pinned-right",
+				"label": "Pinned Right"
+			},
+			{
+				"name": "pinned-left",
+				"label": "Pinned Left"
+			},
+			{
+				"name": "bordered",
+				"label": "Bordered"
+			},
+			{
+				"name": "circle-border",
+				"label": "Circle Border"
+			},
+			{
+				"name": "bubble-border",
+				"label": "Bubble Border"
+			}
+		],
+		"remove": ["rounded"]
+	},
+	"core/button": {
+		"add": [
+			{
+				"name": "large",
+				"label": "Large"
+			},
+			{
+				"name": "quick-link",
+				"label": "Quick Link"
+			}
+		],
+		"remove": ["fill", "outline"]
+	},
+	"core/search": {
+		"add": [
+			{
+				"name": "big-search",
+				"label": "Big Search"
+			}
+		]
+	},
+	"madden-theme/slider": {
+		"add": [
+			{
+				"name": "stacked",
+				"label": "Stacked"
+			},
+			{
+				"name": "full-width",
+				"label": "Full Width"
+			}
+		]
+	},
+	"madden-theme/accordion-section": {
+		"add": [
+			{
+				"name": "small-title",
+				"label": "Small Title"
+			}
+		]
+	}
+}

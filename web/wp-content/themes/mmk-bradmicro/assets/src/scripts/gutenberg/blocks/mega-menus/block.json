@@ -1,0 +1,26 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "madden-theme/mega-menus",
+  "textdomain": "madden-theme",
+	"version": "1.0.0",
+	"title": "[MM] Mega Menus",
+	"category": "madden-media",
+	"description": "Add mega menu sections to your template.",
+	"attributes": {
+		"menus": {
+			"type": "array",
+      "default": []
+		}
+	},
+  "supports": {
+    "spacing": {
+      "margin": true
+    }
+  },
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+  "viewScript": "file:./view.js",
+	"viewStyle": "file:./view.css",
+	"render": "file:./render.php"
+}

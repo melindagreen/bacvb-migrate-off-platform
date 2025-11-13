@@ -1,0 +1,394 @@
+$bradenton-teal: #2b7b7c;
+$yellow-tan: #f4eee1;
+$rust: #c96a39;
+
+.#{$block-prefix}-bradenton-map {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin: auto;
+  justify-content: center;
+  gap: 4rem 8rem;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  max-width: unset !important;
+  height: 55vw;
+  overflow: hidden;
+
+  @media only screen and (max-width: $screen-lg) {
+    gap: 4rem 4vw;
+  }
+
+  .bradenton-map-help {
+    display: none;
+  }
+
+  .mapContainer {
+    height: inherit;
+    width: 100%;
+    z-index: 1;
+
+    .mapViewArea {
+      height: inherit;
+    }
+
+    .map-logo {
+      position: absolute;
+      top: 57%;
+    }
+
+    .county {
+      cursor: pointer;
+      transition: all 0.3s;
+
+      &:hover,
+      &.active {
+        fill: rgba($bradenton-teal, 1) !important;
+      }
+    }
+
+    svg,
+    img {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+
+      // @media screen and (max-width: $screen-sm) {
+      //   width: 186vw;
+      //   height: 650px;
+      //   position: relative;
+      //   right: 29vw;
+      // }
+
+      #ICONS g {
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        transform-box: fill-box;
+        transform-origin: center;
+        transform: scale(1);
+
+        &:hover {
+          transition: all 0.3s ease-in-out;
+          // transform: scale(1.05);
+        }
+      }
+
+      .bradenton-stop {
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        transform-box: fill-box;
+        transform-origin: center;
+
+        .st24 {
+          transition: all 0.3s ease-in;
+        }
+
+        &:hover {
+          .st24 {
+            fill: $bradenton-teal;
+            transition: all 0.2s ease-in-out;
+          }
+        }
+      }
+    }
+
+    img {
+      overflow: hidden;
+    }
+  }
+}
+
+.ferry-map-help {
+  text-align: center;
+  width: fit-content;
+  background-color: $bradenton-teal;
+  //font-family: $font-title;
+  font-size: 4rem;
+  padding: 0 2%;
+  position: absolute;
+  bottom: 4rem;
+  right: 0;
+  margin: auto;
+  z-index: 2;
+  max-width: 16rem;
+  border-top-left-radius: 100px;
+  border-bottom-left-radius: 100px;
+  padding: 0 2rem 0 3rem;
+
+  h4 {
+    font-family: $font-header;
+    font-size: 0.9rem;
+    color: $yellow-tan;
+    margin: 1rem auto;
+  }
+
+  p {
+    color: white;
+    font-weight: 600;
+    font-size: 1.85rem;
+    line-height: 1.2em;
+    margin: 1rem auto;
+  }
+}
+
+.bradenton-lightbox {
+  transform: translateX(-100%);
+  overflow-y: scroll;
+  position: absolute;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #4ebbbb;
+  width: 30rem;
+  transition: all 0.3s ease-in-out;
+
+  @include screen-sm-max {
+    width: 100%;
+  }
+
+  .close {
+    font-size: 1.6rem;
+    position: absolute;
+    top: 4%;
+    right: 4%;
+    color: white;
+    cursor: pointer;
+    z-index: 3;
+  }
+
+  &--on {
+    transform: translateX(0);
+    transition: all 0.3s ease-in-out;
+  }
+
+  .bradenton-card {
+    visibility: hidden;
+    transform: scale(0);
+    transition:
+      transform 0.3s ease,
+      opacity 0.3s ease,
+      visibility 0s 0.3s;
+    opacity: 0;
+    width: 1000px;
+    max-width: 90%;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%) !important;
+    display: flex;
+    width: fit-content;
+    gap: 3rem;
+    align-items: center;
+
+    padding: 0.25rem;
+    line-height: 1.9em;
+
+    &.pop-in {
+      visibility: visible;
+      transform: scale(1);
+      opacity: 1;
+      transition:
+        transform 0.3s ease,
+        opacity 0.3s ease;
+    }
+
+    &.pop-out {
+      transform: scale(0);
+      opacity: 0;
+      visibility: hidden;
+      display: none;
+      transition:
+        transform 0.3s ease,
+        opacity 0.3s ease,
+        visibility 0s 0.3s;
+    }
+
+    &__content {
+      width: 30rem;
+      padding: 2rem 0;
+
+      h3 {
+        margin: 0 auto;
+        color: white;
+        font-size: 1.5rem;
+        font-family: $font-header;
+      }
+
+      p {
+        color: white;
+        font-size: 1.25rem;
+        min-height: 5.5rem;
+        margin-bottom: 2.5rem;
+      }
+
+      .bradenton-card-cta {
+        background-color: $rust;
+        color: white;
+        padding: 1rem 2rem;
+        border-radius: 20px;
+        transition: all 0.3s ease-in-out;
+        width: fit-content;
+        text-align: center;
+
+        @include screen-sm-max {
+          padding: 1rem 1rem;
+        }
+
+        a {
+          color: white;
+          text-decoration: none;
+        }
+
+        &:hover {
+          background-color: darken($bradenton-teal, 1.4);
+          transform: scale(1.1);
+          transition: all 0.2s ease-in-out;
+        }
+      }
+    }
+
+    img {
+      width: 280px;
+      height: 300px;
+      object-fit: cover;
+    }
+  }
+}
+
+/*********************
+SMALL SCREENS
+*********************/
+@media only screen and (max-width: $screen-md) {
+  .#{$block-prefix}-bradenton-map {
+    height: 700px;
+    overflow: hidden;
+
+    #LAKE_MANATEE_STATE_PARK {
+      transform: translate(-79px, -32px) !important;
+    }
+  }
+
+  .bradenton-lightbox {
+    height: 100%;
+
+    .bradenton-card {
+      transform: scale(0) !important; /* Center by default, but scale down */
+      flex-direction: column-reverse;
+      top: 60%;
+      gap: 1.5rem;
+      margin-top: 5rem !important;
+      transform: none !important;
+      position: unset;
+      width: 95% !important;
+      margin: auto;
+
+      &__content {
+        width: inherit !important;
+        padding: 0;
+      }
+
+      img {
+        width: 100% !important;
+      }
+    }
+  }
+}
+
+@keyframes bounce-scale {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.15);
+  }
+  60% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1.05);
+  }
+}
+
+.bounce-scale {
+  animation: bounce-scale 1s ease;
+  transform: scale(1.05);
+}
+
+.#{$block-prefix}-bradenton-map {
+  .mapViewArea {
+    width: 100%;
+    svg,
+    img {
+      width: 100% !important;
+    }
+  }
+}
+@media only screen and (max-width: $screen-md) {
+  .#{$block-prefix}-bradenton-map {
+    .bradenton-map-help {
+      text-align: center;
+      width: fit-content;
+      background-color: $bradenton-teal;
+      //font-family: $font-title;
+      font-size: 4rem;
+      padding: 0 2%;
+      position: absolute;
+      top: 3rem;
+      left: 1rem;
+      margin: auto;
+      z-index: 2;
+      border-radius: 50px;
+      padding: 0 1.5rem 0 1.5rem;
+      display: flex;
+      gap: 0.5rem;
+      align-items: baseline;
+
+      p {
+        color: white;
+        font-weight: 600;
+        font-size: 1.25rem;
+        line-height: 1.2em;
+        margin: 1rem auto;
+        display: inline;
+      }
+      &__arrow {
+        display: inline;
+        color: white;
+        font-size: 1.25rem;
+        transform: translateY(-1px);
+      }
+    }
+    .mapContainer {
+      display: flex;
+      justify-content: center; /* horizontal */
+      align-items: center;
+      height: 100%;
+      overflow: scroll;
+      -webkit-overflow-scrolling: touch;
+    }
+    .mapContainer::-webkit-scrollbar {
+      display: none; /* Chrome, Safari, and newer Edge */
+    }
+    .mapViewArea {
+      height: 100%;
+      width: 100% !important;
+
+      img,
+      svg {
+        left: -1vw;
+      }
+      img {
+        width: 980px !important;
+        object-fit: cover;
+        object-position: 41%;
+      }
+      svg {
+        transform: scale(1.25) translate(15px, -2px);
+        width: 980px !important;
+      }
+    }
+  }
+}

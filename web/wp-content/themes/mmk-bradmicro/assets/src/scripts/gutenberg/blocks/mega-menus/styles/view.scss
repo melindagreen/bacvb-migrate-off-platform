@@ -1,0 +1,33 @@
+.#{$block-prefix}-mega-menus {
+  position: relative;
+}
+.#{$block-prefix}-mega-menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: 100%;
+  height: auto;
+  opacity: 0;
+  transform: translateY(-20px);
+  overflow: hidden;
+  visibility: hidden;
+  transition:
+    transform 0.5s ease,
+    opacity 0.5s ease;
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  &.active {
+    visibility: visible;
+  }
+  nav {
+    a {
+      transition: color 0.25s ease;
+      &:hover {
+        color: color("red") !important;
+      }
+    }
+  }
+}

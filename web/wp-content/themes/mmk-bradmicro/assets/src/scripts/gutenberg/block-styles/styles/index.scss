@@ -1,0 +1,69 @@
+/*********************
+* Block-specific styles to show within the Gutenberg editor
+********************
+
+/*
+Add block-specific styles to a separate stylesheet and import them here
+*/
+@use "./core-blocks/wp-block-buttons";
+@use "./core-blocks/wp-block-columns";
+@use "./core-blocks/wp-block-cover";
+@use "./core-blocks/wp-block-group";
+@use "./core-blocks/wp-block-image";
+@use "./core-blocks/wp-block-separator";
+@use "./core-blocks/wp-block-heading";
+@use "./core-blocks/wp-block-paragraph";
+@use "./core-blocks/wp-block-preformatted";
+@use "./core-blocks/wp-block-search";
+@use "./core-blocks/wp-block-list";
+
+/*********************
+Main Editor Styles
+*********************/
+
+/*
+Removing forced spacing that only appears in the editor on custom blocks
+*/
+body .editor-styles-wrapper .is-layout-flow,
+body .editor-styles-wrapper .is-layout-constrained {
+	& > [data-type^="#{$theme-prefix}"] {
+		margin-block-start: 0;
+		margin-block-end: 0;
+	}
+}
+
+/*
+Add box-sizing: border-box in the editor so it matches the front end
+*/
+.editor-styles-wrapper {
+	.is-root-container {
+		* {
+			box-sizing: border-box;
+		}
+		/*
+		removes forced spacing on pattern blocks
+		*/
+		.block-library-block__reusable-block-container {
+			margin-block-start: 0;
+			margin-block-end: 0;
+		}
+	}
+}
+
+/*********************
+Sidebar Inspector Styles
+*********************/
+.components-panel .components-panel__row {
+	align-items: flex-start;
+	gap: 0.5rem;
+}
+
+.block-editor-block-inspector__tabs {
+	.components-panel {
+		.components-panel__body {
+			.spacing-sizes-control {
+				width: 100%;
+			}
+		}
+	}
+}

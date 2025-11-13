@@ -1,0 +1,73 @@
+@use "../utils" as *;
+
+// Home Page Sun
+body {
+  .wp-block-image {
+    &.home__graphic-sun {
+      position: absolute;
+      top: -35px;
+      right: -150px;
+    }
+  }
+  .wp-block-heading {
+    &.home__graphic-sun {
+      &__heading {
+        @include screen-tablet-min {
+          max-width: 460px;
+        }
+      }
+    }
+  }
+}
+
+// Home Page Airplane
+body .wp-block-image {
+  &.home__graphic-airplane {
+    position: absolute;
+    top: -110px;
+    left: -220px;
+  }
+}
+
+// Meeting Planner Airplane
+body .wp-block-image {
+  &.meeting-planner__graphic-airplane {
+    position: absolute;
+    left: -46px;
+    bottom: -54px;
+  }
+}
+
+// Meeting Planner Sun
+body .wp-block-image {
+  &.meeting-planner__graphic-sun {
+    position: absolute;
+    top: 50%;
+    left: 450px;
+    img {
+      max-width: unset;
+    }
+  }
+}
+
+// Planner Resources Airplane
+body {
+  .planner-resources__graphic-airplane {
+    position: absolute !important;
+    left: 569px;
+    bottom: -40px;
+    z-index: 1;
+    img {
+      max-width: unset;
+    }
+  }
+  .planner-resources__graphic-silverware {
+    position: absolute !important;
+    left: -190px;
+    top: 55px;
+    z-index: 1;
+    &__container {
+      position: relative;
+    }
+  }
+}

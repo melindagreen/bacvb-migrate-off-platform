@@ -1,0 +1,426 @@
+@use "swiper/css/bundle";
+
+body .#{$block-prefix}-slider {
+	--swiper-pagination-bullet-horizontal-gap: 10px;
+	margin: 0;
+	padding: 0;
+	position: relative;
+	.swiper-button-prev,
+	.swiper-button-next {
+		background-color: rgba(255, 255, 255, 0.75);
+		border-radius: 3rem;
+		width: 3rem;
+		height: 3rem;
+		@include standard-transition;
+		svg {
+			width: 25px;
+			&.mobile-arrow {
+				display: none;
+			}
+		}
+		&:after {
+			all: unset;
+		}
+
+		&:hover {
+			background-color: rgba(255, 255, 255, 1);
+		}
+
+		@each $color in $color-palette {
+			&[data-color="#{$color}"] {
+				&:after {
+					color: color("#{$color}");
+				}
+			}
+			&[data-color-background="#{$color}"] {
+				background-color: color("#{$color}");
+			}
+		}
+	}
+	.swiper-button-prev {
+		padding-right: 3px;
+	}
+	.swiper-button-next {
+		padding-left: 3px;
+	}
+	&.slider-arrows-below {
+		.swiper-navigation-wrapper {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin: 0;
+			.swiper-pagination {
+				display: flex;
+				align-items: center;
+				height: 3rem;
+				margin: 0;
+				order: 1;
+				width: auto;
+			}
+			.swiper-button-prev {
+				order: 0;
+			}
+			.swiper-button-next {
+				order: 2;
+			}
+			.swiper-button-prev,
+			.swiper-button-next {
+				background-color: transparent;
+				margin: 0;
+				position: unset;
+				&:after {
+					color: color("gray");
+					font-size: 1rem;
+				}
+				&:hover {
+					background-color: transparent;
+					&:after {
+						opacity: 0.8;
+					}
+				}
+				@each $color in $color-palette {
+					&[data-color="#{$color}"] {
+						&:after {
+							color: color("#{$color}");
+						}
+					}
+					&[data-color-background="#{$color}"] {
+						background-color: color("#{$color}");
+					}
+				}
+			}
+		}
+	}
+	&.is-style-full-width {
+		.wp-block-image {
+			img {
+				max-height: 70dvh;
+			}
+		}
+		figcaption {
+			max-width: var(--wp--style--global--content-size);
+			font-size: 16px !important;
+			text-transform: uppercase;
+			font-weight: bold;
+			color: color("green") !important;
+			margin: 5px 0 0 !important;
+			padding-right: var(--wp--style--root--padding-right);
+			padding-left: var(--wp--style--root--padding-left);
+		}
+		.swiper-button-prev,
+		.swiper-button-next {
+			width: 70px;
+			height: 70px;
+			padding: 0;
+			background-color: transparent;
+			top: 50% !important;
+			margin-top: -45px;
+			svg {
+				width: 100%;
+				&.mobile-arrow {
+					display: block;
+				}
+				&.desktop-arrow {
+					display: none;
+				}
+			}
+		}
+	}
+	.swiper-pagination {
+		margin: 0 auto;
+		position: unset;
+		.swiper-pagination-bullet {
+			background-color: color("gray");
+			opacity: 0.7;
+			width: 1.125rem;
+			height: 1.125rem;
+			&.swiper-pagination-bullet-active {
+				background-color: color("red");
+				opacity: 1;
+			}
+		}
+		@if ($color-palette) {
+			@each $color in $color-palette {
+				&[data-color="#{$color}"] {
+					.swiper-pagination-bullet {
+						background-color: color("#{$color}");
+						opacity: 1;
+					}
+				}
+				&[data-color-active="#{$color}"] {
+					.swiper-pagination-bullet.swiper-pagination-bullet-active {
+						background-color: color("#{$color}");
+						opacity: 1;
+					}
+				}
+			}
+		}
+	}
+	.swiper-scrollbar {
+		@if ($color-palette) {
+			@each $color in $color-palette {
+				&[data-color="#{$color}"] {
+					.swiper-scrollbar-drag {
+						background-color: color("#{$color}");
+					}
+				}
+			}
+		}
+	}
+	.swiper {
+		&.swiper-vertical {
+			.swiper-slide {
+				height: auto !important;
+			}
+			& ~ .swiper-pagination {
+				margin: 0;
+				position: absolute;
+				&.swiper-pagination-horizontal {
+					width: auto;
+					height: auto;
+					bottom: auto;
+					.swiper-pagination-bullet {
+						display: block;
+						margin: 0.375rem 0;
+					}
+				}
+			}
+		}
+		&.swiper-horizontal {
+			& ~ .swiper-pagination.swiper-pagination-vertical {
+				transform: none;
+				.swiper-pagination-bullet {
+					display: inline-block;
+				}
+			}
+		}
+		&.swiper-fade {
+			.swiper-slide {
+				opacity: 0 !important;
+				&.swiper-slide-active {
+					opacity: 1 !important;
+				}
+			}
+		}
+	}
+	&.small-bullets {
+		.swiper-pagination {
+			.swiper-pagination-bullet {
+				width: 10px;
+				height: 10px;
+			}
+		}
+	}
+	&.slider-type-gallery {
+		.swiper {
+			padding: 0;
+			.swiper-wrapper {
+				.swiper-slide {
+					.wp-block-image {
+						display: flex;
+						flex-direction: column;
+						align-items: stretch;
+						justify-content: center;
+						line-height: 0;
+						margin: 0;
+						img {
+							display: block;
+							line-height: 0;
+							width: 100% !important;
+							height: 100%;
+							object-fit: cover;
+						}
+					}
+				}
+			}
+		}
+	}
+	&.force-equal-height-slides {
+		.swiper {
+			.swiper-wrapper {
+				align-items: stretch;
+				height: fit-content !important;
+				.swiper-slide {
+					height: auto;
+					.#{$block-prefix}-content-card {
+						height: 100%;
+					}
+				}
+			}
+		}
+	}
+}
+
+@include screen-phone-max {
+	body .#{$block-prefix}-slider {
+		&:not(.is-style-stacked) {
+			.swiper-button-prev,
+			.swiper-button-next {
+				position: absolute !important;
+				top: 200px;
+				border-radius: 0;
+				width: 54px;
+				height: 54px;
+				svg {
+					width: 54px;
+					&.desktop-arrow {
+						display: none;
+					}
+					&.mobile-arrow {
+						display: block;
+					}
+				}
+			}
+			.swiper-button-prev {
+				left: -5px;
+			}
+			.swiper-button-next {
+				right: -5px;
+			}
+		}
+		&.is-style-full-width {
+			.swiper-pagination {
+				display: none;
+			}
+		}
+	}
+}
+
+.wp-block-madden-theme-slider.is-style-stacked {
+	.swiper-backface-hidden {
+		.swiper-slide {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 535px !important;
+			transition: all 0.3s ease;
+			opacity: 0;
+			.post-card {
+				height: 100%;
+				width: 460px;
+				max-width: none;
+				overflow: visible;
+				transform: scale(0.5);
+				transition: all 0.3s ease;
+			}
+			&.swiper-slide-active {
+				z-index: 2;
+				opacity: 1;
+				.post-card {
+					height: 100%;
+					width: 460px;
+					max-width: calc(100dvw - 20px);
+					transform: scale(1);
+					overflow: visible;
+				}
+			}
+			&.swiper-slide-prev,
+			&.swiper-slide-next {
+				opacity: 1;
+				z-index: 1;
+				.post-card {
+					height: 100%;
+					width: 460px;
+					max-width: none;
+					overflow: visible;
+					transform: scale(0.9);
+				}
+			}
+			&.swiper-slide-prev {
+				.post-card {
+					margin-right: -20%;
+				}
+			}
+			&.swiper-slide-next {
+				.post-card {
+					margin-left: -20%;
+				}
+			}
+			&.swiper-slide-prev-prev,
+			&.swiper-slide-next-next {
+				opacity: 1;
+				.post-card {
+					height: 100%;
+					width: 460px;
+					max-width: none;
+					overflow: visible;
+					transform: scale(0.8);
+				}
+			}
+			&.swiper-slide-prev-prev {
+				.post-card {
+					margin-right: -160px;
+				}
+			}
+			&.swiper-slide-next-next {
+				.post-card {
+					margin-left: -160px;
+				}
+			}
+		}
+	}
+	.swiper-button-prev,
+	.swiper-button-next {
+		background-color: color("green");
+		svg {
+			width: 18px;
+		}
+		&:hover {
+			background-color: color("green");
+		}
+	}
+	.swiper-button-prev {
+		left: 0;
+	}
+	.swiper-button-next {
+		right: 0;
+	}
+}
+@include screen-desktop-max {
+	.wp-block-madden-theme-slider.is-style-stacked {
+		.swiper-backface-hidden {
+			overflow: visible;
+		}
+	}
+}
+@include screen-tablet-max {
+	.wp-block-madden-theme-slider.is-style-stacked {
+		.swiper-backface-hidden {
+			.swiper-slide {
+				&.swiper-slide-prev {
+					.post-card {
+						margin-right: -20%;
+					}
+				}
+				&.swiper-slide-next {
+					.post-card {
+						margin-left: -20%;
+					}
+				}
+				&.swiper-slide-prev-prev,
+				&.swiper-slide-next-next {
+					opacity: 0;
+					.post-card {
+						margin: 0;
+					}
+				}
+			}
+		}
+		.swiper-button-prev {
+			left: -20px;
+		}
+		.swiper-button-next {
+			right: -20px;
+		}
+	}
+}
+// @include screen-phone-max {
+//   .wp-block-madden-theme-slider.is-style-stacked {
+//     .swiper-button-prev {
+//       left: -20px;
+//     }
+//     .swiper-button-next {
+//       right: -20px;
+//     }
+//   }
+// }

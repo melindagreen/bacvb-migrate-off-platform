@@ -1,0 +1,40 @@
+{
+  "name": "assets",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "packages-update": "wp-scripts packages-update",
+    "start": "wp-scripts start --webpack-copy-php",
+    "build": "wp-scripts build --webpack-copy-php",
+    "lint:js": "wp-scripts lint-js ./src",
+    "format:js": "wp-scripts format-js ./src",
+    "lint:css": "wp-scripts lint-style ./src"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@wordpress/scripts": "30.11.0",
+    "import-glob": "^1.5.0",
+    "path": "0.12.7",
+    "prettier": "2.6.2",
+    "sass-embedded": "^1.85.1",
+    "sass-loader": "^16.0.5",
+    "webpack": "^5.98.0",
+    "webpack-remove-empty-scripts": "1.0.4"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not op_mini all"
+  ],
+  "dependencies": {
+    "@wordpress/icons": "9.46.0",
+    "aos": "^2.3.4",
+    "hamburgers": "1.2.1",
+    "swiper": "^11.2.5"
+  },
+  "optionalDependencies": {
+    "dart-sass": "^1.25.0"
+  }
+}

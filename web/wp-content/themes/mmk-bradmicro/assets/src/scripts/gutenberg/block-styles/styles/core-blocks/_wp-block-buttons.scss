@@ -1,0 +1,111 @@
+@use "styles/utils" as *;
+
+/*
+* Core block button styles
+*/
+body .wp-block-buttons {
+	&.aligncenter {
+		justify-content: center;
+	}
+	@include screen-phone-max {
+		&.center-on-mobile {
+			justify-content: center;
+		}
+	}
+
+	.wp-block-button {
+		.wp-block-button__link {
+			padding: 0.35rem 1.5rem 0.55rem;
+			@include standard-transition;
+			&:hover {
+				background-color: color("green") !important;
+				border-color: color("green") !important;
+				color: color("white") !important;
+				text-decoration: none;
+			}
+			@each $color in $color-palette {
+				&.has-#{$color}-color {
+					background-color: transparent;
+					border: 2px solid color("#{$color}");
+					color: color("#{$color}");
+					&:hover {
+						background-color: color("#{$color}");
+						color: color("white") !important;
+					}
+				}
+			}
+			&.has-white-color {
+				&:hover {
+					color: color("green") !important;
+					background-color: color("white") !important;
+				}
+			}
+			@include screen-phone-max {
+				min-height: 60px;
+				font-size: 24px;
+			}
+		}
+
+		&.is-style-large {
+			.wp-block-button__link {
+				@include screen-tablet-min {
+					padding: 1.7rem 8rem;
+				}
+				@include screen-phone-max {
+					padding: 1.4rem 4rem;
+				}
+			}
+		}
+
+		&.is-style-quick-link {
+			.wp-block-button__link {
+				height: 220px;
+				border: none;
+				&.has-green-color {
+					&:hover {
+						color: color("blue") !important;
+					}
+				}
+				&.has-blue-color {
+					&:hover {
+						color: color("green") !important;
+					}
+				}
+				&.has-green-background-color {
+					&:hover {
+						background-color: color("blue") !important;
+					}
+				}
+				&.has-blue-background-color {
+					&:hover {
+						background-color: color("green") !important;
+					}
+				}
+				@include screen-phone-max {
+					height: 180px;
+					font-size: 22px !important;
+				}
+			}
+		}
+	}
+}
+
+@include screen-phone-max {
+	body .wp-block-button {
+		&.has-mobile-font-size {
+			.wp-block-button__link {
+				font-size: var(--mobile-font-size, inherit) !important;
+			}
+		}
+		&.has-mobile-line-height {
+			.wp-block-button__link {
+				line-height: var(--mobile-line-height, inherit) !important;
+			}
+		}
+		&.has-mobile-letter-spacing {
+			.wp-block-button__link {
+				letter-spacing: var(--mobile-letter-spacing, inherit) !important;
+			}
+		}
+	}
+}

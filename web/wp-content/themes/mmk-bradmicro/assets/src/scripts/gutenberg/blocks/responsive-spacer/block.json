@@ -1,0 +1,28 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "madden-theme/responsive-spacer",
+	"version": "3.0.0",
+	"title": "[MM] Responsive Spacer",
+	"description": "A responsive spacer",
+	"icon": "editor-expand",
+	"category": "madden-media",
+	"attributes": {
+		"heightDesktop": {
+			"type": "string",
+			"default": "4rem"
+		},
+		"heightTablet": {
+			"type": "string",
+			"default": "4rem"
+		},
+		"heightMobile": {
+			"type": "string",
+			"default": "3rem"
+		}
+	},
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"render": "file:./render.php"
+}

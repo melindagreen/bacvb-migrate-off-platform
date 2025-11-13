@@ -1,0 +1,131 @@
+@import "../../../../../styles/utils/index";
+
+.#{$block-prefix}-accordion-section {
+	box-sizing: border-box;
+	border-bottom: 2px solid color("green");
+	&:first-child {
+		margin-top: 0;
+	}
+	* {
+		box-sizing: border-box;
+	}
+	&__header {
+		position: relative;
+		width: 100%;
+		display: flex;
+		align-items: center;
+		flex-direction: row-reverse;
+		justify-content: flex-end;
+		transition-duration: 0.5s;
+		font-size: 18px;
+		padding: 25px 150px 25px 50px;
+		&__icon {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 48px;
+			line-height: 32px;
+			text-align: center;
+			color: currentColor;
+			cursor: pointer;
+			width: 58px;
+			height: 58px;
+			position: absolute;
+			right: 75px;
+			top: 50%;
+			margin-top: -29px;
+			transition: transform 0.2s ease-in;
+			svg {
+				width: 58px;
+			}
+		}
+		h3 {
+			width: 100%;
+			font-size: 28px;
+			font-weight: 400;
+			line-height: 1.2;
+			letter-spacing: 0;
+			color: currentColor;
+			cursor: pointer;
+			margin: 0;
+			padding: 0;
+			a {
+				color: inherit;
+			}
+		}
+		&:hover {
+			&::before {
+				transform: rotate(90deg);
+			}
+		}
+	}
+	&.open {
+		.#{$block-prefix}-accordion-section__header {
+			&__icon {
+				transform: rotate(180deg);
+			}
+		}
+	}
+	&__body {
+		overflow: hidden;
+		transition: all 0.3s ease;
+		transition: height 0.5s ease;
+		&__content {
+			padding: 0 5% 20px;
+			> *:first-child {
+				margin-top: 0;
+			}
+			> *:last-child {
+				margin-bottom: 0;
+			}
+			&:after {
+				content: "";
+				display: table;
+				clear: both;
+			}
+		}
+		iframe {
+			width: 100%;
+		}
+		p {
+			margin-top: 0;
+		}
+	}
+	&.is-style-small-title {
+		border-bottom: 1px solid color("green");
+		.wp-block-madden-theme-accordion-section__header {
+			h3 {
+				font-size: 20px;
+				line-height: 1.3;
+			}
+		}
+	}
+}
+
+@include screen-tablet-min {
+	.#{$block-prefix}-accordion-section {
+		&.is-style-small-title {
+			padding: 15px 0;
+		}
+	}
+}
+@include screen-phone-max {
+	.#{$block-prefix}-accordion-section {
+		&__header {
+			padding: 15px 60px 15px 20px;
+			h3 {
+				font-size: 20px;
+				line-height: 1.3;
+			}
+			&__icon {
+				width: 34px;
+				height: 34px;
+				right: 20px;
+				margin-top: -17px;
+				svg {
+					width: 34px;
+				}
+			}
+		}
+	}
+}

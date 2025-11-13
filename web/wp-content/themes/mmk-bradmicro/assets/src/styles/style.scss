@@ -1,0 +1,28 @@
+/*********************
+CHILD THEME STYLES
+*********************/
+
+/*********************
+IMPORTING UTILITY FILES
+These files are needed at the beginning so that we establish all
+our mixins, functions, and variables that we'll be using across
+the whole project.
+*********************/
+@use "utils/typography";
+
+/*********************
+LAYOUT
+*********************/
+@use "layout/base";
+@use "layout/helpers";
+@use "layout/header";
+@use "layout/footer";
+@use "layout/forms";
+@use "layout/patterns";
+@use "layout/sections";
+@use "layout/graphics";
+
+/*********************
+COMPONENTS
+*********************/
+@use "components/aos";
