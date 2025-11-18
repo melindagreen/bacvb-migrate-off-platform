@@ -130,7 +130,8 @@
 		"wpackagist-plugin/varnish-http-purge": "5.3.0",
 		"wpackagist-plugin/block-visibility": "3.7.1",
 		"wpackagist-plugin/post-duplicator": "*",
-		"wpackagist-plugin/redis-cache": "2.7.0"
+		"wpackagist-plugin/redis-cache": "2.7.0",
+		"wpackagist-plugin/404-to-301": "3.1.5"
 	},
 	"minimum-stability": "dev",
 	"prefer-stable": true,
