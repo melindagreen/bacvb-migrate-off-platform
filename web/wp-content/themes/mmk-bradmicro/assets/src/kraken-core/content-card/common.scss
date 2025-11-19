@@ -5,7 +5,9 @@
 		background-color: unset;
 		transition: unset;
 		padding: 0;
-		&:hover {
+		&:hover,
+		&:focus,
+		&:focus-within {
 			transform: unset;
 		}
 		.primary-card-link {
