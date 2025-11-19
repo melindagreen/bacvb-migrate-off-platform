@@ -85,6 +85,10 @@
 		{
 			"type": "vcs",
 			"url": "git@github.com:maddenmedia/kraken-events.git"
+		},
+		{
+			"type": "vcs",
+			"url": "git@github.com:maddenmedia/kraken-core.git"
 		}
 	],
 	"require": {
@@ -121,7 +125,8 @@
 		"wpackagist-plugin/leadin": "11.3.21",
 		"admin-columns/admin-columns-pro": "6.4.23",
 		"symfony/console": "v7.1.4",
-		"maddenmedia/kraken-events": "*",
+		"maddenmedia/kraken-events": "dev-main#bbcf157",
+		"maddenmedia/kraken-core": "dev-main#8bfae19",
 		"wpackagist-plugin/better-search-replace": "1.4.10",
 		"wpackagist-plugin/cache-control": "^2.2",
 		"wpackagist-plugin/create-block-theme": "2.7.0",

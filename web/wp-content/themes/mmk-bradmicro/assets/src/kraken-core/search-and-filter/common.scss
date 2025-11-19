@@ -1,0 +1,166 @@
+$input_font_size: 14px;
+
+body .wp-block-kraken-core-search-and-filter {
+	--filter-background-color: transparent;
+	--filter-background-hover-color: transparent;
+	// --filter-text-color: color("blue-dark");
+	// --active-filter-background-color: var(--wp--preset--color--tan);
+	// --active-filter-background-hover-color: var(--wp--preset--color--gray);
+	// --active-filter-text-color: var(--wp--preset--color--black);
+	// --active-filter-text-hover-color: var(--wp--preset--color--black);
+	// --reset-filter-background-color: var(--wp--preset--color--tan);
+	// --reset-filter-background-hover-color: var(--wp--preset--color--gray);
+	// --reset-filter-text-color: var(--wp--preset--color--black);
+	// --reset-filter-text-hover-color: var(--wp--preset--color--black);
+	// --pagination-background-color: transparent;
+	// --pagination-background-active-color: var(--wp--preset--color--red);
+	// --pagination-background-hover-color: var(--wp--preset--color--gray);
+	// --pagination-text-color: var(--wp--preset--color--black);
+	// --pagination-text-active-color: var(--wp--preset--color--tan);
+	// --pagination-text-hover-color: var(--wp--preset--color--black);
+	// --pagination-arrow-background-color: var(--wp--preset--color--tan);
+	// --pagination-arrow-background-hover-color: var(--wp--preset--color--gray);
+	// --pagination-arrow-color: var(--wp--preset--color--red);
+	// --pagination-arrow-hover-color: var(--wp--preset--color--red);
+	// --view-toggle-background-color: var(--wp--preset--color--tan);
+	// --view-toggle-background-hover-color: var(--wp--preset--color--gray);
+	// --view-toggle-text-color: var(--wp--preset--color--red);
+	// --view-toggle-text-hover-color: var(--wp--preset--color--red);
+	// --spinner-color: var(--wp--preset--color--red);
+	// --results-count-text-color: var(--wp--preset--color--black);
+	// --no-results-text-color: var(--wp--preset--color--black);
+	.filter-bar {
+		gap: 20px 70px;
+		margin-bottom: 0;
+		padding-bottom: 78px;
+		.filter-wrapper,
+		.filters-wrapper {
+			input {
+				font-size: 18px;
+				color: #707070;
+				background: #fff;
+				border-radius: 5px;
+				border: 1px solid var(--wp--preset--color--green);
+				&::placeholder {
+					color: #707070;
+				}
+
+				// Mozilla Firefox
+				&::-moz-placeholder {
+					color: #707070;
+				}
+
+				// Internet Explorer 10+
+				&:-ms-input-placeholder {
+					color: #707070;
+				}
+
+				// Microsoft Edge
+				&::-ms-input-placeholder {
+					color: #707070;
+				}
+			}
+		}
+		.filter-wrapper {
+			order: 2;
+		}
+		.filter-search-input-wrapper {
+			min-width: 180px;
+			border-radius: 0;
+			input {
+				padding: 0 40px 0 12px;
+				box-sizing: border-box;
+			}
+			svg {
+				right: 10px;
+				fill: var(--wp--preset--color--green);
+			}
+			&:before {
+				content: "Event Name";
+				width: 260px;
+				font-size: var(--wp--preset--font-size--medium);
+				font-weight: 500;
+				line-height: 1.3;
+				text-transform: uppercase;
+				color: var(--wp--preset--color--green);
+			}
+		}
+		.filters-wrapper {
+			display: flex;
+			align-items: center;
+			gap: 20px;
+			.filters-label {
+				font-size: var(--wp--preset--font-size--medium);
+				line-height: 1.3;
+				margin: 0;
+			}
+			.search-label {
+				font-size: var(--wp--preset--font-size--medium);
+				line-height: 1.3;
+				margin: 0;
+				order: 5;
+				margin-left: 20px;
+			}
+			.filter-date-picker {
+				min-width: 180px;
+				input {
+					padding: 0 12px;
+				}
+				svg {
+					display: none;
+				}
+			}
+		}
+	}
+	.main-grid-wrapper {
+		background: #fff;
+		padding-top: 90px;
+	}
+	.search-results {
+		max-width: var(--wp--style--global--content-size);
+		margin-left: auto !important;
+		margin-right: auto !important;
+		padding-right: var(--wp--style--root--padding-right);
+		padding-left: var(--wp--style--root--padding-left);
+		.results-grid.grid-list {
+			gap: 40px;
+			.wp-block-kraken-core-content-card + .wp-block-kraken-core-content-card {
+				padding-top: 40px;
+				border-color: #707070;
+			}
+		}
+	}
+}
+
+@include screen-phone-max {
+	body .wp-block-kraken-core-search-and-filter {
+		.filter-bar {
+			gap: 30px;
+			.filters-wrapper {
+				display: flex;
+				flex-direction: column;
+				gap: 10px;
+				.filter-date-picker {
+					min-width: 250px;
+				}
+			}
+			.filter-wrapper {
+				max-width: 20rem;
+			}
+			.filter-search-input-wrapper {
+				&:before {
+					width: 130px;
+				}
+				input {
+					min-width: 215px;
+				}
+			}
+		}
+		.search-results .results-grid.grid-list {
+			gap: 20px;
+			.wp-block-kraken-core-content-card + .wp-block-kraken-core-content-card {
+				padding-top: 28px;
+			}
+		}
+	}
+}

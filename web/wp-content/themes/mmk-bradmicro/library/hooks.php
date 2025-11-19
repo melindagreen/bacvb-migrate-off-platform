@@ -11,6 +11,7 @@ add_filter( 'acf/settings/save_json', __NAMESPACE__ . '\acf_json_save_point' );
 add_filter( 'acf/settings/load_json', __NAMESPACE__ . '\acf_json_load_point' );
 add_filter( 'upload_mimes', __NAMESPACE__ . '\upload_mime_types' );
 add_action( 'send_headers', __NAMESPACE__ . '\add_compliance_headers' );
+add_filter( 'register_post_type_args', __NAMESPACE__ . '\make_event_post_type_private', 10, 2 );
 add_action( 'wp', __NAMESPACE__ . '\find_content' );
 
 /**
@@ -82,6 +83,37 @@ function add_compliance_headers() {
   header("Referrer-Policy: no-referrer-when-downgrade");
   header("x-content-type-options: nosniff");
   header("x-frame-options: SAMEORIGIN");
+}
+
+/**
+ * Function to modify the arguments of the 'event' post type to make it private.
+ *
+ * This uses the 'register_post_type_args' filter, which runs after the post
+ * type has been registered by the plugin.
+ */
+function make_event_post_type_private( $args, $post_type ) {
+	// Check if the current post type being registered is 'event'
+	if ( 'event' === $post_type ) {
+		$args['public'] = false;
+		$args['publicly_queryable'] = false;
+		$args['show_ui'] = true; // Keep the UI in the dashboard for editing/management
+		$args['has_archive'] = false;
+		$args['exclude_from_search'] = true;
+
+		// --- Feature Addition: Thumbnail Support ---
+		// Add 'thumbnail' support (Featured Image box in the editor)
+		if ( isset( $args['supports'] ) && is_array( $args['supports'] ) ) {
+			// Check if 'thumbnail' is not already in the array before adding it
+			if ( ! in_array( 'thumbnail', $args['supports'] ) ) {
+				$args['supports'][] = 'thumbnail';
+			}
+		} else {
+			// Fallback: If 'supports' was not set by the plugin, initialize it with title, editor, and thumbnail
+			$args['supports'] = array( 'title', 'editor', 'thumbnail' );
+		}
+	}
+
+	return $args;
 }
 
 /**

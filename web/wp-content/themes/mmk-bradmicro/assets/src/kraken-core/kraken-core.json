@@ -1,0 +1,39 @@
+{
+	"blockData": {
+		"cardStyles": {
+			"remove": ["overlay", "overlay-partial", "text-only"]
+		},
+		"cardAttributes": {
+			"displayPostDate": {
+				"type": "boolean",
+				"default": false,
+				"label": "Display Post Date"
+			},
+			"displayRegion": {
+				"type": "boolean",
+				"default": false,
+				"label": "Display Region"
+			},
+			"displayMilePosts": {
+				"type": "boolean",
+				"default": false,
+				"label": "Display Mile Posts"
+			},
+			"displayDuration": {
+				"type": "boolean",
+				"default": false,
+				"label": "Display Duration"
+			}
+		},
+		"ignoredPostTypes": {
+			"add": [
+				"tribe_organizer",
+				"tribe_venue",
+				"tec_calendar_embed",
+				"visibility_preset"
+			],
+			"remove": []
+		}
+	},
+	"blockFilters": {}
+}
