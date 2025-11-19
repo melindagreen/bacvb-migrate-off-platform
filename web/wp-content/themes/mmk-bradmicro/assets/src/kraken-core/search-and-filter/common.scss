@@ -136,6 +136,7 @@ body .wp-block-kraken-core-search-and-filter {
 	body .wp-block-kraken-core-search-and-filter {
 		.filter-bar {
 			gap: 30px;
+			padding-bottom: 40px;
 			.filters-wrapper {
 				display: flex;
 				flex-direction: column;
@@ -155,6 +156,9 @@ body .wp-block-kraken-core-search-and-filter {
 					min-width: 215px;
 				}
 			}
+		}
+		.main-grid-wrapper {
+			padding-top: 40px;
 		}
 		.search-results .results-grid.grid-list {
 			gap: 20px;
