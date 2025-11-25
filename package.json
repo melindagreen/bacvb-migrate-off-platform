@@ -1,24 +1,21 @@
 {
-  "name": "mm-platform-shell",
-  "description": "MM Wordpress/Platform.sh Scaffolding w/ Parent & Child Themes",
-  "version": "3.2022.01",
-  "author": "Madden Media",
-  "license": "GPL-2.0-or-later",
-  "scripts": {
-    "build": "yarn build:parent && yarn build:child",
-    "build:parent": "composer build:parent",
-    "build:child": "composer build:child",
-    "reinstall": "yarn reinstall:parent & yarn reinstall:child & wait",
-    "reinstall:parent": "composer reinstall:parent",
-    "reinstall:child": "composer reinstall:child",
-    "start": "yarn watch",
-    "watch": "yarn watch:child",
-    "watch:parent": "composer watch:parent",
-    "watch:child": "composer watch:child"
-  },
-  "engineStrict": true,
-  "engines": {
-    "node": ">=10.0.0",
-    "npm": ">=6.0.0"
-  }
+	"name": "mm-platform-shell",
+	"description": "MM Wordpress/Platform.sh Scaffolding w/ Parent & Child Themes",
+	"version": "3.2022.01",
+	"author": "Madden Media",
+	"license": "GPL-2.0-or-later",
+	"scripts": {
+		"build": "yarn build:child",
+		"build:child": "composer build:child",
+		"reinstall": "yarn reinstall:child & wait",
+		"reinstall:child": "composer reinstall:child",
+		"start": "yarn watch",
+		"watch": "yarn watch:child",
+		"watch:child": "composer watch:child"
+	},
+	"engineStrict": true,
+	"engines": {
+		"node": ">=10.0.0",
+		"npm": ">=6.0.0"
+	}
 }

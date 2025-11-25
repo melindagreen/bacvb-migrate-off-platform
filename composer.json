@@ -119,22 +119,18 @@
 			"@update-packages"
 		],
 		"build": "@script build",
-		"build:parent": "@build build:parent",
 		"build:child": "@build build:child",
 		"watch": "@watch:child",
-		"watch:parent": "@build watch:parent",
 		"watch:child": "@build watch:child",
 		"start": "@watch",
 		"dev": "@watch",
 		"prod": [
-			"@build:parent",
 			"@build:child"
 		],
 		"production": "@prod",
 		"install:child": "@script install-child",
 		"install:node": "@script install-node",
 		"platform": "@script platform-settings",
-		"reinstall:parent": "@build reinstall:parent",
 		"reinstall:child": "@build reinstall:child",
 		"require-mm": "@script require-mm",
 		"theme:dir": "@script theme-dir",
