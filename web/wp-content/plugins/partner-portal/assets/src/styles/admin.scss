@@ -1,0 +1,105 @@
+@import "./inc/vars";
+@import "./inc/mixins";
+
+.#{$prefix}-options-form-wrap {
+    * {
+        box-sizing: border-box;
+    }
+    margin: 2em;
+    .#{$prefix}-intro {
+        margin-bottom: 2em;
+        .#{$prefix}-title {
+            display: flex;
+            align-items: center;
+            img {
+                max-width: 50px;
+                margin: 0 1rem;
+            }
+        }
+    }
+    ##{$prefix}-options-form {
+        h2,
+        .#{$prefix}-section_desc,
+        .form-table {
+            background-color: rgba(white, 0.8);
+            padding-left: 30px;
+            margin-bottom: 1rem;
+        }
+        h2,
+        .#{$prefix}-section_desc {
+            margin-bottom: 0;
+            padding-bottom: 1em;
+        }
+        .#{$prefix}-section_desc,
+        .form-table {
+            margin-top: 0;
+            padding-top: 1em;
+        }
+        h2 {
+            padding-top: 1em;
+        }
+        .#{$prefix}-icon_button {
+            padding: 0 5px;
+            display: inline-flex;
+        }
+        .form-table {
+            tr {
+                th {
+                    padding-left: 30px;
+                    .#{$prefix}-tooltip_wrap {
+                        position: relative;
+                        display: inline;
+                        margin-left: 10px;
+                        background-color: rgba($dark_gray, 0.5);
+                        color: white;
+                        border-radius: 100%;
+                        font-size: 0.8em;
+                        padding: 1px 6px;
+                        .#{$prefix}-tooltip {
+                            position: absolute;
+                            top: 25px;
+                            left: 0;
+                            background-color: $dark_gray;
+                            color: white;
+                            min-width: 300px;
+                            padding: 0 1em;
+                            display: none;
+                            z-index: 1;
+                        }
+                        &:hover {
+                            .#{$prefix}-tooltip {
+                                display: block;
+                            }
+                        }
+                    }
+                }
+                td {
+                    input[type="text"],
+                    input[type="number"] {
+                        width: 40%;
+                        min-width: 100px;
+                    }
+                    textarea {
+                        width: 75%;
+                        min-width: 200px;
+                    }
+                    .madden-banners-field-group {
+                        margin: 10px 0;
+                        @include clearfix;
+                        label {
+                            margin-right: 10px;
+                        }
+                    }
+                }
+            }
+        }
+        .#{$prefix}-button_wrap {
+            display: flex;
+            position: relative;
+            margin-top: 2em;
+            & > *:not(:last-child) {
+                margin-right: 1em;
+            }
+        }
+    }
+}

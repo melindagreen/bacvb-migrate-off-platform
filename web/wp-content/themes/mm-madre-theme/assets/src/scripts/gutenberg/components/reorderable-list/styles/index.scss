@@ -1,0 +1,86 @@
+@import "../../../../styles/partials/variables";
+@import "../../../../styles/partials/typography";
+
+.#{$theme-prefix}-reorderable-list {
+  .#{$theme-prefix}-segment-wrap {
+    position: relative;
+    .#{$theme-prefix}-list-segment {
+      button.components-button.components-panel__body-toggle {
+        padding-left: 32px;
+      }
+      .components-panel__row {
+        justify-content: flex-start;
+        &:not(:last-child) {
+          margin-bottom: 1rem;
+          padding-bottom: 1rem;
+          border-bottom: 1px solid #e2e4e7;
+        }
+        .panel-col {
+          flex: 0 1 auto;
+          &:not(:last-child) {
+            margin-right: 1rem;
+            padding-right: 1rem;
+            border-right: 1px solid #e2e4e7;
+          }
+        }
+        .inner-panel {
+          width: 100%;
+          h3 {
+            font-family: $fontHeadline;
+            font-size: 1rem;
+            margin: 0;
+          }
+        }
+      }
+    }
+    .#{$theme-prefix}-reorder-segment {
+      position: absolute;
+      left: 0;
+      top: 0;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      background-color: white;
+      border: 1px solid rgba(66, 88, 99, 0.4);
+      border-radius: 4px;
+      .components-button {
+        padding: 2px 3px;
+        height: auto;
+        svg {
+          width: 15px;
+          height: 15px;
+        }
+      }
+    }
+    .delete-segment {
+      position: absolute;
+      right: 5px;
+      top: 5px;
+      transform: translateX(50%);
+      border-radius: 50%;
+      height: 20px;
+      width: 20px;
+      padding: 0 0 5px;
+      font-size: 20px;
+      font-weight: bold;
+      background-color: white;
+      line-height: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &:hover {
+        background: rgba(181, 39, 39, 0.6);
+      }
+    }
+  }
+  .#{$theme-prefix}_add_segment {
+    float: right;
+    margin-bottom: 1rem;
+  }
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}

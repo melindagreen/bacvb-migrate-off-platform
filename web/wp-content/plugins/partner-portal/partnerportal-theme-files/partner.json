@@ -1,0 +1,375 @@
+{
+  "metaBoxes": [
+    {
+      "id" : "partner_square_gallery_box",
+      "title" : "Partner Square Featured Image",
+      "inputs" : [
+        {
+          "type" : "gallery",
+          "max_images": 1,
+          "instructions" : "",
+          "key" : "gallery_square_featured_image", 
+          "label" : "Square Featured Image", 
+          "cssClass" : "regular-text ",
+          "newLineAfter" : true
+        }
+      ]
+    },    
+    {
+      "id" : "partner__box",
+      "title" : "Partner Gallery",
+      "inputs" : [
+        {
+          "type" : "gallery",
+          "key" : "gallery_images", 
+          "instructions" : "Add any optional gallery images for this listing. The featured image should be added separately in the sidebar to the right and will be used as the listing thumbnail.",
+          "label" : "Published Business Name", 
+          "cssClass" : "regular-text ",
+          "newLineAfter" : true
+        }
+      ]
+    },    
+    {
+      "id" : "partner_general_info_box",
+      "title" : "Partner General Infos",
+      "inputs" : [
+        {
+          "key" : "published_business_name", 
+          "label" : "Published Business Name", 
+          "cssClass" : "regular-text ",
+          "newLineAfter" : true,
+          "column" : 13
+        },
+        {
+          "key" : "published_website_link", 
+          "label" : "Published Website Link", 
+          "icon" : "fas fa-link",
+          "cssClass" : "regular-text",
+          "newLineAfter" : false,
+          "column" : 15
+        },
+        {
+          "key" : "published_website_text", 
+          "label" : "Published Website Text", 
+          "cssClass" : "regular-text ",
+          "newLineAfter" : true,
+          "column" : 14
+        },      
+        {
+          "type" : "message",
+          "content" : "</br></br>"
+        },
+        {
+          "key" : "contact_phone_for_visitors", 
+          "label" : "Contact Phone For Visitors", 
+          "icon" : "fas fa-phone",
+          "cssClass" : "regular-text",
+          "newLineAfter" : false,
+          "column" : 16
+        },
+        {
+          "key" : "contact_email_for_visitors", 
+          "label" : "Contact Email For Visitors", 
+          "icon" : "fas fa-at",
+          "cssClass" : "regular-text",
+          "newLineAfter" : true,
+          "column" : 17
+        },      
+        {
+          "key" : "registration_location", 
+          "label" : "Registration/Check-in Location", 
+          "cssClass" : "regular-text ",
+          "newLineAfter" : true,
+          "column" : 18
+        }
+      ]
+    },
+    {
+      "id" : "partner_hours_box",
+      "title" : "Partner Hours",
+      "inputs" : [
+        {
+          "key" : "hours_description",
+          "label" : "Hours Description", 
+          "icon" : "fas fa-at",
+          "cssClass" : "regular-text",
+          "newLineAfter" : false ,
+          "type" : "textarea",       
+          "column" : 31
+        },
+        {
+          "key" : "open_monday", 
+          "label" : "Open Monday &nbsp;&nbsp;&nbsp;&nbsp;", 
+          "icon" : "fa fa-clock",
+          "cssClass" : "",
+          "newLineAfter" : false,
+          "type": "time",
+          "column" : 32
+        },
+        {
+          "key" : "closed_monday", 
+          "label" : "Closed Monday  &nbsp;&nbsp;&nbsp;&nbsp;", 
+          "icon" : "fa fa-clock",
+          "type": "time",        
+          "cssClass" : " ",        
+          "column" : 33
+        },
+        {
+          "key" : "open_tuesday", 
+          "label" : "Open Tuesday &nbsp;&nbsp;&nbsp;&nbsp;", 
+          "icon" : "fa fa-clock",
+          "type": "time",
+          "newLineAfter" : false,
+          "column" : 34
+        },
+        {
+          "key" : "closed_tuesday", 
+          "label" : "Closed Tuesday  &nbsp;&nbsp;&nbsp;&nbsp;", 
+          "type": "time",
+          "icon" : "fa fa-clock",
+          "column" : 35
+        },
+        {
+          "key" : "open_wednesday", 
+          "label" : "Open Wednesday", 
+          "icon" : "fa fa-clock",
+          "type": "time",        
+          "newLineAfter" : false,
+          "column" : 36
+        },
+        {
+          "key" : "closed_wednesday", 
+          "label" : "Closed Wednesday", 
+          "icon" : "fa fa-clock",
+          "type": "time",      
+          "column" : 37
+        },
+        {
+          "key" : "open_thursday", 
+          "label" : "Open Thursday &nbsp;&nbsp;&nbsp;", 
+          "icon" : "fa fa-clock",
+          "type": "time",
+          "newLineAfter" : false,
+          "column" : 38
+        },
+        {
+          "key" : "closed_thursday", 
+          "label" : "Closed Thursday  &nbsp;&nbsp;&nbsp;", 
+          "type": "time",
+          "icon" : "fa fa-clock",
+          "column" : 39
+        },
+        {
+          "key" : "open_friday", 
+          "label" : "Open Friday &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;", 
+          "type": "time",
+          "icon" : "fa fa-clock",
+          "newLineAfter" : false,
+          "column" : 40
+        },
+        {
+          "key" : "closed_friday", 
+          "label" : "Closed Friday  &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;", 
+          "type": "time",
+          "icon" : "fa fa-clock",
+          "column" : 41
+        },
+        {
+          "key" : "open_saturday", 
+          "label" : "Open Saturday &nbsp;&nbsp;&nbsp;", 
+          "icon" : "fa fa-clock",
+          "type": "time",
+          "newLineAfter" : false,
+          "column" : 42
+        },
+        {
+          "key" : "closed_saturday", 
+          "label" : "Closed Saturday  &nbsp;&nbsp;&nbsp;&nbsp;", 
+          "type": "time",        
+          "icon" : "fa fa-clock",
+          "column" : 43
+        },
+        {
+          "key" : "open_sunday", 
+          "label" : "Open Sunday &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;", 
+          "icon" : "fa fa-clock",
+          "type": "time",        
+          "newLineAfter" : false,
+          "column" : 44
+        },
+        {
+          "key" : "closed_sunday", 
+          "label" : "Closed Sunday  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;", 
+          "type": "time",        
+          "icon" : "fa fa-clock",
+          "column" : 45
+        },      
+        {
+          "type" : "message",
+          "content" : "<p>(This is how hours work).</p>"
+        }
+      ]
+    },
+    {
+      "id" : "meta_data",
+      "title" : "Meta Data",
+      "access":[
+        "admin"
+      ],
+      "inputs" : [
+        {
+          "key" : "lodging_amenities",
+          "label" : "Amenities", 
+          "icon" : "fas fa-at",
+          "cssClass" : "regular-text",
+          "type" : "textarea",       
+          "column" : 27
+        },
+        {
+          "key" : "lodging_beds",
+          "label" : "No. Beds",
+          "newLineAfter" : false,        
+          "column" : 28
+        },
+        {
+          "key" : "lodging_baths",
+          "label" : "No. Baths" ,
+          "newLineAfter" : false,       
+          "column" : 29
+        },
+        {
+          "key" : "lodging_guests",
+          "label" : "No. Guests",
+          "newLineAfter" : false,
+          "column" : 30
+        }      
+      ]
+    },
+    {
+      "id" : "partner_address_info_box",
+      "title" : "Partner Address Information",
+      "inputs" : [
+        {
+          "key" : "address_1", 
+          "label" : "Address 1", 
+          "icon" : "far fa-address-card",
+          "cssClass" : "regular-text",
+          "column" : 19
+        },
+        {
+          "key" : "address_2", 
+          "label" : "Address 2", 
+          "cssClass" : "regular-text"
+        },
+        {
+          "key" : "city", 
+          "label" : "City", 
+          "newLineAfter" : false,       
+          "column" : 20
+        },
+        {
+          "key" : "state", 
+          "label" : "State", 
+          "type" : "select",
+          "newLineAfter" : false,        
+          "options" : "SELECT_STATES",
+          "column" : 21
+        },
+        {
+          "key" : "zip", 
+          "label" : "Zip Code",
+          "column" : 22
+        },
+        {
+          "key" : "listing_description",
+          "label" : "Listing Description", 
+          "type" : "textarea",
+          "column" : 25
+        },
+        {
+          "type" : "message",
+          "content" : "<p></p>"
+        },        
+        {
+          "key" : "latitude", 
+          "label" : "Latitude",
+          "newLineAfter" : false, 
+          "cssClass" : "regular-text"
+        },        
+        {
+          "key" : "longitude", 
+          "label" : "Longitude", 
+          "cssClass" : "regular-text"
+        }        
+      ]    
+    },      
+    {
+      "id" : "partner_internal_info_box",
+      "title" : "Partner Internal Info (NOT PUBLISHED)",
+      "inputs" : [
+        {
+          "key" : "legal_business_name", 
+          "label" : "Legal Business Name", 
+          "cssClass" : "regular-text",
+          "newLineAfter" : true,
+          "column" : 46
+        },
+        {
+          "key" : "mailing_address", 
+          "label" : "Mailing Address", 
+          "icon" : "far fa-address-card",
+          "cssClass" : "regular-text",
+          "newLineAfter" : false,
+          "column" : 47
+        },
+        {
+          "key" : "mailing_city_st_zip", 
+          "label" : "Mailing City State Zip", 
+          "cssClass" : "regular-text ",
+          "newLineAfter" : true,
+          "column" : 48
+        },
+        {
+          "key" : "owners_name", 
+          "label" : "Owner(s) Name(s)", 
+          "newLineAfter" : false,
+          "column" : 49
+        },
+        {
+          "key" : "owners_phone", 
+          "label" : "Owners Phone", 
+          "icon" : "fas fa-phone",        
+          "newLineAfter" : false,
+          "column" : 50
+        },
+        {
+          "key" : "owners_email", 
+          "label" : "Owners Email",
+          "icon" : "fas fa-at",         
+          "newLineAfter" : true,
+          "column" : 51
+        },
+        {
+          "key" : "contact_name", 
+          "label" : "Other Contact Name", 
+          "newLineAfter" : false,
+          "column" : 52
+        },
+        {
+          "key" : "contact_phone", 
+          "label" : "Other Contact Phone",
+          "icon" : "fas fa-phone",         
+          "newLineAfter" : false,
+          "column" : 53
+        },
+        {
+          "key" : "contact_email", 
+          "label" : "Other Contact Email", 
+          "icon" : "fas fa-at",                 
+          "newLineAfter" : true,
+          "column" : 54
+        }
+      ]
+    }
+  ]
+}

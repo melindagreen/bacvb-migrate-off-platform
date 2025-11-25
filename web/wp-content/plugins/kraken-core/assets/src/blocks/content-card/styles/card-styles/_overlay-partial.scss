@@ -1,0 +1,112 @@
+@use "styles/utils" as *;
+
+.#{$block-prefix}-content-card.card-style-overlay-partial {
+  --background-color: #fff;
+  --color: #000;
+  background-color: transparent !important;
+  box-shadow: 0.5rem 0.5rem 0.75rem 0 #00000023;
+  border-radius: 1.25rem;
+  margin: 0.625rem; // match the box shadow size
+  min-height: 12.5rem;
+  overflow: hidden;
+  position: relative;
+  @include standard-transition;
+
+  .primary-card-link {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    pointer-events: auto;
+    text-decoration: none !important;
+  }
+
+  .featured-media {
+    background-color: #aaa;
+    display: block;
+    flex: 0 0 15rem;
+    height: 15rem;
+    width: 100%;
+
+    img {
+      display: block;
+      height: 100%;
+      object-fit: cover;
+      width: 100%;
+    }
+  }
+
+  .content {
+    color: var(--color);
+    display: flex;
+    flex-direction: column;
+    border-radius: 0 0 1.25rem 1.25rem;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    height: 5rem;
+    padding: 1rem 2rem;
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+    @include standard-transition;
+
+    @include screen-sm-max {
+      padding: 0.75rem 1.25rem;
+    }
+
+    &:before {
+      background-color: var(--background-color);
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      opacity: 0.75;
+      z-index: 0;
+      @include standard-transition;
+    }
+
+    * {
+      color: inherit;
+      position: relative;
+      z-index: 1;
+    }
+
+    .post-title {
+      font-size: var(--wp--preset--font-size--medium);
+      line-height: 1.2;
+      margin: 0;
+    }
+
+    .excerpt {
+      display: none;
+      font-size: var(--wp--preset--font-size--normal);
+      line-height: 1.2;
+      margin: 0;
+    }
+
+    .read-more {
+      display: none;
+      font-size: var(--wp--preset--font-size--small);
+      position: absolute;
+      bottom: 1rem;
+      left: 0;
+      width: 100%;
+    }
+  }
+
+  .swiper-slide-active &,
+  &:focus,
+  &:focus-within,
+  &:hover {
+    .content {
+      height: 100%;
+      .excerpt,
+      .read-more {
+        display: block;
+      }
+    }
+  }
+}

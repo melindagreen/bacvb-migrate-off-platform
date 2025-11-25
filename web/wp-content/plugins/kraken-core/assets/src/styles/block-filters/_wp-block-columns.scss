@@ -1,0 +1,46 @@
+@use "styles/utils" as *;
+
+body .wp-block-columns {
+  @include responsive-display-filter;
+  &.has-z-index {
+    position: relative;
+    z-index: var(--z-index, 1);
+  }
+  @include screen-md-max {
+    &.stack-on-tablet {
+      flex-direction: column;
+      //also include mobile styles if stacking early
+      &.reversed-on-mobile {
+        flex-direction: column-reverse;
+      }
+    }
+  }
+  @include screen-sm-max {
+    &.reversed-on-mobile {
+      flex-direction: column-reverse;
+    }
+    // For Columns and single Column
+    &.has-mobile-padding,
+    .has-mobile-padding {
+      &.has-mobile-padding-top {
+        padding-top: var(--mobile-padding-top) !important;
+      }
+      &.has-mobile-padding-right {
+        padding-right: var(--mobile-padding-right) !important;
+      }
+      &.has-mobile-padding-bottom {
+        padding-bottom: var(--mobile-padding-bottom) !important;
+      }
+      &.has-mobile-padding-left {
+        padding-left: var(--mobile-padding-left) !important;
+      }
+    }
+  }
+}
+
+@include screen-sm-max {
+  body .has-global-padding > .wp-block-columns.alignfull-on-mobile {
+    margin-right: calc(var(--wp--style--root--padding-right) * -1) !important;
+    margin-left: calc(var(--wp--style--root--padding-left) * -1) !important;
+  }
+}

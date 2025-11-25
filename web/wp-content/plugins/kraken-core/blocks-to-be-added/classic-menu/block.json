@@ -1,0 +1,114 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "madden-theme/classic-menu",
+	"version": "1.0.4",
+	"title": "[MM] Classic Menu",
+	"description": "Add a classic menu",
+	"category": "madden-media",
+	"attributes": {
+    "mobileBreakpoint": {
+      "type": "string",
+      "default": "lg"
+    },
+		"menu": {
+			"type": "string",
+			"default": ""
+		},
+    "toggles": {
+			"type": "boolean",
+      "default": false
+		},
+    "orientation": {
+      "type": "string",
+      "default": "horizontal"
+	  },
+    "textAlign": {
+      "type": "string",
+      "default": "left"
+	  },
+    "linkEqualHeight": {
+      "type": "boolean",
+      "default": false
+    },
+    "linkPadding": {
+      "type": "object",
+      "default": {}
+    },
+    "subNavDisplay": {
+      "type": "string",
+      "default": "hover"
+    },
+    "subNavTextColor": {
+      "type": "string",
+      "default": ""
+    },
+    "subNavBackgroundColor": {
+      "type": "string",
+      "default": ""
+    },
+    "subNavPadding": {
+      "type": "object",
+      "default": {}
+    },
+    "subNavTextAlign": {
+      "type": "string",
+      "default": "left"
+    },
+    "subNavLinkPadding": {
+      "type": "object",
+      "default": {}
+    }
+	},
+  "supports": {
+    "textAlign": true,
+    "layout": {
+      "allowEditing": true,
+      "allowOrientation": true,
+      "default": {
+        "type": "flex",
+        "orientation": "horizontal"
+      }
+    },
+		"color": {
+			"gradients": false,
+			"link": true,
+			"__experimentalDefaultControls": {
+				"background": true,
+				"text": true
+			}
+		},
+		"__experimentalConnections": true,
+		"spacing": {
+      "margin": true,
+			"padding": true,
+      "blockGap":["horizontal"],
+			"__experimentalDefaultControls": {
+        "margin": false,
+        "padding": false,
+        "blockGap": true
+			}
+		},
+		"typography": {
+			"fontSize": true,
+			"lineHeight": true,
+			"__experimentalFontFamily": true,
+			"__experimentalTextDecoration": true,
+			"__experimentalFontStyle": true,
+			"__experimentalFontWeight": true,
+			"__experimentalLetterSpacing": true,
+			"__experimentalTextTransform": true,
+			"__experimentalWritingMode": true,
+			"__experimentalDefaultControls": {
+				"fontSize": true
+			}
+		},
+		"__unstablePasteTextInline": true,
+		"__experimentalSlashInserter": true
+	},
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+  "viewScript": "file:./view.js",
+	"style": "file:./style-index.css",
+	"render": "file:./render.php"
+}

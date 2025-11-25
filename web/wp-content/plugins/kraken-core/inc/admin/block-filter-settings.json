@@ -1,0 +1,33 @@
+{
+  "core/buttons": ["center-on-mobile", "responsive-display"],
+  "core/button": ["responsive-display"],
+  "core/columns": [
+    "alignfull-on-mobile",
+    "responsive-display",
+    "reverse-order",
+    "mobile-padding",
+    "stack-on-tablet",
+    "z-index"
+  ],
+  "core/column": ["mobile-padding", "responsive-display"],
+  "core/cover": [
+    "object-fit-contain",
+    "overflow-visible",
+    "image-has-transparency",
+    "z-index",
+    "responsive-display"
+  ],
+  "core/group": ["responsive-grid-columns", "alignfull-on-mobile", "z-index", "responsive-display"],
+  "core/heading": ["content-width-settings", "center-on-mobile", "z-index", "responsive-display"],
+  "core/image": [
+    "center-on-mobile",
+    "responsive-display",
+    "responsive-sizes",
+    "position-absolute",
+    "disable-pointer-events",
+    "z-index",
+    "rotate-element"
+  ],
+  "core/paragraph": ["content-width-settings", "center-on-mobile", "responsive-display"],
+  "core/separator": ["content-width-settings", "responsive-display"]
+}

@@ -1,0 +1,18 @@
+@import '../../../../styles/partials/variables';
+
+.editor-styles-wrapper fieldset.#{$theme-prefix}-category-control {
+    border: none;
+    padding: 0;
+    legend {
+        font-weight: normal;
+        font-size: 1rem;
+        padding: 0;
+    }
+    .category_control_checks {
+        max-height: 300px;
+        overflow: auto;
+    }
+    .childCategories {
+        margin-left: 1em;
+    }
+}

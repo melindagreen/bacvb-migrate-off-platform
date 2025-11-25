@@ -1,0 +1,53 @@
+.madden-block-sitemap {
+  display: flex;
+
+  .sitemap-wrapper {
+    width: 50%;
+
+    &:nth-child(odd) {
+      padding-right: 3rem;
+    }
+
+    .sitemap-section {
+      padding-left: 0;
+
+      &.top-section {
+        margin-bottom: 2rem;
+      }
+      .sitemap-link {
+        margin-left: 2rem;
+        list-style: disc;
+        a {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+/*********************
+MEDIUM AND LARGE SCREENS
+*********************/
+@media only screen and (min-width: 769px) {
+  .madden-block-sitemap {
+    width: 90%;
+    margin: 0 5%;
+    .sitemap-wrapper {
+      width: 100%;
+    }
+  }
+}
+
+/*********************
+SMALL SCREENS
+*********************/
+@media only screen and (max-width: 768px) {
+  .madden-block-sitemap {
+    width: 90%;
+    margin: 0 5%;
+    flex-direction: column;
+    .sitemap-wrapper {
+      width: 100%;
+    }
+  }
+}

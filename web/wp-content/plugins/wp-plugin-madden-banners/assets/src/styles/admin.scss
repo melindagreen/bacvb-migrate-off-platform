@@ -1,0 +1,324 @@
+@import "./inc/vars";
+@import "./inc/mixins";
+@import "./front";
+
+.#{$prefix}-options-form-wrap {
+    * {
+        box-sizing: border-box;
+    }
+    margin: 2em;
+    .#{$prefix}-intro {
+        margin-bottom: 2em;
+        .#{$prefix}-title {
+            display: flex;
+            align-items: center;
+        }
+    }
+    ##{$prefix}-options-form {
+        position: relative;
+        ##{$prefix}-loader {
+            display: none;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 1;
+            background-color: rgba($mid_gray, 0.75);
+            &.show {
+                display: block;
+            }
+        }
+        h2,
+        .#{$prefix}-section_desc,
+        .form-table {
+            background-color: rgba(white, 0.8);
+            padding-left: 30px;
+        }
+        h2,
+        .#{$prefix}-section_desc {
+            margin-bottom: 0;
+            padding-bottom: 1em;
+        }
+        .#{$prefix}-section_desc,
+        .form-table {
+            margin-top: 0;
+            padding-top: 1em;
+        }
+        h2 {
+            padding-top: 1em;
+        }
+        .#{$prefix}-icon_button {
+            padding: 0 5px;
+            display: inline-flex;
+        }
+        .form-table {
+            tr {
+                th {
+                    padding-left: 30px;
+                    .#{$prefix}-tooltip_wrap {
+                        position: relative;
+                        display: inline;
+                        margin-left: 10px;
+                        background-color: rgba($dark_gray, 0.5);
+                        color: white;
+                        border-radius: 100%;
+                        font-size: 0.8em;
+                        padding: 1px 6px;
+                        .#{$prefix}-tooltip {
+                            position: absolute;
+                            top: 25px;
+                            left: 0;
+                            background-color: $dark_gray;
+                            color: white;
+                            min-width: 300px;
+                            padding: 0 1em;
+                            display: none;
+                            z-index: 1;
+                        }
+                        &:hover {
+                            .#{$prefix}-tooltip {
+                                display: block;
+                            }
+                        }
+                    }
+                }
+                td {
+                    input[type="text"],
+                    input[type="url"],
+                    input[type="number"],
+                    select {
+                        width: 40%;
+                        min-width: 100px;
+                    }
+                    textarea {
+                        width: 75%;
+                        min-width: 200px;
+                    }
+                    .#{$prefix}-field-group {
+                        position: relative;
+                        margin: 10px 0;
+                        @include clearfix;
+                        label {
+                            display: inline-block;
+                            position: relative;
+                            width: 200px;
+                            margin-right: 10px;
+                            .#{$prefix}-tooltip {
+                                position: relative;
+                                display: inline-block;
+                                margin-left: 1rem;
+                                .tooltip-trigger {
+                                    padding: 2px 8px;
+                                    background-color: $mid_gray;
+                                    color: white;
+                                    border-radius: 100%;
+                                }
+                                .tooltip-content {
+                                    display: none;
+                                    position: absolute;
+                                    left: -20px;
+                                    bottom: calc(100% + 20px);
+                                    width: 200px;
+                                    padding: 0.5rem 1rem;
+                                    background-color: $dark_gray;
+                                    color: white;
+                                    p {
+                                        margin: 0;
+                                    }
+                                    &::after {
+                                        content: "";
+                                        position: absolute;
+                                        left: 1rem;
+                                        bottom: -1rem;
+                                        width: 0;
+                                        height: 0;
+                                        border-left: 15px solid transparent;
+                                        border-right: 15px solid transparent;
+                                        border-top: 20px solid $dark_gray;
+                                    }
+                                }
+                                .tooltip-trigger:hover + .tooltip-content {
+                                    display: block;
+                                }
+                            }
+                        }
+                    }
+
+                    .repeater-group,
+                    .condition-and-group,
+                    .condition {
+                        &.new {
+                            display: none !important;
+                            // opacity: 0.5;
+                        }
+                    }
+                    .repeater-group-container {
+                        .repeater-group {
+                            margin-bottom: 10px;
+                            position: relative;
+                            background-color: rgba($mid_gray, 0.25);
+                            padding: 10px;
+                            textarea {
+                                width: 100%;
+                                margin-top: 10px;
+                            }
+                            .top-buttons {
+                                display: flex;
+                                .repeater-groups-remove {
+                                    color: $mid_gray;
+                                    margin-left: 5px;
+                                }
+                                .toggle-repeater-group {
+                                    flex: 1 0 auto;
+                                    padding: 5px 10px;
+                                    box-shadow: none;
+                                    border-radius: 0;
+                                    border: none;
+                                    text-align: left;
+                                    background-color: rgba(white, 0.7);
+                                    transition: all 0.25s ease-in-out;
+                                    cursor: pointer;
+                                    &:focus,
+                                    &:hover {
+                                        outline: none;
+                                        background-color: rgba(white, 0.9);
+                                    }
+                                }
+                            }
+                            .repeater-group-content {
+                                max-height: 0;
+                                overflow: hidden;
+                                transition: all 0.25s ease-in-out;
+                                &.open {
+                                    max-height: 1000vh;
+                                    overflow: unset;
+                                }
+                            }
+                        }
+                    }
+                    .conditions-and {
+                        .condition-and-group {
+                            background-color: $mid_gray;
+                            @include clearfix;
+                            .condition {
+                                display: flex;
+                                flex-wrap: wrap;
+                                align-items: center;
+                                margin: 5px 0;
+                                .condition-field,
+                                button {
+                                    margin: 5px;
+                                }
+                                .condition-field {
+                                    flex: 1 1 0;
+                                    label {
+                                        @include sr-only;
+                                    }
+                                    input,
+                                    select {
+                                        width: 100%;
+                                    }
+                                }
+                            }
+                            p {
+                                margin: 0 10px;
+                            }
+                        }
+                    }
+                    .banner-preview,
+                    .conditions-add-and,
+                    .repeater-groups-add {
+                        margin-top: 10px;
+                    }
+                    .conditions-add-and,
+                    .repeater-groups-add {
+                        float: right;
+                    }
+                    .icon-button {
+                        cursor: pointer;
+                        background-color: transparent;
+                        border: none;
+                        font-weight: bold;
+                        color: $dark_gray;
+                        transition: opacity 0.25s ease;
+                        &:hover {
+                            opacity: 0.7;
+                        }
+                    }
+                }
+            }
+        }
+        .#{$prefix}-button-wrap {
+            display: flex;
+            position: relative;
+            margin-top: 2em;
+            & > *:not(:last-child) {
+                margin-right: 1em;
+            }
+        }
+    }
+}
+
+// Patching display styles for preview
+@font-face {
+    font-family: "Continuo";
+    src: url("/wp-content/themes/atlanta/assets/fonts/Continuo-Regular/font.woff2") format("woff2"),
+        url("/wp-content/themes/atlanta/assets/fonts/Continuo-Regular/font.woff") format("woff");
+    font-display: swap;
+}
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
+.#{$prefix}-ticker,
+.#{$prefix}-flyin {
+    z-index: 10000;
+    font-family: "Montserrat", "Helvetica", "Arial", sans-serif;
+    font-size: 16px;
+    button {
+        border: none;
+    }
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+}
+.#{$prefix}-flyin {
+    width: 575px;
+    max-width: 90%;
+    h3 {
+        line-height: 1;
+        font-family: "Continuo", "Helvetica", "Arial", sans-serif;
+        font-weight: normal;
+        color: white;
+        font-size: 3rem;
+        margin: 0 0 1.5rem 0;
+    }
+    .flyin-content {
+        p {
+            font-size: 1.75rem;
+            line-height: 1.25;
+        }
+        .mail-signup {
+            #mc_embed_signup_scroll {
+                .mc-field-group {
+                    &.submit {
+                        padding: 0;
+                        margin: 0;
+                    }
+                    input {
+                        display: block;
+                        height: 40px;
+                        line-height: 1rem;
+                        padding: 0.5rem 1rem;
+                        font-size: 1rem;
+                        color: #cf202f;
+                        border: 2px solid #cf202f;
+                    }
+                    button[type="submit"] {
+                        color: #cf202f;
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+    }
+}

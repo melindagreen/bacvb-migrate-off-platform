@@ -1,0 +1,98 @@
+.madden-plugin-options-form-wrap {
+  margin: 2em;
+}
+.madden-plugin-options-form-wrap * {
+  box-sizing: border-box;
+}
+.madden-plugin-options-form-wrap .madden-plugin-intro {
+  margin-bottom: 2em;
+}
+.madden-plugin-options-form-wrap .madden-plugin-intro .madden-plugin-title {
+  display: flex;
+  align-items: center;
+}
+.madden-plugin-options-form-wrap .madden-plugin-intro .madden-plugin-title img {
+  max-width: 50px;
+  margin: 0 1rem;
+}
+.madden-plugin-options-form-wrap #madden-plugin-options-form h2,
+.madden-plugin-options-form-wrap #madden-plugin-options-form .madden-plugin-section_desc,
+.madden-plugin-options-form-wrap #madden-plugin-options-form .form-table {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding-left: 30px;
+  margin-bottom: 1rem;
+}
+.madden-plugin-options-form-wrap #madden-plugin-options-form h2,
+.madden-plugin-options-form-wrap #madden-plugin-options-form .madden-plugin-section_desc {
+  margin-bottom: 0;
+  padding-bottom: 1em;
+}
+.madden-plugin-options-form-wrap #madden-plugin-options-form .madden-plugin-section_desc,
+.madden-plugin-options-form-wrap #madden-plugin-options-form .form-table {
+  margin-top: 0;
+  padding-top: 1em;
+}
+.madden-plugin-options-form-wrap #madden-plugin-options-form h2 {
+  padding-top: 1em;
+}
+.madden-plugin-options-form-wrap #madden-plugin-options-form .madden-plugin-icon_button {
+  padding: 0 5px;
+  display: inline-flex;
+}
+.madden-plugin-options-form-wrap #madden-plugin-options-form .form-table tr th {
+  padding-left: 30px;
+}
+.madden-plugin-options-form-wrap #madden-plugin-options-form .form-table tr th .madden-plugin-tooltip_wrap {
+  position: relative;
+  display: inline;
+  margin-left: 10px;
+  background-color: rgba(35, 40, 45, 0.5);
+  color: white;
+  border-radius: 100%;
+  font-size: 0.8em;
+  padding: 1px 6px;
+}
+.madden-plugin-options-form-wrap #madden-plugin-options-form .form-table tr th .madden-plugin-tooltip_wrap .madden-plugin-tooltip {
+  position: absolute;
+  top: 25px;
+  left: 0;
+  background-color: #23282d;
+  color: white;
+  min-width: 300px;
+  padding: 0 1em;
+  display: none;
+  z-index: 1;
+}
+.madden-plugin-options-form-wrap #madden-plugin-options-form .form-table tr th .madden-plugin-tooltip_wrap:hover .madden-plugin-tooltip {
+  display: block;
+}
+.madden-plugin-options-form-wrap #madden-plugin-options-form .form-table tr td input[type=text],
+.madden-plugin-options-form-wrap #madden-plugin-options-form .form-table tr td input[type=number] {
+  width: 40%;
+  min-width: 100px;
+}
+.madden-plugin-options-form-wrap #madden-plugin-options-form .form-table tr td textarea {
+  width: 75%;
+  min-width: 200px;
+}
+.madden-plugin-options-form-wrap #madden-plugin-options-form .form-table tr td .madden-banners-field-group {
+  margin: 10px 0;
+}
+.madden-plugin-options-form-wrap #madden-plugin-options-form .form-table tr td .madden-banners-field-group:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.madden-plugin-options-form-wrap #madden-plugin-options-form .form-table tr td .madden-banners-field-group label {
+  margin-right: 10px;
+}
+.madden-plugin-options-form-wrap #madden-plugin-options-form .madden-plugin-button_wrap {
+  display: flex;
+  position: relative;
+  margin-top: 2em;
+}
+.madden-plugin-options-form-wrap #madden-plugin-options-form .madden-plugin-button_wrap > *:not(:last-child) {
+  margin-right: 1em;
+}
+
+/*# sourceMappingURL=admin.css.map*/

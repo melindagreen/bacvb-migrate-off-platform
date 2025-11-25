@@ -1,0 +1,21 @@
+/*
+Styles for admin menu pages
+Should probably be cleaned up and/or converted to SCSS at some point
+*/
+
+@use "block-filters/admin";
+
+:root {
+  --kraken-portal--color--dark-gray: #241f20;
+  --kraken-portal--color--gray: #dedede;
+  --kraken-portal--color--white: #fff;
+  --kraken-portal--color--primary: #136b91;
+  --kraken-portal--color--secondary: #52508e;
+  --kraken-portal--color--success: #00904c;
+  --kraken-portal--color--warning: #e7e514;
+  --kraken-portal--color--error: #cf2e2e;
+}
+
+.acf-hidden {
+  display: none;
+}

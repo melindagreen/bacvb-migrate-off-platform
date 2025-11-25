@@ -1,0 +1,35 @@
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/@wordpress/scripts/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/@wordpress/scripts/node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/editor.scss ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************/
+/**
+ * The following styles get applied inside the editor only.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+.eventastic-calendar-block .wp-block-create-block-eventastic-calendar {
+  border: 1px dotted #f00;
+}
+.eventastic-calendar-block .components-datetime__time-wrapper, .eventastic-calendar-block .components-datetime__time, .eventastic-calendar-block .components-base-control__label.components-datetime__time-legend {
+  display: none !important;
+}
+.eventastic-calendar-block .components-base-control.components-input-control, .eventastic-calendar-block .components-base-control.components-number-control {
+  width: 100%;
+}
+.eventastic-calendar-block .components-panel__body {
+  border-top: solid 2px black;
+}
+.eventastic-calendar-block .components-panel__row > .components-base-control {
+  width: 100%;
+}
+.eventastic-calendar-block .mm-gb-label {
+  margin-top: 1.5rem;
+  display: block;
+}
+.eventastic-calendar-block .components-panel__row.sub-row {
+  margin-left: 30px;
+}
+.eventastic-calendar-block .components-panel__row.sub-sub-row {
+  margin-left: 60px;
+}
+
+/*# sourceMappingURL=index.css.map*/

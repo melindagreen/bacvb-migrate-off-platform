@@ -1,0 +1,119 @@
+body .#{$block-prefix}-menu-toggle {
+	--menu-color: red;
+	--menu-color-active: blue;
+	margin: 0;
+	.mobile-menu-toggle {
+		background: none;
+		border: none;
+		box-shadow: none;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0;
+		position: relative;
+		width: 3rem;
+		height: 3rem;
+		.mobile-menu-toggle__icon {
+			background-color: var(--menu-color);
+			border-radius: 3px;
+			display: block;
+			position: relative;
+			width: 2.5rem;
+			height: 3px;
+			@include standard-transition;
+			&:before,
+			&:after {
+				background-color: var(--menu-color);
+				border-radius: 3px;
+				content: "";
+				display: block;
+				position: absolute;
+				width: 100%;
+				height: 3px;
+				@include standard-transition;
+			}
+			&:before {
+				top: 0.75rem;
+			}
+			&:after {
+				bottom: 0.75rem;
+			}
+		}
+		&:hover {
+			.mobile-menu-toggle__icon {
+				background-color: var(--menu-color-active);
+				&:before,
+				&:after {
+					background-color: var(--menu-color-active);
+				}
+			}
+		}
+		&.mobile-menu-toggle--open {
+			.mobile-menu-toggle__icon {
+				background-color: #0000;
+				transform: rotate(45deg);
+				&:before,
+				&:after {
+					background-color: var(--menu-color-active);
+				}
+				&:before {
+					top: 0;
+				}
+				&:after {
+					bottom: 0;
+					transform: rotate(-90deg);
+				}
+			}
+		}
+	}
+}
+
+//mixins will be included under breakpoint classes below
+@mixin desktop-only-styles {
+	display: none;
+}
+
+@mixin mobile-only-styles {
+}
+
+body .#{$block-prefix}-menu-toggle {
+	&.mobile-breakpoint-disabled {
+		@include desktop-only-styles();
+	}
+
+	&.mobile-breakpoint-xl {
+		@include screen-xl-min {
+			@include desktop-only-styles();
+		}
+		@include screen-xl-max {
+			@include mobile-only-styles();
+		}
+	}
+
+	&.mobile-breakpoint-lg {
+		@include screen-lg-min {
+			@include desktop-only-styles();
+		}
+		@include screen-lg-max {
+			@include mobile-only-styles();
+		}
+	}
+
+	&.mobile-breakpoint-md {
+		@include screen-md-min {
+			@include desktop-only-styles();
+		}
+		@include screen-md-max {
+			@include mobile-only-styles();
+		}
+	}
+
+	&.mobile-breakpoint-sm {
+		@include screen-sm-min {
+			@include desktop-only-styles();
+		}
+		@include screen-sm-max {
+			@include mobile-only-styles();
+		}
+	}
+}

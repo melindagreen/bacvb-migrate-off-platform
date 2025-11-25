@@ -20,30 +20,6 @@
 			"url": "git@github.com:platformsh/platformsh-config-reader-php.git"
 		},
 		{
-			"type": "vcs",
-			"url": "git@github.com:maddenmedia/partner-portal.git"
-		},
-		{
-			"type": "vcs",
-			"url": "git@github.com:maddenmedia/wp-plugin-eventastic.git"
-		},
-		{
-			"type": "vcs",
-			"url": "git@github.com:maddenmedia/wp-plugin-madden-banners.git"
-		},
-		{
-			"type": "vcs",
-			"url": "git@github.com:maddenmedia/mm-madre-theme.git"
-		},
-		{
-			"type": "vcs",
-			"url": "git@github.com:maddenmedia/mm-nino-theme"
-		},
-		{
-			"type": "vcs",
-			"url": "git@github.com:maddenmedia/wp-plugin-eventastic.git"
-		},
-		{
 			"type": "composer",
 			"url": "https://composer.gravity.io"
 		},
@@ -69,14 +45,6 @@
 		{
 			"type": "composer",
 			"url": "https://composer.admincolumns.com"
-		},
-		{
-			"type": "vcs",
-			"url": "git@github.com:maddenmedia/kraken-events.git"
-		},
-		{
-			"type": "vcs",
-			"url": "git@github.com:maddenmedia/kraken-core.git"
 		}
 	],
 	"require": {
@@ -85,19 +53,10 @@
 		"johnpbloch/wordpress": "6.8.3",
 		"platformsh/config-reader": "^2.0",
 		"wp-cli/wp-cli-bundle": "^2.5",
-
 		"admin-columns/admin-columns-pro": "6.4.23",
 		"gravity/gravityforms": "*",
 		"rankmath/seo-by-rank-math-pro": "*",
 		"symfony/console": "v7.1.4",
-
-		"maddenmedia/kraken-events": "1.6.3",
-		"maddenmedia/kraken-core": "1.1.0.2",
-		"maddenmedia/partner-portal": "*",
-		"maddenmedia/wp-plugin-eventastic": "*",
-		"maddenmedia/wp-plugin-madden-banners": "*",
-		"maddenmedia/mm-madre-theme": "dev-bradenton",
-
 		"wpackagist-plugin/404-to-301": "3.1.5",
 		"wpackagist-plugin/better-search-replace": "1.4.10",
 		"wpackagist-plugin/block-visibility": "3.7.1",

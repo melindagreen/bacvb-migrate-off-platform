@@ -1,0 +1,22 @@
+_archive/
+vendor/
+composer.lock
+node_modules
+app/public/*
+*.lock
+*-error.log
+*.DS_Store
+
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+prepros*
+
+# Local History for Visual Studio Code
+.history/
+
+

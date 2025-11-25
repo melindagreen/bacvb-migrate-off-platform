@@ -1,0 +1,8 @@
+.mtphrSettings__field--picklist {
+  .components-button.is-pressed:not(:disabled, [aria-disabled="true"]) {
+    //background: blue;
+    .components-text {
+      color: #fff;
+    }
+  }
+}

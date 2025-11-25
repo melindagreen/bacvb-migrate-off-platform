@@ -1,0 +1,9 @@
+{
+	"name": "maddenmedia/kraken-events",
+	"description": "Madden Media Events", 
+	"type": "wordpress-plugin",
+	"license": "proprietary",
+	"require": {
+		"rlanvin/php-rrule": "^2.6"
+	}
+}

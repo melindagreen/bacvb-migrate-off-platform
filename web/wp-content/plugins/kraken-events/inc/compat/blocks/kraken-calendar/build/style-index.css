@@ -1,0 +1,746 @@
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/@wordpress/scripts/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/@wordpress/scripts/node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/style.scss ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************/
+@charset "UTF-8";
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+.wp-block-create-block-eventastic-calendar {
+  background-color: #21759b;
+  color: #fff;
+  padding: 2px;
+}
+
+.wp-admin .fc-header-toolbar.fc-toolbar h2.fc-toolbar-title {
+  font-size: 1.25rem !important;
+}
+.wp-admin .fc-scrollgrid-sync-inner a.fc-col-header-cell-cushion {
+  font-size: 1rem;
+}
+
+.eventastic-calendar-block.default {
+  width: 100%;
+  display: inline-block;
+}
+.eventastic-calendar-block.default input,
+.eventastic-calendar-block.default select {
+  background: white;
+  font-family: inherit;
+  border: solid 1px gray;
+  border-radius: 5px;
+  padding: 10px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  width: 100%;
+}
+.eventastic-calendar-block.default input[type=text i] {
+  padding: 11px 10px;
+}
+.eventastic-calendar-block.default .eventastic-sidebar {
+  position: relative;
+}
+.eventastic-calendar-block.default .eventastic-loader {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.7);
+  z-index: 10;
+  justify-content: center;
+  align-items: center;
+}
+.eventastic-calendar-block.default .eventastic-loader.is-loading {
+  display: flex;
+}
+.eventastic-calendar-block.default .eventastic-loader::after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 4px solid #f3f3f3;
+  border-top-color: #3498db;
+  animation: eventastic-spin 1s linear infinite;
+}
+@keyframes eventastic-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.eventastic-calendar-block.default #calendar-container .inner-wrapper {
+  width: 100%;
+}
+.eventastic-calendar-block.default #calendar-container #events-list-title {
+  display: block;
+  margin: 1em auto;
+  text-align: center;
+  color: blue;
+  width: 100%;
+}
+.eventastic-calendar-block.default #calendar-container #calendarList #list-over-wrapper {
+  display: none;
+}
+.eventastic-calendar-block.default #calendar-container #calendarList #list-over-wrapper.active {
+  display: block;
+}
+.eventastic-calendar-block.default #calendar-container #calendarList {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.eventastic-calendar-block.default #calendar-container #calendarList .events-card {
+  overflow: hidden;
+}
+.eventastic-calendar-block.default #calendar-container #calendarList .events-card .image-wrapper {
+  width: 100%;
+  aspect-ratio: 1.333;
+  background-size: cover;
+  background-color: #f3f3f3;
+}
+.eventastic-calendar-block.default #calendar-container #calendarList .events-card .content {
+  padding: 10px 15px 15px;
+  text-align: left;
+}
+.eventastic-calendar-block.default #calendar-container #calendarList .events-card .content .date {
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.25rem;
+}
+.eventastic-calendar-block.default #calendar-container #calendarList .events-card .content .title {
+  font-weight: bold;
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+}
+.eventastic-calendar-block.default #calendar-container[data-filterlocation=sidebar] {
+  display: flex;
+}
+@media (max-width: 768px) {
+  .eventastic-calendar-block.default #calendar-container[data-filterlocation=sidebar] .inner-wrapper {
+    display: block;
+  }
+}
+.eventastic-calendar-block.default #calendar-container[data-filterlocation=sidebar] .filters {
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .eventastic-calendar-block.default #calendar-container[data-filterlocation=sidebar] .filters {
+    min-width: 280px;
+    width: 20%;
+  }
+}
+.eventastic-calendar-block.default #calendar-container[data-filterlocation=sidebar] .calendarListWrapper {
+  padding-top: 1rem;
+}
+.eventastic-calendar-block.default #calendar-container[data-filterlocation=sidebar] .eventasticEvents {
+  width: 70%;
+}
+@media (min-width: 768px) {
+  .eventastic-calendar-block.default #calendar-container[data-filterlocation=sidebar][data-layoutStyle=list] .filters {
+    float: left;
+  }
+}
+.eventastic-calendar-block.default #calendar-container[data-filterlocation=sidebar][data-layoutStyle=list] .calendar-container-inner-wrapper {
+  display: flex;
+  margin: 0 auto;
+}
+.eventastic-calendar-block.default #calendar-container[data-filterlocation=sidebar][data-layoutStyle=list] .calendar-container-inner-wrapper .eventasticEvents {
+  margin-left: auto;
+}
+.eventastic-calendar-block.default #calendar-container[data-layoutStyle=list][data-filterLocation=above] .inner-wrapper {
+  display: block;
+}
+.eventastic-calendar-block.default #calendar-container[data-layoutStyle=list][data-filterLocation=above] .inner-wrapper .eventasticEvents {
+  display: block;
+}
+.eventastic-calendar-block.default #calendar-container[data-layoutStyle=calendar][data-filterLocation=sidebar] .inner-wrapper {
+  display: flex;
+}
+.eventastic-calendar-block.default #calendar-container[data-filterlocation=above] .eventasticEvents {
+  width: 95%;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-start;
+}
+.eventastic-calendar-block.default #calendar-container[data-filterlocation=above] .eventasticEvents .eventastic-sidebar {
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .eventastic-calendar-block.default #calendar-container[data-filterlocation=above] .eventasticEvents .eventastic-sidebar {
+    width: 70%;
+  }
+}
+@media (min-width: 992px) {
+  .eventastic-calendar-block.default #calendar-container[data-filterlocation=above] .eventasticEvents .eventastic-sidebar {
+    width: 60%;
+  }
+}
+.eventastic-calendar-block.default #calendar-container[data-filterlocation=above] .eventasticEvents .calendarListWrapper {
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .eventastic-calendar-block.default #calendar-container[data-filterlocation=above] .eventasticEvents .calendarListWrapper {
+    width: 30%;
+  }
+}
+@media (min-width: 992px) {
+  .eventastic-calendar-block.default #calendar-container[data-filterlocation=above] .eventasticEvents .calendarListWrapper {
+    width: 40%;
+  }
+}
+.eventastic-calendar-block.default #calendar-container[data-filterlocation=above] .filters {
+  display: flex;
+}
+.eventastic-calendar-block.default #calendar-container[data-filterlocation=above] .filters .dateAndKeyworkFilters {
+  display: flex;
+}
+.eventastic-calendar-block.default #calendar-container[data-filterlocation=above][data-layoutStyle=list] .filters {
+  display: flex;
+}
+.eventastic-calendar-block.default #calendar-container[data-filterlocation=above][data-layoutStyle=list] .calendarListWrapper {
+  width: 100%;
+}
+.eventastic-calendar-block.default #calendar-container[data-listconfig_cardsperrow="1"] .events-card {
+  flex: calc(100% - 15px);
+  max-width: calc(100% - 15px);
+}
+.eventastic-calendar-block.default #calendar-container[data-listconfig_cardsperrow="2"] .events-card {
+  flex: calc(50% - 15px);
+  max-width: calc(50% - 15px);
+}
+.eventastic-calendar-block.default #calendar-container[data-listconfig_cardsperrow="3"] .events-card {
+  flex: calc(33.33% - 15px);
+  max-width: calc(33.33% - 15px);
+}
+.eventastic-calendar-block.default #calendar-container[data-listconfig_cardsperrow="4"] .events-card {
+  flex: calc(25% - 15px);
+  max-width: calc(25% - 15px);
+}
+.eventastic-calendar-block.default #calendar-container[data-layoutStyle=toggled] .inner-wrapper .eventasticEvents#eventsCalendar {
+  margin: unset;
+  width: 100%;
+}
+.eventastic-calendar-block.default #calendar-container[data-layoutStyle=toggled] .inner-wrapper .eventasticEvents#eventsCalendar .toggle-target .eventastic-sidebar {
+  width: 100%;
+}
+.eventastic-calendar-block.default #calendar-container[data-layoutStyle=toggled] .inner-wrapper .eventasticEvents#eventsCalendar .toggle-target {
+  overflow: hidden;
+  display: none;
+  padding: 20px;
+}
+.eventastic-calendar-block.default #calendar-container[data-layoutStyle=toggled] .inner-wrapper .eventasticEvents#eventsCalendar .toggle-target.active {
+  display: inline-block;
+}
+.eventastic-calendar-block.default #calendar-container[data-layoutStyle=integrated][data-integratedCalendarLocation=sidebar] .eventasticEvents#eventsCalendar {
+  display: flex;
+  margin: 0 auto;
+  width: 95%;
+}
+.eventastic-calendar-block.default #calendar-container[data-layoutStyle=integrated][data-integratedCalendarLocation=sidebar] .eventasticEvents#eventsCalendar .eventastic-sidebar {
+  width: 30%;
+}
+.eventastic-calendar-block.default #calendar-container[data-layoutStyle=integrated][data-integratedCalendarLocation=sidebar] .eventasticEvents#eventsCalendar .calendarListWrapper {
+  width: 70%;
+}
+.eventastic-calendar-block.default #calendar-container[data-layoutStyle=integrated][data-integratedCalendarLocation=top][data-filterLocation=above] .eventasticEvents {
+  display: block;
+}
+.eventastic-calendar-block.default #calendar-container[data-layoutStyle=integrated][data-integratedCalendarLocation=top][data-filterLocation=above] .eventasticEvents .calendarListWrapper {
+  width: 100%;
+}
+.eventastic-calendar-block.default #calendar-container[data-layoutStyle=integrated][data-integratedCalendarLocation=top][data-filterLocation=sidebar] .inner-wrapper .eventasticEvents {
+  width: 100%;
+}
+.eventastic-calendar-block.default #calendar-container[data-layoutStyle=integrated][data-integratedCalendarLocation=top][data-filterLocation=sidebar] .inner-wrapper .eventasticEvents .eventastic-sidebar {
+  width: 30%;
+  float: left;
+}
+.eventastic-calendar-block.default #calendar-container[data-layoutStyle=integrated][data-integratedCalendarLocation=top][data-filterLocation=sidebar] .inner-wrapper .eventasticEvents .calendarListWrapper {
+  width: 70%;
+  float: right;
+  display: inline-block;
+}
+.eventastic-calendar-block.default #calendar-container[data-blockconfig_developermode="1"] {
+  border: solid 6px rgba(255, 0, 0, 0.7);
+}
+.eventastic-calendar-block.default #calendar-container[data-blockconfig_developermode="1"]:after {
+  position: absolute;
+  padding: 8px;
+  background: white;
+  border: solid 1px black;
+  border-radius: 4px;
+  top: 2px;
+  left: 2px;
+  content: attr(data-devnote);
+}
+.eventastic-calendar-block.default #calendar-container[data-blockconfig_developermode="1"]:hover {
+  background: rgba(255, 0, 0, 0.4);
+}
+.eventastic-calendar-block.default #calendar-container[data-blockconfig_developermode="1"]:hover:after {
+  background: rgba(255, 0, 0, 0.7);
+  color: white;
+}
+.eventastic-calendar-block.default #calendar-container[data-blockconfig_developermode="1"] .filters,
+.eventastic-calendar-block.default #calendar-container[data-blockconfig_developermode="1"] #eventsCalendar {
+  position: relative;
+  border: solid 6px rgba(0, 0, 255, 0.7);
+}
+.eventastic-calendar-block.default #calendar-container[data-blockconfig_developermode="1"] .filters:after,
+.eventastic-calendar-block.default #calendar-container[data-blockconfig_developermode="1"] #eventsCalendar:after {
+  position: absolute;
+  padding: 8px;
+  background: white;
+  border: solid 1px black;
+  border-radius: 4px;
+  content: attr(data-devnote);
+}
+.eventastic-calendar-block.default #calendar-container[data-blockconfig_developermode="1"] .filters:hover,
+.eventastic-calendar-block.default #calendar-container[data-blockconfig_developermode="1"] #eventsCalendar:hover {
+  background: rgba(0, 0, 255, 0.4);
+}
+.eventastic-calendar-block.default #calendar-container[data-blockconfig_developermode="1"] .filters:hover:after,
+.eventastic-calendar-block.default #calendar-container[data-blockconfig_developermode="1"] #eventsCalendar:hover:after {
+  background: rgba(0, 0, 255, 0.7);
+  color: white;
+}
+.eventastic-calendar-block.default #calendar-container[data-blockconfig_developermode="1"] .filters {
+  border-color: rgba(0, 0, 255, 0.7);
+}
+.eventastic-calendar-block.default #calendar-container[data-blockconfig_developermode="1"] .filters:after {
+  bottom: 2px;
+  left: 2px;
+}
+.eventastic-calendar-block.default #calendar-container[data-blockconfig_developermode="1"] .filters:hover:after {
+  background: rgba(0, 0, 255, 0.7);
+}
+.eventastic-calendar-block.default #calendar-container[data-blockconfig_developermode="1"] #eventsCalendar {
+  border-color: rgba(0, 0, 255, 0.7);
+}
+.eventastic-calendar-block.default #calendar-container[data-blockconfig_developermode="1"] #eventsCalendar:after {
+  top: 2px;
+  left: 2px;
+}
+.eventastic-calendar-block.default #calendar-container[data-blockconfig_developermode="1"] #eventsCalendar:hover:after {
+  background: rgba(0, 0, 255, 0.7);
+}
+.eventastic-calendar-block.default #calendar-container .toggle-wrapper {
+  width: 100%;
+}
+.eventastic-calendar-block.default #calendar-container .toggle-wrapper .toggle-target {
+  width: 100%;
+}
+.eventastic-calendar-block.default #calendar-container .toggle-wrapper .toggle-target .calendarListWrapper {
+  width: 100% !important;
+}
+.eventastic-calendar-block.default #calendar-container .toggle-buttons {
+  margin-top: 50px;
+}
+.eventastic-calendar-block.default #calendar-container .toggle-buttons button {
+  border: none;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  overflow: visible;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  line-height: normal;
+  -webkit-font-smoothing: inherit;
+  -moz-osx-font-smoothing: inherit;
+  -webkit-appearance: none;
+}
+.eventastic-calendar-block.default #calendar-container .toggle-buttons button::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+.eventastic-calendar-block.default #calendar-container .toggle-buttons button {
+  font-size: 1.562rem;
+  font-weight: bold;
+  font-family: inherit;
+  background: var(--wp--preset--color--dark-blue);
+  color: gray;
+  padding: 10px 20px;
+}
+.eventastic-calendar-block.default #calendar-container .toggle-buttons button.active {
+  background: var(--wp--preset--color--white);
+  color: var(--wp--preset--color--dark-blue);
+}
+.eventastic-calendar-block.default #calendar-container .filters button {
+  margin: 1rem auto;
+}
+.eventastic-calendar-block.default #calendar-container .fc-header-toolbar h2 {
+  color: blue;
+  font-size: 48px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.eventastic-calendar-block.default #calendar-container .fc-header-toolbar .fc-toolbar-chunk:nth-child(1) {
+  width: 60%;
+}
+.eventastic-calendar-block.default #calendar-container .fc-dayGridMonth-view > table {
+  border: 0;
+}
+.eventastic-calendar-block.default #calendar-container .fc-dayGridMonth-view > table thead th.fc-day {
+  border: 0;
+  padding: 0.5rem;
+}
+.eventastic-calendar-block.default #calendar-container .fc-dayGridMonth-view > table thead th.fc-day .fc-scrollgrid-sync-inner {
+  color: black;
+  font-size: 28px;
+  font-weight: 600;
+}
+.eventastic-calendar-block.default #calendar-container .fc-dayGridMonth-view > table thead th.fc-day .fc-scrollgrid-sync-inner a,
+.eventastic-calendar-block.default #calendar-container .fc-dayGridMonth-view > table thead th.fc-day .fc-scrollgrid-sync-inner a:hover,
+.eventastic-calendar-block.default #calendar-container .fc-dayGridMonth-view > table thead th.fc-day .fc-scrollgrid-sync-inner a:active,
+.eventastic-calendar-block.default #calendar-container .fc-dayGridMonth-view > table thead th.fc-day .fc-scrollgrid-sync-inner a:visited {
+  color: black;
+  cursor: default;
+  text-decoration: none;
+}
+.eventastic-calendar-block.default #calendar-container .fc-dayGridMonth-view > table tbody {
+  border: 1px solid var(--fc-border-color) !important;
+}
+.eventastic-calendar-block.default #calendar-container .fc-dayGridMonth-view > table tbody tr,
+.eventastic-calendar-block.default #calendar-container .fc-dayGridMonth-view > table tbody th,
+.eventastic-calendar-block.default #calendar-container .fc-dayGridMonth-view > table tbody td {
+  border: 1px solid var(--fc-border-color) !important;
+}
+.eventastic-calendar-block.default #calendar-container .fc-dayGridMonth-view > table tbody td.fc-day {
+  border: 1px solid var(--fc-border-color);
+}
+.eventastic-calendar-block.default #calendar-container .fc-dayGridMonth-view > table tbody td.fc-day .fc-daygrid-day-frame.fc-scrollgrid-sync-inner {
+  position: relative;
+  aspect-ratio: 1;
+}
+.eventastic-calendar-block.default #calendar-container .fc-dayGridMonth-view > table tbody td.fc-day .fc-daygrid-day-frame.fc-scrollgrid-sync-inner .fc-daygrid-day-top {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 28px;
+}
+.eventastic-calendar-block.default #calendar-container .fc-dayGridMonth-view > table tbody td.fc-day .fc-daygrid-day-frame.fc-scrollgrid-sync-inner .fc-daygrid-day-top a,
+.eventastic-calendar-block.default #calendar-container .fc-dayGridMonth-view > table tbody td.fc-day .fc-daygrid-day-frame.fc-scrollgrid-sync-inner .fc-daygrid-day-top a:active,
+.eventastic-calendar-block.default #calendar-container .fc-dayGridMonth-view > table tbody td.fc-day .fc-daygrid-day-frame.fc-scrollgrid-sync-inner .fc-daygrid-day-top a:hover,
+.eventastic-calendar-block.default #calendar-container .fc-dayGridMonth-view > table tbody td.fc-day .fc-daygrid-day-frame.fc-scrollgrid-sync-inner .fc-daygrid-day-top a:visited {
+  color: black;
+  text-decoration: none;
+}
+.eventastic-calendar-block.default #calendar-container .fc-dayGridMonth-view > table tbody td.fc-day .fc-daygrid-day-frame.fc-scrollgrid-sync-inner .event-dot {
+  position: absolute;
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, 16px);
+  background: #02416B;
+}
+.eventastic-calendar-block.default #calendar-container .fc-dayGridMonth-view > table tbody td.fc-day .fc-daygrid-day-frame.fc-scrollgrid-sync-inner .event-dot.hide-number span {
+  display: none;
+}
+.eventastic-calendar-block.default #calendar-container .fc-dayGridMonth-view > table tbody td.fc-day.fc-day-today {
+  background: #02416B;
+}
+.eventastic-calendar-block.default #calendar-container .fc-dayGridMonth-view > table tbody td.fc-day.fc-day-today .fc-daygrid-day-top a.fc-daygrid-day-number {
+  color: white;
+}
+.eventastic-calendar-block.default #calendar-container .fc-dayGridMonth-view > table tbody td.fc-day.active {
+  background: #278644;
+}
+.eventastic-calendar-block.default #calendar-container .fc-dayGridMonth-view .fc-head-container,
+.eventastic-calendar-block.default #calendar-container .fc-dayGridMonth-view .fc-col-header {
+  border: 0;
+}
+.eventastic-calendar-block.default #calendar-container .fc-dayGridMonth-view .fc-row .fc-bg .fc-day {
+  position: relative;
+}
+.eventastic-calendar-block.default #calendar-container .fc-dayGridMonth-view .fc-row .fc-content-skeleton {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.eventastic-calendar-block.default #calendar-container .fc-dayGridMonth-view .fc-row .fc-content-skeleton table,
+.eventastic-calendar-block.default #calendar-container .fc-dayGridMonth-view .fc-row .fc-content-skeleton thead,
+.eventastic-calendar-block.default #calendar-container .fc-dayGridMonth-view .fc-row .fc-content-skeleton tr {
+  height: 100%;
+}
+.eventastic-calendar-block.default #calendar-container .fc-dayGridMonth-view .fc-row .fc-content-skeleton table .fc-day-top,
+.eventastic-calendar-block.default #calendar-container .fc-dayGridMonth-view .fc-row .fc-content-skeleton thead .fc-day-top,
+.eventastic-calendar-block.default #calendar-container .fc-dayGridMonth-view .fc-row .fc-content-skeleton tr .fc-day-top {
+  position: relative;
+}
+.eventastic-calendar-block.default #calendar-container .fc-dayGridMonth-view .fc-row .fc-content-skeleton table .fc-day-top .fc-day-number,
+.eventastic-calendar-block.default #calendar-container .fc-dayGridMonth-view .fc-row .fc-content-skeleton thead .fc-day-top .fc-day-number,
+.eventastic-calendar-block.default #calendar-container .fc-dayGridMonth-view .fc-row .fc-content-skeleton tr .fc-day-top .fc-day-number {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 28px;
+}
+
+#calendarList .events-card {
+  background: white;
+  max-width: 100%;
+  margin: 0 auto 20px;
+  box-shadow: 3px 6px 9px rgba(0, 0, 0, 0.2);
+}
+#calendarList .events-card .date {
+  font-weight: 700;
+  line-height: 1.625rem;
+  margin-bottom: 0.5rem;
+}
+#calendarList .events-card .wrapper {
+  text-align: left;
+}
+#calendarList .events-card .wrapper .image-wrapper {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: inherit;
+  width: 100%;
+  aspect-ratio: 1.7;
+  flex: 1 0 auto;
+  cursor: pointer;
+}
+#calendarList .events-card .wrapper .content {
+  padding: 10px 15px 5px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+#calendarList .events-card .wrapper .content .description {
+  font-weight: 400;
+  font-size: 1.125rem;
+  width: 100%;
+  line-height: 1.2em;
+  height: 3.6em;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+#calendarList .events-card .wrapper .content a {
+  font-weight: bold;
+  color: white;
+  padding: 0.75rem 1rem;
+  border-radius: 7px;
+  background-color: blue;
+  font-size: 0.8rem;
+  display: inline-block;
+  margin-top: 1rem;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+@media only screen and (max-width: 768px) {
+  #calendarList .events-card {
+    padding-right: 0;
+  }
+  #calendarList .events-card .wrapper {
+    flex-direction: column;
+  }
+  #calendarList .events-card .wrapper .image-wrapper {
+    width: 100%;
+    height: 0;
+    min-height: 0;
+    padding-bottom: 75%;
+    max-width: unset;
+    max-height: unset;
+  }
+  #calendarList .events-card .wrapper .content {
+    width: 100%;
+  }
+}
+
+/**
+ * Gravity Wiz // Gravity Forms // Kayak-style Datepicker
+ * Style your Gravity Forms Datepickers like Kayak.com
+ */
+.datepicker-clean.ui-datepicker {
+  background-color: #fff;
+  width: 516px !important;
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.1) !important;
+  padding-left: 20px;
+  position: relative;
+  border: 1px solid #ddd;
+}
+
+.datepicker-clean.ui-datepicker:before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 15px solid #ddd;
+  top: -15px;
+}
+
+.datepicker-clean.ui-datepicker:after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 15px solid white;
+  top: -13px;
+}
+
+.datepicker-clean .ui-datepicker-group {
+  float: left !important;
+  padding: 20px 20px 20px 0;
+}
+
+.datepicker-clean .ui-datepicker-header {
+  background: none !important;
+  text-shadow: none !important;
+  color: #333 !important;
+  border: 0 !important;
+  margin-bottom: 6px !important;
+}
+
+.datepicker-clean .ui-datepicker-title {
+  font-size: 15px !important;
+}
+
+.datepicker-clean .ui-datepicker-year {
+  font-weight: normal !important;
+}
+
+.datepicker-clean.ui-datepicker thead {
+  border: 0 !important;
+  background: none !important;
+}
+
+.datepicker-clean.ui-datepicker th {
+  font-size: 12px !important;
+  font-weight: bold;
+  color: #ccc !important;
+}
+
+.datepicker-clean.ui-datepicker tbody tr {
+  border: 0 !important;
+}
+
+.datepicker-clean.ui-datepicker tbody td {
+  background-color: transparent;
+  border: 0 !important;
+  padding: 1px !important;
+}
+
+.datepicker-clean .ui-datepicker-prev {
+  position: absolute;
+  left: 10px;
+  line-height: 30px !important;
+  background: none !important;
+}
+
+.datepicker-clean .ui-datepicker-prev:after {
+  content: "◀";
+  color: #f6861f !important;
+}
+
+.datepicker-clean .ui-state-disabled.ui-datepicker-prev:after {
+  color: #ccc !important;
+}
+
+.datepicker-clean .ui-icon.ui-icon-circle-triangle-w {
+  display: none;
+}
+
+.datepicker-clean .ui-datepicker-next {
+  position: absolute;
+  right: 10px;
+  line-height: 30px !important;
+  background: none !important;
+}
+
+.datepicker-clean .ui-icon-circle-triangle-e {
+  display: none;
+}
+
+.datepicker-clean .ui-datepicker-next:after {
+  content: "▶";
+  color: #f6861f !important;
+}
+
+.datepicker-clean .ui-state-disabled.ui-datepicker-next:after {
+  color: #ccc !important;
+}
+
+.datepicker-clean .ui-datepicker-calendar .ui-state-default {
+  background: #f5f5f5 !important;
+  font-weight: normal !important;
+  font-size: 13px !important;
+  text-shadow: none !important;
+  border: 1px solid #f5f5f5 !important;
+  box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+}
+
+.datepicker-clean .ui-datepicker-calendar .ui-datepicker-today a {
+  font-weight: bold !important;
+}
+
+.datepicker-clean .ui-datepicker-calendar .ui-datepicker-current-day a {
+  background-color: #f6861f !important;
+  color: #fff !important;
+  border: 1px solid #f6861f !important;
+}
+
+.datepicker-clean .ui-datepicker-calendar .ui-state-hover {
+  background-color: #fff !important;
+  border: 1px solid #f6861f !important;
+}
+
+.datepicker-clean .ui-datepicker-unselectable.ui-state-disabled {
+  background: none !important;
+}
+
+.datepicker-clean .ui-datepicker-unselectable.ui-state-disabled span {
+  background: none !important;
+  font-weight: normal !important;
+  color: #eee !important;
+  border: 1px solid transparent !important;
+}
+
+.datepicker-clean .ui-datepicker-calendar .ui-datepicker-other-month span {
+  color: #ccc !important;
+}
+
+.datepicker-clean .ui-datepicker-calendar .wrong {
+  background-color: #ff0000 !important;
+}
+
+.datepicker-clean div.ui-datepicker-group-first td:not(.ui-datepicker-other-month) ~ td.ui-datepicker-other-month {
+  visibility: hidden;
+}
+
+.datepicker-clean div.ui-datepicker-group-last td {
+  visibility: hidden;
+}
+
+.datepicker-clean div.ui-datepicker-group-last td.ui-datepicker-other-month ~ td:not(.ui-datepicker-other-month),
+.datepicker-clean div.ui-datepicker-group-last td:not(.ui-datepicker-other-month),
+.datepicker-clean div.ui-datepicker-group-last td:not(.ui-datepicker-other-month) ~ td.ui-datepicker-other-month {
+  visibility: visible;
+}
+
+/*# sourceMappingURL=style-index.css.map*/

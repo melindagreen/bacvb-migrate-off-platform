@@ -1,0 +1,87 @@
+.eventasticEventsPage .eventasticHero { height: 80vh; width: 100%; background-size: cover; background-repeat: no-repeat; background-attachment: fixed; }
+
+@media only screen and (max-width: 768px) { .eventasticEventsPage .eventasticHero { background-attachment: scroll; } }
+
+.eventasticEventsPage .eventasticHeadline { display: block; margin: 1em auto; text-align: center; font-size: 4em; }
+
+.eventasticEventsPage .eventasticEvents { margin: 2.5em auto; width: 95%; max-width: 1600px; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: start; -ms-flex-align: start; align-items: flex-start; }
+
+.eventasticEventsPage .eventasticEvents .filters { background: #1e88a6; color: white; width: 350px; padding: 12px; margin-right: 24px; }
+
+.eventasticEventsPage .eventasticEvents .filters .title { font-family: "Bree Serif", serif; font-size: 2em; text-align: center; text-transform: uppercase; margin: 0 auto .25em; }
+
+.eventasticEventsPage .eventasticEvents .filters .dateAndKeyworkFilters label { font-size: 1.1em; }
+
+.eventasticEventsPage .eventasticEvents .filters .dateAndKeyworkFilters .dateFilter { margin-bottom: 12px; }
+
+.eventasticEventsPage .eventasticEvents .filters .dateAndKeyworkFilters .dateFilter .dateInput { position: relative; }
+
+.eventasticEventsPage .eventasticEvents .filters .dateAndKeyworkFilters .dateFilter .dateInput:hover:after { content: ""; display: block; position: absolute; right: 12px; top: 50%; -webkit-transform: translateY(-50%); -ms-transform: translateY(-50%); transform: translateY(-50%); width: 0; height: 0; border-left: 7px solid transparent; border-right: 7px solid transparent; border-top: 10px solid black; }
+
+.eventasticEventsPage .eventasticEvents .filters .dateAndKeyworkFilters .dateFilter .dateInput input[type="date"] { background: white; cursor: pointer; margin: 0; width: 100%; border: none; }
+
+.eventasticEventsPage .eventasticEvents .filters .dateAndKeyworkFilters .keywordFilter { display: block; margin-bottom: 12px; }
+
+.eventasticEventsPage .eventasticEvents .filters .dateAndKeyworkFilters .keywordFilter input { margin: 0; background: white; max-width: none; width: 100%; border: none; }
+
+.eventasticEventsPage .eventasticEvents .filters .categoryFilters { margin-bottom: 12px; }
+
+.eventasticEventsPage .eventasticEvents .filters .categoryFilters .filterToggle { font-size: 1.1em; }
+
+.eventasticEventsPage .eventasticEvents .filters .categoryFilters .categories .checkbox { cursor: pointer; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: start; -ms-flex-pack: start; justify-content: flex-start; -webkit-box-align: baseline; -ms-flex-align: baseline; align-items: baseline; margin: 6px 0; }
+
+.eventasticEventsPage .eventasticEvents .filters .categoryFilters .categories .checkbox input[type="checkbox"] { background: none; -webkit-appearance: none; width: 12px !important; height: 12px; border: 1px solid white; cursor: pointer; margin-right: 12px; }
+
+.eventasticEventsPage .eventasticEvents .filters .categoryFilters .categories .checkbox input[type="checkbox"]:checked { background: white; }
+
+.eventasticEventsPage .eventasticEvents .filters .categoryFilters .categories .checkbox label { cursor: pointer; }
+
+.eventasticEventsPage .eventasticEvents .filters .categoryFilters .categories .checkbox:hover input[type="checkbox"] { background: white; }
+
+.eventasticEventsPage .eventasticEvents .filters .filterSubmit { display: block; width: 100%; height: 40px; line-height: initial; font-size: 1.1em; border-radius: 3p; border-radius: 3px; background: white; color: #105366; -webkit-transition: .3s ease; -o-transition: .3s ease; transition: .3s ease; }
+
+.eventasticEventsPage .eventasticEvents .filters .filterSubmit:hover { background: none; color: white; }
+
+.eventasticEventsPage .eventasticEvents .events { width: 100%; }
+
+.eventasticEventsPage .eventasticEvents .events .noResults { font-size: 1.3em; color: black; font-weight: bold; margin-top: 0; }
+
+.eventasticEventsPage .eventasticEvents .events .event { background: white; -webkit-box-shadow: 0px 4px 16px rgba(47, 48, 50, 0.25); box-shadow: 0px 4px 16px rgba(47, 48, 50, 0.25); margin-bottom: 24px; color: black; padding: 12px; text-decoration: none; display: -webkit-box; display: -ms-flexbox; display: flex; }
+
+.eventasticEventsPage .eventasticEvents .events .event.hidden { display: none; }
+
+.eventasticEventsPage .eventasticEvents .events .event .image { width: 30%; margin-right: 12px; }
+
+.eventasticEventsPage .eventasticEvents .events .event .image img { width: 100%; display: block; }
+
+.eventasticEventsPage .eventasticEvents .events .event .text { -webkit-box-flex: 1; -ms-flex: 1; flex: 1; }
+
+.eventasticEventsPage .eventasticEvents .events .event .text h3 { margin: 0 auto .5em; display: inline-block; }
+
+.eventasticEventsPage .eventasticEvents .events .event .text button { background: #105366; color: white; text-transform: uppercase; -webkit-transition: .3s ease; -o-transition: .3s ease; transition: .3s ease; }
+
+.eventasticEventsPage .eventasticEvents .events .event .text button:hover { background: #023240; }
+
+@media only screen and (max-width: 768px) { .eventasticEventsPage .eventasticEvents .events .event { -ms-flex-wrap: wrap; flex-wrap: wrap; }
+  .eventasticEventsPage .eventasticEvents .events .event .image { width: 100%; margin-right: 0; margin-bottom: 12px; } }
+
+.eventasticEventsPage .eventasticEvents .events .showMoreButton { display: block; margin: 0 auto; width: 150px; font-size: .9em; background: #105366; color: white; text-align: center; text-transform: uppercase; padding: 6px 24px; cursor: pointer; -webkit-transition: .3s ease; -o-transition: .3s ease; transition: .3s ease; }
+
+.eventasticEventsPage .eventasticEvents .events .showMoreButton:hover { background: #023240; }
+
+@media only screen and (max-width: 768px) { .eventasticEventsPage .eventasticEvents { -ms-flex-wrap: wrap; flex-wrap: wrap; }
+  .eventasticEventsPage .eventasticEvents .filters { width: 100%; margin: 0 auto 24px; display: -webkit-box; display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; }
+  .eventasticEventsPage .eventasticEvents .filters .title { width: 100%; }
+  .eventasticEventsPage .eventasticEvents .filters .dateAndKeyworkFilters { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; -ms-flex-wrap: wrap; flex-wrap: wrap; width: 100%; }
+  .eventasticEventsPage .eventasticEvents .filters .dateAndKeyworkFilters .dateFilter, .eventasticEventsPage .eventasticEvents .filters .dateAndKeyworkFilters .keywordFilter { width: calc(33% - 8px); margin: 0; position: relative; min-width: 160px; } }
+
+@media only screen and (max-width: 768px) and (max-width: 600px) { .eventasticEventsPage .eventasticEvents .filters .dateAndKeyworkFilters .dateFilter { width: calc(50% - 6px); }
+  .eventasticEventsPage .eventasticEvents .filters .dateAndKeyworkFilters .keywordFilter { width: 100%; margin-top: 12px; } }
+
+@media only screen and (max-width: 768px) and (max-width: 420px) { .eventasticEventsPage .eventasticEvents .filters .dateAndKeyworkFilters .dateFilter { width: 100%; margin-bottom: 12px; }
+  .eventasticEventsPage .eventasticEvents .filters .dateAndKeyworkFilters .keywordFilter { margin-top: 0; } }
+
+@media only screen and (max-width: 768px) { .eventasticEventsPage .eventasticEvents .filters .categoryFilters { margin-top: 12px; }
+  .eventasticEventsPage .eventasticEvents .filters .categoryFilters .categories { width: 100%; }
+  .eventasticEventsPage .eventasticEvents .filters .categoryFilters .categories .checkbox { margin: 0 12px 12px 0; display: -webkit-inline-box; display: -ms-inline-flexbox; display: inline-flex; }
+  .eventasticEventsPage .eventasticEvents .events { width: 100%; } }

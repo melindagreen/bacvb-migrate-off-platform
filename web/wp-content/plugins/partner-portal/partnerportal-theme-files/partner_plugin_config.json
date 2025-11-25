@@ -1,0 +1,35 @@
+{
+  "configurations" : {
+    "import": {
+      "import_filename" : "test",
+      "post_title_key" : "published_business_name",
+      "category_columns" : [23,24],
+      "author" : {
+        "assign" : true,
+        "email_key" : "owners_email",
+        "send_email_on_creation" : true,
+        "notification_email" : "wjgrass@gmail.com",
+        "default_owner_email" : ""
+      },
+      "unique_keys" : [
+        "published_business_name",
+        "address_1"
+      ],
+      "geo_keys" : {
+        "street": "address_1",
+        "city" : "city",
+        "state" : "state", 
+        "postal_code" : "zip"      
+      }
+    },
+    "disable_category_creation" : false,
+    "required_categories" : [
+      {
+        "slug" : "lodging",
+        "name" : "Lodging",
+        "description" : "",
+        "taxonomy" : "listing_categories"
+      }
+    ]
+  }
+}

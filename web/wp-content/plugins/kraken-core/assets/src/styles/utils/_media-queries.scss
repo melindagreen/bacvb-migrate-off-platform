@@ -1,0 +1,122 @@
+@use "variables" as *;
+
+/*
+SM
+Phone sizes
+*/
+@mixin screen-sm-max {
+	@media only screen and (max-width: #{$screen-sm}) {
+		@content;
+	}
+}
+
+@mixin screen-sm-min {
+	@media screen and (min-width: ($screen-sm + 1)) {
+		@content;
+	}
+}
+
+@mixin screen-phone-max {
+	@media only screen and (max-width: #{$screen-sm}) {
+		@content;
+	}
+}
+
+/*
+MD
+Phone / tablet sizes
+*/
+@mixin screen-md-max {
+	@media screen and (max-width: $screen-md) {
+		@content;
+	}
+}
+
+@mixin screen-md-min {
+	@media screen and (min-width: ($screen-md + 1)) {
+		@content;
+	}
+}
+
+@mixin screen-tablet-min {
+	@media screen and (min-width: ($screen-sm + 1)) {
+		@content;
+	}
+}
+
+@mixin screen-tablet-max {
+	@media screen and (max-width: $screen-md) {
+		@content;
+	}
+}
+
+/*
+LG
+Tablet / laptop sizes
+*/
+@mixin screen-lg-max {
+	@media screen and (max-width: $screen-lg) {
+		@content;
+	}
+}
+
+@mixin screen-lg-min {
+	@media screen and (min-width: ($screen-lg + 1)) {
+		@content;
+	}
+}
+
+@mixin screen-desktop-min {
+	@media screen and (min-width: ($screen-md + 1)) {
+		@content;
+	}
+}
+
+@mixin screen-desktop-max {
+	@media screen and (max-width: $screen-lg) {
+		@content;
+	}
+}
+
+/*
+XL
+Laptop sizes
+*/
+@mixin screen-xl-max {
+	@media screen and (max-width: $screen-xl) {
+		@content;
+	}
+}
+
+@mixin screen-xl-min {
+	@media screen and (min-width: ($screen-xl + 1)) {
+		@content;
+	}
+}
+
+@mixin screen-wide-min {
+	@media screen and (min-width: ($screen-lg + 1)) {
+		@content;
+	}
+}
+
+@mixin screen-wide-max {
+	@media screen and (max-width: $screen-xl) {
+		@content;
+	}
+}
+
+/*
+Custom sizes
+*/
+@mixin screen-px-max($screen) {
+	@media only screen and (max-width: ($screen+"px")) {
+		@content;
+	}
+}
+
+@mixin screen-px-min($screen) {
+	@media only screen and (min-width: ($screen+"px")) {
+		@content;
+	}
+}

@@ -1,0 +1,146 @@
+@use "styles/utils" as *;
+
+/*
+Vertical image on top, text on bottom
+*/
+.#{$block-prefix}-content-card.card-style-default {
+  --background-color: #fff;
+  --color: #000;
+  background-color: var(--background-color);
+  box-shadow: 0.25rem 0.25rem 0.5rem 0 #0000001e;
+  border-radius: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  margin: 0.5rem; // match the box shadow size
+  overflow: hidden;
+  position: relative;
+  @include standard-transition;
+
+  .primary-card-link {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 0.35rem;
+    pointer-events: auto;
+    text-decoration: none;
+  }
+
+  .featured-media {
+    background-color: #aaa;
+    border-radius: 1.125rem 1.125rem 0 0;
+    display: block;
+    flex: 0 0 15rem;
+    height: 15rem;
+
+    img {
+      border-radius: 1.25rem 1.25rem 0 0;
+      display: block;
+      height: 100%;
+      object-fit: cover;
+      width: 100%;
+    }
+  }
+
+  .content {
+    color: var(--color);
+    display: flex;
+    align-items: stretch;
+    flex: 1;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 0.25rem;
+    padding: 1.25rem;
+    width: 100%;
+
+    * {
+      color: inherit;
+    }
+
+    .post-title {
+      font-family: $font-body;
+      font-size: var(--wp--preset--font-size--medium);
+      font-weight: 700;
+      line-height: 1.25;
+      margin: 0 0 1rem;
+      &:last-child {
+        margin: 0;
+      }
+    }
+
+    .event-date,
+    .event-time,
+    .event-location {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 0.5rem;
+      svg {
+        flex: 0 0 1rem;
+      }
+    }
+
+    .excerpt {
+      font-size: var(--wp--preset--font-size--small);
+      line-height: 1.25;
+      margin: 1rem 0 0;
+      &:first-child {
+        margin: 0;
+      }
+      &:empty {
+        display: none;
+      }
+    }
+  }
+
+  .card-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 1.25rem;
+    &.with-secondary-link {
+      flex: 0 0 auto;
+      gap: 1rem;
+      justify-content: space-between;
+      padding: 1rem 1.25rem 1.25rem;
+      a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        gap: 0.5rem;
+        padding: 1.25rem;
+        text-align: center;
+        &:first-child:last-child {
+          flex: 0 0 auto;
+        }
+      }
+    }
+  }
+
+  &.has-mindtrip-overlay {
+    .mindtrip-prompt {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      height: 2.5rem;
+      width: 2.5rem;
+      z-index: 1;
+      svg {
+        fill: #fff;
+        filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.65));
+        height: 1.5rem;
+        width: 1.5rem;
+      }
+    }
+  }
+
+  &:focus,
+  &:focus-within,
+  &:hover {
+    transform: scale(1.0125);
+  }
+}

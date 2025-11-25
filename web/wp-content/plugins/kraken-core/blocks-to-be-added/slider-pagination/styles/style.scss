@@ -1,0 +1,127 @@
+.wp-block-madden-theme-slider-pagination {
+    // Alignment support
+    &.alignleft .external-swiper-controls {
+        justify-content: flex-start;
+    }
+    
+    &.alignright .external-swiper-controls {
+        justify-content: flex-end;
+    }
+    
+    &.aligncenter .external-swiper-controls {
+        justify-content: center;
+    }
+    
+    .external-swiper-controls {
+        display: flex;
+        align-items: center;
+        padding: 1rem 0;
+        @media all and (max-width: 768px) {
+            justify-content: space-between;
+            .external-swiper-nav-wrapper {
+                .external-swiper-button-prev,
+                .external-swiper-button-next {
+                    width: 25px !important;
+                    height: 25px !important;
+                    svg.arrow-svg {
+                        width: 15px;
+                    }
+                }
+            }
+        }
+        .external-swiper-pagination {
+            display: flex;
+            justify-content: center;
+            padding: 0 1rem;
+            position: relative; // Needed for Swiper to position bullets
+            width: auto;
+            height: auto;
+            
+            .swiper-pagination-bullet {
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                background-color: var(--swiper-pagination-bullet-inactive-color, #000);
+                opacity: var(--swiper-pagination-bullet-inactive-opacity, 0.2);
+                margin: 0 4px;
+                cursor: pointer;
+                
+                &-active {
+                    opacity: var(--swiper-pagination-bullet-opacity, 1);
+                    background-color: var(--swiper-pagination-color, var(--swiper-theme-color));
+                }
+            }
+        }
+        
+        .external-swiper-nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            
+            .external-swiper-button-prev,
+            .external-swiper-button-next {
+                position: relative; // Override Swiper's absolute positioning
+                width: 40px;
+                height: 40px;
+                top: auto; // Override Swiper's positioning
+                left: auto;
+                right: auto;
+                margin-top: 0; // Override Swiper's margin
+                cursor: pointer;
+                color: var(--swiper-navigation-color, #000);
+                background-color: var(--swiper-navigation-bg-color, transparent);
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                transition: all 0.3s ease;
+                
+                &:after {
+                    font-family: 'swiper-icons';
+                    font-size: 18px;
+                    text-transform: none !important;
+                    letter-spacing: 0;
+                    font-variant: initial;
+                    line-height: 1;
+                }
+                
+                &:hover {
+                    opacity: 0.8;
+                }
+                
+                &.swiper-button-disabled {
+                    opacity: 0.35;
+                    cursor: auto;
+                    pointer-events: none;
+                }
+                
+                // SVG arrow styling
+                .arrow-svg {
+                    width: 21px;
+                    height: 21px;
+                    
+                    &.arrow-prev {
+                        margin-right: 2px; // Slight adjustment for visual balance
+                    }
+                    
+                    &.arrow-next {
+                        margin-left: 2px; // Slight adjustment for visual balance
+                    }
+                }
+                
+                // When using the modern arrow style, hide the default arrow content
+                &.modern-arrow::after {
+                    content: none !important;
+                }
+            }
+        }
+    }
+    
+    // Different layouts based on which elements are enabled
+    &:has(.external-swiper-pagination:not(.external-swiper-nav-wrapper)) {
+        .external-swiper-pagination {
+            padding: 0;
+        }
+    }
+}

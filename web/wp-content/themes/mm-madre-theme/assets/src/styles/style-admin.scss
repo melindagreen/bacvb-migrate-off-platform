@@ -1,0 +1,17 @@
+@font-face {
+  font-family: "madden";
+  src: url("../../fonts/madden.eot");
+  src:
+    url("../../fonts/madden.eot?#iefix") format("embedded-opentype"),
+    url("../../fonts/madden.woff") format("woff"),
+    url("../../fonts/madden.ttf") format("truetype"),
+    url("../../fonts/madden.svg#madden") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+.dashicons-madden {
+  &:before {
+    font-family: "madden" !important;
+    content: "\e000";
+  }
+}

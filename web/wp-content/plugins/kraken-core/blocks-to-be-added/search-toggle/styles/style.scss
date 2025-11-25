@@ -1,0 +1,79 @@
+body .#{$block-prefix}-search-toggle {
+	--search-color: red;
+	--search-color-active: blue;
+	margin: 0;
+	.search-toggle {
+		background-color: transparent;
+		border: none;
+		font-family: inherit;
+		font-size: inherit;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0;
+		width: 3rem;
+		height: 3rem;
+		svg {
+			fill: var(--search-color);
+			height: 3em;
+			width: 3em;
+			@include standard-transition;
+		}
+		&.search-toggle--open,
+		&:hover {
+			svg {
+				fill: var(--search-color-active);
+			}
+		}
+	}
+}
+
+//mixins will be included under breakpoint classes below
+@mixin desktop-only-styles {
+}
+
+@mixin mobile-only-styles {
+	display: none;
+}
+
+body .#{$block-prefix}-search-toggle {
+	&.mobile-breakpoint-disabled {
+		@include desktop-only-styles();
+	}
+
+	&.mobile-breakpoint-xl {
+		@include screen-xl-min {
+			@include desktop-only-styles();
+		}
+		@include screen-xl-max {
+			@include mobile-only-styles();
+		}
+	}
+
+	&.mobile-breakpoint-lg {
+		@include screen-lg-min {
+			@include desktop-only-styles();
+		}
+		@include screen-lg-max {
+			@include mobile-only-styles();
+		}
+	}
+
+	&.mobile-breakpoint-md {
+		@include screen-md-min {
+			@include desktop-only-styles();
+		}
+		@include screen-md-max {
+			@include mobile-only-styles();
+		}
+	}
+
+	&.mobile-breakpoint-sm {
+		@include screen-sm-min {
+			@include desktop-only-styles();
+		}
+		@include screen-sm-max {
+			@include mobile-only-styles();
+		}
+	}
+}

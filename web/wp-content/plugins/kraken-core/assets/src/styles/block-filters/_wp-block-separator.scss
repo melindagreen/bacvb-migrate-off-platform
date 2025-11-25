@@ -1,0 +1,8 @@
+@use "styles/utils" as *;
+
+body .wp-block-separator {
+  @include responsive-display-filter;
+  &.main-column-auto {
+    @include main-column-auto;
+  }
+}

@@ -1,0 +1,48 @@
+body .#{$block-prefix}-tabs {
+	// Default variables can be overridden by block attributes
+	--tab-background-color: #f0f0f0;
+	--tab-text-color: #444;
+	--tab-background-hover-color: #e0e0e0;
+	--tab-text-hover-color: #111;
+	--tab-background-active-color: #ffffff;
+	--tab-text-active-color: #000000;
+
+	.tabs-nav {
+		display: flex;
+		flex-wrap: wrap;
+
+		button {
+			background-color: var(--tab-background-color);
+			border: none;
+			border-radius: 0.75rem 0.75rem 0 0;
+			color: var(--tab-text-color);
+			cursor: pointer;
+			font-family: var(--wp--preset--font-family--body);
+			font-size: var(--wp--preset--font-size--normal);
+			margin: 0;
+			padding: 0.75rem 1.5rem;
+			@include standard-transition;
+			@include screen-sm-max {
+				flex: 1;
+				padding: 0.75rem 0.5rem;
+			}
+
+			&:hover {
+				background-color: var(--tab-background-hover-color);
+				color: var(--tab-text-hover-color);
+			}
+
+			&.active {
+				background-color: var(--tab-background-active-color);
+				color: var(--tab-text-active-color);
+			}
+		}
+	}
+
+	.tabs-content > .#{$block-prefix}-single-tab {
+		display: none;
+		&.active {
+			display: block;
+		}
+	}
+}

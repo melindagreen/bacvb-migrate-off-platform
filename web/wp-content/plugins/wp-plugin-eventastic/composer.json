@@ -1,0 +1,6 @@
+{
+	"name": "maddenmedia/wp-plugin-eventastic",
+	"description": "Wordpress Events Plugin for Madden Media", 
+	"type": "wordpress-plugin",
+	"license": "proprietary"
+}

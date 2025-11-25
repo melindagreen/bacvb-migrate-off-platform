@@ -1,0 +1,29 @@
+@use "styles/utils" as *;
+
+body .wp-block-cover {
+  @include responsive-display-filter;
+  &.has-z-index {
+    position: relative;
+    z-index: var(--z-index, 1);
+  }
+  &.overflow-visible {
+    overflow: visible;
+  }
+  &.image-has-transparency {
+    .wp-block-cover__background {
+      opacity: 1 !important;
+      z-index: 0 !important;
+    }
+    .wp-block-cover__image-background {
+      z-index: 1 !important;
+    }
+    .wp-block-cover__inner-container {
+      z-index: 2;
+    }
+  }
+  &.has-object-fit-contain {
+    .wp-block-cover__image-background {
+      object-fit: contain;
+    }
+  }
+}

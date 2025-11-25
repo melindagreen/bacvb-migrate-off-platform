@@ -1,0 +1,37 @@
+/**
+ * The following styles get applied inside the editor only.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+.eventastic-calendar-block{
+	.wp-block-create-block-eventastic-calendar {
+		border: 1px dotted #f00;
+	}
+	.components-datetime__time-wrapper,.components-datetime__time,.components-base-control__label.components-datetime__time-legend{
+		display:none !important;	
+	}
+	.components-base-control.components-input-control,.components-base-control.components-number-control{
+		width:100%;
+	}
+	.components-panel__body{
+		border-top:solid 2px black;
+	}
+	.components-panel__row{
+		> .components-base-control{
+			width:100%;
+		}	
+	}
+	.mm-gb-label{
+		margin-top:1.5rem;
+		display:block;
+	}
+	.components-panel__row{
+
+		&.sub-row{
+			margin-left:30px;
+		}
+		&.sub-sub-row{
+			margin-left:60px;
+		}
+	}	
+}

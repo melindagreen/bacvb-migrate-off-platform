@@ -1,0 +1,46 @@
+/*********************
+PARENT THEME STYLES
+This theme file includes some very minimal resets.
+Nothing shoudl go here unless it can safely be loaded
+on *ALL* sites.
+*********************/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    & * {
+        box-sizing: border-box;
+    }
+}
+
+/*********************
+UTILITY CLASSES
+*********************/
+.sr-only {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}

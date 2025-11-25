@@ -41,10 +41,9 @@ composer.lock
 /web/wp-content/themes/twenty*/
 
 ### Ignore our themes - changes to default parent and child theme should go into those repos
-/web/wp-content/themes/mm-madre-theme/
 /web/wp-content/themes/mm-nino-theme/
 
-### Copy niño child theme folder to a theme name of your choice, and 
+### Copy niño child theme folder to a theme name of your choice, and
 ### include changes to that in this repo (i.e. uncomment these 2 lines)
 # !/web/wp-content/themes/YOUR_CHILD_THEME/
 # /web/wp-content/themes/YOUR_CHILD_THEME/assets/build/*
@@ -64,6 +63,12 @@ composer.lock
 # Allow some plugins that we can't get from github or wpackagist
 !/web/wp-content/plugins/gravityformsauthorizenet/
 !/web/wp-content/plugins/gravityformshubspot/
+!/web/wp-content/plugins/searchwp/
+!/web/wp-content/plugins/kraken-events/
+!/web/wp-content/plugins/kraken-core/
+!/web/wp-content/plugins/partner-portal/
+!/web/wp-content/plugins/wp-plugin-eventastic/
+!/web/wp-content/plugins/wp-plugin-madden-banners/
 
 # WordPress dynamic folders
 /web/wp-content/cache/

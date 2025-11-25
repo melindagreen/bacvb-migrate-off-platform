@@ -1,0 +1,79 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "version": "1.0.0",
+  "name": "kraken-core/kraken-acf-connector",
+  "title": "[Kraken] Kraken ACF Connector",
+  "description": "Displays formatted ACF data",
+  "icon": "embed-photo",
+  "category": "kraken-core",
+  "render": "file:./render.php",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "viewScript": "file:./view.js",
+  "style": "file:./style-view.css",
+  "supports": {
+    "anchor": true,
+    "align": true,
+    "color": {
+      "background": true,
+      "text": true,
+      "enableContrastChecker": true
+    },
+    "spacing": {
+      "margin": true,
+      "padding": true
+    },
+    "typography": {
+      "fontSize": true,
+      "lineHeight": true,
+      "textAlign": true
+    }
+  },
+  "attributes": {
+    "contentType": {
+      "type": "string",
+      "default": "kraken-events"
+    },
+    "presetField": {
+      "type": "string",
+      "default": ""
+    },
+    "customField": {
+      "type": "string",
+      "default": ""
+    },
+    "displayIcon": {
+      "type": "boolean",
+      "default": false
+    },
+    "displayLabel": {
+      "type": "boolean",
+      "default": false
+    },
+    "customLabelText": {
+      "type": "string",
+      "default": ""
+    },
+    "outputAsLink": {
+      "type": "boolean",
+      "default": false
+    },
+    "customLinkText": {
+      "type": "string",
+      "default": ""
+    },
+    "customLinkType": {
+      "type": "string",
+      "default": ""
+    },
+    "customLinkTarget": {
+      "type": "boolean",
+      "default": false
+    },
+    "outputAsList": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

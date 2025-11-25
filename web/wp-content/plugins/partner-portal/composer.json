@@ -1,0 +1,6 @@
+{
+	"name": "maddenmedia/partner-portal",
+	"description": "Wordpress Listings Plugin for Madden Media", 
+	"type": "wordpress-plugin",
+	"license": "proprietary"
+}

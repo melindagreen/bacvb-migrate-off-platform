@@ -1,0 +1,107 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "version": 2,
+  "settings": {
+    "border": {
+      "radius": false,
+      "color": false,
+      "style": false,
+      "width": false
+    },
+    "spacing": {
+      "padding": true,
+      "margin": true,
+      "units": [
+        "em",
+        "rem",
+        "vh",
+        "vw",
+        "%"
+      ]
+    },
+    "color": {
+      "custom": false,
+      "customGradient": false,
+      "defaultPalette": false,
+      "palette": [
+        {
+          "name": "Black",
+          "slug": "black",
+          "color": "#1c2226"
+        },
+        {
+          "name": "Gray",
+          "slug": "gray",
+          "color": "#a1a1a1"
+        },
+        {
+          "name": "Tan",
+          "slug": "tan",
+          "color": "#EDEAE6"
+        },
+        {
+          "name": "White",
+          "slug": "white",
+          "color": "#ffffff"
+        },
+        {
+          "name": "Red",
+          "slug": "red",
+          "color": "#BD0000"
+        }
+      ]
+    },
+    "typography": {
+      "customFontSize": false,
+      "letterSpacing": false,
+      "textDecoration": false,
+      "fontSizes": [
+        {
+          "slug": "small",
+          "size": "0.8rem",
+          "name": "Small"
+        },
+        {
+          "slug": "normal",
+          "size": "1rem",
+          "name": "Normal"
+        },
+        {
+          "slug": "medium",
+          "size": "1.5rem",
+          "name": "Medium"
+        },
+        {
+          "slug": "large",
+          "size": "2rem",
+          "name": "Large"
+        },
+        {
+          "slug": "xlarge",
+          "size": "5rem",
+          "name": "X Large"
+        }
+      ],
+      "fontFamilies": [
+        {
+          "fontFamily": "'Open Sans', sans-serif",
+          "slug": "body",
+          "name": "Body Font"
+        },
+        {
+          "fontFamily": "'Open Sans', sans-serif",
+          "slug": "header",
+          "name": "Header Font"
+        }
+      ]
+    }
+  },
+  "styles": {
+    "color": {
+      "background": "var(--wp--preset--color--tan)"
+    },
+    "typography": {
+      "fontFamily": "var(--wp--preset--font-family--body)"
+    }
+  }
+}

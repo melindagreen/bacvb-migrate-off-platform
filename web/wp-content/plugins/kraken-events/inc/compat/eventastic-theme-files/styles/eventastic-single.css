@@ -1,0 +1,53 @@
+.eventasticMain { margin-top: 105px; min-height: calc(100vh - 105px); }
+
+.eventasticEventWrapper { display: block; position: relative; width: 95%; max-width: 1250px; margin: 0 auto; }
+
+.eventasticEventWrapper .eventTitle { color: #105366; margin: 0 auto .25em; }
+
+.eventasticEventWrapper .eventInfo { display: -webkit-box; display: -ms-flexbox; display: flex; }
+
+.eventasticEventWrapper .eventInfo .images { position: relative; width: 40%; }
+
+.eventasticEventWrapper .eventInfo .images:before { content: ""; display: block; width: 100%; padding-bottom: 56.25%; }
+
+.eventasticEventWrapper .eventInfo .images .image { width: 100%; height: 100%; position: absolute; left: 0; top: 0; opacity: 0; -webkit-transition: .3s ease; -o-transition: .3s ease; transition: .3s ease; }
+
+.eventasticEventWrapper .eventInfo .images .image img { display: block; width: 100%; height: 100%; -o-object-fit: contain; object-fit: contain; }
+
+.eventasticEventWrapper .eventInfo .images .image.active { opacity: 1; }
+
+.eventasticEventWrapper .eventInfo .images .arrowNext, .eventasticEventWrapper .eventInfo .images .arrowPrev { position: absolute; top: 50%; -webkit-transform: translateY(-50%); -ms-transform: translateY(-50%); transform: translateY(-50%); cursor: pointer; -webkit-transition: .2s ease; -o-transition: .2s ease; transition: .2s ease; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; -webkit-box-align: center; -ms-flex-align: center; align-items: center; background: #105366; width: 50px; height: 50px; }
+
+.eventasticEventWrapper .eventInfo .images .arrowNext i, .eventasticEventWrapper .eventInfo .images .arrowPrev i { font-size: 2em; color: white; }
+
+.eventasticEventWrapper .eventInfo .images .arrowNext:hover, .eventasticEventWrapper .eventInfo .images .arrowPrev:hover { background: #023240; }
+
+.eventasticEventWrapper .eventInfo .images .arrowNext { right: 6px; }
+
+.eventasticEventWrapper .eventInfo .images .arrowPrev { left: 6px; }
+
+.eventasticEventWrapper .eventInfo .details { background: #105366; color: white; padding: 12px; -webkit-box-flex: 1; -ms-flex: 1; flex: 1; }
+
+.eventasticEventWrapper .eventInfo .details .detail { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: baseline; -ms-flex-align: baseline; align-items: baseline; }
+
+.eventasticEventWrapper .eventInfo .details .detail span { margin-right: 12px; }
+
+.eventasticEventWrapper .eventInfo .details .detail a { color: white; }
+
+.eventasticEventWrapper .eventInfo .details .ticketLink { border: 2px solid white; border-radius: 2px; color: white; text-decoration: none; padding: 6px 24px; margin: 0em auto; display: inline-block; -webkit-transition: .3s ease; -o-transition: .3s ease; transition: .3s ease; }
+
+.eventasticEventWrapper .eventInfo .details .ticketLink:hover { background: white; color: #105366; }
+
+.eventasticEventWrapper .eventInfo .details .social { display: -webkit-box; display: -ms-flexbox; display: flex; }
+
+.eventasticEventWrapper .eventInfo .details .social a { background: white; border-radius: 50%; width: 35px; height: 35px; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; -webkit-box-align: center; -ms-flex-align: center; align-items: center; text-decoration: none; margin-right: 12px; }
+
+.eventasticEventWrapper .eventInfo .details .social a span { font-size: 22px; color: #105366; }
+
+@media only screen and (max-width: 768px) { .eventasticEventWrapper .eventInfo { -ms-flex-wrap: wrap; flex-wrap: wrap; }
+  .eventasticEventWrapper .eventInfo .images { width: 100%; }
+  .eventasticEventWrapper .eventInfo .details { width: 100%; } }
+
+.eventasticEventWrapper .eventDescription { margin: 1em auto; }
+
+.eventasticEventWrapper #eventMap { height: 500px; width: 100%; position: relative; margin: 1em auto 2.5em; }

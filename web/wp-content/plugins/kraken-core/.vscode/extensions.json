@@ -1,0 +1,7 @@
+{
+  "recommendations": [
+    "esbenp.prettier-vscode",
+    "EditorConfig.EditorConfig"
+    // Add others you rely on, e.g. "dbaeumer.vscode-eslint", "stylelint.vscode-stylelint"
+  ]
+}

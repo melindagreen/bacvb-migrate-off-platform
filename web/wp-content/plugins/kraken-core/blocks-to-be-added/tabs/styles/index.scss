@@ -1,0 +1,13 @@
+/* Editor sidebar styles */
+.block-editor-block-inspector {
+  .kraken-core-color-panel {
+    border: none;
+  }
+}
+
+/* Editor only styles */
+.editor-styles-wrapper .#{$block-prefix}-tabs {
+  * {
+    box-sizing: border-box;
+  }
+}

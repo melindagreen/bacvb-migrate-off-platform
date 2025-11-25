@@ -1,0 +1,7 @@
+@use "./style.scss" as *;
+
+.#{$block-prefix}-kraken-acf-connector {
+  a {
+    pointer-events: none !important;
+  }
+}

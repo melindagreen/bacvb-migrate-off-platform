@@ -1,0 +1,6 @@
+{
+	"name": "maddenmedia/wp-plugin-madden-banners",
+	"description": "WordPress plugin for adding conditional banners and flyins", 
+	"type": "wordpress-plugin",
+	"license": "proprietary"
+}
