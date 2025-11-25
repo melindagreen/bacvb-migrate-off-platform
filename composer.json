@@ -61,7 +61,7 @@
 		"wpackagist-plugin/better-search-replace": "1.4.10",
 		"wpackagist-plugin/block-visibility": "3.7.1",
 		"wpackagist-plugin/create-block-theme": "2.7.0",
-		"wpackagist-plugin/cloudflare": "4.12.8",
+		"wpackagist-plugin/cloudflare": "4.13.0",
 		"wpackagist-plugin/duplicate-post": "^4.4",
 		"wpackagist-plugin/enable-media-replace": "^4.1.6",
 		"wpackagist-plugin/fareharbor": "^3.6",
@@ -71,7 +71,7 @@
 		"wpackagist-plugin/redirection": "^5.5",
 		"wpackagist-plugin/safe-svg": "^2.1",
 		"wpackagist-plugin/seo-by-rank-math": "*",
-		"wpackagist-plugin/tiny-compress-images": "3.6.3"
+		"wpackagist-plugin/tiny-compress-images": "3.6.4"
 	},
 	"minimum-stability": "dev",
 	"prefer-stable": true,
@@ -111,12 +111,10 @@
 		"post-install-cmd": [
 			"@script:permit",
 			"@script move-wp",
-			"@script install-wp-local-config",
-			"@update-packages"
+			"@script install-wp-local-config"
 		],
 		"post-update-cmd": [
-			"@script move-wp",
-			"@update-packages"
+			"@script move-wp"
 		],
 		"build": "@script build",
 		"build:child": "@build build:child",
