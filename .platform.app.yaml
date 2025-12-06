@@ -16,7 +16,7 @@ build:
 # to the application in the PLATFORM_RELATIONSHIPS variable. The right-hand
 # side is in the form `<service name>:<endpoint name>`.
 relationships:
-  database: "db:mysql"
+  database: "db:mariadb"
 
 # The configuration of app when it is exposed to the web.
 web:
@@ -149,7 +149,7 @@ dependencies:
   nodejs:
     yarn: "^1.22.4"
   php:
-    composer/composer: "2.2.12"
+    composer/composer: "^2.8"
     wp-cli/wp-cli: "^2.5.0"
 
 # The mounts that will be performed when the package is deployed.

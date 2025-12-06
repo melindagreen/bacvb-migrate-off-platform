@@ -12,7 +12,7 @@ $table_prefix    = getenv('MYSQL_PREFIX');
 
 //! else - configure the static strings below
 if(!$site_host)
-  $site_host    = 'mm-sandbox.local';
+  $site_host    = 'bacvb-local.test';
 
 if(!$content_dir)
   $content_dir  = 'wp-content';
@@ -33,8 +33,6 @@ require __DIR__ . '/wp-config-platform.php';
 if (!defined('ABSPATH')) {
   define('ABSPATH', dirname(__FILE__) . '/');
 }
-
-define( 'WPINC', 'wp-includes' );
 
 // **MOVE ALL MULTISITE DEFINITIONS HERE**
 define( 'WP_ALLOW_MULTISITE', true );
