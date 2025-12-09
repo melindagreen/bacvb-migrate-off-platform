@@ -141,12 +141,7 @@ if ($platform_config->isValidPlatform()) {
 } else {
 
   $local = dirname(__FILE__) . '/wp-config-local.php';
-  $isDocksal = getenv('DOCKSAL_STACK') ?? false;
-  $docksal = dirname(__FILE__) . '/wp-config-docksal.php';
-
-  if ($isDocksal && file_exists($docksal)) {
-    include($docksal);
-  } else if (file_exists($local)) {
+  if (file_exists($local)) {
     include($local);
   }
 }

@@ -13,7 +13,6 @@ source ".composer/bin/helpers"
   CHILD=$(node -p "require('./package.json').name")
   IS_PLATFORM=${PLATFORM_OUTPUT_DIR:-false}
   IS_LANDO=${LANDO_MOUNT:-false}
-  IS_DOCKSAL=${DOCKSAL_STACK:-false}
   LOGBREAK=$(cat .composer/bin/ascii/mm-logo)
   PRODUCTION="${PRODUCTION:-true}"
 #-------------------------- END: Settings-----------------------------
