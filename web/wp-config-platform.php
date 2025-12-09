@@ -34,16 +34,6 @@ if (isset($_SERVER['HTTP_HOST'])) {
 define('WP_HOME', $site_scheme . '://' . $site_host);
 define('WP_SITEURL', WP_HOME);
 
-// DDEV ENVIRONMENT DETECTION
-if (getenv('IS_DDEV_PROJECT')) {
-    $ddev = dirname(__FILE__) . '/wp-config-ddev.php';
-    if (file_exists($ddev)) {
-        include($ddev);
-        // Stop further config loading
-        return;
-    }
-}
-
 if ($platform_config->isValidPlatform()) {
   // Running on platform
   // IS PRODUCTION
