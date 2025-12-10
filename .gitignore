@@ -3,6 +3,9 @@
 *.lock
 composer.lock
 
+# Ignore environment files
+.env
+
 # Ignore Node modules
 *node_modules*
 

@@ -1,6 +1,6 @@
 {
-	"name": "mm-platform-shell",
-	"description": "MM Wordpress/Platform.sh Scaffolding w/ Parent & Child Themes",
+	"name": "bacvb-migrate",
+	"description": "BACVB WordPress Multisite w/ Parent & Child Themes",
 	"version": "3.2022.01",
 	"author": "Madden Media",
 	"license": "GPL-2.0-or-later",

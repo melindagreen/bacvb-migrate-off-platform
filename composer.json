@@ -1,6 +1,6 @@
 {
-	"name": "maddenmedia/mm-platform-shell",
-	"description": "WordPress Composer-ified. A template for managing WordPress core, plugins, and themes.",
+	"name": "maddenmedia/bacvb-migrate",
+	"description": "WordPress Composer-managed multisite installation. Manages WordPress core, plugins, and themes.",
 	"type": "project",
 	"keywords": [
 		"wordpress",
@@ -8,16 +8,12 @@
 		"cms",
 		"template"
 	],
-	"homepage": "https://github.com/platformsh/template-wordpress",
+	"homepage": "https://github.com/melindagreen/bacvb-migrate-off-platform",
 	"license": "GPL-2.0-or-later",
 	"repositories": [
 		{
 			"type": "composer",
 			"url": "https://wpackagist.org"
-		},
-		{
-			"type": "vcs",
-			"url": "git@github.com:platformsh/platformsh-config-reader-php.git"
 		},
 		{
 			"type": "composer",
@@ -41,19 +37,14 @@
 					"composer/installers": "*"
 				}
 			}
-		},
-		{
-			"type": "composer",
-			"url": "https://composer.admincolumns.com"
 		}
 	],
 	"require": {
 		"wpengine/advanced-custom-fields-pro": "6.6.2",
 		"davidbarratt/custom-installer": "^1.1",
 		"johnpbloch/wordpress": "6.8.3",
-		"platformsh/config-reader": "^2.0",
+		"vlucas/phpdotenv": "^5.6",
 		"wp-cli/wp-cli-bundle": "^2.5",
-		"admin-columns/admin-columns-pro": "6.4.23",
 		"gravity/gravityforms": "*",
 		"rankmath/seo-by-rank-math-pro": "*",
 		"symfony/console": "v7.1.4",
