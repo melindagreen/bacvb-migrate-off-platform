@@ -13,22 +13,16 @@
 // Load Composer autoloader
 require_once __DIR__ . '/../vendor/autoload.php';
 
-// Content directory variable (used later)
-$content_dir = 'wp-content';
-
-// Load local configuration overrides first (if exists)
-$local_config = __DIR__ . '/wp-config-local.php';
-if (file_exists($local_config)) {
-    require_once $local_config;
-}
-
-// If no local config, load environment variables from .env file
-if (!file_exists($local_config) && file_exists(__DIR__ . '/../.env')) {
+// Load environment variables from .env file
+if (file_exists(__DIR__ . '/../.env')) {
     $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/..');
     $dotenv->load();
 }
 
-// URL Configuration (only if not set by local config)
+// Content directory variable
+$content_dir = 'wp-content';
+
+// URL Configuration
 $site_scheme = 'http';
 if (
     !empty($_SERVER['HTTP_X_FORWARDED_PROTO']) &&
@@ -43,37 +37,19 @@ if (isset($_SERVER['HTTP_HOST'])) {
     $site_scheme = !empty($_SERVER['HTTPS']) ? 'https' : $site_scheme;
 }
 
-if (!defined('WP_HOME')) {
-    define('WP_HOME', $site_scheme . '://' . $site_host);
-}
-if (!defined('WP_SITEURL')) {
-    define('WP_SITEURL', WP_HOME);
-}
+define('WP_HOME', $site_scheme . '://' . $site_host);
+define('WP_SITEURL', WP_HOME);
 
-// Database Configuration (only if not set by local config)
-if (!defined('DB_NAME')) {
-    define('DB_NAME', $_ENV['DB_NAME'] ?? 'wordpress');
-}
-if (!defined('DB_USER')) {
-    define('DB_USER', $_ENV['DB_USER'] ?? 'root');
-}
-if (!defined('DB_PASSWORD')) {
-    define('DB_PASSWORD', $_ENV['DB_PASSWORD'] ?? '');
-}
-if (!defined('DB_HOST')) {
-    define('DB_HOST', $_ENV['DB_HOST'] ?? 'localhost');
-}
-if (!defined('DB_CHARSET')) {
-    define('DB_CHARSET', 'utf8');
-}
-if (!defined('DB_COLLATE')) {
-    define('DB_COLLATE', '');
-}
+// Database Configuration
+define('DB_NAME', $_ENV['DB_NAME'] ?? 'wordpress');
+define('DB_USER', $_ENV['DB_USER'] ?? 'root');
+define('DB_PASSWORD', $_ENV['DB_PASSWORD'] ?? '');
+define('DB_HOST', $_ENV['DB_HOST'] ?? 'localhost');
+define('DB_CHARSET', 'utf8');
+define('DB_COLLATE', '');
 
-// Database table prefix (only if not set by local config)
-if (!isset($table_prefix)) {
-    $table_prefix = $_ENV['DB_PREFIX'] ?? 'wp_';
-}
+// Database table prefix
+$table_prefix = $_ENV['DB_PREFIX'] ?? 'wp_';
 
 // Authentication Unique Keys and Salts
 define('AUTH_KEY',         'ZtV%9pO`*MV*H@qkB$?PLeez]T1v;,_9/a|xm=~S]HUw4~8|84`%IG1Z>1]9ty
@@ -103,12 +79,24 @@ if ($wp_environment === 'production') {
     define('DISALLOW_FILE_MODS', true);
     define('DISABLE_WP_CRON', true);
 } else {
-    define('WP_DEBUG', $_ENV['WP_DEBUG'] ?? true);
-    define('WP_DEBUG_LOG', $_ENV['WP_DEBUG_LOG'] ?? true);
-    define('WP_DEBUG_DISPLAY', $_ENV['WP_DEBUG_DISPLAY'] ?? false);
-    define('SCRIPT_DEBUG', $_ENV['SCRIPT_DEBUG'] ?? true);
+    define('WP_DEBUG', filter_var($_ENV['WP_DEBUG'] ?? true, FILTER_VALIDATE_BOOLEAN));
+    define('WP_DEBUG_LOG', filter_var($_ENV['WP_DEBUG_LOG'] ?? true, FILTER_VALIDATE_BOOLEAN));
+    define('WP_DEBUG_DISPLAY', filter_var($_ENV['WP_DEBUG_DISPLAY'] ?? false, FILTER_VALIDATE_BOOLEAN));
+    define('SCRIPT_DEBUG', filter_var($_ENV['SCRIPT_DEBUG'] ?? true, FILTER_VALIDATE_BOOLEAN));
     @ini_set('display_errors', 0);
 }
+
+// Multisite Configuration
+define('WP_ALLOW_MULTISITE', true);
+define('MULTISITE', true);
+define('SUBDOMAIN_INSTALL', false);
+define('DOMAIN_CURRENT_SITE', $_ENV['DOMAIN_CURRENT_SITE'] ?? $site_host);
+define('PATH_CURRENT_SITE', '/');
+define('SITE_ID_CURRENT_SITE', 1);
+define('BLOG_ID_CURRENT_SITE', 1);
+
+// Duplicator Plugin
+define('DUPLICATOR_AUTH_KEY', '{q@P]LzQl?YEJP&ajwjxVtPTt:&5LRr4$MChq_~,ne#DJ/z,P3WK5*XZhuEk,)Y[');
 
 // Content Directory
 define('WP_CONTENT_DIR', __DIR__ . "/{$content_dir}");
