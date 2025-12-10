@@ -52,22 +52,14 @@ define('DB_COLLATE', '');
 $table_prefix = $_ENV['DB_PREFIX'] ?? 'wp_';
 
 // Authentication Unique Keys and Salts
-define('AUTH_KEY',         'ZtV%9pO`*MV*H@qkB$?PLeez]T1v;,_9/a|xm=~S]HUw4~8|84`%IG1Z>1]9ty
-g|');
-define('SECURE_AUTH_KEY',  'V4T?gLj6ja/H |>kPd=%y+n1W[[9]QyZ$guqN_Uzkdox|QO|p77}NyJl>ysj+a
-N(');
-define('LOGGED_IN_KEY',    'k<EQp)L.!y4K1ZIpT @R5PXW56CLHEP!%U%7:,0TR.Q|q+CF{Q/U>!@ OJG5mp
-Kh');
-define('NONCE_KEY',        '2CKOG8zG{Abb9v+?8x|hV]$I[hkV0ZYpSz7_ITv;F{ob!a9C,pL-Cw+ivhQ9WE
-+`');
-define('AUTH_SALT',        '#-xE|d;!}zx,U3:|G~{HN!2t;EZ@$MZA%.FlyLdc!5P f>cEo%+tog>$V-u[PV
-YT');
-define('SECURE_AUTH_SALT', 'o}d`?|Y03C.BM@0vW`Jf82nB+62f.3Z7*MI&k8wVI:&LlHP:joc3Zp+OUL:,9Q
-!p');
-define('LOGGED_IN_SALT',   '[5k}H,/s|gE7pP}=Me4KP2_ELS$9c.*e@(zCY&g{pf(-6ioz^+R*7g+ W|wVGO
-K~');
-define('NONCE_SALT',       'V4taBW5+;(}G{[h3J+?&o(Xo!`R})B;rP,fJ`dMq3H.m%Cy.s4g{ryPQ705{qE
-vZ');
+define('AUTH_KEY',         'ZtV%9pO`*MV*H@qkB$?PLeez]T1v;,_9/a|xm=~S]HUw4~8|84`%IG1Z>1]9tyg|');
+define('SECURE_AUTH_KEY',  'V4T?gLj6ja/H |>kPd=%y+n1W[[9]QyZ$guqN_Uzkdox|QO|p77}NyJl>ysj+aN(');
+define('LOGGED_IN_KEY',    'k<EQp)L.!y4K1ZIpT @R5PXW56CLHEP!%U%7:,0TR.Q|q+CF{Q/U>!@ OJG5mpKh');
+define('NONCE_KEY',        '2CKOG8zG{Abb9v+?8x|hV]$I[hkV0ZYpSz7_ITv;F{ob!a9C,pL-Cw+ivhQ9WE+`');
+define('AUTH_SALT',        '#-xE|d;!}zx,U3:|G~{HN!2t;EZ@$MZA%.FlyLdc!5P f>cEo%+tog>$V-u[PVYT');
+define('SECURE_AUTH_SALT', 'o}d`?|Y03C.BM@0vW`Jf82nB+62f.3Z7*MI&k8wVI:&LlHP:joc3Zp+OUL:,9Q!p');
+define('LOGGED_IN_SALT',   '[5k}H,/s|gE7pP}=Me4KP2_ELS$9c.*e@(zCY&g{pf(-6ioz^+R*7g+ W|wVGOK~');
+define('NONCE_SALT',       'V4taBW5+;(}G{[h3J+?&o(Xo!`R})B;rP,fJ`dMq3H.m%Cy.s4g{ryPQ705{qEvZ');
 
 // Environment-based settings
 $wp_environment = $_ENV['WP_ENV'] ?? 'production';
