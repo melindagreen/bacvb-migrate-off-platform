@@ -1,5 +1,0 @@
-@use "styles/utils" as *;
-
-body .wp-block-column {
-  @include responsive-display-filter;
-}
