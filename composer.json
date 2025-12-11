@@ -42,7 +42,6 @@
 	"require": {
 		"wpengine/advanced-custom-fields-pro": "6.6.2",
 		"davidbarratt/custom-installer": "^1.1",
-		"johnpbloch/wordpress": "6.8.3",
 		"vlucas/phpdotenv": "^5.6",
 		"wp-cli/wp-cli-bundle": "^2.5",
 		"gravity/gravityforms": "*",
@@ -72,12 +71,10 @@
 		"allow-plugins": {
 			"composer/installers": true,
 			"ffraenz/private-composer-installer": true,
-			"johnpbloch/wordpress-core-installer": true,
 			"davidbarratt/custom-installer": true
 		}
 	},
 	"extra": {
-		"wordpress-install-dir": "wp",
 		"custom-installer": {
 			"web/wp-content/themes/mm-nino-theme/assets/src/scripts/gutenberg/blocks/{$name}": [
 				"type:mm-wordpress-block"
@@ -101,12 +98,9 @@
 		"script:permit": "x=.composer/script; chmod -R +x $x ${x}s",
 		"post-install-cmd": [
 			"@script:permit",
-			"@script move-wp",
 			"@script install-wp-local-config"
 		],
-		"post-update-cmd": [
-			"@script move-wp"
-		],
+		"post-update-cmd": [],
 		"build": "@script build",
 		"build:child": "@build build:child",
 		"watch": "@watch:child",
