@@ -68,13 +68,15 @@ if ($wp_environment === 'production') {
     define('WP_DEBUG', false);
     define('WP_DEBUG_LOG', false);
     define('WP_DEBUG_DISPLAY', false);
-    define('DISALLOW_FILE_MODS', true);
-    define('DISABLE_WP_CRON', true);
+    define('DISALLOW_FILE_MODS', filter_var($_ENV['DISALLOW_FILE_MODS'] ?? true, FILTER_VALIDATE_BOOLEAN));
+    define('DISABLE_WP_CRON', filter_var($_ENV['DISABLE_WP_CRON'] ?? true, FILTER_VALIDATE_BOOLEAN));
 } else {
     define('WP_DEBUG', filter_var($_ENV['WP_DEBUG'] ?? true, FILTER_VALIDATE_BOOLEAN));
     define('WP_DEBUG_LOG', filter_var($_ENV['WP_DEBUG_LOG'] ?? true, FILTER_VALIDATE_BOOLEAN));
     define('WP_DEBUG_DISPLAY', filter_var($_ENV['WP_DEBUG_DISPLAY'] ?? false, FILTER_VALIDATE_BOOLEAN));
     define('SCRIPT_DEBUG', filter_var($_ENV['SCRIPT_DEBUG'] ?? true, FILTER_VALIDATE_BOOLEAN));
+    define('DISALLOW_FILE_MODS', filter_var($_ENV['DISALLOW_FILE_MODS'] ?? false, FILTER_VALIDATE_BOOLEAN));
+    define('DISABLE_WP_CRON', filter_var($_ENV['DISABLE_WP_CRON'] ?? false, FILTER_VALIDATE_BOOLEAN));
     @ini_set('display_errors', 0);
 }
 
