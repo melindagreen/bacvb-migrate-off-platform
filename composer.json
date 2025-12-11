@@ -1,6 +1,6 @@
 {
 	"name": "maddenmedia/bacvb-migrate",
-	"description": "WordPress Composer-managed multisite installation. Manages WordPress core, plugins, and themes.",
+	"description": "WordPress multisite installation with PHP library dependencies managed by Composer.",
 	"type": "project",
 	"keywords": [
 		"wordpress",
