@@ -32,6 +32,8 @@ if (
     $site_scheme = 'https';
 }
 
+// Get site host from environment or server
+$site_host = $_ENV['DOMAIN_CURRENT_SITE'] ?? $_SERVER['HTTP_HOST'] ?? 'localhost';
 if (isset($_SERVER['HTTP_HOST'])) {
     $site_host = $_SERVER['HTTP_HOST'];
     $site_scheme = !empty($_SERVER['HTTPS']) ? 'https' : $site_scheme;
